@@ -4,7 +4,11 @@ import json
 from typing import Any
 
 import pytest
-from langchain_core.messages import AIMessage, AIMessageChunk
+from langchain_core.messages import (
+    AIMessage,
+    AIMessageChunk,
+    ToolCall,
+)
 from langchain_core.pydantic_v1 import BaseModel, Field
 
 from langchain_cohere import ChatCohere
@@ -92,6 +96,9 @@ def test_invoke_tool_calls() -> None:
         "name": "Erick",
         "age": 27,
     }
+    assert result.tool_calls == [
+        ToolCall(name="Person", args={"age": 27, "name": "Erick"})
+    ]
 
 
 def test_streaming_tool_call() -> None:
@@ -120,6 +127,13 @@ def test_streaming_tool_call() -> None:
         "name": "Erick",
         "age": 27,
     }
+    assert isinstance(chunk, AIMessageChunk)
+    assert isinstance(chunk.tool_call_chunks, list)
+    assert len(chunk.tool_call_chunks) == 1
+    tool_call_chunk = chunk.tool_call_chunks[0]
+    assert tool_call_chunk.name == "Person"
+    assert tool_call_chunk.args is not None
+    assert json.loads(tool_call_chunk.args) == {"name": "Erick", "age": 27}
 
 
 @pytest.mark.xfail(
