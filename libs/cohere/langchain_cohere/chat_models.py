@@ -253,6 +253,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 yield chunk
             elif data.event_type == "stream-end":
                 generation_info = self._get_generation_info(data.response)
+                tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
                     try:
                         tool_call_chunks = [
@@ -265,9 +266,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                             for tool_call in tool_calls
                         ]
                     except KeyError:
-                        tool_call_chunks = None
-                else:
-                    tool_call_chunks = None
+                        pass
                 message = AIMessageChunk(
                     content="",
                     additional_kwargs=generation_info,
@@ -303,6 +302,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 yield chunk
             elif data.event_type == "stream-end":
                 generation_info = self._get_generation_info(data.response)
+                tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
                     try:
                         tool_call_chunks = [
@@ -315,9 +315,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                             for tool_call in tool_calls
                         ]
                     except KeyError:
-                        tool_call_chunks = None
-                else:
-                    tool_call_chunks = None
+                        pass
                 message = AIMessageChunk(
                     content="",
                     additional_kwargs=generation_info,
@@ -368,15 +366,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
         generation_info = self._get_generation_info(response)
         if "tool_calls" in generation_info:
-            try:
-                tool_calls = [
-                    _convert_cohere_tool_call_to_langchain(tool_call)
-                    for tool_call in response.tool_calls
-                ]
-            except Exception:
-                tool_calls = None
+            tool_calls = [
+                _convert_cohere_tool_call_to_langchain(tool_call)
+                for tool_call in response.tool_calls
+            ]
         else:
-            tool_calls = None
+            tool_calls = []
         message = AIMessage(
             content=response.text,
             additional_kwargs=generation_info,
@@ -408,15 +403,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
         generation_info = self._get_generation_info(response)
         if "tool_calls" in generation_info:
-            try:
-                tool_calls = [
-                    _convert_cohere_tool_call_to_langchain(tool_call)
-                    for tool_call in response.tool_calls
-                ]
-            except Exception:
-                tool_calls = None
+            tool_calls = [
+                _convert_cohere_tool_call_to_langchain(tool_call)
+                for tool_call in response.tool_calls
+            ]
         else:
-            tool_calls = None
+            tool_calls = []
         message = AIMessage(
             content=response.text,
             additional_kwargs=generation_info,
@@ -459,4 +451,4 @@ def _format_cohere_tool_calls(
 
 def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
     """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
-    return LC_ToolCall(name=tool_call.name, args=tool_call.parameters)
+    return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=None)

@@ -97,7 +97,7 @@ def test_invoke_tool_calls() -> None:
         "age": 27,
     }
     assert result.tool_calls == [
-        ToolCall(name="Person", args={"age": 27, "name": "Erick"})
+        ToolCall(name="Person", args={"age": 27, "name": "Erick"}, id=None)
     ]
 
 
@@ -131,9 +131,9 @@ def test_streaming_tool_call() -> None:
     assert isinstance(chunk.tool_call_chunks, list)
     assert len(chunk.tool_call_chunks) == 1
     tool_call_chunk = chunk.tool_call_chunks[0]
-    assert tool_call_chunk.name == "Person"
-    assert tool_call_chunk.args is not None
-    assert json.loads(tool_call_chunk.args) == {"name": "Erick", "age": 27}
+    assert tool_call_chunk["name"] == "Person"
+    assert tool_call_chunk["args"] is not None
+    assert json.loads(tool_call_chunk["args"]) == {"name": "Erick", "age": 27}
 
 
 @pytest.mark.xfail(
