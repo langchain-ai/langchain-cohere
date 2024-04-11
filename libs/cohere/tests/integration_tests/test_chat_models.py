@@ -7,7 +7,9 @@ import pytest
 from langchain_core.messages import (
     AIMessage,
     AIMessageChunk,
+    HumanMessage,
     ToolCall,
+    ToolMessage,
 )
 from langchain_core.pydantic_v1 import BaseModel, Field
 
@@ -156,3 +158,27 @@ def test_streaming_tool_call_no_tool_calls() -> None:
         acc = chunk if acc is None else acc + chunk
     assert acc.content != ""
     assert "tool_calls" not in acc.additional_kwargs
+
+
+def test_tool_messages() -> None:
+    llm = ChatCohere(temperature=0)
+    messages = [
+        HumanMessage(content="what is the value of magic_function(3)?"),
+        AIMessage(
+            content="",
+            tool_calls=[
+                {
+                    "name": "magic_function",
+                    "args": {"input": 3},
+                    "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+                }
+            ],
+        ),
+        ToolMessage(
+            name="magic_function",
+            content="5",
+            tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
+        ),
+    ]
+    response = llm.invoke(messages)
+    assert isinstance(response, AIMessage)
