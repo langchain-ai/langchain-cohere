@@ -1,5 +1,4 @@
 import json
-import uuid
 from typing import (
     Any,
     AsyncIterator,
@@ -77,7 +76,8 @@ def _get_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
                             "outputs": [{"answer": tool_message.content}],
                         }
                         for lc_tool_call in previous_ai_msg.tool_calls
-                        if lc_tool_call["id"] == tool_message.tool_call_id
+                        if lc_tool_call["name"]
+                        == tool_message.additional_kwargs.get("name")
                     ]
                 )
     return tool_results
@@ -305,7 +305,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
                             }
                             for tool_call in tool_calls
                         ]
-                        print(tool_call_chunks)
                     except KeyError:
                         pass
                 message = AIMessageChunk(
@@ -381,7 +380,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             # Only populate tool_calls when 1) present on the response and
             #  2) has one or more calls.
             generation_info["tool_calls"] = _format_cohere_tool_calls(
-                response.tool_calls
+                response.generation_id or "", response.tool_calls
             )
         if hasattr(response, "token_count"):
             generation_info["token_count"] = response.token_count
@@ -467,7 +466,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
 
 def _format_cohere_tool_calls(
-    tool_calls: Optional[List[ToolCall]] = None,
+    generation_id: str, tool_calls: Optional[List[ToolCall]] = None
 ) -> List[Dict]:
     """
     Formats a Cohere API response into the tool call format used elsewhere in Langchain.
@@ -479,7 +478,7 @@ def _format_cohere_tool_calls(
     for tool_call in tool_calls:
         formatted_tool_calls.append(
             {
-                "id": uuid.uuid4().hex[:],
+                "id": generation_id,
                 "function": {
                     "name": tool_call.name,
                     "arguments": json.dumps(tool_call.parameters),
