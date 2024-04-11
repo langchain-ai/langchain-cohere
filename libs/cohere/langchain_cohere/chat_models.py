@@ -1,4 +1,5 @@
 import json
+import uuid
 from typing import (
     Any,
     AsyncIterator,
@@ -10,7 +11,6 @@ from typing import (
     Type,
     Union,
 )
-import uuid
 
 from cohere.types import NonStreamedChatResponse, ToolCall
 from langchain_core._api import beta
@@ -61,19 +61,25 @@ def _get_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
         if isinstance(message, ToolMessage):
             tool_message = message
             previous_ai_msgs = [
-                message for message in messages[:-1]
+                message
+                for message in messages[:-1]
                 if isinstance(message, AIMessage) and message.tool_calls
             ]
             if previous_ai_msgs:
                 previous_ai_msg = previous_ai_msgs[-1]
-                tool_results.extend([
-                    {
-                        "call": ToolCall(name=lc_tool_call["name"], parameters=lc_tool_call["args"]),
-                        "outputs": [{"answer": tool_message.content}],
-                    }
-                    for lc_tool_call in previous_ai_msg.tool_calls
-                    if lc_tool_call["id"] == tool_message.tool_call_id
-                ])
+                tool_results.extend(
+                    [
+                        {
+                            "call": ToolCall(
+                                name=lc_tool_call["name"],
+                                parameters=lc_tool_call["args"],
+                            ),
+                            "outputs": [{"answer": tool_message.content}],
+                        }
+                        for lc_tool_call in previous_ai_msg.tool_calls
+                        if lc_tool_call["id"] == tool_message.tool_call_id
+                    ]
+                )
     return tool_results
 
 
@@ -155,7 +161,7 @@ def get_cohere_chat_request(
         "AUTO" if formatted_docs is not None or connectors is not None else None
     )
 
-    tool_results = _get_tool_results(messages)
+    tool_results: Optional[List[Dict[str, Any]]] = _get_tool_results(messages)
     if not tool_results:
         tool_results = None
 
@@ -299,6 +305,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                             }
                             for tool_call in tool_calls
                         ]
+                        print(tool_call_chunks)
                     except KeyError:
                         pass
                 message = AIMessageChunk(
@@ -460,7 +467,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
 
 def _format_cohere_tool_calls(
-    tool_calls: Optional[List[ToolCall]] = None
+    tool_calls: Optional[List[ToolCall]] = None,
 ) -> List[Dict]:
     """
     Formats a Cohere API response into the tool call format used elsewhere in Langchain.
