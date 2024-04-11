@@ -10,6 +10,7 @@ from typing import (
     Type,
     Union,
 )
+import uuid
 
 from cohere.types import NonStreamedChatResponse, ToolCall
 from langchain_core._api import beta
@@ -31,6 +32,7 @@ from langchain_core.messages import (
     ChatMessage,
     HumanMessage,
     SystemMessage,
+    ToolMessage,
 )
 from langchain_core.messages import (
     ToolCall as LC_ToolCall,
@@ -50,6 +52,29 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools,
 )
 from langchain_cohere.llms import BaseCohere
+
+
+def _get_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
+    """Get tool_results from messages."""
+    tool_results = []
+    for message in messages:
+        if isinstance(message, ToolMessage):
+            tool_message = message
+            previous_ai_msgs = [
+                message for message in messages[:-1]
+                if isinstance(message, AIMessage) and message.tool_calls
+            ]
+            if previous_ai_msgs:
+                previous_ai_msg = previous_ai_msgs[-1]
+                tool_results.extend([
+                    {
+                        "call": ToolCall(name=lc_tool_call["name"], parameters=lc_tool_call["args"]),
+                        "outputs": [{"answer": tool_message.content}],
+                    }
+                    for lc_tool_call in previous_ai_msg.tool_calls
+                    if lc_tool_call["id"] == tool_message.tool_call_id
+                ])
+    return tool_results
 
 
 def get_role(message: BaseMessage) -> str:
@@ -130,11 +155,20 @@ def get_cohere_chat_request(
         "AUTO" if formatted_docs is not None or connectors is not None else None
     )
 
+    tool_results = _get_tool_results(messages)
+    if not tool_results:
+        tool_results = None
+
+    chat_history = [
+        {"role": get_role(x), "message": x.content}
+        for x in messages[:-1]
+        if not isinstance(x, ToolMessage)
+        and not (isinstance(x, AIMessage) and x.tool_calls)
+    ]
     req = {
         "message": messages[-1].content,
-        "chat_history": [
-            {"role": get_role(x), "message": x.content} for x in messages[:-1]
-        ],
+        "chat_history": chat_history,
+        "tool_results": tool_results,
         "documents": formatted_docs,
         "connectors": connectors,
         "prompt_truncation": prompt_truncation,
@@ -340,7 +374,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             # Only populate tool_calls when 1) present on the response and
             #  2) has one or more calls.
             generation_info["tool_calls"] = _format_cohere_tool_calls(
-                response.generation_id or "", response.tool_calls
+                response.tool_calls
             )
         if hasattr(response, "token_count"):
             generation_info["token_count"] = response.token_count
@@ -426,7 +460,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
 
 def _format_cohere_tool_calls(
-    generation_id: str, tool_calls: Optional[List[ToolCall]] = None
+    tool_calls: Optional[List[ToolCall]] = None
 ) -> List[Dict]:
     """
     Formats a Cohere API response into the tool call format used elsewhere in Langchain.
@@ -438,7 +472,7 @@ def _format_cohere_tool_calls(
     for tool_call in tool_calls:
         formatted_tool_calls.append(
             {
-                "id": generation_id,
+                "id": uuid.uuid4().hex[:],
                 "function": {
                     "name": tool_call.name,
                     "arguments": json.dumps(tool_call.parameters),
