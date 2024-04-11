@@ -66,6 +66,11 @@ def _get_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
             ]
             if previous_ai_msgs:
                 previous_ai_msg = previous_ai_msgs[-1]
+                tool_message_name: Optional[str] = None
+                if tool_message.name:
+                    tool_message_name = tool_message.name
+                else:
+                    tool_message_name = tool_message.additional_kwargs.get("name")
                 tool_results.extend(
                     [
                         {
@@ -76,8 +81,7 @@ def _get_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
                             "outputs": [{"answer": tool_message.content}],
                         }
                         for lc_tool_call in previous_ai_msg.tool_calls
-                        if lc_tool_call["name"]
-                        == tool_message.additional_kwargs.get("name")
+                        if lc_tool_call["name"] == tool_message_name
                     ]
                 )
     return tool_results
