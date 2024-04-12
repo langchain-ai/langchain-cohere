@@ -1,7 +1,15 @@
-"""Test ChatCohere chat model."""
+"""
+Test ChatCohere chat model.
+
+Uses the replay testing functionality, so you don't need an API key to run these tests.
+https://python.langchain.com/docs/contributing/testing#recording-http-interactions-with-pytest-vcr
+
+When re-recording these tests you will need to set COHERE_API_KEY.
+"""
 
 from typing import Any, Dict, List
 
+import pytest
 from langchain_core.documents import Document
 from langchain_core.messages.human import HumanMessage
 from langchain_core.prompts.chat import ChatPromptTemplate, MessagesPlaceholder
@@ -13,6 +21,7 @@ from langchain_core.runnables import (
 from langchain_cohere import ChatCohere
 
 
+@pytest.mark.vcr()
 def test_connectors() -> None:
     """Test connectors parameter support from ChatCohere."""
     llm = ChatCohere().bind(connectors=[{"id": "web-search"}])
@@ -21,8 +30,8 @@ def test_connectors() -> None:
     assert isinstance(result.content, str)
 
 
+@pytest.mark.vcr()
 def test_documents() -> None:
-    """Test documents paraneter support from ChatCohere."""
     docs = [{"text": "The sky is green."}]
     llm = ChatCohere().bind(documents=docs)
     prompt = "What color is the sky?"
@@ -32,8 +41,8 @@ def test_documents() -> None:
     assert len(result.response_metadata["documents"]) == 1
 
 
+@pytest.mark.vcr()
 def test_documents_chain() -> None:
-    """Test documents paraneter support from ChatCohere."""
     llm = ChatCohere()
 
     def get_documents(_: Any) -> List[Document]:

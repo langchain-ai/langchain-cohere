@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: '{"message": "What is the capital of France", "stream": false, "chat_history":
+      [], "temperature": 0.0, "tools": [{"name": "add_two_numbers", "description":
+      "Add two numbers together", "parameter_definitions": {"a": {"description": "",
+      "type": "int", "required": true}, "b": {"description": "", "type": "int", "required":
+      true}}}, {"name": "capital_cities", "description": "Returns the capital city
+      of a country", "parameter_definitions": {"country": {"description": "", "type":
+      "str", "required": true}}}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '505'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.1.7
+    method: POST
+    uri: https://api.cohere.ai/v1/chat
+  response:
+    body:
+      string: '{"response_id":"b5f181c6-8aa5-450d-8851-2f44c6e9c1d3","text":"","generation_id":"e5f7fb57-4deb-4de0-a41b-e4b416b1cdb5","chat_history":[],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":28,"output_tokens":8}},"tool_calls":[{"name":"capital_cities","parameters":{"country":"France"}}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '331'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Fri, 05 Apr 2024 13:03:05 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_tokens:
+      - '36'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 65893c2d36a066c79d1cc30d92c2bfe4
+      x-envoy-upstream-service-time:
+      - '856'
+    status:
+      code: 200
+      message: OK
+version: 1

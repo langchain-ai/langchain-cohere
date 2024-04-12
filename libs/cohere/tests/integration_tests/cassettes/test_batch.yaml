@@ -1,0 +1,140 @@
+interactions:
+- request:
+    body: '{"message": "I''m not Pickle Rick", "stream": false, "chat_history": []}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '71'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.1.7
+    method: POST
+    uri: https://api.cohere.ai/v1/chat
+  response:
+    body:
+      string: '{"response_id":"f13b7088-1cde-4e21-b0f6-38f94b16440d","text":"I understand.
+        Is there anything else I can help you with?","generation_id":"416e23a4-c962-43ed-a0c4-74fed0df4f1f","chat_history":[{"role":"USER","message":"I''m
+        not Pickle Rick"},{"role":"CHATBOT","message":"I understand. Is there anything
+        else I can help you with?"}],"finish_reason":"COMPLETE","token_count":{"prompt_tokens":71,"response_tokens":13,"total_tokens":84,"billed_tokens":18},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":5,"output_tokens":13}}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '542'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Fri, 05 Apr 2024 13:03:00 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '434'
+      num_tokens:
+      - '18'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - fe7c8e5d803326673279b7bc349aa5c2
+      x-envoy-upstream-service-time:
+      - '337'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "I''m Pickle Rick", "stream": false, "chat_history": []}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '67'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.1.7
+    method: POST
+    uri: https://api.cohere.ai/v1/chat
+  response:
+    body:
+      string: '{"response_id":"be40b906-c64a-430f-bf14-16d0516924a9","text":"Hello
+        Pickle Rick! It''s a pleasure to meet you. How can I help you today?","generation_id":"f980ecad-d7da-45ee-bc44-b26189b3ee83","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"Hello Pickle Rick! It''s a pleasure
+        to meet you. How can I help you today?"}],"finish_reason":"COMPLETE","token_count":{"prompt_tokens":70,"response_tokens":19,"total_tokens":89,"billed_tokens":23},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":19}}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '570'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Fri, 05 Apr 2024 13:03:00 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '430'
+      num_tokens:
+      - '23'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 4a1be276041471cc6dc41c2cd31e9f04
+      x-envoy-upstream-service-time:
+      - '494'
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: '{"message": "What color is the sky?", "stream": false, "chat_history":
+      [], "prompt_truncation": "AUTO", "documents": [{"text": "The sky is green."}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '149'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.1.7
+    method: POST
+    uri: https://api.cohere.ai/v1/chat
+  response:
+    body:
+      string: '{"response_id":"d5318c85-e808-4bf5-b278-ebf8042e430d","text":"The sky
+        is green.","generation_id":"a821a8ae-3f15-45ec-9f36-21002d99f2ac","chat_history":[{"role":"USER","message":"What
+        color is the sky?"},{"role":"CHATBOT","message":"The sky is green."}],"finish_reason":"COMPLETE","token_count":{"prompt_tokens":690,"search_query_tokens":5,"response_tokens":10,"total_tokens":700,"billed_tokens":23},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":13,"output_tokens":10}},"citations":[{"start":11,"end":17,"text":"green.","document_ids":["doc_0"]}],"documents":[{"id":"doc_0","text":"The
+        sky is green."}],"search_queries":[{"text":"what color is the sky","generation_id":"873608ec-8fc9-47bf-a857-d463827105c0"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '732'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Fri, 05 Apr 2024 13:03:16 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '3529'
+      num_tokens:
+      - '23'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - e23c338d3a4a8c3fddbe911ba4d766ed
+      x-envoy-upstream-service-time:
+      - '1212'
+    status:
+      code: 200
+      message: OK
+version: 1

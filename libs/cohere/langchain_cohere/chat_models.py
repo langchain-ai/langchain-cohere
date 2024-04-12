@@ -146,22 +146,31 @@ def get_cohere_chat_request(
 
 
 class ChatCohere(BaseChatModel, BaseCohere):
-    """`Cohere` chat large language models.
+    """
+    Implements the BaseChatModel (and BaseLanguageModel) interface with Cohere's large
+    language models.
 
-    To use, you should have the ``cohere`` python package installed, and the
-    environment variable ``COHERE_API_KEY`` set with your API key, or pass
-    it as a named parameter to the constructor.
+    Find out more about us at https://cohere.com and https://huggingface.co/CohereForAI
 
-    Example:
+    This implementation uses the Chat API - see https://docs.cohere.com/reference/chat
+
+    To use this you'll need to a Cohere API key - either pass it to cohere_api_key
+    parameter or set the CO_API_KEY environment variable.
+
+    API keys are available on https://cohere.com - it's free to sign up and trial API
+    keys work with this implementation.
+
+    Basic Example:
         .. code-block:: python
 
             from langchain_cohere import ChatCohere
             from langchain_core.messages import HumanMessage
 
-            chat = ChatCohere(cohere_api_key="my-api-key")
+            llm = ChatCohere(cohere_api_key="{API KEY}")
 
-            messages = [HumanMessage(content="knock knock")]
-            chat.invoke(messages)
+            message = [HumanMessage(content="Hello, can you introduce yourself?")]
+
+            print(llm.invoke(message).content)
     """
 
     preamble: Optional[str] = None
@@ -171,21 +180,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
         allow_population_by_field_name = True
         arbitrary_types_allowed = True
-
-    @property
-    def _llm_type(self) -> str:
-        """Return type of chat model."""
-        return "cohere-chat"
-
-    @property
-    def _default_params(self) -> Dict[str, Any]:
-        """Get the default parameters for calling Cohere API."""
-        base_params = {
-            "model": self.model,
-            "temperature": self.temperature,
-            "preamble": self.preamble,
-        }
-        return {k: v for k, v in base_params.items() if v is not None}
 
     def bind_tools(
         self,
@@ -225,6 +219,20 @@ class ChatCohere(BaseChatModel, BaseCohere):
             )
 
         return llm | output_parser
+
+    @property
+    def _llm_type(self) -> str:
+        """Return type of chat model."""
+        return "cohere-chat"
+
+    @property
+    def _default_params(self) -> Dict[str, Any]:
+        """Get the default parameters for calling Cohere API."""
+        base_params = {
+            "model": self.model,
+            "temperature": self.temperature,
+        }
+        return {k: v for k, v in base_params.items() if v is not None}
 
     @property
     def _identifying_params(self) -> Dict[str, Any]:
