@@ -17,7 +17,7 @@ class CohereRerank(BaseDocumentCompressor):
     """Cohere client to use for compressing documents."""
     top_n: Optional[int] = 3
     """Number of documents to return."""
-    model: str = "rerank-english-v2.0"
+    model: str = "rerank-english-v3.0"
     """Model to use for reranking."""
     cohere_api_key: Optional[str] = None
     """Cohere API key. Must be specified directly or via environment variable 
