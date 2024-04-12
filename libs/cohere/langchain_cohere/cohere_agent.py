@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict, List, Sequence, Tuple, Type, Union
+from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
     ChatRequestToolResultsItem,
@@ -56,7 +56,7 @@ def create_cohere_tools_agent(
 
 
 def _format_to_cohere_tools(
-    tools: Sequence[Union[Dict[str, Any], BaseTool, Type[BaseModel]]],
+    tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> List[Dict[str, Any]]:
     return [_convert_to_cohere_tool(tool) for tool in tools]
 
@@ -98,7 +98,7 @@ def _format_to_cohere_tools_messages(
 
 
 def _convert_to_cohere_tool(
-    tool: Union[Dict[str, Any], BaseTool, Type[BaseModel]],
+    tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> Dict[str, Any]:
     """
     Convert a BaseTool instance, JSON schema dict, or BaseModel type to a Cohere tool.
@@ -141,7 +141,7 @@ def _convert_to_cohere_tool(
                 for param_name, param_definition in tool.get("properties", {}).items()
             },
         ).dict()
-    elif issubclass(tool, BaseModel):
+    elif (isinstance(tool, type) and issubclass(tool, BaseModel)) or callable(tool):
         as_json_schema_function = convert_to_openai_function(tool)
         parameters = as_json_schema_function.get("parameters", {})
         properties = parameters.get("properties", {})

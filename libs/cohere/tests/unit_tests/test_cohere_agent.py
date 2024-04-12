@@ -10,33 +10,11 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools_messages,
 )
 
-expected_test_tool_definition = {
-    "description": "test_tool description",
-    "name": "test_tool",
-    "parameter_definitions": {
-        "arg_1": {
-            "description": "Arg1 description",
-            "required": True,
-            "type": "str",
-        },
-        "optional_arg_2": {
-            "description": "Arg2 description",
-            "required": False,
-            "type": "str",
-        },
-        "arg_3": {
-            "description": "Arg3 description",
-            "required": True,
-            "type": "int",
-        },
-    },
-}
-
 
 class _TestToolSchema(BaseModel):
     arg_1: str = Field(description="Arg1 description")
-    optional_arg_2: Optional[str] = Field(description="Arg2 description", default="2")
-    arg_3: int = Field(description="Arg3 description")
+    arg_2: int = Field(description="Arg2 description")
+    optional_arg_3: Optional[str] = Field(description="Arg3 description", default="3")
 
 
 class _TestTool(BaseTool):
@@ -48,12 +26,16 @@ class _TestTool(BaseTool):
         pass
 
 
-class test_tool(BaseModel):
+class test_tool_base_model(BaseModel):
     """test_tool description"""
 
     arg_1: str = Field(description="Arg1 description")
-    optional_arg_2: Optional[str] = Field(description="Arg2 description", default="2")
-    arg_3: int = Field(description="Arg3 description")
+    arg_2: int = Field(description="Arg2 description")
+    optional_arg_3: Optional[str] = Field(description="Arg3 description", default="3")
+
+
+def tool_callable(arg_1: str, arg_2: int, optional_arg_3: Optional[str]) -> None:
+    """test_tool description"""
 
 
 test_tool_as_dict = {
@@ -61,27 +43,69 @@ test_tool_as_dict = {
     "description": "test_tool description",
     "properties": {
         "arg_1": {"description": "Arg1 description", "type": "string"},
-        "optional_arg_2": {
-            "description": "Arg2 description",
+        "arg_2": {"description": "Arg2 description", "type": "integer"},
+        "optional_arg_3": {
+            "description": "Arg3 description",
             "type": "string",
-            "default": "2",
+            "default": "3",
         },
-        "arg_3": {"description": "Arg3 description", "type": "integer"},
     },
 }
 
 
 @pytest.mark.parametrize(
-    "tool",
+    "tool,expected_name,has_parameter_descriptions",
     [
-        pytest.param(_TestTool(), id="tool from BaseTool"),
-        pytest.param(test_tool, id="BaseModel"),
-        pytest.param(test_tool_as_dict, id="JSON schema dict"),
+        pytest.param(_TestTool(), _TestTool().name, True, id="tool from BaseTool"),
+        pytest.param(
+            test_tool_base_model, test_tool_base_model.__name__, True, id="BaseModel"
+        ),
+        pytest.param(
+            test_tool_as_dict, test_tool_as_dict["title"], True, id="JSON schema dict"
+        ),
+        pytest.param(
+            tool_callable,
+            "tool_callable",
+            False,
+            id="Callable",
+            # langchain_core.utils.function_calling.convert_to_openai_function has a bug
+            marks=pytest.mark.xfail,
+        ),
     ],
 )
 def test_format_to_cohere_tools(
     tool: Union[Dict[str, Any], BaseTool, Type[BaseModel]],
+    expected_name: str,
+    has_parameter_descriptions: bool,
 ) -> None:
+    expected_test_tool_definition = {
+        "description": "test_tool description",
+        "name": expected_name,
+        "parameter_definitions": {
+            "arg_1": {
+                "description": "Arg1 description"
+                if has_parameter_descriptions
+                else None,
+                "required": True,
+                "type": "str",
+            },
+            "arg_2": {
+                "description": "Arg2 description"
+                if has_parameter_descriptions
+                else None,
+                "required": True,
+                "type": "int",
+            },
+            "optional_arg_3": {
+                "description": "Arg3 description"
+                if has_parameter_descriptions
+                else None,
+                "required": False,
+                "type": "str",
+            },
+        },
+    }
+
     actual = _format_to_cohere_tools([tool])
 
     assert [expected_test_tool_definition] == actual
