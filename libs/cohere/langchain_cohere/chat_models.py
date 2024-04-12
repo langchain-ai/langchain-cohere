@@ -2,6 +2,7 @@ import json
 from typing import (
     Any,
     AsyncIterator,
+    Callable,
     Dict,
     Iterator,
     List,
@@ -164,6 +165,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
             chat.invoke(messages)
     """
 
+    preamble: Optional[str] = None
+
     class Config:
         """Configuration for this pydantic object."""
 
@@ -181,12 +184,13 @@ class ChatCohere(BaseChatModel, BaseCohere):
         base_params = {
             "model": self.model,
             "temperature": self.temperature,
+            "preamble": self.preamble,
         }
         return {k: v for k, v in base_params.items() if v is not None}
 
     def bind_tools(
         self,
-        tools: Sequence[Union[Dict[str, Any], BaseTool, Type[BaseModel]]],
+        tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
         **kwargs: Any,
     ) -> Runnable[LanguageModelInput, BaseMessage]:
         formatted_tools = _format_to_cohere_tools(tools)
