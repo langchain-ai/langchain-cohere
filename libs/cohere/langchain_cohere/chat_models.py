@@ -78,7 +78,7 @@ def _messages_to_cohere_tool_results(messages: List[BaseMessage]) -> List[Dict[s
                                 name=lc_tool_call["name"],
                                 parameters=lc_tool_call["args"],
                             ),
-                            "outputs": [{"answer": tool_message.content}],
+                            "outputs": [{"output": tool_message.content}],
                         }
                         for lc_tool_call in previous_ai_msg.tool_calls
                         if lc_tool_call["name"] == tool_message_name
