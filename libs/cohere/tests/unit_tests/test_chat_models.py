@@ -5,7 +5,7 @@ import pytest
 from cohere.types import NonStreamedChatResponse, ToolCall
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 
-from langchain_cohere.chat_models import ChatCohere, _get_tool_results
+from langchain_cohere.chat_models import ChatCohere, _messages_to_cohere_tool_results
 
 
 def test_initialization() -> None:
@@ -116,7 +116,7 @@ def test_get_generation_info(
     assert expected == actual
 
 
-def test_get_tool_results() -> None:
+def test_messages_to_cohere_tool_results() -> None:
     human_message = HumanMessage(content="what is the value of magic_function(3)?")
     ai_message = AIMessage(
         content="",
@@ -134,11 +134,11 @@ def test_get_tool_results() -> None:
         tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
     )
     messages = [human_message, ai_message, tool_message]
-    results = _get_tool_results(messages)
+    results = _messages_to_cohere_tool_results(messages)
     expected = [
         {
             "call": ToolCall(name="magic_function", parameters={"input": 3}),
-            "outputs": [{"answer": "5"}],
+            "outputs": [{"output": "5"}],
         }
     ]
     assert results == expected
@@ -149,5 +149,5 @@ def test_get_tool_results() -> None:
         tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
     )
     messages = [human_message, ai_message, another_tool_message]
-    results = _get_tool_results(messages)
+    results = _messages_to_cohere_tool_results(messages)
     assert results == expected

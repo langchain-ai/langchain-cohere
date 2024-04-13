@@ -51,9 +51,12 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools,
 )
 from langchain_cohere.llms import BaseCohere
+from langchain_cohere.react_multi_hop.prompt import convert_to_documents
 
 
-def _messages_to_cohere_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
+def _messages_to_cohere_tool_results(
+    messages: List[BaseMessage],
+) -> List[Dict[str, Any]]:
     """Get tool_results from messages."""
     tool_results = []
     for message in messages:
@@ -78,7 +81,7 @@ def _messages_to_cohere_tool_results(messages: List[BaseMessage]) -> List[Dict[s
                                 name=lc_tool_call["name"],
                                 parameters=lc_tool_call["args"],
                             ),
-                            "outputs": [{"output": tool_message.content}],
+                            "outputs": convert_to_documents(tool_message.content),
                         }
                         for lc_tool_call in previous_ai_msg.tool_calls
                         if lc_tool_call["name"] == tool_message_name
@@ -165,7 +168,9 @@ def get_cohere_chat_request(
         "AUTO" if formatted_docs is not None or connectors is not None else None
     )
 
-    tool_results: Optional[List[Dict[str, Any]]] = _get_tool_results(messages)
+    tool_results: Optional[List[Dict[str, Any]]] = _messages_to_cohere_tool_results(
+        messages
+    )
     if not tool_results:
         tool_results = None
 
