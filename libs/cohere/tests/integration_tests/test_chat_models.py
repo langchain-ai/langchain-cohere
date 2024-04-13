@@ -8,7 +8,6 @@ from langchain_core.messages import (
     AIMessage,
     AIMessageChunk,
     HumanMessage,
-    ToolCall,
     ToolMessage,
 )
 from langchain_core.pydantic_v1 import BaseModel, Field
@@ -98,9 +97,10 @@ def test_invoke_tool_calls() -> None:
         "name": "Erick",
         "age": 27,
     }
-    assert result.tool_calls == [
-        ToolCall(name="Person", args={"age": 27, "name": "Erick"}, id=None)
-    ]
+    assert len(result.tool_calls) == 1
+    tool_call = result.tool_calls[0]
+    assert tool_call["name"] == "Person"
+    assert tool_call["args"] == {"name": "Erick", "age": 27}
 
 
 def test_streaming_tool_call() -> None:

@@ -1,4 +1,5 @@
 import json
+import uuid
 from typing import (
     Any,
     AsyncIterator,
@@ -69,11 +70,6 @@ def _messages_to_cohere_tool_results(
             ]
             if previous_ai_msgs:
                 previous_ai_msg = previous_ai_msgs[-1]
-                tool_message_name: Optional[str] = None
-                if tool_message.name:
-                    tool_message_name = tool_message.name
-                else:
-                    tool_message_name = tool_message.additional_kwargs.get("name")
                 tool_results.extend(
                     [
                         {
@@ -84,7 +80,7 @@ def _messages_to_cohere_tool_results(
                             "outputs": convert_to_documents(tool_message.content),
                         }
                         for lc_tool_call in previous_ai_msg.tool_calls
-                        if lc_tool_call["name"] == tool_message_name
+                        if lc_tool_call["id"] == tool_message.tool_call_id
                     ]
                 )
     return tool_results
@@ -389,7 +385,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             # Only populate tool_calls when 1) present on the response and
             #  2) has one or more calls.
             generation_info["tool_calls"] = _format_cohere_tool_calls(
-                response.generation_id or "", response.tool_calls
+                response.tool_calls
             )
         if hasattr(response, "token_count"):
             generation_info["token_count"] = response.token_count
@@ -475,7 +471,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
 
 def _format_cohere_tool_calls(
-    generation_id: str, tool_calls: Optional[List[ToolCall]] = None
+    tool_calls: Optional[List[ToolCall]] = None,
 ) -> List[Dict]:
     """
     Formats a Cohere API response into the tool call format used elsewhere in Langchain.
@@ -487,7 +483,7 @@ def _format_cohere_tool_calls(
     for tool_call in tool_calls:
         formatted_tool_calls.append(
             {
-                "id": generation_id,
+                "id": uuid.uuid4().hex[:],
                 "function": {
                     "name": tool_call.name,
                     "arguments": json.dumps(tool_call.parameters),
@@ -500,4 +496,5 @@ def _format_cohere_tool_calls(
 
 def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
     """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
-    return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=None)
+    _id = uuid.uuid4().hex[:]
+    return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=_id)

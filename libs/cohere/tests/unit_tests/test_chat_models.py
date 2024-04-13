@@ -1,5 +1,6 @@
 """Test chat model integration."""
 import typing
+from unittest.mock import patch
 
 import pytest
 from cohere.types import NonStreamedChatResponse, ToolCall
@@ -111,7 +112,9 @@ def test_get_generation_info(
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
 
-    actual = chat_cohere._get_generation_info(response)
+    with patch("uuid.uuid4") as mock_uuid:
+        mock_uuid.return_value.hex = "foo"
+        actual = chat_cohere._get_generation_info(response)
 
     assert expected == actual
 
