@@ -53,7 +53,7 @@ from langchain_cohere.cohere_agent import (
 from langchain_cohere.llms import BaseCohere
 
 
-def _get_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
+def _messages_to_cohere_tool_results(messages: List[BaseMessage]) -> List[Dict[str, Any]]:
     """Get tool_results from messages."""
     tool_results = []
     for message in messages:
