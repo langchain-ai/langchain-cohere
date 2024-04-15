@@ -28,15 +28,23 @@ interactions:
     uri: https://api.cohere.ai/v1/chat
   response:
     body:
-      string: '{"response_id":"f13b7088-1cde-4e21-b0f6-38f94b16440d","text":"I understand.
-        Is there anything else I can help you with?","generation_id":"416e23a4-c962-43ed-a0c4-74fed0df4f1f","chat_history":[{"role":"USER","message":"I''m
-        not Pickle Rick"},{"role":"CHATBOT","message":"I understand. Is there anything
-        else I can help you with?"}],"finish_reason":"COMPLETE","token_count":{"prompt_tokens":71,"response_tokens":13,"total_tokens":84,"billed_tokens":18},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":5,"output_tokens":13}}}'
+      string: '{"response_id":"b9d8c6d6-8932-4ae0-bda0-1c0f87648119","text":"I see
+        that you are referencing the popular animated series, Rick and Morty. In the
+        episode \"Pickle Rick\", the main character Rick Sanchez turns himself into
+        a pickle to avoid family therapy. It''s a memorable and humorous episode that
+        has become a part of popular culture. \n\nWould you like to discuss more about
+        Rick and Morty or perhaps some of your favorite episodes?","generation_id":"bcf2ba15-b593-4840-8fc2-6393fcacf228","chat_history":[{"role":"USER","message":"I''m
+        not Pickle Rick"},{"role":"CHATBOT","message":"I see that you are referencing
+        the popular animated series, Rick and Morty. In the episode \"Pickle Rick\",
+        the main character Rick Sanchez turns himself into a pickle to avoid family
+        therapy. It''s a memorable and humorous episode that has become a part of
+        popular culture. \n\nWould you like to discuss more about Rick and Morty or
+        perhaps some of your favorite episodes?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":5,"output_tokens":76},"tokens":{"input_tokens":71,"output_tokens":76}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '542'
+      - '1127'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -46,13 +54,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 05 Apr 2024 13:03:00 GMT
+      - Mon, 15 Apr 2024 10:57:24 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '434'
       num_tokens:
-      - '18'
+      - '81'
       pragma:
       - no-cache
       server:
@@ -62,9 +70,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - fe7c8e5d803326673279b7bc349aa5c2
+      - fd8bdcfef6e49e0191153f81cbaffd8c
       x-envoy-upstream-service-time:
-      - '337'
+      - '2022'
     status:
       code: 200
       message: OK
@@ -97,15 +105,23 @@ interactions:
     uri: https://api.cohere.ai/v1/chat
   response:
     body:
-      string: '{"response_id":"be40b906-c64a-430f-bf14-16d0516924a9","text":"Hello
-        Pickle Rick! It''s a pleasure to meet you. How can I help you today?","generation_id":"f980ecad-d7da-45ee-bc44-b26189b3ee83","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"Hello Pickle Rick! It''s a pleasure
-        to meet you. How can I help you today?"}],"finish_reason":"COMPLETE","token_count":{"prompt_tokens":70,"response_tokens":19,"total_tokens":89,"billed_tokens":23},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":19}}}'
+      string: '{"response_id":"b2147fa1-48a9-4544-96e1-7be6c6889e2c","text":"You seem
+        to be referencing the popular animated series, \"Rick and Morty.\" In the
+        show, there is an episode where the main character, Rick Sanchez, turns himself
+        into a pickle to avoid family therapy. He then embarks on a dangerous adventure
+        as \"Pickle Rick.\" \n\nWould you like to discuss more about the show or the
+        Pickle Rick phenomenon? It''s quite an iconic moment in the series!","generation_id":"0658e883-d6f7-4a8a-80e0-534ee0f7b7ec","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"You seem to be referencing the
+        popular animated series, \"Rick and Morty.\" In the show, there is an episode
+        where the main character, Rick Sanchez, turns himself into a pickle to avoid
+        family therapy. He then embarks on a dangerous adventure as \"Pickle Rick.\"
+        \n\nWould you like to discuss more about the show or the Pickle Rick phenomenon?
+        It''s quite an iconic moment in the series!"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":83},"tokens":{"input_tokens":70,"output_tokens":83}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '570'
+      - '1151'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -115,13 +131,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 05 Apr 2024 13:03:00 GMT
+      - Mon, 15 Apr 2024 10:57:25 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '430'
       num_tokens:
-      - '23'
+      - '87'
       pragma:
       - no-cache
       server:
@@ -131,9 +147,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 4a1be276041471cc6dc41c2cd31e9f04
+      - 7614467b22d1c1e1d0b68e8b606141aa
       x-envoy-upstream-service-time:
-      - '494'
+      - '2249'
     status:
       code: 200
       message: OK

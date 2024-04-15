@@ -30,15 +30,15 @@ interactions:
     uri: https://api.cohere.ai/v1/chat
   response:
     body:
-      string: '{"response_id":"cc5f9d14-24ac-4fb6-ac0d-a7eccd18eae3","text":"The sky
-        is green.","generation_id":"6a9a382b-d966-4634-8cf3-23ebab59d733","chat_history":[{"role":"USER","message":"What
-        color is the sky?"},{"role":"CHATBOT","message":"The sky is green."}],"finish_reason":"COMPLETE","token_count":{"prompt_tokens":690,"search_query_tokens":5,"response_tokens":10,"total_tokens":700,"billed_tokens":23},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":13,"output_tokens":10}},"citations":[{"start":11,"end":17,"text":"green.","document_ids":["doc-0"]}],"documents":[{"id":"doc-0","text":"The
-        sky is green."}],"search_queries":[{"text":"what color is the sky","generation_id":"d7c905a2-4ef2-46ac-850f-092df41bee28"}]}'
+      string: '{"response_id":"00772dfd-9230-4033-b54e-ff2396daddec","text":"The sky
+        is green.","generation_id":"04d94ebd-6002-4670-96a9-623440f43509","chat_history":[{"role":"USER","message":"What
+        color is the sky?"},{"role":"CHATBOT","message":"The sky is green."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":13,"output_tokens":10},"tokens":{"input_tokens":690,"output_tokens":10}},"citations":[{"start":11,"end":17,"text":"green.","document_ids":["doc-0"]}],"documents":[{"id":"doc-0","text":"The
+        sky is green."}],"search_queries":[{"text":"what color is the sky","generation_id":"4073b0c9-6795-4926-b398-e50cf555f495"}]}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '732'
+      - '662'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -48,7 +48,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 05 Apr 2024 13:03:17 GMT
+      - Mon, 15 Apr 2024 10:57:44 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -64,9 +64,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 561604a75dd0d177291a0866cf50522c
+      - 5942e9e5aa08fa34333248bc34e8af06
       x-envoy-upstream-service-time:
-      - '1138'
+      - '1510'
     status:
       code: 200
       message: OK

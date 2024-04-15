@@ -34,12 +34,12 @@ interactions:
     uri: https://api.cohere.ai/v1/chat
   response:
     body:
-      string: '{"response_id":"b5f181c6-8aa5-450d-8851-2f44c6e9c1d3","text":"","generation_id":"e5f7fb57-4deb-4de0-a41b-e4b416b1cdb5","chat_history":[],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":28,"output_tokens":8}},"tool_calls":[{"name":"capital_cities","parameters":{"country":"France"}}]}'
+      string: '{"response_id":"a6343525-feb6-44fb-9eb5-5fd69df2fb18","text":"","generation_id":"f79360ea-bb0e-450d-a816-4f078d592bca","chat_history":[],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":28,"output_tokens":8},"tokens":{"output_tokens":8}},"tool_calls":[{"name":"capital_cities","parameters":{"country":"France"}}]}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '331'
+      - '360'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -49,7 +49,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 05 Apr 2024 13:03:05 GMT
+      - Mon, 15 Apr 2024 10:57:31 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_tokens:
@@ -63,9 +63,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 65893c2d36a066c79d1cc30d92c2bfe4
+      - f163b0bccd4d58fac3f626bb36e0435c
       x-envoy-upstream-service-time:
-      - '856'
+      - '849'
     status:
       code: 200
       message: OK

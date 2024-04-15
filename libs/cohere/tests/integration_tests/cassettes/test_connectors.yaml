@@ -30,121 +30,913 @@ interactions:
     uri: https://api.cohere.ai/v1/chat
   response:
     body:
-      string: "{\"response_id\":\"affc10db-31af-479c-9935-a1ee50deec40\",\"text\":\"Denis
-        Villeneuve\",\"generation_id\":\"d4e02cb2-e4ef-42e7-a34a-27793cd49cd9\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"Who
+      string: "{\"response_id\":\"8105915a-236d-40d7-ad7b-62a1498155d4\",\"text\":\"Denis
+        Villeneuve\",\"generation_id\":\"43020484-4700-491f-b601-a9ccf4697d33\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"Who
         directed dune two? reply with just the name.\"},{\"role\":\"CHATBOT\",\"message\":\"Denis
-        Villeneuve\"}],\"finish_reason\":\"COMPLETE\",\"token_count\":{\"prompt_tokens\":19783,\"search_query_tokens\":5,\"response_tokens\":7,\"total_tokens\":19790,\"billed_tokens\":19050},\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":19043,\"output_tokens\":7}},\"citations\":[{\"start\":0,\"end\":16,\"text\":\"Denis
-        Villeneuve\",\"document_ids\":[\"web-search_2\",\"web-search_3\",\"web-search_4\",\"web-search_5\",\"web-search_6\",\"web-search_8\",\"web-search_9\"]}],\"documents\":[{\"id\":\"web-search_2\",\"snippet\":\"Dune:
-        Messiah Is Officially In Development At Legendary\\n\\nPosted in: Dune, Legendary,
-        Movies, Warner Bros | Tagged: denis villeneuve, dune: messiah, dune: part
-        two\\n\\nDune: Messiah Is Officially In Development At Legendary\\n\\nDune:
-        Messiah is officially in development at Legendary. It will finish off the
-        trilogy that began with the first two Dune films.\\n\\nPublished Thu, 04 Apr
-        2024 16:32:08 -0500\\n\\n'Dune: Messiah' is officially in development to conclude
-        the Dune trilogy.\\n\\nDirector Denis Villeneuve has been invested in the
-        project pre-'Dune: Part Two'.\\n\\nThe narrative could creatively diverge,
-        blending in 'Children of Dune' elements.\\n\\n'Dune: Part Two' success paved
-        the way for this much-anticipated sequel.\\n\\nWe can finally stop speculating
-        about something that we all pretty much knew was going to happen. Director
-        Denis Villeneuve has had his eye on Dune: Messiah for a while now and hasn't
-        been shy about the fact that he's been working on the film long before Dune:
-        Part Two even came out. We know that Hans Zimmer is already recording music,
-        and the excellent box office and critical reception of the second film meant
-        that the third was all but guaranteed. That being said, it is nice to hear
-        that, according to Deadline, Dune: Messiah is officially in development at
-        Legendary and will be the end of the trilogy.\\n\\n\xA9 2024 Warner Bros.
-        Entertainment Inc. All Rights Reserved. Photo Credit: Niko Tavernise. (L-R)
-        TIMOTH\xC9E CHALAMET and Director/Writer/Producer DENIS VILLENEUVE on the
-        set of Warner Bros. Pictures and Legendary Pictures' action adventure \\\"DUNE:
-        PART TWO,\\\" a Warner Bros. Pictures release.\\n\\nDune: Messiah is an interesting
-        little book compared to the first one. Frank Herbert more or less wrote the
-        book to tell the audience that Paul is, in fact, not the protagonist of this
-        story, and none of this is a good thing. In many reads, it almost reads like
-        an extended epilogue. However, the way the first book and the second film
-        end are pretty different, so Villeneuve could take some interesting creative
-        license with the story and maybe pull in some elements from Children of Dune
-        to fill things out a bit. We'll have to see, and Villeneuve is very busy these
-        days and wouldn't do the film unless he knew he could make it better than
-        Dune: Part Two, so don't ext to anyone to return to Arrakis any time soon.\\n\\nDune:
-        Part Two \u2013 Summary, Cast List, Release Date\\n\\nThe saga continues as
-        award-winning filmmaker Denis Villeneuve embarks on Dune: Part Two, the next
-        chapter of Frank Herbert's celebrated novel Dune, with an expanded all-star
-        international ensemble cast. The film, from Warner Bros. Pictures and Legendary
-        Pictures, is the highly anticipated follow-up to 2021's six-time Academy Award-winning
-        Dune.\\n\\nThe big-screen epic continues the adaptation of Frank Herbert's
-        acclaimed bestseller Dune with returning and new stars, including Oscar nominee
-        Timoth\xE9e Chalamet (Wonka, Call Me by Your Name), Zendaya (Spider-Man: No
-        Way Home, Malcolm \\u0026 Marie, Euphoria), Rebecca Ferguson (Mission: Impossible
-        \u2013 Dead Reckoning), Oscar nominee Josh Brolin (Avengers: End Game, Milk),
-        Oscar nominee Austin Butler (Elvis, Once Upon A Time\u2026In Hollywood), Oscar
-        nominee Florence Pugh (Black Widow, Little Women), Dave Bautista (the Guardians
-        of the Galaxy films, Thor: Love and Thunder), Oscar winner Christopher Walken
-        (The Deer Hunter, Hairspray), Stephen McKinley Henderson (Fences, Lady Bird),
-        L\xE9a Seydoux (the James Bond franchise and Crimes of the Future), with Stellan
-        Skarsg\xE5rd (the Mamma Mia! films, Avengers: Age of Ultron), with Oscar nominee
-        Charlotte Rampling (45 Years, Assassin's Creed), and Oscar winner Javier Bardem
-        (No Country for Old Men, Being the Ricardos).\\n\\nDune: Part Two will explore
-        the mythic journey of Paul Atreides as he unites with Chani and the Fremen
-        while on a warpath of revenge against the conspirators who destroyed his family.
-        Facing a choice between the love of his life and the fate of the known universe,
-        he endeavors to prevent a terrible future only he can foresee. Dune: Part
-        Two was released on March 1, 2024, worldwide release from Warner Bros. Pictures.\\n\\nEnjoyed
-        this? Please share on social media!\\n\\nStay up-to-date and support the site
-        by following Bleeding Cool on Google News today!\\n\\nAbout Kaitlyn BoothKaitlyn
-        is the Editor-in-Chief at Bleeding Cool. Film critic and pop culture writer
-        since 2013. Ace. Leftist. Nerd. Feminist. Writer. Replicant Translator. Cinephillic
-        Virtue Signaler. She/Her. UFCA/GALECA Member. \U0001F345 Approved. Follow
-        her Threads, Instagram, and Twitter @katiesmovies.\\n\\nComments will load
-        20 seconds after page. Click here to load them now.\\n\\nDune: Messiah Is
-        Officially In Development At Legendary\\n\\nAvengelyne Film On The Way From
-        LuckyChap, Olivia Wilde To Direct\\n\\nAbigail: New Trailer And Poster Lean
-        Into Children Being \\\"Monsters\\\"\\n\\nThe Bride: Maggie Gyllenhaal Shares
-        First Looks At Bale And Buckley\\n\\nThe Fantastic Four: Julia Garner Reportedly
-        Cast As Shalla-Bal\\n\\nZombies 4 Announces Full Cast And Details As Filming
-        Begins\\n\\nIs This Impossibly Rare 1927 Metropolis German 3-Sheet About To
-        Set A New World Record For Movie Posters?\\n\\nHalloween Novelization Getting
-        Sweet New Printing\\n\\nNew Red Band Trailer For Boy Kills World Has Been
-        Released\\n\\nThe Ministry of Ungentlemanly Warfare: \\\"Dead Puppet\\\" Distraction
-        Clip\\n\\nAlien: Romulus Director Fede Alvarez On Style, Tone Of New Film\\n\\nBaby
-        Assassins 2 Babies: Killing is Easy but Adulting is Still Hard\\n\\nBambi:
-        The Reckoning Teaser Trailer Continues The Poohniverse\\n\\nBruce Wayne's
-        Car in Justice League Was a One-of-a-Kind Mercedes-Benz\\n\\nGhostbusters:
-        Afterlife \u2013 New Poster Drops Two Months From Release\\n\\nGodzilla x
-        Kong: The New Empire \u2013 New International Poster Released\\n\\nLatest
-        by Kaitlyn Booth\\n\\nAbigail: New Trailer And Poster Lean Into Children Being
-        \\\"Monsters\\\"\\n\\nUniversal has released a new poster and trailer for
-        Abigail which very much leans into the idea that children are \\\"monsters.\\\"\\n\\nDune:
-        Messiah Is Officially In Development At Legendary\\n\\nDune: Messiah is officially
-        in development at Legendary. It will finish off the trilogy that began with
-        the first two Dune films.\\n\\nThe Ministry of Ungentlemanly Warfare: \\\"Dead
-        Puppet\\\" Distraction Clip\\n\\nLionsgate has released a new clip from Guy
-        Ritchie's The Ministry of Ungentlemanly Warfare. It will be released on April
-        19th.\\n\\nThe Fantastic Four: Julia Garner Reportedly Cast As Shalla-Bal\\n\\nJulia
-        Garner is reportedly set to play the Shalla-Bal version of Silver Surfer in
-        The Fantastic Four. The film will be released on July 25, 2025.\\n\\nSupergirl:
-        World of Tomorrow Sets Craig Gillespie As Director\\n\\nI, Tonya and Cruella
-        director Craig Gillespie is reportedly in talks to direct Supergirl: Woman
-        of Tomorrow for DC Studios.\\n\\nThe Matrix 5 Is Officially In Development
-        At Warner Bros.\\n\\nDrew Goddard will direct, write the script, and produce
-        The Matrix 5, which is officially in development at Warner Bros.\\n\\nAvengelyne
-        Film On The Way From LuckyChap, Olivia Wilde To Direct\\n\\nThe latest Rob
-        Liefeld creation to possibly be coming to the big screen is Avengelyne. Olivia
-        Wilde may direct with Margot Robbie producing.\\n\\nDaredevil: Born Again:
-        \\\"Physical\\\" Star Lou Taylor Pucci Joins Cast\\n\\nMarvel Studios' Charlie
-        Cox and Vincent D'Onofrio-starring Daredevil: Born Again has reportedly cast
-        Lou Taylor Pucci in an undisclosed role.\\n\\nAbigail: New Trailer And Poster
-        Lean Into Children Being \\\"Monsters\\\"\\n\\nUniversal has released a new
-        poster and trailer for Abigail which very much leans into the idea that children
-        are \\\"monsters.\\\"\\n\\nDune: Messiah Is Officially In Development At Legendary\\n\\nDune:
-        Messiah is officially in development at Legendary. It will finish off the
-        trilogy that began with the first two Dune films.\\n\\nDisney CEO: \\\"A Lot
-        of People\\\" Have No Idea What \\\"Woke\\\" Really Means\\n\\nDisney CEO
-        Bob Iger on how he deals with \\\"woke\\\" accusations from Elon Musk \\u0026
-        others and how \\\"a lot of people\\\" don't really know what it means.\\n\\nThe
-        Bride: Maggie Gyllenhaal Shares First Looks At Bale And Buckley\\n\\nMaggie
-        Gyllenhaal shared the first images of Christian Bale and Jessie Buckley from
-        her upcoming film The Bride on her Instagram today.\",\"timestamp\":\"2024-04-05T02:21:54\",\"title\":\"Dune:
-        Messiah Is Officially In Development At Legendary\",\"url\":\"https://bleedingcool.com/movies/dune-messiah-is-officially-in-development-at-legendary/\"},{\"id\":\"web-search_3\",\"snippet\":\"Entertainment
+        Villeneuve\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":19278,\"output_tokens\":7},\"tokens\":{\"input_tokens\":20027,\"output_tokens\":7}},\"citations\":[{\"start\":0,\"end\":16,\"text\":\"Denis
+        Villeneuve\",\"document_ids\":[\"web-search_0\",\"web-search_1\",\"web-search_2\",\"web-search_3\",\"web-search_4\",\"web-search_5\",\"web-search_6\",\"web-search_7\",\"web-search_8\",\"web-search_9\"]}],\"documents\":[{\"id\":\"web-search_0\",\"snippet\":\"AboutPressCopyrightContact
+        usCreatorsAdvertiseDevelopersTermsPrivacyPolicy \\u0026 SafetyHow YouTube
+        worksTest new features\",\"timestamp\":\"2024-04-10T06:52:28\",\"title\":\"'Dune
+        2' Director Denis Villeneuve on the Five Films That Inspired the Sequel |
+        Esquire Talks - YouTube\",\"url\":\"https://www.youtube.com/watch?v=Jcwie9bCj6U\"},{\"id\":\"web-search_1\",\"snippet\":\"UK
+        EditionAsia EditionEdici\xF3n en Espa\xF1olSign up to our newslettersSubscribe:
+        $6 for 6 months\\n\\n{{indy.truncatedName}}Log in / Register\\n\\nPush notificationsSubscribeMenu\\n\\nBehind
+        The Headlines\\n\\nYou Ask The Questions\\n\\nCrosswords \\u0026 Puzzles\\n\\nThank
+        you for registering\\n\\nPlease refresh the page or navigate to another page
+        on the site to be automatically logged inPlease refresh your browser to be
+        logged in\\n\\nDenis Villeneuve defends Dune 2 amid controversial movie debate\\n\\n\u2018I
+        trust the audience,\u2019 unbothered filmmaker said\\n\\nSaturday 24 February
+        2024 15:59Comments\\n\\nFind your bookmarks in your Independent Premium section,
+        under my profile\\n\\nDon't show me this message again\u2715\\n\\nDune: Part
+        Two trailer\\n\\nGet our free weekly email for all the latest cinematic news
+        from our film critic Clarisse Loughrey\\n\\nGet our The Life Cinematic email
+        for free\\n\\nDune 2 director Denis Villeneuve has waded into an increasingly
+        controversial movie debate ahead of the release of his long-awaited movie
+        sequel.\\n\\nThe filmmaker, whose credits include Arrival and Blade Runner
+        2049, is busy promoting his new film, which is receiving acclaim from critics,
+        including The Independent\u2019s Clarisse Loughrey, who awarded the film five
+        stars out of five.\\n\\nDuring a new interview, he was challenged about the
+        runtime of the Dune sequel, which stars Timoth\xE9e Chalamet and Zendaya,
+        and is finally being released in March after being delayed due to the Hollywood
+        strikes in 2023.\\n\\nIn the last 10 years, films have gotten longer and longer,
+        with many regularly wondering on social media whether these increased lengths
+        are necessary.\\n\\nRecent films to have been at the centre of such debate
+        include Christopher Nolan\u2019s Oppenheimer and Martin Scorsese\u2019s Killers
+        of the Flower Moon, which last for three hours and three hours, 30 minutes,
+        respectidely.\\n\\nOne person who thinks this argument is silly is Villeneuve,
+        whose Dune 2 has a runtime of two hours, 46 minutes.\\n\\nWhen asked about
+        the runtime in a new interview, Villeneuve said that the film\u2019s distributor,
+        Warner Bros Pictures, didn\u2019t tell him to cut the film down, saying \u201Cit
+        was almost the opposite\u201D.\\n\\nBut Villeneuve is undeterred by complaints
+        that blockbusters these days are too long, telling The Times: \u201CI trust
+        the audience\u201D.\\n\\nDefending the new film\u2019s runtime, he said that
+        the story, adapted from Frank Herbert\u2019s novel, is \u201Ctoo dense\u201D
+        to tell in a more expedient manner.\\n\\nWatch Apple TV+ free for 7 days\\n\\nNew
+        subscribers only. \xA38.99/mo. after free trial. Plan auto-renews until cancelledTry
+        for free\\n\\nWatch Apple TV+ free for 7 days\\n\\nNew subscribers only. \xA38.99/mo.
+        after free trial. Plan auto-renews until cancelledTry for free\\n\\n\u201CThis
+        was the only way I could succeed,\u201Dhe said, adding: \u201CAlso, think
+        of Oppenheimer. It is a three-hour, rated-R movie about nuclear physics that
+        is mostly talking. But the public was young \u2013 that was the movie of the
+        year by far for my kids.\u201D\\n\\nZendaya and Timoth\xE9e Chalamet in \u2018Dune:
+        Part 2\u2019\\n\\n(Warner Bros Pictures)\\n\\nVillenueve argued that, while
+        many people might be frustrated at lengthier runtimes, young people today
+        actually want films to be longer.\\n\\nHe said: \u201CThere is a trend. The
+        youth love to watch long movies because if they pay, they want to see something
+        substantial. They are craving meaningful content.\u201D\\n\\nIt was found
+        in 2023 that the average length of the top 10 highest-grossing movies in the
+        US and Canada was two hours and 23 minutes \u2013 almost 30 minutes more than
+        the average recorded in 2020.\\n\\nAddressing whether there will be a third
+        Dune film, Villenueve said: \u201CThere is absolutely a desire to have a third
+        one, but I don\u2019t want to rush it.\\n\\nHe said that when it comes to
+        making another sequel, titled Dune: Messiah, he will take his time as \u201Cthe
+        danger in Hollywood is that people get excited and only think about release
+        dates, not quality\u201D.\\n\\nDune: Part 2 is being released in cinemas on
+        1 March.\\n\\nJoin our commenting forum\\n\\nJoin thought-provoking conversations,
+        follow other Independent readers and see their repliesComments\\n\\n1/2Denis
+        Villeneuve defends Dune 2 amid controversial movie debate\\n\\nDenis Villeneuve
+        defends Dune 2 amid controversial movie debate\\n\\nZendaya and Timoth\xE9e
+        Chalamet in \u2018Dune: Part 2\u2019\\n\\nWarner Bros Pictures\\n\\nDenis
+        Villeneuve defends Dune 2 amid controversial movie debate\\n\\nWarner Bros
+        Pictures\\n\\nSubscribe to Independent Premium to bookmark this article\\n\\nWant
+        to bookmark your favourite articles and stories to read or reference later?
+        Start your Independent Premium subscription today.\\n\\nAlready subscribed?
+        Log in\\n\\nThank you for registering\\n\\nPlease refresh the page or navigate
+        to another page on the site to be automatically logged inPlease refresh your
+        browser to be logged in\\n\\nUK EditionAsia EditionEdici\xF3n en Espa\xF1olSubscribe\\n\\n{{indy.truncatedName}}Log
+        in / Register\\n\\nOr if you would prefer:SIGN IN WITH GOOGLE\\n\\nWant an
+        ad-free experience?View offers\\n\\nThis site is protected by reCAPTCHA and
+        the Google Privacy notice and Terms of service apply.\\n\\nHi {{indy.fullName}}\\n\\nMy
+        Independent Premium\",\"timestamp\":\"2024-02-24T23:25:38\",\"title\":\"Dune
+        2 director Denis Villeneuve defends controversial detail about new movie |
+        The Independent\",\"url\":\"https://www.independent.co.uk/arts-entertainment/films/news/dune-2-release-date-movie-runtime-b2501886.html\"},{\"id\":\"web-search_2\",\"snippet\":\"Dune
+        2 director hints Florence Pugh will serve greater purpose in Dune Messiah\\n\\n\u2758
+        Published: 2024-03-03T22:17:53 \u2758 Updated: 2024-03-03T22:18:03Warner Bros.\\n\\nDune
+        director Denis Villeneuve confirms that Florence Pugh will have a bigger role
+        to play in the unconfirmed Dune 3.\\n\\nDune: Part Two has already blown critics
+        and regular movie goers out of the water with its impressive visuals and chilling
+        storytelling.\\n\\nDebuting with an almost perfect score on Rotten Tomatoes,
+        one of the biggest compliments the film has received is due to the stellar
+        performances of its A-list cast which consists of Timoth\xE9e Chalamet, Zendaya,
+        Austin Bulter, Florence Pugh, and many more.\\n\\nArticle continues after
+        ad\\n\\nPugh herself doesn\u2019t have the biggest role in the stunning sequel,
+        but director Denis Villeneuve has hinted that her true character work with
+        begin in Dune 3. Warning: slight spoilers ahead!\\n\\nArticle continues after
+        ad\\n\\nVilleneuve reveals Pugh will be more important in Dune 3\\n\\nWhile
+        chatting with Moviefone about Pugh\u2019s involvement in Part Two, Villeneuve
+        explained that, while Pugh\u2019s Princess Irulan isn\u2019t a standout character
+        right now, she will be featured heavily throughout Dune Messiah and likened
+        her smaller to bigger roles as the same journey Zendaya went through in Part
+        One.\\n\\nArticle continues after ad\\n\\n\u201CI wanted to create a character
+        that will have inner strength and that will never be perceived as a victim.
+        I wanted an actress that could convey only with the way she\u2019s listening,\u201D
+        Villeneuve said, \u201CI wanted someone with a strong presence that the audience
+        could see just in the way she was witnessing events or listening to other
+        characters, that they feel her presence on her own journey, but she\u2019s
+        more of a witness in this story.\u201D\\n\\n\u201COf course, if there\u2019s
+        a Dune Messiah as we plan, she\u2019ll become one of the prominent characters
+        of that whole series. I\u2019m doing a bit of what I did with Zendaya in the
+        first movie. I introduced Chani in Dune and then she becomes one of the main
+        characters in Part Two. I do the same with Florence, I just introduced her
+        in Part Two and if there\u2019s a Dune Messiah, she becomes one of the main
+        characters.\u201D\\n\\nPugh herself has confirmed that her role was meant
+        to be small on purpose stating, \u201CIt didn\u2019t matter how big my role
+        was\u2026When I chatted to Denis, he kept apologizing and saying \u2018In
+        this one, it\u2019s really not a big part. I won\u2019t be offended [if you
+        say no].\u2019 I was like \u2018I don\u2019t care! I just want to come and
+        watch you work. This is a dream.\u2019\u201D\\n\\nSubscribe to our newsletter
+        for the latest updates on Esports, Gaming and more.\\n\\nArticle continues
+        after ad\\n\\nThe ending of Part Two sees Princess Irulan being wed to Paul
+        Atreides (Chalamet) after he defeats Irulan\u2019s father Emperor Shaddam
+        Corrino IV and ascends to the throne.\\n\\nTop 10 anime with the best story\\n\\nArticle
+        continues after ad\\n\\nIn Dune Messiah, though they are wed, Princess Irulan
+        is constantly overcome with jealously because of Paul\u2019s unwavering love
+        for Fremen leader Chani (Zendaya), to the point where she responsible for
+        Chani\u2019s death after giving her dangerous contraceptives that result in
+        her dying while giving birth to her and Paul\u2019s twins.\\n\\nPrincess Irulan,
+        after realizing the gravity of her actions, then takes over as a loving mother
+        to her stepchildren and helps to keep the legacy of the Atreides bloodline
+        through them.\\n\\nArticle continues after ad\\n\\nArticle continues after
+        ad\\n\\nAs Pugh\u2019s incredible acting range has already been established
+        in both this movie, her intense and tumultuous role in Dune Messiah will definitely
+        be one to watch out for if the film is confirmed to be happening in the future.\",\"timestamp\":\"2024-03-04T03:45:31\",\"title\":\"Dune
+        2 director hints Florence Pugh will serve greater purpose in Dune Messiah
+        - Dexerto\",\"url\":\"https://www.dexerto.com/tv-movies/dune-2-director-hints-florence-pugh-will-serve-greater-purpose-in-dune-messiah-2567986/\"},{\"id\":\"web-search_3\",\"snippet\":\"Skip
+        to main content\\n\\nWhen you purchase through links on our site, we may earn
+        an affiliate commission. Here\u2019s how it works.\\n\\nDune 2 director Denis
+        Villeneuve responds to Christopher Nolan comparing the film to his \\\"favorite
+        Star Wars movie\\\"\\n\\nBy Emily Murray published 26 February 2024\\n\\nExclusive
+        | The filmmaker is very humbled by comparisons to The Empire Strikes Back\\n\\n(Image
+        credit: Warner Bros)\\n\\nOnce the first reactions to the much anticipated
+        sequel Dune 2 arrived online, one film that has been regularly cropping up
+        in conversation is The Empire Strikes Back, the 1980 sci-fi classic that is
+        often described as the best Star Wars film ever made.\\n\\nOppenheimer filmmaker
+        Christopher Nolan was the first to compare the upcoming epic to Star Wars
+        Episode 5 during an IMAX screening of the rerelease of Tenet, which featured
+        an early preview of the second part of the big screen adaptation of Frank
+        Herbert's beloved novel. In a clip shared by Raiders of the Lost Podcast,
+        Nolan told Dune director Denis Villeneuve: \\\"For me, I don\u2019t think
+        it says too much to say that if Dune: Part One was Star Wars, this to me is
+        very much The Empire Strikes Back, which is my favorite of the Star Wars films.
+        I just think it\u2019s an incredibly exciting expansion of all of the things
+        you introduce in the first one.\\\"\\n\\nSince then the comparisons to the
+        eighties classic have just kept coming in - our own reviewer Kevin Harley
+        in the Total Film review of Dune: Part Two described the film as \\\"a sequel
+        that ranks alongside The Dark Knight and The Empire Strikes Back\\\". High
+        praise indeed!\\n\\nIt's something that Villeneuve didn't expect at all, being
+        blown away by the response. Speaking to GamesRadar+ about Nolan's comment
+        in particular, Villeneuve was very humbled, also adding that just like the
+        Inception filmmaker it too is his favorite Star Wars film. He replied: \\\"It's
+        a comparison that I would have never dared to do myself. I think it's a beautiful
+        compliment because Empire Strikes Back is by far my favourite Star Wars movie.
+        So, it\u2019s like, coming from Chris [Nolan], an incredible compliment.\\\"
+        \\n\\nDune: Part Two releases in theaters worldwide on March 1. For more on
+        the movie check out the rest of our coverage:\\n\\nZendaya and Florence Pugh
+        discuss the women of Dune 2\\n\\nZendaya discusses Chani\u2019s personal journey
+        in Dune 2\\n\\nDirector Denis Villeneuve on why there is a bigger focus on
+        Chani\\n\\nDirector Denis Villeneuve on Timothee Chalamet\u2019s transformative
+        performance\\n\\nActor Stellan Skarsgard on playing the villain\\n\\nActor
+        Stellan Skarsgard on working with Austin Butler\\n\\nHow Dune 2 brings motherhood
+        into the focus in a powerful way\\n\\nDune 2 ending explained\\n\\nDoes Dune
+        2 have a post-credits scene?\\n\\nWhat could happen in Dune 3, according to
+        the books\\n\\nThe Dune 2 and book differences\\n\\nWho does Anya Taylor-Joy
+        play in Dune 2?\\n\\nWhen will Dune 2 be on streaming?\\n\\nSign up to the
+        GamesRadar+ Newsletter\\n\\nWeekly digests, tales from the communities you
+        love, and more\\n\\nEntertainment Editor\\n\\nAs Entertainment Editor at GamesRadar,
+        I oversee all the online content for Total Film and SFX magazine. Previously
+        I've worked for the BBC, Zavvi, UNILAD, Yahoo, Digital Spy and more.\\n\\nThe
+        most terrifying found footage horror short has mysteriously landed on YouTube,
+        and it will make you want to get rid of all your home security video cameras
+        for good\\n\\nKirsten Dunst would have been up for appearing in Spider-Man:
+        No Way Home, but Marvel didn't ask\\n\\nThe Elder Scrolls 6 devs are sharing
+        lore responsibilities with the team behind The Elder Scrolls MMO\\n\\nA new
+        horror movie with \\\"literally no budget\\\" and a four-minute fight scene
+        between a talking napkin and an evil top hat has the weirdest trailer you\u2019ll
+        see all year\\n\\nBy Bradley RussellApril 03, 2024\\n\\nFinal Fantasy 16's
+        Clive Rosfield has come to Final Fantasy 14, and the MMO's infamously down-bad
+        community is ensuring the Dominant will never know peace\\n\\nBy Iain HarrisApril
+        03, 2024\\n\\nJoker 2 has officially been rated R but not for the reason you
+        might expect\\n\\nBy Megan GarsideApril 03, 2024\\n\\nWant your very own life-sized
+        M3GAN? Now you can have one\\n\\nBy Molly EdwardsApril 03, 2024\\n\\nSam Raimi
+        wants to direct Avengers: Secret Wars, but Marvel hasn't asked him yet\\n\\nBy
+        Emily GarbuttApril 03, 2024\\n\\nStellar Blade director recommends players
+        make Eve wear actual clothes \\\"as much as possible\\\" in the action-RPG,
+        instead of the NSFW 'Skin Suit'\\n\\nBy Hirun CryerApril 03, 2024\\n\\nNew
+        action movie Monkey Man was \\\"dead in the water in a certain way\\\" before
+        Get Out's Jordan Peele came on-board\\n\\nBy Matt MaytumApril 03, 2024\\n\\nDespite
+        reports of its cancellation and Embracer's $500m sale, the Star Wars Knights
+        of the Old Republic remake is still \\\"alive and well\\\"\\n\\nBy Hope BellinghamApril
+        03, 2024\\n\\nIn a move Helldivers 2 soldiers call \\\"uncalled for,\\\" devs
+        nerf shotgun key to the war effort as it was \\\"hands down the best sniper
+        rifle\\\" in the game\\n\\nBy Hirun CryerApril 03, 2024\\n\\nNew Daredevil
+        set video appears to show Charlie Cox teaming up with Jon Bernthal\u2019s
+        Punisher\\n\\nBy Bradley RussellApril 03, 2024\\n\\nAfter 15 years, the anime
+        reboot fans never thought would actually happen is finally here \u2013 and
+        is already a huge hit\\n\\nBy Amy WestApril 03, 2024\\n\\nFinal Fantasy 7
+        Rebirth review: \\\"Meaningful improvements make the step outside Midgar worth
+        taking\\\"\\n\\nGAME REVIEWSMOVIE REVIEWSTV REVIEWS\\n\\nSteelSeries Arena
+        3 review: \\\"I wasn\u2019t expecting to hear such a difference\\\"\\n\\nElgato
+        Facecam MK2 review: \\\"No punch to blacks and no kick to colors.\\\"\\n\\nOpen
+        Roads review: \\\"A cozy, nostalgic road trip that can't quite get into gear\\\"\\n\\nDragon's
+        Dogma 2 review: \\\"Embrace the chaos and there's nothing quite like it\\\"\\n\\nRise
+        of the Ronin review: \\\"A decent PS5 exclusive action RPG that's driven and
+        hamstrung by its ambition\\\"\\n\\nGodzilla x Kong: The New Empire review
+        - \\\"A fun, neon rumble in the jungle\\\"\\n\\nSteve Martin: A documentary
+        in 2 pieces review \u2013 \\\"A deeply affectionate but overstuffed portrait\\\"\\n\\nMonkey
+        Man review: \\\"Dev Patel's directorial debut is a savage triumph\\\"\\n\\nRobot
+        Dreams review: \\\"This dog-and-bot bromance is a charming, wordless wonder\\\"\\n\\nCivil
+        War review: \\\"There's no shortage of horrors in this uncompromising drama\\\"\\n\\nSugar
+        episode 1 and 2 review: \\\"Colin Farrell is charming, but the mystery gets
+        off to a slow start\\\"\\n\\nHalo season 2, episode 8 review: \\\"A more-than-solid
+        entry that signs off a frustratingly inconsistent season\\\"\\n\\nX-Men '97
+        review: A near-perfect reintroduction to one of Marvel\u2019s best superhero
+        teams\\n\\nMasters of the Air episode 9 review: \\\"A satisfying conclusion,
+        but doesn't surpass Band of Brothers\\\"\\n\\nHalo season 2, episode 7 review:
+        \\\"Slow and plodding before the last few minutes set up a formidable finale\\\"\",\"timestamp\":\"2024-04-04T10:47:10\",\"title\":\"Dune
+        2 director Denis Villeneuve responds to Christopher Nolan comparing the film
+        to his \\\"favorite Star Wars movie\\\" | GamesRadar+\",\"url\":\"https://www.gamesradar.com/dune-2-star-wars-empire-strikes-back-exclusive/\"},{\"id\":\"web-search_4\",\"snippet\":\"Dune:
+        Part Two is a 2024 American epic science fiction film directed and produced
+        by Denis Villeneuve, who co-wrote the screenplay with Jon Spaihts. The sequel
+        to Dune (2021), it is the second of a two-part adaptation of the 1965 novel
+        Dune by Frank Herbert. It follows Paul Atreides as he unites with the Fremen
+        people of the desert planet Arrakis to wage war against House Harkonnen. Timoth\xE9e
+        Chalamet, Zendaya, Rebecca Ferguson, Josh Brolin, Dave Bautista, Stellan Skarsg\xE5rd,
+        Charlotte Rampling, and Javier Bardem reprise their roles from the first film,
+        with Austin Butler, Florence Pugh, Christopher Walken, L\xE9a Seydoux, and
+        Souheila Yacoub joining the ensemble cast.\\n\\nDevelopment began after Legendary
+        Entertainment acquired film and television rights for the Dune franchise in
+        2016. Villeneuve signed on as director in 2017, intending to make a two-part
+        adaptation of the novel due to its complexity. Production contracts were only
+        secured for the first film, with the second film having to be greenlit based
+        on the first's success. Villeneuve was concerned about the sequel's certainty
+        after the first film had a simultaneous theatrical and HBO Max release but
+        Warner Bros. Pictures assured him the sequel would happen if it performed
+        well on HBO Max. After the critical and commercial success of the first film,
+        Warner Bros. and Legendary green-lit Dune: Part Two in October 2021. Principal
+        photography took place in Budapest, Italy, Jordan and Abu Dhabi between July
+        and December 2022.\\n\\nAfter being delayed from the November 2023 release
+        date due to the 2023 Hollywood labor disputes, the film had its world premiere
+        at the Odeon Luxe Leicester Square, London, on February 15, 2024, and opened
+        in the United States on March 1. It was praised by critics and has grossed
+        over $683 million worldwide, making it the highest-grossing film of 2024.
+        A third film, based on Dune Messiah, is in development.\\n\\nFollowing the
+        destruction of House Atreides by House Harkonnen, Princess Irulan, the daughter
+        of Padishah Emperor Shaddam IV, secretly journals that Paul Atreides may still
+        be alive. On Arrakis, Stilgar's Fremen troops, including Paul and his pregnant
+        mother, Lady Jessica, overcome a Harkonnen patrol. When Jessica and Paul reach
+        Sietch Tabr, some Fremen suspect they are spies, while Stilgar and others
+        see signs of the prophecy that a mother and son from the \\\"Outer World\\\"
+        will bring prosperity to Arrakis.\\n\\nStilgar tells Jessica that Sietch Tabr's
+        Reverend Mother is dying and that Jessica must replace her by drinking the
+        Water of Life: a poison fatal for males and the untrained. Jessica transmutes
+        the poison, surviving and inheriting the memories of every female ancestor
+        in her lineage. The liquid also prematurely awakens the mind of her unborn
+        daughter, Alia, allowing Jessica to communicate with her. They agree to focus
+        on convincing the more skeptical northern Fremen of the prophecy. Chani and
+        her friend, Shishakli, believe the prophecy was fabricated to manipulate the
+        Fremen. However, she begins to respect Paul after he declares that he only
+        intends to fight alongside the Fremen, not to rule them.\\n\\nPaul and Chani
+        fall in love as Paul immerses himself in Fremen culture: learning their language,
+        becoming a Fedaykin fighter, riding a sandworm, and taking part in raids against
+        Harkonnen spice operations. Paul adopts the Fremen names \\\"Usul\\\" and
+        \\\"Muad'Dib\\\". Due to the devastating spice raids, Baron Vladimir Harkonnen
+        replaces his nephew, Glossu Rabban, as Arrakis's ruler with his psychotic,
+        murderous younger nephew, Feyd-Rautha. Lady Margot Fenring, a Bene Gesserit,
+        is sent to evaluate Feyd-Rautha as a prospective Kwisatz Haderach and to secure
+        his genetic lineage.\\n\\nJessica travels south to unite with Fremen fundamentalists
+        who believe in the prophecy. Paul stays North fearful that his visions of
+        a holy war will occur if he goes south as a messiah. He reunites with Gurney
+        Halleck, who leads him to the hidden atomic stockpile of House Atreides. Feyd-Rautha
+        attacks the northern Fremen\u2014including Sietch Tabr\u2014forcing Paul and
+        the survivors to journey south; Shishakli remains and Feyd-Rautha kills her.
+        Upon arrival, Paul drinks the Water of Life and falls into a coma. This angers
+        Chani, but she is compelled by Jessica to mix her tears with the liquid, which
+        awakens him. Paul now has a clearer vision of the past, present, and future.
+        He sees an adult Alia on a water-filled Arrakis and learns that Jessica is
+        the Baron's daughter. He also sees a singular path to victory among all possible
+        futures.\\n\\nThe southern Fremen leaders urge Paul to challenge Stilgar to
+        a death duel for leadership. He refuses, instead galvanizing the fundamentalists
+        by showing that he can read their innermost thoughts. He declares himself
+        the Lisan al Gaib and sends a challenge to Shaddam, who arrives on Arrakis
+        with Irulan, Mohiam, and his Sardaukar troops. As Shaddam chastises the Harkonnens,
+        the Fremen launch an offensive using atomics and sandworms to overpower the
+        Sardaukar forces. Paul murders the Baron and captures Shaddam and his entourage.
+        Gurney intercepts and kills a fleeing Rabban.\\n\\nPaul challenges Shaddam
+        for the throne and, to Chani's dismay, demands Irulan's hand in marriage.
+        Shaddam admits his involvement in the destruction of House Atreides. Previously
+        summoned by the Baron, the Great Houses arrive in orbit. Paul threatens to
+        destroy the spice fields with atomics if they intervene. Feyd-Rautha volunteers
+        to be Shaddam's champion, but Paul kills him in a knife duel. Irulan agrees
+        to Paul's request for marriage on the condition that her father lives. Shaddam
+        kneels and kisses Paul's signet ring, thus surrendering. After the Great Houses
+        reject Paul's ascendancy, he orders the Fremen to attack the orbiting fleet.
+        As Stilgar leads the Fremen onto the captured Sardaukar ships, Jessica and
+        Alia reflect on the beginning of Muad'Dib's holy war. Chani refuses to bow
+        to Paul and departs alone on a sandworm.\\n\\nTimoth\xE9e Chalamet as Paul
+        Atreides, the exiled Duke of House Atreides who sides with the Fremen to overthrow
+        the tyrannical House Harkonnen.\\n\\nZendaya as Chani, a young and rebellious
+        Fremen warrior who is Paul's love interest\\n\\nRebecca Ferguson as Lady Jessica,
+        Paul's Bene Gesserit mother and concubine to Paul's late father and predecessor,
+        Leto Atreides; her father is revealed to be Baron Harkonnen\\n\\nJosh Brolin
+        as Gurney Halleck, the former military leader of House Atreides and Paul's
+        mentor\\n\\nAustin Butler as Feyd-Rautha, Baron Vladimir Harkonnen's youngest
+        nephew and heir (\\\"na-Baron\\\") to House Harkonnen\\n\\nFlorence Pugh as
+        Princess Irulan, the Emperor's daughter\\n\\nDave Bautista as Beast Rabban,
+        nephew of Baron Vladimir Harkonnen and older brother of Feyd-Rautha\\n\\nChristopher
+        Walken as Emperor Shaddam IV, the Padishah Emperor of the Known Universe and
+        head of House Corrino\\n\\nL\xE9a Seydoux as Lady Margot Fenring, a Bene Gesserit
+        and close friend of the Emperor\\n\\nSouheila Yacoub as Shishakli, a Fremen
+        warrior and Chani's friend\\n\\nStellan Skarsg\xE5rd as Baron Vladimir Harkonnen,
+        head of House Harkonnen and former steward of Arrakis, enemy to the Atreides,
+        uncle of Feyd-Rautha and Glossu Rabban, and later revealed to be Lady Jessica's
+        father and thus, Paul's grandfather.\\n\\nCharlotte Rampling as Reverend Mother
+        Mohiam, a Bene Gesserit Reverend Mother and the Emperor's Truthsayer\\n\\nJavier
+        Bardem as Stilgar, leader of the Fremen tribe at Sietch Tabr\\n\\nAnya Taylor-Joy
+        makes an uncredited cameo appearance as Alia Atreides, Paul's unborn sister
+        who appears in his visions as well as communicating to Jessica while in her
+        womb. Babs Olusanmokun and Roger Yuan reprise their roles from the first film
+        as Jamis and Lieutenant Lanville, respectively. Stephen McKinley Henderson
+        filmed scenes reprising his role as Thufir Hawat, while Tim Blake Nelson filmed
+        scenes as an undisclosed character, but their scenes were not included in
+        the final cut. Both were given a \\\"Special Thanks\\\" credit by Villeneuve.\\n\\nBy
+        November 2016, Legendary Pictures had obtained the film and TV rights for
+        the Dune franchise, based on the eponymous 1965 novel by Frank Herbert. Vice
+        chair of worldwide production for Legendary Mary Parent began discussing with
+        Denis Villeneuve about directing a film adaptation, quickly hiring him after
+        realizing his passion for Dune. By February 2018, Villeneuve was confirmed
+        to be hired as director, and intended to adapt the novel as a two-part film
+        series. Villeneuve ultimately secured a two-film deal with Warner Bros. Pictures,
+        in the same style as the two-part adaption of Stephen King's It in 2017 and
+        2019. In January 2019, Joe Walker was confirmed to be serving as the film's
+        editor. Other crew included Brad Riker as supervising art director, Patrice
+        Vermette as production designer, Paul Lambert as visual effects supervisor,
+        Gerd Nefzer as special effects supervisor, and Thomas Struthers as stunt coordinator.
+        Dune: Part Two was produced by Villeneuve, Mary Parent, and Cale Boyter, with
+        Tanya Lapointe, Brian Herbert, Byron Merritt, Kim Herbert, Thomas Tull, Jon
+        Spaihts, Richard P. Rubinstein, John Harrison, and Herbert W. Gain serving
+        as executive producers and Kevin J. Anderson as creative consultant. Legendary
+        CEO Joshua Grode confirmed in April 2019 that they plan to make a sequel,
+        adding that \\\"there's a logical place to stop the [first] movie before the
+        book is over\\\".\\n\\nIn December 2020, Villeneuve stated that due to Warner
+        Bros.' plan to release the film in theaters and on HBO Max simultaneously,
+        the first film could underperform financially, resulting in cancellation of
+        the planned sequel. In an IMAX screening of the first film's first ten minutes,
+        the title logo read Dune: Part One, lending credence to plans for the sequel.
+        By August 2021, Villeneuve spoke more confidently about the chances of a sequel
+        film, iterating his excitement to work with Timoth\xE9e Chalamet and Zendaya
+        again, while stating Chani would have a bigger role in the sequel. Warner
+        Bros. assured Villeneuve a sequel would be greenlit as long as the film performed
+        well on HBO Max. Just days prior to the first film's release, Warner Bros.
+        CEO Ann Sarnoff stated, \\\"Will we have a sequel to Dune? If you watch the
+        movie you see how it ends. I think you pretty much know the answer to that.\\\"\\n\\nOn
+        October 26, 2021, Legendary officially greenlit Dune: Part Two, with a spokesperson
+        for the company stating, \\\"We would not have gotten to this point without
+        the extraordinary vision of Denis and the amazing work of his talented crew,
+        the writers, our stellar cast, our partners at Warner Bros., and of course
+        the fans! Here's to more Dune.\\\" Production work had occurred back-to-back
+        with the first film, as Villeneuve and his wife Lapointe immediately took
+        a flight to Budapest in order to begin pre-production work. A key point of
+        negotiation prior to greenlighting the sequel was assuring that the sequel
+        would have an exclusive window where it would only be shown theatrically,
+        with Legendary and Warner Bros. agreeing to give Dune: Part Two a 45-day window
+        before it would be available through other channels. Villeneuve said this
+        theatrical exclusivity was a \\\"non-negotiable condition\\\", and that \\\"the
+        theatrical experience is at the very heart of the cinematic language for me\\\".
+        With Dune: Part Two being greenlit, Villeneuve said that his primary concern
+        was to complete the filming as soon as possible, with the earliest he expected
+        to start in the last quarter of 2022. However, he noted that production would
+        be expedited by the work already done for the first film.\\n\\nEric Roth was
+        hired to co-write the screenplay in April 2017 for the Dune films, and Jon
+        Spaihts was later confirmed to be co-writing the script alongside Roth and
+        Villeneuve. Game of Thrones language creator David Peterson was confirmed
+        to be developing languages for the film in April 2019. Villeneuve and Peterson
+        had created the Chakobsa language, which was used by actors on set. In November
+        2019, Spaihts stepped down as show-runner for Dune: Prophecy to focus on Dune:
+        Part Two. In June 2020, Greig Fraser said, \\\"It's a fully formed story in
+        itself with places to go. It's a fully standalone epic film that people will
+        get a lot out of when they see it\\\". Between the release of Dune and the
+        confirmation of Dune: Part Two, Villeneuve started working the script in a
+        way that production could begin immediately once the film was greenlit. By
+        February 2021, Roth created a full treatment for the sequel, with writing
+        beginning that August. He confirmed that Feyd-Rautha would appear in the film,
+        and stated he will be a \\\"very important character\\\". In March 2022, Villeneuve
+        had mostly finished writing the screenplay. Craig Mazin and Roth wrote additional
+        literary material for the film.\\n\\nVilleneuve stated that the film would
+        continue directly from the first, and specifically described it as being the
+        \\\"second part\\\". He described the film as being an \\\"epic war movie\\\",
+        adding that while the first film was more \\\"contemplative\\\", the second
+        would feature more action. Villeneuve sought to anchor the movie to the characters,
+        primarily Paul and Chani. With the two featured in an \\\"epic love story\\\"
+        between them, Villeneuve described them as the \\\"epicenter of the story\\\".
+        Zendaya initially found difficulty in creating dialogue, commenting that \\\"It
+        was funny trying to figure out in this futuristic space talk, like, how do
+        they flirt?\\\" Chalamet also added that Paul would be heavily influenced
+        by Chani, serving as his \\\"moral compass\\\". Additionally, Paul becomes
+        deeply embedded in Fremen culture, developing a closer bond with Stilgar,
+        who becomes his surrogate father figure and mentor, while tensions emerge
+        between Chani and Lady Jessica, as Chani is aware that Jessica's schemes negatively
+        impact the Fremen. The script ultimately conveys Chani as a nonbeliever of
+        the prophecy and intended for its structure to first convey their romantic
+        relationship from Paul's perspective, and eventually pivot to Chani's perspective
+        as the audience realizes Paul's desire for power and insidious nature. He
+        focused on Herbert's original intention to depict Paul as an antihero in Dune
+        to becoming an eventual villain, and wrote the script with that in mind while
+        also considering his future plans regarding Dune Messiah, particularly by
+        modifying Chani's characterization as he felt that she eventually \\\"disappeared
+        in Paul's shadows\\\" in the book. Feeling he had the \\\"benefit of time\\\"
+        in doing so, Villeneuve decided to use all the elements of Paul's character
+        arc and \\\"play them a bit differently\\\" in order to establish his eventual
+        transformation into a villainous figure and becoming \\\"what he was trying
+        to fight against\\\". He expanded the role of Chani and Lady Jessica from
+        the novel, and interpreted Chani as being a critique of power. When envisioning
+        the sandworm sequence, Villeneuve primarily relied upon his own drawings and
+        storyboards, as he felt the book did not contain adequate descriptions. He
+        later cited it as being one of his favorite scenes in the film. When writing
+        Paul's character arc, he considered Paul as transforming from a \\\"humble\\\"
+        figure to a \\\"dark messianic figure\\\", and took inspiration from Katsuhiro
+        Otomo's Akira (1988) when designing the storyboards. Villeneuve felt the film's
+        ending was more \\\"tragic\\\" than that of the book, feeling that it adequately
+        resolved Paul's storyline across the Dune films while setting up his character
+        arc for a potential third film based on Dune Messiah (1969).\\n\\nFollowing
+        the first film, Baron Harkonnen is described as being heavily debilitated
+        and reliant on being submerged in fluids, while focusing on choosing an heir:
+        Glossu Rabban or Feyd-Rautha, both his nephews. Rabban was regarded as being
+        a bad strategist, while Feyd-Rautha is shown to be clever and charismatic.
+        Actor Austin Butler felt Feyd-Rautha's character served as \\\"flip sides
+        of the same coin\\\" to Paul, as both had been involved in the Bene Gesserit's
+        genetic breeding program; Butler opined Feyd-Rautha's upbringing on Giedi
+        Prime and self-care for his body explained his arrogance. Meanwhile, Villeneuve
+        noted his psychopathic personality and brutality similar to that of an animal
+        contrasted his \\\"code of honors\\\" and reverence for fighters. Lady Jessica
+        is also heavily traumatized by the death of Duke Leto, being compared to Paul
+        as a \\\"survivor\\\" and strategizing to realize the ambitions of the Bene
+        Gesserit, who aim to fulfill their prophecy to maximize human potential, disregarding
+        morality and ethics. There is also additional focus on the political aspect,
+        with Princess Irulan fearing that her father, Emperor Shaddam IV, will lose
+        his throne due to his loss of influence over warring factions. During the
+        sequence of Paul's consumption of the Water of Life, Villeneuve deliberately
+        altered the timeframe to depict an adult Alia for a dramatic effect and to
+        highlight Alia's unique birth. He and Spaihts decided to \\\"compress\\\"
+        the time for both the sequence and Lady Jessica's pregnancy in order to establish
+        more narrative tension. He also added that Lady Jessica's conversations with
+        an embryonic Alia was unique as he felt it was \\\"fresh and original to have
+        a character who is powerful and still a pregnant woman\\\" while also conveying
+        how others perceive Alia as an \\\"abomination\\\". Like Chani and Lady Jessica,
+        Villeneuve further developed Princess Irulan's character and motivations from
+        the novel, with actress Florence Pugh noting her reserved nature and intelligence.\\n\\nIn
+        March 2022, Pugh and Butler were reported to be in talks to star in the film
+        as Princess Irulan and Harkonnen heir Feyd-Rautha, respectively. Butler was
+        offered the role while having coffee with Villeneuve, without needing to audition.
+        He trained for four months in Budapest, using a fitness regimen made by an
+        ex-Navy SEALs member. Villeneuve described his performance as being a \\\"cross
+        between a psychopath killer, an Olympic sword master, a snake, and Mick Jagger\\\"
+        while Butler researched past cultures he felt \\\"bred brutality\\\" and took
+        inspiration from various animals including sharks and snakes. Butler also
+        said that he drew inspiration from Gary Oldman and Heath Ledger for his performance.
+        He imitated Skarsg\xE5rd's voice as the Baron, as he felt that Feyd would
+        be influenced by the Baron due to growing up with him. In May, Christopher
+        Walken joined the cast as Shaddam IV. In June, L\xE9a Seydoux entered negotiations
+        to join the cast as Lady Margot Fenring. In July, Souheila Yacoub joined the
+        cast as Shishakli. In January 2023, Tim Blake Nelson was added to the cast
+        in an undisclosed role. Attending the film's London premiere in February 2024,
+        Anya Taylor-Joy confirmed that she had been cast in the film. Villeneuve was
+        surprised that her role had been kept a secret for that long, noting it required
+        \\\"so much work to keep that secret\\\". Her role had been revealed in a
+        casting credit list for the film on Letterboxd.\\n\\nPre-shooting had commenced
+        on July 4, 2022, at the Brion tomb in Altivole, Italy for two days. Principal
+        photography was set to begin on July 21 in Budapest, Hungary, but began earlier
+        on July 18. The film was entirely shot using Arri Alexa LF digital cameras,
+        with new filming locations and sets being used \\\"to avoid repetition\\\".
+        By October 2022, Chalamet had taken a break from filming in order to attend
+        the premiere of Bones and All (2022). The production team managed to shoot
+        during the partial solar eclipse of October 25, and used the footage for the
+        opening fight scene between Harkonnen and Fremen soldiers. By the next month,
+        production moved to Abu Dhabi, with Pugh also finishing her scenes in the
+        same month. Certain scenes set at dawn had to be filmed across three days
+        to take advantage of the golden hour. A special unit of production filmed
+        scenes with Taylor-Joy in Namibia, the driest country in sub-Saharan Africa.
+        Filming wrapped on December 12, 2022. Due to the delays, Villeneuve was able
+        to make a film transfer for projection using the IMAX 70 mm and conventional
+        70 mm film formats.\\n\\nPugh delivered Princess Irulan's opening narration
+        during her first day of filming and for overall production. Villeneuve and
+        cinematographer Greig Fraser had filmed Feyd-Rautha's gladiator sequence with
+        specially designed black-and-white infrared cameras. They wanted the Harkonnens
+        to cheer and stomp rather than applaud, and designed over 30 sections for
+        spectators in the arena. Butler spent his first week on set filming the scene,
+        during which the set had very high temperatures that caused some people to
+        faint. He also improvised his kiss scene with the Baron. For romantic scenes
+        between Paul and Chani, the scenes primarily filmed in remote locations in
+        Jordan during the golden hour. The scenes were often filmed as quickly as
+        possible, with only a one-hour window being available. The scene of Paul's
+        sandworm ride was filmed practically on a production unit separate from the
+        main one, being led by producer Tanya Lapointe and a special team. Chalamet
+        filmed his scenes on a platform meant to imitate a portion of the sandworm,
+        with gripping devices serving as the reference for the Fremen hooks. An industrial
+        fan blew sand on set to emulate the desert climate. Chalamet estimated the
+        scene took over three months to film, with individual shoots occurring over
+        a span of 20\u201330 minutes. As the actual sandworm was not built and there
+        were no reference shots, the production team designed a small portion of the
+        worm on set and the actors had to physically visualize and imitate riding
+        the sandworm. Butler and Chalamet had separately trained with a Kali instructor
+        in Los Angeles for the climactic battle between Paul and Feyd-Rautha. They
+        were excited to do the scene, and immediately began practicing once they later
+        met in Budapest. They performed the scene by themselves, including for wide
+        camera shots, while Chalamet delivers the monologue entirely in Chakobsa.
+        Ferguson had cited Lady Jessica undergoing the Reverend Mother process as
+        her favorite scene, working with contortionists for the scene and comparing
+        it to an Exorcist film.\\n\\nHans Zimmer returned to compose the film's score
+        after doing so for the previous film. Zimmer had composed over 90 minutes
+        of music prior to the announcement of the film to help give Villeneuve inspiration
+        when writing. Two singles were released on February 15, 2024, by WaterTower
+        Music, titled \\\"A Time of Quiet Between the Storms\\\" and \\\"Harvester
+        Attack\\\". The full soundtrack album was released on February 23.\\n\\nA
+        teaser trailer for Dune: Part Two was presented during the Warner Bros. panel
+        at CinemaCon on April 27, 2023. First-look footage of the cast in-character
+        were released online, alongside a teaser poster, on May 2, 2023. The trailer
+        was released to the public the following day. Variety called it \\\"breathtaking\\\";
+        GQ hailed the shots of Paul riding a sandworm as \\\"the standout sequence\\\";
+        and Fangoria remarked \\\"If you're not excited for this one, we dunno what
+        to tell you\\\". Chalamet and Zendaya later discussed and promoted the film
+        at a Warner Bros. presentation at CineEurope on June 21.\\n\\nA second trailer
+        was released on June 29, 2023. Chris Evangelista of Film was excited about
+        the appearance of Christopher Walken as Emperor Shaddam IV. Ben Travis of
+        Empire praised the \\\"seismic\\\" and \\\"astounding, none-more-eye-boggling\\\"
+        imagery, feeling the scope to be \\\"particularly expansive\\\" and noted
+        the monochromatic footage depicting Austin Butler's Feyd-Rautha while calling
+        the footage of Christopher Walken's appearance \\\"impactful\\\". Joshua Rivera
+        of Polygon opined \\\"The trailer, simply put, rocks\\\" and enjoyed the footage
+        present.\\n\\nThe film was promoted during the December 2023 CCXP with Chalamet,
+        Zendaya, Pugh, Butler, and Villeneuve, where over 10 minutes of footage was
+        released. Additional footage from Dune: Part Two was shown during a limited
+        IMAX theatrical re-release of Christopher Nolan's Tenet (2020), as part of
+        Warner Bros.' celebration for the former film's release.\\n\\nWarner Bros.
+        and Legendary Pictures partnered with Xbox to provide an immersive content
+        suite related to the film, and visual designs inspired by the film being featured
+        on a floating controller, Xbox Series X, and a console holder. Microsoft Flight
+        Simulator also included an expansion pack allowing players to explore Arrakis
+        and pilot the Royal Atreides Ornithopter. In November 2023, the Sardaukar
+        were added to Call of Duty: Modern Warfare II (2022) in a collaboration pack.
+        A month later, Paul and Feyd-Rautha were added as playable operators to its
+        sequel, Call of Duty: Modern Warfare III (2023), with an additional Harkonnen
+        soldier skin being announced in March 2024. In September 2023, McFarlane Toys
+        announced a new line of 7-inch figures modeled after characters from the sequel
+        film. Legendary Comics will release Dune: Part Two \u2013 The Official Movie
+        Graphic Novel with the help of Kickstarter in the same way the previous adaptation
+        was published.\\n\\nResearch conducted by Nikolaj Mathies, CEO of Vievo Media,
+        said the promotional campaign for the film on TikTok included 117 posts over
+        a year leading up to its release, an increase from the first film's 108. Messages
+        directly from the cast comprised 24% of the content, with videos featuring
+        Zendaya and Chalamet generating significantly higher viewership. Red carpet
+        content was prioritized to appeal to female audiences, a tactic that contributed
+        to an estimated $2 million increase in the opening box office. According to
+        the marketing research company FanBox, 57% of TikTok users are female and
+        hashtags such as #zendaya have garnered billions of views, leading the core
+        audience for Dune to grow significantly, with a 67.5% increase overall from
+        2.6 million to 8 million and an 84% increase among \\\"superfans\\\".\\n\\nIn
+        January 2024, images of a forthcoming Dune-themed popcorn bucket from AMC
+        Theatres went viral and became an Internet meme after its sandworm-inspired
+        design was compared to an artificial vagina.\\n\\nReactions to the bucket
+        received millions of views on the social network TikTok, and much of Dune:
+        Part Two's main cast and its director were specifically asked to comment on
+        it. Jokes about it were featured on US late night television, including a
+        musical sketch on Saturday Night Live featuring Marcello Hernandez, Ayo Edebiri,
+        Devon Walker, and Bowen Yang.\\n\\nGriffin Newman in The New York Times chalked
+        up the bucket's appeal to the \\\"magic alchemy\\\" that results from an object
+        that so many people become \\\"perversely fascinated\\\" by. The product was
+        one of several popcorn buckets AMC had designed and released alongside recent
+        films, including character heads for Spider-Man: Across the Spider-Verse and
+        \\\"burn books\\\" for Mean Girls.\\n\\nTwo months after Dune: Part Two's
+        release, AMC's chief content officer stated that \\\"we would have never created
+        [the bucket] knowing it would be celebrated or mocked\\\", but added that
+        they would continue to create collectible popcorn buckets for other films.
+        At that time, the popcorn buckets were still selling for as high as $100 on
+        the auction website eBay.\\n\\nDune: Part Two was originally scheduled to
+        be released on October 20, 2023, but was delayed to November 17, 2023, before
+        moving forward two weeks to November 3, 2023, to adjust to changes in release
+        schedules from other studios. It was later postponed by over four months to
+        March 15, 2024, due to the 2023 Hollywood labor disputes. After the strikes
+        were resolved, the film moved once more up two weeks to March 1, 2024.\\n\\nFollowing
+        the success of Oppenheimer (2023) in the format, Dune: Part Two was released
+        in the IMAX 15-perforation 70 mm format to twelve venues worldwide, and in
+        standard 5-perforation 70mm format to 38 venues worldwide.\\n\\nA red carpet
+        event was hosted in the Auditorio Nacional in Mexico City on February 6, 2024.
+        Dune: Part Two's world premiere was held at Odeon Luxe Leicester Square in
+        London on February 15.\\n\\nOn January 16, 2024, the film was shown to a dying
+        man in a palliative care home in the Canadian city of Saguenay, in Denis Villeneuve's
+        native province of Quebec. The man had expressed a wish to see Dune: Part
+        Two before his death. Jos\xE9e Gagnon, the cofounder of a company aiming to
+        accompany people at the end of life, relayed his wish to Villeneuve and Tanya
+        Lapointe, his partner and one of the film's producers, through a viral call-out
+        on Facebook. According to Gagnon, Villeneuve and Lapointe \\\"were very touched\\\".
+        The pair initially offered to invite the man to see Dune: Part Two in Los
+        Angeles or Montreal, but since he was too weak to travel, Villeneuve eventually
+        decided to send one of his assistants directly to Saguenay with his private
+        laptop. The film was screened in a room of the care facility, where everyone
+        was required to hand in their cellphones and sign waivers. The man was in
+        too much pain to watch it the entire film and stopped halfway through. He
+        eventually died on January 25. This act, which the Canadian Broadcasting Corporation
+        referred to as the actual \\\"world premiere\\\" of the film, was publicly
+        disclosed after its theatrical release.\\n\\nThe film will be released digitally
+        on April 16, 2024 and on Blu-ray, DVD and Ultra HD Blu-ray on May 14, 2024,
+        by Warner Bros. Home Entertainment.\\n\\nAs of April 13, 2024, Dune: Part
+        Two has grossed $269 million in the United States and Canada and $400.4 million
+        in other territories, for a worldwide total of $669.4 million. The Hollywood
+        Reporter had estimated that the film would break-even after grossing around
+        $500 million.\\n\\nIn the United States and Canada, the film's advanced ticket
+        sales surpassed those of Oppenheimer, and it was projected to gross $65\u201380
+        million from 4,050 theaters in its opening weekend. It was also expected to
+        gross $85\u201390 million from 71 international markets, for a worldwide debut
+        of around $170 million. The film made $32.2 million on its first day, including
+        $12 million from previews on February 25 and 29; IMAX screenings made up $4.5
+        million (38%) of the early totals. It went on to debut to $82.5 million, doubling
+        the first film's $41 million opening weekend; IMAX screenings made up $18.5
+        million (23%) of the total, a record for a March release. According to Jeff
+        Goldstein, president of domestic distribution at Warner Bros., it was \\\"much
+        higher than any of us could predict\\\", especially for \\\"a genre that is
+        a hard nut to crack\\\". In its second weekend the film made $46 million (a
+        44% drop), finishing second behind newcomer Kung Fu Panda 4. It also surpassed
+        the entire domestic gross of the first film ($108 million) in just seven days.
+        The film made $28.5 million in its third weekend and $17.6 million in its
+        fourth, remaining in second both times. It also became Timoth\xE9e Chalamet's
+        highest-grossing film of all time, surpassing Wonka.\\n\\nOutside the US and
+        Canada, the film grossed $100.02 million in its opening weekend from 71 markets.
+        In its second weekend, the sci-fi epic added $81 million from 72 international
+        markets, including a $20 million opening in China. Dune: Part Two continued
+        to hold well, grossing $51.2 million and $30.7 million in its third and fourth
+        weekends respectively. As of April 7, 2024, the highest grossing markets were
+        China ($47.7 million), United Kingdom ($46.3 million), Germany ($37.6 million),
+        France ($36.4 million) and Australia ($21.1 million).\\n\\nThe film \\\"largely
+        received rave reviews from critics\\\", and was praised for its visual effects
+        and cast performances. Some reviews considered it one of the best science
+        fiction films of all time. On the review aggregator website Rotten Tomatoes,
+        93% of 413 critics' reviews are positive, with an average rating of 8.4/10.
+        The website's consensus reads: \\\"Visually thrilling and narratively epic,
+        Dune: Part Two continues Denis Villeneuve's adaptation of the beloved sci-fi
+        series in spectacular form.\\\" Metacritic, which uses a weighted average,
+        assigned the film a score of 79 out of 100, based on 62 critics, indicating
+        \\\"generally favorable\\\" reviews. Audiences surveyed by CinemaScore gave
+        the film an average grade of \\\"A\\\" on an A+ to F scale, while those polled
+        by PostTrak gave it a 94% overall positive score, with 80% saying they would
+        definitely recommend it.\\n\\nThe Daily Telegraph's Robbie Collin awarded
+        the film four stars out of five and praised its visuals: \\\"Dune's loose-endedness
+        is one of its best qualities: finding out what happens is secondary to just
+        seeing it unfold.\\\" Peter Bradshaw, chief film critic for The Guardian,
+        awarded the film four stars out of five, writing \\\"Denis Villeneuve's monumental
+        adaptation expands its extraordinary world of shimmering strangeness. It's
+        impossible to imagine anyone doing it better.\\\" Richard Roeper, writing
+        for the Chicago Sun-Times, gave the film three stars out of four, praising
+        the technical and narrative aspects, saying, \\\"Even as we marvel at the
+        stunning and immersive and Oscar-level cinematography, editing, score, visual
+        effects, production design and sound in Denis Villeneuve's Dune: Part Two,
+        we're reminded at every turn that this is an absolutely bat-bleep [sic] crazy
+        story.\\\"\\n\\nFilmmaker Steven Spielberg praised the film, calling it \\\"one
+        of the most brilliant science fiction films I have ever seen,\\\" while further
+        noting that \\\"it's also filled with deeply, deeply drawn characters ...
+        Yet the dialogue is very sparse when you look at it proportionately to the
+        running time of the film. It's such cinema. The shots are so painterly, yet
+        there's not an angle or single setup that's pretentious.\\\"\\n\\nOther reviews
+        were more mixed in their judgement. In The Hollywood Reporter, Lovia Gyarkye
+        praised the film's technical aspects and performances, but found it failed
+        to fully adapt the book's nuance on themes such as imperialism. Nicholas Barber
+        wrote for the BBC that the film is \\\"one of the most jaw-droppingly weird
+        pieces of art-house psychedelia ever to come from a major studio\\\", finding
+        the film's grand scale made up for its issues. At the more negative end, Noah
+        Berlatsky writing for CNN judged that the film had failed to \\\"present an
+        effective anti-colonial vision\\\" by still being centred around Paul's destiny
+        despite an increased voice of opposition from Chani.\\n\\nSome commentators
+        have criticised the film for failing to adequately deal with the original
+        book's Middle East and North Africa (MENA) influences or otherwise incorporate
+        enough representation from the region. Furvah Shah, writing for the UK edition
+        of Cosmopolitan, said she \\\"felt frustrated as a Muslim viewer\\\", criticising
+        the film for a lack of MENA casting amongst the leads despite the use of the
+        region's culture and superficial use of Islam. The New Arab's Hannah Flint
+        also criticized the use of Arab and Islamic cultural items and lack of MENA
+        casting, though did praise that of Swiss-Tunisian actress Souheila Yacoub
+        as a \\\"win for Arab representation\\\". Steven D. Greydanus, in U.S. Catholic,
+        gives a contrasting view of the film's religious inspirations, noting that
+        the film draws from a number of Abrahamic religions for the purpose of critiquing
+        faith itself, while also noting the \\\"spiritualization of ecological concerns\\\"
+        through the Fremen.\\n\\nThe trailer for Dune: Part Two received nominations
+        for Best Fantasy Adventure and the Don LaFontaine Award for Best Voice Over
+        at the 2023 Golden Trailer Awards. The film was nominated for Most Anticipated
+        Film at the 6th Hollywood Critics Association Midseason Film Awards.\\n\\nVilleneuve
+        has repeatedly expressed interest in making a third film based on Dune Messiah,
+        the second novel in the series, adding that the possibility for the film depended
+        on the success of Dune: Part Two. Spaihts also reiterated in March 2022 that
+        Villeneuve had plans for a third film as well as the television spin-off series
+        Dune: Prophecy. In August 2023, Villeneuve said the third film would serve
+        as the conclusion of a trilogy. Villeneuve began developing a script for the
+        third film in 2023. In February 2024, Villeneuve said the script was \\\"almost
+        finished\\\" but also said he \\\"[does not] want to rush it\\\", citing Hollywood's
+        tendency of focusing on release dates over a film's overall quality, and adding,
+        \\\"I want to make sure that if we go back there a third time I want it to
+        be good and I want it to be even better than Part Two\\\". Villeneuve also
+        considered waiting a few years for Chalamet to grow older, given that Dune
+        Messiah is set 12 years after the events of the original book.\\n\\nAhead
+        of Dune: Part Two's release, Zimmer revealed he was already writing music
+        for a third film after Villeneuve came in and \\\"wordlessly\\\" put a copy
+        of Dune Messiah on his desk. In April 2024, it was reported that Villeneuve
+        and Legendary had officially begun development on the third film.\\n\\nList
+        of films featuring eclipses\\n\\n^ As depicted in Dune (2021)\",\"timestamp\":\"2024-04-14T19:22:26\",\"title\":\"Dune:
+        Part Two - Wikipedia\",\"url\":\"https://en.wikipedia.org/wiki/Dune:_Part_Two\"},{\"id\":\"web-search_5\",\"snippet\":\"Contact
+        the Editorial Staff\\n\\nIGN India is operated by Fork Media Group Pvt. Ltd.
+        under license from IGN Entertainment and its affiliates.\\n\\nGreece / \u0395\u03BB\u03BB\u03AC\u03B4\u03B1\\n\\nMiddle
+        East - English\\n\\nMiddle East - \u0627\u0644\u0623\u0648\u0633\u0637\u0627\u0644\u0634\u0631\u0642\\n\\nDune
+        2 Director Says He Tried His \u2018Best To Be Away From Fantasy\u2019 for
+        the Sequel To Make Things As Believable as Possible\\n\\n\\\"Spice is almost
+        like LSD or something like that.\u201D\\n\\n Posted March 28, 2024, 10:07
+        p.m.\\n\\nDune: Part Two director Denis Villeneuve recently revealed his approach
+        to delivering the sequel to complete the story from Frank Herbert's Dune book.
+        Villeneuve, who also directed Arrival and Blade Runner 2049, said that he
+        tried his best to stay from \u201Cfantasy\u201D elements while staying as
+        true as possible to the source material. Here\u2019s what he revealed.\\n\\nFrank
+        Herbert's Dune novel came out in 1965 and features not only themes related
+        to politics, power, and religion, but also offers fantasy elements such as
+        advanced technology, mythical creatures and prophecies, and even some form
+        of magic.\\n\\nHow Dune depicted sci-fi elements\\n\\nVilleneuve was recently
+        on the Director's Cut podcast with Steven Spielberg where he said, \u201CI
+        tried my best to be away from fantasy, meaning that I tried in that context
+        to try to be as plausible [as possible]. You can almost explain everything,
+        apart from the fact that his super powerful reaction to that substance that
+        is the spice\u2026\u201D\\n\\nAlso Read: Dune: Awakening Is Looking Supremely
+        Cool \u2013 As It Was Written\\n\\nHe continued to add that he loves the idea
+        that Paul Atredies, played by Timoth\xE9e Chalamet, is not a \u201Cmessianic
+        figure, really. It\u2019s just that the context and the other people perceive
+        him, and all the power they put on him.\u201D The director also added that
+        Paul does not have \u201Cany magic power, apart from being uber-sensitive
+        to that substance. Spice is almost like LSD or something like that.\u201D\\n\\nSince
+        the director\u2019s vision deals with a pragmatic approach, rather than focusing
+        on supernatural aspects, the cinematography also reflects the resistance to
+        rely overly on CGI as well to show the world of Arrakis, except the Sandworms
+        of course.\\n\\nSpeaking of cinematography, the movie\u2019s cinematographer
+        Greg Fraizer recently spoke about how the world of Arrakis came to life with
+        the help of Unreal Engine, a powerful 3D computer graphics engine used for
+        many popular games such as Fortnite, Tekken 8, and more. Frazier said that
+        Unreal Engine was really helpful in the pre-production phase and that it arrived
+        as a \u201Cgodsend\u201D during the pre-production phase to \u201Cspeed up
+        the process.\u201D\\n\\nContinue Reading: Dune: Part 2 Closes in on $500 Million
+        at Global Box Office, Surpassing First Movie\\n\\nDune: Part Two Legendary
+        Pictures\\n\\nTimoth\xE9e Chalamet Signs First Look Deal With Warner Bros.
+        Following Dune: Part 2, Wonka Success\\n\\nDune 2 Cinematographer Reveals
+        How They Used Unreal Engine in Pre-Production\\n\\nDune: Part 2 Closes in
+        on $500 Million at Global Box Office, Surpassing First Movie\\n\\nRomancing
+        the Dune! Part 2 Could Herald the Return of the Sweeping Hollywood Love Story\",\"timestamp\":\"2024-03-28T18:21:42\",\"title\":\"Dune
+        2 Director Says He Tried His \u2018Best To Be Away From Fantasy\u2019 for
+        the Sequel\",\"url\":\"https://in.ign.com/dune-part-two/204344/news/dune-2-director-says-he-tried-his-best-to-be-away-from-fantasy-for-the-sequel\"},{\"id\":\"web-search_6\",\"snippet\":\"Dune
+        2 Director Denis Villeneuve Explains the Biggest Difference Between the Film
+        and Frank Herbert's Book\\n\\nBy Ali Valle Published Mar 2, 2024\\n\\nDune:
+        Part Two director Denis Villeneuve made the big shift from Frank Herbert's
+        book 'to put more pressure on Paul.'\\n\\nWarner Bros. Pictures\\n\\nDenis
+        Villeneuve's bold adaptation of Dune: Part Two reimagines crucial story elements,
+        especially surrounding Lady Jessica and unborn Alia Atreides.\\n\\nAlia's
+        character in the film diverges significantly from the novel, with a condensed
+        timeline and innovative twist involving her communication with Jessica as
+        an embryo.\\n\\nThe adaptation not only preserves the essence of Herbert's
+        novel but also introduces fresh elements that enhance the cinematic experience,
+        showcasing the challenges and rewards of adapting literary works.\\n\\nWARNING!
+        This article contains Dune: Part Two major spoilers.Dune: Part Two emerges
+        as a testament to the art of adaptation, charting a course that both honors
+        and deviates from Frank Herbert's original masterpiece. With Denis Villeneuve
+        at the helm, the film boldly reimagines crucial story elements, especially
+        the depiction of Lady Jessica, portrayed by Rebecca Ferguson, and the unborn
+        Alia Atreides, portrayed by Anya Taylor-Joy.\\n\\nThis creative decision was
+        born out of a desire to amplify the tension surrounding Paul Atreides', played
+        by Timoth\xE9e Chalamet, journey and to enhance Jessica's role during her
+        pregnancy. Villeneuve regarded this as a moment to uncover a unique dimension
+        of the story that hadn't been shown on screen before, particularly from a
+        science fiction perspective, per Entertainment Weekly. The director's choice
+        to have Jessica converse with her unborn child serves as a powerful illustration
+        of the Water of Life's transformative power and offers a deeper insight into
+        the concept of Alia as an \\\"abomination\\\" in the eyes of the Bene Gesserit.
+        Villeneuve explained:\\n\\n\\\"I was deeply happy with the fact that Anya
+        accepted this challenge of playing a ghost and a secret. I cannot believe
+        that we kept the secret that long. It required so much work to keep that secret.
+        Everybody signed with their blood.\\\"\\n\\n\\\"It came out of screenwriting
+        discussions with Jon [Spaihts], when we were trying to figure out how to increase
+        tension and create more momentum in the story. To put more pressure on Paul,
+        we decided to compress time. We had this idea that we could create the feeling
+        of the progression of time through Jessica's pregnancy. I thought this was
+        really fresh and original to have a character who is pregnant and still a
+        powerful woman, a central figure of the story. I don't remember having seen
+        that, especially in a sci-fi movie, and it gave me the opportunity to develop
+        ideas that were in the book. Having her talk to her fetus was a way to illustrate
+        the power of the Water of Life, this substance that gives you access to the
+        past lives of previous Reverend Mothers. It was a way to more precisely express
+        how Alia becomes this abomination.\\\"\\n\\n\\\"When we had this idea, it
+        was like an epiphany for me. It was one of the final bricks of the screenplay.
+        I don't know how the fans will react, because it's a strong curve that we
+        took, but I felt that it was very close to the spirit of the book. I'm very
+        happy with this idea.\\\"\\n\\nDune: Part Two: Burning Questions We Want Answered
+        in the Sequel From Paul's vague visions to the Emperor's true motives, Dune:
+        Part Two should resolve many unanswered questions.\\n\\nIn Herbert's novel,
+        Jessica's ingestion of the Water of Life during her pregnancy endows Alia
+        with the consciousness and abilities of a Bene Gesserit Reverend Mother. However,
+        the film adaptation opts for a different narrative path. Due to a more condensed
+        timeline, Alia's birth does not occur within the film's timeframe. Instead,
+        she is introduced through a vision, and an innovative twist sees Jessica communicating
+        with Alia as an embryo, with Taylor-Joy lending her voice to the role.\\n\\nDune:
+        Part Two Reimagines Key Plot Points for the Screen\\n\\nThe film's adaptation
+        of Alia's character represents one of its most significant departures from
+        the book. In the novel, Alia is a four-year-old with the intellect and demeanor
+        of a Reverend Mother. Translating this to the screen would have presented
+        considerable challenges. By having Taylor-Joy voice Alia as an embryo and
+        appear in a vision, the film maintains her central role in the narrative while
+        effectively showcasing the Water of Life's formidable power.\\n\\nAdditionally,
+        the adaptation makes a crucial change to a key plot point. Instead of Alia,
+        it is Paul who eliminates Baron Vladimir Harkonnen, played by Stellan Skarsg\xE5rd,
+        a modification that aligns with Paul's character arc and the film's climax.
+        Alia's involvement in revealing their Harkonnen heritage in a vision ensures
+        her continued relevance to the story and the Baron's eventual downfall.\\n\\nDune:
+        Part Two exemplifies the challenges and rewards of adapting a beloved literary
+        work for the screen. Villeneuve's thoughtful alterations not only preserve
+        the essence of Herbert's novel but also introduce fresh elements that enhance
+        the cinematic experience. As the story of Arrakis unfolds, this adaptation
+        reminds us that careful and creative changes can enrich and deepen the storytelling
+        experience.\\n\\nTimothee Chalamet , Zendaya Coleman , Stellan Skarsg\xE5rd\\n\\nDune
+        2's Denis Villeneuve Reflects on Box-Office Bomb Blade Runner 2049 After 7
+        Years: 'It's Worth the Risk'\\n\\nKate Winslet Says She Forgot She Was in
+        Avatar: The Way of Water\\n\\nJames Gunn Shuts Down Superman Set Photo Rumors:
+        \\\"Might Superman\u2019s Trunks be Knitted With Yarn?\\\"\",\"timestamp\":\"2024-04-11T00:41:43\",\"title\":\"Dune
+        2 Director Denis Villeneuve Explains the Biggest Difference Between the Film
+        and Frank Herbert's Book\",\"url\":\"https://movieweb.com/dune-part-two-frank-herbert-book-difference-denis-villeneuve-response/\"},{\"id\":\"web-search_7\",\"snippet\":\"Democracy
+        Dies in Darkness\\n\\nA man wanted to see \u2018Dune 2\u2019 before he died.
+        The director sent his laptop.\\n\\nUpdated March 4, 2024 at 5:57 p.m. EST|Published
+        March 4, 2024 at 2:55 p.m. EST\\n\\nTimoth\xE9e Chalamet as Paul Atreides
+        and Zendaya as Chani in \u201CDune: Part Two.\u201D (Niko Tavernise/Warner
+        Bros. Pictures)\\n\\nAdd to your saved storiesSave\\n\\n\u201CDune: Part Two,\u201D
+        director Denis Villeneuve\u2019s long-anticipated second chapter of the science-fiction
+        epic, hit theaters this weekend. But it was secretly screened more than six
+        weeks earlier in an unusual location: a palliative care facility, for a movie
+        buff whose last wish was to see the sequel before he died.\\n\\nWith the curtains
+        drawn in a room inside the facility in Quebec, the man, who was in his 50s,
+        and one of his friends watched the film on the screen of Villeneuve\u2019s
+        laptop \u2014 which the director\u2019s assistant had flown in that day. Secrecy
+        was paramount \u2014 those involved signed nondisclosure agreements and put
+        away their phones to avoid leaks.\\n\\nGetting the film to the man was a \u201Crace
+        against the clock,\u201D Jos\xE9e Gagnon, whose charity made the moment happen,
+        told The Washington Post.\\n\\nGagnon, founder of Canadian charity L\u2019Avant,
+        which is focused on helping people at the end of their lives realize their
+        dreams, detailed the story in a Monday interview and in a recent Facebook
+        post. Gagnon said she was able to speak freely after the film was publicly
+        released, but declined to reveal the man\u2019s identity to protect his privacy.\\n\\nThe
+        race began in January, when L\u2019Avant put out a call on Facebook for anyone
+        who could reach Villeneuve.\\n\\n\u201CI would like to make some magic for
+        a person at the end of their life,\u201D said the charity\u2019s post. Time
+        was of the essence, the post said, because the person had only \u201Ca few
+        more weeks left.\u201D The post did not provide more details about the request
+        \u2014 but shortly thereafter, the charity posted that its request had reached
+        Villeneuve.\\n\\nA representative for Villeneuve declined to comment Monday.
+        Gagnon, in a Facebook post on Friday, said that Villeneuve and his wife, Tanya
+        Lapointe, an executive producer of \u201CDune: Part Two,\u201D were \u201Cextremely
+        touched by this man\u2019s last wish\u201D when they spoke.\\n\\n\u201CThey
+        told me, \u2018It\u2019s precisely for him that we make films,\u2019\u201D
+        she recounted.\\n\\nSo they got to work. Villeneuve and his wife initially
+        wanted to fly the man to Montreal or Los Angeles so he could watch the film,
+        Gagnon said in her post and in an interview with Radio-Canada. But, she said
+        in her post, it was \u201Cimpossible\u201D because he was \u201Ctoo weak.\u201D\\n\\n\u201CTime
+        was passing. The dying man was dying,\u201D she wrote.\\n\\nThen, a breakthrough:
+        On Jan. 16, Villeneuve\u2019s assistant flew to Quebec with the director\u2019s
+        laptop, and took it to the palliative care center about 130 miles north of
+        Quebec City, Gagnon said.\\n\\nShare this articleShare\\n\\nThe man didn\u2019t
+        speak English and had to watch the film with French subtitles, Gagnon told
+        The Post. He \u201Cwas so weak that we thought he might die while watching
+        the film,\u201D she wrote on Facebook.\\n\\nThe man ultimately was not able
+        to watch the full 2 hours and 46 minutes of the film. He was in pain and saw
+        only about half of it before he had to stop, Gagnon told The Post. He died
+        a few days later.\\n\\nHe died \u201Ctaking the secret of the film with him,\u201D
+        Gagnon said in her post.\\n\\nGagnon told Radio-Canada\u2019s \u201CPlace
+        publique\u201D program that some of those involved in the project felt it
+        was a \u201Cfailure\u201D because the man never got to see the ending of the
+        film.\\n\\nBut she felt differently. \u201CI said: \u2018You don\u2019t understand,
+        it\u2019s extraordinary what this man went through. The ending of a film,
+        when you\u2019re going to die, it doesn\u2019t mean anything. \u2026 All this
+        existed for him.\u2019\u201D\\n\\nMissing the ending \u201Cdidn\u2019t matter,\u201D
+        she said. The man had a \u201Cvery difficult start to life\u201D and saw people
+        around him \u2014 and those who didn\u2019t know him \u2014 work to carry
+        out his last wish. And that, she wrote, \u201Cwas worth all the gold in the
+        world.\u201D\\n\\nNow, she has just one message: \u201CPeople have to continue
+        to believe that everything is possible when it is done with heart,\u201D she
+        told The Post.\\n\\nWoman\u2019s dying wish: A funeral flash mob to \u2018Another
+        One Bites the Dust\u2019\\n\\nFollowing its release, \u201CDune: Part Two\u201D
+        has turned into a hit with critics and viewers, collecting an estimated $182.5
+        million across 72 markets in its opening weekend.\\n\\nGagnon said in the
+        post that she still hadn\u2019t seen \u201CDune: Part Two,\u201D but she planned
+        to soon. \u201CI\u2019ll smile like an idiot the whole time thinking about
+        this beautiful story,\u201D she said. \u201CThinking of him.\u201D\\n\\nMore
+        Style stories on Arts and Entertainments\\n\\n\u2018Fallout\u2019 is sweet,
+        sharp pulp \u2014 and great post-apocalyptic TV\\n\\n\u2018Fallout\u2019 is
+        sweet, sharp pulp \u2014 and great post-apocalyptic TV\\n\\nThe 25 best things
+        to do in D.C. this weekend and next week\\n\\nThe 25 best things to do in
+        D.C. this weekend and next week\\n\\nHow Matisse painted the sea \u2018so
+        blue that you want to eat it\u2019\\n\\nHow Matisse painted the sea \u2018so
+        blue that you want to eat it\u2019\\n\\nEarlier todayView 3 more stories\\n\\nNews
+        that brims with optimism\\n\\nStray pigeon flies to animal shelter, is adopted
+        out, will wear diaper\\n\\nA girl wanted to help buy her mom\u2019s headstone.
+        She made a lemonade stand.\\n\\nThey were bitter rivals. Then one of them
+        needed a kidney.\\n\\nTry a different topic\\n\\nSign in or create a free
+        account to save your preferences\",\"timestamp\":\"2024-04-12T13:44:42\",\"title\":\"A
+        man wanted to see \u2018Dune 2\u2019 before he died. The director sent his
+        laptop.\",\"url\":\"https://www.washingtonpost.com/lifestyle/2024/03/04/dune-2-dying-wish-villeneuve-quebec/\"},{\"id\":\"web-search_8\",\"snippet\":\"Entertainment
         Weekly\\n\\nPlease fill out this field.\\n\\nDune: Part 2 director reveals
         the most painful choice he had to make for his adaptation\\n\\n\\\"There's
         always some kind of violence toward the original material,\\\" Denis Villeneuve
@@ -235,821 +1027,107 @@ interactions:
         Princess Irulan in Dune: Part Two\\n\\nBy clicking \u201CAccept All Cookies\u201D,
         you agree to the storing of cookies on your device to enhance site navigation,
         analyze site usage, and assist in our marketing efforts.\\n\\nCookies Settings
-        Accept All Cookies\",\"timestamp\":\"2024-04-01T21:42:27\",\"title\":\"'Dune:
-        Part 2' director reveals the most painful choice he had to make in adaptation\",\"url\":\"https://ew.com/dune-part-two-denis-villeneuve-most-painful-character-to-cut-8601541\"},{\"id\":\"web-search_4\",\"snippet\":\"Dune:
-        Part Two is a 2024 American epic science fiction film directed and produced
-        by Denis Villeneuve, who co-wrote the screenplay with Jon Spaihts. The sequel
-        to Dune (2021), it is the second of a two-part adaptation of the 1965 novel
-        Dune by Frank Herbert. It follows Paul Atreides as he unites with the Fremen
-        people of the desert planet Arrakis to wage war against House Harkonnen. Timoth\xE9e
-        Chalamet, Zendaya, Rebecca Ferguson, Josh Brolin, Dave Bautista, Stellan Skarsg\xE5rd,
-        Charlotte Rampling, and Javier Bardem reprise their roles from the first film,
-        with Austin Butler, Florence Pugh, Christopher Walken, L\xE9a Seydoux, and
-        Souheila Yacoub joining the ensemble cast.\\n\\nDevelopment began after Legendary
-        Entertainment acquired film and television rights for the Dune franchise in
-        2016. Villeneuve signed on as director in 2017, intending to make a two-part
-        adaptation of the novel due to its complexity. Production contracts were only
-        secured for the first film, with the second film having to be greenlit based
-        on the first's success. Villeneuve was concerned about the sequel's certainty
-        after the first film had a simultaneous theatrical and HBO Max release but
-        Warner Bros. Pictures assured him the sequel would happen if it performed
-        well on HBO Max. After the critical and commercial success of the first film,
-        Warner Bros. and Legendary green-lit Dune: Part Two in October 2021. Principal
-        photography took place in Budapest, Italy, Jordan and Abu Dhabi between July
-        and December 2022.\\n\\nAfter being delayed from the November 2023 release
-        date due to the 2023 Hollywood labor disputes, the film had its world premiere
-        at the Odeon Luxe Leicester Square, London, on February 15, 2024, and opened
-        in the United States on March 1. It was praised by critics and has grossed
-        over $630 million worldwide, making it the highest-grossing film of 2024.\\n\\nFollowing
-        the destruction of House Atreides by House Harkonnen, Princess Irulan, the
-        daughter of Padishah Emperor Shaddam IV, secretly journals that Paul Atreides
-        may still be alive. On Arrakis, Stilgar's Fremen troops, including Paul and
-        his pregnant mother, Lady Jessica, overcome a Harkonnen patrol. When Jessica
-        and Paul reach Sietch Tabr, some Fremen suspect they are spies, while Stilgar
-        and others see signs of the prophecy that a mother and son from the \\\"Outer
-        World\\\" will bring prosperity to Arrakis.\\n\\nStilgar tells Jessica that
-        Sietch Tabr's Reverend Mother is dying and that Jessica must replace her by
-        drinking the Water of Life\u2014a poison fatal for males and the untrained.
-        Jessica transmutes the poison, surviving and inheriting the memories of every
-        female ancestor in her lineage. The liquid prematurely awakens the mind of
-        her unborn daughter, Alia, allowing Jessica to communicate with her. They
-        agree to focus on convincing the more skeptical northern Fremen of the prophecy.
-        Chani and her friend, Shishakli, believe the prophecy was fabricated to manipulate
-        the Fremen. However, she begins to respect Paul after he declares that he
-        only intends to fight alongside the Fremen, not to rule them.\\n\\nPaul and
-        Chani fall in love as Paul immerses himself in Fremen culture: learning their
-        language, riding a giant sandworm, becoming a Fedaykin fighter, and taking
-        part in raids against Harkonnen spice operations. Paul adopts the Fremen names
-        \\\"Usul\\\" and \\\"Muad'Dib.\\\" Due to the devastating spice raids, Baron
-        Vladimir Harkonnen replaces his nephew, Glossu Rabban, as Arrakis's ruler
-        with his psychotic, murderous younger nephew, Feyd-Rautha. Lady Margot Fenring,
-        a Bene Gesserit, is sent to evaluate Feyd-Rautha as a prospective Kwisatz
-        Haderach and to secure his genetic lineage by seducing him.\\n\\nJessica travels
-        south to unite with Fremen fundamentalists who believe in the prophecy. Paul
-        stays North fearful that his visions of a holy war will occur if he goes south
-        as a messiah. He reunites with Gurney Halleck, who leads him to the hidden
-        atomic stockpile of House Atreides. Feyd-Rautha attacks the northern Fremen\u2014including
-        Sietch Tabr\u2014forcing Paul and the survivors to journey south; Shishakli
-        remains and Feyd-Rautha kills her. Upon arrival, Paul drinks the Water of
-        Life and falls into a coma. Chani is angered by his action but is forced by
-        Jessica to mix her tears with the liquid, which awakens him. Paul now has
-        a clearer vision of the past, present, and future. He sees an adult Alia on
-        a water-filled Arrakis and that Jessica is the Baron's daughter. He also sees
-        a singular path to victory among all possible futures.\\n\\nThe southern Fremen
-        leaders urge Paul to challenge Stilgar in a death duel for leadership, but
-        he refuses and instead galvanizes the fundamentalists by showing that he can
-        read their innermost thoughts. He declares himself the Lisan al Gaib and sends
-        a challenge to Shaddam, who arrives on Arrakis with Irulan, Mohiam, and his
-        Sardaukar troops. As Shaddam chastises the Harkonnens, the Fremen launch an
-        offensive using atomics and sandworms to overpower the Sardaukar forces. Paul
-        murders the Baron and captures Shaddam and his entourage. Gurney intercepts
-        and kills a fleeing Rabban.\\n\\nPaul challenges Shaddam for the throne and,
-        to Chani's dismay, demands Irulan's hand in marriage. Shaddam admits his involvement
-        in the destruction of House Atreides. Previously summoned by the Baron, the
-        Great Houses arrive in orbit. Paul threatens to destroy the spice fields with
-        atomics if they intervene. Shaddam chooses Feyd-Rautha as his champion, and
-        Paul kills him in a knife duel. Irulan agrees to Paul's request for marriage
-        on the condition that her father lives. Shaddam kneels and kisses Paul's signet
-        ring. After the Great Houses reject Paul's ascendancy, he orders the Fremen
-        to attack the orbiting fleet. As Stilgar leads the Fremen onto the captured
-        Sardaukar ships, Jessica reflects on the beginning of Muad'Dib's holy war.
-        Chani refuses to bow to Paul and departs alone on a sandworm.\\n\\nTimoth\xE9e
-        Chalamet as Paul \\\"Muad'Dib\\\" Atreides, the exiled Duke of House Atreides
-        who sides with the Fremen to overthrow the tyrannical House Harkonnen.\\n\\nZendaya
-        as Chani, a young and rebellious Fremen warrior who is Paul's love interest\\n\\nRebecca
-        Ferguson as Lady Jessica, Paul's Bene Gesserit mother and concubine to Paul's
-        late father and predecessor, Leto Atreides; her father is revealed to be Baron
-        Harkonnen\\n\\nJosh Brolin as Gurney Halleck, the former military leader of
-        House Atreides and Paul's mentor\\n\\nAustin Butler as Feyd-Rautha Harkonnen,
-        Baron Vladimir Harkonnen's youngest nephew and heir (\\\"na-Baron\\\") to
-        House Harkonnen\\n\\nFlorence Pugh as Princess Irulan, the Emperor's daughter\\n\\nDave
-        Bautista as Glossu Rabban Harkonnen, nephew of Baron Vladimir Harkonnen and
-        older brother of Feyd-Rautha\\n\\nChristopher Walken as Shaddam IV, the Padishah
-        Emperor of the Known Universe and head of House Corrino\\n\\nL\xE9a Seydoux
-        as Lady Margot Fenring, a Bene Gesserit and close friend of the Emperor\\n\\nSouheila
-        Yacoub as Shishakli, a Fremen warrior and Chani's friend\\n\\nStellan Skarsg\xE5rd
-        as Baron Vladimir Harkonnen, head of House Harkonnen and former steward of
-        Arrakis, enemy to the Atreides, uncle of Feyd-Rautha and Glossu Rabban, and
-        later revealed to be Lady Jessica's father and thus, Paul's grandfather.\\n\\nCharlotte
-        Rampling as Gaius Helen Mohiam, a Bene Gesserit Reverend Mother and the Emperor's
-        Truthsayer\\n\\nJavier Bardem as Stilgar, leader of the Fremen tribe at Sietch
-        Tabr\\n\\nAnya Taylor-Joy makes an uncredited cameo appearance as Alia Atreides,
-        Paul's unborn sister who appears in his visions as well as communicating to
-        Jessica while in her womb. Babs Olusanmokun and Roger Yuan reprise their roles
-        from the first film as Jamis and Lieutenant Lanville, respectively. Stephen
-        McKinley Henderson filmed scenes reprising his role as Thufir Hawat, while
-        Tim Blake Nelson filmed scenes as an undisclosed character, but their scenes
-        were not included in the final cut. Both were given a \\\"Special Thanks\\\"
-        credit by Villeneuve.\\n\\nBy November 2016, Legendary Pictures had obtained
-        the film and TV rights for the Dune franchise, based on the eponymous 1965
-        novel by Frank Herbert. Vice chair of worldwide production for Legendary Mary
-        Parent began discussing with Denis Villeneuve about directing a film adaptation,
-        quickly hiring him after realizing his passion for Dune. By February 2018,
-        Villeneuve was confirmed to be hired as director, and intended to adapt the
-        novel as a two-part film series. Villeneuve ultimately secured a two-film
-        deal with Warner Bros. Pictures, in the same style as the two-part adaption
-        of Stephen King's It in 2017 and 2019. In January 2019, Joe Walker was confirmed
-        to be serving as the film's editor. Other crew included Brad Riker as supervising
-        art director, Patrice Vermette as production designer, Paul Lambert as visual
-        effects supervisor, Gerd Nefzer as special effects supervisor, and Thomas
-        Struthers as stunt coordinator. Dune: Part Two was produced by Villeneuve,
-        Mary Parent, and Cale Boyter, with Tanya Lapointe, Brian Herbert, Byron Merritt,
-        Kim Herbert, Thomas Tull, Jon Spaihts, Richard P. Rubinstein, John Harrison,
-        and Herbert W. Gain serving as executive producers and Kevin J. Anderson as
-        creative consultant. Legendary CEO Joshua Grode confirmed in April 2019 that
-        they plan to make a sequel, adding that \\\"there's a logical place to stop
-        the [first] movie before the book is over\\\".\\n\\nIn December 2020, Villeneuve
-        stated that due to Warner Bros.' plan to release the film in theaters and
-        on HBO Max simultaneously, the first film could underperform financially,
-        resulting in cancellation of the planned sequel. In an IMAX screening of the
-        first film's first ten minutes, the title logo read Dune: Part One, lending
-        credence to plans for the sequel. By August 2021, Villeneuve spoke more confidently
-        about the chances of a sequel film, iterating his excitement to work with
-        Timoth\xE9e Chalamet and Zendaya again, while stating Chani would have a bigger
-        role in the sequel. Warner Bros. assured Villeneuve a sequel would be greenlit
-        as long as the film performed well on HBO Max. Just days prior to the first
-        film's release, Warner Bros. CEO Ann Sarnoff stated, \\\"Will we have a sequel
-        to Dune? If you watch the movie you see how it ends. I think you pretty much
-        know the answer to that.\\\"\\n\\nOn October 26, 2021, Legendary officially
-        greenlit Dune: Part Two, with a spokesperson for the company stating, \\\"We
-        would not have gotten to this point without the extraordinary vision of Denis
-        and the amazing work of his talented crew, the writers, our stellar cast,
-        our partners at Warner Bros., and of course the fans! Here's to more Dune.\\\"
-        Production work had occurred back-to-back with the first film, as Villeneuve
-        and his wife Lapointe immediately took a flight to Budapest in order to begin
-        pre-production work. A key point of negotiation prior to greenlighting the
-        sequel was assuring that the sequel would have an exclusive window where it
-        would only be shown theatrically, with Legendary and Warner Bros. agreeing
-        to give Dune: Part Two a 45-day window before it would be available through
-        other channels. Villeneuve said this theatrical exclusivity was a \\\"non-negotiable
-        condition\\\", and that \\\"the theatrical experience is at the very heart
-        of the cinematic language for me\\\". With Dune: Part Two being greenlit,
-        Villeneuve said that his primary concern was to complete the filming as soon
-        as possible, with the earliest he expected to start in the last quarter of
-        2022. However, he noted that production would be expedited by the work already
-        done for the first film.\\n\\nEric Roth was hired to co-write the screenplay
-        in April 2017 for the Dune films, and Jon Spaihts was later confirmed to be
-        co-writing the script alongside Roth and Villeneuve. Game of Thrones language
-        creator David Peterson was confirmed to be developing languages for the film
-        in April 2019. Villeneuve and Peterson had created the Chakobsa language,
-        which was used by actors on set. In November 2019, Spaihts stepped down as
-        show-runner for Dune: Prophecy to focus on Dune: Part Two. In June 2020, Greig
-        Fraser said, \\\"It's a fully formed story in itself with places to go. It's
-        a fully standalone epic film that people will get a lot out of when they see
-        it\\\". Between the release of Dune and the confirmation of Dune: Part Two,
-        Villeneuve started working the script in a way that production could begin
-        immediately once the film was greenlit. By February 2021, Roth created a full
-        treatment for the sequel, with writing beginning that August. He confirmed
-        that Feyd-Rautha would appear in the film, and stated he will be a \\\"very
-        important character\\\". In March 2022, Villeneuve had mostly finished writing
-        the screenplay. Craig Mazin and Roth wrote additional literary material for
-        the film.\\n\\nVilleneuve stated that the film would continue directly from
-        the first, and specifically described it as being the \\\"second part\\\".
-        He described the film as being an \\\"epic war movie\\\", adding that while
-        the first film was more \\\"contemplative\\\", the second would feature more
-        action. Villeneuve sought to anchor the movie to the characters, primarily
-        Paul and Chani. With the two featured in an \\\"epic love story\\\" between
-        them, Villeneuve described them as the \\\"epicenter of the story\\\". Zendaya
-        initially found difficulty in creating dialogue, commenting that \\\"It was
-        funny trying to figure out in this futuristic space talk, like, how do they
-        flirt?\\\" Chalamet also added that Paul would be heavily influenced by Chani,
-        serving as his \\\"moral compass\\\". Additionally, Paul becomes deeply embedded
-        in Fremen culture, developing a closer bond with Stilgar, who becomes his
-        surrogate father figure and mentor, while tensions emerge between Chani and
-        Lady Jessica, as Chani is aware that Jessica's schemes negatively impact the
-        Fremen. The script ultimately conveys Chani as a nonbeliever of the prophecy
-        and intended for its structure to first convey their romantic relationship
-        from Paul's perspective, and eventually pivot to Chani's perspective as the
-        audience realizes Paul's desire for power and insidious nature. He focused
-        on Herbert's original intention to depict Paul as an antihero in Dune to becoming
-        an eventual villain, and wrote the script with that in mind while also considering
-        his future plans regarding Dune Messiah, particularly by modifying Chani's
-        characterization as he felt that she eventually \\\"disappeared in Paul's
-        shadows\\\" in the book. Feeling he had the \\\"benefit of time\\\" in doing
-        so, Villeneuve decided to use all the elements of Paul's character arc and
-        \\\"play them a bit differently\\\" in order to establish his eventual transformation
-        into a villainous figure and becoming \\\"what he was trying to fight against\\\".
-        He expanded the role of Chani and Lady Jessica from the novel, and interpreted
-        Chani as being a critique of power. When envisioning the sandworm sequence,
-        Villeneuve primarily relied upon his own drawings and storyboards, as he felt
-        the book did not contain adequate descriptions. He later cited it as being
-        one of his favorite scenes in the film. When writing Paul's character arc,
-        he considered Paul as transforming from a \\\"humble\\\" figure to a \\\"dark
-        messianic figure\\\", and took inspiration from Katsuhiro Otomo's Akira (1988)
-        when designing the storyboards. Villeneuve felt the film's ending was more
-        \\\"tragic\\\" than that of the book, feeling that it adequately resolved
-        Paul's storyline across the Dune films while setting up his character arc
-        for a potential third film based on Dune Messiah (1969).\\n\\nFollowing the
-        first film, Baron Harkonnen is described as being heavily debilitated and
-        reliant on being submerged in fluids, while focusing on choosing an heir:
-        Glossu Rabban or Feyd-Rautha, both his nephews. Rabban was regarded as being
-        a bad strategist, while Feyd-Rautha is shown to be clever and charismatic.
-        Actor Austin Butler felt Feyd-Rautha's character served as \\\"flip sides
-        of the same coin\\\" to Paul, as both had been involved in the Bene Gesserit's
-        genetic breeding program; Butler opined Feyd-Rautha's upbringing on Giedi
-        Prime and self-care for his body explained his arrogance. Meanwhile, Villeneuve
-        noted his psychopathic personality and brutality similar to that of an animal
-        contrasted his \\\"code of honors\\\" and reverence for fighters. Lady Jessica
-        is also heavily traumatized by the death of Duke Leto, being compared to Paul
-        as a \\\"survivor\\\" and strategizing to realize the ambitions of the Bene
-        Gesserit, who aim to fulfill their prophecy to maximize human potential, disregarding
-        morality and ethics. There is also additional focus on the political aspect,
-        with Princess Irulan fearing that her father, Emperor Shaddam IV, will lose
-        his throne due to his loss of influence over warring factions. During the
-        sequence of Paul's consumption of the Water of Life, Villeneuve deliberately
-        altered the timeframe to depict an adult Alia for a dramatic effect and to
-        highlight Alia's unique birth. He and Spaihts decided to \\\"compress\\\"
-        the time for both the sequence and Lady Jessica's pregnancy in order to establish
-        more narrative tension. He also added that Lady Jessica's conversations with
-        an embryonic Alia was unique as he felt it was \\\"fresh and original to have
-        a character who is powerful and still a pregnant woman\\\" while also conveying
-        how others perceive Alia as an \\\"abomination\\\". Like Chani and Lady Jessica,
-        Villeneuve further developed Princess Irulan's character and motivations from
-        the novel, with actress Florence Pugh noting her reserved nature and intelligence.\\n\\nIn
-        March 2022, Pugh and Butler were reported to be in talks to star in the film
-        as Princess Irulan and Harkonnen heir Feyd-Rautha, respectively. Butler was
-        offered the role while having coffee with Villeneuve, without needing to audition.
-        He trained for four months in Budapest, using a fitness regimen made by an
-        ex-Navy SEALs member. Villeneuve described his performance as being a \\\"cross
-        between a psychopath killer, an Olympic sword master, a snake, and Mick Jagger\\\"
-        while Butler researched past cultures he felt \\\"bred brutality\\\" and took
-        inspiration from various animals including sharks and snakes. Butler also
-        said that he drew inspiration from Gary Oldman and Heath Ledger for his performance.
-        He imitated Skarsg\xE5rd's voice as the Baron, as he felt that Feyd would
-        be influenced by the Baron due to growing up with him. In May, Christopher
-        Walken joined the cast as Shaddam IV. In June, L\xE9a Seydoux entered negotiations
-        to join the cast as Lady Margot Fenring. In July, Souheila Yacoub joined the
-        cast as Shishakli. In January 2023, Tim Blake Nelson was added to the cast
-        in an undisclosed role. Attending the film's London premiere in February 2024,
-        Anya Taylor-Joy confirmed that she had been cast in the film. Villeneuve was
-        surprised that her role had been kept a secret for that long, noting it required
-        \\\"so much work to keep that secret\\\". Her role had been revealed in a
-        casting credit list for the film on Letterboxd.\\n\\nPre-shooting had commenced
-        on July 4, 2022, at the Brion tomb in Altivole, Italy for two days. Principal
-        photography was set to begin on July 21 in Budapest, Hungary, but began earlier
-        on July 18. The film was entirely shot using Arri Alexa LF digital cameras,
-        with new filming locations and sets being used \\\"to avoid repetition\\\".
-        By October 2022, Chalamet had taken a break from filming in order to attend
-        the premiere of Bones and All (2022). By the next month, production moved
-        to Abu Dhabi, with Pugh also finishing her scenes in the same month. Certain
-        scenes set at dawn had to be filmed across three days to take advantage of
-        the golden hour. A special unit of production filmed scenes with Taylor-Joy
-        in Namibia, the driest country in sub-Saharan Africa. Filming wrapped on December
-        12, 2022. Due to the delays, Villeneuve was able to make a film transfer for
-        projection using the IMAX 70 mm and conventional 70 mm film formats.\\n\\nPugh
-        delivered Princess Irulan's opening narration during her first day of filming
-        and for overall production. Villeneuve and cinematographer Greig Fraser had
-        filmed Feyd-Rautha's gladiator sequence with specially designed black-and-white
-        infrared cameras. They wanted the Harkonnens to cheer and stomp rather than
-        applaud, and designed over 30 sections for spectators in the arena. Butler
-        spent his first week on set filming the scene, during which the set had very
-        high temperatures that caused some people to faint. He also improvised his
-        kiss scene with the Baron. For romantic scenes between Paul and Chani, the
-        scenes primarily filmed in remote locations in Jordan during the golden hour.
-        The scenes were often filmed as quickly as possible, with only a one-hour
-        window being available. The scene of Paul's sandworm ride was filmed practically
-        on a production unit separate from the main one, being led by producer Tanya
-        Lapointe and a special team. Chalamet filmed his scenes on a platform meant
-        to imitate a portion of the sandworm, with gripping devices serving as the
-        reference for the Fremen hooks. An industrial fan blew sand on set to emulate
-        the desert climate. Chalamet estimated the scene took over three months to
-        film, with individual shoots occurring over a span of 20-30 minutes. As the
-        actual sandworm was not built and there were no reference shots, the production
-        team designed a small portion of the worm on set and the actors had to physically
-        visualize and imitate riding the sandworm. Butler and Chalamet had separately
-        trained with a Kali instructor in Los Angeles for the climactic battle between
-        Paul and Feyd-Rautha. They were excited to do the scene, and immediately began
-        practicing once they later met in Budapest. They performed the scene by themselves,
-        including for wide camera shots, while Chalamet delivers the monologue entirely
-        in Chakobsa. Ferguson had cited Lady Jessica undergoing the Reverend Mother
-        process as her favorite scene, working with contortionists for the scene and
-        comparing it to an Exorcist film.\\n\\nHans Zimmer returned to compose the
-        film's score after doing so for the previous film. Zimmer had composed over
-        90 minutes of music prior to the announcement of the film to help give Villeneuve
-        inspiration when writing. Two singles were released on February 15, 2024,
-        by WaterTower Music, titled \\\"A Time of Quiet Between the Storms\\\" and
-        \\\"Harvester Attack\\\". The full soundtrack album was released on February
-        23.\\n\\nA teaser trailer for Dune: Part Two was presented during the Warner
-        Bros. panel at CinemaCon on April 27, 2023. First-look footage of the cast
-        in-character were released online, alongside a teaser poster, on May 2, 2023.
-        The trailer was released to the public the following day. Variety called it
-        \\\"breathtaking\\\"; GQ hailed the shots of Paul riding a sandworm as \\\"the
-        standout sequence\\\"; and Fangoria remarked \\\"If you're not excited for
-        this one, we dunno what to tell you\\\". Chalamet and Zendaya later discussed
-        and promoted the film at a Warner Bros. presentation at CineEurope on June
-        21.\\n\\nA second trailer was released on June 29, 2023. Chris Evangelista
-        of Film was excited about the appearance of Christopher Walken as Emperor
-        Shaddam IV. Ben Travis of Empire praised the \\\"seismic\\\" and \\\"astounding,
-        none-more-eye-boggling\\\" imagery, feeling the scope to be \\\"particularly
-        expansive\\\" and noted the monochromatic footage depicting Austin Butler's
-        Feyd-Rautha while calling the footage of Christopher Walken's appearance \\\"impactful\\\".
-        Joshua Rivera of Polygon opined \\\"The trailer, simply put, rocks\\\" and
-        enjoyed the footage present.\\n\\nThe film was promoted during the December
-        2023 CCXP with Chalamet, Zendaya, Pugh, Butler, and Villeneuve, where over
-        10 minutes of footage was released. Additional footage from Dune: Part Two
-        was shown during a limited IMAX theatrical re-release of Christopher Nolan's
-        Tenet (2020), as part of Warner Bros.' celebration for the former film's release.\\n\\nIn
-        January 2024, images of a forthcoming Dune-themed popcorn bucket from AMC
-        Theatres went viral and became an Internet meme due to comparisons of its
-        sandworm design to an artificial vagina. Saturday Night Live featured a musical
-        sketch with Marcello Hernandez, Ayo Edebiri, Devon Walker, and Bowen Yang
-        parodying the phenomenon. Warner Bros. and Legendary Pictures partnered with
-        Xbox to provide an immersive content suite related to the film, and visual
-        designs inspired by the film being featured on a floating controller, Xbox
-        Series X, and a console holder. Microsoft Flight Simulator also included an
-        expansion pack allowing players to explore Arrakis and pilot the Royal Atreides
-        Ornithopter. In November 2023, the Sardaukar were added to Call of Duty: Modern
-        Warfare II (2022) in a collaboration pack. A month later, Paul and Feyd-Rautha
-        were added as playable operators to its sequel, Call of Duty: Modern Warfare
-        III (2023), with an additional Harkonnen soldier skin being announced in March
-        2024. In September 2023, McFarlane Toys announced a new line of 7-inch figures
-        modeled after characters from the sequel film. Legendary Comics will release
-        Dune: Part Two - The Official Movie Graphic Novel with the help of Kickstarter
-        in the same way the previous adaptation was published.\\n\\nResearch conducted
-        by Nikolaj Mathies, CEO of Vievo Media, said the promotional campaign for
-        the film on TikTok included 117 posts over a year leading up to its release,
-        an increase from the first film's 108. Messages directly from the cast comprised
-        24% of the content, with videos featuring Zendaya and Chalamet generating
-        significantly higher viewership. Red carpet content was prioritized to appeal
-        to female audiences, a tactic that contributed to an estimated $2 million
-        increase in the opening box office. According to the marketing research company
-        FanBox, 57% of TikTok users are female and hashtags such as #zendaya have
-        garnered billions of views, leading the core audience for Dune to grow significantly,
-        with a 67.5% increase overall from 2.6 million to 8 million and an 84% increase
-        among \\\"superfans\\\".\\n\\nDune: Part Two was originally scheduled to be
-        released on October 20, 2023, but was delayed to November 17, 2023, before
-        moving forward two weeks to November 3, 2023, to adjust to changes in release
-        schedules from other studios. It was later postponed by over four months to
-        March 15, 2024, due to the 2023 Hollywood labor disputes. After the strikes
-        were resolved, the film moved once more up two weeks to March 1, 2024.\\n\\nFollowing
-        the success of Oppenheimer (2023) in the format, Dune: Part Two was released
-        in the IMAX 15-perforation 70 mm format to twelve venues worldwide, and in
-        standard 5-perforation 70mm format to 38 venues worldwide.\\n\\nA red carpet
-        event was hosted in the Auditorio Nacional in Mexico City on February 6, 2024.
-        Dune: Part Two's world premiere was held at Odeon Luxe Leicester Square in
-        London on February 15.\\n\\nOn January 16, 2024, the film was shown to a dying
-        man in a palliative care home in the Canadian city of Saguenay, in Denis Villeneuve's
-        native province of Quebec. The man had expressed a wish to see Dune: Part
-        Two before his death. Jos\xE9e Gagnon, the cofounder of a company aiming to
-        accompany people at the end of life, relayed his wish to Villeneuve and Tanya
-        Lapointe, his partner and one of the film's producers, through a viral call-out
-        on Facebook. According to Gagnon, Villeneuve and Lapointe \\\"were very touched\\\".
-        The pair initially offered to invite the man to see Dune: Part Two in Los
-        Angeles or Montreal, but since he was too weak to travel, Villeneuve eventually
-        decided to send one of his assistants directly to Saguenay with his private
-        laptop. The film was screened in a room of the care facility, where everyone
-        was required to hand in their cellphones and sign waivers. The man was in
-        too much pain, however, to watch it entirely and had to stop halfway through.
-        He eventually passed away on January 25. The incident, which CBC referred
-        to as the actual \\\"world premiere\\\" of the film, was publicly disclosed
-        after its theatrical release.\\n\\nAs of April 1, 2024, Dune: Part Two has
-        grossed $254.1 million in the United States and Canada and $374.7 million
-        in other territories, for a worldwide total of $628.8 million. The Hollywood
-        Reporter estimated the film needed to gross around $500 million in order to
-        break-even.\\n\\nIn the United States and Canada, the film's advanced ticket
-        sales surpassed those of Oppenheimer, and it was projected to gross $65\u201380
-        million from 4,050 theaters in its opening weekend. It was also expected to
-        gross $85\u201390 million from 71 international markets, for a worldwide debut
-        of around $170 million. The film made $32.2 million on its first day, including
-        $12 million from previews on February 25 and 29; IMAX screenings made up $4.5
-        million (38%) of the early totals. It went on to debut to $82.5 million, doubling
-        the first film's $41 million opening weekend; IMAX screenings made up $18.5
-        million (23%) of the total, a record for a March release. According to Jeff
-        Goldstein, president of domestic distribution at Warner Bros., it was \\\"much
-        higher than any of us could predict\\\", especially for \\\"a genre that is
-        a hard nut to crack\\\". The film also made $100.02 million from 72 international
-        markets in its opening weekend, bringing its worldwide three-day debut to
-        $182.5 million. In its second weekend the film made $46 million (a 44% drop),
-        finishing second behind newcomer Kung Fu Panda 4. It also surpassed the entire
-        domestic gross of the first film ($108 million) in just seven days. The film
-        made $28.5 million in its third weekend and $17.6 million in its fourth, remaining
-        in second both times.\\n\\nThe film \\\"largely received rave reviews from
-        critics\\\", and was praised for its visual effects and cast performances.
-        Some reviews considered it one of the best science fiction films of all time.
-        On the review aggregator website Rotten Tomatoes, 93% of 411 critics' reviews
-        are positive, with an average rating of 8.4/10. The website's consensus reads:
-        \\\"Visually thrilling and narratively epic, Dune: Part Two continues Denis
-        Villeneuve's adaptation of the beloved sci-fi series in spectacular form.\\\"
-        Metacritic, which uses a weighted average, assigned the film a score of 79
-        out of 100, based on 62 critics, indicating \\\"generally favorable\\\" reviews.
-        Audiences surveyed by CinemaScore gave the film an average grade of \\\"A\\\"
-        on an A+ to F scale, while those polled by PostTrak gave it a 94% overall
-        positive score, with 80% saying they would definitely recommend it.\\n\\nThe
-        Daily Telegraph's Robbie Collin awarded the film four stars out of five and
-        praised its visuals: \\\"Dune's loose-endedness is one of its best qualities:
-        finding out what happens is secondary to just seeing it unfold.\\\" Peter
-        Bradshaw, chief film critic for The Guardian, awarded the film four stars
-        out of five, writing \\\"Denis Villeneuve's monumental adaptation expands
-        its extraordinary world of shimmering strangeness. It's impossible to imagine
-        anyone doing it better.\\\" Richard Roeper, writing for the Chicago Sun-Times,
-        gave the film three stars out of four, praising the technical and narrative
-        aspects, saying, \\\"Even as we marvel at the stunning and immersive and Oscar-level
-        cinematography, editing, score, visual effects, production design and sound
-        in Denis Villeneuve's Dune: Part Two, we're reminded at every turn that this
-        is an absolutely bat-bleep [sic] crazy story.\\\"\\n\\nFilmmaker Steven Spielberg
-        praised the film, calling it \\\"one of the most brilliant science fiction
-        films I have ever seen,\\\" while further noting that \\\"it's also filled
-        with deeply, deeply drawn characters ... Yet the dialogue is very sparse when
-        you look at it proportionately to the running time of the film. It's such
-        cinema. The shots are so painterly, yet there's not an angle or single setup
-        that's pretentious.\\\"\\n\\nOther reviews were more mixed in their judgement.
-        In The Hollywood Reporter, Lovia Gyarkye praised the film's technical aspects
-        and performances, but found it failed to fully adapt the book's nuance on
-        themes such as imperialism. Nicholas Barber wrote for the BBC that the film
-        is \\\"one of the most jaw-droppingly weird pieces of art-house psychedelia
-        ever to come from a major studio\\\", finding the film's grand scale made
-        up for its issues. At the more negative end, Noah Berlatsky writing for CNN
-        judged that the film had failed to \\\"present an effective anti-colonial
-        vision\\\" by still being centred around Paul's destiny despite an increased
-        voice of opposition from Chani.\\n\\nCommentators have criticised the film
-        for failing to adequately deal with the original book's Middle East and North
-        Africa (MENA) influences or otherwise incorporate enough representation from
-        the region. Furvah Shah, writing for the UK edition of Cosmopolitan, said
-        she \\\"felt frustrated as a Muslim viewer\\\", criticising the film for a
-        lack of MENA casting amongst the leads despite the use of the region's culture
-        and superficial use of Islam. The New Arab's Hannah Flint also criticized
-        the use of Arab and Islamic cultural items and lack of MENA casting, though
-        did praise that of Swiss-Tunisian actress Souheila Yacoub as a \\\"win for
-        Arab representation\\\". Steven D. Greydanus, in U.S. Catholic, gives a contrasting
-        view of the film's religious inspirations, noting that the film draws from
-        a number of Abrahamic religions for the purpose of critiquing faith itself,
-        while also noting the \\\"spiritualization of ecological concerns\\\" through
-        the Fremen.\\n\\nThe trailer for Dune: Part Two received nominations for Best
-        Fantasy Adventure and the Don LaFontaine Award for Best Voice Over at the
-        2023 Golden Trailer Awards. The film was nominated for Most Anticipated Film
-        at the 6th Hollywood Critics Association Midseason Film Awards.\\n\\nVilleneuve
-        has repeatedly expressed interest in making a third film based on Dune Messiah,
-        the second novel in the series, adding that the possibility for the film depended
-        on the success of Dune: Part Two. Spaihts also reiterated in March 2022 that
-        Villeneuve had plans for a third film as well as the television spin-off series
-        Dune: Prophecy. In August 2023, Villeneuve said the third film would serve
-        as the conclusion of a trilogy. Villeneuve began developing a script for the
-        third film in 2023. In February 2024, Villeneuve said the script was \\\"almost
-        finished\\\" but also said he \\\"[does not] want to rush it\\\", citing Hollywood's
-        tendency of focusing on release dates over a film's overall quality, and adding,
-        \\\"I want to make sure that if we go back there a third time that it'll be
-        worth it, and that it would make something even better than Part Two\\\".
-        Villeneuve also considered waiting a few years for Chalamet to grow older,
-        given that Dune Messiah is set 12 years after the events of the original book.\\n\\nAhead
-        of Dune: Part Two's release, Zimmer revealed he was already writing music
-        for a third film after Villeneuve came in and \\\"wordlessly\\\" put Dune
-        Messiah on his desk.\",\"timestamp\":\"2024-04-05T00:32:57\",\"title\":\"Dune:
-        Part Two - Wikipedia\",\"url\":\"https://en.wikipedia.org/wiki/Dune:_Part_Two\"},{\"id\":\"web-search_5\",\"snippet\":\"AboutPressCopyrightContact
-        usCreatorsAdvertiseDevelopersTermsPrivacyPolicy \\u0026 SafetyHow YouTube
-        worksTest new features\",\"timestamp\":\"2024-04-02T20:19:38\",\"title\":\"'Dune:
-        Part Two' Director Denis Villeneuve Breaks Down the Sandworm Scene | Vanity
-        Fair - YouTube\",\"url\":\"https://www.youtube.com/watch?v=7E6AcXUKSVA\"},{\"id\":\"web-search_6\",\"snippet\":\"Dune:
-        Part Two: Everything We Know\\n\\nGet ready, spiceheads: we'll return to Arrakis
-        in less than two weeks.\\n\\nBy Adrienne Westenfeld, Josh Rosenberg and Bria
-        McNealPublished: Feb 20, 2024 11:26 AM EST\\n\\nLet the countdown begin. In
-        less than two weeks, the long-awaited Dune: Part Two will finally premiere
-        in theaters. Over the past two years, director Denis Villeneuve has teased
-        an epic journey for the great Paul Atreides (Timoth\xE9e Chalamet). If the
-        trailer is any indication, Dune: Part Two won\u2019t disappoint. You can expect
-        to see Chalamet ride a big ol\u2019 sandworm, Zendaya\u2019s return as Chani,
-        a terrifyingly eggheaded Austin Butler playing Feyd-Rautha Harkonnen, Florence
-        Pugh as Princess Irulan, and a special appearance from Anya Taylor-Joy. While
-        we wait to be reunited with Arrakis, check out the latest trailer for Dune:
-        Part Two above.\\n\\nThe sequel follows Paul Atreides (Chalamet) and the Fremen
-        as they fight to take back their land before it\u2019s too late. Over the
-        past two years, fans have mused over what might happen next\u2014and they'll
-        likely show up to the box office to find out. According to Collider, the sequel
-        is currently projected to gross at least $65 million domestically.\\n\\nThey
-        Don't Make Them Like Austin Butler Anymore\\n\\nWhat seems to have spared
-        Villeneuve\u2019s Dune from the poor outcomes of previous adaptations was
-        his crucial decision to break the massive story into two parts. That left
-        the first film ending on a cliffhanger, but the sequel is sure to tie up loose
-        ends. The cast includes Austin Butler, Florence Pugh, Rebecca Ferguson, Stellan
-        Skarsg\xE5rd, L\xE9a Seydoux, Dave Bautista, Javier Bardem, Josh Brolin, Christopher
-        Walken, and more.\\n\\nAs for the plot\u2014well, you can expect to see more
-        fighting and less planning to fight in the sequel. \\\"Part One is more of
-        a contemplative movie. Part Two is an action-packed, epic, war movie,\\\"
-        Villeneuve stated at CinemaCon 2023 in Las Vegas. \\\"It is much more dense.
-        We went to all new locations... I didn\u2019t want a feeling of repetition.
-        It\u2019s all new sets. Everything is new... This time, it's full IMAX.\\\"\\n\\nKeep
-        reading for everything you need to know about Dune: Part Two ahead of the
-        film's premiere.\\n\\nWhat Are People Saying About Dune: Part Two?\\n\\nDune:
-        Part Two may not be in theaters, but that\u2019s not stopping critics and
-        fans from sharing their early reactions to the film. Here\u2019s what people
-        have said so far.\\n\\nWhat Happens in Dune: Part Two?\\n\\nIn Part Two, viewers
-        can expect Villeneuve's plot to favor the second half of Herbert's Dune, which
-        tracks Paul's rise to power among the Fremen and his eventual rebellion against
-        Padishah Emperor Shaddam IV. Paul's journey to becoming the fabled \\\"Kwisatz
-        Haderach\\\" will test his character and imperil his life. Meanwhile, the
-        Atreides family expands: Paul and Chani become romantically entwined, as his
-        clairvoyant visions predicted, and Lady Jessica gives birth to a daughter,
-        Alia, with outstanding Bene Gesserit abilities. We won't spoil all the delicious
-        twists and turns, but rest assured that the outline provided by the back half
-        of the novel lends itself to a thrilling, more plot-driven story. \u201CIt\u2019s
-        going to be another beautiful journey in the desert again,\u201D Villeneuve
-        teases. \u201CIt\u2019s the journey where Paul Atreides and his mother, Lady
-        Jessica, make contact with the Fremen culture and meet with the Fremen. It\u2019s
-        Paul\u2019s journey against the enemy. It\u2019s a movie that will be more
-        cinematic.\u201D\\n\\nThe Best Movies of 2024 (So Far)\\n\\nOn the red carpet
-        for Bones And All, when Chalamet was asked about revisiting old works, he
-        commented on revisiting Dune: Part One in the midst of making Dune: Part Two.
-        \\\"It\u2019s fascinating. It\u2019s something you don\u2019t get to do with
-        movies. Revisit,\\\" the actor said. \\\"Actually though, I\u2019m feeling
-        that with Dune. Speaking about how cycles match life. I was younger when I
-        did it the first time and was kind of blindsided by how big that movie was.
-        And now, as Paul Atreides becomes more sure on his heels, I feel more sure
-        on my heels, too.\\\" Sounds like we can look forward to a more confident
-        and self-assured Paul Atreides. It's no big surprise\u2014when Paul made his
-        first kill at the end of Part One, it signified his transition from boyhood
-        to manhood. With Part Two set to demand more from Paul as a warrior and a
-        leader, as well as draw on his power of prescience, the character (and Chalamet,
-        it sounds like) will have to grow.\\n\\nWho Are the New Characters?\\n\\nPart
-        Two isn't just the Paul Atreides Show\u2014as expected, the cast has expanded.
-        After a long wait and an awful lot of rumors, Villeneuve tapped a handful
-        of heavy-hitters to round out the story. Christopher Walken joins the cast
-        as Shaddam IV, Emperor of the Known Universe, while Florence Pugh joins as
-        his daughter, Princess Irulan, who later becomes Paul's wife (making this
-        Pugh and Chalamet's second time playing on-screen spouses, following 2019's
-        Little Women). With filming now underway, Pugh was spotted on set in Italy
-        costumed as Princess Irulan. The low quality photo doesn't give us much to
-        go on, but it does show Pugh in some sort of gold circlet, clad in a linen
-        shift. Could this be Princess Irulan in casual attire at the palace, or could
-        she be dressed for Bene Gesserit training? Chalamet raved about Pugh, telling
-        Variety, \u201CFlorence is really special. She\u2019s an incredible actor.
-        She was incredible in Dune\u2014seriously incredible. She brought a gravitas
-        to the role.\\\"\\n\\nMeanwhile, two more cast members round out the newbie
-        pool: Souheila Yacoub will play Shishakli, a squad leader of Paul's fearsome
-        Fedaykin, while L\xE9a Seydoux will play Lady Margot Fenring, the Bene Gesserit
-        wife of Count Hasimir Fenring. Lady Margot and her husband (who remains uncasted)
-        plot against the Harkonnens and refuse to act against the Atreides family.\\n\\nThe
-        biggest casting decision is arguably Austin Butler\u2014that's right, Elvis
-        himself\u2014as Feyd-Rautha Harkonnen, Paul's foil and bitter rival, who becomes
-        the biggest antagonist on Paul's quest for absolute power. Villeneuve has
-        said that Feyd-Rautha will \\\"definitely be a very, very important character\\\"
-        in Part Two. Speaking with Backstage, Butler teased a complex take on the
-        villain. \\\"It\u2019s that thing of the bad guy in the world doesn\u2019t
-        feel like he\u2019s the bad guy,\\\" the actor said. \\\"He feels like he\u2019s
-        the hero of his own story. And that can be a hard thing with certain characters;
-        with others, it\u2019s easier, but you have to not judge the character, and
-        you have to find a way to feel the motivation towards anyone of your actions.
-        So, we had a lot of conversations and crafted that together.\\\" Butler also
-        revealed that he spent months training with Navy Seals to physically prepare
-        for the role, so no doubt he's more than ready for Paul and Feyd-Rautha's
-        climactic knife fight.\\n\\n'Dune' Is A Future-Shock Masterpiece\\n\\nBut
-        it's not just Feyd-Rautha taking a starring turn\u2014in fact, all of the
-        Harkonnens are set to take on a bigger role in Part Two, as Paul squares off
-        against both Feyd-Rautha and Baron Vladimir Harkonnen. Meanwhile, Alia and
-        the Baron become mystically intertwined, and surprising linkages between House
-        Harkonnen and House Atreides are revealed.\\n\\n\\\"In the second one, I want
-        to have more flexibility, and it will be possible to go a little bit deeper
-        into some of these details,\u201D Villeneuve said. \u201CIt\u2019s like a
-        chess game. Some new characters will be introduced in the second part. A decision
-        I made very early on was that this first part would be more about Paul Atreides
-        and the Bene Gesserit, and his experience of being in contact for the first
-        time with a different culture. Second part, there will be much more Harkonnen
-        stuff.\u201D\\n\\nBautista echoed Villeneuve's comments about Part Two's shifting
-        tone, telling Collider, \\\"This is so amped up from the first film. The first
-        film was just an introduction to what this film is. There's just so much going
-        on, it's so much more cutthroat and political and intense. And there are moments
-        of levity where [there are] some funny moments, and they're kind of absurd
-        humor, but there are those moments. So it's just so much more amped up than
-        the first film.\u201D You hear that, folks? Time to yuk it up on Arrakis.\\n\\nIn
-        Dune: Part Two, Paul will finally meet his destiny.\\n\\nWill We Finally Get
-        More Zendaya This Time?\\n\\nPart Two will also feature a bigger role for
-        Chani, which will be welcome news for Zendaya fans. After Chani was heavily
-        featured in trailers and Zendaya walked red carpets as Timoth\xE9e Chalamet's
-        co-lead, some fans were shocked when she only factored into the film for seven
-        minutes. Part Two won't have that problem. When asked what she's most excited
-        about with the sequel, Zendaya joked to Deadline, \\\"Well, I can be there
-        for longer, which is cool.\\\" She went on to tease an expanded role in Part
-        Two, saying, \\\"I want to grow with the characters I play, and with the people
-        that I get to learn from. Anybody who has read the books knows there\u2019s
-        so much more to explore and deal with. What was cool for me, having not been
-        around for much of the first shoot, was getting to see the movie from a completely
-        fresh perspective, because I hadn\u2019t seen the sets and the scenes for
-        most of the movie. Watching it felt like just the beginning of this story.\\\"\\n\\nVilleneuve
-        backed up Zendaya's hints about Part Two, telling Variety, \u201CFor Zendaya,
-        I will say Part One was a promise. I know that we saw a glimpse of her in
-        Part One, but in Part Two, she\u2019ll have a prominent part. We will follow
-        Timoth\xE9e [Chalamet] and Zendaya on their adventures in the desert. The
-        thing that excited me most about going back to Arrakis is to spend time with
-        those characters again.\u201D\\n\\nChalamet, clearly the hype man for the
-        ladies of Dune: Part Two, gushed about Zendaya, telling Variety, \u201CShe
-        hasn\u2019t wrapped yet, and it\u2019s amazing. She\u2019s bringing exactly
-        what she brought to the first one\u2014which was incredible\u2014but in greater
-        abundance. And she\u2019s really become a sister. I\u2019m so grateful to
-        count her as a partner and a sister and a friend.\\\" Zendaya clearly had
-        a blast filming; in an Instagram story, she posted a shot of the desert, captioned,
-        \\\"Sending love from Arrakis.\\\"\\n\\nWe can expect most of the supporting
-        cast of Part One\u2014that is, those who survived the midnight massacre of
-        House Atreides\u2014to return for Part Two, such as Josh Brolin's Gurney Halleck,
-        who, as fans of the book know, escapes and joins a band of spice smugglers,
-        later reuniting with Paul. Brolin confirmed as much, telling Collider, \\\"I
-        am a part of Dune: Part Two, to the ridiculous extent of when somebody mentioned
-        to me that it wasn't on IMDb, I actually went out of my way to call Liz [Brolin's
-        publicist] and say, 'Can you please put that on IMDb?' Because it's a proud
-        moment for me, man.'\\\" Anyone who hasn't read the book might have been surprised
-        by Gurney's abrupt disappearance from the film; when we last see him, he's
-        charging into battle against the Harkonnens. \\\"When I watched it, I was
-        like, 'Where did I go?'\u201D Brolin joked in an interview with The Hollywood
-        Reporter.\\n\\nCan Villenueve Pull Off a Second Adaptation?\\n\\nBut what
-        are devoted readers going to make of how Villeneuve adapts the back half of
-        the book? Javier Bardem, who plays Fremen leader Stilgar, teased some surprises
-        in a speech at the Cannes Film Festival. \\\"I\u2019ve read the new draft,\\\"
-        he said, \\\"and I think they\u2019ve done an amazing job of putting together
-        the pieces in a way that is going to surprise people. They won\u2019t be surprised
-        [by what happens], obviously, because they\u2019ve read the book, but they\u2019ll
-        be surprised by the way they put it together. I was very moved by it. It\u2019s
-        a movie that is full, and you can feel the weight of it, and at the same time,
-        [you can enjoy] the spectacularity of it. [I can\u2019t wait] to go back to
-        the desert with those people, and I\u2019m so happy to go back with Denis,
-        who is one of the greatest directors ever.\\\"\\n\\nWhat could \\\"they'll
-        be surprised by the way they put it together\\\" mean? A time-jumping narrative
-        structure? Flashback encounters with characters who are dead and gone? This
-        is just a hunch, but we suspect the Dune-iverse isn't ready to say goodbye
-        to Space Daddy Oscar Isaac just yet. Isaac's Duke Leto Atreides is dead and
-        gone, but it's possible he could return in flashbacks, or in Paul's prophetic
-        visions. Isaac teased as much in a recent interview, saying, \\\"Dad\u2019s
-        dead, baby, dad\u2019s dead. It\u2019s a bummer. Maybe in some flashbacks
-        or some force ghosts, but that\u2019s not that one. They don\u2019t do force
-        ghosts.\\\"As for Jason Momoa, whose Duncan Idaho died valiantly while defending
-        Paul and Lady Jessica, it's possible he'll return, though not exactly as you
-        remember him. Spiceheads know that in Dune: Messiah, Duncan Idaho is returned
-        to life as a ghola, or a resurrected clone, with no memories of his former
-        life. Duncan's ghola is gifted to Paul, only to later die again, and subsequently
-        be rebirthed multiple times. It's a never-ending cycle and a long-running
-        literary in-joke, so if Villeneuve's Dune franchise leads to multiple sequels,
-        Momoa could be sticking around for a long time.\\n\\nDune editor Joe Walker
-        teased as much, saying in an interview, \\\"What's really interesting about
-        Frank Herbert's book is that some characters do come back, but not necessarily
-        in the same form that they took originally. Those who know the book know that
-        Duncan Idaho, for example, reappears, so it's not over until the last lady
-        sings.\\\" Sure, Duncan doesn't return until Dune: Messiah, but what's to
-        stop Villeneuve from speeding up the timeline? After all, Part Two could probably
-        use some of Momoa's levity and charisma to balance out all the holy wars.\\n\\nBy
-        the same token, what's to stop Villeneuve from reaching back even further
-        in his casting, all the way to David Lynch's ill-fated Dune? In an interview,
-        cinema's first Paul Atreides, Kyle MacLachlan, commented on the possibility
-        of making a cameo in Dune: Part Two. \\\"I think it's totally up to Denis
-        and whatever he wants to do,\\\" MacLachlan told ComicBook.com. \\\"I watched
-        his film, it was great, I enjoyed it. Had a tremendous sense of nostalgia,
-        to be honest, watching some of the sequences and remembering stuff that I
-        did with our cast in 1983. So it was a trip down memory lane for me, but I
-        thoroughly enjoyed it, and who knows? Who knows what he's got up his sleeve?\\\"
-        Perhaps MacLachlan could sneak in as a Fremen local or a member of the Emperor's
-        court. Could we dream even bigger and get a multiverse of multiple Paul Atreides,
-        \xE0 la the three Spider-Mans in Spider-Man: No Way Home? Speaking of people
-        with Dune history, Charlotte Rampling, who nearly starred in the ill-fated
-        Jodorowsky's Dune, will return for the sequel as Reverend Mother Gaius Helen
-        Mohiam.\\n\\nHow to Read the 'Dune' Book Series in Order\\n\\nAlso returning
-        for Part Two is Hans Zimmer, the legendary composer who brought such a distinctive
-        sound to Part One. With Part Two entering production, Zimmer is already hard
-        at work. \\\"I know the structure of the score over Part One and Part Two
-        because I see it as one,\\\" Zimmer told Inverse. \\\"And, in my head, I've
-        sort of written the shape of Part Two already. I just sent Denis a text yesterday
-        saying I have all these crazy ideas for the next one. There is a solid way
-        of breaching out in the story musically that nobody has really thought about.
-        But I should tell the crazy ideas to Denis first.\\\"\\n\\nI'm Going to See
-        the Big Worms, Right?\\n\\nVilleneuve is already cooking up some crazy ideas
-        of his own. Remember how, at the end of Part One, we saw a sandrider in the
-        distance, riding a giant sandworm through the desert? That was just a preview
-        of coming attractions. The director promises that he intends to film one of
-        the book's most iconic scenes, when Paul has to master the art of wormriding
-        in order to become the leader of the Fremen. \\\"It\u2019s going to be one
-        of the most exciting and challenging scenes that I will have to do as a director,\\\"
-        Villeneuve told GamesRadar.\\n\\nHe continued: \\\"I know exactly how to do
-        it. The way we approach [sandworm riding] in the first part, it\u2019s just
-        like an evocation. We see them riding in the distance. But the potential of
-        worm-riding is huge. Already, with Timothe\u0301e, we have done a test for
-        him, as we were [shooting] the first movie. There are shots that I didn\u2019t
-        put in the movie. But it\u2019s so exciting.\\\" A lot rides on this scene,
-        but if Villeneuve can get it right, the payoff is bound to be immense. \\\"That\u2019s
-        going to be one of the beautiful challenges of my life,\\\" he told Variety.
-        \\\"And I know if I do it right, that will be the scene.\u201D\\n\\nChalamet
-        isn't the only person gunning to ride a sandworm\u2014after all, Paul will
-        need a teacher. Bardem is eager to sink his maker hooks into one of Dune's
-        most iconic creations. \\\"[Denis Villeneuve] told me he's going to try to
-        make that happen,\\\" Bardem told IGN. \\\"That does happen in the book, by
-        the way. Stilgar teaches Paul how to take the desert power, which is to domesticate
-        those huge animals in order to use their force, their strength, and their
-        huge size against the Harkonnens. Hopefully, that will happen.\\\"\\n\\nWhich
-        is all to say, Villeneuve has his work cut out for him\u2014and in a perfect
-        world, he won't be stopped at just one more movie. \\\"I always envisioned
-        three movies,\\\" he told Entertainment Weekly. \\\"It's not that I want to
-        do a franchise, but this is Dune, and Dune is a huge story. In order to honor
-        it, I think you would need at least three movies. That would be the dream.
-        To follow Paul Atreides and his full arc would be nice. Herbert wrote six
-        books, and the more he was writing, the more it was getting psychedelic. So
-        I don't know how some of them could be adapted. One thing at a time. If I
-        ever have the chance to do Dune: Part Two and Dune Messiah, I'm blessed.\\\"\\n\\nDune:
-        Part Two is happening and director Denis Villeneuve wants more, in the form
-        of even a third film.\\n\\nIn Dune: Messiah, Herbert's second book in the
-        series, Paul's story comes to a close, while Herbert's thorny thematic questions
-        about power, destiny, and messiahs come into sharper focus. While Dune traces
-        Paul's rise to power, Dune: Messiah traces his fall. But don't expect to see
-        Dune: Messiah in theaters anytime soon. \u201CI want to make Part Two as fast
-        as possible, then I will wait a few years\u2014until Timoth\xE9e Chalamet
-        gets a bit older\u2014to do the final installment,\u201D Villeneuve revealed
-        to Vanity Fair. \u201CI\u2019ve lived with Dune for most of my life. Being
-        patient is part of the journey.\u201D\\n\\nVilleneuve has a long road ahead
-        of him (as spiceheads might say, his road leads into the desert). With only
-        Dune: Part Two on lock, we'll refrain from getting too excited about the possibility
-        of seeing Dune: Messiah on screen. Watch this space for updates as we continue
-        to learn more.\\n\\nAdvertisement - Continue Reading Below\\n\\nThe Best Classic
-        Japanese Godzilla Movies, Ranked\\n\\n\u2018Us\u2019 Is Still Scary\u2014and
-        Relevant\u2014as Hell\\n\\nThe 25 Best Movies on Max\\n\\nPost Malone's 'Road
-        House' Song Is a Must-Listen\\n\\nAdvertisement - Continue Reading Below\\n\\nA
-        Guide to Woody Harrelson\u2019s Greatest Film Roles\\n\\nWhat I\u2019ve Learned:
-        Dan Aykroyd\\n\\nI\u2019ll Fight Someone For \u2018Road House 2\u2019\\n\\nGive
-        Conor McGregor His Own \u201CRoad House\u2019 Spin-off\\n\\n\u2018Road House\u2019
-        Returned Testosterone to My Body\\n\\nThe 25 Best A24 Movies, Ranked\\n\\n\u2018Scoop\u2019
-        Is on the Way to Feed Your Royal Mania\\n\\nProtect Your Neck! \u2018Road
-        House\u2019 Is Almost Here.\\n\\nAdvertisement - Continue Reading Below\",\"timestamp\":\"2024-03-31T15:33:29\",\"title\":\"'Dune:
-        Part Two': Sequel Details, Release Date, Cast, News\",\"url\":\"https://www.esquire.com/entertainment/movies/a38040674/dune-2-sequel-details/\"},{\"id\":\"web-search_8\",\"snippet\":\"AboutPressCopyrightContact
-        usCreatorsAdvertiseDevelopersTermsPrivacyPolicy \\u0026 SafetyHow YouTube
-        worksTest new features\",\"timestamp\":\"2024-03-27T12:27:54\",\"title\":\"'Dune
-        2' Director Denis Villeneuve on the Five Films That Inspired the Sequel |
-        Esquire Talks - YouTube\",\"url\":\"https://www.youtube.com/watch?v=Jcwie9bCj6U\"},{\"id\":\"web-search_9\",\"snippet\":\"Plus
-        Icon Click to expand the Mega Menu\\n\\nPlus Icon Click to Expand Search Input\\n\\nSwitch
-        edition between U.S. Edition Asia Edition Global Edition\\n\\nView Variety
-        Archives\\n\\nVariety Digital Login\\n\\nPlus Icon Account Plus Icon\\n\\nView
-        Variety Archives\\n\\nVariety Digital Login\\n\\nView Variety Archives\\n\\nVariety
-        Digital Login\\n\\nPlus Icon Click to expand the Mega Menu\\n\\nPlus Icon
-        Click to Expand Search Input\\n\\nVariety Plus Icon Read Next: Vera Drew Was
-        So Inspired by Todd Phillips\u2019 \u2018Joker\u2019 That She Made an Unauthorized
-        Parody Film About Her Trans Journey: \u2018My Community Is Completely Villainized\u2019\\n\\nView
-        Variety Archives\\n\\nVariety Digital Login\\n\\nPlus Icon Account Plus Icon\\n\\nView
-        Variety Archives\\n\\nVariety Digital Login\\n\\nApr 4, 2024 1:37pm PT\\n\\nDenis
-        Villeneuve and Legendary Developing \u2018Dune 3\u2019 and \u2018Nuclear War:
-        A Scenario\u2019 Film Adaptation\\n\\nAndrew Scott Insists His Murderous \u2018Ripley\u2019
-        Character Is Not \u2018Bloodthirsty\u2019: \u2018He\u2019s Not a Natural Born
-        Killer\u2019 28 mins ago\\n\\nNicole Byer and Rufus Wainwright Lead 2024/2025
-        Season Lineup for The Wallis (EXCLUSIVE) 3 hours ago\\n\\nTiffany Haddish
-        and Nikki Glaser to Perform at Benefit for Women\u2019s Recovery Organization
-        Friendly House (EXCLUSIVE) 1 day ago\\n\\nAFP via Getty Images\\n\\nFollowing
-        the massive success of \u201CDune: Part Two,\u201D director Denis Villeneuve
-        may have found his next project.\\n\\nThe filmmaker is in discussion to reunite
-        with Legendary for an adaptation of Annie Jacobsen\u2019s Pulitzer Prize finalist
-        \u201CNuclear War: A Scenario,\u201D Variety has confirmed. Legendary also
-        confirmed that it is working with Villeneuve to develop a third \u201CDune\u201D
-        film.\\n\\nLegendary optioned the feature film rights to Jacobsen\u2019s nonfiction
-        book; Villeneuve is currently in talks with the studio to produce, adapt and/or
-        director. His producing partner Tanya Lapointe would also be a part of the
-        project.\\n\\nReleased on March 26, Jacobsen\u2019s book \u201Cexplores a
-        ticking-clock scenario about what would happen in the event of a nuclear war,
-        based on dozens of exclusive new interviews with military and civilian experts
-        who built the weapons and have been privy to the response plans and have been
-        responsible for those decisions should they have needed to be made.\u201D\\n\\nMeanwhile,
-        Villeneuve\u2019s \u201CDune: Part Two\u201D is still raking in money at the
-        box office, having already amassed $630 million worldwide. The sequel, led
-        by Timoth\xE9e Chalamet, Zendaya and a host of other Hollywood A-listers,
-        is currently the highest-grossing film of 2024. In the film, Chalamet\u2019s
-        Paul Atreides takes his place as the prophesied chosen one and fights to exact
-        revenge against those that destroyed his family. Villeneuve\u2019s first \u201CDune\u201D
-        movie, released in 2021, grossed $402 million globally.\\n\\nJacobsen\u2019s
-        other books include \u201CArea 51,\u201D \u201COperation Paperclip,\u201D
-        \u201CThe Pentagon\u2019s Brain,\u201D \u201CPhenomena,\u201D \u201CSurprise,\u201D
-        \u201CKill Vanish,\u201D and \u201CFirst Platoon.\u201D As a writer and producer
-        for television, her credits include \u201CTom Clancy\u2019s Jack Ryan.\u201D\\n\\nBoth
-        Villeneuve and Jacobsen are repped by CAA.\\n\\nChristian Bale Transforms
-        Into Frankenstein\u2019s Monster in First Look at Maggie Gyllenhaal\u2019s
-        \u2018The Bride\u2019\\n\\nAnna Paquin Uses Cane on Red Carpet After \u2018Difficult\u2019
-        Two Years With Health Issue That Affected Her Mobility: \u2018It Hasn\u2019t
-        Been Easy\u2026\\n\\nAndrew Scott Is Utterly Charmless in Netflix's Somber
-        \u2018Ripley\u2019: TV Review\\n\\nJennifer Lopez Quietly Rebrands Tour as
-        Greatest Hits Show Amid Weak Ticket Sales\\n\\nNickelodeon Host Marc Summers
-        Walked Out of \u2018Quiet on Set\u2019 Interview, Says Doc Pulled a 'Bait
-        and Switch' on Him: 'They Lied to Me'\\n\\n'Wolf Hall: The Mirror and the
-        Light' First Look Sees Kate Phillips Reprise Role as Henry VIII's Short-Lived
-        Third Wife Jane Seymour\\n\\nKirsten Dunst Confronts \u2018Civil War' Hysteria,
-        Hollywood Pay Gaps and the Media Dividing America: \u2018Everything Is Broken\u2019\\n\\nJerrod
-        Carmichael Calls Dave Chappelle an \u2018Egomaniac\u2019: \u2018He Wanted
-        Me to Apologize Publicly or Some S\u2014\u2018 for Criticizing His Anti-Trans\u2026\\n\\nBeyonc\xE9
-        Used Original Beatles Backing Track for \u2018Blackbird\u2019 on New \u2018Cowboy
-        Carter\u2019 Version, With Paul McCartney\u2019s\u2026\\n\\n19 Best Movies
-        New to Streaming in April: \u2018Zone of Interest,\u2019 \u2018Anyone but
-        You,\u2019 \u2018Late Night With the Devil,\u2019 \u2018Wish\u2019 and\u2026\\n\\nDa\u2019Vine
-        Joy Randolph\u2019s Oscar Win Is Just the Start: \u2018The Roles Will Get
-        Better, The Money Will Improve\u2019 By Andrew Wallenstein 3 weeks\\n\\nWill
-        and Jada Pinkett Smith\u2019s Charity to Close After Oscars Slap: Donations
-        Sink; Thousands Spent on Elusive Mental Health Orgs and Overdrawn Bank\u2026\\n\\nNickelodeon
-        Directors Beth and Rich Correll Apologize for Supporting Brian Peck in Drake
-        Bell Abuse Case: \u2018We Are Saddened and Appalled\u2019\\n\\nJosh O\u2019Connor
-        in Talks to Star in Luca Guadagnino\u2019s Gay Romance Film \u2018Separate
-        Rooms\u2019 (EXCLUSIVE)\\n\\n\u2018Euphoria\u2019 Season 3 Shoot Delayed;
-        HBO Says It\u2019s \u2018Committed to Making\u2019 New Episodes Amid Report
-        Season Was Scrapped\\n\\nSign Up for Variety Newsletters\\n\\nBy providing
-        your information, you agree to our Terms of Use and our Privacy Policy. We
-        use vendors that may also process your information to help provide our services.
-        // This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy
-        and Terms of Service apply.\\n\\nVariety Confidential\\n\\nA Variety and iHeartRadio
-        Podcast\\n\\nMore From Our Brands\\n\\nPost Malone Sang About His \u2018Honky
-        Tonk Blues\u2019 With a Hank Williams Cover at Surprise Nashville Show\\n\\nThe
-        8 Best Blue-Light Glasses to Protect Your Eyes From All Those Screens\\n\\nA\u2019s
-        to Play in Sacramento for Three Years Ahead of Vegas Move\\n\\nThe Best Loofahs
-        and Body Scrubbers, According to Dermatologists\\n\\nAvatar: The Last Airbender
-        Changes Showrunners Again Ahead of Final Two Seasons on Netflix\\n\\nTo help
-        keep your account secure, please log-in again.\\n\\nYou are no longer onsite
-        at your organization. Please log in. For assistance, contact your corporate
-        administrator.\",\"timestamp\":\"2024-04-05T00:03:10\",\"title\":\"Denis Villeneuve
-        and Legendary Developing 'Dune 3' and 'Nuclear War: A Scenario' Film Adaptation\",\"url\":\"https://variety.com/2024/film/news/dune-3-denis-villeneuve-legendary-nuclear-war-1235960990/\"}],\"search_results\":[{\"search_query\":{\"text\":\"dune
-        2 director\",\"generation_id\":\"dfccd6f9-efb9-4d69-a0be-fffad272ad4e\"},\"document_ids\":[\"web-search_2\",\"web-search_3\",\"web-search_4\",\"web-search_5\",\"web-search_6\",\"web-search_8\",\"web-search_9\"],\"connector\":{\"id\":\"web-search\"}}],\"search_queries\":[{\"text\":\"dune
-        2 director\",\"generation_id\":\"dfccd6f9-efb9-4d69-a0be-fffad272ad4e\"}]}"
+        Accept All Cookies\",\"timestamp\":\"2024-04-12T08:31:55\",\"title\":\"'Dune:
+        Part 2' director reveals the most painful choice he had to make in adaptation\",\"url\":\"https://ew.com/dune-part-two-denis-villeneuve-most-painful-character-to-cut-8601541\"},{\"id\":\"web-search_9\",\"snippet\":\"Skip
+        to main content\\n\\nPlus Icon Click to expand the Mega Menu\\n\\nClick to
+        expand search form\\n\\nThe Hollywood Reporter homepage\\n\\nThe Definitive
+        Voice of Entertainment News\\n\\nSubscribe for full access to The Hollywood
+        Reporter See My Options Sign Up\\n\\nPlus Icon Click to expand the Mega Menu
+        Menu\\n\\nClick to expand search form\\n\\nThe Hollywood Reporter homepage\\n\\nTim
+        Burton Says Gathering \u2018Beetlejuice\u2019 Team for Sequel \u201CWas Like
+        a Weird Family Reunion\u201D\\n\\nThe Definitive Voice of Entertainment News\\n\\nSubscribe
+        for full access to The Hollywood Reporter See My Options Sign Up\\n\\n\u2018Dune:
+        Part Two\u2019 Deleted Scenes Will Not Be Released, Cut Actor \u201CHeartbroken\u201D\\n\\nDirector
+        Denis Villeneuve explains why he won't release scenes he removed from 'Dune
+        2,' while at least one actor who was cut from the film says he's disappointed
+        at being left out.\\n\\nBy James Hibberd Plus Icon\\n\\nPlus Icon JamesHibberd\\n\\nMarch
+        4, 2024 10:35am\\n\\nShare this article on Facebook\\n\\nShare this article
+        on Twitter\\n\\nShare this article on Flipboard\\n\\nShare this article on
+        Email\\n\\nShow additional share options\\n\\nShare this article on Linkedin\\n\\nShare
+        this article on Pinit\\n\\nShare this article on Reddit\\n\\nShare this article
+        on Tumblr\\n\\nShare this article on Whatsapp\\n\\nShare this article on Print\\n\\nShare
+        this article on Comment\\n\\nTimoth\xE9e Chalamet in 'Dune Part Two.' Warner
+        Bros. / Courtesy Everett Collection\\n\\nShare this article on Facebook\\n\\nShare
+        this article on Twitter\\n\\nShare this article on Flipboard\\n\\nShare this
+        article on Email\\n\\nShow additional share options\\n\\nShare this article
+        on Linkedin\\n\\nShare this article on Pinit\\n\\nShare this article on Reddit\\n\\nShare
+        this article on Tumblr\\n\\nShare this article on Whatsapp\\n\\nShare this
+        article on Print\\n\\nShare this article on Comment\\n\\nThe blockbuster Dune:
+        Part Two is nearly three hours long, but it could have been even longer. And
+        director Denis Villeneuve says that any cut scenes will not be seen by the
+        public.\\n\\n\u201CI\u2019m a strong believer that when it\u2019s not in the
+        movie, it\u2019s dead,\u201D the director told Collider when asked if he will
+        release deleted scenes from the film for its upcoming Blu-ray release. \u201CSometimes
+        I remove shots and I say, \u2018I cannot believe I\u2019m cutting this out.
+        I feel like a samurai opening my gut. It\u2019s painful, so I cannot go back
+        after that and create a Frankenstein and try to reanimate things that I killed.
+        It\u2019s too painful. When it\u2019s dead, it\u2019s dead, and it\u2019s
+        dead for a reason. But yes, it is a painful project, but it is my job. The
+        movie prevails. I\u2019m very severe in the editing room. I\u2019m not thinking
+        about my ego, I\u2019m thinking about the movie \u2026 I kill darlings, and
+        it\u2019s painful for me.\\n\\nDenis Villeneuve in Talks for Film Based on
+        Nonfiction Book 'Nuclear War'\\n\\nSteven Spielberg Reviews 'Dune 2': \\\"One
+        of the Most Brilliant Sci-Fi Films I've Ever Seen\\\"\\n\\n\u201CI\u2019ve
+        made movies in my life that were 75 minutes, and this one is two hours, 45
+        [minutes], I think, something like that,\u201D Villeneuve added. \u201CIt\u2019s
+        not the runtime, it\u2019s about the storytelling, and I felt that I wanted
+        to create a momentum. I wanted an energy in the movie that I was looking for
+        that excited me, and I thought that was the perfect runtime \u2026 You can
+        be bored by a five-minute movie.\u201D\\n\\nVilleneuve joins a list of directors
+        who generally decline to release deleted scenes \u2014 such as Christopher
+        Nolan and Martin Scorsese.\\n\\nAt least one actor who was entirely cut from
+        the film: Tim Blake Nelson (The Ballad of Buster Scruggs) in an undisclosed
+        role. Nelson told Movieweb, \u201CI don\u2019t think I\u2019m at liberty to
+        say what the scene was. I\u2019d leave that to Denis if he wants to talk about
+        it. I had a great time over there shooting it. And then he had to cut it because
+        he thought the movie was too long. And I am heartbroken over that, but there\u2019s
+        no hard feelings. I loved it, and I can\u2019t wait to do something else with
+        him and we certainly plan to do that.\u201D\\n\\nInternet sleuths have speculated
+        that Nelson might have been cast as Count Hasimir Fenring, an assassin and
+        adviser to the Emperor (Christopher Walken), who is married to Lady Fenring
+        (L\xE9a Seydoux). The character has a larger role to play in future Dune books,
+        so perhaps he may appear in Dune: Messiah should Warner Bros. greenlight another
+        sequel (which seems rather likely given the film\u2019s $80 million opening
+        weekend box office). Nelson will next be seen in Captain America: Brave New
+        World.\\n\\nThere was another actor who didn\u2019t make the film: Stephen
+        McKinley Henderson played the House Atreides Mentat Thufir Hawat in Dune:
+        Part One. He was officially announced as among the cast when filming began
+        in July 2022, though curiously, Villeneuve recently suggested the decision
+        was made earlier.\\n\\n\u201COne of the most painful choices for me on this
+        one was [to not include] Thufir Hawat,\u201D Villeneuve told Entertainment
+        Weekly. \u201CHe\u2019s a character I absolutely love, but I decided right
+        at the beginning that I was making a Bene Gesserit adaptation. That meant
+        that Mentats are not as present as they should be, but it\u2019s the nature
+        of the adaptation.\u201D\\n\\nSo instead, the audience is left to assume Hawat
+        was killed during the invasion. Interestingly, Count Fenring is also a Mentat,
+        which could help explain why Nelson was cut.\\n\\nVilleneuve has said he wants
+        to make a Part Three based on Frank Herbert\u2019s novel Dune Messiah and
+        is actively working on script.\\n\\nSign up for THR news straight to your
+        inbox every day Subscribe Sign Up\\n\\nMore from The Hollywood Reporter\\n\\nXixi
+        Pictures Sets Its Sights on Building a Global Brand for Chinese TV Drama\\n\\n\u2018Joker
+        2\u2019 Trailer Unites Joaquin Phoenix and Lady Gaga in Song\\n\\nTim Burton
+        Says Gathering \u2018Beetlejuice\u2019 Team for Sequel \u201CWas Like a Weird
+        Family Reunion\u201D\\n\\n\u2018Joker 2\u2019 Trailer Unites Joaquin Phoenix
+        and Lady Gaga in Song\\n\\nBong Joon Ho Unveils Irreverent First Trailer for
+        Robert Pattinson Starrer \u2018Mickey 17\u2019\\n\\nKevin Costner Hopes \u2018Horizon:
+        An American Saga\u2019 Can Be Binged in Theaters Someday\\n\\nGet the scoops
+        first! Breaking news and interviews on comics, sci-fi, horror and more\\n\\nBy
+        providing your information, you agree to our Terms of Use and our Privacy
+        Policy. We use vendors that may also process your information to help provide
+        our services. // This site is protected by reCAPTCHA Enterprise and the Google
+        Privacy Policy and Terms of Service apply.\\n\\n'Joker 2' Trailer Unites Joaquin
+        Phoenix and Lady Gaga in Song\\n\\nTim Burton Says Gathering 'Beetlejuice'
+        Team for Sequel \\\"Was Like a Weird Family Reunion\\\"\\n\\nBong Joon Ho
+        Unveils Irreverent First Trailer for Robert Pattinson Starrer 'Mickey 17'\\n\\n'The
+        Crow' Delays Release to Late Summer, 'Saw XI' Moves to 2025\\n\\nThe Definitive
+        Voice of Entertainment News\\n\\nSubscribe for full access to The Hollywood
+        Reporter SEE MY OPTIONS Sign Up\\n\\nThe Hollywood Reporter is a part of Penske
+        Media Corporation. \xA9 2024 The Hollywood Reporter, LLC. All Rights Reserved.
+        THE HOLLYWOOD REPORTER is a registered trademark of The Hollywood Reporter,
+        LLC. Powered by WordPress.com VIP\",\"timestamp\":\"2024-04-10T08:35:13\",\"title\":\"'Dune:
+        Part Two' Deleted Scenes Will Not Be Released, Cut Actor \\\"Heartbroken\\\"\",\"url\":\"https://www.hollywoodreporter.com/movies/movie-news/dune-2-deleted-scenes-1235842178/\"}],\"search_results\":[{\"search_query\":{\"text\":\"dune
+        2 director\",\"generation_id\":\"cd1cf81e-e645-403e-8b72-17a843b67178\"},\"document_ids\":[\"web-search_0\",\"web-search_1\",\"web-search_2\",\"web-search_3\",\"web-search_4\",\"web-search_5\",\"web-search_6\",\"web-search_7\",\"web-search_8\",\"web-search_9\"],\"connector\":{\"id\":\"web-search\"}}],\"search_queries\":[{\"text\":\"dune
+        2 director\",\"generation_id\":\"cd1cf81e-e645-403e-8b72-17a843b67178\"}]}"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -1064,13 +1142,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 05 Apr 2024 13:03:14 GMT
+      - Mon, 15 Apr 2024 10:57:41 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '84314'
+      - '85676'
       num_tokens:
-      - '19050'
+      - '19285'
       pragma:
       - no-cache
       server:
@@ -1080,9 +1158,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 293c425505538d85bb152ac0a611458a
+      - 92a20095e6ed0d8820fb9403018ffa28
       x-envoy-upstream-service-time:
-      - '7801'
+      - '7840'
     status:
       code: 200
       message: OK

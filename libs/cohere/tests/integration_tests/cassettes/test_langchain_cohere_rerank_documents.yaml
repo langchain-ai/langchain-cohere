@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"query": "Test query", "documents": ["This is a test document.", "Another
-      test document."], "model": "rerank-english-v2.0", "top_n": 3, "max_chunks_per_doc":
+      test document."], "model": "rerank-english-v3.0", "top_n": 3, "max_chunks_per_doc":
       null}'
     headers:
       accept:
@@ -19,7 +19,7 @@ interactions:
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
-      - langchain:partner
+      - langchain
       x-fern-language:
       - Python
       x-fern-sdk-name:
@@ -30,12 +30,12 @@ interactions:
     uri: https://api.cohere.ai/v1/rerank
   response:
     body:
-      string: '{"id":"7a47a2b7-3c80-4a5a-ba18-2ad0b9ec120b","results":[{"index":0,"relevance_score":0.022759156},{"index":1,"relevance_score":0.012576348}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
+      string: '{"id":"e2a07804-38fa-4f3e-91df-5ae82c1aacf6","results":[{"index":0,"relevance_score":0.0006070756},{"index":1,"relevance_score":0.00013032975}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '214'
+      - '217'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -45,7 +45,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 05 Apr 2024 13:13:39 GMT
+      - Mon, 15 Apr 2024 10:57:44 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -57,9 +57,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a1a936215f18033a32d077db6ff8329a
+      - 3b674b18dd073b79fd5aba41e052a4a2
       x-envoy-upstream-service-time:
-      - '31'
+      - '42'
     status:
       code: 200
       message: OK

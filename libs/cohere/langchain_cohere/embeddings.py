@@ -19,7 +19,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
     This implementation uses the Embed API - see https://docs.cohere.com/reference/embed
 
     To use this you'll need to a Cohere API key - either pass it to cohere_api_key
-    parameter or set the CO_API_KEY environment variable.
+    parameter or set the COHERE_API_KEY environment variable.
 
     API keys are available on https://cohere.com - it's free to sign up and trial API
     keys work with this implementation.

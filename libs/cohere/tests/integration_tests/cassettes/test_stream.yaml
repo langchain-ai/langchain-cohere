@@ -28,15 +28,13 @@ interactions:
     uri: https://api.cohere.ai/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"0cce34e3-19c9-4b8e-9d87-1ead3fdcda44"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"321378ac-6d51-4b8f-933e-381b42b702f9"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"Wow"}
+        {"is_finished":false,"event_type":"text-generation","text":"Oh"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"!"}
+        {"is_finished":false,"event_type":"text-generation","text":","}
 
-        {"is_finished":false,"event_type":"text-generation","text":" It"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
+        {"is_finished":false,"event_type":"text-generation","text":" hello"}
 
         {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
 
@@ -44,20 +42,40 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":"!"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" What"}
+        {"is_finished":false,"event_type":"text-generation","text":" It"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" brings"}
+        {"is_finished":false,"event_type":"text-generation","text":"''s"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" pleasure"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" to"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" meet"}
 
         {"is_finished":false,"event_type":"text-generation","text":" you"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" here"}
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" How"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" can"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" I"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" help"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" today"}
 
         {"is_finished":false,"event_type":"text-generation","text":"?"}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"4f9fc58f-cc58-41a4-8bf0-ed56d5a5d0cb","text":"Wow!
-        It''s Pickle Rick! What brings you here?","generation_id":"0cce34e3-19c9-4b8e-9d87-1ead3fdcda44","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"Wow! It''s Pickle Rick! What brings
-        you here?"}],"token_count":{"prompt_tokens":70,"response_tokens":12,"total_tokens":82,"billed_tokens":16},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":12}}},"finish_reason":"COMPLETE"}
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"3be82415-0d1c-4316-8616-91340adecf24","text":"Oh,
+        hello Pickle Rick! It''s a pleasure to meet you. How can I help you today?","generation_id":"321378ac-6d51-4b8f-933e-381b42b702f9","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"Oh, hello Pickle Rick! It''s a
+        pleasure to meet you. How can I help you today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":21},"tokens":{"input_tokens":70,"output_tokens":21}}},"finish_reason":"COMPLETE"}
 
         '
     headers:
@@ -74,7 +92,7 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Fri, 05 Apr 2024 13:02:56 GMT
+      - Mon, 15 Apr 2024 10:57:18 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -86,9 +104,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 0a800a2b9dd888346fe13a57dffa4551
+      - 5ae282e4ed9a1a6a2a404793cb9959eb
       x-envoy-upstream-service-time:
-      - '75'
+      - '11'
     status:
       code: 200
       message: OK
