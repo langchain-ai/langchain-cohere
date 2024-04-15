@@ -2,6 +2,7 @@ import json
 from typing import (
     Any,
     AsyncIterator,
+    Callable,
     Dict,
     Iterator,
     List,
@@ -183,7 +184,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
     def bind_tools(
         self,
-        tools: Sequence[Union[Dict[str, Any], BaseTool, Type[BaseModel]]],
+        tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
         **kwargs: Any,
     ) -> Runnable[LanguageModelInput, BaseMessage]:
         formatted_tools = _format_to_cohere_tools(tools)
