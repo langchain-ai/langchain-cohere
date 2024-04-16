@@ -1,4 +1,5 @@
 import json
+from functools import lru_cache
 from typing import (
     Any,
     AsyncIterator,
@@ -432,9 +433,18 @@ class ChatCohere(BaseChatModel, BaseCohere):
             ]
         )
 
+    @lru_cache(maxsize=1)
+    def _get_default_model(self) -> str:
+        return (
+            self.client.models.list(default_only=True, endpoint="chat").models[0].name
+        )
+
     def get_num_tokens(self, text: str) -> int:
         """Calculate number of tokens."""
-        return len(self.client.tokenize(text=text).tokens)
+        model = self.model
+        if model is None:
+            model = self._get_default_model()
+        return len(self.client.tokenize(text=text, model=model).tokens)
 
 
 def _format_cohere_tool_calls(
