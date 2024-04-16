@@ -1,0 +1,70 @@
+interactions:
+- request:
+    body: '{"message": "Erick, 27 years old", "stream": false, "chat_history": [],
+      "temperature": 0.0, "tools": [{"name": "Person", "description": "", "parameter_definitions":
+      {"name": {"description": "The name of the person", "type": "str", "required":
+      true}, "age": {"description": "The age of the person", "type": "int", "required":
+      true}}}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '334'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.1.7
+    method: POST
+    uri: https://api.cohere.ai/v1/chat
+  response:
+    body:
+      string: '{"response_id":"d382b307-852c-4602-80b5-3b0232995960","text":"","generation_id":"f4e7fb47-940d-4e9b-bf3e-fd462766c24f","chat_history":[],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":21,"output_tokens":12},"tokens":{"output_tokens":12}},"tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '359'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Mon, 15 Apr 2024 10:57:29 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_tokens:
+      - '33'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - c5c2f710dc085bea31291cf57b3a7bed
+      x-envoy-upstream-service-time:
+      - '965'
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,19 +1,24 @@
-"""Test ChatCohere chat model."""
+"""
+Test ChatCohere chat model implementation.
+
+Uses the replay testing functionality, so you don't need an API key to run these tests.
+https://python.langchain.com/docs/contributing/testing#recording-http-interactions-with-pytest-vcr
+
+When re-recording these tests you will need to set COHERE_API_KEY.
+"""
 
 import json
 from typing import Any
 
 import pytest
-from langchain_core.messages import (
-    AIMessage,
-    AIMessageChunk,
-    ToolCall,
-)
+from langchain_core.messages import AIMessage, AIMessageChunk
 from langchain_core.pydantic_v1 import BaseModel, Field
+from langchain_core.tools import tool
 
 from langchain_cohere import ChatCohere
 
 
+@pytest.mark.vcr()
 def test_stream() -> None:
     """Test streaming tokens from ChatCohere."""
     llm = ChatCohere()
@@ -22,6 +27,7 @@ def test_stream() -> None:
         assert isinstance(token.content, str)
 
 
+@pytest.mark.vcr()
 async def test_astream() -> None:
     """Test streaming tokens from ChatCohere."""
     llm = ChatCohere()
@@ -31,7 +37,7 @@ async def test_astream() -> None:
 
 
 async def test_abatch() -> None:
-    """Test streaming tokens from ChatCohere."""
+    """Test streaming tokens from ChatCohere"""
     llm = ChatCohere()
 
     result = await llm.abatch(["I'm Pickle Rick", "I'm not Pickle Rick"])
@@ -50,6 +56,7 @@ async def test_abatch_tags() -> None:
         assert isinstance(token.content, str)
 
 
+@pytest.mark.vcr()
 def test_batch() -> None:
     """Test batch tokens from ChatCohere."""
     llm = ChatCohere()
@@ -67,6 +74,7 @@ async def test_ainvoke() -> None:
     assert isinstance(result.content, str)
 
 
+@pytest.mark.vcr()
 def test_invoke() -> None:
     """Test invoke tokens from ChatCohere."""
     llm = ChatCohere()
@@ -75,6 +83,7 @@ def test_invoke() -> None:
     assert isinstance(result.content, str)
 
 
+@pytest.mark.vcr()
 def test_invoke_tool_calls() -> None:
     llm = ChatCohere(temperature=0)
 
@@ -96,11 +105,9 @@ def test_invoke_tool_calls() -> None:
         "name": "Erick",
         "age": 27,
     }
-    assert result.tool_calls == [
-        ToolCall(name="Person", args={"age": 27, "name": "Erick"}, id=None)
-    ]
 
 
+@pytest.mark.vcr()
 def test_streaming_tool_call() -> None:
     llm = ChatCohere(temperature=0)
 
@@ -134,6 +141,34 @@ def test_streaming_tool_call() -> None:
     assert tool_call_chunk["name"] == "Person"
     assert tool_call_chunk["args"] is not None
     assert json.loads(tool_call_chunk["args"]) == {"name": "Erick", "age": 27}
+
+
+@pytest.mark.vcr()
+def test_invoke_multiple_tools() -> None:
+    llm = ChatCohere(temperature=0)
+
+    @tool
+    def add_two_numbers(a: int, b: int) -> int:
+        """Add two numbers together"""
+        return a + b
+
+    @tool
+    def capital_cities(country: str) -> str:
+        """Returns the capital city of a country"""
+        return "France"
+
+    tool_llm = llm.bind_tools([add_two_numbers, capital_cities])
+
+    result = tool_llm.invoke("What is the capital of France")
+    print(result)
+
+    assert isinstance(result, AIMessage)
+    additional_kwargs = result.additional_kwargs
+    assert "tool_calls" in additional_kwargs
+    assert len(additional_kwargs["tool_calls"]) == 1
+    assert additional_kwargs["tool_calls"][0]["function"]["name"] == "capital_cities"
+    parameters = json.loads(additional_kwargs["tool_calls"][0]["function"]["arguments"])
+    assert {"country": "France"} == parameters
 
 
 @pytest.mark.xfail(

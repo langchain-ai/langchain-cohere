@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: '{"message": "What is the capital of France", "stream": false, "chat_history":
+      [], "temperature": 0.0, "tools": [{"name": "add_two_numbers", "description":
+      "Add two numbers together", "parameter_definitions": {"a": {"description": "",
+      "type": "int", "required": true}, "b": {"description": "", "type": "int", "required":
+      true}}}, {"name": "capital_cities", "description": "Returns the capital city
+      of a country", "parameter_definitions": {"country": {"description": "", "type":
+      "str", "required": true}}}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '505'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.1.7
+    method: POST
+    uri: https://api.cohere.ai/v1/chat
+  response:
+    body:
+      string: '{"response_id":"a6343525-feb6-44fb-9eb5-5fd69df2fb18","text":"","generation_id":"f79360ea-bb0e-450d-a816-4f078d592bca","chat_history":[],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":28,"output_tokens":8},"tokens":{"output_tokens":8}},"tool_calls":[{"name":"capital_cities","parameters":{"country":"France"}}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '360'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Mon, 15 Apr 2024 10:57:31 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_tokens:
+      - '36'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - f163b0bccd4d58fac3f626bb36e0435c
+      x-envoy-upstream-service-time:
+      - '849'
+    status:
+      code: 200
+      message: OK
+version: 1

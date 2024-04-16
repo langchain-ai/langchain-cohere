@@ -1,0 +1,66 @@
+interactions:
+- request:
+    body: '{"query": "Test query", "documents": ["This is a test document.", "Another
+      test document."], "model": "rerank-english-v3.0", "top_n": 3, "max_chunks_per_doc":
+      null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '164'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.1.7
+    method: POST
+    uri: https://api.cohere.ai/v1/rerank
+  response:
+    body:
+      string: '{"id":"e2a07804-38fa-4f3e-91df-5ae82c1aacf6","results":[{"index":0,"relevance_score":0.0006070756},{"index":1,"relevance_score":0.00013032975}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '217'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Mon, 15 Apr 2024 10:57:44 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 3b674b18dd073b79fd5aba41e052a4a2
+      x-envoy-upstream-service-time:
+      - '42'
+    status:
+      code: 200
+      message: OK
+version: 1
