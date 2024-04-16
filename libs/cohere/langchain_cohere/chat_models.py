@@ -1,4 +1,5 @@
 import json
+from functools import lru_cache
 from typing import (
     Any,
     AsyncIterator,
@@ -11,7 +12,6 @@ from typing import (
     Type,
     Union,
 )
-from functools import lru_cache
 
 from cohere.types import NonStreamedChatResponse, ToolCall
 from langchain_core._api import beta
@@ -425,7 +425,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
             ]
         )
 
-
     @lru_cache(maxsize=1)
     def _get_default_model(self) -> str:
         return (
@@ -437,9 +436,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
         model = self.model
         if model is None:
             model = self._get_default_model()
-        return len(
-            self.client.tokenize(text=text, model=model).tokens
-        )
+        return len(self.client.tokenize(text=text, model=model).tokens)
+
 
 def _format_cohere_tool_calls(
     generation_id: str, tool_calls: Optional[List[ToolCall]] = None
