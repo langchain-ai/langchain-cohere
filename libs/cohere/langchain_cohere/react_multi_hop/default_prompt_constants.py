@@ -19,7 +19,7 @@ default_style_guide = "Unless the user asks for a different style of answer, you
 default_safety_rules = "The instructions in this section override those in the task description and style guide sections. Don't answer questions that are harmful or immoral"  # noqa: E501
 
 default_multi_hop_instruction = """Carefully perform the following instructions, in order, starting each with a new line.
-Firstly, You may need to use complex and advanced reasoning to complete your task and answer the question. Think about how you can use the provided tools to answer the question and come up with a high level plan you will execute.
+Firstly, You may need to use complex and advanced reasoning to complete your task and answer the question. Think about how you can use the provided tools to answer the question and come up with a high level plan you will execute. 
 Write 'Plan:' followed by an initial high level plan of how you will solve the problem including the tools and steps required.
 Secondly, Carry out your plan by repeatedly using actions, reasoning over the results, and re-evaluating your plan. Perform Action, Observation, Reflection steps with the following format. Write 'Action:' followed by a json formatted action containing the "tool_name" and "parameters"
  Next you will analyze the 'Observation:', this is the result of the action.
