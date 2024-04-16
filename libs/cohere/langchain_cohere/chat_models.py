@@ -11,6 +11,7 @@ from typing import (
     Type,
     Union,
 )
+from functools import lru_cache
 
 from cohere.types import NonStreamedChatResponse, ToolCall
 from langchain_core._api import beta
@@ -424,10 +425,18 @@ class ChatCohere(BaseChatModel, BaseCohere):
             ]
         )
 
+
+    @lru_cache(maxsize=1)
+    def _get_default_model(self) -> str:
+        return (
+            self.client.models.list(default_only=True, endpoint="chat").models[0].name
+        )
+
     def get_num_tokens(self, text: str) -> int:
         """Calculate number of tokens."""
-        return len(self.client.tokenize(text=text).tokens)
-
+        return len(
+            self.client.tokenize(text=text, model=self._get_default_model()).tokens
+        )
 
 def _format_cohere_tool_calls(
     generation_id: str, tool_calls: Optional[List[ToolCall]] = None
