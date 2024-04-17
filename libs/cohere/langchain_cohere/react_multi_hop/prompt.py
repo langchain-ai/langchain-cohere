@@ -175,6 +175,8 @@ def render_intermediate_steps(
     i = 0
     for action, observation in intermediate_steps:
         prompt_content += render_messages(action.messages)
+        if observation:
+            prompt_content += "\n"
         observation_message, i = render_observations(observation, i)
         prompt_content += render_messages([observation_message])
     # Always add an 'open' chatbot turn because prompts for the current turn always end

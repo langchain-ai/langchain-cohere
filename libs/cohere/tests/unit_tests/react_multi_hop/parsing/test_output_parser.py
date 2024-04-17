@@ -49,13 +49,13 @@ def test_it_returns_parses_action(parse_actions_mock: mock.Mock) -> None:
             tool=parsed_actions[0]["tool_name"],
             tool_input=parsed_actions[0]["parameters"],
             log=f"\n{plan}\n{str(parsed_actions[0])}\n",
-            message_log=[AIMessage(content=generation)],
+            message_log=[AIMessage(content="\n" + generation)],
         ),
         AgentActionMessageLog(
             tool=parsed_actions[1]["tool_name"],
             tool_input=parsed_actions[1]["parameters"],
             log=f"\n{str(parsed_actions[1])}\n",
-            message_log=[AIMessage(content=generation)],
+            message_log=[AIMessage(content="\n" + generation)],
         ),
     ]
 

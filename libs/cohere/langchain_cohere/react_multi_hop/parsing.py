@@ -43,7 +43,7 @@ class CohereToolsReactAgentOutputParser(
                     tool=action["tool_name"],
                     tool_input=action["parameters"],
                     log=f"\n{action}\n" if i > 0 else f"\n{plan}\n{action}\n",
-                    message_log=[AIMessage(content=completion)],
+                    message_log=[AIMessage(content="\n" + completion)],
                 )
                 agent_actions.append(agent_action)
 
