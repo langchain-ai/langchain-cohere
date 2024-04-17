@@ -14,7 +14,7 @@ pip install langchain-cohere
 
 ## Migration from langchain-community
 
-Cohere's integrations used to be part of the `langchain-community` package, but since version the integration in `langchain-community` has been deprecated in favour `langchain-cohere`.
+Cohere's integrations used to be part of the `langchain-community` package, but since version 0.0.30 the integration in `langchain-community` has been deprecated in favour `langchain-cohere`.
 
 The two steps to migrate are:
 
