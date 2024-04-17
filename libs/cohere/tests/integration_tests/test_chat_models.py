@@ -191,3 +191,23 @@ def test_streaming_tool_call_no_tool_calls() -> None:
         acc = chunk if acc is None else acc + chunk
     assert acc.content != ""
     assert "tool_calls" not in acc.additional_kwargs
+
+
+@pytest.mark.vcr()
+def test_get_num_tokens_with_specified_model() -> None:
+    llm = ChatCohere(temperature=0, model="command-r")
+    expected = 3  # This may change if the replay also changes.
+
+    actual = llm.get_num_tokens("hello, world")
+
+    assert expected == actual
+
+
+@pytest.mark.vcr()
+def test_get_num_tokens_with_default_model() -> None:
+    llm = ChatCohere(temperature=0)
+    expected = 3  # This may change if the replay also changes.
+
+    actual = llm.get_num_tokens("hello, world")
+
+    assert expected == actual

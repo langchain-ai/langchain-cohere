@@ -1,6 +1,6 @@
 import json
-from functools import lru_cache
 from typing import (
+    TYPE_CHECKING,
     Any,
     AsyncIterator,
     Callable,
@@ -43,7 +43,7 @@ from langchain_core.output_parsers.openai_tools import (
     PydanticToolsParser,
 )
 from langchain_core.outputs import ChatGeneration, ChatGenerationChunk, ChatResult
-from langchain_core.pydantic_v1 import BaseModel
+from langchain_core.pydantic_v1 import BaseModel, PrivateAttr
 from langchain_core.runnables import Runnable
 from langchain_core.tools import BaseTool
 
@@ -52,6 +52,9 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools,
 )
 from langchain_cohere.llms import BaseCohere
+
+if TYPE_CHECKING:
+    from cohere.types import ListModelsResponse  # noqa: F401
 
 
 def get_role(message: BaseMessage) -> str:
@@ -176,6 +179,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
     """
 
     preamble: Optional[str] = None
+
+    _default_model_name: Optional[str] = PrivateAttr(
+        default=None
+    )  # Used internally to cache API calls to list models.
 
     class Config:
         """Configuration for this pydantic object."""
@@ -433,17 +440,26 @@ class ChatCohere(BaseChatModel, BaseCohere):
             ]
         )
 
-    @lru_cache(maxsize=1)
     def _get_default_model(self) -> str:
-        return (
-            self.client.models.list(default_only=True, endpoint="chat").models[0].name
-        )
+        """Fetches the current default model name."""
+        response = self.client.models.list(default_only=True, endpoint="chat")  # type: "ListModelsResponse"
+        if not response.models:
+            raise Exception("invalid cohere list models response")
+        if not response.models[0].name:
+            raise Exception("invalid cohere list models response")
+        return response.models[0].name
 
     def get_num_tokens(self, text: str) -> int:
         """Calculate number of tokens."""
-        model = self.model
-        if model is None:
+        model: str
+        if self.model is not None:
+            model = self.model
+        elif self._default_model_name is not None:
+            model = self._default_model_name
+        else:
             model = self._get_default_model()
+            self._default_model_name = model
+
         return len(self.client.tokenize(text=text, model=model).tokens)
 
 
