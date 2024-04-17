@@ -12,6 +12,21 @@ pip install langchain-cohere
 
 - Get a [Cohere API key](https://cohere.com/) and set it as an environment variable (`COHERE_API_KEY`)
 
+## Migration from langchain-community
+
+Cohere's integrations used to be part of the `langchain-community` package, but since version 0.0.30 the integration in `langchain-community` has been deprecated in favour `langchain-cohere`.
+
+The two steps to migrate are:
+
+1) Import from langchain_cohere instead of langchain_community, for example:
+   * `from langchain_community.chat_models import ChatCohere` -> `from langchain_cohere import ChatCohere`
+   * `from langchain_community.retrievers import CohereRagRetriever` -> `from langchain_cohere import CohereRagRetriever`
+   * `from langchain.embeddings import CohereEmbeddings` -> `from langchain_cohere import CohereEmbeddings`
+   * `from langchain.retrievers.document_compressors import CohereRerank` -> `from langchain_cohere import CohereRerank`
+
+2) The Cohere Python SDK version is now managed by this package and only v5+ is supported.
+   * There's no longer a need to specify cohere as a dependency in requirements.txt/pyproject.toml (etc.) 
+
 ## Supported LangChain Integrations
 
 | API              | description                                         | Endpoint docs                                             | Import                                                                         | Example usage                                                                                                               |
