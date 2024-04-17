@@ -17,12 +17,12 @@ class CohereRerank(BaseDocumentCompressor):
     """Cohere client to use for compressing documents."""
     top_n: Optional[int] = 3
     """Number of documents to return."""
-    model: str = "rerank-english-v2.0"
+    model: str = "rerank-english-v3.0"
     """Model to use for reranking."""
     cohere_api_key: Optional[str] = None
     """Cohere API key. Must be specified directly or via environment variable 
         COHERE_API_KEY."""
-    user_agent: str = "langchain"
+    user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
     class Config:
@@ -31,14 +31,14 @@ class CohereRerank(BaseDocumentCompressor):
         extra = Extra.forbid
         arbitrary_types_allowed = True
 
-    @root_validator(pre=True)
+    @root_validator()
     def validate_environment(cls, values: Dict) -> Dict:
         """Validate that api key and python package exists in environment."""
         if not values.get("client"):
             cohere_api_key = get_from_dict_or_env(
                 values, "cohere_api_key", "COHERE_API_KEY"
             )
-            client_name = values.get("user_agent", "langchain")
+            client_name = values["user_agent"]
             values["client"] = cohere.Client(cohere_api_key, client_name=client_name)
         return values
 
@@ -47,6 +47,7 @@ class CohereRerank(BaseDocumentCompressor):
         documents: Sequence[Union[str, Document, dict]],
         query: str,
         *,
+        rank_fields: Optional[Sequence[str]] = None,
         model: Optional[str] = None,
         top_n: Optional[int] = -1,
         max_chunks_per_doc: Optional[int] = None,
@@ -56,6 +57,7 @@ class CohereRerank(BaseDocumentCompressor):
         Args:
             query: The query to use for reranking.
             documents: A sequence of documents to rerank.
+            rank_fields: A sequence of keys to use for reranking.
             model: The model to use for re-ranking. Default to self.model.
             top_n : The number of results to return. If None returns all results.
                 Defaults to self.top_n.
@@ -73,6 +75,7 @@ class CohereRerank(BaseDocumentCompressor):
             documents=docs,
             model=model,
             top_n=top_n,
+            rank_fields=rank_fields,
             max_chunks_per_doc=max_chunks_per_doc,
         )
         result_dicts = []

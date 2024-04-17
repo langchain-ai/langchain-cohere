@@ -66,7 +66,7 @@ class BaseCohere(Serializable):
     streaming: bool = Field(default=False)
     """Whether to stream the results."""
 
-    user_agent: str = "langchain"
+    user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
     timeout_seconds: Optional[float] = 300
