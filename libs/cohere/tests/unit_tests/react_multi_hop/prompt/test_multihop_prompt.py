@@ -53,7 +53,8 @@ DOCUMENTS = [
     },
 ]
 COMPLETIONS = [
-    """Plan: First, I need to find out which company was originally called Sound of Music, then I need to find out when it was added to the S&P 500.
+    """
+Plan: First, I need to find out which company was originally called Sound of Music, then I need to find out when it was added to the S&P 500.
 Action: ```json
 [
     {
@@ -64,7 +65,8 @@ Action: ```json
     }
 ]
 ```""",  # noqa: E501
-    """Reflection: I found out that Sound of Music was renamed Best Buy in 1983, now I need to find out when Best Buy was added to the S&P 500.
+    """
+Reflection: I found out that Sound of Music was renamed Best Buy in 1983, now I need to find out when Best Buy was added to the S&P 500.
 Action: ```json
 [
     {
