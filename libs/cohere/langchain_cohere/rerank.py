@@ -47,6 +47,7 @@ class CohereRerank(BaseDocumentCompressor):
         documents: Sequence[Union[str, Document, dict]],
         query: str,
         *,
+        rank_fields: Optional[Sequence[str]] = None,
         model: Optional[str] = None,
         top_n: Optional[int] = -1,
         max_chunks_per_doc: Optional[int] = None,
@@ -56,6 +57,7 @@ class CohereRerank(BaseDocumentCompressor):
         Args:
             query: The query to use for reranking.
             documents: A sequence of documents to rerank.
+            rank_fields: A sequence of keys to use for reranking.
             model: The model to use for re-ranking. Default to self.model.
             top_n : The number of results to return. If None returns all results.
                 Defaults to self.top_n.
@@ -73,6 +75,7 @@ class CohereRerank(BaseDocumentCompressor):
             documents=docs,
             model=model,
             top_n=top_n,
+            rank_fields=rank_fields,
             max_chunks_per_doc=max_chunks_per_doc,
         )
         result_dicts = []
