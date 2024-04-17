@@ -33,8 +33,10 @@ def test_langchain_cohere_rerank_with_rank_fields() -> None:
         {"content": "This document is about Physics.", "subject": "Penguins"},
     ]
     test_query = "penguins"
+
     response = rerank.rerank(test_documents, test_query, rank_fields=["content"])
+
+    assert len(response) == 2
+    assert response[0]["index"] == 0
     results = {r["index"]: r["relevance_score"] for r in response}
-    assert len(results) == 2
-    assert test_documents[0]["content"] == "This document is about Penguins."
     assert results[0] > results[1]
