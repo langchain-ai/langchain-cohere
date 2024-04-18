@@ -1,7 +1,7 @@
 import json
 import logging
 import re
-from typing import Any, Dict, List, Mapping, Tuple, Union
+from typing import Any, Dict, List, Mapping, MutableMapping, Tuple, Union
 
 from langchain_core.agents import AgentAction, AgentActionMessageLog, AgentFinish
 from langchain_core.messages import AIMessage
@@ -163,7 +163,7 @@ def parse_actions(generation: str) -> Tuple[str, str, List[Dict]]:
 
 
 def parse_citations(
-    grounded_answer: str, documents: List[Mapping]
+    grounded_answer: str, documents: List[MutableMapping]
 ) -> Tuple[str, List[CohereCitation]]:
     """
     Parses a grounded_generation (from parse_actions) and documents (from
@@ -173,6 +173,10 @@ def parse_citations(
     no_markup_answer, parsed_answer = _parse_answer_spans(grounded_answer)
     citations: List[CohereCitation] = []
     start = 0
+
+    # Add an id field to each document. This may be useful for future deduplication.
+    for i in range(len(documents)):
+        documents[i]["id"] = documents[i].get("id") or f"doc_{i}"
 
     for answer in parsed_answer:
         text = answer.get("text", "")
@@ -185,11 +189,13 @@ def parse_citations(
 
         # Look up the cited document by index
         cited_documents: List[Mapping] = []
+        cited_document_ids: List[str] = []
         for index in set(document_indexes):
             if index >= len(documents):
                 # The document index doesn't exist
                 continue
             cited_documents.append(documents[index])
+            cited_document_ids.append(documents[index]["id"])
 
         citations.append(
             CohereCitation(
@@ -197,6 +203,7 @@ def parse_citations(
                 end=end,
                 text=text,
                 documents=cited_documents,
+                document_ids=set(cited_document_ids),
             )
         )
         start = end

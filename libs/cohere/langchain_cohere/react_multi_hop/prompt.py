@@ -7,6 +7,7 @@ from typing import (
     Dict,
     List,
     Mapping,
+    MutableMapping,
     Optional,
     Sequence,
     Tuple,
@@ -139,9 +140,9 @@ def render_observations(
 
 def convert_to_documents(
     observations: Any,
-) -> List[Mapping]:
+) -> List[MutableMapping]:
     """Converts observations into a 'document' dict"""
-    documents: List[Mapping] = []
+    documents: List[MutableMapping] = []
     if isinstance(observations, str):
         # strings are turned into a key/value pair and a key of 'output' is added.
         observations = [{"output": observations}]
