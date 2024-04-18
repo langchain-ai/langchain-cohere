@@ -5,7 +5,7 @@
     This agent uses a multi hop prompt by Cohere, which is experimental and subject
     to change. The latest prompt can be used by upgrading the langchain-cohere package.
 """
-from typing import Any, Dict, List, Mapping, Optional, Sequence, Union
+from typing import Any, Dict, List, MutableMapping, Optional, Sequence, Union
 
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.language_models import BaseLanguageModel
@@ -122,7 +122,7 @@ class _AddCitations(Runnable):
 
         # Build a list of documents from the intermediate_steps used in this chain.
         intermediate_steps = input.get("chain_input", {}).get("intermediate_steps", [])
-        documents: List[Mapping] = []
+        documents: List[MutableMapping] = []
         for _, observation in intermediate_steps:
             documents.extend(convert_to_documents(observation))
 

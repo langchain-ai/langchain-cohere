@@ -1,4 +1,4 @@
-from typing import List, Mapping
+from typing import List, MutableMapping
 
 import pytest
 
@@ -24,7 +24,11 @@ DOCUMENTS = [{"foo": "bar"}, {"baz": "foobar"}]
             "with one citation.",
             [
                 CohereCitation(
-                    start=5, end=17, text="one citation", documents=[DOCUMENTS[0]]
+                    start=5,
+                    end=17,
+                    text="one citation",
+                    documents=[DOCUMENTS[0]],
+                    document_ids={"doc_0"},
                 )
             ],
             id="one citation (normal)",
@@ -39,6 +43,7 @@ DOCUMENTS = [{"foo": "bar"}, {"baz": "foobar"}]
                     end=18,
                     text="two documents",
                     documents=[DOCUMENTS[0], DOCUMENTS[1]],
+                    document_ids={"doc_0", "doc_1"},
                 )
             ],
             id="two cited documents (normal)",
@@ -48,9 +53,19 @@ DOCUMENTS = [{"foo": "bar"}, {"baz": "foobar"}]
             DOCUMENTS,
             "with two citations.",
             [
-                CohereCitation(start=5, end=8, text="two", documents=[DOCUMENTS[0]]),
                 CohereCitation(
-                    start=9, end=18, text="citations", documents=[DOCUMENTS[1]]
+                    start=5,
+                    end=8,
+                    text="two",
+                    documents=[DOCUMENTS[0]],
+                    document_ids={"doc_0"},
+                ),
+                CohereCitation(
+                    start=9,
+                    end=18,
+                    text="citations",
+                    documents=[DOCUMENTS[1]],
+                    document_ids={"doc_1"},
                 ),
             ],
             id="more than one citation (normal)",
@@ -65,6 +80,7 @@ DOCUMENTS = [{"foo": "bar"}, {"baz": "foobar"}]
                     end=23,
                     text="incorrect citation",
                     documents=[],  # note no documents.
+                    document_ids=set(),
                 )
             ],
             id="cited document doesn't exist (abnormal)",
@@ -73,7 +89,7 @@ DOCUMENTS = [{"foo": "bar"}, {"baz": "foobar"}]
 )
 def test_parse_citations(
     text: str,
-    documents: List[Mapping],
+    documents: List[MutableMapping],
     expected_generation: str,
     expected_citations: List[CohereCitation],
 ) -> None:

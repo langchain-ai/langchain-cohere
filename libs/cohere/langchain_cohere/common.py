@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, List, Mapping
+from typing import Any, List, Mapping, Set
 
 
 @dataclass
@@ -32,5 +32,14 @@ class CohereCitation:
     """
     The contents of the documents that were cited. When used with agents these will be 
     the contents of relevant agent outputs.
+    
+    Every document will have a string field called `id`. This can be used with the 
+    `document_ids` field to deduplicate documents across several citations. The `id` 
+    field is created on the document when it doesn't already exist.
     """
     documents: List[Mapping[str, Any]]
+
+    """
+    A set of the `id` field from all the documents in the `documents` field. 
+    """
+    document_ids: Set[str]
