@@ -19,10 +19,13 @@ def test_initialization() -> None:
     [
         pytest.param(ChatCohere(cohere_api_key="test"), {}, id="defaults"),
         pytest.param(
-            ChatCohere(cohere_api_key="test", model="foo", temperature=1.0),
+            ChatCohere(
+                cohere_api_key="test", model="foo", temperature=1.0, preamble="bar"
+            ),
             {
                 "model": "foo",
                 "temperature": 1.0,
+                "preamble": "bar",
             },
             id="values are set",
         ),

@@ -286,6 +286,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         base_params = {
             "model": self.model,
             "temperature": self.temperature,
+            "preamble": self.preamble,
         }
         return {k: v for k, v in base_params.items() if v is not None}
 
