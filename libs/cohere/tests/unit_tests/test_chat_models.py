@@ -1,10 +1,12 @@
 """Test chat model integration."""
 import typing
+from unittest.mock import patch
 
 import pytest
 from cohere.types import NonStreamedChatResponse, ToolCall
+from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 
-from langchain_cohere.chat_models import ChatCohere
+from langchain_cohere.chat_models import ChatCohere, _messages_to_cohere_tool_results
 
 
 def test_initialization() -> None:
@@ -110,6 +112,45 @@ def test_get_generation_info(
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
 
-    actual = chat_cohere._get_generation_info(response)
+    with patch("uuid.uuid4") as mock_uuid:
+        mock_uuid.return_value.hex = "foo"
+        actual = chat_cohere._get_generation_info(response)
 
     assert expected == actual
+
+
+def test_messages_to_cohere_tool_results() -> None:
+    human_message = HumanMessage(content="what is the value of magic_function(3)?")
+    ai_message = AIMessage(
+        content="",
+        tool_calls=[
+            {
+                "name": "magic_function",
+                "args": {"input": 3},
+                "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+            }
+        ],
+    )
+    tool_message = ToolMessage(
+        name="magic_function",
+        content="5",
+        tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
+    )
+    messages = [human_message, ai_message, tool_message]
+    results = _messages_to_cohere_tool_results(messages)
+    expected = [
+        {
+            "call": ToolCall(name="magic_function", parameters={"input": 3}),
+            "outputs": [{"output": "5"}],
+        }
+    ]
+    assert results == expected
+
+    another_tool_message = ToolMessage(
+        content="5",
+        additional_kwargs={"name": "magic_function"},
+        tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
+    )
+    messages = [human_message, ai_message, another_tool_message]
+    results = _messages_to_cohere_tool_results(messages)
+    assert results == expected
