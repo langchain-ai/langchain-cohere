@@ -410,6 +410,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
             )
         if hasattr(response, "token_count"):
             generation_info["token_count"] = response.token_count
+        elif hasattr(response.meta, "tokens"):
+            generation_info["token_count"] = response.meta.tokens
         return generation_info
 
     def _generate(
