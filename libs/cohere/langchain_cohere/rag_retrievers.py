@@ -20,7 +20,7 @@ def _get_docs(response: Any) -> List[Document]:
     docs = []
     if (
         "documents" in response.generation_info
-        and len(response.generation_info["documents"]) > 0
+        and response.generation_info["documents"]
     ):
         for doc in response.generation_info["documents"]:
             content = doc.get("snippet", None) or doc.get("text", None)

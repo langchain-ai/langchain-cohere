@@ -1,4 +1,5 @@
 import json
+import uuid
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -33,6 +34,7 @@ from langchain_core.messages import (
     ChatMessage,
     HumanMessage,
     SystemMessage,
+    ToolMessage,
 )
 from langchain_core.messages import (
     ToolCall as LC_ToolCall,
@@ -52,6 +54,39 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools,
 )
 from langchain_cohere.llms import BaseCohere
+from langchain_cohere.react_multi_hop.prompt import convert_to_documents
+
+
+def _messages_to_cohere_tool_results(
+    messages: List[BaseMessage],
+) -> List[Dict[str, Any]]:
+    """Get tool_results from messages."""
+    tool_results = []
+    for message in messages:
+        if isinstance(message, ToolMessage):
+            tool_message = message
+            previous_ai_msgs = [
+                message
+                for message in messages[:-1]
+                if isinstance(message, AIMessage) and message.tool_calls
+            ]
+            if previous_ai_msgs:
+                previous_ai_msg = previous_ai_msgs[-1]
+                tool_results.extend(
+                    [
+                        {
+                            "call": ToolCall(
+                                name=lc_tool_call["name"],
+                                parameters=lc_tool_call["args"],
+                            ),
+                            "outputs": convert_to_documents(tool_message.content),
+                        }
+                        for lc_tool_call in previous_ai_msg.tool_calls
+                        if lc_tool_call["id"] == tool_message.tool_call_id
+                    ]
+                )
+    return tool_results
+
 
 if TYPE_CHECKING:
     from cohere.types import ListModelsResponse  # noqa: F401
@@ -135,11 +170,22 @@ def get_cohere_chat_request(
         "AUTO" if formatted_docs is not None or connectors is not None else None
     )
 
+    tool_results: Optional[List[Dict[str, Any]]] = _messages_to_cohere_tool_results(
+        messages
+    )
+    if not tool_results:
+        tool_results = None
+
+    chat_history = [
+        {"role": get_role(x), "message": x.content}
+        for x in messages[:-1]
+        if not isinstance(x, ToolMessage)
+        and not (isinstance(x, AIMessage) and x.tool_calls)
+    ]
     req = {
         "message": messages[-1].content,
-        "chat_history": [
-            {"role": get_role(x), "message": x.content} for x in messages[:-1]
-        ],
+        "chat_history": chat_history,
+        "tool_results": tool_results,
         "documents": formatted_docs,
         "connectors": connectors,
         "prompt_truncation": prompt_truncation,
@@ -240,6 +286,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         base_params = {
             "model": self.model,
             "temperature": self.temperature,
+            "preamble": self.preamble,
         }
         return {k: v for k, v in base_params.items() if v is not None}
 
@@ -360,7 +407,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             # Only populate tool_calls when 1) present on the response and
             #  2) has one or more calls.
             generation_info["tool_calls"] = _format_cohere_tool_calls(
-                response.generation_id or "", response.tool_calls
+                response.tool_calls
             )
         if hasattr(response, "token_count"):
             generation_info["token_count"] = response.token_count
@@ -464,7 +511,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
 
 def _format_cohere_tool_calls(
-    generation_id: str, tool_calls: Optional[List[ToolCall]] = None
+    tool_calls: Optional[List[ToolCall]] = None,
 ) -> List[Dict]:
     """
     Formats a Cohere API response into the tool call format used elsewhere in Langchain.
@@ -476,7 +523,7 @@ def _format_cohere_tool_calls(
     for tool_call in tool_calls:
         formatted_tool_calls.append(
             {
-                "id": generation_id,
+                "id": uuid.uuid4().hex[:],
                 "function": {
                     "name": tool_call.name,
                     "arguments": json.dumps(tool_call.parameters),
@@ -489,4 +536,5 @@ def _format_cohere_tool_calls(
 
 def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
     """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
-    return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=None)
+    _id = uuid.uuid4().hex[:]
+    return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=_id)

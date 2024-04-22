@@ -11,7 +11,12 @@ import json
 from typing import Any
 
 import pytest
-from langchain_core.messages import AIMessage, AIMessageChunk
+from langchain_core.messages import (
+    AIMessage,
+    AIMessageChunk,
+    HumanMessage,
+    ToolMessage,
+)
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.tools import tool
 
@@ -105,6 +110,10 @@ def test_invoke_tool_calls() -> None:
         "name": "Erick",
         "age": 27,
     }
+    assert len(result.tool_calls) == 1
+    tool_call = result.tool_calls[0]
+    assert tool_call["name"] == "Person"
+    assert tool_call["args"] == {"name": "Erick", "age": 27}
 
 
 @pytest.mark.vcr()
@@ -211,3 +220,27 @@ def test_get_num_tokens_with_default_model() -> None:
     actual = llm.get_num_tokens("hello, world")
 
     assert expected == actual
+
+
+def test_tool_messages() -> None:
+    llm = ChatCohere(temperature=0)
+    messages = [
+        HumanMessage(content="what is the value of magic_function(3)?"),
+        AIMessage(
+            content="",
+            tool_calls=[
+                {
+                    "name": "magic_function",
+                    "args": {"input": 3},
+                    "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+                }
+            ],
+        ),
+        ToolMessage(
+            name="magic_function",
+            content="5",
+            tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
+        ),
+    ]
+    response = llm.invoke(messages)
+    assert isinstance(response, AIMessage)
