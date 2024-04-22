@@ -394,7 +394,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
     def _get_generation_info(self, response: NonStreamedChatResponse) -> Dict[str, Any]:
         """Get the generation info from cohere API response."""
-        generation_info = {
+        generation_info: Dict[str, Any] = {
             "documents": response.documents,
             "citations": response.citations,
             "search_results": response.search_results,
