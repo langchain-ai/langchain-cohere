@@ -30,8 +30,8 @@ interactions:
     uri: https://api.cohere.ai/v1/chat
   response:
     body:
-      string: '{"response_id":"b46d6b16-463f-4391-8d89-f772b0eb6af2","text":"The value
-        of magic_function(3) is **5**.","generation_id":"8992bb58-eb1c-40ca-b657-e4679e9ac804","chat_history":[{"role":"USER","message":"what
+      string: '{"response_id":"28d96d12-57b6-40b4-ba1d-353c4fe2710a","text":"The value
+        of magic_function(3) is **5**.","generation_id":"1c5b38d4-b627-4e59-a1aa-62df51b6c3f9","chat_history":[{"role":"USER","message":"what
         is the value of magic_function(3)?"},{"role":"USER","message":"5"},{"role":"CHATBOT","message":"The
         value of magic_function(3) is **5**."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":25,"output_tokens":13},"tokens":{"input_tokens":745,"output_tokens":13}},"citations":[{"start":36,"end":37,"text":"5","document_ids":["magic_function:0:0"]}],"documents":[{"id":"magic_function:0:0","output":"5","tool_name":"magic_function"}]}'
     headers:
@@ -48,7 +48,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 18:01:17 GMT
+      - Wed, 24 Apr 2024 18:12:06 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -64,9 +64,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a449a5f864b7016cfbeda59ea071ed00
+      - 7d8ed598dff015fdadbf42e70f3214c8
       x-envoy-upstream-service-time:
-      - '1959'
+      - '1960'
       x-trial-endpoint-call-limit:
       - '20'
       x-trial-endpoint-call-remaining:

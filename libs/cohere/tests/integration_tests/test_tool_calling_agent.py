@@ -30,7 +30,7 @@ from langchain_cohere import ChatCohere
             ],
             "The value of magic_function(3) is **5**.",
             marks=pytest.mark.vcr,
-            id="magic function",
+            id="magic_function",
         )
     ],
 )
