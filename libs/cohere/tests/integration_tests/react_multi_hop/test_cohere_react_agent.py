@@ -1,11 +1,14 @@
 """
 Tests the agent created by langchain_cohere.create_cohere_react_agent
 
-You will need to set:
-* COHERE_API_KEY
+Uses the replay testing functionality, so you don't need an API key to run these tests.
+https://python.langchain.com/docs/contributing/testing#recording-http-interactions-with-pytest-vcr
+
+When re-recording these tests you will need to set COHERE_API_KEY.
 """
 from typing import Any, Type
 
+import pytest
 from langchain.agents import AgentExecutor
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
@@ -14,6 +17,7 @@ from langchain_core.tools import BaseTool
 from langchain_cohere import ChatCohere, create_cohere_react_agent
 
 
+@pytest.mark.vcr()
 def test_invoke_multihop_agent() -> None:
     llm = ChatCohere(temperature=0.0)
 
@@ -72,5 +76,7 @@ def test_invoke_multihop_agent() -> None:
     )
 
     assert "output" in actual
-    assert "best buy" in actual["output"].lower()
-    assert "citations" in actual
+
+    # The exact answer will likely change when replays are rerecorded.
+    expected_output = "Best Buy, which was founded as Sound of Music, was added to the S&P 500 in 1999."  # noqa: E501
+    assert expected_output == actual["output"]

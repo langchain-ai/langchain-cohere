@@ -7,6 +7,7 @@ from typing import (
     Dict,
     List,
     Mapping,
+    MutableMapping,
     Optional,
     Sequence,
     Tuple,
@@ -139,9 +140,9 @@ def render_observations(
 
 def convert_to_documents(
     observations: Any,
-) -> List[Mapping]:
+) -> List[MutableMapping]:
     """Converts observations into a 'document' dict"""
-    documents: List[Mapping] = []
+    documents: List[MutableMapping] = []
     if isinstance(observations, str):
         # strings are turned into a key/value pair and a key of 'output' is added.
         observations = [{"output": observations}]
@@ -175,6 +176,8 @@ def render_intermediate_steps(
     i = 0
     for action, observation in intermediate_steps:
         prompt_content += render_messages(action.messages)
+        if observation:
+            prompt_content += "\n"
         observation_message, i = render_observations(observation, i)
         prompt_content += render_messages([observation_message])
     # Always add an 'open' chatbot turn because prompts for the current turn always end

@@ -7,7 +7,11 @@ from langchain_core.agents import AgentAction, AgentFinish
 from langchain_cohere import CohereCitation
 from langchain_cohere.react_multi_hop.agent import _AddCitations
 
-CITATIONS = [CohereCitation(start=1, end=2, text="foo", documents=[{"bar": "baz"}])]
+CITATIONS = [
+    CohereCitation(
+        start=1, end=2, text="foo", documents=[{"bar": "baz"}], document_ids={"doc_0"}
+    )
+]
 GENERATION = "mocked generation"
 
 

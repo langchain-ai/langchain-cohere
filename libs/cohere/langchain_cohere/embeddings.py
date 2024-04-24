@@ -10,20 +10,31 @@ from .utils import _create_retry_decorator
 
 
 class CohereEmbeddings(BaseModel, Embeddings):
-    """Cohere embedding models.
+    """
+    Implements the Embeddings interface with Cohere's text representation language
+    models.
 
-    To use, you should have the ``cohere`` python package installed, and the
-    environment variable ``COHERE_API_KEY`` set with your API key or pass it
-    as a named parameter to the constructor.
+    Find out more about us at https://cohere.com and https://huggingface.co/CohereForAI
 
-    Example:
+    This implementation uses the Embed API - see https://docs.cohere.com/reference/embed
+
+    To use this you'll need to a Cohere API key - either pass it to cohere_api_key
+    parameter or set the COHERE_API_KEY environment variable.
+
+    API keys are available on https://cohere.com - it's free to sign up and trial API
+    keys work with this implementation.
+
+    Basic Example:
         .. code-block:: python
 
-            from langchain_cohere import CohereEmbeddings
-            cohere = CohereEmbeddings(
-                model="embed-english-light-v3.0",
-                cohere_api_key="my-api-key"
-            )
+            cohere_embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
+            text = "This is a test document."
+
+            query_result = cohere_embeddings.embed_query(text)
+            print(query_result)
+
+            doc_result = cohere_embeddings.embed_documents([text])
+            print(doc_result)
     """
 
     client: Any  #: :meta private:
