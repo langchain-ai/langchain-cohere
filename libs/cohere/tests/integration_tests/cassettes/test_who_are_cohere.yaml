@@ -1,0 +1,379 @@
+interactions:
+- request:
+    body: '{"message": "Who are Cohere?", "stream": false, "chat_history": [], "prompt_truncation":
+      "AUTO", "connectors": [{"id": "web-search"}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '134'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.ai
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.3.0
+    method: POST
+    uri: https://api.cohere.ai/v1/chat
+  response:
+    body:
+      string: "{\"response_id\":\"3967912d-f22e-4507-8b51-12b02abca2dc\",\"text\":\"Cohere
+        is a Canadian multinational technology company that provides access to advanced
+        Large Language Models and NLP tools through an easy-to-use API. It was founded
+        in 2019 by Aidan Gomez, Ivan Zhang, and Nick Frosst, and is headquartered
+        in Toronto and San Francisco, with offices in Palo Alto and London. \\n\\nCohere's
+        mission is to build machines that understand the world and make them safely
+        accessible to all. They aim to transform enterprises and their products with
+        AI that unlocks a more intuitive way to generate, search, and summarize information.
+        \\n\\nThe company is focused on generative AI for businesses, helping them
+        deploy chatbots, search engines, copywriting, summarization, and other AI-driven
+        products. Cohere's platform is cloud-agnostic and can be deployed on virtual
+        private cloud (VPC) or on-site, offering flexibility and control to its users.
+        \\n\\nThey have raised significant funding from prominent investors and have
+        partnerships with major companies such as Oracle, Salesforce, and McKinsey.\",\"generation_id\":\"55ddeae0-1cfa-416f-b362-7a632fadcd2d\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"Who
+        are Cohere?\"},{\"role\":\"CHATBOT\",\"message\":\"Cohere is a Canadian multinational
+        technology company that provides access to advanced Large Language Models
+        and NLP tools through an easy-to-use API. It was founded in 2019 by Aidan
+        Gomez, Ivan Zhang, and Nick Frosst, and is headquartered in Toronto and San
+        Francisco, with offices in Palo Alto and London. \\n\\nCohere's mission is
+        to build machines that understand the world and make them safely accessible
+        to all. They aim to transform enterprises and their products with AI that
+        unlocks a more intuitive way to generate, search, and summarize information.
+        \\n\\nThe company is focused on generative AI for businesses, helping them
+        deploy chatbots, search engines, copywriting, summarization, and other AI-driven
+        products. Cohere's platform is cloud-agnostic and can be deployed on virtual
+        private cloud (VPC) or on-site, offering flexibility and control to its users.
+        \\n\\nThey have raised significant funding from prominent investors and have
+        partnerships with major companies such as Oracle, Salesforce, and McKinsey.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":7340,\"output_tokens\":206},\"tokens\":{\"input_tokens\":8060,\"output_tokens\":206}},\"citations\":[{\"start\":12,\"end\":53,\"text\":\"Canadian
+        multinational technology company\",\"document_ids\":[\"web-search_1\"]},{\"start\":68,\"end\":86,\"text\":\"access
+        to advanced\",\"document_ids\":[\"web-search_4\"]},{\"start\":87,\"end\":108,\"text\":\"Large
+        Language Models\",\"document_ids\":[\"web-search_1\",\"web-search_4\"]},{\"start\":113,\"end\":122,\"text\":\"NLP
+        tools\",\"document_ids\":[\"web-search_4\"]},{\"start\":134,\"end\":150,\"text\":\"easy-to-use
+        API.\",\"document_ids\":[\"web-search_4\"]},{\"start\":158,\"end\":173,\"text\":\"founded
+        in 2019\",\"document_ids\":[\"web-search_1\"]},{\"start\":177,\"end\":188,\"text\":\"Aidan
+        Gomez\",\"document_ids\":[\"web-search_1\",\"web-search_4\"]},{\"start\":190,\"end\":200,\"text\":\"Ivan
+        Zhang\",\"document_ids\":[\"web-search_1\",\"web-search_4\"]},{\"start\":206,\"end\":217,\"text\":\"Nick
+        Frosst\",\"document_ids\":[\"web-search_1\",\"web-search_4\"]},{\"start\":226,\"end\":268,\"text\":\"headquartered
+        in Toronto and San Francisco\",\"document_ids\":[\"web-search_1\"]},{\"start\":275,\"end\":307,\"text\":\"offices
+        in Palo Alto and London.\",\"document_ids\":[\"web-search_1\"]},{\"start\":333,\"end\":373,\"text\":\"build
+        machines that understand the world\",\"document_ids\":[\"web-search_2\",\"web-search_4\"]},{\"start\":388,\"end\":413,\"text\":\"safely
+        accessible to all.\",\"document_ids\":[\"web-search_2\",\"web-search_4\"]},{\"start\":426,\"end\":474,\"text\":\"transform
+        enterprises and their products with AI\",\"document_ids\":[\"web-search_2\"]},{\"start\":490,\"end\":556,\"text\":\"more
+        intuitive way to generate, search, and summarize information.\",\"document_ids\":[\"web-search_2\"]},{\"start\":585,\"end\":613,\"text\":\"generative
+        AI for businesses\",\"document_ids\":[\"web-search_1\"]},{\"start\":635,\"end\":718,\"text\":\"chatbots,
+        search engines, copywriting, summarization, and other AI-driven products.\",\"document_ids\":[\"web-search_1\"]},{\"start\":740,\"end\":754,\"text\":\"cloud-agnostic\",\"document_ids\":[\"web-search_1\",\"web-search_2\"]},{\"start\":766,\"end\":816,\"text\":\"deployed
+        on virtual private cloud (VPC) or on-site\",\"document_ids\":[\"web-search_2\"]},{\"start\":827,\"end\":850,\"text\":\"flexibility
+        and control\",\"document_ids\":[\"web-search_2\"]},{\"start\":884,\"end\":928,\"text\":\"significant
+        funding from prominent investors\",\"document_ids\":[\"web-search_1\",\"web-search_2\"]},{\"start\":938,\"end\":971,\"text\":\"partnerships
+        with major companies\",\"document_ids\":[\"web-search_1\",\"web-search_2\"]},{\"start\":980,\"end\":986,\"text\":\"Oracle\",\"document_ids\":[\"web-search_1\",\"web-search_2\"]},{\"start\":988,\"end\":998,\"text\":\"Salesforce\",\"document_ids\":[\"web-search_1\",\"web-search_2\"]},{\"start\":1004,\"end\":1013,\"text\":\"McKinsey.\",\"document_ids\":[\"web-search_1\"]}],\"documents\":[{\"id\":\"web-search_1\",\"snippet\":\"Cohere
+        is a Canadian multinational technology company focused on artificial intelligence
+        for the enterprise, specializing in large language models. Cohere was founded
+        in 2019 by Aidan Gomez, Ivan Zhang, and Nick Frosst, and is headquartered
+        in Toronto and San Francisco, with offices in Palo Alto and London.\\n\\nIn
+        2017, a team of researchers at Google Brain introduced the transformer machine
+        learning architecture in \\\"Attention Is All You Need,\\\" which demonstrated
+        state-of-the-art performance on a variety of natural language processing tasks.
+        In 2019, Aiden Gomez, one of its co-authors, along with Nick Frosst, another
+        researcher at Google Brain, founded Cohere with Ivan Zhang, with whom Gomez
+        had done research at FOR.ai. All of the co-founders attended University of
+        Toronto.\\n\\nGomez is the company's CEO. In December 2022, Martin Kon, the
+        former CFO of YouTube, became president and COO.\\n\\nIn November 2021, Google
+        Cloud announced that they would help power Cohere's platform using their robust
+        infrastructure, and Cloud's TPUs would be used by Cohere for the development
+        and deployment of their products.\\n\\nIn June 2022, Cohere launched Cohere
+        For AI, a nonprofit research lab and community dedicated to contributing open-source,
+        fundamental machine learning research. It is led by Sara Hooker, a former
+        research scientist at Google Brain.\\n\\nIn December 2022, Cohere released
+        a multilingual model for understanding text that would work with over 100
+        languages, to help users search for documents by meaning instead of with keywords.
+        This type of process was not previously widely available in languages other
+        than English.\\n\\nOn June 13, 2023, Oracle announced a partnership with Cohere
+        to provide generative AI services to help organizations automate end-to-end
+        business processes. As a result, Cohere's technology is integrated into Oracle's
+        business applications, including Oracle Fusion Cloud, Oracle NetSuite, and
+        Oracle industry-specific applications. On July 18, 2023, McKinsey announced
+        a collaboration with Cohere, to help organizations integrate generative AI
+        into their operations. In 2023, Cohere collaborated with software company
+        LivePerson to offer customized large language models for businesses.\\n\\nOn
+        September 12, 2023, it was announced that Cohere had become one of 15 tech
+        companies to agree to voluntary White House measures on testing, reporting,
+        and research on the risks of AI. On September 27, 2023, it was announced that
+        Cohere had also signed Canada's voluntary code of conduct for AI, to promote
+        the responsible development and management of advanced generative AI systems.\\n\\nConsidered
+        an alternative to OpenAI, Cohere is focused on generative AI for the enterprise,
+        building technology that businesses can use to deploy chatbots, search engines,
+        copywriting, summarization, and other AI-driven products. Cohere specializes
+        in large language models: AI trained to digest text from an enterprises' internal
+        data or publicly available sources like the internet to understand how to
+        process and respond to prompts with increasing sophistication.\\n\\nThe Cohere
+        platform is available through API as a managed service, through platforms
+        such as Amazon SageMaker and Google's Vertex AI. It can be used for tasks
+        such as writing copy, moderating content, classifying data, and extracting
+        information. It is cloud agnostic and not tied to a particular cloud service.\\n\\nCohere's
+        generative AI technology is embedded into several Oracle products, and its
+        chat capabilities are embedded into Salesforce products.\\n\\nOn September
+        7, 2021, Cohere announced that they had raised $40 million in Series A funding
+        led by Index Ventures; Index Ventures partner Mike Volpi also joined Cohere's
+        board. The round also included Radical Ventures, Section 32, and AI-experts
+        Geoffrey Hinton, Fei-Fei Li, Pieter Abbeel, and Raquel Urtasun.\\n\\nIn February
+        2022, Cohere announced they had raised $125 million in series B funding led
+        by Tiger Global. In June 2023, Cohere raised an additional $270 million in
+        series C funding from investors including Inovia Capital, Oracle, Salesforce,
+        and Nvidia, at a valuation of $2.2 billion.\",\"timestamp\":\"2024-04-24T05:12:39\",\"title\":\"Cohere
+        - Wikipedia\",\"url\":\"https://en.wikipedia.org/wiki/Cohere\"},{\"id\":\"web-search_4\",\"snippet\":\"Cohere
+        provides access to advanced Large Language Models and NLP tools through one
+        easy-to-use API.\\n\\nToronto, Ontario, Canada\\n\\nTotal Funding Amount \\n\\nTotal
+        Funding Amount \\n\\nRecent News \\u0026 Activity\\n\\nThe Globe and Mail
+        \u2014 Pension fund manager PSP in talks to co-lead investment in AI company
+        Cohere: report\\n\\nYahoo Finance \u2014 Tired of AI doomsday tropes, Cohere
+        CEO says his goal is technology that's 'additive to humanity'\\n\\nInvesting.com
+        \u2014 Exclusive-AI startup Cohere seeks $5 billion valuation in latest fundraising,
+        source says\\n\\nFind More Contacts for Cohere\\n\\nCEO, Co-Founder, Founder\\n\\nNon-Management,
+        Executive\\n\\nView contacts for Cohere to access new leads and connect with
+        decision-makers. View All Contacts\\n\\nEdit Details Section\\n\\nArtificial
+        Intelligence (AI)\\n\\nNatural Language Processing\\n\\nHeadquarters Regions
+        \\n\\nAidan Gomez, Ivan Zhang, Nick Frosst\\n\\nCohere is a platform that
+        gives developers and businesses access to NLP, powered by the innovative generation
+        of large language models. Cohere is used to build machines that understand
+        the world and make it safely accessible to all.\\n\\nCohere provides access
+        to affordable, easy-to-deploy large language models. Its platform gives computers
+        the\\n\\nability to read and write. Whether to better understand what customers
+        are saying or to write compelling copy that speaks to a target audience, Cohere
+        can help.\\n\\nLists Featuring This Company\\n\\nEdit Lists Featuring This
+        Company Section\\n\\nNatural Language Processing Companies With More Than
+        $1M in Revenue\\n\\n730 Number of Organizations \u2022 \\n\\n$23B Total Funding
+        Amount \u2022 \\n\\n2,730 Number of Investors\\n\\nAngel Group Funded Companies
+        (Top 10K)\\n\\n9,927 Number of Organizations \u2022 \\n\\n$792.9B Total Funding
+        Amount \u2022 \\n\\n107,150 Number of Investors\\n\\nMachine Learning Companies
+        With More Than 10 Employees\\n\\n9,754 Number of Organizations \u2022 \\n\\n$194.2B
+        Total Funding Amount \u2022 \\n\\n27,345 Number of Investors\\n\\nCompanies
+        With More Than 100 Employees (Top 10K)\\n\\n10,000 Number of Organizations
+        \u2022 \\n\\n$5T Total Funding Amount \u2022 \\n\\n88,015 Number of Investors\\n\\nFrequently
+        Asked Questions\\n\\nEdit Frequently Asked Questions Section\\n\\nCohere's
+        headquarters?\\n\\nCohere is located in\\n\\nToronto, Ontario, Canada.\\n\\n20
+        investors including\\n\\nHow much funding has\\n\\nCohere raised to date?\\n\\nWhen
+        was the last funding round for\\n\\nCohere closed its last funding round on\\n\\nCorporate
+        Round round.\\n\\nCohere's competitors? Alternatives and possible competitors
+        to\\n\\nUnlock even more features with Crunchbase Pro\\n\\nStart Your Free
+        Trial\\n\\nSubscribe to the Crunchbase Daily\\n\\nCrunchbase Enterprise\\n\\nFeatured
+        Lists and Searches\\n\\nThe Crunchbase Difference\\n\\nBrowse By: Organizations,
+        People, Events\\n\\nTerms of Service | Privacy Policy | Sitemap | \xA9 2024
+        Crunchbase Inc. All Rights Reserved.\\n\\nCookie Settings | Do Not Sell or
+        Share My Personal Info\\n\\nHeadquarters Location\\n\\nTotal number of Investments
+        made\\n\\nAccess exclusive data for free\\n\\nTotal amount raised across all
+        funding rounds\\n\\nTotal number of Crunchbase contacts associated with this
+        organization\\n\\nTotal number of employee profiles an organization has on
+        Crunchbase\\n\\nTotal number of investment firms and individual investors\\n\\nTotal
+        number of organizations similar to the given organization\\n\\nDescriptive
+        keyword for an Organization (e.g. SaaS, Android, Cloud Computing, Medical
+        Device)\\n\\nWhere the organization is headquartered (e.g. San Francisco Bay
+        Area, Silicon Valley)\\n\\nDate the Organization was founded\\n\\nFounders
+        of the organization\\n\\nOperating Status of Organization e.g. Active, Closed\\n\\nLast
+        funding round type (e.g. Seed, Series A, Private Equity)\\n\\nThe legal name
+        of the organization\\n\\nTags are labels assigned to organizations, which
+        identify their belonging to a group with that shared label\\n\\nWhether an
+        Organization is for profit or non-profit\\n\\nThis describes the type of investor
+        this organization is (e.g. Angel, Fund of Funds, Venture Capital)\\n\\nGeneral
+        contact email for the organization\\n\\nAccess Total Funding Amount for free\",\"timestamp\":\"2024-04-09T14:23:51\",\"title\":\"Cohere
+        - Crunchbase Company Profile \\u0026 Funding\",\"url\":\"https://www.crunchbase.com/organization/cohere-82b8\"},{\"id\":\"web-search_2\",\"snippet\":\"Skip
+        to main content\\n\\nSoftware Development\\n\\nToronto, Ontario 94,740 followers\\n\\nAt
+        Cohere, our mission is to build machines that understand the world, and to
+        make them safely accessible to all.\\n\\nView all 599 employees\\n\\nCohere
+        is the leading AI platform for enterprise. Our world-class AI is uniquely
+        suited to the needs of business, unlocking unprecedented ease-of-use, accessibility,
+        and data privacy. Cohere\u2019s platform is cloud-agnostic, accessible through
+        API as a managed service, and can be deployed on virtual private cloud (VPC)
+        or even on-site to meet companies where their data is, offering the highest
+        levels of flexibility and control. Founded by Google Brain alumni and a co-author
+        of the seminal Transformer research paper, Cohere is on a mission to transform
+        enterprises and their products with AI that unlocks a more intuitive way to
+        generate, search, and summarize information than ever before. We are backed
+        by group of global institutional and strategic investors including Index Ventures,
+        Oracle, NVIDIA, Salesforce Ventures, Inovia Capital, DTCP, Mirae Asset, Radical
+        Ventures, Section 32, and Tiger Global, as well as several AI luminaries,
+        including Geoffrey Hinton, Jeff Dean, Fei-Fei Li, Pieter Abbeel, and Raquel
+        Urtasun.\\n\\nExternal link for Cohere\\n\\nSoftware Development\\n\\nNatural
+        Language Processing, Machine Learning, and Artificial Intelligence\\n\\nToronto,
+        Ontario, CA Get directions\\n\\nCohere AI Global Strategic Accounts (Ex Oracle,
+        Salesforce, Microsoft, \\u0026 Samsung)\\n\\nPartner \\u0026 CTO, Inovia Capital\\n\\nEngineering
+        Leader, large-scale data systems, AI/ML in production and AI research\\n\\nSVP
+        Corporate Development \\u0026 Head of S Ventures @SentinelOne See all employees\\n\\n94,740
+        followers 1w Edited\\n\\nWe\u2019re excited to launch Command R+, a state-of-the-art
+        RAG-optimized large language model (LLM) designed to tackle enterprise-grade
+        workloads. We\u2019re also proud to announce a new collaboration with Microsoft
+        Azure where our latest models will be available first starting today and on
+        other cloud platforms in the coming weeks to help accelerate enterprise AI
+        adoption. Command R+ joins our R-series of scalable LLMs focused on balancing
+        high efficiency with unparalleled accuracy, enabling businesses to move beyond
+        proof-of-concept, and into production with AI. Our latest model excels at
+        key business-critical capabilities like advanced Retrieval Augmented Generation
+        (RAG) with citation to reduce hallucinations, multilingual coverage in 10
+        key languages to support global business operations, and Tool Use to automate
+        sophisticated business processes. We achieve this while providing the same
+        commitment to data privacy and security that we\u2019re known for. Read more:
+        https://lnkd.in/edwE3nTJ\\n\\nIntroducing Command R+: A Scalable LLM Built
+        for Business\\n\\n94,740 followers 15h\\n\\nIn the legal sector, the adoption
+        of Large Language Models (LLMs) is well underway \u2014 redefining efficiency
+        across research, document management, horizon scanning, and more. Poised to
+        exceed $45 billion by 2030, the legal tech market is turning to AI for further
+        gains. Large firms and solo practitioners alike are leveraging GenAI with
+        retrieval-augmented generation (RAG) to innovate and streamline complex processes.
+        Check out our latest article by Cohere experts Robin Gainer and Kosta Starostin.
+        It dives into the latest trends in Enterprise AI adoption within the legal
+        sector. Hint: It\u2019s about balancing innovation with caution \u2014 integrating
+        robust security measures and ensuring the accuracy of your LLM applications.
+        Enjoy! https://lnkd.in/eimkuhxV\\n\\nHow LLMs Can Boost Legal Productivity
+        (with Accuracy and Privacy)\\n\\nWe\u2019re thrilled to be included in the
+        Forbes AI 50 list for the third year in a row. Cohere remains focused on delivering
+        best-in-class AI solutions for enterprises. We purposely build our technology
+        to address top business needs like accuracy, efficiency, and data privacy
+        to help global organizations move beyond proof-of-concept and into production.
+        This includes our recent Command R/R+ model family which excels in capabilities
+        our customers need like advanced RAG, multilingual coverage, and Tool Use.
+        As well as, our industry leading Embed and Rerank models to further enhance
+        enterprise search. A huge thank you to our incredible team for all their continued
+        work and dedication! https://lnkd.in/gfUCwB7r\\n\\nWe are excited to release
+        Rerank 3: our newest foundation model purpose built to enhance enterprise
+        search and Retrieval-Augmented Generation (RAG) systems. Rerank 3 offers state-of-the-art
+        capabilities, including: - Leading search accuracy on complex data (e.g. tables,
+        JSON, code) - 4k context length to significantly improve search quality on
+        long documents - Up to 3x improvements in inference speeds compared to prior
+        models - Multilingual coverage across 100+ language With a few lines of code,
+        Rerank 3 enables businesses to bring AI understanding to their enterprise
+        search and significantly reduce the total cost of running RAG applications.
+        Read more in our blog: txt.cohere.com/rerank-3/\\n\\nIntroducing Rerank 3:
+        A New Foundation Model for Efficient Enterprise Search \\u0026 Retrieval\\n\\nGet
+        ready for Cohere Build Day \U0001F310 We\u2019re coming to a city near you,
+        with events in New York, Toronto, London, and San Francisco. We\u2019ll showcase
+        how our Command R and R+ models enable developers to build enterprise-grade
+        AI solutions! This interactive event offers: - Hands-on experience in building
+        enterprise-grade applications with the help of Cohere mentors - Insights from
+        Cohere experts on our tech and best practices for leveraging AI for your organization
+        - Share ideas and network with fellow developers Learn more and submit your
+        interest to attend now. https://lnkd.in/gcGhP_cu\\n\\nCohere reposted this\\n\\n9,478,087
+        followers 2d\\n\\nLearn how Cohere is using OCI\u2019s best-in-class AI infrastructure
+        to pursue its mission and build the future of language AI: https://lnkd.in/e_Nr_fXm
+        \u2026see more\\n\\nCohere is thrilled to be attending Google Cloud Next '24.
+        We are proud to showcase our innovative work in the field of Generative AI
+        as a valued partner. Join Dwarak Talupuru, our Machine Learning Engineer,
+        as he delivers a lightning talk highlighting the powerful capabilities of
+        Google Cloud TPUs and their impact on shaping the future of AI. On April 9,
+        from 6:00 pm to 6:30 pm PDT, Dwarak will demonstrate how Cohere has harnessed
+        the immense computational might of Google Cloud TPU V4 and v5e to train pioneering
+        generative AI models. These models are meticulously crafted to fulfill the
+        complex requirements of enterprise operations, paving the way for AI-powered
+        innovation.\\n\\nCanada is a global leader in AI technology, with some of
+        the best talent in the world. We\u2019re excited the Canadian government is
+        continuing to invest in the technology ecosystem to help advance AI innovation.
+        Cohere is really proud of our Canadian roots and we are committed to working
+        with enterprises globally and ensuring Canadian businesses are at the forefront
+        of cutting-edge AI adoption to boost productivity. With this move, Canada
+        now has the most forward-looking national compute and technology adoption
+        strategy to shape the next era of AI. We look forward to working with the
+        government to help support this transformative initiative! https://lnkd.in/eReb9CwY\\n\\nSecuring
+        Canada\u2019s AI advantage\\n\\n94,740 followers 1w Edited\\n\\nOur latest
+        Command R model family is now available on Amazon SageMaker! This collaboration
+        empowers enterprises within the vast Amazon Web Services (AWS) ecosystem to
+        move beyond proof-of-concept, and into production with our state-of-the-art
+        RAG-optimized models. By leveraging Command R and R+, businesses can unlock
+        real value and significant productivity and efficiency gains. Try our newest
+        and most powerful Command R+ model on SageMaker today: https://lnkd.in/duFumurR\\n\\nCohere
+        reposted this\\n\\n135,056 followers 1w\\n\\nAnnouncing Cohere Command R+,
+        now available on Azure! A new collaboration with Cohere and Microsoft makes
+        Azure the first cloud to offer their latest LLM, expanding on our vision to
+        offer customers more choice in the selection of state-of-the-art frontier
+        and open models. Learn more: https://msft.it/6046c0qra\\n\\nJoin now to see
+        what you are missing\\n\\nFind people you know at Cohere\\n\\nBrowse recommended
+        jobs for you\\n\\nView all updates, news, and articles Join now\\n\\nNon-profit
+        Organizations\\n\\nSoftware Development\\n\\nSoftware Development\\n\\nPalo
+        Alto, California\\n\\nSoftware Development\\n\\nSoftware Development\\n\\nSoftware
+        Development\\n\\nSan Francisco, California\\n\\nSoftware Development Show
+        more similar pages\\n\\nShow fewer similar pages\\n\\nMachine Learning Engineer
+        jobs\\n\\nProduct Designer jobs\\n\\nSoftware Engineer jobs\\n\\nProject Manager
+        jobs\\n\\nBusiness Development Specialist jobs\\n\\nEngineering Manager jobs\\n\\nAccount
+        Executive jobs\\n\\nUser Experience Designer jobs\\n\\nHuman Resources Business
+        Partner jobs\\n\\nPython Developer jobs\\n\\nFull Stack Engineer jobs\\n\\nDirector
+        of Engineering jobs\\n\\n1,629 open jobs Show more jobs like this\\n\\nShow
+        fewer jobs like this\\n\\nCohere 4 total rounds\\n\\nLast Round Corporate
+        round Aug 18, 2023\\n\\nExternal Crunchbase Link for last round of funding
+        See more info on crunchbase\\n\\nMachine Learning Engineer jobs\\n\\nProduct
+        Designer jobs\\n\\nUser Experience Designer jobs\\n\\nSoftware Engineer jobs\\n\\nTechnical
+        Recruiter jobs\\n\\nBusiness Development Specialist jobs\\n\\nSenior Technical
+        Recruiter jobs\\n\\nEngineering Manager jobs\\n\\nJunior Software Engineer
+        jobs\\n\\nDiversity and Inclusion Manager jobs\\n\\nAssociate Developer jobs\\n\\nJunior
+        Developer jobs\\n\\nContract Software Engineer jobs\\n\\nAccount Manager jobs\\n\\nGeneral
+        Counsel jobs\\n\\nAssociate Product Manager jobs\\n\\nAndroid Developer jobs\\n\\nSenior
+        Scientist jobs\\n\\nProduct Design Intern jobs\\n\\nVice President of Engineering
+        jobs\\n\\nExecutive Director jobs\\n\\nLearning Designer jobs\\n\\nFull Stack
+        Engineer jobs\\n\\nResearch Technician jobs\\n\\nMobile Application Developer
+        jobs\\n\\nMarketing Director jobs\\n\\nProduct Manager jobs\\n\\nMobile Engineer
+        jobs\\n\\nQuantitative Researcher jobs\\n\\nGeographic Information Systems
+        Analyst jobs\\n\\nUser Experience Researcher jobs\\n\\nSoftware Engineering
+        Manager jobs\\n\\nGraduate Software Engineer jobs\\n\\nInstructional Designer
+        jobs\\n\\nIndustrial Designer jobs\\n\\nEnglish Second Language Teacher jobs\\n\\nProgram
+        Manager jobs\\n\\nHuman Resources Generalist jobs\\n\\nTechnical Producer
+        jobs\\n\\nComputer Engineer jobs\\n\\nPython Developer jobs\\n\\nAssistant
+        Vice President jobs\\n\\nDelivery Manager jobs\\n\\nChief Technology Officer
+        jobs\\n\\nFrontend Developer jobs\\n\\nProduct Management Intern jobs\\n\\nSign
+        in to see who you already know at Cohere\\n\\nBy clicking Continue, you agree
+        to LinkedIn\u2019s User Agreement, Privacy Policy, and Cookie Policy.\\n\\nNew
+        to LinkedIn? Join now\\n\\nBy clicking Continue, you agree to LinkedIn\u2019s
+        User Agreement, Privacy Policy, and Cookie Policy.\\n\\nNew to LinkedIn? Join
+        now\\n\\nLinkedIn is better on the app\\n\\nDon\u2019t have the app? Get it
+        in the Microsoft Store. Open the app\",\"timestamp\":\"2024-04-13T04:37:01\",\"title\":\"Cohere
+        | LinkedIn\",\"url\":\"https://ca.linkedin.com/company/cohere-ai\"}],\"search_results\":[{\"search_query\":{\"text\":\"about
+        cohere\",\"generation_id\":\"a68ab033-d213-4bd6-974e-5d40d3f5222a\"},\"document_ids\":[\"web-search_1\",\"web-search_2\",\"web-search_4\"],\"connector\":{\"id\":\"web-search\"}}],\"search_queries\":[{\"text\":\"about
+        cohere\",\"generation_id\":\"a68ab033-d213-4bd6-974e-5d40d3f5222a\"}]}"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 17:42:37 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '36402'
+      num_tokens:
+      - '7546'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 264612a60719f60680a87c8a66442448
+      x-envoy-upstream-service-time:
+      - '19054'
+      x-trial-endpoint-call-limit:
+      - '20'
+      x-trial-endpoint-call-remaining:
+      - '19'
+    status:
+      code: 200
+      message: OK
+version: 1
