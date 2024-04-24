@@ -15,7 +15,6 @@ from typing import (
 )
 
 from cohere.types import NonStreamedChatResponse, ToolCall
-from langchain_core._api import beta
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
     CallbackManagerForLLMRun,
@@ -244,7 +243,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
         formatted_tools = _format_to_cohere_tools(tools)
         return super().bind(tools=formatted_tools, **kwargs)
 
-    @beta()
     def with_structured_output(
         self,
         schema: Union[Dict, Type[BaseModel]],
