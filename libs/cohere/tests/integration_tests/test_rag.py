@@ -18,7 +18,7 @@ from langchain_core.runnables import (
     RunnableSerializable,
 )
 
-from langchain_cohere import ChatCohere
+from langchain_cohere import ChatCohere, CohereRagRetriever
 
 
 @pytest.mark.vcr()
@@ -70,3 +70,29 @@ def test_documents_chain() -> None:
     result = chain.invoke("What color is the sky?")
     assert isinstance(result.content, str)
     assert len(result.response_metadata["documents"]) == 1
+
+
+@pytest.mark.vcr()
+def test_who_are_cohere() -> None:
+    user_query = "Who are Cohere?"
+    llm = ChatCohere()
+    retriever = CohereRagRetriever(llm=llm, connectors=[{"id": "web-search"}])
+
+    actual = retriever.get_relevant_documents(user_query)
+
+    answer = actual.pop()
+    citations = answer.metadata.get("citations")
+
+    relevant_documents = actual
+    assert len(relevant_documents) > 0
+
+    expected_text = """Cohere is a Canadian multinational technology company that provides access to advanced Large Language Models and NLP tools through an easy-to-use API. It was founded in 2019 by Aidan Gomez, Ivan Zhang, and Nick Frosst, and is headquartered in Toronto and San Francisco, with offices in Palo Alto and London. 
+
+Cohere's mission is to build machines that understand the world and make them safely accessible to all. They aim to transform enterprises and their products with AI that unlocks a more intuitive way to generate, search, and summarize information. 
+
+The company is focused on generative AI for businesses, helping them deploy chatbots, search engines, copywriting, summarization, and other AI-driven products. Cohere's platform is cloud-agnostic and can be deployed on virtual private cloud (VPC) or on-site, offering flexibility and control to its users. 
+
+They have raised significant funding from prominent investors and have partnerships with major companies such as Oracle, Salesforce, and McKinsey."""  # noqa: E501
+    assert expected_text == answer.page_content
+    assert citations is not None
+    assert len(citations) > 0
