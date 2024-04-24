@@ -15,7 +15,6 @@ from typing import (
 )
 
 from cohere.types import NonStreamedChatResponse, ToolCall
-from langchain_core._api import beta
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
     CallbackManagerForLLMRun,
