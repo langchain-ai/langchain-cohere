@@ -863,6 +863,26 @@ resolved_reference = "29282371db1fcb527610926331bb3fc872293dc1"
 subdirectory = "libs/core"
 
 [[package]]
+name = "langchain-standard-tests"
+version = "0.1.0"
+description = "Standard tests for LangChain implementations"
+optional = false
+python-versions = ">=3.8.1,<4.0"
+files = []
+develop = false
+
+[package.dependencies]
+langchain-core = "^0.1.40"
+pytest = ">=7,<9"
+
+[package.source]
+type = "git"
+url = "https://github.com/langchain-ai/langchain.git"
+reference = "HEAD"
+resolved_reference = "3f156e0ece3cb8acb50dfe8013a581892a8d9f63"
+subdirectory = "libs/standard-tests"
+
+[[package]]
 name = "langchain-text-splitters"
 version = "0.0.1"
 description = "LangChain text splitting utilities"
@@ -2153,4 +2173,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "723e26767b845b66bc709f9f6e3524ca7c10395bfd86b6d429b76225cf6d7120"
+content-hash = "cb03994fa7aabc644bfe27ff9fb09ee254cf1193844c7ef4680563a4b6f1ea27"
