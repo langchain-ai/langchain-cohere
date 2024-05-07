@@ -410,8 +410,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
         if hasattr(response, "token_count"):
             generation_info["token_count"] = response.token_count
         elif hasattr(response, "meta") and response.meta is not None:
+            # populate tokens:
             if hasattr(response.meta, "tokens") and response.meta.tokens is not None:
                 generation_info["token_count"] = response.meta.tokens.dict()
+            # populate billed_units:
+            if (
+                hasattr(response.meta, "billed_units")
+                and response.meta.billed_units is not None
+            ):
+                generation_info["billed_units"] = response.meta.billed_units.dict()
         return generation_info
 
     def _generate(
@@ -467,7 +474,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         request = get_cohere_chat_request(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-        response = self.client.chat(**request)
+        response = await self.async_client.chat(**request)
 
         generation_info = self._get_generation_info(response)
         if "tool_calls" in generation_info:
