@@ -2,10 +2,10 @@ import json
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
-    ChatRequestToolResultsItem,
     Tool,
     ToolCall,
     ToolParameterDefinitionsValue,
+    ToolResult,
 )
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.language_models import BaseLanguageModel
@@ -85,7 +85,7 @@ def _format_to_cohere_tools_messages(
                 # tool_input is a string, last ditch attempt at having something useful.
                 tool_call_parameters = {"input": agent_action.tool_input}
         tool_results.append(
-            ChatRequestToolResultsItem(
+            ToolResult(
                 call=ToolCall(
                     name=agent_action.tool,
                     parameters=tool_call_parameters,
