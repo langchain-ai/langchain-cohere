@@ -115,8 +115,7 @@ def _convert_to_cohere_tool(
                     if "description" in param_definition
                     else "",
                     type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get(
-                            "type"), param_definition.get("type")
+                        param_definition.get("type"), param_definition.get("type")
                     ),
                     required="default" not in param_definition,
                 )
@@ -135,8 +134,7 @@ def _convert_to_cohere_tool(
                 param_name: ToolParameterDefinitionsValue(
                     description=param_definition.get("description"),
                     type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get(
-                            "type"), param_definition.get("type")
+                        param_definition.get("type"), param_definition.get("type")
                     ),
                     required="default" not in param_definition,
                 )
@@ -158,8 +156,7 @@ def _convert_to_cohere_tool(
                 param_name: ToolParameterDefinitionsValue(
                     description=param_definition.get("description"),
                     type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get(
-                            "type"), param_definition.get("type")
+                        param_definition.get("type"), param_definition.get("type")
                     ),
                     required=param_name in parameters.get("required", []),
                 )
