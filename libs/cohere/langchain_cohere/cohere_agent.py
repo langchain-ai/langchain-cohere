@@ -2,7 +2,7 @@ import json
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
-    ChatRequestToolResultsItem,
+    ToolResult,
     Tool,
     ToolCall,
     ToolParameterDefinitionsValue,
@@ -85,7 +85,7 @@ def _format_to_cohere_tools_messages(
                 # tool_input is a string, last ditch attempt at having something useful.
                 tool_call_parameters = {"input": agent_action.tool_input}
         tool_results.append(
-            ChatRequestToolResultsItem(
+            ToolResult(
                 call=ToolCall(
                     name=agent_action.tool,
                     parameters=tool_call_parameters,
@@ -115,7 +115,8 @@ def _convert_to_cohere_tool(
                     if "description" in param_definition
                     else "",
                     type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get("type"), param_definition.get("type")
+                        param_definition.get(
+                            "type"), param_definition.get("type")
                     ),
                     required="default" not in param_definition,
                 )
@@ -134,7 +135,8 @@ def _convert_to_cohere_tool(
                 param_name: ToolParameterDefinitionsValue(
                     description=param_definition.get("description"),
                     type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get("type"), param_definition.get("type")
+                        param_definition.get(
+                            "type"), param_definition.get("type")
                     ),
                     required="default" not in param_definition,
                 )
@@ -156,7 +158,8 @@ def _convert_to_cohere_tool(
                 param_name: ToolParameterDefinitionsValue(
                     description=param_definition.get("description"),
                     type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get("type"), param_definition.get("type")
+                        param_definition.get(
+                            "type"), param_definition.get("type")
                     ),
                     required=param_name in parameters.get("required", []),
                 )
