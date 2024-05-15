@@ -2,10 +2,10 @@ import json
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
-    ToolResult,
     Tool,
     ToolCall,
     ToolParameterDefinitionsValue,
+    ToolResult,
 )
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.language_models import BaseLanguageModel
