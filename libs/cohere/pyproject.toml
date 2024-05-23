@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.1.5"
+version = "0.1.6"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
@@ -13,7 +13,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
 langchain-core = ">=0.1.42,<0.3"
-cohere = ">=5.5,<6.0"
+cohere = ">=5.5.3,<6.0"
 
 [tool.poetry.group.test]
 optional = true
