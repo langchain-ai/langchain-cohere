@@ -310,7 +310,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             stream = self.client.chat(**request, stream=True)
 
         for data in stream:
-            if data.event_type == "text-generation":
+            if data.event_type in {"stream-start", "text-generation"}:
                 delta = data.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 if run_manager:
