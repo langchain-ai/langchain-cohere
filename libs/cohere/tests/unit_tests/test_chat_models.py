@@ -1,10 +1,13 @@
 """Test chat model integration."""
+import os
 import typing
+from typing import List, Literal, Optional
 from unittest.mock import patch
 
 import pytest
 from cohere.types import NonStreamedChatResponse, ToolCall
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
+from langchain_core.pydantic_v1 import BaseModel, ValidationError
 
 from langchain_cohere.chat_models import ChatCohere, _messages_to_cohere_tool_results
 
@@ -157,3 +160,34 @@ def test_messages_to_cohere_tool_results() -> None:
     messages = [human_message, ai_message, another_tool_message]
     results = _messages_to_cohere_tool_results(messages)
     assert results == expected
+
+
+@patch.dict(os.environ, {"COHERE_API_KEY": "test"})
+def test_standard_params() -> None:
+    class ExpectedParams(BaseModel):
+        ls_provider: str
+        ls_model_name: str
+        ls_model_type: Literal["chat"]
+        ls_temperature: Optional[float]
+        ls_max_tokens: Optional[int]
+        ls_stop: Optional[List[str]]
+
+    # Test with None as ChatCohere.model
+    with patch.object(ChatCohere, "_get_default_model", return_value="test_model"):
+        model = ChatCohere()
+        ls_params = model._get_ls_params()
+    try:
+        ExpectedParams(**ls_params)
+    except ValidationError as e:
+        pytest.fail(f"Validation error: {e}")
+    assert ls_params["ls_model_name"] == "test_model"
+
+    # Test optional params
+    model = ChatCohere(model="command-r", stop=["test"], temperature=0.33)
+    ls_params = model._get_ls_params()
+    try:
+        ExpectedParams(**ls_params)
+    except ValidationError as e:
+        pytest.fail(f"Validation error: {e}")
+    assert ls_params["ls_stop"] == ["test"]
+    assert ls_params["ls_temperature"] == 0.33
