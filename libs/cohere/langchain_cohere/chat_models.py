@@ -497,17 +497,17 @@ class ChatCohere(BaseChatModel, BaseCohere):
             raise Exception("invalid cohere list models response")
         return response.models[0].name
 
+    @property
+    def model_name(self) -> str:
+        if self.model is not None:
+            return self.model
+        if self._default_model_name is None:
+            self._default_model_name = self._get_default_model()
+        return self._default_model_name
+
     def get_num_tokens(self, text: str) -> int:
         """Calculate number of tokens."""
-        model: str
-        if self.model is not None:
-            model = self.model
-        elif self._default_model_name is not None:
-            model = self._default_model_name
-        else:
-            model = self._get_default_model()
-            self._default_model_name = model
-
+        model = self.model_name
         return len(self.client.tokenize(text=text, model=model).tokens)
 
 
