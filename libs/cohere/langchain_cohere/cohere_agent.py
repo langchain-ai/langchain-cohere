@@ -31,9 +31,9 @@ from langchain_cohere.utils import (
 @deprecated(
     since="0.1.7",
     removal="",
-    alternative="Use the 'tool calling agent' or 'Langgraph agent' with the ChatCohere class instead."
-    "See https://docs.cohere.com/docs/cohere-and-langchain"
-    "for more information.",
+    alternative="""Use the 'tool calling agent' 
+    or 'Langgraph agent' with the ChatCohere class instead.
+    See https://docs.cohere.com/docs/cohere-and-langchain for more information.""",
 )
 def create_cohere_tools_agent(
     llm: BaseLanguageModel,

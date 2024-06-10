@@ -192,7 +192,7 @@ def test_messages_to_cohere_tool_results() -> None:
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
-                    content="I will use the magic_function tool to answer the question.",
+                    content="I will use the magic_function tool to answer the question.",  # noqa: E501
                     additional_kwargs={
                         "documents": None,
                         "citations": None,
@@ -294,7 +294,7 @@ def test_messages_to_cohere_tool_results() -> None:
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
-                    content="I will use the magic_function tool to answer the question.",
+                    content="I will use the magic_function tool to answer the question.",  # noqa: E501
                     additional_kwargs={
                         "documents": None,
                         "citations": None,
@@ -353,7 +353,7 @@ def test_messages_to_cohere_tool_results() -> None:
                     {"role": "User", "message": "what is magic_function(12) ?"},
                     {
                         "role": "Chatbot",
-                        "message": "I will use the magic_function tool to answer the question.",
+                        "message": "I will use the magic_function tool to answer the question.",  # noqa: E501
                         "tool_calls": [
                             {
                                 "name": "magic_function",

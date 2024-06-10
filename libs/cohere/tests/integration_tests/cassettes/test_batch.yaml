@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"message": "I''m not Pickle Rick", "stream": false, "chat_history": []}'
+    body: '{"message": "I''m not Pickle Rick", "chat_history": [], "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -13,7 +13,7 @@ interactions:
       content-type:
       - application/json
       host:
-      - api.cohere.ai
+      - api.cohere.com
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
@@ -23,44 +23,37 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.1.7
+      - 5.5.6
     method: POST
-    uri: https://api.cohere.ai/v1/chat
+    uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"response_id":"b9d8c6d6-8932-4ae0-bda0-1c0f87648119","text":"I see
-        that you are referencing the popular animated series, Rick and Morty. In the
-        episode \"Pickle Rick\", the main character Rick Sanchez turns himself into
-        a pickle to avoid family therapy. It''s a memorable and humorous episode that
-        has become a part of popular culture. \n\nWould you like to discuss more about
-        Rick and Morty or perhaps some of your favorite episodes?","generation_id":"bcf2ba15-b593-4840-8fc2-6393fcacf228","chat_history":[{"role":"USER","message":"I''m
-        not Pickle Rick"},{"role":"CHATBOT","message":"I see that you are referencing
-        the popular animated series, Rick and Morty. In the episode \"Pickle Rick\",
-        the main character Rick Sanchez turns himself into a pickle to avoid family
-        therapy. It''s a memorable and humorous episode that has become a part of
-        popular culture. \n\nWould you like to discuss more about Rick and Morty or
-        perhaps some of your favorite episodes?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":5,"output_tokens":76},"tokens":{"input_tokens":71,"output_tokens":76}}}'
+      string: '{"response_id":"e0fcabb6-8162-4c71-bf66-c4720714c651","text":"Oh, I
+        see. Well, it''s nice to meet you anyway! Is there anything else I can help
+        you with?","generation_id":"e33bad3d-d1db-4ae7-93b6-19bbd064f1d7","chat_history":[{"role":"USER","message":"I''m
+        not Pickle Rick"},{"role":"CHATBOT","message":"Oh, I see. Well, it''s nice
+        to meet you anyway! Is there anything else I can help you with?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":5,"output_tokens":25},"tokens":{"input_tokens":71,"output_tokens":25}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '1127'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '563'
       content-type:
       - application/json
       date:
-      - Mon, 15 Apr 2024 10:57:24 GMT
+      - Mon, 10 Jun 2024 09:21:34 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '434'
+      - '433'
       num_tokens:
-      - '81'
+      - '30'
       pragma:
       - no-cache
       server:
@@ -70,14 +63,14 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - fd8bdcfef6e49e0191153f81cbaffd8c
+      - 42cfb875b27df49e323be991ed43a804
       x-envoy-upstream-service-time:
-      - '2022'
+      - '652'
     status:
       code: 200
       message: OK
 - request:
-    body: '{"message": "I''m Pickle Rick", "stream": false, "chat_history": []}'
+    body: '{"message": "I''m Pickle Rick", "chat_history": [], "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -90,7 +83,7 @@ interactions:
       content-type:
       - application/json
       host:
-      - api.cohere.ai
+      - api.cohere.com
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
@@ -100,44 +93,39 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.1.7
+      - 5.5.6
     method: POST
-    uri: https://api.cohere.ai/v1/chat
+    uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"response_id":"b2147fa1-48a9-4544-96e1-7be6c6889e2c","text":"You seem
-        to be referencing the popular animated series, \"Rick and Morty.\" In the
-        show, there is an episode where the main character, Rick Sanchez, turns himself
-        into a pickle to avoid family therapy. He then embarks on a dangerous adventure
-        as \"Pickle Rick.\" \n\nWould you like to discuss more about the show or the
-        Pickle Rick phenomenon? It''s quite an iconic moment in the series!","generation_id":"0658e883-d6f7-4a8a-80e0-534ee0f7b7ec","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"You seem to be referencing the
-        popular animated series, \"Rick and Morty.\" In the show, there is an episode
-        where the main character, Rick Sanchez, turns himself into a pickle to avoid
-        family therapy. He then embarks on a dangerous adventure as \"Pickle Rick.\"
-        \n\nWould you like to discuss more about the show or the Pickle Rick phenomenon?
-        It''s quite an iconic moment in the series!"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":83},"tokens":{"input_tokens":70,"output_tokens":83}}}'
+      string: '{"response_id":"3ac17913-a2e6-425d-8cf7-286189db916c","text":"You are
+        not Pickle Rick. You are Coral, an AI-assistant chatbot trained to assist
+        users by providing fact-based responses. It is Monday, June 10, 2024. How
+        can I help you today?","generation_id":"1e8a3b0a-41c1-4d7a-ac0e-46bbfe21e1bb","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"You are not Pickle Rick. You are
+        Coral, an AI-assistant chatbot trained to assist users by providing fact-based
+        responses. It is Monday, June 10, 2024. How can I help you today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":48},"tokens":{"input_tokens":70,"output_tokens":48}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '1151'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '733'
       content-type:
       - application/json
       date:
-      - Mon, 15 Apr 2024 10:57:25 GMT
+      - Mon, 10 Jun 2024 09:21:34 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '430'
+      - '429'
       num_tokens:
-      - '87'
+      - '52'
       pragma:
       - no-cache
       server:
@@ -147,9 +135,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 7614467b22d1c1e1d0b68e8b606141aa
+      - faa25d1991123d6fbda701516ccba9cf
       x-envoy-upstream-service-time:
-      - '2249'
+      - '1072'
     status:
       code: 200
       message: OK

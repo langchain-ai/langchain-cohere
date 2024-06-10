@@ -265,10 +265,10 @@ def get_cohere_chat_request(
 
     chat_history = []
     temp_tool_results = []
-    # if force_single_step is set to False, then only message is empty in request if there is tool call
+    # if force_single_step is set to False, then only message is empty in request if there is tool call  # noqa: E501
     if not kwargs.get("force_single_step"):
         for i, message in enumerate(messages[:-1]):
-            # If there are multiple tool messages, then we need to aggregate them into one single tool message to pass into chat history
+            # If there are multiple tool messages, then we need to aggregate them into one single tool message to pass into chat history  # noqa: E501
             if isinstance(message, ToolMessage):
                 temp_tool_results += _message_to_cohere_tool_results(messages, i)
 
@@ -287,12 +287,12 @@ def get_cohere_chat_request(
 
     else:
         message_str = ""
-        # if force_single_step is set to True, then message is the last human message in the conversation
+        # if force_single_step is set to True, then message is the last human message in the conversation  # noqa: E501
         for message in messages[:-1]:
             if isinstance(message, AIMessage) and message.tool_calls:
                 continue
 
-            # If there are multiple tool messages, then we need to aggregate them into one single tool message to pass into chat history
+            # If there are multiple tool messages, then we need to aggregate them into one single tool message to pass into chat history  # noqa: E501
             if isinstance(message, ToolMessage):
                 temp_tool_results += _message_to_cohere_tool_results(messages, i)
 

@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"message": "I''m Pickle Rick", "stream": true, "chat_history": []}'
+    body: '{"message": "I''m Pickle Rick", "chat_history": [], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -13,7 +13,7 @@ interactions:
       content-type:
       - application/json
       host:
-      - api.cohere.ai
+      - api.cohere.com
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
@@ -23,18 +23,22 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.1.7
+      - 5.5.6
     method: POST
-    uri: https://api.cohere.ai/v1/chat
+    uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"321378ac-6d51-4b8f-933e-381b42b702f9"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"1f61497a-9c53-47b1-96f4-e4fd5c9a0947"}
 
         {"is_finished":false,"event_type":"text-generation","text":"Oh"}
 
         {"is_finished":false,"event_type":"text-generation","text":","}
 
         {"is_finished":false,"event_type":"text-generation","text":" hello"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" there"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
 
         {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
 
@@ -46,15 +50,21 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":"''s"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" a"}
+        {"is_finished":false,"event_type":"text-generation","text":" an"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" pleasure"}
+        {"is_finished":false,"event_type":"text-generation","text":" interesting"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" to"}
+        {"is_finished":false,"event_type":"text-generation","text":" choice"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" meet"}
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" form"}
 
         {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''ve"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" taken"}
 
         {"is_finished":false,"event_type":"text-generation","text":"."}
 
@@ -72,17 +82,16 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":"?"}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"3be82415-0d1c-4316-8616-91340adecf24","text":"Oh,
-        hello Pickle Rick! It''s a pleasure to meet you. How can I help you today?","generation_id":"321378ac-6d51-4b8f-933e-381b42b702f9","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"Oh, hello Pickle Rick! It''s a
-        pleasure to meet you. How can I help you today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":21},"tokens":{"input_tokens":70,"output_tokens":21}}},"finish_reason":"COMPLETE"}
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"d85e5d97-641c-432f-9874-93444b249ea8","text":"Oh,
+        hello there, Pickle Rick! It''s an interesting choice of form you''ve taken.
+        How can I help you today?","generation_id":"1f61497a-9c53-47b1-96f4-e4fd5c9a0947","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"Oh, hello there, Pickle Rick! It''s
+        an interesting choice of form you''ve taken. How can I help you today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":26},"tokens":{"input_tokens":70,"output_tokens":26}}},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -92,21 +101,23 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Mon, 15 Apr 2024 10:57:18 GMT
+      - Mon, 10 Jun 2024 09:21:28 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
+      transfer-encoding:
+      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 5ae282e4ed9a1a6a2a404793cb9959eb
+      - 6d52e013a17e2ccdcdf7fe8706c34dbb
       x-envoy-upstream-service-time:
-      - '11'
+      - '35'
     status:
       code: 200
       message: OK
