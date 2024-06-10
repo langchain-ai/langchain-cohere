@@ -1,6 +1,5 @@
 """Test chat model integration."""
 import typing
-from typing import List, Literal, Optional
 from unittest.mock import patch
 
 import pytest
