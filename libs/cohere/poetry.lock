@@ -849,7 +849,7 @@ tenacity = "^8.1.0"
 type = "git"
 url = "https://github.com/langchain-ai/langchain.git"
 reference = "HEAD"
-resolved_reference = "8f019e91d7206c830f6a32678a9d4497b12c66ec"
+resolved_reference = "c1fced926923f7cf9bb982e3d0c610aa9dff6f35"
 subdirectory = "libs/langchain"
 
 [[package]]
@@ -873,7 +873,7 @@ tenacity = "^8.1.0"
 type = "git"
 url = "https://github.com/langchain-ai/langchain.git"
 reference = "HEAD"
-resolved_reference = "8f019e91d7206c830f6a32678a9d4497b12c66ec"
+resolved_reference = "c1fced926923f7cf9bb982e3d0c610aa9dff6f35"
 subdirectory = "libs/core"
 
 [[package]]
@@ -892,8 +892,26 @@ langchain-core = "^0.2.0"
 type = "git"
 url = "https://github.com/langchain-ai/langchain.git"
 reference = "HEAD"
-resolved_reference = "8f019e91d7206c830f6a32678a9d4497b12c66ec"
+resolved_reference = "c1fced926923f7cf9bb982e3d0c610aa9dff6f35"
 subdirectory = "libs/text-splitters"
+
+[[package]]
+name = "langgraph"
+version = "0.0.66"
+description = "langgraph"
+optional = false
+python-versions = ">=3.9.0,<4.0"
+files = []
+develop = false
+
+[package.dependencies]
+langchain-core = ">=0.2,<0.3"
+
+[package.source]
+type = "git"
+url = "https://github.com/langchain-ai/langgraph.git"
+reference = "HEAD"
+resolved_reference = "6cc375dc6adffebe3fffe1be40b4d47d50bb112e"
 
 [[package]]
 name = "langsmith"
@@ -1919,6 +1937,23 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "vcrpy"
+version = "4.3.0"
+description = "Automatically mock your HTTP interactions to simplify and speed up testing"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "vcrpy-4.3.0-py2.py3-none-any.whl", hash = "sha256:8fbd4be412e8a7f35f623dd61034e6380a1c8dbd0edf6e87277a3289f6e98093"},
+    {file = "vcrpy-4.3.0.tar.gz", hash = "sha256:49c270ce67e826dba027d83e20d25b67a5885487697e97bca6dbdf53d750a0ac"},
+]
+
+[package.dependencies]
+PyYAML = "*"
+six = ">=1.5"
+wrapt = "*"
+yarl = "*"
+
+[[package]]
+name = "vcrpy"
 version = "6.0.1"
 description = "Automatically mock your HTTP interactions to simplify and speed up testing"
 optional = false
@@ -2165,4 +2200,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "09a18b6681478d705553ae00fa0ef7d18772e33e550338bc40c501108adcfcfa"
+content-hash = "0a484048a9844f7bfe76b87dd0dd1ffcf1326fc93ac3e5f2da8d8060b78263fe"

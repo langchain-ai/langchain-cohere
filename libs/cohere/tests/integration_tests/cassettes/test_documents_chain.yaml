@@ -1,8 +1,8 @@
 interactions:
 - request:
-    body: '{"message": "What color is the sky?", "stream": false, "chat_history":
-      [], "prompt_truncation": "AUTO", "documents": [{"text": "The sky is green.",
-      "id": "doc-0"}]}'
+    body: '{"message": "What color is the sky?", "chat_history": [], "prompt_truncation":
+      "AUTO", "documents": [{"text": "The sky is green.", "id": "doc-0"}], "stream":
+      false}'
     headers:
       accept:
       - '*/*'
@@ -15,7 +15,7 @@ interactions:
       content-type:
       - application/json
       host:
-      - api.cohere.ai
+      - api.cohere.com
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
@@ -25,30 +25,30 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.1.7
+      - 5.5.6
     method: POST
-    uri: https://api.cohere.ai/v1/chat
+    uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"response_id":"00772dfd-9230-4033-b54e-ff2396daddec","text":"The sky
-        is green.","generation_id":"04d94ebd-6002-4670-96a9-623440f43509","chat_history":[{"role":"USER","message":"What
+      string: '{"response_id":"05d84473-cbb0-4ac7-94b4-60283d96e7d0","text":"The sky
+        is green.","generation_id":"bbd4e366-3190-42b5-b3cb-4e806680acee","chat_history":[{"role":"USER","message":"What
         color is the sky?"},{"role":"CHATBOT","message":"The sky is green."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":13,"output_tokens":10},"tokens":{"input_tokens":690,"output_tokens":10}},"citations":[{"start":11,"end":17,"text":"green.","document_ids":["doc-0"]}],"documents":[{"id":"doc-0","text":"The
-        sky is green."}],"search_queries":[{"text":"what color is the sky","generation_id":"4073b0c9-6795-4926-b398-e50cf555f495"}]}'
+        sky is green."}],"search_queries":[{"text":"what color is the sky","generation_id":"8f0259f5-75c8-461d-922f-ee1525bb3b92"}]}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '662'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '662'
       content-type:
       - application/json
       date:
-      - Mon, 15 Apr 2024 10:57:44 GMT
+      - Mon, 10 Jun 2024 09:22:41 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -64,9 +64,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 5942e9e5aa08fa34333248bc34e8af06
+      - b68e6bd9c29d055210ee1cb68409b6a6
       x-envoy-upstream-service-time:
-      - '1510'
+      - '1119'
     status:
       code: 200
       message: OK

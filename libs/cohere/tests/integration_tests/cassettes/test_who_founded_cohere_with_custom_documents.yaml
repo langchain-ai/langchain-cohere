@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: '{"message": "who is the founder of cohere?", "chat_history": [], "prompt_truncation":
+      "AUTO", "documents": [{"text": "Langchain supports cohere RAG!", "id": "doc-0"},
+      {"text": "The sky is a mixture of brown and purple!", "id": "doc-1"}, {"text":
+      "Barack Obama is the founder of Cohere!", "id": "doc-2"}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '321'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"response_id":"98955e6a-5030-4e6f-9531-c512b531be5e","text":"Barack
+        Obama is the founder of Cohere.","generation_id":"c681dc4c-8ec3-432a-806f-f378976bde92","chat_history":[{"role":"USER","message":"who
+        is the founder of cohere?"},{"role":"CHATBOT","message":"Barack Obama is the
+        founder of Cohere."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":41,"output_tokens":13},"tokens":{"input_tokens":732,"output_tokens":13}},"citations":[{"start":0,"end":12,"text":"Barack
+        Obama","document_ids":["doc-2"]}],"documents":[{"id":"doc-2","text":"Barack
+        Obama is the founder of Cohere!"}],"search_queries":[{"text":"cohere founder","generation_id":"570cae14-72fd-4ce7-9dad-b33d81043658"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '730'
+      content-type:
+      - application/json
+      date:
+      - Mon, 10 Jun 2024 09:22:52 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '3668'
+      num_tokens:
+      - '54'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - ce6670d1b05e3256cda4bf1e8d740178
+      x-envoy-upstream-service-time:
+      - '1712'
+    status:
+      code: 200
+      message: OK
+version: 1

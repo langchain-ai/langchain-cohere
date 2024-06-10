@@ -12,8 +12,8 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-langchain-core = ">=0.2.0,<0.3"
-cohere = ">=5.5.3,<6.0"
+langchain-core = ">=0.1.42,<0.3"
+cohere = ">=5.5.6,<6.0"
 
 [tool.poetry.group.test]
 optional = true
@@ -40,6 +40,7 @@ optional = true
 [tool.poetry.group.test_integration.dependencies]
 langchain = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/langchain" }
 langchain-text-splitters = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/text-splitters" }
+langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", markers="python_version >= '3.9.0' and python_version < '4.0'" }
 pytest-vcr = "^1.0.2"
 
 [tool.poetry.group.lint]
@@ -57,6 +58,7 @@ optional = true
 
 [tool.poetry.group.dev.dependencies]
 langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
+langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", markers="python_version >= '3.9.0' and python_version < '4.0'" }
 
 [tool.ruff]
 select = [
@@ -64,7 +66,6 @@ select = [
   "F", # pyflakes
   "I", # isort
 ]
-ignore = ["E501"]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]

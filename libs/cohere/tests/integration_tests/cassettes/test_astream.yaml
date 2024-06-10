@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"message": "I''m Pickle Rick", "stream": true, "chat_history": []}'
+    body: '{"message": "I''m Pickle Rick", "chat_history": [], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -13,7 +13,7 @@ interactions:
       content-type:
       - application/json
       host:
-      - api.cohere.ai
+      - api.cohere.com
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
@@ -23,66 +23,67 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.1.7
+      - 5.5.6
     method: POST
-    uri: https://api.cohere.ai/v1/chat
+    uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"2bac65dd-fca5-4f85-96c8-789a2e7bd831"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"8e043b1e-87e7-42ce-92b9-a10d229d0e3a"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"Oh"}
+        {"is_finished":false,"event_type":"text-generation","text":"I"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''m"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" sorry"}
 
         {"is_finished":false,"event_type":"text-generation","text":","}
 
-        {"is_finished":false,"event_type":"text-generation","text":" hello"}
+        {"is_finished":false,"event_type":"text-generation","text":" but"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
+        {"is_finished":false,"event_type":"text-generation","text":" I"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+        {"is_finished":false,"event_type":"text-generation","text":" don"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"!"}
+        {"is_finished":false,"event_type":"text-generation","text":"''t"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" It"}
+        {"is_finished":false,"event_type":"text-generation","text":" understand"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" a"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" pleasure"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" to"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" meet"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
+        {"is_finished":false,"event_type":"text-generation","text":" reference"}
 
         {"is_finished":false,"event_type":"text-generation","text":"."}
 
-        {"is_finished":false,"event_type":"text-generation","text":" How"}
+        {"is_finished":false,"event_type":"text-generation","text":" Is"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" can"}
+        {"is_finished":false,"event_type":"text-generation","text":" there"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" anything"}
 
         {"is_finished":false,"event_type":"text-generation","text":" I"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" can"}
 
         {"is_finished":false,"event_type":"text-generation","text":" help"}
 
         {"is_finished":false,"event_type":"text-generation","text":" you"}
 
+        {"is_finished":false,"event_type":"text-generation","text":" with"}
+
         {"is_finished":false,"event_type":"text-generation","text":" today"}
 
         {"is_finished":false,"event_type":"text-generation","text":"?"}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"d0f19926-909e-44bb-b6bf-1166f34c8192","text":"Oh,
-        hello Pickle Rick! It''s a pleasure to meet you. How can I help you today?","generation_id":"2bac65dd-fca5-4f85-96c8-789a2e7bd831","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"Oh, hello Pickle Rick! It''s a
-        pleasure to meet you. How can I help you today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":21},"tokens":{"input_tokens":70,"output_tokens":21}}},"finish_reason":"COMPLETE"}
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"deee60df-7483-4df8-92e4-256572a029dc","text":"I''m
+        sorry, but I don''t understand the reference. Is there anything I can help
+        you with today?","generation_id":"8e043b1e-87e7-42ce-92b9-a10d229d0e3a","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"I''m sorry, but I don''t understand
+        the reference. Is there anything I can help you with today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":22},"tokens":{"input_tokens":70,"output_tokens":22}}},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -92,21 +93,23 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Mon, 15 Apr 2024 10:59:03 GMT
+      - Mon, 10 Jun 2024 09:21:29 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
+      transfer-encoding:
+      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 7589a896be64eb2d2633e93b973a8360
+      - a25601333504580a5522872531ad8de4
       x-envoy-upstream-service-time:
-      - '10'
+      - '81'
     status:
       code: 200
       message: OK

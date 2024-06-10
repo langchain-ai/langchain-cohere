@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"text": "hello, world", "model": "command-r"}'
+    body: ''
     headers:
       accept:
       - '*/*'
@@ -8,12 +8,8 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
-      content-length:
-      - '46'
-      content-type:
-      - application/json
       host:
-      - api.cohere.ai
+      - api.cohere.com
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
@@ -23,17 +19,17 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.1.7
-    method: POST
-    uri: https://api.cohere.ai/v1/tokenize
+      - 5.5.6
+    method: GET
+    uri: https://api.cohere.com/v1/models/command-r
   response:
     body:
-      string: '{"tokens":[34313,19,3845],"token_strings":["hello",","," world"],"meta":{"api_version":{"version":"1"}}}'
+      string: '{"name":"command-r","endpoints":["generate","chat","summarize"],"finetuned":false,"context_length":128000,"tokenizer_url":"https://storage.googleapis.com/cohere-public/tokenizers/command-r.json","default_endpoints":[]}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '104'
+      - '218'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -43,7 +39,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 16 Apr 2024 21:00:54 GMT
+      - Mon, 10 Jun 2024 09:30:32 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -55,9 +51,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 4ecc87564e2b146df06e8646d5164f9f
+      - 29b0b293c210ad414d1ac45de2e1b75b
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '25'
+      - '10'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '39'
     status:
       code: 200
       message: OK

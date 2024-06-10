@@ -1,0 +1,503 @@
+interactions:
+- request:
+    body: '{"message": "Find Barack Obama''s age and use python tool to find the square
+      root of his age", "chat_history": [{"role": "System", "message": "You are a
+      helpful assistant. Respond only in English."}], "tools": [{"name": "web_search",
+      "description": "Search the web to the answer to the question with a query search
+      string.", "parameter_definitions": {"query": {"description": "", "type": "str",
+      "required": true}}}, {"name": "python_interpeter_temp", "description": "Executes
+      python code and returns the result.\n        The code runs in a static sandbox
+      without interactive mode,\n        so print output or save output to a file.",
+      "parameter_definitions": {"code": {"description": "", "type": "str", "required":
+      true}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '740'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"response_id":"3c5bf16d-51b5-4d9d-b96a-d77a795973c8","text":"First
+        I will find Barack Obama''s age, then I will use the Python tool to find the
+        square root of his age.","generation_id":"66b80e29-b713-4a0f-bb3b-1bab7a917d33","chat_history":[{"role":"SYSTEM","message":"You
+        are a helpful assistant. Respond only in English."},{"role":"USER","message":"Find
+        Barack Obama''s age and use python tool to find the square root of his age"},{"role":"CHATBOT","message":"First
+        I will find Barack Obama''s age, then I will use the Python tool to find the
+        square root of his age.","tool_calls":[{"name":"web_search","parameters":{"query":"Barack
+        Obama''s age"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":86,"output_tokens":37},"tokens":{"input_tokens":1010,"output_tokens":37}},"tool_calls":[{"name":"web_search","parameters":{"query":"Barack
+        Obama''s age"}}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '901'
+      content-type:
+      - application/json
+      date:
+      - Mon, 10 Jun 2024 09:22:04 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '4838'
+      num_tokens:
+      - '123'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 552141722412e0db0f07f05f7a7c476b
+      x-envoy-upstream-service-time:
+      - '1445'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "", "chat_history": [{"role": "System", "message": "You are
+      a helpful assistant. Respond only in English."}, {"role": "User", "message":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}, {"role": "Chatbot", "message": "First I will find Barack Obama''s age,
+      then I will use the Python tool to find the square root of his age.", "tool_calls":
+      [{"name": "web_search", "args": {"query": "Barack Obama''s age"}, "id": "ff5acf7cf211496c87c65cf1667b347f"}]}],
+      "tools": [{"name": "web_search", "description": "Search the web to the answer
+      to the question with a query search string.", "parameter_definitions": {"query":
+      {"description": "", "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.", "parameter_definitions": {"code": {"description":
+      "", "type": "str", "required": true}}}], "tool_results": [{"call": {"name":
+      "web_search", "parameters": {"query": "Barack Obama''s age"}}, "outputs": [{"output":
+      "60"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '1167'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"response_id":"760f9beb-8d15-41bc-83a4-a6ab3b54fbe8","text":"Barack
+        Obama is 60 years old. Now I will use the Python tool to find the square root
+        of his age.","generation_id":"9e853fef-1157-40ef-9958-1aa9c327fcce","chat_history":[{"role":"SYSTEM","message":"You
+        are a helpful assistant. Respond only in English."},{"role":"USER","message":"Find
+        Barack Obama''s age and use python tool to find the square root of his age"},{"role":"CHATBOT","message":"First
+        I will find Barack Obama''s age, then I will use the Python tool to find the
+        square root of his age.","tool_calls":[{"name":"web_search","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"web_search","parameters":{"query":"Barack
+        Obama''s age"}},"outputs":[{"output":"60"}]}]},{"role":"CHATBOT","message":"Barack
+        Obama is 60 years old. Now I will use the Python tool to find the square root
+        of his age.","tool_calls":[{"name":"python_interpeter_temp","parameters":{"code":"import
+        math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate square root of his
+        age\nroot = math.sqrt(age)\n\nprint(f\"The square root of Barack Obama''s
+        age is {root:.2f}\")"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":124,"output_tokens":97},"tokens":{"input_tokens":1113,"output_tokens":97}},"tool_calls":[{"name":"python_interpeter_temp","parameters":{"code":"import
+        math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate square root of his
+        age\nroot = math.sqrt(age)\n\nprint(f\"The square root of Barack Obama''s
+        age is {root:.2f}\")"}}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '1544'
+      content-type:
+      - application/json
+      date:
+      - Mon, 10 Jun 2024 09:22:10 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '5282'
+      num_tokens:
+      - '221'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 2f8a70379a58d57b2c903e9cc398a016
+      x-envoy-upstream-service-time:
+      - '5483'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "", "chat_history": [{"role": "System", "message": "You are
+      a helpful assistant. Respond only in English."}, {"role": "User", "message":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}, {"role": "Chatbot", "message": "First I will find Barack Obama''s age,
+      then I will use the Python tool to find the square root of his age.", "tool_calls":
+      [{"name": "web_search", "args": {"query": "Barack Obama''s age"}, "id": "ff5acf7cf211496c87c65cf1667b347f"}]},
+      {"role": "Tool", "tool_results": [{"call": {"name": "web_search", "parameters":
+      {"query": "Barack Obama''s age"}}, "outputs": [{"output": "60"}]}]}, {"role":
+      "Chatbot", "message": "Barack Obama is 60 years old. Now I will use the Python
+      tool to find the square root of his age.", "tool_calls": [{"name": "python_interpeter_temp",
+      "args": {"code": "import math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate
+      square root of his age\nroot = math.sqrt(age)\n\nprint(f\"The square root of
+      Barack Obama''s age is {root:.2f}\")"}, "id": "2cc09fadcd4a4d9786d6886be54a23cb"}]}],
+      "tools": [{"name": "web_search", "description": "Search the web to the answer
+      to the question with a query search string.", "parameter_definitions": {"query":
+      {"description": "", "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.", "parameter_definitions": {"code": {"description":
+      "", "type": "str", "required": true}}}], "tool_results": [{"call": {"name":
+      "python_interpeter_temp", "parameters": {"code": "import math\n\n# Barack Obama''s
+      age\nage = 60\n\n# Calculate square root of his age\nroot = math.sqrt(age)\n\nprint(f\"The
+      square root of Barack Obama''s age is {root:.2f}\")"}}, "outputs": [{"output":
+      "7.75"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '1904'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"response_id":"7bb90c8a-7923-45e6-b93a-c8b291878944","text":"Barack
+        Obama is 60 years old. The square root of his age is approximately **7.75**.","generation_id":"7f7ce5be-02d3-4fe1-991d-c54681c910cd","chat_history":[{"role":"SYSTEM","message":"You
+        are a helpful assistant. Respond only in English."},{"role":"USER","message":"Find
+        Barack Obama''s age and use python tool to find the square root of his age"},{"role":"CHATBOT","message":"First
+        I will find Barack Obama''s age, then I will use the Python tool to find the
+        square root of his age.","tool_calls":[{"name":"web_search","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"web_search","parameters":{"query":"Barack
+        Obama''s age"}},"outputs":[{"output":"60"}]}]},{"role":"CHATBOT","message":"Barack
+        Obama is 60 years old. Now I will use the Python tool to find the square root
+        of his age.","tool_calls":[{"name":"python_interpeter_temp","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"python_interpeter_temp","parameters":{"code":"import
+        math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate square root of his
+        age\nroot = math.sqrt(age)\n\nprint(f\"The square root of Barack Obama''s
+        age is {root:.2f}\")"}},"outputs":[{"output":"7.75"}]}]},{"role":"CHATBOT","message":"Barack
+        Obama is 60 years old. The square root of his age is approximately **7.75**."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":168,"output_tokens":24},"tokens":{"input_tokens":1280,"output_tokens":24}},"citations":[{"start":16,"end":28,"text":"60
+        years old","document_ids":["web_search:0:3:0"]},{"start":76,"end":80,"text":"7.75","document_ids":["python_interpeter_temp:0:5:0"]}],"documents":[{"id":"web_search:0:3:0","output":"60","tool_name":"web_search"},{"id":"python_interpeter_temp:0:5:0","output":"7.75","tool_name":"python_interpeter_temp"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '1871'
+      content-type:
+      - application/json
+      date:
+      - Mon, 10 Jun 2024 09:22:13 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '5903'
+      num_tokens:
+      - '192'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 0ab7e886ab162cdd838e2d12e5c10657
+      x-envoy-upstream-service-time:
+      - '3021'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "who won the premier league", "chat_history": [{"role": "System",
+      "message": "You are a helpful assistant. Respond only in English."}, {"role":
+      "User", "message": "Find Barack Obama''s age and use python tool to find the
+      square root of his age"}, {"role": "Chatbot", "message": "First I will find
+      Barack Obama''s age, then I will use the Python tool to find the square root
+      of his age.", "tool_calls": [{"name": "web_search", "args": {"query": "Barack
+      Obama''s age"}, "id": "ff5acf7cf211496c87c65cf1667b347f"}]}, {"role": "Tool",
+      "tool_results": [{"call": {"name": "web_search", "parameters": {"query": "Barack
+      Obama''s age"}}, "outputs": [{"output": "60"}]}]}, {"role": "Chatbot", "message":
+      "Barack Obama is 60 years old. Now I will use the Python tool to find the square
+      root of his age.", "tool_calls": [{"name": "python_interpeter_temp", "args":
+      {"code": "import math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate square
+      root of his age\nroot = math.sqrt(age)\n\nprint(f\"The square root of Barack
+      Obama''s age is {root:.2f}\")"}, "id": "2cc09fadcd4a4d9786d6886be54a23cb"}]},
+      {"role": "Tool", "tool_results": [{"call": {"name": "python_interpeter_temp",
+      "parameters": {"code": "import math\n\n# Barack Obama''s age\nage = 60\n\n#
+      Calculate square root of his age\nroot = math.sqrt(age)\n\nprint(f\"The square
+      root of Barack Obama''s age is {root:.2f}\")"}}, "outputs": [{"output": "7.75"}]}]},
+      {"role": "Chatbot", "message": "Barack Obama is 60 years old. The square root
+      of his age is approximately **7.75**.", "tool_calls": []}], "tools": [{"name":
+      "web_search", "description": "Search the web to the answer to the question with
+      a query search string.", "parameter_definitions": {"query": {"description":
+      "", "type": "str", "required": true}}}, {"name": "python_interpeter_temp", "description":
+      "Executes python code and returns the result.\n        The code runs in a static
+      sandbox without interactive mode,\n        so print output or save output to
+      a file.", "parameter_definitions": {"code": {"description": "", "type": "str",
+      "required": true}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2085'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"response_id":"35e002ad-6cd9-4964-8d28-bfa494e861f1","text":"I will
+        search for the winner of the 2023/24 Premier League.","generation_id":"22889dfc-9b6d-4d96-acde-6be69f2428fd","chat_history":[{"role":"SYSTEM","message":"You
+        are a helpful assistant. Respond only in English."},{"role":"USER","message":"Find
+        Barack Obama''s age and use python tool to find the square root of his age"},{"role":"CHATBOT","message":"First
+        I will find Barack Obama''s age, then I will use the Python tool to find the
+        square root of his age.","tool_calls":[{"name":"web_search","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"web_search","parameters":{"query":"Barack
+        Obama''s age"}},"outputs":[{"output":"60"}]}]},{"role":"CHATBOT","message":"Barack
+        Obama is 60 years old. Now I will use the Python tool to find the square root
+        of his age.","tool_calls":[{"name":"python_interpeter_temp","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"python_interpeter_temp","parameters":{"code":"import
+        math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate square root of his
+        age\nroot = math.sqrt(age)\n\nprint(f\"The square root of Barack Obama''s
+        age is {root:.2f}\")"}},"outputs":[{"output":"7.75"}]}]},{"role":"CHATBOT","message":"Barack
+        Obama is 60 years old. The square root of his age is approximately **7.75**.","tool_calls":[]},{"role":"USER","message":"who
+        won the premier league"},{"role":"CHATBOT","message":"I will search for the
+        winner of the 2023/24 Premier League.","tool_calls":[{"name":"web_search","parameters":{"query":"2023/24
+        premier league winner"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":166,"output_tokens":36},"tokens":{"input_tokens":1190,"output_tokens":36}},"tool_calls":[{"name":"web_search","parameters":{"query":"2023/24
+        premier league winner"}}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-length:
+      - '1845'
+      content-type:
+      - application/json
+      date:
+      - Mon, 10 Jun 2024 09:22:15 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '5805'
+      num_tokens:
+      - '202'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 6d6c9160e55f2df25a061509d028640e
+      x-envoy-upstream-service-time:
+      - '1501'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "", "chat_history": [{"role": "System", "message": "You are
+      a helpful assistant. Respond only in English."}, {"role": "User", "message":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}, {"role": "Chatbot", "message": "First I will find Barack Obama''s age,
+      then I will use the Python tool to find the square root of his age.", "tool_calls":
+      [{"name": "web_search", "args": {"query": "Barack Obama''s age"}, "id": "ff5acf7cf211496c87c65cf1667b347f"}]},
+      {"role": "Tool", "tool_results": [{"call": {"name": "web_search", "parameters":
+      {"query": "Barack Obama''s age"}}, "outputs": [{"output": "60"}]}]}, {"role":
+      "Chatbot", "message": "Barack Obama is 60 years old. Now I will use the Python
+      tool to find the square root of his age.", "tool_calls": [{"name": "python_interpeter_temp",
+      "args": {"code": "import math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate
+      square root of his age\nroot = math.sqrt(age)\n\nprint(f\"The square root of
+      Barack Obama''s age is {root:.2f}\")"}, "id": "2cc09fadcd4a4d9786d6886be54a23cb"}]},
+      {"role": "Tool", "tool_results": [{"call": {"name": "python_interpeter_temp",
+      "parameters": {"code": "import math\n\n# Barack Obama''s age\nage = 60\n\n#
+      Calculate square root of his age\nroot = math.sqrt(age)\n\nprint(f\"The square
+      root of Barack Obama''s age is {root:.2f}\")"}}, "outputs": [{"output": "7.75"}]}]},
+      {"role": "Chatbot", "message": "Barack Obama is 60 years old. The square root
+      of his age is approximately **7.75**.", "tool_calls": []}, {"role": "User",
+      "message": "who won the premier league"}, {"role": "Chatbot", "message": "I
+      will search for the winner of the 2023/24 Premier League.", "tool_calls": [{"name":
+      "web_search", "args": {"query": "2023/24 premier league winner"}, "id": "ba66c199b02b4db79a0291a6ed7efbb7"}]}],
+      "tools": [{"name": "web_search", "description": "Search the web to the answer
+      to the question with a query search string.", "parameter_definitions": {"query":
+      {"description": "", "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.", "parameter_definitions": {"code": {"description":
+      "", "type": "str", "required": true}}}], "tool_results": [{"call": {"name":
+      "web_search", "parameters": {"query": "2023/24 premier league winner"}}, "outputs":
+      [{"output": "Chelsea won the premier league"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2516'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"response_id":"90da390d-547e-4ca3-bbe3-d50bdeda7f42","text":"Chelsea
+        won the Premier League.","generation_id":"01da7ac4-1895-4329-a825-5fd5ff4fb311","chat_history":[{"role":"SYSTEM","message":"You
+        are a helpful assistant. Respond only in English."},{"role":"USER","message":"Find
+        Barack Obama''s age and use python tool to find the square root of his age"},{"role":"CHATBOT","message":"First
+        I will find Barack Obama''s age, then I will use the Python tool to find the
+        square root of his age.","tool_calls":[{"name":"web_search","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"web_search","parameters":{"query":"Barack
+        Obama''s age"}},"outputs":[{"output":"60"}]}]},{"role":"CHATBOT","message":"Barack
+        Obama is 60 years old. Now I will use the Python tool to find the square root
+        of his age.","tool_calls":[{"name":"python_interpeter_temp","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"python_interpeter_temp","parameters":{"code":"import
+        math\n\n# Barack Obama''s age\nage = 60\n\n# Calculate square root of his
+        age\nroot = math.sqrt(age)\n\nprint(f\"The square root of Barack Obama''s
+        age is {root:.2f}\")"}},"outputs":[{"output":"7.75"}]}]},{"role":"CHATBOT","message":"Barack
+        Obama is 60 years old. The square root of his age is approximately **7.75**.","tool_calls":[]},{"role":"USER","message":"who
+        won the premier league"},{"role":"CHATBOT","message":"I will search for the
+        winner of the 2023/24 Premier League.","tool_calls":[{"name":"web_search","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"web_search","parameters":{"query":"2023/24
+        premier league winner"}},"outputs":[{"output":"Chelsea won the premier league"}]}]},{"role":"CHATBOT","message":"Chelsea
+        won the Premier League."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":200,"output_tokens":6},"tokens":{"input_tokens":1294,"output_tokens":6}},"citations":[{"start":0,"end":7,"text":"Chelsea","document_ids":["web_search:0:9:0"]}],"documents":[{"id":"web_search:0:9:0","output":"Chelsea
+        won the premier league","tool_name":"web_search"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Mon, 10 Jun 2024 09:22:19 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '6242'
+      num_tokens:
+      - '206'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      transfer-encoding:
+      - chunked
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - ca44691c0126ae7a273bcf7e8c02806b
+      x-envoy-upstream-service-time:
+      - '3562'
+    status:
+      code: 200
+      message: OK
+version: 1
