@@ -57,17 +57,61 @@ from langchain_cohere.llms import BaseCohere
 from langchain_cohere.react_multi_hop.prompt import convert_to_documents
 
 
-def _messages_to_cohere_tool_results(
+def _message_to_cohere_tool_results(
+    messages: List[BaseMessage], tool_message_index: int
+) -> List[Dict[str, Any]]:
+    """Get tool_results from messages."""
+    tool_results = []
+    tool_message = messages[tool_message_index]
+    if not isinstance(tool_message, ToolMessage):
+        raise ValueError(
+            "The message index does not correspond to an instance of ToolMessage"
+        )
+
+    messages_until_tool = messages[:tool_message_index]
+    previous_ai_msessage = [
+        message
+        for message in messages_until_tool
+        if isinstance(message, AIMessage) and message.tool_calls
+    ][-1]
+    tool_results.extend(
+        [
+            {
+                "call": ToolCall(
+                    name=lc_tool_call["name"],
+                    parameters=lc_tool_call["args"],
+                ),
+                "outputs": convert_to_documents(tool_message.content),
+            }
+            for lc_tool_call in previous_ai_msessage.tool_calls
+            if lc_tool_call["id"] == tool_message.tool_call_id
+        ]
+    )
+    return tool_results
+
+
+def _get_curr_chat_turn_messages(messages: List[BaseMessage]) -> List[BaseMessage]:
+    """Get the messages for the current chat turn."""
+    current_chat_turn_messages = []
+    for message in messages[::-1]:
+        current_chat_turn_messages.append(message)
+        if isinstance(message, HumanMessage):
+            break
+    return current_chat_turn_messages[::-1]
+
+
+def _messages_to_cohere_tool_results_curr_chat_turn(
     messages: List[BaseMessage],
 ) -> List[Dict[str, Any]]:
     """Get tool_results from messages."""
     tool_results = []
-    for message in messages:
+    curr_chat_turn_messages = _get_curr_chat_turn_messages(messages)
+    for message in curr_chat_turn_messages:
         if isinstance(message, ToolMessage):
             tool_message = message
             previous_ai_msgs = [
                 message
-                for message in messages[:-1]
+                for message in curr_chat_turn_messages
                 if isinstance(message, AIMessage) and message.tool_calls
             ]
             if previous_ai_msgs:
@@ -85,6 +129,7 @@ def _messages_to_cohere_tool_results(
                         if lc_tool_call["id"] == tool_message.tool_call_id
                     ]
                 )
+
     return tool_results
 
 
@@ -110,6 +155,43 @@ def get_role(message: BaseMessage) -> str:
         return "Chatbot"
     elif isinstance(message, SystemMessage):
         return "System"
+    elif isinstance(message, ToolMessage):
+        return "Tool"
+    else:
+        raise ValueError(f"Got unknown type {type(message).__name__}")
+
+
+def _get_message_cohere_format(
+    message: BaseMessage, tool_results: Optional[List[Dict[Any, Any]]]
+) -> Dict[
+    str,
+    Union[
+        str,
+        List[LC_ToolCall],
+        List[Union[str, Dict[Any, Any]]],
+        List[Dict[Any, Any]],
+        None,
+    ],
+]:
+    """Get the formatted message as required in cohere's api.
+
+    Args:
+        message: The BaseMessage.
+        tool_results: The tool results if any
+
+    Returns:
+        The formatted message as required in cohere's api.
+    """
+    if isinstance(message, AIMessage):
+        return {
+            "role": get_role(message),
+            "message": message.content,
+            "tool_calls": message.tool_calls,
+        }
+    elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
+        return {"role": get_role(message), "message": message.content}
+    elif isinstance(message, ToolMessage):
+        return {"role": get_role(message), "tool_results": tool_results}
     else:
         raise ValueError(f"Got unknown type {message}")
 
@@ -169,21 +251,70 @@ def get_cohere_chat_request(
     prompt_truncation = (
         "AUTO" if formatted_docs is not None or connectors is not None else None
     )
-
-    tool_results: Optional[List[Dict[str, Any]]] = _messages_to_cohere_tool_results(
-        messages
+    tool_results: Optional[List[Dict[str, Any]]] = (
+        _messages_to_cohere_tool_results_curr_chat_turn(messages)
+        or kwargs.get("tool_results")
     )
     if not tool_results:
         tool_results = None
 
-    chat_history = [
-        {"role": get_role(x), "message": x.content}
-        for x in messages[:-1]
-        if not isinstance(x, ToolMessage)
-        and not (isinstance(x, AIMessage) and x.tool_calls)
-    ]
+    # check if the last message is a tool message or human message
+    if not (
+        isinstance(messages[-1], ToolMessage) or isinstance(messages[-1], HumanMessage)
+    ):
+        raise ValueError("The last message is not an ToolMessage or HumanMessage")
+
+    chat_history = []
+    temp_tool_results = []
+    # if force_single_step is set to False, then only message is empty in request if there is tool call  # noqa: E501
+    if not kwargs.get("force_single_step"):
+        for i, message in enumerate(messages[:-1]):
+            # If there are multiple tool messages, then we need to aggregate them into one single tool message to pass into chat history  # noqa: E501
+            if isinstance(message, ToolMessage):
+                temp_tool_results += _message_to_cohere_tool_results(messages, i)
+
+                if (i == len(messages) - 1) or not (
+                    isinstance(messages[i + 1], ToolMessage)
+                ):
+                    cohere_message = _get_message_cohere_format(
+                        message, temp_tool_results
+                    )
+                    chat_history.append(cohere_message)
+                    temp_tool_results = []
+            else:
+                chat_history.append(_get_message_cohere_format(message, None))
+
+        message_str = "" if tool_results else messages[-1].content
+
+    else:
+        message_str = ""
+        # if force_single_step is set to True, then message is the last human message in the conversation  # noqa: E501
+        for message in messages[:-1]:
+            if isinstance(message, AIMessage) and message.tool_calls:
+                continue
+
+            # If there are multiple tool messages, then we need to aggregate them into one single tool message to pass into chat history  # noqa: E501
+            if isinstance(message, ToolMessage):
+                temp_tool_results += _message_to_cohere_tool_results(messages, i)
+
+                if (i == len(messages) - 1) or not (
+                    isinstance(messages[i + 1], ToolMessage)
+                ):
+                    cohere_message = _get_message_cohere_format(
+                        message, temp_tool_results
+                    )
+                    chat_history.append(cohere_message)
+                    temp_tool_results = []
+            else:
+                chat_history.append(_get_message_cohere_format(message, None))
+        # Add the last human message in the conversation to the message string
+        for message in messages[::-1]:
+            if (isinstance(message, HumanMessage)) and (message.content):
+                message_str = message.content
+                break
+
     req = {
-        "message": messages[-1].content,
+        "message": message_str,
         "chat_history": chat_history,
         "tool_results": tool_results,
         "documents": formatted_docs,
@@ -321,12 +452,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
         request = get_cohere_chat_request(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-
         if hasattr(self.client, "chat_stream"):  # detect and support sdk v5
             stream = self.client.chat_stream(**request)
         else:
             stream = self.client.chat(**request, stream=True)
-
         for data in stream:
             if data.event_type == "text-generation":
                 delta = data.text
@@ -351,7 +480,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     except KeyError:
                         pass
                 message = AIMessageChunk(
-                    content="",
+                    content=data.response.text,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
@@ -400,7 +529,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     except KeyError:
                         pass
                 message = AIMessageChunk(
-                    content="",
+                    content=data.response.text,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
@@ -485,6 +614,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         request = get_cohere_chat_request(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
+
         response = self.client.chat(**request)
 
         generation_info = self._get_generation_info(response)

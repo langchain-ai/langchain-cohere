@@ -78,5 +78,7 @@ def test_invoke_multihop_agent() -> None:
     assert "output" in actual
 
     # The exact answer will likely change when replays are rerecorded.
-    expected_output = "Best Buy, which was founded as Sound of Music, was added to the S&P 500 in 1999."  # noqa: E501
-    assert expected_output == actual["output"]
+    exoected_answer = (
+        "Best Buy, originally called Sound of Music, was added to the S&P 500 in 1999."  # noqa: E501
+    )
+    assert exoected_answer == actual["output"]

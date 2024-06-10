@@ -8,12 +8,13 @@ When re-recording these tests you will need to set COHERE_API_KEY.
 """
 
 import json
-from typing import Any
+from typing import Any, List
 
 import pytest
 from langchain_core.messages import (
     AIMessage,
     AIMessageChunk,
+    BaseMessage,
     HumanMessage,
     ToolMessage,
 )
@@ -132,7 +133,7 @@ def test_streaming_tool_call() -> None:
     additional_kwargs = None
     for chunk in strm:
         assert isinstance(chunk, AIMessageChunk)
-        assert chunk.content == ""
+        assert len(chunk.content) > 0
         additional_kwargs = chunk.additional_kwargs
 
     assert additional_kwargs is not None
@@ -222,25 +223,33 @@ def test_get_num_tokens_with_default_model() -> None:
     assert expected == actual
 
 
-def test_tool_messages() -> None:
-    llm = ChatCohere(temperature=0)
-    messages = [
-        HumanMessage(content="what is the value of magic_function(3)?"),
-        AIMessage(
-            content="",
-            tool_calls=[
-                {
-                    "name": "magic_function",
-                    "args": {"input": 3},
-                    "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
-                }
+@pytest.mark.parametrize(
+    "messages",
+    [
+        pytest.param(
+            [
+                HumanMessage(content="what is the value of magic_function(3)?"),
+                AIMessage(
+                    content="I will call magic_function tool with input 3",
+                    tool_calls=[
+                        {
+                            "name": "magic_function",
+                            "args": {"input": 3},
+                            "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+                        }
+                    ],
+                ),
+                ToolMessage(
+                    name="magic_function",
+                    content="5",
+                    tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
+                ),
             ],
+            id="Single tool call ",
         ),
-        ToolMessage(
-            name="magic_function",
-            content="5",
-            tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
-        ),
-    ]
+    ],
+)
+def test_tool_call_with_tool_results(messages: List[BaseMessage]) -> None:
+    llm = ChatCohere(temperature=0)
     response = llm.invoke(messages)
     assert isinstance(response, AIMessage)

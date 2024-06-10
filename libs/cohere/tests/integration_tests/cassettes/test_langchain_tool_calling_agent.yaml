@@ -1,0 +1,228 @@
+interactions:
+- request:
+    body: '{"message": "what is the value of magic_function(3)?", "chat_history":
+      [{"role": "System", "message": "You are a helpful assistant"}], "tools": [{"name":
+      "magic_function", "description": "Applies a magic function to an input.", "parameter_definitions":
+      {"input": {"description": "Number to apply the magic function to.", "type":
+      "int", "required": true}}}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '373'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"1dcedf8d-5cdf-4a67-8f4d-650a7e90ddd1"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":"I"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" will"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" use"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" the"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" magic"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":"_"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":"function"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" tool"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" to"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" answer"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" this"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" question"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":"."}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"name":"magic_function"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"{\n            \""}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"input"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\":"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        "}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"3"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\n       "}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        }"}}
+
+        {"is_finished":false,"event_type":"tool-calls-generation","text":"I will use
+        the magic_function tool to answer this question.","tool_calls":[{"name":"magic_function","parameters":{"input":3}}]}
+
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"9b060f49-095f-4fd6-b85a-a1680cef5e43","text":"I
+        will use the magic_function tool to answer this question.","generation_id":"1dcedf8d-5cdf-4a67-8f4d-650a7e90ddd1","chat_history":[{"role":"SYSTEM","message":"You
+        are a helpful assistant"},{"role":"USER","message":"what is the value of magic_function(3)?"},{"role":"CHATBOT","message":"I
+        will use the magic_function tool to answer this question.","tool_calls":[{"name":"magic_function","parameters":{"input":3}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":36,"output_tokens":21},"tokens":{"input_tokens":929,"output_tokens":21}},"tool_calls":[{"name":"magic_function","parameters":{"input":3}}]},"finish_reason":"COMPLETE"}
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/stream+json
+      date:
+      - Mon, 10 Jun 2024 09:22:19 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      transfer-encoding:
+      - chunked
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 50d18ab6efba2688f570b6bdd736266e
+      x-envoy-upstream-service-time:
+      - '26'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "", "chat_history": [{"role": "System", "message": "You are
+      a helpful assistant"}, {"role": "User", "message": "what is the value of magic_function(3)?"},
+      {"role": "Chatbot", "message": "I will use the magic_function tool to answer
+      this question.", "tool_calls": [{"name": "magic_function", "args": {"input":
+      3}, "id": "4867bc107b60448dab150ba41e013ed3"}]}], "tools": [{"name": "magic_function",
+      "description": "Applies a magic function to an input.", "parameter_definitions":
+      {"input": {"description": "Number to apply the magic function to.", "type":
+      "int", "required": true}}}], "tool_results": [{"call": {"name": "magic_function",
+      "parameters": {"input": 3}}, "outputs": [{"output": "5"}]}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '723'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.6
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"7ceaf158-d552-463e-98c4-21157d922ede"}
+
+        {"is_finished":false,"event_type":"search-results","documents":[{"id":"magic_function:0:3:0","output":"5","tool_name":"magic_function"}]}
+
+        {"is_finished":false,"event_type":"text-generation","text":"The"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" value"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" magic"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"_"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"function"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"("}
+
+        {"is_finished":false,"event_type":"text-generation","text":"3"}
+
+        {"is_finished":false,"event_type":"text-generation","text":")"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" is"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" 5"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"citation-generation","citations":[{"start":34,"end":35,"text":"5","document_ids":["magic_function:0:3:0"]}]}
+
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"19a7ea58-47eb-48d2-b0e3-ed803903bd28","text":"The
+        value of magic_function(3) is 5.","generation_id":"7ceaf158-d552-463e-98c4-21157d922ede","chat_history":[{"role":"SYSTEM","message":"You
+        are a helpful assistant"},{"role":"USER","message":"what is the value of magic_function(3)?"},{"role":"CHATBOT","message":"I
+        will use the magic_function tool to answer this question.","tool_calls":[{"name":"magic_function","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"magic_function","parameters":{"input":3}},"outputs":[{"output":"5"}]}]},{"role":"CHATBOT","message":"The
+        value of magic_function(3) is 5."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":61,"output_tokens":13},"tokens":{"input_tokens":1014,"output_tokens":13}},"citations":[{"start":34,"end":35,"text":"5","document_ids":["magic_function:0:3:0"]}],"documents":[{"id":"magic_function:0:3:0","output":"5","tool_name":"magic_function"}]},"finish_reason":"COMPLETE"}
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/stream+json
+      date:
+      - Mon, 10 Jun 2024 09:22:24 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      transfer-encoding:
+      - chunked
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - a81e677b444ae6f021ca416061312f42
+      x-envoy-upstream-service-time:
+      - '21'
+    status:
+      code: 200
+      message: OK
+version: 1

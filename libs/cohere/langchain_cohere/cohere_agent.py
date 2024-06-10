@@ -7,6 +7,7 @@ from cohere.types import (
     ToolParameterDefinitionsValue,
     ToolResult,
 )
+from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.language_models import BaseLanguageModel
 from langchain_core.output_parsers import BaseOutputParser
@@ -27,8 +28,18 @@ from langchain_cohere.utils import (
 )
 
 
+@deprecated(
+    since="0.1.7",
+    removal="",
+    alternative="""Use the 'tool calling agent' 
+    or 'Langgraph agent' with the ChatCohere class instead.
+    See https://docs.cohere.com/docs/cohere-and-langchain for more information.""",
+)
 def create_cohere_tools_agent(
-    llm: BaseLanguageModel, tools: Sequence[BaseTool], prompt: ChatPromptTemplate
+    llm: BaseLanguageModel,
+    tools: Sequence[BaseTool],
+    prompt: ChatPromptTemplate,
+    **kwargs: Any,
 ) -> Runnable:
     def llm_with_tools(input_: Dict) -> Runnable:
         tool_results = (
@@ -36,7 +47,7 @@ def create_cohere_tools_agent(
         )
         tools_ = input_["tools"] if len(input_["tools"]) > 0 else None
         return RunnableLambda(lambda x: x["input"]) | llm.bind(
-            tools=tools_, tool_results=tool_results
+            tools=tools_, tool_results=tool_results, **kwargs
         )
 
     agent = (

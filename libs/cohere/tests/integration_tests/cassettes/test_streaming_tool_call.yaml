@@ -1,10 +1,10 @@
 interactions:
 - request:
-    body: '{"message": "Erick, 27 years old", "stream": true, "chat_history": [],
-      "temperature": 0.0, "tools": [{"name": "Person", "description": "", "parameter_definitions":
-      {"name": {"description": "The name of the person", "type": "str", "required":
-      true}, "age": {"description": "The age of the person", "type": "int", "required":
-      true}}}]}'
+    body: '{"message": "Erick, 27 years old", "chat_history": [], "temperature": 0.0,
+      "tools": [{"name": "Person", "description": "", "parameter_definitions": {"name":
+      {"description": "The name of the person", "type": "str", "required": true},
+      "age": {"description": "The age of the person", "type": "int", "required": true}}}],
+      "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -17,7 +17,7 @@ interactions:
       content-type:
       - application/json
       host:
-      - api.cohere.ai
+      - api.cohere.com
       user-agent:
       - python-httpx/0.27.0
       x-client-name:
@@ -27,23 +27,103 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.1.7
+      - 5.5.6
     method: POST
-    uri: https://api.cohere.ai/v1/chat
+    uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"874fba88-69ec-480d-9812-3de070464adb"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"1abf9ad3-57aa-4cc7-8f48-5d9e8b59b220"}
 
-        {"is_finished":false,"event_type":"tool-calls-generation","tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]}
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":"I"}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"92f168e6-72f6-4280-a1fb-2c3b4b664e53","text":"","generation_id":"874fba88-69ec-480d-9812-3de070464adb","chat_history":[],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":21,"output_tokens":12},"tokens":{"output_tokens":12}},"tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]},"finish_reason":"COMPLETE"}
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" will"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" use"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" the"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" Person"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" tool"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" to"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" create"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" a"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" person"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" called"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" Erick"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" who"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" is"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" 2"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":"7"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" years"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" old"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":"."}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"name":"Person"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"{\n            \""}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"age"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\":"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        "}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"2"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"7"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":","}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\n           "}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        \""}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"name"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\":"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        \""}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"E"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"rick"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\""}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\n       "}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        }"}}
+
+        {"is_finished":false,"event_type":"tool-calls-generation","text":"I will use
+        the Person tool to create a person called Erick who is 27 years old.","tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]}
+
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"6a2913a1-0597-49d2-82c0-239756379616","text":"I
+        will use the Person tool to create a person called Erick who is 27 years old.","generation_id":"1abf9ad3-57aa-4cc7-8f48-5d9e8b59b220","chat_history":[{"role":"USER","message":"Erick,
+        27 years old"},{"role":"CHATBOT","message":"I will use the Person tool to
+        create a person called Erick who is 27 years old.","tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":21,"output_tokens":32},"tokens":{"input_tokens":919,"output_tokens":32}},"tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -53,21 +133,23 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Mon, 15 Apr 2024 10:57:29 GMT
+      - Mon, 10 Jun 2024 09:21:44 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
+      transfer-encoding:
+      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 8167d0a61dcaa33e2fc8207528313e4f
+      - 72093ef9123182ad40aa1da1b7c9b26b
       x-envoy-upstream-service-time:
-      - '11'
+      - '29'
     status:
       code: 200
       message: OK
