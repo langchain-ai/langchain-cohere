@@ -35,7 +35,7 @@ from langchain_cohere import ChatCohere
     ],
 )
 def test_tool_calling_agent(messages: List[BaseMessage], expected_content: str) -> None:
-    llm = ChatCohere()
+    llm = ChatCohere(model="command-r")
 
     actual = llm.invoke(messages)
     actual_citations = actual.additional_kwargs.get("citations")
