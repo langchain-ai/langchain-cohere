@@ -23,11 +23,13 @@ from langchain_core.tools import tool
 
 from langchain_cohere import ChatCohere
 
+DEFAULT_MODEL = "command-r"
+
 
 @pytest.mark.vcr()
 def test_stream() -> None:
     """Test streaming tokens from ChatCohere."""
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     for token in llm.stream("I'm Pickle Rick"):
         assert isinstance(token.content, str)
@@ -36,7 +38,7 @@ def test_stream() -> None:
 @pytest.mark.vcr()
 async def test_astream() -> None:
     """Test streaming tokens from ChatCohere."""
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     async for token in llm.astream("I'm Pickle Rick"):
         assert isinstance(token.content, str)
@@ -44,7 +46,7 @@ async def test_astream() -> None:
 
 async def test_abatch() -> None:
     """Test streaming tokens from ChatCohere"""
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     result = await llm.abatch(["I'm Pickle Rick", "I'm not Pickle Rick"])
     for token in result:
@@ -53,7 +55,7 @@ async def test_abatch() -> None:
 
 async def test_abatch_tags() -> None:
     """Test batch tokens from ChatCohere."""
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     result = await llm.abatch(
         ["I'm Pickle Rick", "I'm not Pickle Rick"], config={"tags": ["foo"]}
@@ -65,7 +67,7 @@ async def test_abatch_tags() -> None:
 @pytest.mark.vcr()
 def test_batch() -> None:
     """Test batch tokens from ChatCohere."""
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     result = llm.batch(["I'm Pickle Rick", "I'm not Pickle Rick"])
     for token in result:
@@ -74,16 +76,16 @@ def test_batch() -> None:
 
 async def test_ainvoke() -> None:
     """Test invoke tokens from ChatCohere."""
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     result = await llm.ainvoke("I'm Pickle Rick", config={"tags": ["foo"]})
     assert isinstance(result.content, str)
 
 
-@pytest.mark.vcr()
+# @pytest.mark.vcr()
 def test_invoke() -> None:
     """Test invoke tokens from ChatCohere."""
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     result = llm.invoke("I'm Pickle Rick", config=dict(tags=["foo"]))
     assert isinstance(result.content, str)
@@ -91,7 +93,7 @@ def test_invoke() -> None:
 
 @pytest.mark.vcr()
 def test_invoke_tool_calls() -> None:
-    llm = ChatCohere(temperature=0)
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
 
     class Person(BaseModel):
         name: str = Field(type=str, description="The name of the person")
@@ -119,7 +121,7 @@ def test_invoke_tool_calls() -> None:
 
 @pytest.mark.vcr()
 def test_streaming_tool_call() -> None:
-    llm = ChatCohere(temperature=0)
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
 
     class Person(BaseModel):
         name: str = Field(type=str, description="The name of the person")
@@ -155,7 +157,7 @@ def test_streaming_tool_call() -> None:
 
 @pytest.mark.vcr()
 def test_invoke_multiple_tools() -> None:
-    llm = ChatCohere(temperature=0)
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
 
     @tool
     def add_two_numbers(a: int, b: int) -> int:
@@ -185,7 +187,7 @@ def test_invoke_multiple_tools() -> None:
     reason="Cohere models return empty output when a tool is passed in but not called."
 )
 def test_streaming_tool_call_no_tool_calls() -> None:
-    llm = ChatCohere(temperature=0)
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
 
     class Person(BaseModel):
         name: str = Field(type=str, description="The name of the person")
@@ -215,7 +217,7 @@ def test_get_num_tokens_with_specified_model() -> None:
 
 @pytest.mark.vcr()
 def test_get_num_tokens_with_default_model() -> None:
-    llm = ChatCohere(temperature=0)
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
     expected = 3  # This may change if the replay also changes.
 
     actual = llm.get_num_tokens("hello, world")
@@ -250,6 +252,6 @@ def test_get_num_tokens_with_default_model() -> None:
     ],
 )
 def test_tool_call_with_tool_results(messages: List[BaseMessage]) -> None:
-    llm = ChatCohere(temperature=0)
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
     response = llm.invoke(messages)
     assert isinstance(response, AIMessage)

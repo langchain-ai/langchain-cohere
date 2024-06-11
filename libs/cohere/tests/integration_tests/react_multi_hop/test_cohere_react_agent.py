@@ -16,10 +16,12 @@ from langchain_core.tools import BaseTool
 
 from langchain_cohere import ChatCohere, create_cohere_react_agent
 
+DEFAULT_MODEL = "command-r"
+
 
 @pytest.mark.vcr()
 def test_invoke_multihop_agent() -> None:
-    llm = ChatCohere(temperature=0.0)
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0.0)
 
     class _InputSchema(BaseModel):
         query: str = Field(description="Query to search the internet with")
