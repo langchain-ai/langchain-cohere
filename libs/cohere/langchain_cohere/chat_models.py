@@ -480,10 +480,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                if isinstance(data.response, NonStreamedChatResponse):
+                    usage_metadata = _get_usage_metadata(data.response)
+                else:
+                    usage_metadata = None
                 message = AIMessageChunk(
                     content=data.response.text,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
+                    usage_metadata=usage_metadata,
                 )
                 yield ChatGenerationChunk(
                     message=message,
@@ -529,10 +534,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                if isinstance(data.response, NonStreamedChatResponse):
+                    usage_metadata = _get_usage_metadata(data.response)
+                else:
+                    usage_metadata = None
                 message = AIMessageChunk(
                     content=data.response.text,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
+                    usage_metadata=usage_metadata,
                 )
                 yield ChatGenerationChunk(
                     message=message,
