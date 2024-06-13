@@ -709,11 +709,12 @@ def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMeta
     metadata = response.meta
     if metadata:
         if tokens := metadata.tokens:
-            input_tokens = int(tokens.input_tokens)
-            output_tokens = int(tokens.output_tokens)
+            input_tokens = int(tokens.input_tokens or 0)
+            output_tokens = int(tokens.output_tokens or 0)
             total_tokens = input_tokens + output_tokens
         return UsageMetadata(
             input_tokens=input_tokens,
             output_tokens=output_tokens,
             total_tokens=total_tokens,
         )
+    return None
