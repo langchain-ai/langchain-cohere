@@ -79,7 +79,16 @@ async def test_ainvoke() -> None:
     llm = ChatCohere(model=DEFAULT_MODEL)
 
     result = await llm.ainvoke("I'm Pickle Rick", config={"tags": ["foo"]})
+    assert isinstance(result, AIMessage)
     assert isinstance(result.content, str)
+    usage_metadata = result.usage_metadata
+    assert usage_metadata is not None
+    assert usage_metadata["input_tokens"] > 0
+    assert usage_metadata["output_tokens"] > 0
+    assert (
+        usage_metadata["total_tokens"]
+        == usage_metadata["input_tokens"] + usage_metadata["output_tokens"]
+    )
 
 
 # @pytest.mark.vcr()
