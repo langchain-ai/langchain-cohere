@@ -69,7 +69,7 @@ def _message_to_cohere_tool_results(
         )
 
     messages_until_tool = messages[:tool_message_index]
-    previous_ai_msessage = [
+    previous_ai_message = [
         message
         for message in messages_until_tool
         if isinstance(message, AIMessage) and message.tool_calls
@@ -83,7 +83,7 @@ def _message_to_cohere_tool_results(
                 ),
                 "outputs": convert_to_documents(tool_message.content),
             }
-            for lc_tool_call in previous_ai_msessage.tool_calls
+            for lc_tool_call in previous_ai_message.tool_calls
             if lc_tool_call["id"] == tool_message.tool_call_id
         ]
     )
