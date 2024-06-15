@@ -70,7 +70,7 @@ def _message_to_cohere_tool_results(
         )
 
     messages_until_tool = messages[:tool_message_index]
-    previous_ai_msessage = [
+    previous_ai_message = [
         message
         for message in messages_until_tool
         if isinstance(message, AIMessage) and message.tool_calls
@@ -84,7 +84,7 @@ def _message_to_cohere_tool_results(
                 ),
                 "outputs": convert_to_documents(tool_message.content),
             }
-            for lc_tool_call in previous_ai_msessage.tool_calls
+            for lc_tool_call in previous_ai_message.tool_calls
             if lc_tool_call["id"] == tool_message.tool_call_id
         ]
     )
@@ -468,6 +468,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
+                    content = data.response.text
                     try:
                         tool_call_chunks = [
                             {
@@ -480,12 +481,14 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                else:
+                    content = ""
                 if isinstance(data.response, NonStreamedChatResponse):
                     usage_metadata = _get_usage_metadata(data.response)
                 else:
                     usage_metadata = None
                 message = AIMessageChunk(
-                    content=data.response.text,
+                    content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                     usage_metadata=usage_metadata,
@@ -522,6 +525,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
+                    content = data.response.text
                     try:
                         tool_call_chunks = [
                             {
@@ -534,12 +538,14 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                else:
+                    content = ""
                 if isinstance(data.response, NonStreamedChatResponse):
                     usage_metadata = _get_usage_metadata(data.response)
                 else:
                     usage_metadata = None
                 message = AIMessageChunk(
-                    content=data.response.text,
+                    content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                     usage_metadata=usage_metadata,
