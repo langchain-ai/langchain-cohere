@@ -467,6 +467,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
+                    content = data.response.text
                     try:
                         tool_call_chunks = [
                             {
@@ -479,8 +480,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                else:
+                    content = ""
                 message = AIMessageChunk(
-                    content="",
+                    content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
@@ -516,6 +519,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
+                    content = data.response.text
                     try:
                         tool_call_chunks = [
                             {
@@ -528,8 +532,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                else:
+                    content = ""
                 message = AIMessageChunk(
-                    content="",
+                    content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
