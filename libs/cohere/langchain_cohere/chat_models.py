@@ -480,7 +480,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     except KeyError:
                         pass
                 message = AIMessageChunk(
-                    content=data.response.text,
+                    content='',
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
@@ -529,7 +529,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     except KeyError:
                         pass
                 message = AIMessageChunk(
-                    content=data.response.text,
+                    content='',
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
