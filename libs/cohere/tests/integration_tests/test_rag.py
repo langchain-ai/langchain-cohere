@@ -20,11 +20,13 @@ from langchain_core.runnables import (
 
 from langchain_cohere import ChatCohere, CohereRagRetriever
 
+DEFAULT_MODEL = "command-r"
+
 
 @pytest.mark.vcr()
 def test_connectors() -> None:
     """Test connectors parameter support from ChatCohere."""
-    llm = ChatCohere().bind(connectors=[{"id": "web-search"}])
+    llm = ChatCohere(model=DEFAULT_MODEL).bind(connectors=[{"id": "web-search"}])
 
     result = llm.invoke("Who directed dune two? reply with just the name.")
     assert isinstance(result.content, str)
@@ -33,7 +35,7 @@ def test_connectors() -> None:
 @pytest.mark.vcr()
 def test_documents() -> None:
     docs = [{"text": "The sky is green."}]
-    llm = ChatCohere().bind(documents=docs)
+    llm = ChatCohere(model=DEFAULT_MODEL).bind(documents=docs)
     prompt = "What color is the sky?"
 
     result = llm.invoke(prompt)
@@ -43,7 +45,7 @@ def test_documents() -> None:
 
 @pytest.mark.vcr()
 def test_documents_chain() -> None:
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
 
     def get_documents(_: Any) -> List[Document]:
         return [Document(page_content="The sky is green.")]

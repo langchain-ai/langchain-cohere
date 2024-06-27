@@ -23,6 +23,7 @@ from langchain_core.documents import Document
 from langchain_core.language_models import LanguageModelInput
 from langchain_core.language_models.chat_models import (
     BaseChatModel,
+    LangSmithParams,
     agenerate_from_stream,
     generate_from_stream,
 )
@@ -68,7 +69,7 @@ def _message_to_cohere_tool_results(
         )
 
     messages_until_tool = messages[:tool_message_index]
-    previous_ai_msessage = [
+    previous_ai_message = [
         message
         for message in messages_until_tool
         if isinstance(message, AIMessage) and message.tool_calls
@@ -82,7 +83,7 @@ def _message_to_cohere_tool_results(
                 ),
                 "outputs": convert_to_documents(tool_message.content),
             }
-            for lc_tool_call in previous_ai_msessage.tool_calls
+            for lc_tool_call in previous_ai_message.tool_calls
             if lc_tool_call["id"] == tool_message.tool_call_id
         ]
     )
@@ -424,6 +425,23 @@ class ChatCohere(BaseChatModel, BaseCohere):
         """Get the identifying parameters."""
         return self._default_params
 
+    def _get_ls_params(
+        self, stop: Optional[List[str]] = None, **kwargs: Any
+    ) -> LangSmithParams:
+        """Get standard params for tracing."""
+        params = self._get_invocation_params(stop=stop, **kwargs)
+        ls_params = LangSmithParams(
+            ls_provider="cohere",
+            ls_model_name=self.model_name,
+            ls_model_type="chat",
+            ls_temperature=params.get("temperature", self.temperature),
+        )
+        if ls_max_tokens := params.get("max_tokens"):
+            ls_params["ls_max_tokens"] = ls_max_tokens
+        if ls_stop := stop or params.get("stop", None) or self.stop:
+            ls_params["ls_stop"] = ls_stop
+        return ls_params
+
     def _stream(
         self,
         messages: List[BaseMessage],
@@ -449,6 +467,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
+                    content = data.response.text
                     try:
                         tool_call_chunks = [
                             {
@@ -461,8 +480,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                else:
+                    content = ""
                 message = AIMessageChunk(
-                    content=data.response.text,
+                    content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
@@ -498,6 +519,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
+                    content = data.response.text
                     try:
                         tool_call_chunks = [
                             {
@@ -510,8 +532,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ]
                     except KeyError:
                         pass
+                else:
+                    content = ""
                 message = AIMessageChunk(
-                    content=data.response.text,
+                    content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                 )
@@ -597,7 +621,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
 
-        response = self.client.chat(**request)
+        response = await self.async_client.chat(**request)
 
         generation_info = self._get_generation_info(response)
         if "tool_calls" in generation_info:
@@ -627,17 +651,17 @@ class ChatCohere(BaseChatModel, BaseCohere):
             raise Exception("invalid cohere list models response")
         return response.models[0].name
 
+    @property
+    def model_name(self) -> str:
+        if self.model is not None:
+            return self.model
+        if self._default_model_name is None:
+            self._default_model_name = self._get_default_model()
+        return self._default_model_name
+
     def get_num_tokens(self, text: str) -> int:
         """Calculate number of tokens."""
-        model: str
-        if self.model is not None:
-            model = self.model
-        elif self._default_model_name is not None:
-            model = self._default_model_name
-        else:
-            model = self._get_default_model()
-            self._default_model_name = model
-
+        model = self.model_name
         return len(self.client.tokenize(text=text, model=model).tokens)
 
 
