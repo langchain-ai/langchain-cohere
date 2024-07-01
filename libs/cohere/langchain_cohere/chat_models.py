@@ -634,7 +634,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
 
-        response = self.client.chat(**request)
+        response = await self.async_client.chat(**request)
 
         generation_info = self._get_generation_info(response)
         if "tool_calls" in generation_info:
