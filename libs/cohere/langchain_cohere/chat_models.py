@@ -39,6 +39,7 @@ from langchain_core.messages import (
 from langchain_core.messages import (
     ToolCall as LC_ToolCall,
 )
+from langchain_core.messages.ai import UsageMetadata
 from langchain_core.output_parsers.base import OutputParserLike
 from langchain_core.output_parsers.openai_tools import (
     JsonOutputKeyToolsParser,
@@ -482,10 +483,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         pass
                 else:
                     content = ""
+                if isinstance(data.response, NonStreamedChatResponse):
+                    usage_metadata = _get_usage_metadata(data.response)
+                else:
+                    usage_metadata = None
                 message = AIMessageChunk(
                     content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
+                    usage_metadata=usage_metadata,
                 )
                 yield ChatGenerationChunk(
                     message=message,
@@ -534,10 +540,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         pass
                 else:
                     content = ""
+                if isinstance(data.response, NonStreamedChatResponse):
+                    usage_metadata = _get_usage_metadata(data.response)
+                else:
+                    usage_metadata = None
                 message = AIMessageChunk(
                     content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
+                    usage_metadata=usage_metadata,
                 )
                 yield ChatGenerationChunk(
                     message=message,
@@ -593,10 +604,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
             ]
         else:
             tool_calls = []
+        usage_metadata = _get_usage_metadata(response)
         message = AIMessage(
             content=response.text,
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
+            usage_metadata=usage_metadata,
         )
         return ChatResult(
             generations=[
@@ -631,10 +644,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
             ]
         else:
             tool_calls = []
+        usage_metadata = _get_usage_metadata(response)
         message = AIMessage(
             content=response.text,
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
+            usage_metadata=usage_metadata,
         )
         return ChatResult(
             generations=[
@@ -693,3 +708,19 @@ def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
     """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
     _id = uuid.uuid4().hex[:]
     return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=_id)
+
+
+def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMetadata]:
+    """Get standard usage metadata from chat response."""
+    metadata = response.meta
+    if metadata:
+        if tokens := metadata.tokens:
+            input_tokens = int(tokens.input_tokens or 0)
+            output_tokens = int(tokens.output_tokens or 0)
+            total_tokens = input_tokens + output_tokens
+        return UsageMetadata(
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            total_tokens=total_tokens,
+        )
+    return None
