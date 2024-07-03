@@ -2,9 +2,6 @@ name: Scheduled tests
 run-name: langchain-cohere Scheduled tests
 
 on:
-  push:
-    branches:
-      - cc/scheduled_tests
   workflow_dispatch:
   schedule:
     - cron:  '0 13 * * *'
