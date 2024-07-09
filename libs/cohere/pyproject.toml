@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.1.8"
+version = "0.1.9"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
@@ -14,6 +14,14 @@ license = "MIT"
 python = ">=3.8.1,<4.0"
 langchain-core = ">=0.2.2,<0.3"
 cohere = ">=5.5.6,<6.0"
+pandas = ">=1.4.3"
+tabulate = "^0.9.0"
+langchain-experimental = ">=0.0.6"
+langchain-community = { version = ">=0.2.4",optional = true }
+
+[[tool.mypy.overrides]]
+module = "pandas"
+ignore_missing_imports = true
 
 [tool.poetry.group.test]
 optional = true
@@ -40,7 +48,7 @@ optional = true
 [tool.poetry.group.test_integration.dependencies]
 langchain = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/langchain" }
 langchain-text-splitters = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/text-splitters" }
-langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", markers="python_version >= '3.9.0' and python_version < '4.0'" }
+langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", subdirectory = "libs/langgraph", markers="python_version >= '3.9.0' and python_version < '4.0'" }
 pytest-vcr = "^1.0.2"
 
 [tool.poetry.group.lint]
@@ -58,7 +66,7 @@ optional = true
 
 [tool.poetry.group.dev.dependencies]
 langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
-langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", markers="python_version >= '3.9.0' and python_version < '4.0'" }
+langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", subdirectory = "libs/langgraph", markers="python_version >= '3.9.0' and python_version < '4.0'" }
 
 [tool.ruff]
 select = [
@@ -69,6 +77,9 @@ select = [
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
+
+[tool.poetry.extras]
+langchain_community = ["langchain-community"]
 
 [tool.mypy]
 disallow_untyped_defs = true

@@ -282,6 +282,6 @@ def test_get_num_tokens_with_default_model() -> None:
     ],
 )
 def test_tool_call_with_tool_results(messages: List[BaseMessage]) -> None:
-    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
+    llm = ChatCohere(temperature=0)
     response = llm.invoke(messages)
     assert isinstance(response, AIMessage)

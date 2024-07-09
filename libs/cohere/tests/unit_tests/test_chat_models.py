@@ -1,4 +1,5 @@
 """Test chat model integration."""
+
 import typing
 from unittest.mock import patch
 

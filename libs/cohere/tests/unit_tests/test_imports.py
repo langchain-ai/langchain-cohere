@@ -8,6 +8,7 @@ EXPECTED_ALL = [
     "CohereRerank",
     "create_cohere_tools_agent",
     "create_cohere_react_agent",
+    "create_sql_agent",
 ]
 
 
