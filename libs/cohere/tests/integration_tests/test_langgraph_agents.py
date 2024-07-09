@@ -18,6 +18,8 @@ from langchain_core.tools import BaseTool, Tool
 
 from langchain_cohere import ChatCohere
 
+DEFAULT_MODEL = "command-r"
+
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires >= python3.9")
 @pytest.mark.vcr()
@@ -55,7 +57,7 @@ def test_langgraph_react_agent() -> None:
     system_message = "You are a helpful assistant. Respond only in English."
 
     tools = [web_search, python_tool]
-    model = ChatCohere()
+    model = ChatCohere(model=DEFAULT_MODEL)
 
     app = create_react_agent(model, tools, messages_modifier=system_message)
 
@@ -103,7 +105,7 @@ def test_langchain_tool_calling_agent() -> None:
     magic_function_tool.args_schema = MagicFunctionInput
 
     tools: Sequence[BaseTool] = [magic_function_tool]
-    model = ChatCohere()
+    model = ChatCohere(model=DEFAULT_MODEL)
 
     query = "what is the value of magic_function(3)?"
 

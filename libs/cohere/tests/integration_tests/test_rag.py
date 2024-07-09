@@ -77,7 +77,7 @@ def test_documents_chain() -> None:
 @pytest.mark.vcr()
 def test_who_are_cohere() -> None:
     user_query = "Who founded Cohere?"
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
     retriever = CohereRagRetriever(llm=llm, connectors=[{"id": "web-search"}])
 
     actual = retriever.get_relevant_documents(user_query)
@@ -95,7 +95,7 @@ def test_who_are_cohere() -> None:
 
 @pytest.mark.vcr()
 def test_who_founded_cohere_with_custom_documents() -> None:
-    rag = CohereRagRetriever(llm=ChatCohere())
+    rag = CohereRagRetriever(llm=ChatCohere(MODEL=DEFAULT_MODEL))
 
     docs = rag.invoke(
         "who is the founder of cohere?",
@@ -107,7 +107,6 @@ def test_who_founded_cohere_with_custom_documents() -> None:
     )
     answer = docs.pop()
     citations = answer.metadata.get("citations")
-
     relevant_documents = docs
     assert len(relevant_documents) > 0
     expected_answer = "barack obama is the founder of cohere."
