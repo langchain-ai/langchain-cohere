@@ -34,6 +34,7 @@ from langchain_core.messages import (
     ChatMessage,
     HumanMessage,
     SystemMessage,
+    ToolCallChunk,
     ToolMessage,
 )
 from langchain_core.messages import (
@@ -464,34 +465,35 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 if run_manager:
                     run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
+            if data.event_type == "tool-calls-chunk":
+                if data.tool_call_delta:
+                    delta = data.tool_call_delta
+                    cohere_tool_call_chunk = _format_cohere_tool_calls([delta])[0]
+                    message = AIMessageChunk(
+                        content="",
+                        tool_call_chunks=[
+                            ToolCallChunk(
+                                name=cohere_tool_call_chunk["function"].get("name"),
+                                args=cohere_tool_call_chunk["function"].get(
+                                    "arguments"
+                                ),
+                                id=cohere_tool_call_chunk.get("id"),
+                                index=delta.index,
+                            )
+                        ],
+                    )
+                    chunk = ChatGenerationChunk(message=message)
+                else:
+                    delta = data.text
+                    chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
+                if run_manager:
+                    run_manager.on_llm_new_token(delta, chunk=chunk)
+                yield chunk
             elif data.event_type == "stream-end":
                 generation_info = self._get_generation_info(data.response)
-                tool_call_chunks = []
-                if tool_calls := generation_info.get("tool_calls"):
-                    content = data.response.text
-                    try:
-                        tool_call_chunks = [
-                            {
-                                "name": tool_call["function"].get("name"),
-                                "args": tool_call["function"].get("arguments"),
-                                "id": tool_call.get("id"),
-                                "index": tool_call.get("index"),
-                            }
-                            for tool_call in tool_calls
-                        ]
-                    except KeyError:
-                        pass
-                else:
-                    content = ""
-                if isinstance(data.response, NonStreamedChatResponse):
-                    usage_metadata = _get_usage_metadata(data.response)
-                else:
-                    usage_metadata = None
                 message = AIMessageChunk(
-                    content=content,
+                    content="",
                     additional_kwargs=generation_info,
-                    tool_call_chunks=tool_call_chunks,
-                    usage_metadata=usage_metadata,
                 )
                 yield ChatGenerationChunk(
                     message=message,

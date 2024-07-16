@@ -163,10 +163,12 @@ def test_streaming_tool_call() -> None:
     strm = tool_llm.stream("Erick, 27 years old")
 
     additional_kwargs = None
+    tool_call_chunks_present = False
     for chunk in strm:
         assert isinstance(chunk, AIMessageChunk)
-        assert len(chunk.content) > 0
         additional_kwargs = chunk.additional_kwargs
+        if chunk.tool_call_chunks:
+            tool_call_chunks_present = True
 
     assert additional_kwargs is not None
     assert "tool_calls" in additional_kwargs
@@ -183,6 +185,7 @@ def test_streaming_tool_call() -> None:
     assert tool_call_chunk["name"] == "Person"
     assert tool_call_chunk["args"] is not None
     assert json.loads(tool_call_chunk["args"]) == {"name": "Erick", "age": 27}
+    assert tool_call_chunks_present
 
 
 @pytest.mark.vcr()
