@@ -1,5 +1,5 @@
 import typing
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Sequence
 
 import cohere
 from langchain_core.embeddings import Embeddings
@@ -41,13 +41,16 @@ class CohereEmbeddings(BaseModel, Embeddings):
     """Cohere client."""
     async_client: Any  #: :meta private:
     """Cohere async client."""
-    model: str = "embed-english-v2.0"
-    """Model name to use."""
+    model: Optional[str] = None
+    """Model name to use. It is mandatory to specify the model name."""
 
     truncate: Optional[str] = None
     """Truncate embeddings that are too long from start or end ("NONE"|"START"|"END")"""
 
     cohere_api_key: Optional[str] = None
+
+    embedding_types: Optional[Sequence[str]] = ["float"]
+    "Specifies the types of embeddings you want to get back"
 
     max_retries: int = 3
     """Maximum number of retries to make when generating."""
@@ -89,6 +92,21 @@ class CohereEmbeddings(BaseModel, Embeddings):
 
         return values
 
+    @root_validator()
+    def validate_model_specified(cls, values: Dict) -> Dict:
+        """Validate that model is specified."""
+        model = values.get("model")
+        if not model:
+            raise ValueError(
+                "Did not find `model`! Please "
+                " pass `model` as a named parameter."
+                " Please check out"
+                " https://docs.cohere.com/reference/embed"
+                " for available models."
+            )
+
+        return values
+
     def embed_with_retry(self, **kwargs: Any) -> Any:
         """Use tenacity to retry the embed call."""
         retry_decorator = _create_retry_decorator(self.max_retries)
@@ -120,6 +138,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
             texts=texts,
             input_type=input_type,
             truncate=self.truncate,
+            embedding_types=self.embedding_types,
         ).embeddings
         return [list(map(float, e)) for e in embeddings]
 
@@ -135,6 +154,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
                 texts=texts,
                 input_type=input_type,
                 truncate=self.truncate,
+                embedding_types=self.embedding_types,
             )
         ).embeddings
         return [list(map(float, e)) for e in embeddings]
