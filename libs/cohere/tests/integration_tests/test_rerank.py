@@ -15,7 +15,7 @@ from langchain_cohere import CohereRerank
 
 @pytest.mark.vcr()
 def test_langchain_cohere_rerank_documents() -> None:
-    rerank = CohereRerank()
+    rerank = CohereRerank(model="rerank-english-light-v3.0")
     test_documents = [
         Document(page_content="This is a test document."),
         Document(page_content="Another test document."),
@@ -27,7 +27,7 @@ def test_langchain_cohere_rerank_documents() -> None:
 
 @pytest.mark.vcr()
 def test_langchain_cohere_rerank_with_rank_fields() -> None:
-    rerank = CohereRerank()
+    rerank = CohereRerank(model="rerank-english-light-v3.0")
     test_documents = [
         {"content": "This document is about Penguins.", "subject": "Physics"},
         {"content": "This document is about Physics.", "subject": "Penguins"},

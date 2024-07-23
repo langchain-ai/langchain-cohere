@@ -17,8 +17,8 @@ class CohereRerank(BaseDocumentCompressor):
     """Cohere client to use for compressing documents."""
     top_n: Optional[int] = 3
     """Number of documents to return."""
-    model: str = "rerank-english-v3.0"
-    """Model to use for reranking."""
+    model: Optional[str] = None
+    """Model to use for reranking. Mandatory to specify the model name."""
     cohere_api_key: Optional[str] = None
     """Cohere API key. Must be specified directly or via environment variable 
         COHERE_API_KEY."""
@@ -40,6 +40,21 @@ class CohereRerank(BaseDocumentCompressor):
             )
             client_name = values["user_agent"]
             values["client"] = cohere.Client(cohere_api_key, client_name=client_name)
+        return values
+
+    @root_validator()
+    def validate_model_specified(cls, values: Dict) -> Dict:
+        """Validate that model is specified."""
+        model = values.get("model")
+        if not model:
+            raise ValueError(
+                "Did not find `model`! Please "
+                " pass `model` as a named parameter."
+                " Please check out"
+                " https://docs.cohere.com/reference/rerank"
+                " for available models."
+            )
+
         return values
 
     def rerank(
