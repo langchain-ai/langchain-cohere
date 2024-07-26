@@ -10,6 +10,7 @@ EXPECTED_ALL = [
     "create_cohere_react_agent",
     "create_csv_agent",
     "create_sql_agent",
+    "load_summarize_chain",
 ]
 
 
