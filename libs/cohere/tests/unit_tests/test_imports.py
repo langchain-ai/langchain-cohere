@@ -9,6 +9,7 @@ EXPECTED_ALL = [
     "create_cohere_tools_agent",
     "create_cohere_react_agent",
     "create_sql_agent",
+    "load_summarize_chain",
 ]
 
 
