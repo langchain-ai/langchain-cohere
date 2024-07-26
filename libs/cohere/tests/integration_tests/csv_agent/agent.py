@@ -21,8 +21,11 @@ def test_single_csv() -> None:
         llm, path="tests/integration_tests/csv_agent/csv/movie_ratings.csv"
     )
     resp = csv_agent.invoke({"input": "Which movie has the highest average rating?"})
-    assert hasattr(resp, "output")
-    assert "shawshank redemption" in resp.get("output", "").lower()
+    assert "output" in resp
+    assert (
+        "The Shawshank Redemption has the highest average rating of 7.25."  # noqa: E501
+        == resp["output"]
+    )
 
 
 @pytest.mark.vcr()
@@ -37,10 +40,16 @@ def test_multiple_csv() -> None:
         ],
     )
     resp = csv_agent.invoke({"input": "Which movie has the highest average rating?"})
-    assert hasattr(resp, "output")
-    assert "shawshank redemption" in resp.get("output", "").lower()
+    assert "output" in resp
+    assert (
+        "The movie with the highest average rating is *The Shawshank Redemption* with an average rating of 7.25."  # noqa: E501
+        == resp["output"]
+    )
     resp = csv_agent.invoke(
         {"input": "who bought the most number of tickets to finding nemo?"}
     )
-    assert hasattr(resp, "output")
-    assert "penelope" in resp.get("output", "").lower()
+    assert "output" in resp
+    assert (
+        "Penelope bought the most tickets to Finding Nemo."  # noqa: E501
+        == resp["output"]
+    )
