@@ -1,30 +1,97 @@
 interactions:
 - request:
-    body: '{"message": "Which movie has the highest average rating?", "chat_history":
-      [{"role": "System", "message": "\nYou are working with 2 pandas dataframes in
-      Python named df1, df2, etc.\nThis is the result of `print(df.head())` for each
-      dataframe:\n|    | movie                    | user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-      | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-      | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7 |\n|  3
-      | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-      Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-      |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The Shawshank
-      Redemption | John   |             2 |\n|  1 | The Shawshank Redemption | Jerry  |             2
-      |\n|  2 | The Shawshank Redemption | Jack   |             4 |\n|  3 | The Shawshank
-      Redemption | Jeremy |             2 |\n|  4 | Finding Nemo             | Darren
-      |             3 |\n\nDo note that the above dfs aren''t the complete df. It
-      is only the first 5 rows of the df.\nUse this as a sample to understand the
-      structure of the df. However, donot use this to make any calculations directly!\n\nThe
-      complete path for the csv files are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"}],
-      "tools": [{"name": "peek_df", "description": "A function that will return a
-      preview of the dataframe based on the table path.", "parameter_definitions":
-      {"table_path": {"description": "the table path", "type": "str", "required":
-      true}, "num_rows": {"description": "the number of rows of the table to preview",
-      "type": "int", "required": true}}}, {"name": "python_repl", "description": "Executes
-      python code and returns the result. The code runs in a static sandbox without
-      interactive mode, so print output or save output to a file.", "parameter_definitions":
-      {"code": {"description": "Python code to execute.", "type": "str", "required":
-      true}}}], "stream": true}'
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.5.8
+    method: GET
+    uri: https://api.cohere.com/v1/models?default_only=true&endpoint=chat
+  response:
+    body:
+      string: '{"models":[{"name":"command-r-plus","endpoints":["generate","chat","summarize"],"finetuned":false,"context_length":128000,"tokenizer_url":"https://storage.googleapis.com/cohere-public/tokenizers/command-r-plus.json","default_endpoints":["chat"]}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '247'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Thu, 25 Jul 2024 07:35:25 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - c0ca9d55ae2b1dbcd6e2e8567ab54fc2
+      x-endpoint-monthly-call-limit:
+      - '1000'
+      x-envoy-upstream-service-time:
+      - '18'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '38'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "Which movie has the highest average rating?", "preamble":
+      "## Task And Context\nYou use your advanced complex reasoning capabilities to
+      help people by answering their questions and other requests interactively. You
+      will be asked a very wide array of requests on all kinds of topics. You will
+      be equipped with a wide range of search engines or similar tools to help you,
+      which you use to research your answer. You may need to use multiple tools in
+      parallel or sequentially to complete your task. You should focus on serving
+      the user''s needs as best you can, which will be wide-ranging. The current date
+      is Thursday, July 25, 2024 15:35:25\n\n## Style Guide\nUnless the user asks
+      for a different style of answer, you should answer in full sentences, using
+      proper grammar and spelling\n", "chat_history": [{"role": "User", "message":
+      "The user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
+      Count: 21\nPreview: movie,user,rating The Shawshank Redemption,John,8 The Shawshank
+      Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank Redemption,Jeremy,8
+      The user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord
+      Count: 21\nPreview: movie,name,num_tickets The Shawshank Redemption,John,2 The
+      Shawshank Redemption,Jerry,2 The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"}],
+      "tools": [{"name": "file_read", "description": "Returns the textual contents
+      of an uploaded file, broken up in text chunks", "parameter_definitions": {"filename":
+      {"description": "The name of the attached file to read.", "type": "str", "required":
+      true}}}, {"name": "file_peek", "description": "The name of the attached file
+      to show a peek preview.", "parameter_definitions": {"filename": {"description":
+      "The name of the attached file to show a peek preview.", "type": "str", "required":
+      true}}}, {"name": "python_interpreter", "description": "Executes python code
+      and returns the result. The code runs in a static sandbox without interactive
+      mode, so print output or save output to a file.", "parameter_definitions": {"code":
+      {"description": "Python code to execute.", "type": "str", "required": true}}}],
+      "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -33,7 +100,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '2129'
+      - '2252'
       content-type:
       - application/json
       host:
@@ -47,12 +114,12 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.5.8
     method: POST
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"5f350bcd-4327-4f1d-aa78-7b598507ecaf"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"99479a84-e3a0-4b6b-add3-ac5280424c67"}
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":"I"}
 
@@ -63,6 +130,14 @@ interactions:
         {"is_finished":false,"event_type":"tool-calls-chunk","text":" Python"}
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":" to"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" read"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" the"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" data"}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" and"}
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":" find"}
 
@@ -82,306 +157,356 @@ interactions:
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":"."}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"name":"python_repl"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"name":"python_interpreter"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"{\n            \""}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"{\n    \""}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"code"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"code"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\":"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\":"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         \""}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"import"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"import"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         pandas"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         as"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         pd"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\nd"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"f"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ratings"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         ="}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         pd"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"read"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"read"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"(''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"(''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tests"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"tests"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"integration"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"integration"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tests"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"tests"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"agent"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"agent"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"movie"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"ratings"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ratings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'')"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'')"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"#"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"#"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         Group"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         by"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         and"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         calculate"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         average"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         rating"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\nd"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\nav"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"f"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"g"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"grouped"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ratings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         ="}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"groupby"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ratings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"(''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"movie"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"groupby"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'')"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"(''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"[''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"rating"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'')"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'']."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"[''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"mean"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"rating"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"()"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'']."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"mean"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"()"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"#"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"#"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         Find"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         the"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         with"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         the"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         highest"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         average"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         rating"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\nh"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\nh"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"igh"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"igh"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"est"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"est"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"rated"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"rated"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"movie"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         ="}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        avg"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"grouped"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ratings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"idx"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"idx"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"max"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"max"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"()"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"()"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"print"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"print"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"("}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"("}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"f"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"f"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\\""}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\\""}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"The"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"The"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         with"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         the"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         highest"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         average"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         rating"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         is"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         {"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"highest"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"highest"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"rated"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"rated"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"movie"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"}\\\")"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"}"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\""}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        with"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\n       "}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        an"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        }"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        average"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        rating"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        of"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        {"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"avg"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ratings"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"["}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"highest"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"rated"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"]:"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"2"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"f"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"}\\\")"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\""}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\n"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"}"}}
 
         {"is_finished":false,"event_type":"tool-calls-generation","text":"I will use
-        Python to find the movie with the highest average rating.","tool_calls":[{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\ndf = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
-        Group by movie and calculate average rating\ndf_grouped = df.groupby(''movie'')[''rating''].mean()\n\n#
-        Find the movie with the highest average rating\nhighest_rated_movie = df_grouped.idxmax()\n\nprint(f\"The
-        movie with the highest average rating is {highest_rated_movie}\")"}}]}
+        Python to read the data and find the movie with the highest average rating.","tool_calls":[{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_ratings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
+        Group by movie and calculate average rating\navg_ratings = movie_ratings.groupby(''movie'')[''rating''].mean()\n\n#
+        Find the movie with the highest average rating\nhighest_rated_movie = avg_ratings.idxmax()\n\nprint(f\"The
+        movie with the highest average rating is {highest_rated_movie} with an average
+        rating of {avg_ratings[highest_rated_movie]:.2f}\")"}}]}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"48fd9e4a-2c55-4d98-a3ed-67f5fe472566","text":"I
-        will use Python to find the movie with the highest average rating.","generation_id":"5f350bcd-4327-4f1d-aa78-7b598507ecaf","chat_history":[{"role":"SYSTEM","message":"\nYou
-        are working with 2 pandas dataframes in Python named df1, df2, etc.\nThis
-        is the result of `print(df.head())` for each dataframe:\n|    | movie                    |
-        user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-        | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-        | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7
-        |\n|  3 | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-        Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-        |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The
-        Shawshank Redemption | John   |             2 |\n|  1 | The Shawshank Redemption
-        | Jerry  |             2 |\n|  2 | The Shawshank Redemption | Jack   |             4
-        |\n|  3 | The Shawshank Redemption | Jeremy |             2 |\n|  4 | Finding
-        Nemo             | Darren |             3 |\n\nDo note that the above dfs
-        aren''t the complete df. It is only the first 5 rows of the df.\nUse this
-        as a sample to understand the structure of the df. However, donot use this
-        to make any calculations directly!\n\nThe complete path for the csv files
-        are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"},{"role":"USER","message":"Which
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"6b098e71-e6dc-487b-9df0-b1555b764de5","text":"I
+        will use Python to read the data and find the movie with the highest average
+        rating.","generation_id":"99479a84-e3a0-4b6b-add3-ac5280424c67","chat_history":[{"role":"USER","message":"The
+        user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
+        Count: 21\nPreview: movie,user,rating The Shawshank Redemption,John,8 The
+        Shawshank Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank
+        Redemption,Jeremy,8 The user uploaded the following attachments:\nFilename:
+        tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord Count: 21\nPreview:
+        movie,name,num_tickets The Shawshank Redemption,John,2 The Shawshank Redemption,Jerry,2
+        The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"},{"role":"USER","message":"Which
         movie has the highest average rating?"},{"role":"CHATBOT","message":"I will
-        use Python to find the movie with the highest average rating.","tool_calls":[{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\ndf = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
-        Group by movie and calculate average rating\ndf_grouped = df.groupby(''movie'')[''rating''].mean()\n\n#
-        Find the movie with the highest average rating\nhighest_rated_movie = df_grouped.idxmax()\n\nprint(f\"The
-        movie with the highest average rating is {highest_rated_movie}\")"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":429,"output_tokens":137},"tokens":{"input_tokens":1369,"output_tokens":137}},"tool_calls":[{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\ndf = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
-        Group by movie and calculate average rating\ndf_grouped = df.groupby(''movie'')[''rating''].mean()\n\n#
-        Find the movie with the highest average rating\nhighest_rated_movie = df_grouped.idxmax()\n\nprint(f\"The
-        movie with the highest average rating is {highest_rated_movie}\")"}}]},"finish_reason":"COMPLETE"}
+        use Python to read the data and find the movie with the highest average rating.","tool_calls":[{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_ratings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
+        Group by movie and calculate average rating\navg_ratings = movie_ratings.groupby(''movie'')[''rating''].mean()\n\n#
+        Find the movie with the highest average rating\nhighest_rated_movie = avg_ratings.idxmax()\n\nprint(f\"The
+        movie with the highest average rating is {highest_rated_movie} with an average
+        rating of {avg_ratings[highest_rated_movie]:.2f}\")"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":412,"output_tokens":165},"tokens":{"input_tokens":1217,"output_tokens":199}},"tool_calls":[{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_ratings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
+        Group by movie and calculate average rating\navg_ratings = movie_ratings.groupby(''movie'')[''rating''].mean()\n\n#
+        Find the movie with the highest average rating\nhighest_rated_movie = avg_ratings.idxmax()\n\nprint(f\"The
+        movie with the highest average rating is {highest_rated_movie} with an average
+        rating of {avg_ratings[highest_rated_movie]:.2f}\")"}}]},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -391,69 +516,74 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Wed, 12 Jun 2024 08:23:21 GMT
+      - Thu, 25 Jul 2024 07:35:25 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 4f6d20d5ac251222af59acc0f7ad9ad7
+      - cb6372efb8b43430eeac2852a51bb3cd
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '65'
+      - '84'
       x-trial-endpoint-call-limit:
-      - '10'
+      - '40'
       x-trial-endpoint-call-remaining:
-      - '7'
+      - '37'
     status:
       code: 200
       message: OK
 - request:
-    body: '{"message": "", "chat_history": [{"role": "System", "message": "\nYou are
-      working with 2 pandas dataframes in Python named df1, df2, etc.\nThis is the
-      result of `print(df.head())` for each dataframe:\n|    | movie                    |
-      user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-      | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-      | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7 |\n|  3
-      | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-      Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-      |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The Shawshank
-      Redemption | John   |             2 |\n|  1 | The Shawshank Redemption | Jerry  |             2
-      |\n|  2 | The Shawshank Redemption | Jack   |             4 |\n|  3 | The Shawshank
-      Redemption | Jeremy |             2 |\n|  4 | Finding Nemo             | Darren
-      |             3 |\n\nDo note that the above dfs aren''t the complete df. It
-      is only the first 5 rows of the df.\nUse this as a sample to understand the
-      structure of the df. However, donot use this to make any calculations directly!\n\nThe
-      complete path for the csv files are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"},
+    body: '{"message": "", "preamble": "## Task And Context\nYou use your advanced
+      complex reasoning capabilities to help people by answering their questions and
+      other requests interactively. You will be asked a very wide array of requests
+      on all kinds of topics. You will be equipped with a wide range of search engines
+      or similar tools to help you, which you use to research your answer. You may
+      need to use multiple tools in parallel or sequentially to complete your task.
+      You should focus on serving the user''s needs as best you can, which will be
+      wide-ranging. The current date is Thursday, July 25, 2024 15:35:25\n\n## Style
+      Guide\nUnless the user asks for a different style of answer, you should answer
+      in full sentences, using proper grammar and spelling\n", "chat_history": [{"role":
+      "User", "message": "The user uploaded the following attachments:\nFilename:
+      tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord Count: 21\nPreview:
+      movie,user,rating The Shawshank Redemption,John,8 The Shawshank Redemption,Jerry,6
+      The Shawshank Redemption,Jack,7 The Shawshank Redemption,Jeremy,8 The user uploaded
+      the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord
+      Count: 21\nPreview: movie,name,num_tickets The Shawshank Redemption,John,2 The
+      Shawshank Redemption,Jerry,2 The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"},
       {"role": "User", "message": "Which movie has the highest average rating?"},
-      {"role": "Chatbot", "message": "I will use Python to find the movie with the
-      highest average rating.", "tool_calls": [{"name": "python_repl", "args": {"code":
-      "import pandas as pd\n\ndf = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
-      Group by movie and calculate average rating\ndf_grouped = df.groupby(''movie'')[''rating''].mean()\n\n#
-      Find the movie with the highest average rating\nhighest_rated_movie = df_grouped.idxmax()\n\nprint(f\"The
-      movie with the highest average rating is {highest_rated_movie}\")"}, "id": "e0712dd27c1c45e2bf3b460cd90d99ab"}]}],
-      "tools": [{"name": "peek_df", "description": "A function that will return a
-      preview of the dataframe based on the table path.", "parameter_definitions":
-      {"table_path": {"description": "the table path", "type": "str", "required":
-      true}, "num_rows": {"description": "the number of rows of the table to preview",
-      "type": "int", "required": true}}}, {"name": "python_repl", "description": "Executes
+      {"role": "Chatbot", "message": "I will use Python to read the data and find
+      the movie with the highest average rating.", "tool_calls": [{"name": "python_interpreter",
+      "args": {"code": "import pandas as pd\n\nmovie_ratings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
+      Group by movie and calculate average rating\navg_ratings = movie_ratings.groupby(''movie'')[''rating''].mean()\n\n#
+      Find the movie with the highest average rating\nhighest_rated_movie = avg_ratings.idxmax()\n\nprint(f\"The
+      movie with the highest average rating is {highest_rated_movie} with an average
+      rating of {avg_ratings[highest_rated_movie]:.2f}\")"}, "id": "a2a800129e9245bc90d64b8ff6a45b7f",
+      "type": "tool_call"}]}], "tools": [{"name": "file_read", "description": "Returns
+      the textual contents of an uploaded file, broken up in text chunks", "parameter_definitions":
+      {"filename": {"description": "The name of the attached file to read.", "type":
+      "str", "required": true}}}, {"name": "file_peek", "description": "The name of
+      the attached file to show a peek preview.", "parameter_definitions": {"filename":
+      {"description": "The name of the attached file to show a peek preview.", "type":
+      "str", "required": true}}}, {"name": "python_interpreter", "description": "Executes
       python code and returns the result. The code runs in a static sandbox without
       interactive mode, so print output or save output to a file.", "parameter_definitions":
       {"code": {"description": "Python code to execute.", "type": "str", "required":
-      true}}}], "tool_results": [{"call": {"name": "python_repl", "parameters": {"code":
-      "import pandas as pd\n\ndf = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
-      Group by movie and calculate average rating\ndf_grouped = df.groupby(''movie'')[''rating''].mean()\n\n#
-      Find the movie with the highest average rating\nhighest_rated_movie = df_grouped.idxmax()\n\nprint(f\"The
-      movie with the highest average rating is {highest_rated_movie}\")"}}, "outputs":
-      [{"output": "The movie with the highest average rating is The Shawshank Redemption\n"}]}],
-      "stream": true}'
+      true}}}], "tool_results": [{"call": {"name": "python_interpreter", "parameters":
+      {"code": "import pandas as pd\n\nmovie_ratings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
+      Group by movie and calculate average rating\navg_ratings = movie_ratings.groupby(''movie'')[''rating''].mean()\n\n#
+      Find the movie with the highest average rating\nhighest_rated_movie = avg_ratings.idxmax()\n\nprint(f\"The
+      movie with the highest average rating is {highest_rated_movie} with an average
+      rating of {avg_ratings[highest_rated_movie]:.2f}\")"}}, "outputs": [{"output":
+      "The movie with the highest average rating is The Shawshank Redemption with
+      an average rating of 7.25\n"}]}], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -462,7 +592,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '3302'
+      - '3687'
       content-type:
       - application/json
       host:
@@ -476,15 +606,16 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.5.8
     method: POST
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"188eac8f-81e7-4484-88e3-7660d923a97a"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"3eab743c-87fe-48d4-83a1-05c0bf30f965"}
 
-        {"is_finished":false,"event_type":"search-results","documents":[{"id":"python_repl:0:3:0","output":"The
-        movie with the highest average rating is The Shawshank Redemption\n","tool_name":"python_repl"}]}
+        {"is_finished":false,"event_type":"search-results","documents":[{"id":"python_interpreter:0:3:0","output":"The
+        movie with the highest average rating is The Shawshank Redemption with an
+        average rating of 7.25\n","tool_name":"python_interpreter"}]}
 
         {"is_finished":false,"event_type":"text-generation","text":"The"}
 
@@ -512,44 +643,64 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":" Redemption"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"*."}
+        {"is_finished":false,"event_type":"text-generation","text":"*"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" with"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" an"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" average"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" rating"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" 7"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":"2"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"5"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
 
         {"is_finished":false,"event_type":"citation-generation","citations":[{"start":46,"end":70,"text":"The
-        Shawshank Redemption","document_ids":["python_repl:0:3:0"]}]}
+        Shawshank Redemption","document_ids":["python_interpreter:0:3:0"]}]}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"1ad5c1f9-7061-45b8-97bd-01274d9cc9c0","text":"The
-        movie with the highest average rating is *The Shawshank Redemption*.","generation_id":"188eac8f-81e7-4484-88e3-7660d923a97a","chat_history":[{"role":"SYSTEM","message":"\nYou
-        are working with 2 pandas dataframes in Python named df1, df2, etc.\nThis
-        is the result of `print(df.head())` for each dataframe:\n|    | movie                    |
-        user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-        | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-        | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7
-        |\n|  3 | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-        Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-        |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The
-        Shawshank Redemption | John   |             2 |\n|  1 | The Shawshank Redemption
-        | Jerry  |             2 |\n|  2 | The Shawshank Redemption | Jack   |             4
-        |\n|  3 | The Shawshank Redemption | Jeremy |             2 |\n|  4 | Finding
-        Nemo             | Darren |             3 |\n\nDo note that the above dfs
-        aren''t the complete df. It is only the first 5 rows of the df.\nUse this
-        as a sample to understand the structure of the df. However, donot use this
-        to make any calculations directly!\n\nThe complete path for the csv files
-        are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"},{"role":"USER","message":"Which
+        {"is_finished":false,"event_type":"citation-generation","citations":[{"start":98,"end":102,"text":"7.25","document_ids":["python_interpreter:0:3:0"]}]}
+
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"e9d8f67a-f0f2-46b0-81db-809971d6301b","text":"The
+        movie with the highest average rating is *The Shawshank Redemption* with an
+        average rating of 7.25.","generation_id":"3eab743c-87fe-48d4-83a1-05c0bf30f965","chat_history":[{"role":"USER","message":"The
+        user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
+        Count: 21\nPreview: movie,user,rating The Shawshank Redemption,John,8 The
+        Shawshank Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank
+        Redemption,Jeremy,8 The user uploaded the following attachments:\nFilename:
+        tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord Count: 21\nPreview:
+        movie,name,num_tickets The Shawshank Redemption,John,2 The Shawshank Redemption,Jerry,2
+        The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"},{"role":"USER","message":"Which
         movie has the highest average rating?"},{"role":"CHATBOT","message":"I will
-        use Python to find the movie with the highest average rating.","tool_calls":[{"name":"python_repl","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\ndf = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
-        Group by movie and calculate average rating\ndf_grouped = df.groupby(''movie'')[''rating''].mean()\n\n#
-        Find the movie with the highest average rating\nhighest_rated_movie = df_grouped.idxmax()\n\nprint(f\"The
-        movie with the highest average rating is {highest_rated_movie}\")"}},"outputs":[{"output":"The
-        movie with the highest average rating is The Shawshank Redemption\n"}]}]},{"role":"CHATBOT","message":"The
-        movie with the highest average rating is *The Shawshank Redemption*."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":466,"output_tokens":14},"tokens":{"input_tokens":1582,"output_tokens":14}},"citations":[{"start":46,"end":70,"text":"The
-        Shawshank Redemption","document_ids":["python_repl:0:3:0"]}],"documents":[{"id":"python_repl:0:3:0","output":"The
-        movie with the highest average rating is The Shawshank Redemption\n","tool_name":"python_repl"}]},"finish_reason":"COMPLETE"}
+        use Python to read the data and find the movie with the highest average rating.","tool_calls":[{"name":"python_interpreter","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_ratings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\n\n#
+        Group by movie and calculate average rating\navg_ratings = movie_ratings.groupby(''movie'')[''rating''].mean()\n\n#
+        Find the movie with the highest average rating\nhighest_rated_movie = avg_ratings.idxmax()\n\nprint(f\"The
+        movie with the highest average rating is {highest_rated_movie} with an average
+        rating of {avg_ratings[highest_rated_movie]:.2f}\")"}},"outputs":[{"output":"The
+        movie with the highest average rating is The Shawshank Redemption with an
+        average rating of 7.25\n"}]}]},{"role":"CHATBOT","message":"The movie with
+        the highest average rating is *The Shawshank Redemption* with an average rating
+        of 7.25."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":463,"output_tokens":25},"tokens":{"input_tokens":1468,"output_tokens":91}},"citations":[{"start":46,"end":70,"text":"The
+        Shawshank Redemption","document_ids":["python_interpreter:0:3:0"]},{"start":98,"end":102,"text":"7.25","document_ids":["python_interpreter:0:3:0"]}],"documents":[{"id":"python_interpreter:0:3:0","output":"The
+        movie with the highest average rating is The Shawshank Redemption with an
+        average rating of 7.25\n","tool_name":"python_interpreter"}]},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -559,56 +710,59 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Wed, 12 Jun 2024 08:23:24 GMT
+      - Thu, 25 Jul 2024 07:35:30 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 643c84256ac1d59a1954fd08b413d00f
+      - 2b477db370c0a0dfad26b8ce83020267
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '61'
+      - '60'
       x-trial-endpoint-call-limit:
-      - '10'
+      - '40'
       x-trial-endpoint-call-remaining:
-      - '6'
+      - '36'
     status:
       code: 200
       message: OK
 - request:
-    body: '{"message": "who bought the most number of tickets to finding nemo?", "chat_history":
-      [{"role": "System", "message": "\nYou are working with 2 pandas dataframes in
-      Python named df1, df2, etc.\nThis is the result of `print(df.head())` for each
-      dataframe:\n|    | movie                    | user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-      | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-      | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7 |\n|  3
-      | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-      Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-      |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The Shawshank
-      Redemption | John   |             2 |\n|  1 | The Shawshank Redemption | Jerry  |             2
-      |\n|  2 | The Shawshank Redemption | Jack   |             4 |\n|  3 | The Shawshank
-      Redemption | Jeremy |             2 |\n|  4 | Finding Nemo             | Darren
-      |             3 |\n\nDo note that the above dfs aren''t the complete df. It
-      is only the first 5 rows of the df.\nUse this as a sample to understand the
-      structure of the df. However, donot use this to make any calculations directly!\n\nThe
-      complete path for the csv files are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"}],
-      "tools": [{"name": "peek_df", "description": "A function that will return a
-      preview of the dataframe based on the table path.", "parameter_definitions":
-      {"table_path": {"description": "the table path", "type": "str", "required":
-      true}, "num_rows": {"description": "the number of rows of the table to preview",
-      "type": "int", "required": true}}}, {"name": "python_repl", "description": "Executes
-      python code and returns the result. The code runs in a static sandbox without
-      interactive mode, so print output or save output to a file.", "parameter_definitions":
-      {"code": {"description": "Python code to execute.", "type": "str", "required":
-      true}}}], "stream": true}'
+    body: '{"message": "who bought the most number of tickets to finding nemo?", "preamble":
+      "## Task And Context\nYou use your advanced complex reasoning capabilities to
+      help people by answering their questions and other requests interactively. You
+      will be asked a very wide array of requests on all kinds of topics. You will
+      be equipped with a wide range of search engines or similar tools to help you,
+      which you use to research your answer. You may need to use multiple tools in
+      parallel or sequentially to complete your task. You should focus on serving
+      the user''s needs as best you can, which will be wide-ranging. The current date
+      is Thursday, July 25, 2024 15:35:25\n\n## Style Guide\nUnless the user asks
+      for a different style of answer, you should answer in full sentences, using
+      proper grammar and spelling\n", "chat_history": [{"role": "User", "message":
+      "The user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
+      Count: 21\nPreview: movie,user,rating The Shawshank Redemption,John,8 The Shawshank
+      Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank Redemption,Jeremy,8
+      The user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord
+      Count: 21\nPreview: movie,name,num_tickets The Shawshank Redemption,John,2 The
+      Shawshank Redemption,Jerry,2 The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"}],
+      "tools": [{"name": "file_read", "description": "Returns the textual contents
+      of an uploaded file, broken up in text chunks", "parameter_definitions": {"filename":
+      {"description": "The name of the attached file to read.", "type": "str", "required":
+      true}}}, {"name": "file_peek", "description": "The name of the attached file
+      to show a peek preview.", "parameter_definitions": {"filename": {"description":
+      "The name of the attached file to show a peek preview.", "type": "str", "required":
+      true}}}, {"name": "python_interpreter", "description": "Executes python code
+      and returns the result. The code runs in a static sandbox without interactive
+      mode, so print output or save output to a file.", "parameter_definitions": {"code":
+      {"description": "Python code to execute.", "type": "str", "required": true}}}],
+      "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -617,7 +771,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '2140'
+      - '2263'
       content-type:
       - application/json
       host:
@@ -631,12 +785,12 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.5.8
     method: POST
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"6196f9c6-b973-416a-a861-a6d9ac94d08c"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"b00ad359-4e4f-41f9-9d05-6b2ecb5a94e8"}
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":"I"}
 
@@ -644,7 +798,7 @@ interactions:
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":" use"}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" python"}
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" Python"}
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":" to"}
 
@@ -652,533 +806,367 @@ interactions:
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":" the"}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" user"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" who"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" bought"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" the"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" most"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" number"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" of"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" tickets"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" to"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" Finding"}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" Nemo"}
+        {"is_finished":false,"event_type":"tool-calls-chunk","text":" answer"}
 
         {"is_finished":false,"event_type":"tool-calls-chunk","text":"."}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"name":"python_repl"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"name":"python_interpreter"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"{\n            \""}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"{\n    \""}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"code"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"code"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\":"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\":"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         \""}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"import"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"import"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         pandas"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         as"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         pd"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"#"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        Read"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        the"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"book"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        CSV"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        files"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\nd"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"f"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"1"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         ="}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         pd"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"read"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"read"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"(''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"(''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tests"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"tests"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"integration"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"integration"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tests"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"tests"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"agent"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"agent"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"/"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"movie"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"ratings"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"book"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'')"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"csv"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\nd"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'')"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"f"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"2"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        ="}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"#"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        pd"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"read"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"(''"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tests"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"integration"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tests"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"agent"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"/"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"movie"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"book"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"ings"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"."}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"csv"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'')"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"#"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         Filter"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        the"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        dataframe"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         for"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        ''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        Finding"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"Finding"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         Nemo"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"''\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"filtered"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"finding"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"nem"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"o"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"book"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ings"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         ="}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"2"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"["}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"book"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"2"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"["}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"[''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"movie"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'']"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"book"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ings"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"[''"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"movie"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'']"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         =="}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         ''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"Finding"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"Finding"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         Nemo"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'']"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'']"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"#"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"#"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        Get"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        Group"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        by"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        name"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        and"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        sum"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         the"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        user"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        with"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        the"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        most"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         number"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         of"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         tickets"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"max"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"max"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tickets"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"tickets"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"bought"}}
+
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         ="}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        filtered"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        finding"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"nem"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"[''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"o"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"num"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"book"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tickets"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"ings"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'']."}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"max"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"groupby"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"()"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"(''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"name"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"user"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'')"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"[''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"with"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"num"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"max"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"tickets"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'']."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tickets"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"sum"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        ="}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"()."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        filtered"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"idx"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"max"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"()"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"["}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"filtered"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"print"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"df"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"("}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"[''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"f"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"num"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"''"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"The"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tickets"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        person"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'']"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        =="}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        max"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tickets"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"][''"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"name"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"'']."}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"values"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"["}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"0"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"]\\n"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\n"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"print"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"("}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"f"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\\\""}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"The"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        user"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         who"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         bought"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         the"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         most"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         tickets"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         to"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        ''"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
+        Finding"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"Finding"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         Nemo"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"''"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         is"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
         {"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"user"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"max"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"with"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"tickets"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"_"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"max"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"bought"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"}."}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tickets"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"'')\""}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"}"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        with"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        {"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"max"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"_"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"tickets"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"}"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        tickets"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":".\\\")"}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\""}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"\n       "}}
-
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"parameters":"
-        }"}}
+        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"}"}}
 
         {"is_finished":false,"event_type":"tool-calls-generation","text":"I will use
-        python to find the user who bought the most number of tickets to Finding Nemo.","tool_calls":[{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\n# Read the CSV files\ndf1 = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\ndf2
-        = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
-        Filter the dataframe for ''Finding Nemo''\nfiltered_df = df2[df2[''movie'']
-        == ''Finding Nemo'']\n\n# Get the user with the most number of tickets\nmax_tickets
-        = filtered_df[''num_tickets''].max()\nuser_with_max_tickets = filtered_df[filtered_df[''num_tickets'']
-        == max_tickets][''name''].values[0]\n\nprint(f\"The user who bought the most
-        tickets to ''Finding Nemo'' is {user_with_max_tickets} with {max_tickets}
-        tickets.\")"}}]}
+        Python to find the answer.","tool_calls":[{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_bookings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
+        Filter for Finding Nemo\nfinding_nemo_bookings = movie_bookings[movie_bookings[''movie'']
+        == ''Finding Nemo'']\n\n# Group by name and sum the number of tickets\nmax_tickets_bought
+        = finding_nemo_bookings.groupby(''name'')[''num_tickets''].sum().idxmax()\n\nprint(f''The
+        person who bought the most tickets to Finding Nemo is {max_tickets_bought}.'')"}}]}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"f19abd9e-1457-4398-948e-75e25d3e387c","text":"I
-        will use python to find the user who bought the most number of tickets to
-        Finding Nemo.","generation_id":"6196f9c6-b973-416a-a861-a6d9ac94d08c","chat_history":[{"role":"SYSTEM","message":"\nYou
-        are working with 2 pandas dataframes in Python named df1, df2, etc.\nThis
-        is the result of `print(df.head())` for each dataframe:\n|    | movie                    |
-        user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-        | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-        | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7
-        |\n|  3 | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-        Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-        |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The
-        Shawshank Redemption | John   |             2 |\n|  1 | The Shawshank Redemption
-        | Jerry  |             2 |\n|  2 | The Shawshank Redemption | Jack   |             4
-        |\n|  3 | The Shawshank Redemption | Jeremy |             2 |\n|  4 | Finding
-        Nemo             | Darren |             3 |\n\nDo note that the above dfs
-        aren''t the complete df. It is only the first 5 rows of the df.\nUse this
-        as a sample to understand the structure of the df. However, donot use this
-        to make any calculations directly!\n\nThe complete path for the csv files
-        are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"},{"role":"USER","message":"who
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"94046a6a-ffcf-4924-a5d6-2b375fba38d8","text":"I
+        will use Python to find the answer.","generation_id":"b00ad359-4e4f-41f9-9d05-6b2ecb5a94e8","chat_history":[{"role":"USER","message":"The
+        user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
+        Count: 21\nPreview: movie,user,rating The Shawshank Redemption,John,8 The
+        Shawshank Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank
+        Redemption,Jeremy,8 The user uploaded the following attachments:\nFilename:
+        tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord Count: 21\nPreview:
+        movie,name,num_tickets The Shawshank Redemption,John,2 The Shawshank Redemption,Jerry,2
+        The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"},{"role":"USER","message":"who
         bought the most number of tickets to finding nemo?"},{"role":"CHATBOT","message":"I
-        will use python to find the user who bought the most number of tickets to
-        Finding Nemo.","tool_calls":[{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\n# Read the CSV files\ndf1 = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\ndf2
-        = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
-        Filter the dataframe for ''Finding Nemo''\nfiltered_df = df2[df2[''movie'']
-        == ''Finding Nemo'']\n\n# Get the user with the most number of tickets\nmax_tickets
-        = filtered_df[''num_tickets''].max()\nuser_with_max_tickets = filtered_df[filtered_df[''num_tickets'']
-        == max_tickets][''name''].values[0]\n\nprint(f\"The user who bought the most
-        tickets to ''Finding Nemo'' is {user_with_max_tickets} with {max_tickets}
-        tickets.\")"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":433,"output_tokens":230},"tokens":{"input_tokens":1373,"output_tokens":230}},"tool_calls":[{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\n# Read the CSV files\ndf1 = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\ndf2
-        = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
-        Filter the dataframe for ''Finding Nemo''\nfiltered_df = df2[df2[''movie'']
-        == ''Finding Nemo'']\n\n# Get the user with the most number of tickets\nmax_tickets
-        = filtered_df[''num_tickets''].max()\nuser_with_max_tickets = filtered_df[filtered_df[''num_tickets'']
-        == max_tickets][''name''].values[0]\n\nprint(f\"The user who bought the most
-        tickets to ''Finding Nemo'' is {user_with_max_tickets} with {max_tickets}
-        tickets.\")"}}]},"finish_reason":"COMPLETE"}
+        will use Python to find the answer.","tool_calls":[{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_bookings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
+        Filter for Finding Nemo\nfinding_nemo_bookings = movie_bookings[movie_bookings[''movie'']
+        == ''Finding Nemo'']\n\n# Group by name and sum the number of tickets\nmax_tickets_bought
+        = finding_nemo_bookings.groupby(''name'')[''num_tickets''].sum().idxmax()\n\nprint(f''The
+        person who bought the most tickets to Finding Nemo is {max_tickets_bought}.'')"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":416,"output_tokens":161},"tokens":{"input_tokens":1221,"output_tokens":194}},"tool_calls":[{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_bookings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
+        Filter for Finding Nemo\nfinding_nemo_bookings = movie_bookings[movie_bookings[''movie'']
+        == ''Finding Nemo'']\n\n# Group by name and sum the number of tickets\nmax_tickets_bought
+        = finding_nemo_bookings.groupby(''name'')[''num_tickets''].sum().idxmax()\n\nprint(f''The
+        person who bought the most tickets to Finding Nemo is {max_tickets_bought}.'')"}}]},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -1188,77 +1176,75 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Wed, 12 Jun 2024 08:23:26 GMT
+      - Thu, 25 Jul 2024 07:35:35 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 69c057255edbf4428ca79a4cec843fee
+      - 38e56fdc3e09be70e25f0edf5b8d9222
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '73'
+      - '82'
       x-trial-endpoint-call-limit:
-      - '10'
+      - '40'
       x-trial-endpoint-call-remaining:
-      - '5'
+      - '35'
     status:
       code: 200
       message: OK
 - request:
-    body: '{"message": "", "chat_history": [{"role": "System", "message": "\nYou are
-      working with 2 pandas dataframes in Python named df1, df2, etc.\nThis is the
-      result of `print(df.head())` for each dataframe:\n|    | movie                    |
-      user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-      | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-      | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7 |\n|  3
-      | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-      Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-      |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The Shawshank
-      Redemption | John   |             2 |\n|  1 | The Shawshank Redemption | Jerry  |             2
-      |\n|  2 | The Shawshank Redemption | Jack   |             4 |\n|  3 | The Shawshank
-      Redemption | Jeremy |             2 |\n|  4 | Finding Nemo             | Darren
-      |             3 |\n\nDo note that the above dfs aren''t the complete df. It
-      is only the first 5 rows of the df.\nUse this as a sample to understand the
-      structure of the df. However, donot use this to make any calculations directly!\n\nThe
-      complete path for the csv files are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"},
+    body: '{"message": "", "preamble": "## Task And Context\nYou use your advanced
+      complex reasoning capabilities to help people by answering their questions and
+      other requests interactively. You will be asked a very wide array of requests
+      on all kinds of topics. You will be equipped with a wide range of search engines
+      or similar tools to help you, which you use to research your answer. You may
+      need to use multiple tools in parallel or sequentially to complete your task.
+      You should focus on serving the user''s needs as best you can, which will be
+      wide-ranging. The current date is Thursday, July 25, 2024 15:35:25\n\n## Style
+      Guide\nUnless the user asks for a different style of answer, you should answer
+      in full sentences, using proper grammar and spelling\n", "chat_history": [{"role":
+      "User", "message": "The user uploaded the following attachments:\nFilename:
+      tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord Count: 21\nPreview:
+      movie,user,rating The Shawshank Redemption,John,8 The Shawshank Redemption,Jerry,6
+      The Shawshank Redemption,Jack,7 The Shawshank Redemption,Jeremy,8 The user uploaded
+      the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord
+      Count: 21\nPreview: movie,name,num_tickets The Shawshank Redemption,John,2 The
+      Shawshank Redemption,Jerry,2 The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"},
       {"role": "User", "message": "who bought the most number of tickets to finding
-      nemo?"}, {"role": "Chatbot", "message": "I will use python to find the user
-      who bought the most number of tickets to Finding Nemo.", "tool_calls": [{"name":
-      "python_repl", "args": {"code": "import pandas as pd\n\n# Read the CSV files\ndf1
-      = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\ndf2
-      = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
-      Filter the dataframe for ''Finding Nemo''\nfiltered_df = df2[df2[''movie'']
-      == ''Finding Nemo'']\n\n# Get the user with the most number of tickets\nmax_tickets
-      = filtered_df[''num_tickets''].max()\nuser_with_max_tickets = filtered_df[filtered_df[''num_tickets'']
-      == max_tickets][''name''].values[0]\n\nprint(f\"The user who bought the most
-      tickets to ''Finding Nemo'' is {user_with_max_tickets} with {max_tickets} tickets.\")"},
-      "id": "2115d5305a4145a29ea277d358ede11e"}]}], "tools": [{"name": "peek_df",
-      "description": "A function that will return a preview of the dataframe based
-      on the table path.", "parameter_definitions": {"table_path": {"description":
-      "the table path", "type": "str", "required": true}, "num_rows": {"description":
-      "the number of rows of the table to preview", "type": "int", "required": true}}},
-      {"name": "python_repl", "description": "Executes python code and returns the
-      result. The code runs in a static sandbox without interactive mode, so print
-      output or save output to a file.", "parameter_definitions": {"code": {"description":
-      "Python code to execute.", "type": "str", "required": true}}}], "tool_results":
-      [{"call": {"name": "python_repl", "parameters": {"code": "import pandas as pd\n\n#
-      Read the CSV files\ndf1 = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\ndf2
-      = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
-      Filter the dataframe for ''Finding Nemo''\nfiltered_df = df2[df2[''movie'']
-      == ''Finding Nemo'']\n\n# Get the user with the most number of tickets\nmax_tickets
-      = filtered_df[''num_tickets''].max()\nuser_with_max_tickets = filtered_df[filtered_df[''num_tickets'']
-      == max_tickets][''name''].values[0]\n\nprint(f\"The user who bought the most
-      tickets to ''Finding Nemo'' is {user_with_max_tickets} with {max_tickets} tickets.\")"}},
-      "outputs": [{"output": "The user who bought the most tickets to ''Finding Nemo''
-      is Penelope with 5 tickets.\n"}]}], "stream": true}'
+      nemo?"}, {"role": "Chatbot", "message": "I will use Python to find the answer.",
+      "tool_calls": [{"name": "python_interpreter", "args": {"code": "import pandas
+      as pd\n\nmovie_bookings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
+      Filter for Finding Nemo\nfinding_nemo_bookings = movie_bookings[movie_bookings[''movie'']
+      == ''Finding Nemo'']\n\n# Group by name and sum the number of tickets\nmax_tickets_bought
+      = finding_nemo_bookings.groupby(''name'')[''num_tickets''].sum().idxmax()\n\nprint(f''The
+      person who bought the most tickets to Finding Nemo is {max_tickets_bought}.'')"},
+      "id": "89fc686877d04412b86730723f49de57", "type": "tool_call"}]}], "tools":
+      [{"name": "file_read", "description": "Returns the textual contents of an uploaded
+      file, broken up in text chunks", "parameter_definitions": {"filename": {"description":
+      "The name of the attached file to read.", "type": "str", "required": true}}},
+      {"name": "file_peek", "description": "The name of the attached file to show
+      a peek preview.", "parameter_definitions": {"filename": {"description": "The
+      name of the attached file to show a peek preview.", "type": "str", "required":
+      true}}}, {"name": "python_interpreter", "description": "Executes python code
+      and returns the result. The code runs in a static sandbox without interactive
+      mode, so print output or save output to a file.", "parameter_definitions": {"code":
+      {"description": "Python code to execute.", "type": "str", "required": true}}}],
+      "tool_results": [{"call": {"name": "python_interpreter", "parameters": {"code":
+      "import pandas as pd\n\nmovie_bookings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
+      Filter for Finding Nemo\nfinding_nemo_bookings = movie_bookings[movie_bookings[''movie'']
+      == ''Finding Nemo'']\n\n# Group by name and sum the number of tickets\nmax_tickets_bought
+      = finding_nemo_bookings.groupby(''name'')[''num_tickets''].sum().idxmax()\n\nprint(f''The
+      person who bought the most tickets to Finding Nemo is {max_tickets_bought}.'')"}},
+      "outputs": [{"output": "The person who bought the most tickets to Finding Nemo
+      is Penelope.\n"}]}], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -1267,7 +1253,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '3831'
+      - '3598'
       content-type:
       - application/json
       host:
@@ -1281,21 +1267,17 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.5.8
     method: POST
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"24c76047-56f8-4c02-8d5f-fd687a1aa2d1"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"e9eb1e09-b457-401c-8a03-c56e5110dc72"}
 
-        {"is_finished":false,"event_type":"search-results","documents":[{"id":"python_repl:0:3:0","output":"The
-        user who bought the most tickets to ''Finding Nemo'' is Penelope with 5 tickets.\n","tool_name":"python_repl"}]}
+        {"is_finished":false,"event_type":"search-results","documents":[{"id":"python_interpreter:0:3:0","output":"The
+        person who bought the most tickets to Finding Nemo is Penelope.\n","tool_name":"python_interpreter"}]}
 
-        {"is_finished":false,"event_type":"text-generation","text":"The"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" user"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" who"}
+        {"is_finished":false,"event_type":"text-generation","text":"Penelope"}
 
         {"is_finished":false,"event_type":"text-generation","text":" bought"}
 
@@ -1307,69 +1289,40 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":" to"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" *"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"Finding"}
+        {"is_finished":false,"event_type":"text-generation","text":" Finding"}
 
         {"is_finished":false,"event_type":"text-generation","text":" Nemo"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"*"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" is"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" Penelope"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" with"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" 5"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" tickets"}
-
         {"is_finished":false,"event_type":"text-generation","text":"."}
 
-        {"is_finished":false,"event_type":"citation-generation","citations":[{"start":58,"end":66,"text":"Penelope","document_ids":["python_repl:0:3:0"]}]}
+        {"is_finished":false,"event_type":"citation-generation","citations":[{"start":0,"end":8,"text":"Penelope","document_ids":["python_interpreter:0:3:0"]}]}
 
-        {"is_finished":false,"event_type":"citation-generation","citations":[{"start":72,"end":81,"text":"5
-        tickets","document_ids":["python_repl:0:3:0"]}]}
-
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"6116a009-2b40-4103-9a36-28801e71c7f0","text":"The
-        user who bought the most tickets to *Finding Nemo* is Penelope with 5 tickets.","generation_id":"24c76047-56f8-4c02-8d5f-fd687a1aa2d1","chat_history":[{"role":"SYSTEM","message":"\nYou
-        are working with 2 pandas dataframes in Python named df1, df2, etc.\nThis
-        is the result of `print(df.head())` for each dataframe:\n|    | movie                    |
-        user   |   rating |\n|---:|:-------------------------|:-------|---------:|\n|  0
-        | The Shawshank Redemption | John   |        8 |\n|  1 | The Shawshank Redemption
-        | Jerry  |        6 |\n|  2 | The Shawshank Redemption | Jack   |        7
-        |\n|  3 | The Shawshank Redemption | Jeremy |        8 |\n|  4 | Finding Nemo             |
-        Darren |        9 |\n\n|    | movie                    | name   |   num_tickets
-        |\n|---:|:-------------------------|:-------|--------------:|\n|  0 | The
-        Shawshank Redemption | John   |             2 |\n|  1 | The Shawshank Redemption
-        | Jerry  |             2 |\n|  2 | The Shawshank Redemption | Jack   |             4
-        |\n|  3 | The Shawshank Redemption | Jeremy |             2 |\n|  4 | Finding
-        Nemo             | Darren |             3 |\n\nDo note that the above dfs
-        aren''t the complete df. It is only the first 5 rows of the df.\nUse this
-        as a sample to understand the structure of the df. However, donot use this
-        to make any calculations directly!\n\nThe complete path for the csv files
-        are for the corresponding dataframes are:\ntests/integration_tests/csv_agent/csv/movie_ratings.csv\ntests/integration_tests/csv_agent/csv/movie_bookings.csv\n"},{"role":"USER","message":"who
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"4c8769bb-35a3-4819-bf34-6b060b501276","text":"Penelope
+        bought the most tickets to Finding Nemo.","generation_id":"e9eb1e09-b457-401c-8a03-c56e5110dc72","chat_history":[{"role":"USER","message":"The
+        user uploaded the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
+        Count: 21\nPreview: movie,user,rating The Shawshank Redemption,John,8 The
+        Shawshank Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank
+        Redemption,Jeremy,8 The user uploaded the following attachments:\nFilename:
+        tests/integration_tests/csv_agent/csv/movie_bookings.csv\nWord Count: 21\nPreview:
+        movie,name,num_tickets The Shawshank Redemption,John,2 The Shawshank Redemption,Jerry,2
+        The Shawshank Redemption,Jack,4 The Shawshank Redemption,Jeremy,2"},{"role":"USER","message":"who
         bought the most number of tickets to finding nemo?"},{"role":"CHATBOT","message":"I
-        will use python to find the user who bought the most number of tickets to
-        Finding Nemo.","tool_calls":[{"name":"python_repl","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"python_repl","parameters":{"code":"import
-        pandas as pd\n\n# Read the CSV files\ndf1 = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_ratings.csv'')\ndf2
-        = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
-        Filter the dataframe for ''Finding Nemo''\nfiltered_df = df2[df2[''movie'']
-        == ''Finding Nemo'']\n\n# Get the user with the most number of tickets\nmax_tickets
-        = filtered_df[''num_tickets''].max()\nuser_with_max_tickets = filtered_df[filtered_df[''num_tickets'']
-        == max_tickets][''name''].values[0]\n\nprint(f\"The user who bought the most
-        tickets to ''Finding Nemo'' is {user_with_max_tickets} with {max_tickets}
-        tickets.\")"}},"outputs":[{"output":"The user who bought the most tickets
-        to ''Finding Nemo'' is Penelope with 5 tickets.\n"}]}]},{"role":"CHATBOT","message":"The
-        user who bought the most tickets to *Finding Nemo* is Penelope with 5 tickets."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":482,"output_tokens":19},"tokens":{"input_tokens":1686,"output_tokens":19}},"citations":[{"start":58,"end":66,"text":"Penelope","document_ids":["python_repl:0:3:0"]},{"start":72,"end":81,"text":"5
-        tickets","document_ids":["python_repl:0:3:0"]}],"documents":[{"id":"python_repl:0:3:0","output":"The
-        user who bought the most tickets to ''Finding Nemo'' is Penelope with 5 tickets.\n","tool_name":"python_repl"}]},"finish_reason":"COMPLETE"}
+        will use Python to find the answer.","tool_calls":[{"name":"python_interpreter","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"python_interpreter","parameters":{"code":"import
+        pandas as pd\n\nmovie_bookings = pd.read_csv(''tests/integration_tests/csv_agent/csv/movie_bookings.csv'')\n\n#
+        Filter for Finding Nemo\nfinding_nemo_bookings = movie_bookings[movie_bookings[''movie'']
+        == ''Finding Nemo'']\n\n# Group by name and sum the number of tickets\nmax_tickets_bought
+        = finding_nemo_bookings.groupby(''name'')[''num_tickets''].sum().idxmax()\n\nprint(f''The
+        person who bought the most tickets to Finding Nemo is {max_tickets_bought}.'')"}},"outputs":[{"output":"The
+        person who bought the most tickets to Finding Nemo is Penelope.\n"}]}]},{"role":"CHATBOT","message":"Penelope
+        bought the most tickets to Finding Nemo."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":449,"output_tokens":10},"tokens":{"input_tokens":1458,"output_tokens":52}},"citations":[{"start":0,"end":8,"text":"Penelope","document_ids":["python_interpreter:0:3:0"]}],"documents":[{"id":"python_interpreter:0:3:0","output":"The
+        person who bought the most tickets to Finding Nemo is Penelope.\n","tool_name":"python_interpreter"}]},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -1379,27 +1332,27 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Wed, 12 Jun 2024 08:23:31 GMT
+      - Thu, 25 Jul 2024 07:35:45 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 297059bc0bde3ff4633062d3e0f0cb51
+      - d835ac6da94442dbfde8d366921c1336
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '65'
+      - '72'
       x-trial-endpoint-call-limit:
-      - '10'
+      - '40'
       x-trial-endpoint-call-remaining:
-      - '4'
+      - '34'
     status:
       code: 200
       message: OK

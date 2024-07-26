@@ -1,6 +1,4 @@
-import csv
-import io
-import os
+from datetime import datetime
 from io import IOBase
 from typing import List, Optional, Union
 
@@ -23,7 +21,11 @@ from langchain_cohere.csv_agent.prompts import (
 )
 
 # lets define a set of tools for the Agent
-from langchain_cohere.csv_agent.tools import get_file_peek_tool, get_python_tool
+from langchain_cohere.csv_agent.tools import (
+    get_file_peek_tool,
+    get_file_read_tool,
+    get_python_tool,
+)
 
 
 def create_prompt(
@@ -60,32 +62,29 @@ def create_prompt(
     return ChatPromptTemplate(messages=messages)
 
 
-def _get_csv_head(path: str, number_of_head_rows: int) -> str:
+def _get_csv_head_str(path: str, number_of_head_rows: int) -> str:
     with open(path, "r") as file:
         lines = []
         for _ in range(number_of_head_rows):
-            lines.append(file.readline().split(","))
+            lines.append(file.readline().strip("\n"))
         # validate that the head contents are well formatted csv
-        text = io.StringIO()
-        writer = csv.writer(text)
-        writer.writerow(lines)
-        return text.getvalue()
+
+        return " ".join(lines)
 
 
 def _get_prompt(
     path: Union[str, List[str]], number_of_head_rows: int
 ) -> ChatPromptTemplate:
     if isinstance(path, str):
-        lines = _get_csv_head(path, number_of_head_rows)
-        _, file_name = os.path.split(path)
-        prompt_message = f"The user uploaded the following attachments:\nFilename: {file_name}\nWord Count: {count_words_in_file(path)}\nPreview: {' '.join(lines[:number_of_head_rows])}"  # noqa: E501
+        lines = _get_csv_head_str(path, number_of_head_rows)
+        prompt_message = f"The user uploaded the following attachments:\nFilename: {path}\nWord Count: {count_words_in_file(path)}\nPreview: {lines}"  # noqa: E501
 
     elif isinstance(path, list):
         prompt_messages = []
         for file_path in path:
-            lines = _get_csv_head(file_path, number_of_head_rows)
+            lines = _get_csv_head_str(file_path, number_of_head_rows)
             prompt_messages.append(
-                f"The user uploaded the following attachments:\nFilename: {file_path}\nWord Count: {count_words_in_file(file_path)}\nPreview: {' '.join(lines[:number_of_head_rows])}"  # noqa: E501
+                f"The user uploaded the following attachments:\nFilename: {file_path}\nWord Count: {count_words_in_file(file_path)}\nPreview: {lines}"  # noqa: E501
             )
         prompt_message = " ".join(prompt_messages)
 
@@ -176,17 +175,15 @@ def create_csv_agent(
         prompt = _get_prompt(path, number_of_head_rows)
 
     final_tools = [
-        get_python_tool(
-            file_path=path,
-            temp_dir=temp_path_dir,
-            temp_path_prefix=temp_path_prefix,
-            temp_path_suffix=temp_path_suffix,
-        ),
-        get_file_peek_tool(path),
+        get_file_read_tool(),
+        get_file_peek_tool(),
+        get_python_tool(),
     ] + extra_tools
     if "preamble" in llm.__dict__ and not llm.__dict__.get("preamble"):
         llm = ChatCohere(**llm.__dict__)
-        llm.preamble = CSV_PREAMBLE
+        llm.preamble = CSV_PREAMBLE.format(
+            current_date=datetime.now().strftime("%A, %B %d, %Y %H:%M:%S")
+        )
 
     agent = create_tool_calling_agent(llm=llm, tools=final_tools, prompt=prompt)
     agent_executor = AgentExecutor(

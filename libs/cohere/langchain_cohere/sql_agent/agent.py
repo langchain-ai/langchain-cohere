@@ -38,6 +38,8 @@ if TYPE_CHECKING:
     from langchain_core.language_models import BaseLanguageModel
     from langchain_core.tools import BaseTool
 
+from datetime import datetime
+
 from langchain.agents import (
     create_tool_calling_agent,
 )
@@ -128,7 +130,11 @@ def create_sql_agent(
         suffix = suffix or SQL_FUNCTIONS_SUFFIX
         # .bind params get overwritten by .bind_tools params
         if "preamble" in llm.__dict__ and not llm.__dict__.get("preamble"):
-            preamble = SQL_PREAMBLE.format(dialect=toolkit.dialect, top_k=top_k)
+            preamble = SQL_PREAMBLE.format(
+                dialect=toolkit.dialect,
+                top_k=top_k,
+                current_date=datetime.now().strftime("%A, %B %d, %Y %H:%M:%S"),
+            )
             chat_cohere_args = {k: v for k, v in llm.__dict__.items() if v}
             chat_cohere_args["preamble"] = preamble
 
