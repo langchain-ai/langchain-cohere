@@ -359,6 +359,7 @@ def test_messages_to_cohere_tool_results() -> None:
                                 "name": "magic_function",
                                 "args": {"a": 12},
                                 "id": "bbec5f815a0f4c609ccb36e98c4f0455",
+                                'type': 'tool_call',
                             }
                         ],
                     },
