@@ -291,7 +291,7 @@ def get_cohere_chat_request(
     else:
         message_str = ""
         # if force_single_step is set to True, then message is the last human message in the conversation  # noqa: E501
-        for message in messages[:-1]:
+        for i, message in enumerate(messages[:-1]):
             if isinstance(message, AIMessage) and message.tool_calls:
                 continue
 
