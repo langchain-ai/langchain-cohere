@@ -375,7 +375,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         **kwargs: Any,
     ) -> Runnable[LanguageModelInput, BaseMessage]:
         formatted_tools = _format_to_cohere_tools(tools)
-        return super().bind(tools=formatted_tools, **kwargs)
+        return self.bind(tools=formatted_tools, **kwargs)
 
     def with_structured_output(
         self,
