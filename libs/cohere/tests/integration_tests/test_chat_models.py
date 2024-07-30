@@ -85,10 +85,9 @@ async def test_abatch_tags() -> None:
         assert isinstance(token.content, str)
 
 
-@pytest.mark.vcr()
 def test_batch() -> None:
     """Test batch tokens from ChatCohere."""
-    llm = ChatCohere(model=DEFAULT_MODEL)
+    llm = ChatCohere()
 
     result = llm.batch(["I'm Pickle Rick", "I'm not Pickle Rick"])
     for token in result:
