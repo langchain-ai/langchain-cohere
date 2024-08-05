@@ -132,6 +132,7 @@ def parse_answer_with_prefixes(
 def parse_actions(generation: str) -> Tuple[str, str, List[Dict]]:
     """Parse action selections from model output."""
     plan = ""
+    generation = generation.strip()
     actions = generation
     try:
         if "Plan: " in generation or "Reflection: " in generation:

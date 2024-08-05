@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.2.0rc2"
+version = "0.2.0"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
@@ -12,12 +12,12 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-langchain-core = ">=0.2.0,<0.3"
+langchain-core = ">=0.2.24,<0.3"
 cohere = ">=5.5.6,<6.0"
 pandas = ">=1.4.3"
 tabulate = "^0.9.0"
 langchain-experimental = ">=0.0.6"
-langchain-community = { version = ">=0.2.4",optional = true }
+langchain-community = { version = ">=0.2.10",optional = true }
 
 [[tool.mypy.overrides]]
 module = "pandas"
@@ -27,7 +27,7 @@ ignore_missing_imports = true
 optional = true
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.3.0"
+pytest = "^8.2.2"
 freezegun = "^1.2.2"
 pytest-mock = "^3.10.0"
 syrupy = "^4.0.2"
@@ -52,7 +52,7 @@ langchain-text-splitters = { git = "https://github.com/langchain-ai/langchain.gi
 langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", subdirectory = "libs/langgraph", markers="python_version >= '3.9.0' and python_version < '4.0'" }
 langchain-standard-tests = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/standard-tests" }
 pytest-vcr = "^1.0.2"
-
+pytest = "^8.2.2"
 [tool.poetry.group.lint]
 optional = true
 

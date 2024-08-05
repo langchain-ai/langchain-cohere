@@ -8,13 +8,14 @@ When re-recording these tests you will need to set COHERE_API_KEY.
 """
 
 import json
-from typing import Any, List
+from typing import Any, List, Optional
 
 import pytest
 from langchain_core.messages import (
     AIMessage,
     AIMessageChunk,
     BaseMessage,
+    BaseMessageChunk,
     HumanMessage,
     ToolMessage,
 )
@@ -40,8 +41,28 @@ async def test_astream() -> None:
     """Test streaming tokens from ChatCohere."""
     llm = ChatCohere(model=DEFAULT_MODEL)
 
+    full: Optional[BaseMessageChunk] = None
+    chunks_with_token_counts = 0
     async for token in llm.astream("I'm Pickle Rick"):
+        assert isinstance(token, AIMessageChunk)
         assert isinstance(token.content, str)
+        full = token if full is None else full + token
+        if token.usage_metadata is not None:
+            chunks_with_token_counts += 1
+    if chunks_with_token_counts != 1:
+        raise AssertionError(
+            "Expected exactly one chunk with token counts. "
+            "AIMessageChunk aggregation adds counts. Check that "
+            "this is behaving properly."
+        )
+    assert isinstance(full, AIMessageChunk)
+    assert full.usage_metadata is not None
+    assert full.usage_metadata["input_tokens"] > 0
+    assert full.usage_metadata["output_tokens"] > 0
+    assert (
+        full.usage_metadata["input_tokens"] + full.usage_metadata["output_tokens"]
+        == full.usage_metadata["total_tokens"]
+    )
 
 
 async def test_abatch() -> None:
@@ -64,10 +85,9 @@ async def test_abatch_tags() -> None:
         assert isinstance(token.content, str)
 
 
-@pytest.mark.vcr()
 def test_batch() -> None:
     """Test batch tokens from ChatCohere."""
-    llm = ChatCohere(model=DEFAULT_MODEL)
+    llm = ChatCohere()
 
     result = llm.batch(["I'm Pickle Rick", "I'm not Pickle Rick"])
     for token in result:
@@ -79,7 +99,16 @@ async def test_ainvoke() -> None:
     llm = ChatCohere(model=DEFAULT_MODEL)
 
     result = await llm.ainvoke("I'm Pickle Rick", config={"tags": ["foo"]})
+    assert isinstance(result, AIMessage)
     assert isinstance(result.content, str)
+    usage_metadata = result.usage_metadata
+    assert usage_metadata is not None
+    assert usage_metadata["input_tokens"] > 0
+    assert usage_metadata["output_tokens"] > 0
+    assert (
+        usage_metadata["total_tokens"]
+        == usage_metadata["input_tokens"] + usage_metadata["output_tokens"]
+    )
 
 
 # @pytest.mark.vcr()
