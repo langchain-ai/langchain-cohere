@@ -211,7 +211,7 @@ class Cohere(LLM, BaseCohere):
         """
         params = self._invocation_params(stop, **kwargs)
         response = completion_with_retry(
-            self, model=self.model, prompt=prompt, **params
+            self, prompt=prompt, **params
         )
         _stop = params.get("stop_sequences")
         return self._process_response(response, _stop)
