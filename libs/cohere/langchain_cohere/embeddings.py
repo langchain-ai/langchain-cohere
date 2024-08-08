@@ -139,7 +139,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
             input_type=input_type,
             truncate=self.truncate,
             embedding_types=self.embedding_types,
-        ).embeddings
+        ).embeddings.float
         return [list(map(float, e)) for e in embeddings]
 
     async def aembed(
@@ -156,7 +156,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
                 truncate=self.truncate,
                 embedding_types=self.embedding_types,
             )
-        ).embeddings
+        ).embeddings.float
         return [list(map(float, e)) for e in embeddings]
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
