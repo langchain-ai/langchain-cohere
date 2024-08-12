@@ -21,6 +21,16 @@ def test_langchain_cohere_embedding_documents() -> None:
 
 
 @pytest.mark.vcr()
+def test_langchain_cohere_embedding_multiple_documents() -> None:
+    documents = ["foo bar", "bar foo"]
+    embedding = CohereEmbeddings(model="embed-english-light-v3.0")
+    output = embedding.embed_documents(documents)
+    assert len(output) == 2
+    assert len(output[0]) > 0
+    assert len(output[1]) > 0
+
+
+@pytest.mark.vcr()
 def test_langchain_cohere_embedding_query() -> None:
     document = "foo bar"
     embedding = CohereEmbeddings(model="embed-english-light-v3.0")
