@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.2.0"
+version = "0.2.1rc0"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
