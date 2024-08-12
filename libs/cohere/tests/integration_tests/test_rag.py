@@ -77,7 +77,7 @@ def test_documents_chain() -> None:
 @pytest.mark.vcr()
 def test_who_are_cohere() -> None:
     user_query = "Who founded Cohere?"
-    llm = ChatCohere()
+    llm = ChatCohere(model=DEFAULT_MODEL)
     retriever = CohereRagRetriever(llm=llm, connectors=[{"id": "web-search"}])
 
     actual = retriever.get_relevant_documents(user_query)
@@ -87,7 +87,7 @@ def test_who_are_cohere() -> None:
 
     relevant_documents = actual
     assert len(relevant_documents) > 0
-    expected_answer = "cohere was founded by aidan gomez, ivan zhang, and nick frosst. aidan gomez is the current ceo of the company."  # noqa: E501
+    expected_answer = "cohere has 3 founders; aidan gomez, ivan zhang, and nick frosst. aidan gomez is also the current ceo. all three founders attended the university of toronto."  # noqa: E501
     assert expected_answer == answer.page_content.lower()
     assert citations is not None
     assert len(citations) > 0
@@ -95,7 +95,7 @@ def test_who_are_cohere() -> None:
 
 @pytest.mark.vcr()
 def test_who_founded_cohere_with_custom_documents() -> None:
-    rag = CohereRagRetriever(llm=ChatCohere(MODEL=DEFAULT_MODEL))
+    rag = CohereRagRetriever(llm=ChatCohere(model=DEFAULT_MODEL))
 
     docs = rag.invoke(
         "who is the founder of cohere?",

@@ -1,7 +1,8 @@
 interactions:
 - request:
-    body: '{"message": "Who founded Cohere?", "chat_history": [], "prompt_truncation":
-      "AUTO", "connectors": [{"id": "web-search"}], "stream": false}'
+    body: '{"message": "Who founded Cohere?", "model": "command-r", "chat_history":
+      [], "prompt_truncation": "AUTO", "connectors": [{"id": "web-search"}], "stream":
+      false}'
     headers:
       accept:
       - '*/*'
@@ -10,7 +11,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '138'
+      - '160'
       content-type:
       - application/json
       host:
@@ -24,219 +25,63 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.6.2
     method: POST
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: "{\"response_id\":\"ef995cf9-d884-4e34-b230-089f84f89d93\",\"text\":\"Cohere
-        was founded by Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez is the
-        current CEO of the company.\",\"generation_id\":\"963569c9-4330-4473-ada5-fbe61ed0eb1a\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"Who
-        founded Cohere?\"},{\"role\":\"CHATBOT\",\"message\":\"Cohere was founded
-        by Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez is the current CEO
-        of the company.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":6463,\"output_tokens\":29},\"tokens\":{\"input_tokens\":7183,\"output_tokens\":29}},\"citations\":[{\"start\":22,\"end\":33,\"text\":\"Aidan
-        Gomez\",\"document_ids\":[\"web-search_0\",\"web-search_2\",\"web-search_3\",\"web-search_5\"]},{\"start\":35,\"end\":45,\"text\":\"Ivan
-        Zhang\",\"document_ids\":[\"web-search_2\"]},{\"start\":51,\"end\":63,\"text\":\"Nick
-        Frosst.\",\"document_ids\":[\"web-search_2\"]},{\"start\":64,\"end\":75,\"text\":\"Aidan
-        Gomez\",\"document_ids\":[\"web-search_2\",\"web-search_3\",\"web-search_5\"]},{\"start\":91,\"end\":94,\"text\":\"CEO\",\"document_ids\":[\"web-search_2\",\"web-search_3\",\"web-search_5\"]}],\"documents\":[{\"id\":\"web-search_0\",\"snippet\":\"Skip
-        to main content\\n\\nSkip to main content\\n\\nToronto, Ontario, Canada 14K
-        followers 500+ connections\\n\\nSee your mutual connections\\n\\nView mutual
-        connections with Aidan\\n\\nBy clicking Continue, you agree to LinkedIn\u2019s
-        User Agreement, Privacy Policy, and Cookie Policy.\\n\\nNew to LinkedIn? Join
-        now\\n\\nBy clicking Continue, you agree to LinkedIn\u2019s User Agreement,
-        Privacy Policy, and Cookie Policy.\\n\\nNew to LinkedIn? Join now\\n\\nJoin
-        to view profile\\n\\nUniversity of Oxford\\n\\nI'm interested in making massive
-        neural networks more efficient, and getting them\u2026\\n\\nBy clicking Continue,
-        you agree to LinkedIn\u2019s User Agreement, Privacy Policy, and Cookie Policy.\\n\\nNew
-        to LinkedIn? Join now\\n\\nOnce-in-a-lifetime opportunity to establish and
-        scale a generational company, defining the future of AI, and its impact on
-        the world. Looking for a\u2026\\n\\nOnce-in-a-lifetime opportunity to establish
-        and scale a generational company, defining the future of AI, and its impact
-        on the world. Looking for a\u2026\\n\\nLiked by Aidan Gomez\\n\\nThe next
-        generation of RAG applications will: 1) include a query rewriting step 2)
-        provide citations for its sources. This is an incredible\u2026\\n\\nThe next
-        generation of RAG applications will: 1) include a query rewriting step 2)
-        provide citations for its sources. This is an incredible\u2026\\n\\nLiked
-        by Aidan Gomez\\n\\nNicole Li is a Vice President at Alphi Capital. She is
-        actively involved in investing and portfolio company value creation activities.
-        Prior\u2026\\n\\nNicole Li is a Vice President at Alphi Capital. She is actively
-        involved in investing and portfolio company value creation activities. Prior\u2026\\n\\nLiked
-        by Aidan Gomez Join now to see all activity\\n\\nExperience \\u0026 Education\\n\\n*******
-        ********** (*****)\\n\\n********** ** ******\\n\\n****** ** ********** - ***
-        ******** *******\\n\\n********** ** *******\\n\\n******* ******** ** *******
-        ******** *******\\n\\nView Aidan\u2019s full experience\\n\\nSee their title,
-        tenure and more.\\n\\nBy clicking Continue, you agree to LinkedIn\u2019s User
-        Agreement, Privacy Policy, and Cookie Policy.\\n\\nNew to LinkedIn? Join now\\n\\nBy
-        clicking Continue, you agree to LinkedIn\u2019s User Agreement, Privacy Policy,
-        and Cookie Policy.\\n\\nVolunteer Experience\\n\\nGood Shepherd Ministries\\n\\nSep
-        2014 - May 2015 9 months\\n\\nThe Good Shepherd is a homeless shelter in Toronto
-        where hundreds line up every day to receive breakfast, lunch, and dinner.
-        I had the honour of being able to serve these individuals breakfast and have
-        conversations with my fellow Torontonians. The volunteers and staff that I
-        worked alongside are stunning examples of human empathy, I'm endlessly grateful
-        for what The Good Shepherd has given me.\\n\\nKawartha Pine Ridge District
-        School Board\\n\\nSep 2012 - Feb 2013 6 months\\n\\nThe Journey of Hope is
-        a humanitarian KPRDSB initiative sending students from three schools to Tanzania,
-        Africa. Our roles there ranged from restoration of educational infrastructure,
-        to educating students in computer skills. In addition we donated over 1200
-        pounds of supplies to various institutions across the country.\\n\\nThe Companions
-        of the Order of Malta, Oxford\\n\\nNov 2018 - Present 5 years 1 month\\n\\nI've
-        been incredibly fortunate to have been able to spend time having conversations
-        with and serving food and drink to fellow Oxonians.\\n\\nThe Reversible Residual
-        Network: Backpropagation Without Storing Activations\\n\\nDeep residual networks
-        (ResNets) have significantly pushed forward the state-of-the-art on image
-        classification, increasing in performance as networks grow both deeper and
-        wider. However, memory consumption becomes a bottleneck, as one needs to store
-        the activations in order to calculate gradients using backpropagation. We
-        present the Reversible Residual Network (RevNet), a variant of ResNets where
-        each layer's activations can be reconstructed exactly from the next layer's.
-        Therefore, the\u2026 Show more\\n\\nDeep residual networks (ResNets) have
-        significantly pushed forward the state-of-the-art on image classification,
-        increasing in performance as networks grow both deeper and wider. However,
-        memory consumption becomes a bottleneck, as one needs to store the activations
-        in order to calculate gradients using backpropagation. We present the Reversible
-        Residual Network (RevNet), a variant of ResNets where each layer's activations
-        can be reconstructed exactly from the next layer's. Therefore, the activations
-        for most layers need not be stored in memory during backpropagation. We demonstrate
-        the effectiveness of RevNets on CIFAR-10, CIFAR-100, and ImageNet, establishing
-        nearly identical classification accuracy to equally-sized ResNets, even though
-        the activation storage requirements are independent of depth. Show less\\n\\nOne
-        Model To Learn Them All\\n\\nDeep learning yields great results across many
-        fields, from speech recognition, image classification, to translation. But
-        for each problem, getting a deep model to work well involves research into
-        the architecture and a long period of tuning. We present a single model that
-        yields good results on a number of problems spanning multiple domains. In
-        particular, this single model is trained concurrently on ImageNet, multiple
-        translation tasks, image captioning (COCO dataset), a speech recognition\u2026
-        Show more\\n\\nDeep learning yields great results across many fields, from
-        speech recognition, image classification, to translation. But for each problem,
-        getting a deep model to work well involves research into the architecture
-        and a long period of tuning. We present a single model that yields good results
-        on a number of problems spanning multiple domains. In particular, this single
-        model is trained concurrently on ImageNet, multiple translation tasks, image
-        captioning (COCO dataset), a speech recognition corpus, and an English parsing
-        task. Our model architecture incorporates building blocks from multiple domains.
-        It contains convolutional layers, an attention mechanism, and sparsely-gated
-        layers. Each of these computational blocks is crucial for a subset of the
-        tasks we train on. Interestingly, even if a block is not crucial for a task,
-        we observe that adding it never hurts performance and in most cases improves
-        it on all tasks. We also show that tasks with less data benefit largely from
-        joint training with other tasks, while performance on large tasks degrades
-        only slightly if at all. Show less\\n\\nAttention Is All You Need\\n\\nThe
-        dominant sequence transduction models are based on complex recurrent or convolutional
-        neural networks in an encoder-decoder configuration. The best performing models
-        also connect the encoder and decoder through an attention mechanism. We propose
-        a new simple network architecture, the Transformer, based solely on attention
-        mechanisms, dispensing with recurrence and convolutions entirely. Experiments
-        on two machine translation tasks show these models to be superior in quality
-        while being more\u2026 Show more\\n\\nThe dominant sequence transduction models
-        are based on complex recurrent or convolutional neural networks in an encoder-decoder
-        configuration. The best performing models also connect the encoder and decoder
-        through an attention mechanism. We propose a new simple network architecture,
-        the Transformer, based solely on attention mechanisms, dispensing with recurrence
-        and convolutions entirely. Experiments on two machine translation tasks show
-        these models to be superior in quality while being more parallelizable and
-        requiring significantly less time to train. Our model achieves 28.4 BLEU on
-        the WMT 2014 English-to-German translation task, improving over the existing
-        best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French
-        translation task, our model establishes a new single-model state-of-the-art
-        BLEU score of 41.0 after training for 3.5 days on eight GPUs, a small fraction
-        of the training costs of the best models from the literature. We show that
-        the Transformer generalizes well to other tasks by applying it successfully
-        to English constituency parsing both with large and limited training data.
-        Show less\\n\\nDepthwise Separable Convolutions for Neural Machine Translation\\n\\nDepthwise
-        separable convolutions reduce the number of parameters and computation used
-        in convolutional operations while increasing representational efficiency.
-        They have been shown to be successful in image classification models, both
-        in obtaining better models than previously possible for a given parameter
-        count (the Xception architecture) and considerably reducing the number of
-        parameters required to perform at a given level (the MobileNets family of
-        architectures). Recently, convolutional\u2026 Show more\\n\\nDepthwise separable
-        convolutions reduce the number of parameters and computation used in convolutional
-        operations while increasing representational efficiency. They have been shown
-        to be successful in image classification models, both in obtaining better
-        models than previously possible for a given parameter count (the Xception
-        architecture) and considerably reducing the number of parameters required
-        to perform at a given level (the MobileNets family of architectures). Recently,
-        convolutional sequence-to-sequence networks have been applied to machine translation
-        tasks with good results. In this work, we study how depthwise separable convolutions
-        can be applied to neural machine translation. We introduce a new architecture
-        inspired by Xception and ByteNet, called SliceNet, which enables a significant
-        reduction of the parameter count and amount of computation needed to obtain
-        results like ByteNet, and, with a similar parameter count, achieves new state-of-the-art
-        results. In addition to showing that depthwise separable convolutions perform
-        well for machine translation, we investigate the architectural changes that
-        they enable: we observe that thanks to depthwise separability, we can increase
-        the length of convolution windows, removing the need for filter dilation.
-        We also introduce a new \\\"super-separable\\\" convolution operation that
-        further reduces the number of parameters and computational cost for obtaining
-        state-of-the-art results. Show less\\n\\nBlog: The Neural Turing Machine\\n\\nA
-        brief outline of the Neural Turing Machine's (NTM) design; a backpropogatable
-        architecture that can (among many possibilities) learn to dynamically execute
-        programs. See publication\\n\\nBlog: Backpropogating an LSTM: A Numerical
-        Example\\n\\nMedium March 17, 2016\\n\\nLSTMs are arguably the most widely-used
-        architecture in recurrent neural networks. This article walks through the
-        mathematics behind these versatile units. See publication\\n\\nBlog: Facebook
-        on the creation of Machine Intelligence\\n\\nMedium December 12, 2015\\n\\nAn
-        exploration of the technologies and philosophy being used to craft the first
-        generation of artificial intelligence. See publication\\n\\naigrant.org -
-        A fellowship sponsored by Google, CRV and others; started by Nat Friedman
-        (Xamarin) and Daniel Gross (Y Combinator).\\n\\nclarendon.ox.ac.uk - billed
-        as Oxford\u2019s most competitive graduate scholarship, the Clarendon scholarship
-        is awarded exclusively based on academic performance and contribution.\\n\\nOpen
-        Philanthropy AI Fellow\\n\\nUniversity College Alumni Scholar\\n\\nNative
-        or bilingual proficiency\\n\\nMore activity by Aidan\\n\\n\U0001F9E8With the
-        recent developments in the tech industry, it\u2019s a pivotal moment to discuss
-        the value of diversification in our AI strategy. Particularly\u2026\\n\\n\U0001F9E8With
-        the recent developments in the tech industry, it\u2019s a pivotal moment to
-        discuss the value of diversification in our AI strategy. Particularly\u2026\\n\\nLiked
-        by Aidan Gomez\\n\\nStill planning your schedule for #AWSreInvent? Then mark
-        your calendars as Allegiant Stadium becomes the epicenter of AI innovation.
-        Join Aidan\u2026\\n\\nStill planning your schedule for #AWSreInvent? Then
-        mark your calendars as Allegiant Stadium becomes the epicenter of AI innovation.
-        Join Aidan\u2026\\n\\nLiked by Aidan Gomez\\n\\nre:Invent has a ton of events
-        going on in Las Vegas, but this has got to be the best one I've seen in all
-        my time at AWS! Join us at Allegiant\u2026\\n\\nre:Invent has a ton of events
-        going on in Las Vegas, but this has got to be the best one I've seen in all
-        my time at AWS! Join us at Allegiant\u2026\\n\\nLiked by Aidan Gomez\\n\\nOur
-        LLMs are now available on Azure in addition to AWS, GCP and Oracle Cloud.
-        Cohere everywhere and anywhere you need it. https://lnkd.in/grfZmMR5\\n\\nOur
-        LLMs are now available on Azure in addition to AWS, GCP and Oracle Cloud.
-        Cohere everywhere and anywhere you need it. https://lnkd.in/grfZmMR5\\n\\nLiked
-        by Aidan Gomez\\n\\nCohere is coming to Microsoft Azure! Our Enterprise AI
-        models, including both high-efficiency generative models and industry-leading
-        100+\u2026\\n\\nCohere is coming to Microsoft Azure! Our Enterprise AI models,
-        including both high-efficiency generative models and industry-leading 100+\u2026\\n\\nLiked
-        by Aidan Gomez\\n\\nJoin us on Dec 15 to close this epic chapter of Aya! \U0001F386
-        To mark the last day to contribute to our open-source multilingual dataset,
-        we're hosting a\u2026\\n\\nJoin us on Dec 15 to close this epic chapter of
-        Aya! \U0001F386 To mark the last day to contribute to our open-source multilingual
-        dataset, we're hosting a\u2026\\n\\nLiked by Aidan Gomez\\n\\nView Aidan\u2019s
-        full profile\\n\\nSee who you know in common\\n\\nContact Aidan directly Join
-        to view full profile\\n\\nStay updated on your professional world\\n\\nBy
-        clicking Continue, you agree to LinkedIn\u2019s User Agreement, Privacy Policy,
-        and Cookie Policy.\\n\\nNew to LinkedIn? Join now\\n\\nFounder/CEO at Character.AI\\n\\nFounder
-        / AI Research Scientist\\n\\nHead of Cohere For AI\\n\\nSan Francisco Bay
-        Area\\n\\nCEO and Co-Founder at Anthropic\\n\\nFounder \\u0026 CEO at Waabi\\n\\nFrankfurt
-        Rhine-Main Metropolitan Area\\n\\nMiami-Fort Lauderdale Area\\n\\nSan Francisco
-        Bay Area\\n\\nCEO \\u0026 Co-founder, Inflection\\n\\nMassimiliano Patacchiola\\n\\nSenior
-        AI Research Engineer at Worldcoin | Researcher at University of Cambridge\\n\\nLead
-        AI Researcher at Meta (Generative AI)\\n\\nConnect Show more profiles\\n\\nExplore
-        collaborative articles\\n\\nWe\u2019re unlocking community knowledge in a
-        new way. Experts add insights directly into each article, started with the
-        help of AI. Explore More\\n\\nOthers named Aidan Gomez\\n\\nBusiness Development
-        Coordinator at TelevisaUnivision\\n\\nProducer, Writer, Director\\n\\nStudent
-        at Ohio University\\n\\n30 others named Aidan Gomez are on LinkedIn See others
-        named Aidan Gomez\\n\\nAdd new skills with these courses\\n\\nTop 10 Skills
-        for Quantitative Analysts\\n\\nMachine Learning and AI Foundations: Clustering
-        and Association\\n\\nLearning AI with GitHub Copilot See all courses\\n\\nSign
-        in to view Aidan\u2019s full profile\\n\\nBy clicking Continue, you agree
-        to LinkedIn\u2019s User Agreement, Privacy Policy, and Cookie Policy.\\n\\nNew
-        to LinkedIn? Join now\\n\\nBy clicking Continue, you agree to LinkedIn\u2019s
-        User Agreement, Privacy Policy, and Cookie Policy.\\n\\nNew to LinkedIn? Join
-        now\\n\\nNetworking made easy in the app\\n\\nDon\u2019t have the app? Get
-        it in the Microsoft Store. Open the app\",\"timestamp\":\"2024-04-10T13:23:16\",\"title\":\"Aidan
-        Gomez | LinkedIn\",\"url\":\"https://ca.linkedin.com/in/aidangomez\"},{\"id\":\"web-search_2\",\"snippet\":\"Cohere
+      string: "{\"response_id\":\"8030dee3-89eb-4935-b9ea-51a4183a7684\",\"text\":\"Cohere
+        has 3 founders; Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez is also
+        the current CEO. All three founders attended the University of Toronto.\",\"generation_id\":\"0c40dca6-08b6-4402-bcd9-50dc6ed466e8\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"Who
+        founded Cohere?\"},{\"role\":\"CHATBOT\",\"message\":\"Cohere has 3 founders;
+        Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez is also the current
+        CEO. All three founders attended the University of Toronto.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":5729,\"output_tokens\":38},\"tokens\":{\"input_tokens\":6449,\"output_tokens\":186}},\"citations\":[{\"start\":23,\"end\":34,\"text\":\"Aidan
+        Gomez\",\"document_ids\":[\"web-search_1\",\"web-search_2\",\"web-search_3\"]},{\"start\":36,\"end\":46,\"text\":\"Ivan
+        Zhang\",\"document_ids\":[\"web-search_1\",\"web-search_2\"]},{\"start\":52,\"end\":64,\"text\":\"Nick
+        Frosst.\",\"document_ids\":[\"web-search_1\",\"web-search_2\",\"web-search_4\"]},{\"start\":65,\"end\":101,\"text\":\"Aidan
+        Gomez is also the current CEO.\",\"document_ids\":[\"web-search_3\"]},{\"start\":134,\"end\":156,\"text\":\"University
+        of Toronto.\",\"document_ids\":[\"web-search_2\"]}],\"documents\":[{\"id\":\"web-search_1\",\"snippet\":\"Cohere
+        and Fujitsu Announce Strategic Partnership To Provide Japanese Enterprise
+        AI Services Learn More\\n\\nWe\u2019re building the future of language AI\\n\\nCohere
+        empowers every developer and enterprise to build amazing products and capture
+        true business value with language AI.\\n\\nWe\u2019re building the future
+        of language AI\\n\\nCohere empowers every developer and enterprise to build
+        amazing products and capture true business value with language AI.\\n\\nWe\u2019re
+        driven by cutting-edge research\\n\\nAt Cohere, we believe that the union
+        of research and product will realize a world where technology commands language
+        in a way that\u2019s as compelling and coherent as ourselves. We live at the
+        forefront of ML/AI research to bring the latest advancements in language AI
+        to our platform.\\n\\nexplore our research lab\\n\\nPioneering the future
+        of language AI for business\\n\\nCohere\u2019s cutting-edge large language
+        models are built on Transformer architecture and trained on supercomputers,
+        providing NLP solutions that don\u2019t need expensive ML development. With
+        a world-class team of experts, we're dedicated to helping companies revolutionize
+        their operations and maximize potential in real-world business applications.\\n\\nWe\u2019re
+        a collaborative team of experts\\n\\nWe are ML/AI engineers, thinkers, and
+        champions who are passionate about exploring the potential of language AI
+        to make our world a better place. With diverse experience and perspectives,
+        we work together to bring advancements in language AI to developers everywhere.\\n\\nWe\u2019re
+        driven by cutting-edge research\\n\\nAt Cohere, we believe that the union
+        of research and product will realize a world where technology commands language
+        in a way that\u2019s as compelling and coherent as ourselves. We live at the
+        forefront of ML/AI research to bring the latest advancements in language AI
+        to our platform.\\n\\nexplore our research lab\\n\\nPioneering the future
+        of language AI for business\\n\\nCohere\u2019s cutting-edge large language
+        models are built on Transformer architecture and trained on supercomputers,
+        providing NLP solutions that don\u2019t need expensive ML development. With
+        a world-class team of experts, we're dedicated to helping companies revolutionize
+        their operations and maximize potential in real-world business applications.\\n\\nWe\u2019re
+        a collaborative team of experts\\n\\nWe are ML/AI engineers, thinkers, and
+        champions who are passionate about exploring the potential of language AI
+        to make our world a better place. With diverse experience and perspectives,
+        we work together to bring advancements in language AI to developers everywhere.\\n\\nVP
+        people operations\\n\\nChief Product Officer\\n\\nCHIEF SCIENTIST, SVP GENERATIVE
+        MODELING\\n\\n\u201CVery large language models are now giving computers a
+        much better understanding of human communication. The team at Cohere is building
+        technology that will make this revolution in natural language understanding
+        much more widely available.\u201D\\n\\nGeoffrey Hinton \u2014 Emeritus Prof.
+        Comp Sci, U.Toronto\\n\\nCheck out the latest news featuring Cohere\",\"timestamp\":\"2024-08-02T19:49:10\",\"title\":\"About
+        | Cohere\",\"url\":\"https://cohere.com/about\"},{\"id\":\"web-search_2\",\"snippet\":\"Cohere
         Inc. is a Canadian multinational technology company focused on artificial
         intelligence for the enterprise, specializing in large language models. Cohere
         was founded in 2019 by Aidan Gomez, Ivan Zhang, and Nick Frosst, and is headquartered
@@ -244,7 +89,7 @@ interactions:
         City.\\n\\nIn 2017, a team of researchers at Google Brain introduced the transformer
         machine learning architecture in \\\"Attention Is All You Need,\\\" which
         demonstrated state-of-the-art performance on a variety of natural language
-        processing tasks. In 2019, Aiden Gomez, one of its co-authors, along with
+        processing tasks. In 2019, Aidan Gomez, one of its co-authors, along with
         Nick Frosst, another researcher at Google Brain, founded Cohere with Ivan
         Zhang, with whom Gomez had done research at FOR.ai. All of the co-founders
         attended University of Toronto.\\n\\nGomez is the company's CEO. In December
@@ -291,8 +136,10 @@ interactions:
         they had raised $125 million in series B funding led by Tiger Global. In June
         2023, Cohere raised an additional $270 million in series C funding from investors
         including Inovia Capital, Oracle, Salesforce, and Nvidia, at a valuation of
-        $2.2 billion.\",\"timestamp\":\"2024-06-08T16:48:23\",\"title\":\"Cohere -
-        Wikipedia\",\"url\":\"https://en.wikipedia.org/wiki/Cohere\"},{\"id\":\"web-search_3\",\"snippet\":\"CEO
+        $2.2 billion.\\n\\nIn March 2024, it was reported that Cohere had an annualized
+        revenue run rate of $22 million and was seeking to raise $500 million to $1
+        billion at a valuation of $5 billion.\",\"timestamp\":\"2024-08-12T06:22:25\",\"title\":\"Cohere
+        - Wikipedia\",\"url\":\"https://en.wikipedia.org/wiki/Cohere\"},{\"id\":\"web-search_3\",\"snippet\":\"CEO
         and Co-Founder, Cohere\\n\\nIllustration by TIME; reference image courtesy
         of Aidan Gomez\\n\\nSeptember 7, 2023 7:00 AM EDT\\n\\nAidan Gomez was just
         20 years old when he co-authored a research paper that would change the entire
@@ -327,67 +174,21 @@ interactions:
         or service you land to be talking to it\u2014because that\u2019s what we do
         with humans,\u201D he says. \u201CThis is our most natural interface for intellectual
         exchange, and I want that to be supported with our technology as well.\u201D\\n\\nMore
-        Must-Reads from TIME\\n\\nTIME100 Most Influential Companies 2024\\n\\nJavier
-        Milei\u2019s Radical Plan to Transform Argentina\\n\\nHow Private Donors Shape
-        Birth-Control Choices\\n\\nWhat Sealed Trump\u2019s Fate: Column\\n\\nAre
-        Walking Pads Worth It?\\n\\n15 LGBTQ+ Books to Read for Pride\\n\\nWant Weekly
-        Recs on What to Watch, Read, and More? Sign Up for Worth Your Time\\n\\nContact
-        us at letters@time.com.\\n\\nMORE FROM TIME100 AI\",\"timestamp\":\"2024-06-04T20:11:49\",\"title\":\"Aidan
-        Gomez: The 100 Most Influential People in AI 2023 | TIME\",\"url\":\"https://time.com/collection/time100-ai/6310653/aidan-gomez/\"},{\"id\":\"web-search_5\",\"snippet\":\"Edit
-        Overview Section\\n\\nNumber of Portfolio Companies \\n\\nNumber of Founded
-        Organizations \\n\\nPrimary Organization \\n\\nOxford, Arkansas, United States\\n\\nAidan
-        Gomez is a Co-founder \\u0026 CEO of Cohere. He attended University of Oxford.\\n\\nPersonal
-        Investments\\n\\nEdit Personal Investments Section\\n\\nNumber of Investments
-        \\n\\nAidan Gomez has made\\n\\n5 investments. Their latest investment was\\n\\nSeed
-        Round - Marqo on\\n\\nSeed Round - Cognosys\\n\\nSeed Round - OthersideAI\\n\\nPre
-        Seed Round - CentML\\n\\nSeed Round - Twelve Labs\\n\\nNumber of Current Jobs
-        \\n\\nEdit Related Hubs Section\\n\\nHarvard Business School Executive Education
-        Alumni Founded Companies\\n\\nKansas State University Alumni Founded Companies\\n\\nGeorge
-        Washington University Alumni Founded Companies\\n\\nIESE Business School Alumni
-        Founded Companies\\n\\nUniversidade Federal do Rio Grande do Sul Alumni Founded
-        Companies\\n\\nRegis University Alumni Founded Companies\\n\\nEBS University
-        of Business and Law Alumni Founded Companies\\n\\nUniversity of Miami Business
-        School Alumni Founded Companies\\n\\nNorwich University Alumni Founded Companies\\n\\nRhodes
-        College Alumni Founded Companies\\n\\nEdit Education Section\\n\\nAidan Gomez
-        studied at\\n\\nUniversity of Toronto and \\n\\nUniversity of Oxford.\\n\\nUniversity
-        of Toronto\\n\\nHonours Bachelor of Science\\n\\nUniversity of Oxford\\n\\nRecent
-        News and Activity\\n\\nEdit Recent News and Activity Section\\n\\nNumber of
-        News Articles \\n\\nCrunchbase News \u2014 Here\u2019s How Index Ventures
-        Is Investing In An Era Where \u2018Every Company Will Have AI\u2019\\n\\nMarqo
-        raised $5,200,000 / Seed from Aidan Gomez and 4 other investors\\n\\nDiscover
-        more funding rounds\\n\\nCognosys raised $2,000,000 / Seed from Aidan Gomez
-        and 6 other investors\\n\\nDiscover more funding rounds\\n\\nOthersideAI raised
-        $2,800,000 / Seed from Active Capital and 8 other investors\\n\\nDiscover
-        more funding rounds\\n\\nCentML raised $3,500,000 / Pre Seed from Aidan Gomez
-        and 3 other investors\\n\\nDiscover more funding rounds\\n\\nTwelve Labs raised
-        $5,000,000 / Seed from Aaron Katz and 14 other investors\\n\\nDiscover more
-        funding rounds\\n\\nUnlock even more features with Crunchbase Pro\\n\\nStart
-        Your Free Trial\\n\\nSubscribe to the Crunchbase Daily\\n\\nCrunchbase Enterprise\\n\\nFeatured
-        Lists and Searches\\n\\nThe Crunchbase Difference\\n\\nBrowse By: Organizations,
-        People, Events\\n\\nTerms of Service | Privacy Policy | Sitemap | \xA9 2023
-        Crunchbase Inc. All Rights Reserved.\\n\\nCookie Settings | Do Not Sell or
-        Share My Personal Info\\n\\nNumber of portfolio companies associated to the
-        Person\\n\\nNumber of Organizations that the person founded\\n\\nThe person's
-        primary job title\\n\\nThe organization associated to the person's primary
-        job\\n\\nWhere the person is located (e.g. Europe, Menlo Park, China)\\n\\nWhere
-        the person is located (e.g. San Francisco Bay Area, Silicon Valley)\\n\\nThis
-        describes the type of investor the person is (e.g. Angel, Fund of Funds, Venture
-        Capital)\\n\\nLink to a Person's LinkedIn page\\n\\nNumber of Investments
-        the Individual has participated in\\n\\nAccess Money Raised for free\\n\\nAnnounced
-        Date: Date when the Investment is announced\\n\\nOrganization Name: Name of
-        the organization that received the investment\\n\\nLead Investor: This field
-        indicates whether an investor led/organized the investment\\n\\nFunding Round:
-        Name of the funding round where the Investment is made\\n\\nMoney Raised:
-        Amount of money raised in Funding Round\\n\\nTotal number of current Jobs
-        the person has\\n\\nHub Name: Name of the Hub\\n\\nCB Rank (Hub): Algorithmic
-        rank assigned to the top 100,000 most active Hubs\\n\\nNumber of news articles
-        that reference the Person\\n\\nAccess exclusive data for free\",\"timestamp\":\"2024-04-11T04:17:56\",\"title\":\"Aidan
-        Gomez - Co-founder \\u0026 CEO @ Cohere - Crunchbase Person Profile\",\"url\":\"https://www.crunchbase.com/person/aidan-gomez-e593\"}],\"search_results\":[{\"search_query\":{\"text\":\"cohere
-        founder\",\"generation_id\":\"9fb593ab-6daf-4b2a-8751-3299b8a169b2\"},\"document_ids\":[\"web-search_0\",\"web-search_1\",\"web-search_2\",\"web-search_3\",\"web-search_4\",\"web-search_5\"],\"connector\":{\"id\":\"web-search\"}}],\"search_queries\":[{\"text\":\"cohere
-        founder\",\"generation_id\":\"9fb593ab-6daf-4b2a-8751-3299b8a169b2\"}]}"
+        Must-Reads from TIME\\n\\nThe Rise of a New Kind of Parenting Guru\\n\\nThe
+        50 Best Romance Novels to Read Right Now\\n\\nMark Kelly and the History of
+        Astronauts Making the Jump to Politics\\n\\nThe Young Women Challenging Iran\u2019s
+        Regime\\n\\nHow to Be More Spontaneous As a Busy Adult\\n\\nCan Food Really
+        Change Your Hormones?\\n\\nColumn: Why Watching Simone Biles Makes Me Cry\\n\\nGet
+        Our Paris Olympics Newsletter in Your Inbox\\n\\nContact us at letters@time.com.\\n\\nMORE
+        FROM TIME100 AI\",\"timestamp\":\"2024-08-05T10:43:24\",\"title\":\"Aidan
+        Gomez: The 100 Most Influential People in AI 2023 | TIME\",\"url\":\"https://time.com/collection/time100-ai/6310653/aidan-gomez/\"},{\"id\":\"web-search_4\",\"snippet\":\"\",\"timestamp\":\"2024-04-08T04:28:28\",\"title\":\"\",\"url\":\"https://ca.linkedin.com/in/nick-frosst-19b80463\"}],\"search_results\":[{\"search_query\":{\"text\":\"cohere
+        founder\",\"generation_id\":\"8030dee3-89eb-4935-b9ea-51a4183a7684\"},\"document_ids\":[\"web-search_0\",\"web-search_1\",\"web-search_2\",\"web-search_3\",\"web-search_4\",\"web-search_5\"],\"connector\":{\"id\":\"web-search\"}}],\"search_queries\":[{\"text\":\"cohere
+        founder\",\"generation_id\":\"8030dee3-89eb-4935-b9ea-51a4183a7684\"}]}"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -397,27 +198,29 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:22:50 GMT
+      - Mon, 12 Aug 2024 08:58:17 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '32567'
+      - '32075'
       num_tokens:
-      - '6492'
+      - '5767'
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 6b26b6db36b251985704035745f64543
+      - 46cdead8a4e3338d08f2f4f585d21f26
       x-envoy-upstream-service-time:
-      - '9227'
+      - '3087'
+      x-trial-endpoint-call-limit:
+      - '10'
+      x-trial-endpoint-call-remaining:
+      - '9'
     status:
       code: 200
       message: OK
