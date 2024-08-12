@@ -18,7 +18,7 @@ from langchain_core.tools import BaseTool, Tool
 
 from langchain_cohere import ChatCohere
 
-DEFAULT_MODEL = "command-r"
+DEFAULT_MODEL = "command-r-plus"
 
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires >= python3.9")

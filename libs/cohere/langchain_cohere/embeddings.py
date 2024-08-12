@@ -49,7 +49,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
 
     cohere_api_key: Optional[str] = None
 
-    embedding_types: Optional[Sequence[str]] = ["float"]
+    embedding_types: Sequence[str] = ["float"]
     "Specifies the types of embeddings you want to get back"
 
     max_retries: int = 3
@@ -139,8 +139,13 @@ class CohereEmbeddings(BaseModel, Embeddings):
             input_type=input_type,
             truncate=self.truncate,
             embedding_types=self.embedding_types,
-        ).embeddings
-        return [list(map(float, e)) for e in embeddings]
+        )
+        embeddings = embeddings.dict().get("embeddings", [])
+        return [
+            list(map(float, e[0]))
+            for embedding_type in self.embedding_types
+            if (e := embeddings.get(embedding_type, [[]]))
+        ]
 
     async def aembed(
         self,
