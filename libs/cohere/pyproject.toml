@@ -63,6 +63,10 @@ ruff = "^0.1.5"
 mypy = "^0.991"
 langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
 
+[[tool.mypy.overrides]]
+module = [ "numpy", "pytest",]
+ignore_missing_imports = true
+
 [tool.poetry.group.dev]
 optional = true
 
