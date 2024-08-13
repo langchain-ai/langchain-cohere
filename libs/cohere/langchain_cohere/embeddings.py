@@ -1,5 +1,5 @@
 import typing
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
 from langchain_core.embeddings import Embeddings
@@ -133,19 +133,22 @@ class CohereEmbeddings(BaseModel, Embeddings):
         *,
         input_type: typing.Optional[cohere.EmbedInputType] = None,
     ) -> List[List[float]]:
-        embeddings = self.embed_with_retry(
+        response = self.embed_with_retry(
             model=self.model,
             texts=texts,
             input_type=input_type,
             truncate=self.truncate,
             embedding_types=self.embedding_types,
         )
-        embeddings = embeddings.dict().get("embeddings", [])
-        return [
-            list(map(float, e[0]))
-            for embedding_type in self.embedding_types
-            if (e := embeddings.get(embedding_type, [[]]))
-        ]
+        embeddings = response.dict().get("embeddings", [])
+        embeddings_as_float: List[List[float]] = []
+        for embedding_type in self.embedding_types:
+            e: List[List[Union[int, float]]] = embeddings.get(embedding_type)
+            if not e:
+                continue
+            for i in range(len(e)):
+                embeddings_as_float.append(list(map(float, e[i])))
+        return embeddings_as_float
 
     async def aembed(
         self,
