@@ -57,3 +57,51 @@ def test_langchain_cohere_embedding_documents_int8_embedding_type() -> None:
     output = embedding.embed_documents(documents)
     assert len(output) == 1
     assert len(output[0]) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_documents() -> None:
+    documents = ["foo bar"]
+    embedding = CohereEmbeddings(model="embed-english-light-v3.0")
+    output = await embedding.aembed_documents(documents)
+    assert len(output) == 1
+    assert len(output[0]) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_multiple_documents() -> None:
+    documents = ["foo bar", "bar foo"]
+    embedding = CohereEmbeddings(model="embed-english-light-v3.0")
+    output = await embedding.aembed_documents(documents)
+    assert len(output) == 2
+    assert len(output[0]) > 0
+    assert len(output[1]) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_query() -> None:
+    document = "foo bar"
+    embedding = CohereEmbeddings(model="embed-english-light-v3.0")
+    output = await embedding.aembed_query(document)
+    assert len(output) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_query_int8_embedding_type() -> None:
+    document = "foo bar"
+    embedding = CohereEmbeddings(
+        model="embed-english-light-v3.0", embedding_types=["int8"]
+    )
+    output = await embedding.aembed_query(document)
+    assert len(output) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_documents_int8_embedding_type() -> None:
+    documents = ["foo bar"]
+    embedding = CohereEmbeddings(
+        model="embed-english-light-v3.0", embedding_types=["int8"]
+    )
+    output = await embedding.aembed_documents(documents)
+    assert len(output) == 1
+    assert len(output[0]) > 0
