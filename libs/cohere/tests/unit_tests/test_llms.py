@@ -73,6 +73,7 @@ def test_tracing_params() -> None:
         "ls_max_tokens": 10,
     }
 
+
 # def test_saving_loading_llm(tmp_path: Path) -> None:
 #     """Test saving/loading an Cohere LLM."""
 #     llm = BaseCohere(max_tokens=10)
