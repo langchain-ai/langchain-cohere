@@ -228,10 +228,10 @@ def get_cohere_chat_request(
     if "documents" in additional_kwargs:
         parsed_docs = (
             additional_kwargs["documents"]
-            if len(additional_kwargs["documents"]) > 0
+            if len(additional_kwargs.get("documents", []) or []) > 0
             else None
         )
-    elif documents is not None and len(documents) > 0:
+    elif (documents is not None) and (len(documents) > 0):
         parsed_docs = documents
 
     formatted_docs: Optional[List[Dict[str, Any]]] = None
@@ -259,7 +259,6 @@ def get_cohere_chat_request(
     )
     if not tool_results:
         tool_results = None
-
     # check if the last message is a tool message or human message
     if not (
         isinstance(messages[-1], ToolMessage) or isinstance(messages[-1], HumanMessage)
