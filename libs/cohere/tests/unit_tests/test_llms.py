@@ -53,6 +53,27 @@ def test_default_params(cohere: Cohere, expected: typing.Dict) -> None:
     assert expected == actual
 
 
+def test_tracing_params() -> None:
+    # Test standard tracing params
+    llm = Cohere(model="foo", cohere_api_key="api-key")
+    ls_params = llm._get_ls_params()
+    assert ls_params == {
+        "ls_provider": "cohere",
+        "ls_model_type": "llm",
+        "ls_model_name": "foo",
+    }
+
+    llm = Cohere(model="foo", temperature=0.1, max_tokens=10, cohere_api_key="api-key")
+    ls_params = llm._get_ls_params()
+    assert ls_params == {
+        "ls_provider": "cohere",
+        "ls_model_type": "llm",
+        "ls_model_name": "foo",
+        "ls_temperature": 0.1,
+        "ls_max_tokens": 10,
+    }
+
+
 # def test_saving_loading_llm(tmp_path: Path) -> None:
 #     """Test saving/loading an Cohere LLM."""
 #     llm = BaseCohere(max_tokens=10)
