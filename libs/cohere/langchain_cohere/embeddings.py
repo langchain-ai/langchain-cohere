@@ -156,16 +156,22 @@ class CohereEmbeddings(BaseModel, Embeddings):
         *,
         input_type: typing.Optional[cohere.EmbedInputType] = None,
     ) -> List[List[float]]:
-        embeddings = (
-            await self.aembed_with_retry(
-                model=self.model,
-                texts=texts,
-                input_type=input_type,
-                truncate=self.truncate,
-                embedding_types=self.embedding_types,
-            )
-        ).embeddings
-        return [list(map(float, e)) for e in embeddings]
+        response = await self.aembed_with_retry(
+            model=self.model,
+            texts=texts,
+            input_type=input_type,
+            truncate=self.truncate,
+            embedding_types=self.embedding_types,
+        )
+        embeddings = response.dict().get("embeddings", [])
+        embeddings_as_float: List[List[float]] = []
+        for embedding_type in self.embedding_types:
+            e: List[List[Union[int, float]]] = embeddings.get(embedding_type)
+            if not e:
+                continue
+            for i in range(len(e)):
+                embeddings_as_float.append(list(map(float, e[i])))
+        return embeddings_as_float
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of document texts.
