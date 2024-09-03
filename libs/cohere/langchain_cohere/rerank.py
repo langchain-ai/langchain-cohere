@@ -31,7 +31,7 @@ class CohereRerank(BaseDocumentCompressor):
         extra = Extra.forbid
         arbitrary_types_allowed = True
 
-    @root_validator()
+    @root_validator(pre=False, skip_on_failure=True)
     def validate_environment(cls, values: Dict) -> Dict:
         """Validate that api key and python package exists in environment."""
         if not values.get("client"):
@@ -42,7 +42,7 @@ class CohereRerank(BaseDocumentCompressor):
             values["client"] = cohere.Client(cohere_api_key, client_name=client_name)
         return values
 
-    @root_validator()
+    @root_validator(pre=False, skip_on_failure=True)
     def validate_model_specified(cls, values: Dict) -> Dict:
         """Validate that model is specified."""
         model = values.get("model")
