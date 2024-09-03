@@ -68,7 +68,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
         arbitrary_types_allowed = True
         extra = Extra.forbid
 
-    @root_validator()
+    @root_validator(pre=False, skip_on_failure=False)
     def validate_environment(cls, values: Dict) -> Dict:
         """Validate that api key and python package exists in environment."""
         cohere_api_key = get_from_dict_or_env(
@@ -92,7 +92,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
 
         return values
 
-    @root_validator()
+    @root_validator(pre=False, skip_on_failure=False)
     def validate_model_specified(cls, values: Dict) -> Dict:
         """Validate that model is specified."""
         model = values.get("model")

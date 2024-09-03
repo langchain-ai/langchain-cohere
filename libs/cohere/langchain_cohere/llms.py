@@ -75,7 +75,7 @@ class BaseCohere(Serializable):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
-    @root_validator()
+    @root_validator(pre=False, skip_on_failure=False)
     def validate_environment(cls, values: Dict) -> Dict:
         """Validate that api key and python package exists in environment."""
         values["cohere_api_key"] = convert_to_secret_str(
