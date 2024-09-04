@@ -1,0 +1,6 @@
+```python
+def example_tool() -> List[Dict]:
+    """A description of example_tool
+    """
+    pass
+```
