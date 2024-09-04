@@ -1,0 +1,10 @@
+```python
+def example_tool(foo: str, bar: Optional[int]) -> List[Dict]:
+    """A description of example_tool
+
+    Args:
+        foo (str): A description of foo
+        bar (Optional[int]): A description of bar
+    """
+    pass
+```
