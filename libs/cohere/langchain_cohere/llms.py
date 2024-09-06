@@ -11,14 +11,12 @@ from langchain_core.callbacks import (
 )
 from langchain_core.language_models.llms import LLM
 from langchain_core.load.serializable import Serializable
-from langchain_core.utils import convert_to_secret_str, get_from_dict_or_env
+from langchain_core.utils import secret_from_env
 from pydantic import (
     ConfigDict,
-    Extra,
     Field,
     SecretStr,
     model_validator,
-    root_validator,
 )
 from typing_extensions import Self
 
@@ -66,7 +64,9 @@ class BaseCohere(Serializable):
     temperature: Optional[float] = None
     """A non-negative float that tunes the degree of randomness in generation."""
 
-    cohere_api_key: Optional[SecretStr] = None
+    cohere_api_key: Optional[SecretStr] = Field(
+        alias="api_key", default_factory=secret_from_env("COHERE_API_KEY", default=None)
+    )
     """Cohere API key. If not provided, will be read from the environment variable."""
 
     stop: Optional[List[str]] = None
@@ -86,11 +86,8 @@ class BaseCohere(Serializable):
     @model_validator(mode="after")
     def validate_environment(self) -> Self:
         """Validate that api key and python package exists in environment."""
-        self.cohere_api_key = convert_to_secret_str(
-            get_from_dict_or_env(values, "cohere_api_key", "COHERE_API_KEY")
-        )
         client_name = self.user_agent
-        timeout_seconds = self.timeout_seconds or None
+        timeout_seconds = self.timeout_seconds
         self.client = cohere.Client(
             api_key=self.cohere_api_key.get_secret_value(),
             timeout=timeout_seconds,

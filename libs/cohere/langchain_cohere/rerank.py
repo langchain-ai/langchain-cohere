@@ -6,8 +6,8 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 import cohere
 from langchain_core.callbacks.manager import Callbacks
 from langchain_core.documents import BaseDocumentCompressor, Document
-from langchain_core.utils import get_from_dict_or_env
-from pydantic import ConfigDict, Extra, model_validator, root_validator
+from langchain_core.utils import secret_from_env
+from pydantic import ConfigDict, Field, SecretStr, model_validator
 from typing_extensions import Self
 
 
@@ -20,7 +20,9 @@ class CohereRerank(BaseDocumentCompressor):
     """Number of documents to return."""
     model: Optional[str] = None
     """Model to use for reranking. Mandatory to specify the model name."""
-    cohere_api_key: Optional[str] = None
+    cohere_api_key: Optional[SecretStr] = Field(
+        alias="api_key", default_factory=secret_from_env("COHERE_API_KEY", default=None)
+    )
     """Cohere API key. Must be specified directly or via environment variable 
         COHERE_API_KEY."""
     user_agent: str = "langchain:partner"
@@ -34,10 +36,11 @@ class CohereRerank(BaseDocumentCompressor):
     @model_validator(mode="after")
     def validate_environment(self) -> Self:
         """Validate that api key and python package exists in environment."""
-        if not (self.client or None):
-            cohere_api_key = get_from_dict_or_env(
-                values, "cohere_api_key", "COHERE_API_KEY"
-            )
+        if not self.client:
+            if isinstance(self.cohere_api_key, SecretStr):
+                cohere_api_key = self.cohere_api_key.get_secret_value()
+            else:
+                cohere_api_key = self.cohere_api_key
             client_name = self.user_agent
             self.client = cohere.Client(cohere_api_key, client_name=client_name)
         return self
@@ -45,8 +48,7 @@ class CohereRerank(BaseDocumentCompressor):
     @model_validator(mode="after")
     def validate_model_specified(self) -> Self:
         """Validate that model is specified."""
-        model = self.model or None
-        if not model:
+        if not self.model:
             raise ValueError(
                 "Did not find `model`! Please "
                 " pass `model` as a named parameter."

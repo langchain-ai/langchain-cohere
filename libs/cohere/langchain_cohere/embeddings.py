@@ -1,10 +1,10 @@
 import typing
-from typing import Any, Dict, List, Optional, Sequence, Union
+from typing import Any, List, Optional, Sequence, Union
 
 import cohere
 from langchain_core.embeddings import Embeddings
-from langchain_core.utils import get_from_dict_or_env
-from pydantic import BaseModel, ConfigDict, Extra, model_validator, root_validator
+from langchain_core.utils import secret_from_env
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, model_validator
 from typing_extensions import Self
 
 from .utils import _create_retry_decorator
@@ -48,7 +48,9 @@ class CohereEmbeddings(BaseModel, Embeddings):
     truncate: Optional[str] = None
     """Truncate embeddings that are too long from start or end ("NONE"|"START"|"END")"""
 
-    cohere_api_key: Optional[str] = None
+    cohere_api_key: Optional[SecretStr] = Field(
+        alias="api_key", default_factory=secret_from_env("COHERE_API_KEY", default=None)
+    )
 
     embedding_types: Sequence[str] = ["float"]
     "Specifies the types of embeddings you want to get back"
@@ -71,10 +73,11 @@ class CohereEmbeddings(BaseModel, Embeddings):
     @model_validator(mode="after")
     def validate_environment(self) -> Self:
         """Validate that api key and python package exists in environment."""
-        cohere_api_key = get_from_dict_or_env(
-            values, "cohere_api_key", "COHERE_API_KEY"
-        )
-        request_timeout = self.request_timeout or None
+        if isinstance(self.cohere_api_key, SecretStr):
+            cohere_api_key = self.cohere_api_key.get_secret_value()
+        else:
+            cohere_api_key = self.cohere_api_key
+        request_timeout = self.request_timeout
 
         client_name = self.user_agent
         self.client = cohere.Client(
@@ -95,8 +98,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
     @model_validator(mode="after")
     def validate_model_specified(self) -> Self:
         """Validate that model is specified."""
-        model = self.model or None
-        if not model:
+        if not self.model:
             raise ValueError(
                 "Did not find `model`! Please "
                 " pass `model` as a named parameter."
