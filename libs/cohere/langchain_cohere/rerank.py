@@ -9,6 +9,8 @@ from langchain_core.documents import BaseDocumentCompressor, Document
 from pydantic import Extra, root_validator, model_validator
 from langchain_core.utils import get_from_dict_or_env
 from pydantic import ConfigDict
+from typing_extensions import Self
+
 
 
 

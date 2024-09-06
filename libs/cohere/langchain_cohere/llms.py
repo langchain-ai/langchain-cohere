@@ -16,6 +16,8 @@ from langchain_core.utils import convert_to_secret_str, get_from_dict_or_env
 
 from .utils import _create_retry_decorator
 from pydantic import ConfigDict
+from typing_extensions import Self
+
 
 
 
