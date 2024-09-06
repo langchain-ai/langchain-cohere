@@ -13,8 +13,8 @@ import pytest
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain.tools import tool
 from langchain_core.prompts import ChatPromptTemplate
-from pydantic import BaseModel, Field
 from langchain_core.tools import BaseTool, Tool
+from pydantic import BaseModel, Field
 
 from langchain_cohere import ChatCohere
 

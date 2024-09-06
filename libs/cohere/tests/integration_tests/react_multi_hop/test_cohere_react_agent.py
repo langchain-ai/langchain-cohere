@@ -11,8 +11,8 @@ from typing import Any, Type
 import pytest
 from langchain.agents import AgentExecutor
 from langchain_core.prompts import ChatPromptTemplate
-from pydantic import BaseModel, Field
 from langchain_core.tools import BaseTool
+from pydantic import BaseModel, Field
 
 from langchain_cohere import ChatCohere, create_cohere_react_agent
 

@@ -47,9 +47,9 @@ from langchain_core.output_parsers.openai_tools import (
     PydanticToolsParser,
 )
 from langchain_core.outputs import ChatGeneration, ChatGenerationChunk, ChatResult
-from pydantic import BaseModel, PrivateAttr
 from langchain_core.runnables import Runnable
 from langchain_core.tools import BaseTool
+from pydantic import BaseModel, ConfigDict, PrivateAttr
 
 from langchain_cohere.cohere_agent import (
     _convert_to_cohere_tool,
@@ -57,8 +57,6 @@ from langchain_cohere.cohere_agent import (
 )
 from langchain_cohere.llms import BaseCohere
 from langchain_cohere.react_multi_hop.prompt import convert_to_documents
-from pydantic import ConfigDict
-
 
 
 def _message_to_cohere_tool_results(
@@ -364,7 +362,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
         default=None
     )  # Used internally to cache API calls to list models.
 
-    model_config = ConfigDict(populate_by_name=True,arbitrary_types_allowed=True,)
+    model_config = ConfigDict(
+        populate_by_name=True,
+        arbitrary_types_allowed=True,
+    )
 
     def bind_tools(
         self,

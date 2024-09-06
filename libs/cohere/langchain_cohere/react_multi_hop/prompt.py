@@ -21,8 +21,8 @@ from langchain_core.prompts import (
     ChatPromptTemplate,
     PromptTemplate,
 )
-from pydantic import BaseModel
 from langchain_core.tools import BaseTool
+from pydantic import BaseModel
 
 from langchain_cohere.react_multi_hop.default_prompt_constants import (
     _SpecialToken,

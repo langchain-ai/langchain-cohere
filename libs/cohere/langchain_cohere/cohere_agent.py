@@ -14,13 +14,13 @@ from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.outputs import Generation
 from langchain_core.outputs.chat_generation import ChatGeneration
 from langchain_core.prompts.chat import ChatPromptTemplate
-from pydantic import BaseModel
 from langchain_core.runnables import Runnable, RunnablePassthrough
 from langchain_core.runnables.base import RunnableLambda
 from langchain_core.tools import BaseTool
 from langchain_core.utils.function_calling import (
     convert_to_openai_function,
 )
+from pydantic import BaseModel
 
 from langchain_cohere.utils import (
     JSON_TO_PYTHON_TYPES,

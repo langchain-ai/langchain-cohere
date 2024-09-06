@@ -6,12 +6,9 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 import cohere
 from langchain_core.callbacks.manager import Callbacks
 from langchain_core.documents import BaseDocumentCompressor, Document
-from pydantic import Extra, root_validator, model_validator
 from langchain_core.utils import get_from_dict_or_env
-from pydantic import ConfigDict
+from pydantic import ConfigDict, Extra, model_validator, root_validator
 from typing_extensions import Self
-
-
 
 
 class CohereRerank(BaseDocumentCompressor):
@@ -29,7 +26,10 @@ class CohereRerank(BaseDocumentCompressor):
     user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
-    model_config = ConfigDict(extra="forbid",arbitrary_types_allowed=True,)
+    model_config = ConfigDict(
+        extra="forbid",
+        arbitrary_types_allowed=True,
+    )
 
     @model_validator(mode="after")
     def validate_environment(self) -> Self:
@@ -45,7 +45,7 @@ class CohereRerank(BaseDocumentCompressor):
     @model_validator(mode="after")
     def validate_model_specified(self) -> Self:
         """Validate that model is specified."""
-        model = (self.model or None)
+        model = self.model or None
         if not model:
             raise ValueError(
                 "Did not find `model`! Please "

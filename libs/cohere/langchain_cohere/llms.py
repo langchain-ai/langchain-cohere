@@ -11,14 +11,18 @@ from langchain_core.callbacks import (
 )
 from langchain_core.language_models.llms import LLM
 from langchain_core.load.serializable import Serializable
-from pydantic import Extra, Field, SecretStr, root_validator, model_validator
 from langchain_core.utils import convert_to_secret_str, get_from_dict_or_env
-
-from .utils import _create_retry_decorator
-from pydantic import ConfigDict
+from pydantic import (
+    ConfigDict,
+    Extra,
+    Field,
+    SecretStr,
+    model_validator,
+    root_validator,
+)
 from typing_extensions import Self
 
-
+from .utils import _create_retry_decorator
 
 
 def enforce_stop_tokens(text: str, stop: List[str]) -> str:
@@ -86,7 +90,7 @@ class BaseCohere(Serializable):
             get_from_dict_or_env(values, "cohere_api_key", "COHERE_API_KEY")
         )
         client_name = self.user_agent
-        timeout_seconds = (self.timeout_seconds or None)
+        timeout_seconds = self.timeout_seconds or None
         self.client = cohere.Client(
             api_key=self.cohere_api_key.get_secret_value(),
             timeout=timeout_seconds,
@@ -139,7 +143,10 @@ class Cohere(LLM, BaseCohere):
     max_retries: int = 10
     """Maximum number of retries to make when generating."""
 
-    model_config = ConfigDict(arbitrary_types_allowed=True,extra="forbid",)
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        extra="forbid",
+    )
 
     @property
     def _default_params(self) -> Dict[str, Any]:

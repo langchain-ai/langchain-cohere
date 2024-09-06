@@ -3,14 +3,11 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
 from langchain_core.embeddings import Embeddings
-from pydantic import BaseModel, Extra, root_validator, model_validator
 from langchain_core.utils import get_from_dict_or_env
-
-from .utils import _create_retry_decorator
-from pydantic import ConfigDict
+from pydantic import BaseModel, ConfigDict, Extra, model_validator, root_validator
 from typing_extensions import Self
 
-
+from .utils import _create_retry_decorator
 
 
 class CohereEmbeddings(BaseModel, Embeddings):
@@ -66,7 +63,10 @@ class CohereEmbeddings(BaseModel, Embeddings):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
-    model_config = ConfigDict(arbitrary_types_allowed=True,extra="forbid",)
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        extra="forbid",
+    )
 
     @model_validator(mode="after")
     def validate_environment(self) -> Self:
@@ -74,7 +74,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
         cohere_api_key = get_from_dict_or_env(
             values, "cohere_api_key", "COHERE_API_KEY"
         )
-        request_timeout = (self.request_timeout or None)
+        request_timeout = self.request_timeout or None
 
         client_name = self.user_agent
         self.client = cohere.Client(
@@ -95,7 +95,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
     @model_validator(mode="after")
     def validate_model_specified(self) -> Self:
         """Validate that model is specified."""
-        model = (self.model or None)
+        model = self.model or None
         if not model:
             raise ValueError(
                 "Did not find `model`! Please "
