@@ -66,7 +66,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
         """Configuration for this pydantic object."""
 
         arbitrary_types_allowed = True
-        extra = Extra.forbid
+        extra="forbid"
 
     @root_validator(pre=False, skip_on_failure=True)
     def validate_environment(cls, values: Dict) -> Dict:

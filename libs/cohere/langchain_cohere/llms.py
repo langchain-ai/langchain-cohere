@@ -139,7 +139,7 @@ class Cohere(LLM, BaseCohere):
         """Configuration for this pydantic object."""
 
         arbitrary_types_allowed = True
-        extra = Extra.forbid
+        extra="forbid"
 
     @property
     def _default_params(self) -> Dict[str, Any]:
