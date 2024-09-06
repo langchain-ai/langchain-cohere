@@ -6,7 +6,7 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 import cohere
 from langchain_core.callbacks.manager import Callbacks
 from langchain_core.documents import BaseDocumentCompressor, Document
-from pydantic import Extra, root_validator
+from pydantic import Extra, root_validator, model_validator
 from langchain_core.utils import get_from_dict_or_env
 from pydantic import ConfigDict
 
@@ -29,21 +29,21 @@ class CohereRerank(BaseDocumentCompressor):
 
     model_config = ConfigDict(extra="forbid",arbitrary_types_allowed=True,)
 
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_environment(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_environment(self) -> Self:
         """Validate that api key and python package exists in environment."""
-        if not values.get("client"):
+        if not (self.client or None):
             cohere_api_key = get_from_dict_or_env(
                 values, "cohere_api_key", "COHERE_API_KEY"
             )
-            client_name = values["user_agent"]
-            values["client"] = cohere.Client(cohere_api_key, client_name=client_name)
-        return values
+            client_name = self.user_agent
+            self.client = cohere.Client(cohere_api_key, client_name=client_name)
+        return self
 
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_model_specified(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_model_specified(self) -> Self:
         """Validate that model is specified."""
-        model = values.get("model")
+        model = (self.model or None)
         if not model:
             raise ValueError(
                 "Did not find `model`! Please "
@@ -53,7 +53,7 @@ class CohereRerank(BaseDocumentCompressor):
                 " for available models."
             )
 
-        return values
+        return self
 
     def rerank(
         self,

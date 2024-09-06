@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
 from langchain_core.embeddings import Embeddings
-from pydantic import BaseModel, Extra, root_validator
+from pydantic import BaseModel, Extra, root_validator, model_validator
 from langchain_core.utils import get_from_dict_or_env
 
 from .utils import _create_retry_decorator
@@ -66,34 +66,34 @@ class CohereEmbeddings(BaseModel, Embeddings):
 
     model_config = ConfigDict(arbitrary_types_allowed=True,extra="forbid",)
 
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_environment(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_environment(self) -> Self:
         """Validate that api key and python package exists in environment."""
         cohere_api_key = get_from_dict_or_env(
             values, "cohere_api_key", "COHERE_API_KEY"
         )
-        request_timeout = values.get("request_timeout")
+        request_timeout = (self.request_timeout or None)
 
-        client_name = values["user_agent"]
-        values["client"] = cohere.Client(
+        client_name = self.user_agent
+        self.client = cohere.Client(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
-            base_url=values["base_url"],
+            base_url=self.base_url,
         )
-        values["async_client"] = cohere.AsyncClient(
+        self.async_client = cohere.AsyncClient(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
-            base_url=values["base_url"],
+            base_url=self.base_url,
         )
 
-        return values
+        return self
 
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_model_specified(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_model_specified(self) -> Self:
         """Validate that model is specified."""
-        model = values.get("model")
+        model = (self.model or None)
         if not model:
             raise ValueError(
                 "Did not find `model`! Please "
@@ -103,7 +103,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
                 " for available models."
             )
 
-        return values
+        return self
 
     def embed_with_retry(self, **kwargs: Any) -> Any:
         """Use tenacity to retry the embed call."""

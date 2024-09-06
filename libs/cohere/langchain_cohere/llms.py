@@ -11,7 +11,7 @@ from langchain_core.callbacks import (
 )
 from langchain_core.language_models.llms import LLM
 from langchain_core.load.serializable import Serializable
-from pydantic import Extra, Field, SecretStr, root_validator
+from pydantic import Extra, Field, SecretStr, root_validator, model_validator
 from langchain_core.utils import convert_to_secret_str, get_from_dict_or_env
 
 from .utils import _create_retry_decorator
@@ -77,27 +77,27 @@ class BaseCohere(Serializable):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_environment(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_environment(self) -> Self:
         """Validate that api key and python package exists in environment."""
-        values["cohere_api_key"] = convert_to_secret_str(
+        self.cohere_api_key = convert_to_secret_str(
             get_from_dict_or_env(values, "cohere_api_key", "COHERE_API_KEY")
         )
-        client_name = values["user_agent"]
-        timeout_seconds = values.get("timeout_seconds")
-        values["client"] = cohere.Client(
-            api_key=values["cohere_api_key"].get_secret_value(),
+        client_name = self.user_agent
+        timeout_seconds = (self.timeout_seconds or None)
+        self.client = cohere.Client(
+            api_key=self.cohere_api_key.get_secret_value(),
             timeout=timeout_seconds,
             client_name=client_name,
-            base_url=values["base_url"],
+            base_url=self.base_url,
         )
-        values["async_client"] = cohere.AsyncClient(
-            api_key=values["cohere_api_key"].get_secret_value(),
+        self.async_client = cohere.AsyncClient(
+            api_key=self.cohere_api_key.get_secret_value(),
             client_name=client_name,
             timeout=timeout_seconds,
-            base_url=values["base_url"],
+            base_url=self.base_url,
         )
-        return values
+        return self
 
 
 class Cohere(LLM, BaseCohere):
