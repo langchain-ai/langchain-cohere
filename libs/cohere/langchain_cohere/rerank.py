@@ -6,8 +6,10 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 import cohere
 from langchain_core.callbacks.manager import Callbacks
 from langchain_core.documents import BaseDocumentCompressor, Document
-from langchain_core.pydantic_v1 import Extra, root_validator
+from pydantic import Extra, root_validator
 from langchain_core.utils import get_from_dict_or_env
+from pydantic import ConfigDict
+
 
 
 class CohereRerank(BaseDocumentCompressor):
@@ -25,11 +27,7 @@ class CohereRerank(BaseDocumentCompressor):
     user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
-    class Config:
-        """Configuration for this pydantic object."""
-
-        extra="forbid"
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(extra="forbid",arbitrary_types_allowed=True,)
 
     @root_validator(pre=False, skip_on_failure=True)
     def validate_environment(cls, values: Dict) -> Dict:

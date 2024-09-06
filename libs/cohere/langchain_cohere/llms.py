@@ -11,10 +11,12 @@ from langchain_core.callbacks import (
 )
 from langchain_core.language_models.llms import LLM
 from langchain_core.load.serializable import Serializable
-from langchain_core.pydantic_v1 import Extra, Field, SecretStr, root_validator
+from pydantic import Extra, Field, SecretStr, root_validator
 from langchain_core.utils import convert_to_secret_str, get_from_dict_or_env
 
 from .utils import _create_retry_decorator
+from pydantic import ConfigDict
+
 
 
 def enforce_stop_tokens(text: str, stop: List[str]) -> str:
@@ -135,11 +137,7 @@ class Cohere(LLM, BaseCohere):
     max_retries: int = 10
     """Maximum number of retries to make when generating."""
 
-    class Config:
-        """Configuration for this pydantic object."""
-
-        arbitrary_types_allowed = True
-        extra="forbid"
+    model_config = ConfigDict(arbitrary_types_allowed=True,extra="forbid",)
 
     @property
     def _default_params(self) -> Dict[str, Any]:

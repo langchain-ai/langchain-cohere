@@ -3,10 +3,12 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
 from langchain_core.embeddings import Embeddings
-from langchain_core.pydantic_v1 import BaseModel, Extra, root_validator
+from pydantic import BaseModel, Extra, root_validator
 from langchain_core.utils import get_from_dict_or_env
 
 from .utils import _create_retry_decorator
+from pydantic import ConfigDict
+
 
 
 class CohereEmbeddings(BaseModel, Embeddings):
@@ -62,11 +64,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
-    class Config:
-        """Configuration for this pydantic object."""
-
-        arbitrary_types_allowed = True
-        extra="forbid"
+    model_config = ConfigDict(arbitrary_types_allowed=True,extra="forbid",)
 
     @root_validator(pre=False, skip_on_failure=True)
     def validate_environment(cls, values: Dict) -> Dict:
