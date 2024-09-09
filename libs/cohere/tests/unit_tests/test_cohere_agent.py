@@ -19,8 +19,8 @@ class _TestToolSchema(BaseModel):
 
 
 class _TestTool(BaseTool):
-    name = "test_tool"
-    description = "test_tool description"
+    name: str = "test_tool"
+    description: str = "test_tool description"
     args_schema: Type[_TestToolSchema] = _TestToolSchema
 
     def _run(self, *args: Any, **kwargs: Any) -> Any:
