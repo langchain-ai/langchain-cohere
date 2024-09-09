@@ -22,10 +22,7 @@ from langchain_core.utils.function_calling import (
 )
 from pydantic import BaseModel
 
-from langchain_cohere.utils import (
-    JSON_TO_PYTHON_TYPES,
-    _remove_signature_from_tool_description,
-)
+from langchain_cohere.utils import JSON_TO_PYTHON_TYPES
 
 
 @deprecated(
@@ -114,26 +111,7 @@ def _convert_to_cohere_tool(
     """
     Convert a BaseTool instance, JSON schema dict, or BaseModel type to a Cohere tool.
     """
-    if isinstance(tool, BaseTool):
-        return Tool(
-            name=tool.name,
-            description=_remove_signature_from_tool_description(
-                tool.name, tool.description
-            ),
-            parameter_definitions={
-                param_name: ToolParameterDefinitionsValue(
-                    description=param_definition.get("description")
-                    if "description" in param_definition
-                    else "",
-                    type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get("type"), param_definition.get("type")
-                    ),
-                    required="default" not in param_definition,
-                )
-                for param_name, param_definition in tool.args.items()
-            },
-        ).dict()
-    elif isinstance(tool, dict):
+    if isinstance(tool, dict):
         if not all(k in tool for k in ("title", "description", "properties")):
             raise ValueError(
                 "Unsupported dict type. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
@@ -152,10 +130,37 @@ def _convert_to_cohere_tool(
                 for param_name, param_definition in tool.get("properties", {}).items()
             },
         ).dict()
-    elif (isinstance(tool, type) and issubclass(tool, BaseModel)) or callable(tool):
+    elif (
+        (isinstance(tool, type) and issubclass(tool, BaseModel))
+        or callable(tool)
+        or isinstance(tool, BaseTool)
+    ):
         as_json_schema_function = convert_to_openai_function(tool)
         parameters = as_json_schema_function.get("parameters", {})
         properties = parameters.get("properties", {})
+        parameter_definitions = {}
+        for param_name, param_definition in properties.items():
+            if "type" in param_definition:
+                _type_str = param_definition.get("type")
+                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
+            elif "anyOf" in param_definition:
+                _type_str = next(
+                    (
+                        t.get("type")
+                        for t in param_definition.get("anyOf", [])
+                        if t.get("type") != "null"
+                    ),
+                    param_definition.get("type"),
+                )
+                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
+            else:
+                _type = None
+            tool_definition = ToolParameterDefinitionsValue(
+                description=param_definition.get("description"),
+                type=_type,
+                required=param_name in parameters.get("required", []),
+            )
+            parameter_definitions[param_name] = tool_definition
         return Tool(
             name=as_json_schema_function.get("name"),
             description=as_json_schema_function.get(
@@ -163,16 +168,7 @@ def _convert_to_cohere_tool(
                 "description",
                 as_json_schema_function.get("name"),
             ),
-            parameter_definitions={
-                param_name: ToolParameterDefinitionsValue(
-                    description=param_definition.get("description"),
-                    type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get("type"), param_definition.get("type")
-                    ),
-                    required=param_name in parameters.get("required", []),
-                )
-                for param_name, param_definition in properties.items()
-            },
+            parameter_definitions=parameter_definitions,
         ).dict()
     else:
         raise ValueError(
