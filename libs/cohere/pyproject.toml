@@ -37,6 +37,7 @@ pytest-watcher = "^0.3.4"
 pytest-asyncio = "^0.21.1"
 langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core", branch = "v0.3rc" }
 langchain-standard-tests = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/standard-tests", branch = "v0.3rc" }
+langchain-community = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/community", branch = "v0.3rc" }
 pytest-vcr = "^1.0.2"
 
 [tool.poetry.group.codespell]
