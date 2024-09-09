@@ -84,18 +84,22 @@ class BaseCohere(Serializable):
     """Override the default Cohere API URL."""
 
     @model_validator(mode="after")
-    def validate_environment(self) -> Self:
+    def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
+        if isinstance(self.cohere_api_key, SecretStr):
+            cohere_api_key: Optional[str] = self.cohere_api_key.get_secret_value()
+        else:
+            cohere_api_key = self.cohere_api_key
         client_name = self.user_agent
         timeout_seconds = self.timeout_seconds
         self.client = cohere.Client(
-            api_key=self.cohere_api_key.get_secret_value(),
+            api_key=cohere_api_key,
             timeout=timeout_seconds,
             client_name=client_name,
             base_url=self.base_url,
         )
         self.async_client = cohere.AsyncClient(
-            api_key=self.cohere_api_key.get_secret_value(),
+            api_key=cohere_api_key,
             client_name=client_name,
             timeout=timeout_seconds,
             base_url=self.base_url,

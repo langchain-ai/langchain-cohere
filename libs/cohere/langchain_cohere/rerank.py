@@ -34,11 +34,11 @@ class CohereRerank(BaseDocumentCompressor):
     )
 
     @model_validator(mode="after")
-    def validate_environment(self) -> Self:
+    def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
         if not self.client:
             if isinstance(self.cohere_api_key, SecretStr):
-                cohere_api_key = self.cohere_api_key.get_secret_value()
+                cohere_api_key: Optional[str] = self.cohere_api_key.get_secret_value()
             else:
                 cohere_api_key = self.cohere_api_key
             client_name = self.user_agent
@@ -46,7 +46,7 @@ class CohereRerank(BaseDocumentCompressor):
         return self
 
     @model_validator(mode="after")
-    def validate_model_specified(self) -> Self:
+    def validate_model_specified(self) -> Self:  # type: ignore[valid-type]
         """Validate that model is specified."""
         if not self.model:
             raise ValueError(
