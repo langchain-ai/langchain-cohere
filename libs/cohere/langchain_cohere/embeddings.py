@@ -1,9 +1,9 @@
 import typing
-from typing import Any, List, Optional, Sequence, Union
+from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
 from langchain_core.embeddings import Embeddings
-from langchain_core.utils import secret_from_env
+from langchain_core.utils import get_from_dict_or_env, secret_from_env
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, model_validator
 from typing_extensions import Self
 
@@ -70,30 +70,30 @@ class CohereEmbeddings(BaseModel, Embeddings):
         extra="forbid",
     )
 
-    @model_validator(mode="after")
-    def validate_environment(self) -> Self:  # type: ignore[valid-type]
+    @model_validator(mode="before")
+    @classmethod
+    def validate_environment(cls, values: Dict) -> Any:
         """Validate that api key and python package exists in environment."""
-        if isinstance(self.cohere_api_key, SecretStr):
-            cohere_api_key: Optional[str] = self.cohere_api_key.get_secret_value()
-        else:
-            cohere_api_key = self.cohere_api_key
-        request_timeout = self.request_timeout
+        cohere_api_key = get_from_dict_or_env(
+            values, "cohere_api_key", "COHERE_API_KEY"
+        )
+        request_timeout = values.get("request_timeout")
 
-        client_name = self.user_agent
-        self.client = cohere.Client(
+        client_name = values.get("user_agent", "langchain:partner")
+        values["client"] = cohere.Client(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
-            base_url=self.base_url,
+            base_url=values.get("base_url"),
         )
-        self.async_client = cohere.AsyncClient(
+        values["async_client"] = cohere.AsyncClient(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
-            base_url=self.base_url,
+            base_url=values.get("base_url"),
         )
 
-        return self
+        return values
 
     @model_validator(mode="after")
     def validate_model_specified(self) -> Self:  # type: ignore[valid-type]
