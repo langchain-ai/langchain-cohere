@@ -15,8 +15,8 @@ class ExampleToolWithArgs(BaseTool):
         foo: str = Field(description="A description of foo")
         bar: int = Field(description="A description of bar", default=None)
 
-    name = "example_tool"
-    description = "A description of example_tool"
+    name: str = "example_tool"
+    description: str = "A description of example_tool"
     args_schema: Type[BaseModel] = _args_schema  # type: ignore
 
     def _run(self, *args: Any, **kwargs: Any) -> Any:
@@ -46,8 +46,8 @@ class ExampleToolWithoutArgs(BaseTool):
     class _args_schema(BaseModel):
         pass
 
-    name = "example_tool"
-    description = "A description of example_tool"
+    name: str = "example_tool"
+    description: str = "A description of example_tool"
     args_schema: Type[BaseModel] = _args_schema  # type: ignore
 
     def _run(self, *args: Any, **kwargs: Any) -> Any:
