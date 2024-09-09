@@ -49,7 +49,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
     """Truncate embeddings that are too long from start or end ("NONE"|"START"|"END")"""
 
     cohere_api_key: Optional[SecretStr] = Field(
-        alias="api_key", default_factory=secret_from_env("COHERE_API_KEY", default=None)
+        default_factory=secret_from_env("COHERE_API_KEY", default=None)
     )
 
     embedding_types: Sequence[str] = ["float"]

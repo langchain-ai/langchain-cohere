@@ -65,7 +65,7 @@ class BaseCohere(Serializable):
     """A non-negative float that tunes the degree of randomness in generation."""
 
     cohere_api_key: Optional[SecretStr] = Field(
-        alias="api_key", default_factory=secret_from_env("COHERE_API_KEY", default=None)
+        default_factory=secret_from_env("COHERE_API_KEY", default=None)
     )
     """Cohere API key. If not provided, will be read from the environment variable."""
 

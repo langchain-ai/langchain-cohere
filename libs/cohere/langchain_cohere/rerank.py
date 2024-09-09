@@ -21,7 +21,7 @@ class CohereRerank(BaseDocumentCompressor):
     model: Optional[str] = None
     """Model to use for reranking. Mandatory to specify the model name."""
     cohere_api_key: Optional[SecretStr] = Field(
-        alias="api_key", default_factory=secret_from_env("COHERE_API_KEY", default=None)
+        default_factory=secret_from_env("COHERE_API_KEY", default=None)
     )
     """Cohere API key. Must be specified directly or via environment variable 
         COHERE_API_KEY."""
