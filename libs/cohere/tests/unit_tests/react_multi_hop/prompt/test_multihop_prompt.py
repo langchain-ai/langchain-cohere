@@ -16,14 +16,14 @@ from tests.unit_tests.react_multi_hop import ExpectationType, read_expectation_f
 
 class InternetSearchTool(BaseTool):
     class _InputSchema(BaseModel):
-        query: str = Field(type=str, description="Query to search the internet with")
+        query: str = Field(description="Query to search the internet with")
 
-    name = "internet_search"
-    description = (
+    name: str = "internet_search"
+    description: str = (
         "Returns a list of relevant document snippets for a textual query "
         "retrieved from the internet"
     )
-    args_schema: Type[_InputSchema] = _InputSchema
+    args_schema: Type[BaseModel] = _InputSchema
 
     def _run(self, *args: Any, **kwargs: Any) -> Any:
         pass

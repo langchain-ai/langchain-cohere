@@ -11,6 +11,7 @@ from typing import (
     Optional,
     Sequence,
     Tuple,
+    Type,
     Union,
 )
 
@@ -334,9 +335,9 @@ def create_directly_answer_tool() -> BaseTool:
         class InputSchema(BaseModel):
             pass
 
-        name = "directly_answer"
-        description = "Calls a standard (un-augmented) AI chatbot to generate a response given the conversation history"  # noqa: E501
-        args_schema = InputSchema
+        name: str = "directly_answer"
+        description: str = "Calls a standard (un-augmented) AI chatbot to generate a response given the conversation history"  # noqa: E501
+        args_schema: Type[BaseModel] = InputSchema
 
         @property
         def args(self) -> dict:
