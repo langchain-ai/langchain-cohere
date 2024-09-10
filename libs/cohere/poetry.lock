@@ -954,20 +954,18 @@ subdirectory = "libs/core"
 
 [[package]]
 name = "langchain-experimental"
-version = "0.0.42"
+version = "0.3.0.dev1"
 description = "Building applications with LLMs through composability"
 optional = false
-python-versions = ">=3.8.1,<4.0"
+python-versions = "<4.0,>=3.9"
 files = [
-    {file = "langchain_experimental-0.0.42-py3-none-any.whl", hash = "sha256:8e9190fa5ebdd03dfed6ca20846ebb26fc7e0c1fffbab070a12f1ce0cf5053d2"},
-    {file = "langchain_experimental-0.0.42.tar.gz", hash = "sha256:1571ef536b056c46781d1de0fa926ab27c7d386da203ba61e0e0601d4cfc96be"},
+    {file = "langchain_experimental-0.3.0.dev1-py3-none-any.whl", hash = "sha256:a06d44a6e905244785dce63c999ed9f4f2bf0c9fd91fe12c85af37ef460e9b75"},
+    {file = "langchain_experimental-0.3.0.dev1.tar.gz", hash = "sha256:2a9ee087c686427a1449022ebda509b5bc012de940bf009a915b0c847d8e69e2"},
 ]
 
 [package.dependencies]
-langchain = ">=0.0.308"
-
-[package.extras]
-extended-testing = ["faker (>=19.3.1,<20.0.0)", "presidio-analyzer (>=2.2.33,<3.0.0)", "presidio-anonymizer (>=2.2.33,<3.0.0)", "sentence-transformers (>=2,<3)", "vowpal-wabbit-next (==0.6.0)"]
+langchain-community = ">=0.3.0.dev1,<0.4.0"
+langchain-core = ">=0.3.0.dev4,<0.4.0"
 
 [[package]]
 name = "langchain-standard-tests"
@@ -2537,4 +2535,4 @@ langchain-community = ["langchain-community"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0"
-content-hash = "3a1b8a9dc9cff0c89b895aa295180515e67b1eae97ce651cf6b063e9cf7ac06f"
+content-hash = "692182567b6b2d22142ec3a1703ae1b8089d7f0c6b17b12d184ca955d5c3a25e"
