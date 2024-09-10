@@ -2537,4 +2537,4 @@ langchain-community = ["langchain-community"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0"
-content-hash = "4b9323f1bdae2f6f16b809b2c8552f9735359c90259e221da47e176f396efe44"
+content-hash = "3a1b8a9dc9cff0c89b895aa295180515e67b1eae97ce651cf6b063e9cf7ac06f"
