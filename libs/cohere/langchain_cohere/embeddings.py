@@ -68,6 +68,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
     model_config = ConfigDict(
         arbitrary_types_allowed=True,
         extra="forbid",
+        protected_namespaces=(),
     )
 
     @model_validator(mode="before")
