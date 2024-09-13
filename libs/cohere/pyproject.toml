@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.3.0.dev2"
+version = "0.3.0"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
@@ -12,12 +12,12 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
-langchain-core = { version = "^0.3.0.dev4", allow-prereleases = true }
+langchain-core = ">=0.3.0,<0.4"
 cohere = ">=5.5.6,<6.0"
 pandas = ">=1.4.3"
 tabulate = "^0.9.0"
-langchain-experimental = { version = "^0.3.0.dev1", allow-prereleases = true }
-langchain-community = { version = ">=0.3.0.dev1",optional = true, allow-prereleases = true }
+langchain-experimental = ">=0.3.0"
+langchain-community = { version = ">=0.3.0",optional = true }
 pydantic = ">=2,<3"
 
 [[tool.mypy.overrides]]
@@ -35,9 +35,9 @@ pytest-mock = "^3.10.0"
 syrupy = "^4.0.2"
 pytest-watcher = "^0.3.4"
 pytest-asyncio = "^0.21.1"
-langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core", branch = "v0.3rc" }
-langchain-standard-tests = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/standard-tests", branch = "v0.3rc" }
-langchain-community = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/community", branch = "v0.3rc" }
+langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
+langchain-standard-tests = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/standard-tests" }
+langchain-community = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/community" }
 pytest-vcr = "^1.0.2"
 
 [tool.poetry.group.codespell]
@@ -50,10 +50,10 @@ codespell = "^2.2.0"
 optional = true
 
 [tool.poetry.group.test_integration.dependencies]
-langchain = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/langchain", branch = "v0.3rc" }
-langchain-text-splitters = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/text-splitters", branch = "v0.3rc" }
+langchain = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/langchain" }
+langchain-text-splitters = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/text-splitters" }
 langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", subdirectory = "libs/langgraph", markers="python_version >= '3.9.0' and python_version < '4.0'" }
-langchain-standard-tests = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/standard-tests", branch = "v0.3rc" }
+langchain-standard-tests = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/standard-tests" }
 pytest-vcr = "^1.0.2"
 pytest = "^8.2.2"
 [tool.poetry.group.lint]
@@ -64,15 +64,15 @@ ruff = "^0.1.5"
 
 [tool.poetry.group.typing.dependencies]
 mypy = "^0.991"
-langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core", branch = "v0.3rc" }
-langchain-community = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/community", branch = "v0.3rc" }
+langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
+langchain-community = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/community" }
 
 
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core", branch = "v0.3rc" }
+langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
 langgraph = { python = ">=3.9.0,<4.0", git = "https://github.com/langchain-ai/langgraph.git", subdirectory = "libs/langgraph", markers="python_version >= '3.9.0' and python_version < '4.0'" }
 
 [tool.ruff]
