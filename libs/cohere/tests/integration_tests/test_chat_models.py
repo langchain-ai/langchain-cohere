@@ -19,8 +19,8 @@ from langchain_core.messages import (
     HumanMessage,
     ToolMessage,
 )
-from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.tools import tool
+from pydantic import BaseModel, Field
 
 from langchain_cohere import ChatCohere
 
@@ -125,8 +125,8 @@ def test_invoke_tool_calls() -> None:
     llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
 
     class Person(BaseModel):
-        name: str = Field(type=str, description="The name of the person")
-        age: int = Field(type=int, description="The age of the person")
+        name: str = Field(description="The name of the person")
+        age: int = Field(description="The age of the person")
 
     tool_llm = llm.bind_tools([Person])
 
@@ -153,8 +153,8 @@ def test_streaming_tool_call() -> None:
     llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
 
     class Person(BaseModel):
-        name: str = Field(type=str, description="The name of the person")
-        age: int = Field(type=int, description="The age of the person")
+        name: str = Field(description="The name of the person")
+        age: int = Field(description="The age of the person")
 
     tool_llm = llm.bind_tools([Person])
 

@@ -6,8 +6,9 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 import cohere
 from langchain_core.callbacks.manager import Callbacks
 from langchain_core.documents import BaseDocumentCompressor, Document
-from langchain_core.pydantic_v1 import Extra, root_validator
-from langchain_core.utils import get_from_dict_or_env
+from langchain_core.utils import secret_from_env
+from pydantic import ConfigDict, Field, SecretStr, model_validator
+from typing_extensions import Self
 
 
 class CohereRerank(BaseDocumentCompressor):
@@ -19,34 +20,35 @@ class CohereRerank(BaseDocumentCompressor):
     """Number of documents to return."""
     model: Optional[str] = None
     """Model to use for reranking. Mandatory to specify the model name."""
-    cohere_api_key: Optional[str] = None
+    cohere_api_key: Optional[SecretStr] = Field(
+        default_factory=secret_from_env("COHERE_API_KEY", default=None)
+    )
     """Cohere API key. Must be specified directly or via environment variable 
         COHERE_API_KEY."""
     user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
-    class Config:
-        """Configuration for this pydantic object."""
+    model_config = ConfigDict(
+        extra="forbid",
+        arbitrary_types_allowed=True,
+    )
 
-        extra = Extra.forbid
-        arbitrary_types_allowed = True
-
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_environment(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
-        if not values.get("client"):
-            cohere_api_key = get_from_dict_or_env(
-                values, "cohere_api_key", "COHERE_API_KEY"
-            )
-            client_name = values["user_agent"]
-            values["client"] = cohere.Client(cohere_api_key, client_name=client_name)
-        return values
+        if not self.client:
+            if isinstance(self.cohere_api_key, SecretStr):
+                cohere_api_key: Optional[str] = self.cohere_api_key.get_secret_value()
+            else:
+                cohere_api_key = self.cohere_api_key
+            client_name = self.user_agent
+            self.client = cohere.Client(cohere_api_key, client_name=client_name)
+        return self
 
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_model_specified(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_model_specified(self) -> Self:  # type: ignore[valid-type]
         """Validate that model is specified."""
-        model = values.get("model")
-        if not model:
+        if not self.model:
             raise ValueError(
                 "Did not find `model`! Please "
                 " pass `model` as a named parameter."
@@ -55,7 +57,7 @@ class CohereRerank(BaseDocumentCompressor):
                 " for available models."
             )
 
-        return values
+        return self
 
     def rerank(
         self,

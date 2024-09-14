@@ -11,8 +11,14 @@ from langchain_core.callbacks import (
 )
 from langchain_core.language_models.llms import LLM
 from langchain_core.load.serializable import Serializable
-from langchain_core.pydantic_v1 import Extra, Field, SecretStr, root_validator
-from langchain_core.utils import convert_to_secret_str, get_from_dict_or_env
+from langchain_core.utils import secret_from_env
+from pydantic import (
+    ConfigDict,
+    Field,
+    SecretStr,
+    model_validator,
+)
+from typing_extensions import Self
 
 from .utils import _create_retry_decorator
 
@@ -58,7 +64,9 @@ class BaseCohere(Serializable):
     temperature: Optional[float] = None
     """A non-negative float that tunes the degree of randomness in generation."""
 
-    cohere_api_key: Optional[SecretStr] = None
+    cohere_api_key: Optional[SecretStr] = Field(
+        default_factory=secret_from_env("COHERE_API_KEY", default=None)
+    )
     """Cohere API key. If not provided, will be read from the environment variable."""
 
     stop: Optional[List[str]] = None
@@ -75,27 +83,28 @@ class BaseCohere(Serializable):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
-    @root_validator(pre=False, skip_on_failure=True)
-    def validate_environment(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
-        values["cohere_api_key"] = convert_to_secret_str(
-            get_from_dict_or_env(values, "cohere_api_key", "COHERE_API_KEY")
-        )
-        client_name = values["user_agent"]
-        timeout_seconds = values.get("timeout_seconds")
-        values["client"] = cohere.Client(
-            api_key=values["cohere_api_key"].get_secret_value(),
+        if isinstance(self.cohere_api_key, SecretStr):
+            cohere_api_key: Optional[str] = self.cohere_api_key.get_secret_value()
+        else:
+            cohere_api_key = self.cohere_api_key
+        client_name = self.user_agent
+        timeout_seconds = self.timeout_seconds
+        self.client = cohere.Client(
+            api_key=cohere_api_key,
             timeout=timeout_seconds,
             client_name=client_name,
-            base_url=values["base_url"],
+            base_url=self.base_url,
         )
-        values["async_client"] = cohere.AsyncClient(
-            api_key=values["cohere_api_key"].get_secret_value(),
+        self.async_client = cohere.AsyncClient(
+            api_key=cohere_api_key,
             client_name=client_name,
             timeout=timeout_seconds,
-            base_url=values["base_url"],
+            base_url=self.base_url,
         )
-        return values
+        return self
 
 
 class Cohere(LLM, BaseCohere):
@@ -135,11 +144,10 @@ class Cohere(LLM, BaseCohere):
     max_retries: int = 10
     """Maximum number of retries to make when generating."""
 
-    class Config:
-        """Configuration for this pydantic object."""
-
-        arbitrary_types_allowed = True
-        extra = Extra.forbid
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        extra="forbid",
+    )
 
     @property
     def _default_params(self) -> Dict[str, Any]:

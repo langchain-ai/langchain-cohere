@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.2.4"
+version = "0.3.0"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
@@ -11,13 +11,14 @@ license = "MIT"
 "Source Code" = "https://github.com/langchain-ai/langchain-cohere/tree/main/libs/cohere"
 
 [tool.poetry.dependencies]
-python = ">=3.8.1,<4.0"
-langchain-core = ">=0.2.33,<0.3"
+python = ">=3.9,<4.0"
+langchain-core = ">=0.3.0,<0.4"
 cohere = ">=5.5.6,<6.0"
 pandas = ">=1.4.3"
 tabulate = "^0.9.0"
-langchain-experimental = ">=0.0.6"
-langchain-community = { version = ">=0.2.10",optional = true }
+langchain-experimental = ">=0.3.0"
+langchain-community = { version = ">=0.3.0",optional = true }
+pydantic = ">=2,<3"
 
 [[tool.mypy.overrides]]
 module = [ "numpy", "pytest", "pandas",]
@@ -36,6 +37,7 @@ pytest-watcher = "^0.3.4"
 pytest-asyncio = "^0.21.1"
 langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
 langchain-standard-tests = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/standard-tests" }
+langchain-community = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/community" }
 pytest-vcr = "^1.0.2"
 
 [tool.poetry.group.codespell]
@@ -63,6 +65,7 @@ ruff = "^0.1.5"
 [tool.poetry.group.typing.dependencies]
 mypy = "^0.991"
 langchain-core = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/core" }
+langchain-community = { git = "https://github.com/langchain-ai/langchain.git", subdirectory = "libs/community" }
 
 
 [tool.poetry.group.dev]
