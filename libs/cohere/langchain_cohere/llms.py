@@ -104,6 +104,10 @@ class BaseCohere(Serializable):
             timeout=timeout_seconds,
             base_url=self.base_url,
         )
+        
+        if not self.model:
+            self.model = "command"
+
         return self
 
 
