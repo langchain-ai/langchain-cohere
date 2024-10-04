@@ -92,13 +92,13 @@ class BaseCohere(Serializable):
             cohere_api_key = self.cohere_api_key
         client_name = self.user_agent
         timeout_seconds = self.timeout_seconds
-        self.client = cohere.Client(
+        self.client = cohere.ClientV2(
             api_key=cohere_api_key,
             timeout=timeout_seconds,
             client_name=client_name,
             base_url=self.base_url,
         )
-        self.async_client = cohere.AsyncClient(
+        self.async_client = cohere.AsyncClientV2(
             api_key=cohere_api_key,
             client_name=client_name,
             timeout=timeout_seconds,

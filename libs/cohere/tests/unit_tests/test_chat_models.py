@@ -5,6 +5,7 @@ from unittest.mock import patch
 
 import pytest
 from cohere.types import NonStreamedChatResponse, ToolCall
+from cohere import Client, ClientV2, AsyncClientV2
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 
 from langchain_cohere.chat_models import (
@@ -40,6 +41,15 @@ def test_default_params(chat_cohere: ChatCohere, expected: typing.Dict) -> None:
     actual = chat_cohere._default_params
     assert expected == actual
 
+def test_client_v2_is_initialised() -> None:
+    chat_cohere = ChatCohere(cohere_api_key="test")
+    client = chat_cohere.client
+    async_client = chat_cohere.async_client
+    
+    assert client.api_key == "test"
+    assert async_client.api_key == "test"
+    assert isinstance(client, ClientV2)
+    assert isinstance(async_client, AsyncClientV2)
 
 @pytest.mark.parametrize(
     "response, expected",
