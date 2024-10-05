@@ -5,6 +5,7 @@ import pytest
 from pydantic import SecretStr
 
 from langchain_cohere.llms import BaseCohere, Cohere
+from cohere import ClientV2, AsyncClientV2
 
 
 def test_cohere_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -16,6 +17,13 @@ def test_cohere_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("COHERE_API_KEY", "secret-api-key")
     assert isinstance(BaseCohere().cohere_api_key, SecretStr)
 
+def test_client_v2_is_initialised() -> None:
+    llm = Cohere(cohere_api_key="test")
+    client = llm.client
+    async_client = llm.async_client
+
+    assert isinstance(client, ClientV2)
+    assert isinstance(async_client, AsyncClientV2)
 
 @pytest.mark.parametrize(
     "cohere,expected",

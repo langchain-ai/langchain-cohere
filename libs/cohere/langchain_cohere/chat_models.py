@@ -596,15 +596,22 @@ class ChatCohere(BaseChatModel, BaseCohere):
         else:
             stream = self.client.chat(**request, stream=True)
         for data in stream:
-            if data.event_type == "text-generation":
-                delta = data.text
+            if data.type == "content-delta":
+                delta = data.delta.message.content.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 if run_manager:
                     run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            if data.event_type == "tool-calls-chunk":
-                if data.tool_call_delta:
-                    delta = data.tool_call_delta
+            if data.type in {"tool-call-start", "tool-call-delta", "tool-plan-delta"}:
+                if data.type == "tool-call-start" or data.type == "tool_call_delta":
+                    delta = {}
+                    delta['index'] = data.index
+
+                    if data.type == "tool-call-start":
+                        delta['name'] = data.delta.message['tool_calls']['function']['name']
+                    else:
+                        delta['parameters'] = data.delta.message['tool_calls']['function']['arguments']
+
                     cohere_tool_call_chunk = _format_cohere_tool_calls([delta])[0]
                     message = AIMessageChunk(
                         content="",
@@ -621,12 +628,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     )
                     chunk = ChatGenerationChunk(message=message)
                 else:
-                    delta = data.text
+                    delta = data.delta.message["tool_plan"]
                     chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 if run_manager:
                     run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            elif data.event_type == "stream-end":
+            elif data.type == "message-end":
                 generation_info = self._get_generation_info(data.response)
                 message = AIMessageChunk(
                     content="",
