@@ -19,11 +19,18 @@ def test_initialization() -> None:
     """Test chat model initialization."""
     ChatCohere(cohere_api_key="test")
 
+def test_client_v2_is_initialised() -> None:
+    chat_cohere = ChatCohere(cohere_api_key="test")
+    client = chat_cohere.client
+    async_client = chat_cohere.async_client
+
+    assert isinstance(client, ClientV2)
+    assert isinstance(async_client, AsyncClientV2)
 
 @pytest.mark.parametrize(
     "chat_cohere,expected",
     [
-        pytest.param(ChatCohere(cohere_api_key="test"), { "model": "command" }, id="defaults"),
+        pytest.param(ChatCohere(cohere_api_key="test"), { "model": "command-r-plus" }, id="defaults"),
         pytest.param(
             ChatCohere(
                 cohere_api_key="test", model="foo", temperature=1.0, preamble="bar"
@@ -40,14 +47,6 @@ def test_initialization() -> None:
 def test_default_params(chat_cohere: ChatCohere, expected: typing.Dict) -> None:
     actual = chat_cohere._default_params
     assert expected == actual
-
-def test_client_v2_is_initialised() -> None:
-    chat_cohere = ChatCohere(cohere_api_key="test")
-    client = chat_cohere.client
-    async_client = chat_cohere.async_client
-
-    assert isinstance(client, ClientV2)
-    assert isinstance(async_client, AsyncClientV2)
 
 @pytest.mark.parametrize(
     "response, expected",

@@ -20,7 +20,7 @@ def test_cohere_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
 @pytest.mark.parametrize(
     "cohere,expected",
     [
-        pytest.param(Cohere(cohere_api_key="test"), { "model": "command" }, id="defaults"),
+        pytest.param(Cohere(cohere_api_key="test"), { "model": "command-r-plus" }, id="defaults"),
         pytest.param(
             Cohere(
                 # the following are arbitrary testing values which shouldn't be used:

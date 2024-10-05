@@ -106,7 +106,7 @@ class BaseCohere(Serializable):
         )
         
         if not self.model:
-            self.model = "command"
+            self.model = "command-r-plus"
 
         return self
 
