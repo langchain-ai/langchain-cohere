@@ -661,13 +661,13 @@ class ChatCohere(BaseChatModel, BaseCohere):
             stream = self.async_client.chat(**request, stream=True)
 
         async for data in stream:
-            if data.event_type == "text-generation":
-                delta = data.text
+            if data.type == "content-delta":
+                delta = data.delta.message.content.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 if run_manager:
                     await run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            elif data.event_type == "stream-end":
+            elif data.type == "message-end":
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
