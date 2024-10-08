@@ -1,5 +1,6 @@
 """Test Cohere API wrapper."""
-import typing
+from typing import Any, Dict, Generator, Optional
+from unittest.mock import MagicMock
 
 import pytest
 from pydantic import SecretStr
@@ -8,7 +9,7 @@ from langchain_cohere.llms import BaseCohere, Cohere
 from cohere import ClientV2, AsyncClientV2
 
 
-def test_cohere_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_cohere_api_key(patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None], monkeypatch: pytest.MonkeyPatch) -> None:
     """Test that cohere api key is a secret key."""
     # test initialization from init
     assert isinstance(BaseCohere(cohere_api_key="1").cohere_api_key, SecretStr)
@@ -26,22 +27,22 @@ def test_client_v2_is_initialised() -> None:
     assert isinstance(async_client, AsyncClientV2)
 
 @pytest.mark.parametrize(
-    "cohere,expected",
+    "cohere_kwargs,expected",
     [
-        pytest.param(Cohere(cohere_api_key="test"), { "model": "command-r-plus" }, id="defaults"),
+        pytest.param({ "cohere_api_key": "test" }, { "model": "command-r-plus" }, id="defaults"),
         pytest.param(
-            Cohere(
+            {
                 # the following are arbitrary testing values which shouldn't be used:
-                cohere_api_key="test",
-                model="foo",
-                temperature=0.1,
-                max_tokens=2,
-                k=3,
-                p=4,
-                frequency_penalty=0.5,
-                presence_penalty=0.6,
-                truncate="START",
-            ),
+                "cohere_api_key": "test",
+                "model": "foo",
+                "temperature": 0.1,
+                "max_tokens": 2,
+                "k": 3,
+                "p": 4,
+                "frequency_penalty": 0.5,
+                "presence_penalty": 0.6,
+                "truncate": "START",
+            },
             {
                 "model": "foo",
                 "temperature": 0.1,
@@ -56,7 +57,8 @@ def test_client_v2_is_initialised() -> None:
         ),
     ],
 )
-def test_default_params(cohere: Cohere, expected: typing.Dict) -> None:
+def test_default_params(cohere_kwargs: Dict[str, Any], expected: Dict) -> None:
+    cohere = Cohere(**cohere_kwargs)
     actual = cohere._default_params
     assert expected == actual
 

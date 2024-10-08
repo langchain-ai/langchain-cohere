@@ -83,6 +83,18 @@ class BaseCohere(Serializable):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
+    def _get_default_model(self) -> str:
+        """Fetches the current default model name."""
+        if not self.client:
+            raise Exception("client not initialized")
+
+        response = self.client.models.list(default_only=True, endpoint="chat")  # type: "ListModelsResponse"
+        if not response.models:
+            raise Exception("invalid cohere list models response")
+        if not response.models[0].name:
+            raise Exception("invalid cohere list models response")
+        return response.models[0].name
+
     @model_validator(mode="after")
     def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
@@ -106,7 +118,7 @@ class BaseCohere(Serializable):
         )
         
         if not self.model:
-            self.model = "command-r-plus"
+            self.model = self._get_default_model()
 
         return self
 

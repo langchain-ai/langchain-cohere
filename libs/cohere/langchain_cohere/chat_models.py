@@ -604,8 +604,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 yield chunk
             if data.type in {"tool-call-start", "tool-call-delta", "tool-plan-delta"}:
                 if data.type == "tool-call-start" or data.type == "tool_call_delta":
-                    delta = {}
-                    delta['index'] = data.index
+                    delta = { "index": data.index }
 
                     if data.type == "tool-call-start":
                         delta['name'] = data.delta.message['tool_calls']['function']['name']
@@ -802,15 +801,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 ChatGeneration(message=message, generation_info=generation_info)
             ]
         )
-
-    def _get_default_model(self) -> str:
-        """Fetches the current default model name."""
-        response = self.client.models.list(default_only=True, endpoint="chat")  # type: "ListModelsResponse"
-        if not response.models:
-            raise Exception("invalid cohere list models response")
-        if not response.models[0].name:
-            raise Exception("invalid cohere list models response")
-        return response.models[0].name
 
     @property
     def model_name(self) -> str:

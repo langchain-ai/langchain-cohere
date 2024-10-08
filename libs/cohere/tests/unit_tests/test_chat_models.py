@@ -1,7 +1,7 @@
 """Test chat model integration."""
 
-import typing
-from unittest.mock import patch
+from typing import  Any, Dict, List, Generator, Optional
+from unittest.mock import patch, MagicMock
 
 import pytest
 from cohere.types import NonStreamedChatResponse, ToolCall
@@ -15,8 +15,7 @@ from langchain_cohere.chat_models import (
     get_cohere_chat_request_v2,
 )
 
-
-def test_initialization() -> None:
+def test_initialization(patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None]) -> None:
     """Test chat model initialization."""
     ChatCohere(cohere_api_key="test")
 
@@ -29,13 +28,11 @@ def test_client_v2_is_initialised() -> None:
     assert isinstance(async_client, AsyncClientV2)
 
 @pytest.mark.parametrize(
-    "chat_cohere,expected",
+    "chat_cohere_kwargs,expected",
     [
-        pytest.param(ChatCohere(cohere_api_key="test"), { "model": "command-r-plus" }, id="defaults"),
+        pytest.param({ "cohere_api_key": "test" }, { "model": "command-r-plus" }, id="defaults"),
         pytest.param(
-            ChatCohere(
-                cohere_api_key="test", model="foo", temperature=1.0, preamble="bar"
-            ),
+            { "cohere_api_key": "test", "model": "foo", "temperature": 1.0, "preamble": "bar" },
             {
                 "model": "foo",
                 "temperature": 1.0,
@@ -45,7 +42,8 @@ def test_client_v2_is_initialised() -> None:
         ),
     ],
 )
-def test_default_params(chat_cohere: ChatCohere, expected: typing.Dict) -> None:
+def test_default_params(chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> None:
+    chat_cohere = ChatCohere(**chat_cohere_kwargs)
     actual = chat_cohere._default_params
     assert expected == actual
 
@@ -124,7 +122,7 @@ def test_default_params(chat_cohere: ChatCohere, expected: typing.Dict) -> None:
     ],
 )
 def test_get_generation_info(
-    response: typing.Any, expected: typing.Dict[str, typing.Any]
+    response: Any, expected: Dict[str, Any]
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
 
@@ -173,10 +171,10 @@ def test_messages_to_cohere_tool_results() -> None:
 
 
 @pytest.mark.parametrize(
-    "cohere_client,messages,force_single_step,expected",
+    "cohere_client_kwargs,messages,force_single_step,expected",
     [
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [HumanMessage(content="what is magic_function(12) ?")],
             True,
             {
@@ -196,7 +194,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is True",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -278,7 +276,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Multiple Messages with tool results and force_single_step is True",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [HumanMessage(content="what is magic_function(12) ?")],
             False,
             {
@@ -298,7 +296,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is False",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -394,11 +392,13 @@ def test_messages_to_cohere_tool_results() -> None:
     ],
 )
 def test_get_cohere_chat_request(
-    cohere_client: ChatCohere,
-    messages: typing.List[BaseMessage],
+    cohere_client_kwargs: Dict[str, Any],
+    messages: List[BaseMessage],
     force_single_step: bool,
-    expected: typing.Dict[str, typing.Any],
+    expected: Dict[str, Any],
 ) -> None:
+    cohere_client = ChatCohere(**cohere_client_kwargs)
+
     tools = [
         {
             "name": "magic_function",
@@ -421,10 +421,10 @@ def test_get_cohere_chat_request(
     assert result == expected
 
 @pytest.mark.parametrize(
-    "cohere_client_v2,messages,expected",
+    "cohere_client_v2_kwargs,messages,expected",
     [
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
@@ -453,10 +453,10 @@ def test_get_cohere_chat_request(
                     }
                 ],
             },
-            id="Single Message",
+            id="Single message",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [
                 HumanMessage(content="Hello!"),
                 AIMessage(
@@ -520,10 +520,10 @@ def test_get_cohere_chat_request(
                     }
                 ],
             },
-            id="Multiple Messages no tool usage",
+            id="Multiple messages no tool usage",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -623,15 +623,17 @@ def test_get_cohere_chat_request(
                     }
                 ],
             },
-            id="Multiple Messages with tool results",
+            id="Multiple messages with tool usage",
         ),
     ],
 )
 def test_get_cohere_chat_request_v2(
-    cohere_client_v2: ChatCohere,
-    messages: typing.List[BaseMessage],
-    expected: typing.Dict[str, typing.Any],
+    cohere_client_v2_kwargs: Dict[str, Any],
+    messages: List[BaseMessage],
+    expected: Dict[str, Any],
 ) -> None:
+    cohere_client_v2 = ChatCohere(**cohere_client_v2_kwargs)
+
     tools = [
         {
             "type": "function",
