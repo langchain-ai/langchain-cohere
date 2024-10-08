@@ -1,11 +1,11 @@
 """Test chat model integration."""
 
-from typing import  Any, Dict, List, Generator, Optional
-from unittest.mock import patch, MagicMock
+from typing import Any, Dict, Generator, List, Optional
+from unittest.mock import MagicMock, patch
 
 import pytest
+from cohere import AsyncClientV2, ClientV2
 from cohere.types import NonStreamedChatResponse, ToolCall
-from cohere import Client, ClientV2, AsyncClientV2
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 
 from langchain_cohere.chat_models import (
@@ -15,9 +15,13 @@ from langchain_cohere.chat_models import (
     get_cohere_chat_request_v2,
 )
 
-def test_initialization(patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None]) -> None:
+
+def test_initialization(
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+) -> None:
     """Test chat model initialization."""
     ChatCohere(cohere_api_key="test")
+
 
 def test_client_v2_is_initialised() -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
@@ -27,12 +31,20 @@ def test_client_v2_is_initialised() -> None:
     assert isinstance(client, ClientV2)
     assert isinstance(async_client, AsyncClientV2)
 
+
 @pytest.mark.parametrize(
     "chat_cohere_kwargs,expected",
     [
-        pytest.param({ "cohere_api_key": "test" }, { "model": "command-r-plus" }, id="defaults"),
         pytest.param(
-            { "cohere_api_key": "test", "model": "foo", "temperature": 1.0, "preamble": "bar" },
+            {"cohere_api_key": "test"}, {"model": "command-r-plus"}, id="defaults"
+        ),
+        pytest.param(
+            {
+                "cohere_api_key": "test",
+                "model": "foo",
+                "temperature": 1.0,
+                "preamble": "bar",
+            },
             {
                 "model": "foo",
                 "temperature": 1.0,
@@ -46,6 +58,7 @@ def test_default_params(chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> N
     chat_cohere = ChatCohere(**chat_cohere_kwargs)
     actual = chat_cohere._default_params
     assert expected == actual
+
 
 @pytest.mark.parametrize(
     "response, expected",
@@ -121,9 +134,7 @@ def test_default_params(chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> N
         ),
     ],
 )
-def test_get_generation_info(
-    response: Any, expected: Dict[str, Any]
-) -> None:
+def test_get_generation_info(response: Any, expected: Dict[str, Any]) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
 
     with patch("uuid.uuid4") as mock_uuid:
@@ -174,7 +185,7 @@ def test_messages_to_cohere_tool_results() -> None:
     "cohere_client_kwargs,messages,force_single_step,expected",
     [
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [HumanMessage(content="what is magic_function(12) ?")],
             True,
             {
@@ -194,7 +205,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is True",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -276,7 +287,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Multiple Messages with tool results and force_single_step is True",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [HumanMessage(content="what is magic_function(12) ?")],
             False,
             {
@@ -296,7 +307,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is False",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -420,11 +431,12 @@ def test_get_cohere_chat_request(
     assert isinstance(result, dict)
     assert result == expected
 
+
 @pytest.mark.parametrize(
     "cohere_client_v2_kwargs,messages,expected",
     [
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
@@ -447,16 +459,16 @@ def test_get_cohere_chat_request(
                                         "description": "",
                                     }
                                 },
-                                "required": ["a"]
+                                "required": ["a"],
                             },
-                        }
+                        },
                     }
                 ],
             },
             id="Single message",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="Hello!"),
                 AIMessage(
@@ -498,7 +510,7 @@ def test_get_cohere_chat_request(
                     {
                         "role": "user",
                         "content": "Remember my name, its Bob.",
-                    }
+                    },
                 ],
                 "tools": [
                     {
@@ -514,16 +526,16 @@ def test_get_cohere_chat_request(
                                         "description": "",
                                     }
                                 },
-                                "required": ["a"]
+                                "required": ["a"],
                             },
-                        }
+                        },
                     }
                 ],
             },
             id="Multiple messages no tool usage",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -581,13 +593,10 @@ def test_get_cohere_chat_request(
             ],
             {
                 "messages": [
-                    { 
-                        "role": "user",
-                        "content": "what is magic_function(12) ?"
-                    },
+                    {"role": "user", "content": "what is magic_function(12) ?"},
                     {
                         "role": "assistant",
-                        "tool_plan": "I will use the magic_function tool to answer the question.",
+                        "tool_plan": "I will use the magic_function tool to answer the question.",  # noqa: E501
                         "tool_calls": [
                             {
                                 "name": "magic_function",
@@ -595,13 +604,13 @@ def test_get_cohere_chat_request(
                                 "id": "e81dbae6937e47e694505f81e310e205",
                                 "type": "tool_call",
                             }
-                        ]
+                        ],
                     },
                     {
                         "role": "tool",
                         "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [{"output": "112"}]
-                    }
+                        "content": [{"output": "112"}],
+                    },
                 ],
                 "tools": [
                     {
@@ -617,9 +626,9 @@ def test_get_cohere_chat_request(
                                         "description": "",
                                     }
                                 },
-                                "required": ["a"]
+                                "required": ["a"],
                             },
-                        }
+                        },
                     }
                 ],
             },
@@ -648,9 +657,9 @@ def test_get_cohere_chat_request_v2(
                             "description": "",
                         }
                     },
-                    "required": ["a"]
+                    "required": ["a"],
                 },
-            }
+            },
         }
     ]
 

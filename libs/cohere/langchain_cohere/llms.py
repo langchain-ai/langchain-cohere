@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 import re
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 import cohere
 from langchain_core.callbacks import (
@@ -29,6 +29,9 @@ def enforce_stop_tokens(text: str, stop: List[str]) -> str:
 
 
 logger = logging.getLogger(__name__)
+
+if TYPE_CHECKING:
+    from cohere.types import ListModelsResponse  # noqa: F401
 
 
 def completion_with_retry(llm: Cohere, **kwargs: Any) -> Any:
@@ -116,7 +119,7 @@ class BaseCohere(Serializable):
             timeout=timeout_seconds,
             base_url=self.base_url,
         )
-        
+
         if not self.model:
             self.model = self._get_default_model()
 

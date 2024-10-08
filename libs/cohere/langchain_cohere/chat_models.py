@@ -1,13 +1,13 @@
 import json
 import uuid
 from typing import (
-    TYPE_CHECKING,
     Any,
     AsyncIterator,
     Callable,
     Dict,
     Iterator,
     List,
+    MutableMapping,
     Optional,
     Sequence,
     Type,
@@ -133,10 +133,6 @@ def _messages_to_cohere_tool_results_curr_chat_turn(
                 )
 
     return tool_results
-
-
-if TYPE_CHECKING:
-    from cohere.types import ListModelsResponse  # noqa: F401
 
 
 def get_role(message: BaseMessage) -> str:
@@ -328,6 +324,7 @@ def get_cohere_chat_request(
 
     return {k: v for k, v in req.items() if v is not None}
 
+
 def get_role_v2(message: BaseMessage) -> str:
     """Get the role of the message.
 
@@ -351,14 +348,16 @@ def get_role_v2(message: BaseMessage) -> str:
     else:
         raise ValueError(f"Got unknown type {type(message).__name__}")
 
+
 def _get_message_cohere_format_v2(
-    message: BaseMessage, tool_results: Optional[List[Dict[Any, Any]]]
+    message: BaseMessage, tool_results: Optional[List[MutableMapping]]
 ) -> Dict[
     str,
     Union[
         str,
         List[LC_ToolCall],
         List[Union[str, Dict[Any, Any]]],
+        List[MutableMapping],
         List[Dict[Any, Any]],
         None,
     ],
@@ -377,18 +376,20 @@ def _get_message_cohere_format_v2(
             return {
                 "role": get_role_v2(message),
                 "tool_plan": message.content,
-                "tool_calls": message.tool_calls
+                "tool_calls": message.tool_calls,
             }
-        return {
-            "role": get_role_v2(message),
-            "content": message.content
-        }
+        return {"role": get_role_v2(message), "content": message.content}
     elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
         return {"role": get_role_v2(message), "content": message.content}
     elif isinstance(message, ToolMessage):
-        return {"role": get_role_v2(message), "tool_call_id": message.tool_call_id, "content": tool_results}
+        return {
+            "role": get_role_v2(message),
+            "tool_call_id": message.tool_call_id,
+            "content": tool_results,
+        }
     else:
         raise ValueError(f"Got unknown type {message}")
+
 
 def get_cohere_chat_request_v2(
     messages: List[BaseMessage],
@@ -450,12 +451,12 @@ def get_cohere_chat_request_v2(
     for message in messages:
         if isinstance(message, ToolMessage):
             tool_output = convert_to_documents(message.content)
-            cohere_message = _get_message_cohere_format_v2(
-                message, tool_output
-            )
+            cohere_message = _get_message_cohere_format_v2(message, tool_output)
             chat_history_with_curr_msg.append(cohere_message)
         else:
-            chat_history_with_curr_msg.append(_get_message_cohere_format_v2(message, None))
+            chat_history_with_curr_msg.append(
+                _get_message_cohere_format_v2(message, None)
+            )
 
     req = {
         "messages": chat_history_with_curr_msg,
@@ -466,6 +467,7 @@ def get_cohere_chat_request_v2(
     }
 
     return {k: v for k, v in req.items() if v is not None}
+
 
 class ChatCohere(BaseChatModel, BaseCohere):
     """
@@ -604,12 +606,16 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 yield chunk
             if data.type in {"tool-call-start", "tool-call-delta", "tool-plan-delta"}:
                 if data.type == "tool-call-start" or data.type == "tool_call_delta":
-                    delta = { "index": data.index }
+                    delta = {"index": data.index}
 
                     if data.type == "tool-call-start":
-                        delta['name'] = data.delta.message['tool_calls']['function']['name']
+                        delta["name"] = data.delta.message["tool_calls"]["function"][
+                            "name"
+                        ]
                     else:
-                        delta['parameters'] = data.delta.message['tool_calls']['function']['arguments']
+                        delta["parameters"] = data.delta.message["tool_calls"][
+                            "function"
+                        ]["arguments"]
 
                     cohere_tool_call_chunk = _format_cohere_tool_calls([delta])[0]
                     message = AIMessageChunk(

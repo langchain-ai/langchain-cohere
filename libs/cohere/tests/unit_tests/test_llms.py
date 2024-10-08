@@ -3,13 +3,16 @@ from typing import Any, Dict, Generator, Optional
 from unittest.mock import MagicMock
 
 import pytest
+from cohere import AsyncClientV2, ClientV2
 from pydantic import SecretStr
 
 from langchain_cohere.llms import BaseCohere, Cohere
-from cohere import ClientV2, AsyncClientV2
 
 
-def test_cohere_api_key(patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None], monkeypatch: pytest.MonkeyPatch) -> None:
+def test_cohere_api_key(
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """Test that cohere api key is a secret key."""
     # test initialization from init
     assert isinstance(BaseCohere(cohere_api_key="1").cohere_api_key, SecretStr)
@@ -17,6 +20,7 @@ def test_cohere_api_key(patch_base_cohere_get_default_model: Generator[Optional[
     # test initialization from env variable
     monkeypatch.setenv("COHERE_API_KEY", "secret-api-key")
     assert isinstance(BaseCohere().cohere_api_key, SecretStr)
+
 
 def test_client_v2_is_initialised() -> None:
     llm = Cohere(cohere_api_key="test")
@@ -26,10 +30,13 @@ def test_client_v2_is_initialised() -> None:
     assert isinstance(client, ClientV2)
     assert isinstance(async_client, AsyncClientV2)
 
+
 @pytest.mark.parametrize(
     "cohere_kwargs,expected",
     [
-        pytest.param({ "cohere_api_key": "test" }, { "model": "command-r-plus" }, id="defaults"),
+        pytest.param(
+            {"cohere_api_key": "test"}, {"model": "command-r-plus"}, id="defaults"
+        ),
         pytest.param(
             {
                 # the following are arbitrary testing values which shouldn't be used:
