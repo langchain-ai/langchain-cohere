@@ -15,7 +15,7 @@ from typing import (
     Union,
 )
 
-from cohere.types import NonStreamedChatResponse, ToolCall
+from cohere.types import NonStreamedChatResponse, ChatResponse, ToolCall, ToolCallV2
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
     CallbackManagerForLLMRun,
@@ -329,7 +329,7 @@ def get_cohere_chat_request(
     return {k: v for k, v in req.items() if v is not None}
 
 def get_role_v2(message: BaseMessage) -> str:
-    """Get the role of the message.
+    """Get the role of the message (V2).
     Args:
         message: The message.
     Returns:
@@ -362,7 +362,7 @@ def _get_message_cohere_format_v2(
         None,
     ],
 ]:
-    """Get the formatted message as required in cohere's api.
+    """Get the formatted message as required in cohere's api (V2).
     Args:
         message: The BaseMessage.
         tool_results: The tool results if any
@@ -397,7 +397,7 @@ def get_cohere_chat_request_v2(
     stop_sequences: Optional[List[str]] = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
-    """Get the request for the Cohere chat API.
+    """Get the request for the Cohere chat API (V2).
     Args:
         messages: The messages.
         connectors: The connectors.
@@ -719,6 +719,31 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info["token_count"] = response.meta.tokens.dict()
         return generation_info
 
+    def _get_generation_info_v2(self, response: ChatResponse) -> Dict[str, Any]:
+        """Get the generation info from cohere API response (V2)."""
+        generation_info: Dict[str, Any] = {
+            "id": response.id,
+            "finish_reason": response.finish_reason,
+        }
+
+        if response.message:
+            if response.message.tool_plan:
+                generation_info["tool_plan"] = response.message.tool_plan
+            if response.message.tool_calls:
+                generation_info["tool_calls"] = _format_cohere_tool_calls_v2(
+                    response.message.tool_calls
+                )
+            if response.message.content:
+                generation_info["content"] = response.message.content[0].text
+            if response.message.citations:
+                generation_info["citations"] = response.message.citations
+            
+        if response.usage:
+            if response.usage.tokens:
+                generation_info["token_count"] = response.usage.tokens.dict()
+        
+        return generation_info
+
     def _generate(
         self,
         messages: List[BaseMessage],
@@ -732,12 +757,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
             )
             return generate_from_stream(stream_iter)
 
-        request = get_cohere_chat_request(
+        request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-        response = self.client.chat(**request)
+        response = self.chat_v2(**request)
 
-        generation_info = self._get_generation_info(response)
+        generation_info = self._get_generation_info_v2(response)
         if "tool_calls" in generation_info:
             tool_calls = [
                 _convert_cohere_tool_call_to_langchain(tool_call)
@@ -838,6 +863,30 @@ def _format_cohere_tool_calls(
                 "function": {
                     "name": tool_call.name,
                     "arguments": json.dumps(tool_call.parameters),
+                },
+                "type": "function",
+            }
+        )
+    return formatted_tool_calls
+
+
+def _format_cohere_tool_calls_v2(
+    tool_calls: Optional[List[ToolCallV2]] = None,
+) -> List[Dict]:
+    """
+    Formats a V2 Cohere API response into the tool call format used elsewhere in Langchain.
+    """
+    if not tool_calls:
+        return []
+
+    formatted_tool_calls = []
+    for tool_call in tool_calls:
+        formatted_tool_calls.append(
+            {
+                "id": uuid.uuid4().hex[:],
+                "function": {
+                    "name": tool_call.function.name,
+                    "arguments": tool_call.function.arguments,
                 },
                 "type": "function",
             }

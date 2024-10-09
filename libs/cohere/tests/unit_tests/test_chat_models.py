@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 from unittest.mock import patch
 
 import pytest
-from cohere.types import NonStreamedChatResponse, ToolCall
+from cohere.types import ChatResponse, NonStreamedChatResponse, AssistantMessageResponse, ToolCall, ToolCallV2, ToolCallV2Function, Usage
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 
 from langchain_cohere.chat_models import (
@@ -124,6 +124,116 @@ def test_get_generation_info(
     with patch("uuid.uuid4") as mock_uuid:
         mock_uuid.return_value.hex = "foo"
         actual = chat_cohere._get_generation_info(response)
+
+    assert expected == actual
+
+
+@pytest.mark.parametrize(
+    "response, expected",
+    [
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan="I will use the magic_function tool to answer the question.",
+                    tool_calls=[
+                        ToolCallV2(function=ToolCallV2Function(name="tool1", arguments='{"arg1": 1, "arg2": "2"}')),
+                        ToolCallV2(function=ToolCallV2Function(name="tool2", arguments='{"arg3": 3, "arg4": "4"}')),
+                    ],
+                    content=None,
+                    citations=None,
+                ),
+                usage=Usage(
+                    tokens={"input_tokens": 215, "output_tokens": 38}
+                )
+            ),
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+                "tool_plan": "I will use the magic_function tool to answer the question.",
+                "tool_calls": [
+                    {
+                        "id": "foo",
+                        "function": {
+                            "name": "tool1",
+                            "arguments": '{"arg1": 1, "arg2": "2"}',
+                        },
+                        "type": "function",
+                    },
+                    {
+                        "id": "foo",
+                        "function": {
+                            "name": "tool2",
+                            "arguments": '{"arg3": 3, "arg4": "4"}',
+                        },
+                        "type": "function",
+                    },
+                ],
+                "token_count": {
+                    "input_tokens": 215,
+                    "output_tokens": 38,
+                }
+            },
+            id="tools should be called",
+        ),
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan=None,
+                    tool_calls=[],
+                    content=[],
+                    citations=None,
+                ),
+            ),
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+            },
+            id="no tools should be called",
+        ),
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan=None,
+                    tool_calls=[],
+                    content=[
+                        {
+                            "type": "text",
+                            "text": "How may I help you today?"
+                        }
+                    ],
+                    citations=None,
+                ),
+                usage=Usage(
+                    tokens={"input_tokens": 215, "output_tokens": 38}
+                )
+            ),
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+                "content": "How may I help you today?",
+                "token_count": {
+                    "input_tokens": 215,
+                    "output_tokens": 38,
+                }
+            },
+            id="chat response without tools/documents/citations/tools etc",
+        ),
+    ],
+)
+def test_get_generation_info_v2(
+    response: Any, expected: Dict[str, Any]
+) -> None:
+    chat_cohere = ChatCohere(cohere_api_key="test")
+
+    with patch("uuid.uuid4") as mock_uuid:
+        mock_uuid.return_value.hex = "foo"
+        actual = chat_cohere._get_generation_info_v2(response)
 
     assert expected == actual
 

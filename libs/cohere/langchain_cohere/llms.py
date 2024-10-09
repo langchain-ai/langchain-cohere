@@ -58,6 +58,13 @@ class BaseCohere(Serializable):
 
     client: Any = None  #: :meta private:
     async_client: Any = None  #: :meta private:
+    
+    chat_v2: Optional[Any] = None
+    "Cohere chat v2."
+
+    async_chat_v2: Optional[Any] = None
+    "Cohere async chat v2."
+
     model: Optional[str] = Field(default=None)
     """Model name to use."""
 
@@ -98,12 +105,16 @@ class BaseCohere(Serializable):
             client_name=client_name,
             base_url=self.base_url,
         )
+        self.chat_v2 = self.client.v2.chat
+
         self.async_client = cohere.AsyncClient(
             api_key=cohere_api_key,
             client_name=client_name,
             timeout=timeout_seconds,
             base_url=self.base_url,
         )
+        self.async_chat_v2 = self.async_client.v2.chat
+
         return self
 
 
