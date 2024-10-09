@@ -1,13 +1,13 @@
 import json
 import uuid
 from typing import (
-    TYPE_CHECKING,
     Any,
     AsyncIterator,
     Callable,
     Dict,
     Iterator,
     List,
+    MutableMapping,
     Optional,
     Sequence,
     Type,
@@ -133,10 +133,6 @@ def _messages_to_cohere_tool_results_curr_chat_turn(
                 )
 
     return tool_results
-
-
-if TYPE_CHECKING:
-    from cohere.types import ListModelsResponse  # noqa: F401
 
 
 def get_role(message: BaseMessage) -> str:
@@ -291,6 +287,7 @@ def get_cohere_chat_request(
         message_str = ""
         # if force_single_step is set to True, then message is the last human message in the conversation  # noqa: E501
         for i, message in enumerate(messages[:-1]):
+            # Filtering out tool calls from previous messages, keeping context clear for model # noqa: E501
             if isinstance(message, AIMessage) and message.tool_calls:
                 continue
 
@@ -321,6 +318,154 @@ def get_cohere_chat_request(
         "documents": formatted_docs,
         "connectors": connectors,
         "prompt_truncation": prompt_truncation,
+        "stop_sequences": stop_sequences,
+        **kwargs,
+    }
+
+    return {k: v for k, v in req.items() if v is not None}
+
+
+def get_role_v2(message: BaseMessage) -> str:
+    """Get the role of the message.
+
+    Args:
+        message: The message.
+
+    Returns:
+        The role of the message.
+
+    Raises:
+        ValueError: If the message is of an unknown type.
+    """
+    if isinstance(message, ChatMessage) or isinstance(message, HumanMessage):
+        return "user"
+    elif isinstance(message, AIMessage):
+        return "assistant"
+    elif isinstance(message, SystemMessage):
+        return "system"
+    elif isinstance(message, ToolMessage):
+        return "tool"
+    else:
+        raise ValueError(f"Got unknown type {type(message).__name__}")
+
+
+def _get_message_cohere_format_v2(
+    message: BaseMessage, tool_results: Optional[List[MutableMapping]]
+) -> Dict[
+    str,
+    Union[
+        str,
+        List[LC_ToolCall],
+        List[Union[str, Dict[Any, Any]]],
+        List[MutableMapping],
+        List[Dict[Any, Any]],
+        None,
+    ],
+]:
+    """Get the formatted message as required in cohere's api.
+
+    Args:
+        message: The BaseMessage.
+        tool_results: The tool results if any
+
+    Returns:
+        The formatted message as required in cohere's api.
+    """
+    if isinstance(message, AIMessage):
+        if message.tool_calls:
+            return {
+                "role": get_role_v2(message),
+                "tool_plan": message.content,
+                "tool_calls": message.tool_calls,
+            }
+        return {"role": get_role_v2(message), "content": message.content}
+    elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
+        return {"role": get_role_v2(message), "content": message.content}
+    elif isinstance(message, ToolMessage):
+        return {
+            "role": get_role_v2(message),
+            "tool_call_id": message.tool_call_id,
+            "content": tool_results,
+        }
+    else:
+        raise ValueError(f"Got unknown type {message}")
+
+
+def get_cohere_chat_request_v2(
+    messages: List[BaseMessage],
+    *,
+    documents: Optional[List[Document]] = None,
+    connectors: Optional[List[Dict[str, str]]] = None,
+    stop_sequences: Optional[List[str]] = None,
+    **kwargs: Any,
+) -> Dict[str, Any]:
+    """Get the request for the Cohere chat API.
+
+    Args:
+        messages: The messages.
+        connectors: The connectors.
+        **kwargs: The keyword arguments.
+
+    Returns:
+        The request for the Cohere chat API.
+    """
+    additional_kwargs = messages[-1].additional_kwargs
+
+    # cohere SDK will fail loudly if both connectors and documents are provided
+    if additional_kwargs.get("documents", []) and documents and len(documents) > 0:
+        raise ValueError(
+            "Received documents both as a keyword argument and as an prompt additional keyword argument. Please choose only one option."  # noqa: E501
+        )
+
+    parsed_docs: Optional[Union[List[Document], List[Dict]]] = None
+    if "documents" in additional_kwargs:
+        parsed_docs = (
+            additional_kwargs["documents"]
+            if len(additional_kwargs.get("documents", []) or []) > 0
+            else None
+        )
+    elif (documents is not None) and (len(documents) > 0):
+        parsed_docs = documents
+
+    formatted_docs: Optional[List[Dict[str, Any]]] = None
+    if parsed_docs:
+        formatted_docs = []
+        for i, parsed_doc in enumerate(parsed_docs):
+            if isinstance(parsed_doc, Document):
+                formatted_docs.append(
+                    {
+                        "text": parsed_doc.page_content,
+                        "id": parsed_doc.metadata.get("id") or f"doc-{str(i)}",
+                    }
+                )
+            elif isinstance(parsed_doc, dict):
+                formatted_docs.append(parsed_doc)
+
+    # check if the last message is a tool message or human message
+    if not (
+        isinstance(messages[-1], ToolMessage) or isinstance(messages[-1], HumanMessage)
+    ):
+        raise ValueError("The last message is not an ToolMessage or HumanMessage")
+    
+    if kwargs.get("preamble"):
+        messages = [SystemMessage(content=kwargs.get("preamble"))] + messages
+        del kwargs["preamble"]
+
+    chat_history_with_curr_msg = []
+    for message in messages:
+        if isinstance(message, ToolMessage):
+            tool_output = convert_to_documents(message.content)
+            cohere_message = _get_message_cohere_format_v2(message, tool_output)
+            chat_history_with_curr_msg.append(cohere_message)
+        else:
+            chat_history_with_curr_msg.append(
+                _get_message_cohere_format_v2(message, None)
+            )
+
+    req = {
+        "messages": chat_history_with_curr_msg,
+        "documents": formatted_docs,
+        "connectors": connectors,
         "stop_sequences": stop_sequences,
         **kwargs,
     }
@@ -449,7 +594,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         run_manager: Optional[CallbackManagerForLLMRun] = None,
         **kwargs: Any,
     ) -> Iterator[ChatGenerationChunk]:
-        request = get_cohere_chat_request(
+        request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
         if hasattr(self.client, "chat_stream"):  # detect and support sdk v5
@@ -457,15 +602,25 @@ class ChatCohere(BaseChatModel, BaseCohere):
         else:
             stream = self.client.chat(**request, stream=True)
         for data in stream:
-            if data.event_type == "text-generation":
-                delta = data.text
+            if data.type == "content-delta":
+                delta = data.delta.message.content.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 if run_manager:
                     run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            if data.event_type == "tool-calls-chunk":
-                if data.tool_call_delta:
-                    delta = data.tool_call_delta
+            if data.type in {"tool-call-start", "tool-call-delta", "tool-plan-delta"}:
+                if data.type == "tool-call-start" or data.type == "tool_call_delta":
+                    delta = {"index": data.index}
+
+                    if data.type == "tool-call-start":
+                        delta["name"] = data.delta.message["tool_calls"]["function"][
+                            "name"
+                        ]
+                    else:
+                        delta["parameters"] = data.delta.message["tool_calls"][
+                            "function"
+                        ]["arguments"]
+
                     cohere_tool_call_chunk = _format_cohere_tool_calls([delta])[0]
                     message = AIMessageChunk(
                         content="",
@@ -482,12 +637,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     )
                     chunk = ChatGenerationChunk(message=message)
                 else:
-                    delta = data.text
+                    delta = data.delta.message["tool_plan"]
                     chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 if run_manager:
                     run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            elif data.event_type == "stream-end":
+            elif data.type == "message-end":
                 generation_info = self._get_generation_info(data.response)
                 message = AIMessageChunk(
                     content="",
@@ -505,7 +660,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         run_manager: Optional[AsyncCallbackManagerForLLMRun] = None,
         **kwargs: Any,
     ) -> AsyncIterator[ChatGenerationChunk]:
-        request = get_cohere_chat_request(
+        request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
 
@@ -515,13 +670,13 @@ class ChatCohere(BaseChatModel, BaseCohere):
             stream = self.async_client.chat(**request, stream=True)
 
         async for data in stream:
-            if data.event_type == "text-generation":
-                delta = data.text
+            if data.type == "content-delta":
+                delta = data.delta.message.content.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 if run_manager:
                     await run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            elif data.event_type == "stream-end":
+            elif data.type == "message-end":
                 generation_info = self._get_generation_info(data.response)
                 tool_call_chunks = []
                 if tool_calls := generation_info.get("tool_calls"):
@@ -591,7 +746,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             )
             return generate_from_stream(stream_iter)
 
-        request = get_cohere_chat_request(
+        request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
         response = self.client.chat(**request)
@@ -630,7 +785,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             )
             return await agenerate_from_stream(stream_iter)
 
-        request = get_cohere_chat_request(
+        request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
 
@@ -656,15 +811,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 ChatGeneration(message=message, generation_info=generation_info)
             ]
         )
-
-    def _get_default_model(self) -> str:
-        """Fetches the current default model name."""
-        response = self.client.models.list(default_only=True, endpoint="chat")  # type: "ListModelsResponse"
-        if not response.models:
-            raise Exception("invalid cohere list models response")
-        if not response.models[0].name:
-            raise Exception("invalid cohere list models response")
-        return response.models[0].name
 
     @property
     def model_name(self) -> str:

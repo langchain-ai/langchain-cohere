@@ -72,4 +72,339 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"texts": ["foo bar"], "model": "embed-english-light-v3.0", "input_type":
+      "search_document", "embedding_types": ["int8"], "truncate": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '139'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/embed
+  response:
+    body:
+      string: '{"id":"d2926f20-e17d-4185-b1dc-686ae3c4075c","texts":["foo bar"],"embeddings":{"int8":[[-21,18,19,-8,-38,15,57,-18,124,62,34,22,-37,45,-24,48,-3,40,-54,-10,81,-16,-36,-2,-27,-14,-7,10,21,-11,-18,-53,2,2,-13,-37,6,17,19,25,-23,-10,51,-37,22,59,0,-45,47,27,37,-16,62,73,58,67,15,60,10,18,-61,26,-86,51,89,42,-39,-5,-63,33,-50,-2,15,59,-20,13,30,29,-23,25,-107,-21,-10,-43,6,-45,-37,-66,-9,14,-15,-2,72,1,3,1,12,-35,-6,37,-12,47,17,-128,46,40,3,33,13,19,-24,24,109,9,5,-95,-16,-17,-126,-3,30,35,46,11,-28,-19,11,-68,2,-27,-23,0,40,16,16,40,3,-34,50,-24,-17,-43,45,0,-30,18,-98,-18,-87,28,15,68,0,22,3,-41,17,75,-27,10,-26,61,-15,90,7,-45,20,-20,20,0,-2,9,42,17,-12,6,-93,-30,-6,-39,37,28,-86,8,16,-17,-46,-50,45,2,14,-5,-20,44,30,-59,57,-4,-44,-22,2,-41,-71,50,7,33,-62,-78,1,19,28,29,-58,24,-34,-101,60,-61,-102,4,16,-10,-119,-83,91,40,-13,-51,34,-27,66,-18,18,-8,-13,18,-32,43,62,28,-66,2,-13,23,-9,-101,55,3,27,-18,116,-13,-42,-35,21,-6,65,97,9,54,-25,-36,-67,73,-27,-4,-92,113,74,10,20,-9,-53,18,-70,10,19,-6,-57,3,-9,-4,-63,-12,-32,-42,64,-28,17,-17,-54,19,-23,43,-45,-16,-29,20,-70,19,49,-35,-78,60,-41,54,41,6,6,-24,-36,-23,-46,32,-48,64,80,-58,-10,-82,-42,9,-11,-24,3,0,-77,-91,-15,-72,41,42,25,-68,28,10,34,-44,-5,-9,-5,53,-30,17,77,-12,-27,45,2,-42,2,89,36,22,67,-22,-40,46,-44,112,22,22,48,-52,38,-28,13,9,0,-65,-12,8,39,-3,-24,-48,-9,-1,12,-34,-39,7,-22,-1]]},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":2}},"response_type":"embeddings_by_type"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1479'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:32:10 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '7'
+      num_tokens:
+      - '2'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 5ae92f3f36342d5e1df20081374189e4
+      x-envoy-upstream-service-time:
+      - '24'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"texts": ["foo bar"], "model": "embed-english-light-v3.0", "input_type":
+      "search_document", "embedding_types": ["int8"], "truncate": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '139'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/embed
+  response:
+    body:
+      string: '{"id":"9d1de8d2-fa90-4827-adc4-2d7d4eee7975","texts":["foo bar"],"embeddings":{"int8":[[-21,18,19,-8,-38,15,57,-18,124,62,34,22,-37,45,-24,48,-3,40,-54,-10,81,-16,-36,-2,-27,-14,-7,10,21,-11,-18,-53,2,2,-13,-37,6,17,19,25,-23,-10,51,-37,22,59,0,-45,47,27,37,-16,62,73,58,67,15,60,10,18,-61,26,-86,51,89,42,-39,-5,-63,33,-50,-2,15,59,-20,13,30,29,-23,25,-107,-21,-10,-43,6,-45,-37,-66,-9,14,-15,-2,72,1,3,1,12,-35,-6,37,-12,47,17,-128,46,40,3,33,13,19,-24,24,109,9,5,-95,-16,-17,-126,-3,30,35,46,11,-28,-19,11,-68,2,-27,-23,0,40,16,16,40,3,-34,50,-24,-17,-43,45,0,-30,18,-98,-18,-87,28,15,68,0,22,3,-41,17,75,-27,10,-26,61,-15,90,7,-45,20,-20,20,0,-2,9,42,17,-12,6,-93,-30,-6,-39,37,28,-86,8,16,-17,-46,-50,45,2,14,-5,-20,44,30,-59,57,-4,-44,-22,2,-41,-71,50,7,33,-62,-78,1,19,28,29,-58,24,-34,-101,60,-61,-102,4,16,-10,-119,-83,91,40,-13,-51,34,-27,66,-18,18,-8,-13,18,-32,43,62,28,-66,2,-13,23,-9,-101,55,3,27,-18,116,-13,-42,-35,21,-6,65,97,9,54,-25,-36,-67,73,-27,-4,-92,113,74,10,20,-9,-53,18,-70,10,19,-6,-57,3,-9,-4,-63,-12,-32,-42,64,-28,17,-17,-54,19,-23,43,-45,-16,-29,20,-70,19,49,-35,-78,60,-41,54,41,6,6,-24,-36,-23,-46,32,-48,64,80,-58,-10,-82,-42,9,-11,-24,3,0,-77,-91,-15,-72,41,42,25,-68,28,10,34,-44,-5,-9,-5,53,-30,17,77,-12,-27,45,2,-42,2,89,36,22,67,-22,-40,46,-44,112,22,22,48,-52,38,-28,13,9,0,-65,-12,8,39,-3,-24,-48,-9,-1,12,-34,-39,7,-22,-1]]},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":2}},"response_type":"embeddings_by_type"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1479'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:34:22 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '7'
+      num_tokens:
+      - '2'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 9207349f7dcb4863bc6aef75ab50675c
+      x-envoy-upstream-service-time:
+      - '29'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"texts": ["foo bar"], "model": "embed-english-light-v3.0", "input_type":
+      "search_document", "embedding_types": ["int8"], "truncate": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '139'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/embed
+  response:
+    body:
+      string: '{"id":"8d1e9862-3949-4b37-924e-e2a171c02665","texts":["foo bar"],"embeddings":{"int8":[[-21,18,19,-8,-38,15,57,-18,124,62,34,22,-37,45,-24,48,-3,40,-54,-10,81,-16,-36,-2,-27,-14,-7,10,21,-11,-18,-53,2,2,-13,-37,6,17,19,25,-23,-10,51,-37,22,59,0,-45,47,27,37,-16,62,73,58,67,15,60,10,18,-61,26,-86,51,89,42,-39,-5,-63,33,-50,-2,15,59,-20,13,30,29,-23,25,-107,-21,-10,-43,6,-45,-37,-66,-9,14,-15,-2,72,1,3,1,12,-35,-6,37,-12,47,17,-128,46,40,3,33,13,19,-24,24,109,9,5,-95,-16,-17,-126,-3,30,35,46,11,-28,-19,11,-68,2,-27,-23,0,40,16,16,40,3,-34,50,-24,-17,-43,45,0,-30,18,-98,-18,-87,28,15,68,0,22,3,-41,17,75,-27,10,-26,61,-15,90,7,-45,20,-20,20,0,-2,9,42,17,-12,6,-93,-30,-6,-39,37,28,-86,8,16,-17,-46,-50,45,2,14,-5,-20,44,30,-59,57,-4,-44,-22,2,-41,-71,50,7,33,-62,-78,1,19,28,29,-58,24,-34,-101,60,-61,-102,4,16,-10,-119,-83,91,40,-13,-51,34,-27,66,-18,18,-8,-13,18,-32,43,62,28,-66,2,-13,23,-9,-101,55,3,27,-18,116,-13,-42,-35,21,-6,65,97,9,54,-25,-36,-67,73,-27,-4,-92,113,74,10,20,-9,-53,18,-70,10,19,-6,-57,3,-9,-4,-63,-12,-32,-42,64,-28,17,-17,-54,19,-23,43,-45,-16,-29,20,-70,19,49,-35,-78,60,-41,54,41,6,6,-24,-36,-23,-46,32,-48,64,80,-58,-10,-82,-42,9,-11,-24,3,0,-77,-91,-15,-72,41,42,25,-68,28,10,34,-44,-5,-9,-5,53,-30,17,77,-12,-27,45,2,-42,2,89,36,22,67,-22,-40,46,-44,112,22,22,48,-52,38,-28,13,9,0,-65,-12,8,39,-3,-24,-48,-9,-1,12,-34,-39,7,-22,-1]]},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":2}},"response_type":"embeddings_by_type"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1479'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:15:47 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '7'
+      num_tokens:
+      - '2'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - ce211ffd276db9ef4a6314457766821e
+      x-envoy-upstream-service-time:
+      - '24'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"texts": ["foo bar"], "model": "embed-english-light-v3.0", "input_type":
+      "search_document", "embedding_types": ["int8"], "truncate": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '139'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/embed
+  response:
+    body:
+      string: '{"id":"c429dadc-cc7d-4f47-bd54-c45912f39523","texts":["foo bar"],"embeddings":{"int8":[[-21,18,19,-8,-38,15,57,-18,124,62,34,22,-37,45,-24,48,-3,40,-54,-10,81,-16,-36,-2,-27,-14,-7,10,21,-11,-18,-53,2,2,-13,-37,6,17,19,25,-23,-10,51,-37,22,59,0,-45,47,27,37,-16,62,73,58,67,15,60,10,18,-61,26,-86,51,89,42,-39,-5,-63,33,-50,-2,15,59,-20,13,30,29,-23,25,-107,-21,-10,-43,6,-45,-37,-66,-9,14,-15,-2,72,1,3,1,12,-35,-6,37,-12,47,17,-128,46,40,3,33,13,19,-24,24,109,9,5,-95,-16,-17,-126,-3,30,35,46,11,-28,-19,11,-68,2,-27,-23,0,40,16,16,40,3,-34,50,-24,-17,-43,45,0,-30,18,-98,-18,-87,28,15,68,0,22,3,-41,17,75,-27,10,-26,61,-15,90,7,-45,20,-20,20,0,-2,9,42,17,-12,6,-93,-30,-6,-39,37,28,-86,8,16,-17,-46,-50,45,2,14,-5,-20,44,30,-59,57,-4,-44,-22,2,-41,-71,50,7,33,-62,-78,1,19,28,29,-58,24,-34,-101,60,-61,-102,4,16,-10,-119,-83,91,40,-13,-51,34,-27,66,-18,18,-8,-13,18,-32,43,62,28,-66,2,-13,23,-9,-101,55,3,27,-18,116,-13,-42,-35,21,-6,65,97,9,54,-25,-36,-67,73,-27,-4,-92,113,74,10,20,-9,-53,18,-70,10,19,-6,-57,3,-9,-4,-63,-12,-32,-42,64,-28,17,-17,-54,19,-23,43,-45,-16,-29,20,-70,19,49,-35,-78,60,-41,54,41,6,6,-24,-36,-23,-46,32,-48,64,80,-58,-10,-82,-42,9,-11,-24,3,0,-77,-91,-15,-72,41,42,25,-68,28,10,34,-44,-5,-9,-5,53,-30,17,77,-12,-27,45,2,-42,2,89,36,22,67,-22,-40,46,-44,112,22,22,48,-52,38,-28,13,9,0,-65,-12,8,39,-3,-24,-48,-9,-1,12,-34,-39,7,-22,-1]]},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":2}},"response_type":"embeddings_by_type"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1479'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:22:52 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '7'
+      num_tokens:
+      - '2'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 081271302c71754c7d65bb6c046910b5
+      x-envoy-upstream-service-time:
+      - '40'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"texts": ["foo bar"], "model": "embed-english-light-v3.0", "input_type":
+      "search_document", "embedding_types": ["int8"], "truncate": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '139'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/embed
+  response:
+    body:
+      string: '{"id":"45d70038-cf96-498c-9268-eedb9c1d3ab1","texts":["foo bar"],"embeddings":{"int8":[[-21,18,19,-8,-38,15,57,-18,124,62,34,22,-37,45,-24,48,-3,40,-54,-10,81,-16,-36,-2,-27,-14,-7,10,21,-11,-18,-53,2,2,-13,-37,6,17,19,25,-23,-10,51,-37,22,59,0,-45,47,27,37,-16,62,73,58,67,15,60,10,18,-61,26,-86,51,89,42,-39,-5,-63,33,-50,-2,15,59,-20,13,30,29,-23,25,-107,-21,-10,-43,6,-45,-37,-66,-9,14,-15,-2,72,1,3,1,12,-35,-6,37,-12,47,17,-128,46,40,3,33,13,19,-24,24,109,9,5,-95,-16,-17,-126,-3,30,35,46,11,-28,-19,11,-68,2,-27,-23,0,40,16,16,40,3,-34,50,-24,-17,-43,45,0,-30,18,-98,-18,-87,28,15,68,0,22,3,-41,17,75,-27,10,-26,61,-15,90,7,-45,20,-20,20,0,-2,9,42,17,-12,6,-93,-30,-6,-39,37,28,-86,8,16,-17,-46,-50,45,2,14,-5,-20,44,30,-59,57,-4,-44,-22,2,-41,-71,50,7,33,-62,-78,1,19,28,29,-58,24,-34,-101,60,-61,-102,4,16,-10,-119,-83,91,40,-13,-51,34,-27,66,-18,18,-8,-13,18,-32,43,62,28,-66,2,-13,23,-9,-101,55,3,27,-18,116,-13,-42,-35,21,-6,65,97,9,54,-25,-36,-67,73,-27,-4,-92,113,74,10,20,-9,-53,18,-70,10,19,-6,-57,3,-9,-4,-63,-12,-32,-42,64,-28,17,-17,-54,19,-23,43,-45,-16,-29,20,-70,19,49,-35,-78,60,-41,54,41,6,6,-24,-36,-23,-46,32,-48,64,80,-58,-10,-82,-42,9,-11,-24,3,0,-77,-91,-15,-72,41,42,25,-68,28,10,34,-44,-5,-9,-5,53,-30,17,77,-12,-27,45,2,-42,2,89,36,22,67,-22,-40,46,-44,112,22,22,48,-52,38,-28,13,9,0,-65,-12,8,39,-3,-24,-48,-9,-1,12,-34,-39,7,-22,-1]]},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":2}},"response_type":"embeddings_by_type"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1479'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:28:13 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '7'
+      num_tokens:
+      - '2'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - f6e49be4d6350dabd2e03d25a0cf28e2
+      x-envoy-upstream-service-time:
+      - '55'
+    status:
+      code: 200
+      message: OK
 version: 1

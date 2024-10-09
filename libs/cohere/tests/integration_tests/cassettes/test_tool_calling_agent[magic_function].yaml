@@ -72,4 +72,339 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "what is
+      the value of magic_function(3)?"}, {"role": "assistant", "tool_plan": "", "tool_calls":
+      [{"name": "magic_function", "args": {"input": 3}, "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "type": "tool_call"}]}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "content": [{"output": "5"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '402'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:32:14 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - d480287d4cea590c3def3540bb486ecc
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "what is
+      the value of magic_function(3)?"}, {"role": "assistant", "tool_plan": "", "tool_calls":
+      [{"name": "magic_function", "args": {"input": 3}, "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "type": "tool_call"}]}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "content": [{"output": "5"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '402'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:34:26 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 25fe6bf555bf2894b37d3a1bdade45d2
+      x-envoy-upstream-service-time:
+      - '11'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "what is
+      the value of magic_function(3)?"}, {"role": "assistant", "tool_plan": "", "tool_calls":
+      [{"name": "magic_function", "args": {"input": 3}, "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "type": "tool_call"}]}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "content": [{"output": "5"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '402'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:15:52 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 0cd3e88ca559175ab8d3a5127794d5be
+      x-envoy-upstream-service-time:
+      - '8'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "what is
+      the value of magic_function(3)?"}, {"role": "assistant", "tool_plan": "", "tool_calls":
+      [{"name": "magic_function", "args": {"input": 3}, "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "type": "tool_call"}]}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "content": [{"output": "5"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '402'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:22:56 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 3d21759ac5e08d972cb616c759aaedd5
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "what is
+      the value of magic_function(3)?"}, {"role": "assistant", "tool_plan": "", "tool_calls":
+      [{"name": "magic_function", "args": {"input": 3}, "id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "type": "tool_call"}]}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "content": [{"output": "5"}]}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '402'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:28:17 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - cb1bacb3519702bf2898fd683de64afd
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 422
+      message: unknown
 version: 1

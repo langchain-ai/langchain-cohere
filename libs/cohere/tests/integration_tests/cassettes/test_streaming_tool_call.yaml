@@ -176,4 +176,339 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
+      27 years old"}], "tools": [{"name": "Person", "description": "", "parameter_definitions":
+      {"name": {"description": "The name of the person", "type": "str", "required":
+      true}, "age": {"description": "The age of the person", "type": "int", "required":
+      true}}}], "temperature": 0.0, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '367'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:32:04 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 5f414e98c5b74c3e04a67a3cdb615de7
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
+      27 years old"}], "tools": [{"name": "Person", "description": "", "parameter_definitions":
+      {"name": {"description": "The name of the person", "type": "str", "required":
+      true}, "age": {"description": "The age of the person", "type": "int", "required":
+      true}}}], "temperature": 0.0, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '367'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:34:17 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 250d7c746c8a517d47ef74988494c269
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
+      27 years old"}], "tools": [{"name": "Person", "description": "", "parameter_definitions":
+      {"name": {"description": "The name of the person", "type": "str", "required":
+      true}, "age": {"description": "The age of the person", "type": "int", "required":
+      true}}}], "temperature": 0.0, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '367'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:15:42 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 897282505b5c25cd237ed588cb38b0f7
+      x-envoy-upstream-service-time:
+      - '55'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
+      27 years old"}], "tools": [{"name": "Person", "description": "", "parameter_definitions":
+      {"name": {"description": "The name of the person", "type": "str", "required":
+      true}, "age": {"description": "The age of the person", "type": "int", "required":
+      true}}}], "temperature": 0.0, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '367'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:22:48 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 06d9f4f3eaf85256e258271a277529fa
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
+      27 years old"}], "tools": [{"name": "Person", "description": "", "parameter_definitions":
+      {"name": {"description": "The name of the person", "type": "str", "required":
+      true}, "age": {"description": "The age of the person", "type": "int", "required":
+      true}}}], "temperature": 0.0, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '367'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:28:07 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - bfa2e669d020cbeea8f9a46ec034a1c5
+      x-envoy-upstream-service-time:
+      - '17'
+    status:
+      code: 422
+      message: unknown
 version: 1

@@ -600,4 +600,374 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}], "tools": [{"name": "web_search", "description": "Search the web to the
+      answer to the question with a query search string.\n\n        Args:\n            query:
+      The search query to surf the web with", "parameter_definitions": {"query": {"description":
+      null, "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.\n\n        Args:\n            code: Python code to
+      execute.", "parameter_definitions": {"code": {"description": null, "type": "str",
+      "required": true}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '920'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:32:11 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 9d929e2587906ce8928f189a27747c5d
+      x-envoy-upstream-service-time:
+      - '8'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}], "tools": [{"name": "web_search", "description": "Search the web to the
+      answer to the question with a query search string.\n\n        Args:\n            query:
+      The search query to surf the web with", "parameter_definitions": {"query": {"description":
+      null, "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.\n\n        Args:\n            code: Python code to
+      execute.", "parameter_definitions": {"code": {"description": null, "type": "str",
+      "required": true}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '920'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:34:23 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 7251c60e3a5e13579ffea3c07a6bb81a
+      x-envoy-upstream-service-time:
+      - '18'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}], "tools": [{"name": "web_search", "description": "Search the web to the
+      answer to the question with a query search string.\n\n        Args:\n            query:
+      The search query to surf the web with", "parameter_definitions": {"query": {"description":
+      null, "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.\n\n        Args:\n            code: Python code to
+      execute.", "parameter_definitions": {"code": {"description": null, "type": "str",
+      "required": true}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '920'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:15:49 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 9321d712319a154ed2bb352d02031e02
+      x-envoy-upstream-service-time:
+      - '18'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}], "tools": [{"name": "web_search", "description": "Search the web to the
+      answer to the question with a query search string.\n\n        Args:\n            query:
+      The search query to surf the web with", "parameter_definitions": {"query": {"description":
+      null, "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.\n\n        Args:\n            code: Python code to
+      execute.", "parameter_definitions": {"code": {"description": null, "type": "str",
+      "required": true}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '920'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:22:53 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - b869e9920bfc5bcded24a12834d5d400
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}], "tools": [{"name": "web_search", "description": "Search the web to the
+      answer to the question with a query search string.\n\n        Args:\n            query:
+      The search query to surf the web with", "parameter_definitions": {"query": {"description":
+      null, "type": "str", "required": true}}}, {"name": "python_interpeter_temp",
+      "description": "Executes python code and returns the result.\n        The code
+      runs in a static sandbox without interactive mode,\n        so print output
+      or save output to a file.\n\n        Args:\n            code: Python code to
+      execute.", "parameter_definitions": {"code": {"description": null, "type": "str",
+      "required": true}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '920'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:28:14 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 19f469ff80c7092c6bafc8524c5ff92e
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 422
+      message: unknown
 version: 1

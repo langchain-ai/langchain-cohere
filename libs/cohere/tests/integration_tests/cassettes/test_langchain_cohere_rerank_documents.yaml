@@ -63,4 +63,329 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "rerank-english-light-v3.0", "query": "Test query", "documents":
+      ["This is a test document.", "Another test document."], "top_n": 3, "rank_fields":
+      null, "max_chunks_per_doc": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '191'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/rerank
+  response:
+    body:
+      string: '{"message":"model ''rerank-english-light-v3.0'' not found, make sure
+        the correct model ID was used and that you have access to the model."}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '137'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:32:13 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 6c8185f2bea0d8a934f2eaac645e20ef
+      x-envoy-upstream-service-time:
+      - '27'
+    status:
+      code: 404
+      message: Not Found
+- request:
+    body: '{"model": "rerank-english-light-v3.0", "query": "Test query", "documents":
+      ["This is a test document.", "Another test document."], "top_n": 3, "rank_fields":
+      null, "max_chunks_per_doc": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '191'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/rerank
+  response:
+    body:
+      string: '{"message":"model ''rerank-english-light-v3.0'' not found, make sure
+        the correct model ID was used and that you have access to the model."}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '137'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:34:25 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 651b5586e0ad3b8c6ef7d1464c4d8a78
+      x-envoy-upstream-service-time:
+      - '21'
+    status:
+      code: 404
+      message: Not Found
+- request:
+    body: '{"model": "rerank-english-light-v3.0", "query": "Test query", "documents":
+      ["This is a test document.", "Another test document."], "top_n": 3, "rank_fields":
+      null, "max_chunks_per_doc": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '191'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/rerank
+  response:
+    body:
+      string: '{"message":"model ''rerank-english-light-v3.0'' not found, make sure
+        the correct model ID was used and that you have access to the model."}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '137'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:15:51 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 879820af176499cd2cb39f83a2b36129
+      x-envoy-upstream-service-time:
+      - '31'
+    status:
+      code: 404
+      message: Not Found
+- request:
+    body: '{"model": "rerank-english-light-v3.0", "query": "Test query", "documents":
+      ["This is a test document.", "Another test document."], "top_n": 3, "rank_fields":
+      null, "max_chunks_per_doc": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '191'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/rerank
+  response:
+    body:
+      string: '{"message":"model ''rerank-english-light-v3.0'' not found, make sure
+        the correct model ID was used and that you have access to the model."}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '137'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:22:55 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 3ecdfee03d95e4ed685082eaf1646b25
+      x-envoy-upstream-service-time:
+      - '26'
+    status:
+      code: 404
+      message: Not Found
+- request:
+    body: '{"model": "rerank-english-light-v3.0", "query": "Test query", "documents":
+      ["This is a test document.", "Another test document."], "top_n": 3, "rank_fields":
+      null, "max_chunks_per_doc": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '191'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/rerank
+  response:
+    body:
+      string: '{"message":"model ''rerank-english-light-v3.0'' not found, make sure
+        the correct model ID was used and that you have access to the model."}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '137'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:28:16 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 90ce93250cc3228f84d120d3fff2dcb1
+      x-envoy-upstream-service-time:
+      - '31'
+    status:
+      code: 404
+      message: Not Found
 version: 1
