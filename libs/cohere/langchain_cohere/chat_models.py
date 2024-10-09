@@ -1,7 +1,6 @@
 import json
 import uuid
 from typing import (
-    TYPE_CHECKING,
     Any,
     AsyncIterator,
     Callable,
@@ -134,10 +133,6 @@ def _messages_to_cohere_tool_results_curr_chat_turn(
                 )
 
     return tool_results
-
-
-if TYPE_CHECKING:
-    from cohere.types import ListModelsResponse  # noqa: F401
 
 
 def get_role(message: BaseMessage) -> str:
@@ -822,15 +817,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 ChatGeneration(message=message, generation_info=generation_info)
             ]
         )
-
-    def _get_default_model(self) -> str:
-        """Fetches the current default model name."""
-        response = self.client.models.list(default_only=True, endpoint="chat")  # type: "ListModelsResponse"
-        if not response.models:
-            raise Exception("invalid cohere list models response")
-        if not response.models[0].name:
-            raise Exception("invalid cohere list models response")
-        return response.models[0].name
 
     @property
     def model_name(self) -> str:

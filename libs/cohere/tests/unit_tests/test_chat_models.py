@@ -15,19 +15,22 @@ from langchain_cohere.chat_models import (
 )
 
 
-def test_initialization() -> None:
+def test_initialization(patch_base_cohere_get_default_model) -> None:
     """Test chat model initialization."""
     ChatCohere(cohere_api_key="test")
 
 
 @pytest.mark.parametrize(
-    "chat_cohere,expected",
+    "chat_cohere_kwargs,expected",
     [
-        pytest.param(ChatCohere(cohere_api_key="test"), {}, id="defaults"),
+        pytest.param({ "cohere_api_key": "test" }, { "model": "command-r-plus" }, id="defaults"),
         pytest.param(
-            ChatCohere(
-                cohere_api_key="test", model="foo", temperature=1.0, preamble="bar"
-            ),
+            {
+                "cohere_api_key": "test",
+                "model": "foo",
+                "temperature": 1.0,
+                "preamble": "bar",
+            },
             {
                 "model": "foo",
                 "temperature": 1.0,
@@ -37,7 +40,8 @@ def test_initialization() -> None:
         ),
     ],
 )
-def test_default_params(chat_cohere: ChatCohere, expected: Dict) -> None:
+def test_default_params(chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> None:
+    chat_cohere = ChatCohere(**chat_cohere_kwargs)
     actual = chat_cohere._default_params
     assert expected == actual
 
@@ -276,10 +280,10 @@ def test_messages_to_cohere_tool_results() -> None:
 
 
 @pytest.mark.parametrize(
-    "cohere_client,messages,force_single_step,expected",
+    "cohere_client_kwargs,messages,force_single_step,expected",
     [
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [HumanMessage(content="what is magic_function(12) ?")],
             True,
             {
@@ -299,7 +303,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is True",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -381,7 +385,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Multiple Messages with tool results and force_single_step is True",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [HumanMessage(content="what is magic_function(12) ?")],
             False,
             {
@@ -401,7 +405,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is False",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            { "cohere_api_key": "test" },
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -497,11 +501,13 @@ def test_messages_to_cohere_tool_results() -> None:
     ],
 )
 def test_get_cohere_chat_request(
-    cohere_client: ChatCohere,
+    cohere_client_kwargs: Dict[str, Any],
     messages: List[BaseMessage],
     force_single_step: bool,
     expected: Dict[str, Any],
 ) -> None:
+    cohere_client = ChatCohere(**cohere_client_kwargs)
+
     tools = [
         {
             "name": "magic_function",

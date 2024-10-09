@@ -1,5 +1,5 @@
 """Test Cohere API wrapper."""
-import typing
+from typing import Any, Dict
 
 import pytest
 from pydantic import SecretStr
@@ -7,7 +7,7 @@ from pydantic import SecretStr
 from langchain_cohere.llms import BaseCohere, Cohere
 
 
-def test_cohere_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_cohere_api_key(patch_base_cohere_get_default_model, monkeypatch: pytest.MonkeyPatch) -> None:
     """Test that cohere api key is a secret key."""
     # test initialization from init
     assert isinstance(BaseCohere(cohere_api_key="1").cohere_api_key, SecretStr)
@@ -18,22 +18,22 @@ def test_cohere_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 @pytest.mark.parametrize(
-    "cohere,expected",
+    "cohere_kwargs,expected",
     [
-        pytest.param(Cohere(cohere_api_key="test"), {}, id="defaults"),
+        pytest.param({ "cohere_api_key": "test" }, { "model": "command-r-plus" }, id="defaults"),
         pytest.param(
-            Cohere(
+            {
                 # the following are arbitrary testing values which shouldn't be used:
-                cohere_api_key="test",
-                model="foo",
-                temperature=0.1,
-                max_tokens=2,
-                k=3,
-                p=4,
-                frequency_penalty=0.5,
-                presence_penalty=0.6,
-                truncate="START",
-            ),
+                "cohere_api_key": "test",
+                "model": "foo",
+                "temperature": 0.1,
+                "max_tokens": 2,
+                "k": 3,
+                "p": 4,
+                "frequency_penalty": 0.5,
+                "presence_penalty": 0.6,
+                "truncate": "START",
+            },
             {
                 "model": "foo",
                 "temperature": 0.1,
@@ -48,12 +48,13 @@ def test_cohere_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
         ),
     ],
 )
-def test_default_params(cohere: Cohere, expected: typing.Dict) -> None:
+def test_default_params(patch_base_cohere_get_default_model, cohere_kwargs: Dict[str, Any], expected: Dict[str, Any]) -> None:
+    cohere = Cohere(**cohere_kwargs)
     actual = cohere._default_params
     assert expected == actual
 
 
-def test_tracing_params() -> None:
+def test_tracing_params(patch_base_cohere_get_default_model) -> None:
     # Test standard tracing params
     llm = Cohere(model="foo", cohere_api_key="api-key")
     ls_params = llm._get_ls_params()
