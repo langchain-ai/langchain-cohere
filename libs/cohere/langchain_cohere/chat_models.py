@@ -772,7 +772,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             tool_calls = []
         usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.text,
+            content=response.message.content[0].text,
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
@@ -796,23 +796,23 @@ class ChatCohere(BaseChatModel, BaseCohere):
             )
             return await agenerate_from_stream(stream_iter)
 
-        request = get_cohere_chat_request(
+        request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
 
-        response = await self.async_client.chat(**request)
+        response = await self.async_chat_v2(**request)
 
-        generation_info = self._get_generation_info(response)
+        generation_info = self._get_generation_info_v2(response)
         if "tool_calls" in generation_info:
             tool_calls = [
-                _convert_cohere_tool_call_to_langchain(tool_call)
+                _convert_cohere_v2_tool_call_to_langchain(tool_call)
                 for tool_call in response.tool_calls
             ]
         else:
             tool_calls = []
-        usage_metadata = _get_usage_metadata(response)
+        usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.text,
+            content=response.message.content[0].text,
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
