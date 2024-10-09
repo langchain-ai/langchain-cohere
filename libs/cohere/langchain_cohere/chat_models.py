@@ -8,6 +8,7 @@ from typing import (
     Dict,
     Iterator,
     List,
+    MutableMapping,
     Optional,
     Sequence,
     Type,
@@ -321,6 +322,146 @@ def get_cohere_chat_request(
         "documents": formatted_docs,
         "connectors": connectors,
         "prompt_truncation": prompt_truncation,
+        "stop_sequences": stop_sequences,
+        **kwargs,
+    }
+
+    return {k: v for k, v in req.items() if v is not None}
+
+def get_role_v2(message: BaseMessage) -> str:
+    """Get the role of the message.
+    Args:
+        message: The message.
+    Returns:
+        The role of the message.
+    Raises:
+        ValueError: If the message is of an unknown type.
+    """
+    if isinstance(message, ChatMessage) or isinstance(message, HumanMessage):
+        return "user"
+    elif isinstance(message, AIMessage):
+        return "assistant"
+    elif isinstance(message, SystemMessage):
+        return "system"
+    elif isinstance(message, ToolMessage):
+        return "tool"
+    else:
+        raise ValueError(f"Got unknown type {type(message).__name__}")
+
+
+def _get_message_cohere_format_v2(
+    message: BaseMessage, tool_results: Optional[List[MutableMapping]]
+) -> Dict[
+    str,
+    Union[
+        str,
+        List[LC_ToolCall],
+        List[Union[str, Dict[Any, Any]]],
+        List[MutableMapping],
+        List[Dict[Any, Any]],
+        None,
+    ],
+]:
+    """Get the formatted message as required in cohere's api.
+    Args:
+        message: The BaseMessage.
+        tool_results: The tool results if any
+    Returns:
+        The formatted message as required in cohere's api.
+    """
+    if isinstance(message, AIMessage):
+        if message.tool_calls:
+            return {
+                "role": get_role_v2(message),
+                "tool_plan": message.content,
+                "tool_calls": message.tool_calls,
+            }
+        return {"role": get_role_v2(message), "content": message.content}
+    elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
+        return {"role": get_role_v2(message), "content": message.content}
+    elif isinstance(message, ToolMessage):
+        return {
+            "role": get_role_v2(message),
+            "tool_call_id": message.tool_call_id,
+            "content": tool_results,
+        }
+    else:
+        raise ValueError(f"Got unknown type {message}")
+
+
+def get_cohere_chat_request_v2(
+    messages: List[BaseMessage],
+    *,
+    documents: Optional[List[Document]] = None,
+    connectors: Optional[List[Dict[str, str]]] = None,
+    stop_sequences: Optional[List[str]] = None,
+    **kwargs: Any,
+) -> Dict[str, Any]:
+    """Get the request for the Cohere chat API.
+    Args:
+        messages: The messages.
+        connectors: The connectors.
+        **kwargs: The keyword arguments.
+    Returns:
+        The request for the Cohere chat API.
+    """
+    additional_kwargs = messages[-1].additional_kwargs
+
+    # cohere SDK will fail loudly if both connectors and documents are provided
+    if additional_kwargs.get("documents", []) and documents and len(documents) > 0:
+        raise ValueError(
+            "Received documents both as a keyword argument and as an prompt additional keyword argument. Please choose only one option."  # noqa: E501
+        )
+
+    parsed_docs: Optional[Union[List[Document], List[Dict]]] = None
+    if "documents" in additional_kwargs:
+        parsed_docs = (
+            additional_kwargs["documents"]
+            if len(additional_kwargs.get("documents", []) or []) > 0
+            else None
+        )
+    elif (documents is not None) and (len(documents) > 0):
+        parsed_docs = documents
+
+    formatted_docs: Optional[List[Dict[str, Any]]] = None
+    if parsed_docs:
+        formatted_docs = []
+        for i, parsed_doc in enumerate(parsed_docs):
+            if isinstance(parsed_doc, Document):
+                formatted_docs.append(
+                    {
+                        "text": parsed_doc.page_content,
+                        "id": parsed_doc.metadata.get("id") or f"doc-{str(i)}",
+                    }
+                )
+            elif isinstance(parsed_doc, dict):
+                formatted_docs.append(parsed_doc)
+
+    # check if the last message is a tool message or human message
+    if not (
+        isinstance(messages[-1], ToolMessage) or isinstance(messages[-1], HumanMessage)
+    ):
+        raise ValueError("The last message is not an ToolMessage or HumanMessage")
+
+    if kwargs.get("preamble"):
+        messages = [SystemMessage(content=kwargs.get("preamble"))] + messages
+        del kwargs["preamble"]
+
+    chat_history_with_curr_msg = []
+    for message in messages:
+        if isinstance(message, ToolMessage):
+            tool_output = convert_to_documents(message.content)
+            cohere_message = _get_message_cohere_format_v2(message, tool_output)
+            chat_history_with_curr_msg.append(cohere_message)
+        else:
+            chat_history_with_curr_msg.append(
+                _get_message_cohere_format_v2(message, None)
+            )
+
+    req = {
+        "messages": chat_history_with_curr_msg,
+        "documents": formatted_docs,
+        "connectors": connectors,
         "stop_sequences": stop_sequences,
         **kwargs,
     }
