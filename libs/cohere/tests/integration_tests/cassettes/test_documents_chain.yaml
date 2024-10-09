@@ -70,4 +70,324 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What color
+      is the sky?"}], "documents": [{"text": "The sky is green.", "id": "doc-0"}],
+      "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '169'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"invalid request: document at index 0 cannot be empty"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '66'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:32:12 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - f83e52738b70b5e6cf2e70b275dc3b5b
+      x-envoy-upstream-service-time:
+      - '11'
+    status:
+      code: 400
+      message: Bad Request
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What color
+      is the sky?"}], "documents": [{"text": "The sky is green.", "id": "doc-0"}],
+      "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '169'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"invalid request: document at index 0 cannot be empty"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '66'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:34:25 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 505db8b877f29fe1cf25d62b4b19de21
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 400
+      message: Bad Request
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What color
+      is the sky?"}], "documents": [{"text": "The sky is green.", "id": "doc-0"}],
+      "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '169'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"invalid request: document at index 0 cannot be empty"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '66'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:15:51 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 6de258a8af53418f8a1d380d8fba24b2
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 400
+      message: Bad Request
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What color
+      is the sky?"}], "documents": [{"text": "The sky is green.", "id": "doc-0"}],
+      "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '169'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"invalid request: document at index 0 cannot be empty"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '66'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:22:55 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 78cea50a39752cdc9780e89d7f2db881
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 400
+      message: Bad Request
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What color
+      is the sky?"}], "documents": [{"text": "The sky is green.", "id": "doc-0"}],
+      "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '169'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"invalid request: document at index 0 cannot be empty"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '66'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:28:15 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - a4b0d7f69d42e1812dd1e13035d31411
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 400
+      message: Bad Request
 version: 1

@@ -121,4 +121,2184 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "I''m Pickle
+      Rick"}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '100'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: 'event: message-start
+
+        data: {"id":"fc2c40a2-a3d6-4249-b0c2-06c4dbbce812","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: content-start
+
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"That"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        funny"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        one"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        popular"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        meme"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        that"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        originated"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        from"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        and"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Mort"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        TV"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":","}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        which"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        centers"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        around"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        adventures"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        brilliant"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        but"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        eccentric"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        scientist"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        named"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Sanchez"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        and"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        his"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        nervous"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        grandson"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Mort"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        In"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        episode"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        \""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"Pick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"le"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":",\""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        uses"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        his"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        scientific"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        prowess"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        turn"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        himself"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        into"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        in"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        bid"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        get"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        out"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        family"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        therapy"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        The"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        phrase"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        \""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"I"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''m"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"\""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        often"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        used"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        humor"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"ously"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        indicate"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        sense"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        absurd"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"ity"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        reference"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        specific"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        scene"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        from"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        episode"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":103},"tokens":{"input_tokens":70,"output_tokens":103}}}}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - text/event-stream
+      date:
+      - Tue, 08 Oct 2024 16:31:58 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - ccbeba977c3e7e8d38652592cb1c64aa
+      x-envoy-upstream-service-time:
+      - '21'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "I''m Pickle
+      Rick"}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '100'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: 'event: message-start
+
+        data: {"id":"3cf52edd-de4a-431e-bbeb-caa037c6a1f1","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: content-start
+
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"That"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        funny"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        one"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        popular"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        meme"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        that"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        originated"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        from"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        and"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Mort"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        TV"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":","}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        which"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        centers"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        around"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        adventures"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        brilliant"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        but"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        eccentric"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        scientist"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        named"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Sanchez"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        and"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        his"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        nervous"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        grandson"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Mort"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        In"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        episode"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        \""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"Pick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"le"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":",\""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        uses"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        his"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        scientific"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        prowess"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        turn"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        himself"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        into"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        in"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        bid"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        get"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        out"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        family"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        therapy"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        The"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        phrase"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        \""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"I"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''m"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"\""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        often"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        used"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        as"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        humorous"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        way"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        reference"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        episode"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        express"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        surprise"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        excitement"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":98},"tokens":{"input_tokens":70,"output_tokens":98}}}}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - text/event-stream
+      date:
+      - Tue, 08 Oct 2024 16:34:10 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - e9dbf6cead5c4252a968b5e9e1dee64a
+      x-envoy-upstream-service-time:
+      - '8'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "I''m Pickle
+      Rick"}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '100'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: 'event: message-start
+
+        data: {"id":"098a1d84-a6c8-4a45-9a2a-b7df3dfa8157","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: content-start
+
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"That"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        great"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        popular"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        character"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        from"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        and"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Mort"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Would"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        you"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        like"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        know"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        anything"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        about"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        character"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":33},"tokens":{"input_tokens":70,"output_tokens":34}}}}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - text/event-stream
+      date:
+      - Wed, 09 Oct 2024 09:15:35 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 1c6c6b9bb80127377501fda178902850
+      x-envoy-upstream-service-time:
+      - '31'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "I''m Pickle
+      Rick"}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '100'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: 'event: message-start
+
+        data: {"id":"95427f28-6c89-4420-9b3c-888ee9232ccc","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: content-start
+
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"That"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        great"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        popular"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        character"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        from"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        and"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Mort"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Would"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        you"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        like"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        know"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        anything"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        about"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        character"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":33},"tokens":{"input_tokens":70,"output_tokens":34}}}}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - text/event-stream
+      date:
+      - Wed, 09 Oct 2024 09:22:42 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - fa39d60e6b3b054b3b73f7f3b41821a1
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "I''m Pickle
+      Rick"}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '100'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: 'event: message-start
+
+        data: {"id":"8e37a8f0-31fd-4e91-a7a0-ec7de93980e0","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: content-start
+
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"That"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        great"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        popular"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        character"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        from"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        and"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Mort"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Would"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        you"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        like"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        know"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        anything"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        about"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        show"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        the"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        character"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":33},"tokens":{"input_tokens":70,"output_tokens":34}}}}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - text/event-stream
+      date:
+      - Wed, 09 Oct 2024 09:28:00 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 5dbf6e73768057f0e3c7f5a52e740d7c
+      x-envoy-upstream-service-time:
+      - '19'
+    status:
+      code: 200
+      message: OK
 version: 1

@@ -446,6 +446,10 @@ def get_cohere_chat_request_v2(
         isinstance(messages[-1], ToolMessage) or isinstance(messages[-1], HumanMessage)
     ):
         raise ValueError("The last message is not an ToolMessage or HumanMessage")
+    
+    if kwargs.get("preamble"):
+        messages = [SystemMessage(content=kwargs.get("preamble"))] + messages
+        del kwargs["preamble"]
 
     chat_history_with_curr_msg = []
     for message in messages:

@@ -74,4 +74,349 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What is
+      the capital of France"}], "tools": [{"name": "add_two_numbers", "description":
+      "Add two numbers together", "parameter_definitions": {"a": {"description": null,
+      "type": "int", "required": true}, "b": {"description": null, "type": "int",
+      "required": true}}}, {"name": "capital_cities", "description": "Returns the
+      capital city of a country", "parameter_definitions": {"country": {"description":
+      null, "type": "str", "required": true}}}], "temperature": 0.0, "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '545'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:32:05 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - b8805eb8aca6793bdf7d1600583430fd
+      x-envoy-upstream-service-time:
+      - '23'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What is
+      the capital of France"}], "tools": [{"name": "add_two_numbers", "description":
+      "Add two numbers together", "parameter_definitions": {"a": {"description": null,
+      "type": "int", "required": true}, "b": {"description": null, "type": "int",
+      "required": true}}}, {"name": "capital_cities", "description": "Returns the
+      capital city of a country", "parameter_definitions": {"country": {"description":
+      null, "type": "str", "required": true}}}], "temperature": 0.0, "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '545'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 08 Oct 2024 16:34:17 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - a1b4407dea9314f69bc85bc4552b6b67
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What is
+      the capital of France"}], "tools": [{"name": "add_two_numbers", "description":
+      "Add two numbers together", "parameter_definitions": {"a": {"description": null,
+      "type": "int", "required": true}, "b": {"description": null, "type": "int",
+      "required": true}}}, {"name": "capital_cities", "description": "Returns the
+      capital city of a country", "parameter_definitions": {"country": {"description":
+      null, "type": "str", "required": true}}}], "temperature": 0.0, "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '545'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:15:42 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 8847ec7f8bc7c9d2f2b3ad8da868ac66
+      x-envoy-upstream-service-time:
+      - '18'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What is
+      the capital of France"}], "tools": [{"name": "add_two_numbers", "description":
+      "Add two numbers together", "parameter_definitions": {"a": {"description": null,
+      "type": "int", "required": true}, "b": {"description": null, "type": "int",
+      "required": true}}}, {"name": "capital_cities", "description": "Returns the
+      capital city of a country", "parameter_definitions": {"country": {"description":
+      null, "type": "str", "required": true}}}], "temperature": 0.0, "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '545'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:22:48 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - c346e1a00dd9e1fea578782946c3c4b7
+      x-envoy-upstream-service-time:
+      - '9'
+    status:
+      code: 422
+      message: unknown
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What is
+      the capital of France"}], "tools": [{"name": "add_two_numbers", "description":
+      "Add two numbers together", "parameter_definitions": {"a": {"description": null,
+      "type": "int", "required": true}, "b": {"description": null, "type": "int",
+      "required": true}}}, {"name": "capital_cities", "description": "Returns the
+      capital city of a country", "parameter_definitions": {"country": {"description":
+      null, "type": "str", "required": true}}}], "temperature": 0.0, "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '545'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"message":"unknown field: parameter name is not a valid field. For
+        proper usage, please refer to https://docs.cohere.com/reference/chat"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '138'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Oct 2024 09:28:07 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 545fa895c55a59f061eb93c3e2d1a2d7
+      x-envoy-upstream-service-time:
+      - '14'
+    status:
+      code: 422
+      message: unknown
 version: 1
