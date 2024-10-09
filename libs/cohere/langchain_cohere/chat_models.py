@@ -765,12 +765,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
         generation_info = self._get_generation_info_v2(response)
         if "tool_calls" in generation_info:
             tool_calls = [
-                _convert_cohere_tool_call_to_langchain(tool_call)
-                for tool_call in response.tool_calls
+                _convert_cohere_v2_tool_call_to_langchain(tool_call)
+                for tool_call in response.message.tool_calls
             ]
         else:
             tool_calls = []
-        usage_metadata = _get_usage_metadata(response)
+        usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
             content=response.text,
             additional_kwargs=generation_info,
@@ -900,9 +900,30 @@ def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
     return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=_id)
 
 
+def _convert_cohere_v2_tool_call_to_langchain(tool_call: ToolCallV2) -> LC_ToolCall:
+    """Convert a Cohere V2 tool call into langchain_core.messages.ToolCall"""
+    _id = uuid.uuid4().hex[:]
+    return LC_ToolCall(name=tool_call.function.name, args=json.loads(tool_call.function.arguments), id=_id)
+
+
 def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMetadata]:
     """Get standard usage metadata from chat response."""
     metadata = response.meta
+    if metadata:
+        if tokens := metadata.tokens:
+            input_tokens = int(tokens.input_tokens or 0)
+            output_tokens = int(tokens.output_tokens or 0)
+            total_tokens = input_tokens + output_tokens
+        return UsageMetadata(
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            total_tokens=total_tokens,
+        )
+    return None
+
+def _get_usage_metadata_v2(response: ChatResponse) -> Optional[UsageMetadata]:
+    """Get standard usage metadata from chat response."""
+    metadata = response.usage
     if metadata:
         if tokens := metadata.tokens:
             input_tokens = int(tokens.input_tokens or 0)
