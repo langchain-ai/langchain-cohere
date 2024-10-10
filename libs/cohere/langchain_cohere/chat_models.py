@@ -423,14 +423,22 @@ def get_cohere_chat_request_v2(
         formatted_docs = []
         for i, parsed_doc in enumerate(parsed_docs):
             if isinstance(parsed_doc, Document):
-                formatted_docs.append(
-                    {
+                formatted_docs.append({
+                    "id": parsed_doc.metadata.get("id") or f"doc-{str(i)}",
+                    "data": {
                         "text": parsed_doc.page_content,
-                        "id": parsed_doc.metadata.get("id") or f"doc-{str(i)}",
                     }
-                )
+                })
             elif isinstance(parsed_doc, dict):
-                formatted_docs.append(parsed_doc)
+                if "data" not in parsed_doc:
+                    formatted_docs.append({
+                        "id": parsed_doc.get("id") or f"doc-{str(i)}",
+                        "data": {
+                            **parsed_doc,
+                        }
+                    })
+                else:
+                    formatted_docs.append(parsed_doc)
 
     # check if the last message is a tool message or human message
     if not (
