@@ -40,7 +40,7 @@ def test_initialization(patch_base_cohere_get_default_model) -> None:
         ),
     ],
 )
-def test_default_params(chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> None:
+def test_default_params(patch_base_cohere_get_default_model, chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> None:
     chat_cohere = ChatCohere(**chat_cohere_kwargs)
     actual = chat_cohere._default_params
     assert expected == actual
@@ -121,6 +121,7 @@ def test_default_params(chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> N
     ],
 )
 def test_get_generation_info(
+    patch_base_cohere_get_default_model,
     response: Any, expected: Dict[str, Any]
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
@@ -231,6 +232,7 @@ def test_get_generation_info(
     ],
 )
 def test_get_generation_info_v2(
+    patch_base_cohere_get_default_model,
     response: Any, expected: Dict[str, Any]
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
@@ -501,6 +503,7 @@ def test_messages_to_cohere_tool_results() -> None:
     ],
 )
 def test_get_cohere_chat_request(
+    patch_base_cohere_get_default_model,
     cohere_client_kwargs: Dict[str, Any],
     messages: List[BaseMessage],
     force_single_step: bool,
@@ -808,17 +811,24 @@ def test_get_cohere_chat_request(
                         "tool_plan": "I will use the magic_function tool to answer the question.",  # noqa: E501
                         "tool_calls": [
                             {
-                                "name": "magic_function",
-                                "args": {"a": 12},
                                 "id": "e81dbae6937e47e694505f81e310e205",
-                                "type": "tool_call",
+                                "type": "function",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
                             }
                         ],
                     },
                     {
                         "role": "tool",
                         "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [{"output": "112"}],
+                        "content": [{
+                            "type": "document",
+                            "document": {
+                                "data": '[{"output": "112"}]',
+                            }
+                        }],
                     },
                 ],
                 "tools": [
@@ -913,17 +923,24 @@ def test_get_cohere_chat_request(
                         "tool_plan": "I will use the magic_function tool to answer the question.",  # noqa: E501
                         "tool_calls": [
                             {
-                                "name": "magic_function",
-                                "args": {"a": 12},
                                 "id": "e81dbae6937e47e694505f81e310e205",
-                                "type": "tool_call",
+                                "type": "function",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
                             }
                         ],
                     },
                     {
                         "role": "tool",
                         "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [{"output": "112"}],
+                        "content": [{
+                            "type": "document",
+                            "document": {
+                                "data": '[{"output": "112"}]',
+                            }
+                        }],
                     },
                 ],
                 "tools": [
@@ -951,6 +968,7 @@ def test_get_cohere_chat_request(
     ],
 )
 def test_get_cohere_chat_request_v2(
+    patch_base_cohere_get_default_model,
     cohere_client_v2_kwargs: Dict[str, Any],
     set_preamble: bool,
     messages: List[BaseMessage],

@@ -29,7 +29,7 @@ interactions:
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"3e0a5bc4-1939-4801-bc66-2f5d7eb8b750"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"0e1f3609-6416-4651-a309-56354206da55"}
 
         {"is_finished":false,"event_type":"text-generation","text":"That"}
 
@@ -73,279 +73,21 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":" stuck"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" inside"}
+        {"is_finished":false,"event_type":"text-generation","text":" as"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" a"}
+        {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" jar"}
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
 
-        {"is_finished":false,"event_type":"text-generation","text":","}
+        {"is_finished":false,"event_type":"text-generation","text":" forever"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" that"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" what"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"!"}
+        {"is_finished":false,"event_type":"text-generation","text":"."}
 
         {"is_finished":false,"event_type":"text-generation","text":" You"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" know"}
+        {"is_finished":false,"event_type":"text-generation","text":" should"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" what"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" might"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" help"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" get"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" out"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" of"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" that"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" jar"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"?"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" Some"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" good"}
-
-        {"is_finished":false,"event_type":"text-generation","text":","}
-
-        {"is_finished":false,"event_type":"text-generation","text":" old"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"-"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"fashioned"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" physics"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"!"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" \n\nFirst"}
-
-        {"is_finished":false,"event_type":"text-generation","text":","}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''d"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" have"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" to"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" assess"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" situation"}
-
-        {"is_finished":false,"event_type":"text-generation","text":":"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" are"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" jar"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" edges"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" smooth"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" or"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" rough"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"?"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" That"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" could"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" determine"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" whether"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" could"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" climb"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" up"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" and"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" over"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" jar"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" edge"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" or"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" not"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"."}
-
-        {"is_finished":false,"event_type":"text-generation","text":" Then"}
-
-        {"is_finished":false,"event_type":"text-generation","text":","}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''d"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" have"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" to"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" calculate"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" surface"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" tension"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" of"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" brine"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" and"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" how"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" it"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" might"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" affect"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" your"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" ability"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" to"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" move"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" across"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" inside"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" of"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" jar"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"."}
-
-        {"is_finished":false,"event_type":"text-generation","text":" \n\nOf"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" course"}
-
-        {"is_finished":false,"event_type":"text-generation","text":","}
-
-        {"is_finished":false,"event_type":"text-generation","text":" there"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" also"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" option"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" of"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" just"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" breaking"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" jar"}
-
-        {"is_finished":false,"event_type":"text-generation","text":","}
-
-        {"is_finished":false,"event_type":"text-generation","text":" but"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" where"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" fun"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" in"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" that"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"?"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" Besides"}
-
-        {"is_finished":false,"event_type":"text-generation","text":","}
-
-        {"is_finished":false,"event_type":"text-generation","text":" glass"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" shards"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" could"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" be"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" dangerous"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" for"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" a"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" pickle"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"!"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" It"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''s"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" much"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" more"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" fun"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" -"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" and"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" safer"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"!"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" -"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" to"}
+        {"is_finished":false,"event_type":"text-generation","text":" probably"}
 
         {"is_finished":false,"event_type":"text-generation","text":" find"}
 
@@ -353,73 +95,56 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":" way"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" out"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" without"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" resort"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"ing"}
-
         {"is_finished":false,"event_type":"text-generation","text":" to"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" violence"}
+        {"is_finished":false,"event_type":"text-generation","text":" turn"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" back"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" into"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" your"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" human"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" form"}
 
         {"is_finished":false,"event_type":"text-generation","text":"."}
 
-        {"is_finished":false,"event_type":"text-generation","text":" So"}
+        {"is_finished":false,"event_type":"text-generation","text":" Maybe"}
 
-        {"is_finished":false,"event_type":"text-generation","text":","}
+        {"is_finished":false,"event_type":"text-generation","text":" some"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" keep"}
+        {"is_finished":false,"event_type":"text-generation","text":" kind"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" your"}
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" mind"}
+        {"is_finished":false,"event_type":"text-generation","text":" serum"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" sharp"}
+        {"is_finished":false,"event_type":"text-generation","text":" or"}
 
-        {"is_finished":false,"event_type":"text-generation","text":","}
+        {"is_finished":false,"event_type":"text-generation","text":" something"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+        {"is_finished":false,"event_type":"text-generation","text":"."}
 
-        {"is_finished":false,"event_type":"text-generation","text":","}
+        {"is_finished":false,"event_type":"text-generation","text":" Good"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" and"}
+        {"is_finished":false,"event_type":"text-generation","text":" luck"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" start"}
+        {"is_finished":false,"event_type":"text-generation","text":" with"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" planning"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" your"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" escape"}
+        {"is_finished":false,"event_type":"text-generation","text":" that"}
 
         {"is_finished":false,"event_type":"text-generation","text":"!"}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"5129e7cd-bbac-4c87-8e02-65e1a6ff20ca","text":"That''s
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"a55068ba-699a-4296-a8b8-cd22b3c6b624","text":"That''s
         right! You''re Pickle Rick! But do you know what''s not so fun? Being stuck
-        inside a jar, that''s what! You know what might help you get out of that jar?
-        Some good, old-fashioned physics! \n\nFirst, you''d have to assess the situation:
-        are the jar''s edges smooth or rough? That could determine whether you could
-        climb up and over the jar''s edge or not. Then, you''d have to calculate the
-        surface tension of the brine and how it might affect your ability to move
-        across the inside of the jar. \n\nOf course, there''s also the option of just
-        breaking the jar, but where''s the fun in that? Besides, glass shards could
-        be dangerous for a pickle! It''s much more fun - and safer! - to find a way
-        out without resorting to violence. So, keep your mind sharp, Rick, and start
-        planning your escape!","generation_id":"3e0a5bc4-1939-4801-bc66-2f5d7eb8b750","chat_history":[{"role":"USER","message":"I''m
+        as Pickle Rick forever. You should probably find a way to turn back into your
+        human form. Maybe some kind of serum or something. Good luck with that!","generation_id":"0e1f3609-6416-4651-a309-56354206da55","chat_history":[{"role":"USER","message":"I''m
         Pickle Rick"},{"role":"CHATBOT","message":"That''s right! You''re Pickle Rick!
-        But do you know what''s not so fun? Being stuck inside a jar, that''s what!
-        You know what might help you get out of that jar? Some good, old-fashioned
-        physics! \n\nFirst, you''d have to assess the situation: are the jar''s edges
-        smooth or rough? That could determine whether you could climb up and over
-        the jar''s edge or not. Then, you''d have to calculate the surface tension
-        of the brine and how it might affect your ability to move across the inside
-        of the jar. \n\nOf course, there''s also the option of just breaking the jar,
-        but where''s the fun in that? Besides, glass shards could be dangerous for
-        a pickle! It''s much more fun - and safer! - to find a way out without resorting
-        to violence. So, keep your mind sharp, Rick, and start planning your escape!"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":187},"tokens":{"input_tokens":70,"output_tokens":187}}},"finish_reason":"COMPLETE"}
+        But do you know what''s not so fun? Being stuck as Pickle Rick forever. You
+        should probably find a way to turn back into your human form. Maybe some kind
+        of serum or something. Good luck with that!"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":53},"tokens":{"input_tokens":70,"output_tokens":53}}},"finish_reason":"COMPLETE"}
 
         '
     headers:
@@ -436,7 +161,7 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Fri, 11 Oct 2024 13:29:44 GMT
+      - Fri, 11 Oct 2024 13:37:39 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -448,9 +173,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 890d5a13fa24a1cf7ea32186eb6e1840
+      - 6acf0f3bba5dd2e07ee49a7e313be339
       x-envoy-upstream-service-time:
-      - '52'
+      - '19'
     status:
       code: 200
       message: OK

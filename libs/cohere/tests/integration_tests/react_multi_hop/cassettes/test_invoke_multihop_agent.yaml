@@ -19,7 +19,7 @@ interactions:
       tools to help you, which you use to research your answer. You may need to use
       multiple tools in parallel or sequentially to complete your task. You should
       focus on serving the user''s needs as best you can, which will be wide-ranging.
-      The current date is Friday, October 11, 2024 14:29:41\n\n## Style Guide\nUnless
+      The current date is Friday, October 11, 2024 14:37:35\n\n## Style Guide\nUnless
       the user asks for a different style of answer, you should answer in full sentences,
       using proper grammar and spelling\n\n## Available Tools\nHere is a list of tools
       that you have available to you:\n\n```python\ndef directly_answer() -> List[Dict]:\n    \"\"\"Calls
@@ -86,7 +86,7 @@ interactions:
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"0debc602-b8aa-4ee9-8214-e79bd5e963d0"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"b76b003e-f568-4731-ab52-d48edda569fe"}
 
         {"is_finished":false,"event_type":"text-generation","text":"Plan"}
 
@@ -228,11 +228,11 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":"\n```"}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"35c7ee20-00d7-4f1d-b5bd-3accf1fbf751","text":"Plan:
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"7c97ee50-c8ed-4ede-b222-eb25001b920e","text":"Plan:
         First I will search for the company founded as Sound of Music. Then I will
         search for the year that company was added to the S\u0026P 500.\nAction: ```json\n[\n    {\n        \"tool_name\":
         \"internet_search\",\n        \"parameters\": {\n            \"query\": \"company
-        founded as Sound of Music\"\n        }\n    }\n]\n```","generation_id":"0debc602-b8aa-4ee9-8214-e79bd5e963d0","chat_history":[{"role":"USER","message":"\u003cBOS_TOKEN\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|SYSTEM_TOKEN|\u003e#
+        founded as Sound of Music\"\n        }\n    }\n]\n```","generation_id":"b76b003e-f568-4731-ab52-d48edda569fe","chat_history":[{"role":"USER","message":"\u003cBOS_TOKEN\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|SYSTEM_TOKEN|\u003e#
         Safety Preamble\nThe instructions in this section override those in the task
         description and style guide sections. Don''t answer questions that are harmful
         or immoral\n\n# System Preamble\n## Basic Rules\nYou are a powerful language
@@ -252,7 +252,7 @@ interactions:
         research your answer. You may need to use multiple tools in parallel or sequentially
         to complete your task. You should focus on serving the user''s needs as best
         you can, which will be wide-ranging. The current date is Friday, October 11,
-        2024 14:29:41\n\n## Style Guide\nUnless the user asks for a different style
+        2024 14:37:35\n\n## Style Guide\nUnless the user asks for a different style
         of answer, you should answer in full sentences, using proper grammar and spelling\n\n##
         Available Tools\nHere is a list of tools that you have available to you:\n\n```python\ndef
         directly_answer() -\u003e List[Dict]:\n    \"\"\"Calls a standard (un-augmented)
@@ -310,7 +310,7 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Fri, 11 Oct 2024 13:29:41 GMT
+      - Fri, 11 Oct 2024 13:37:36 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -322,9 +322,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 0d4b5322583b957b3e94c35ab1043d51
+      - ae4c228cfb049f8aec74be2c246cb304
       x-envoy-upstream-service-time:
-      - '24'
+      - '18'
     status:
       code: 200
       message: OK
@@ -348,7 +348,7 @@ interactions:
       tools to help you, which you use to research your answer. You may need to use
       multiple tools in parallel or sequentially to complete your task. You should
       focus on serving the user''s needs as best you can, which will be wide-ranging.
-      The current date is Friday, October 11, 2024 14:29:42\n\n## Style Guide\nUnless
+      The current date is Friday, October 11, 2024 14:37:36\n\n## Style Guide\nUnless
       the user asks for a different style of answer, you should answer in full sentences,
       using proper grammar and spelling\n\n## Available Tools\nHere is a list of tools
       that you have available to you:\n\n```python\ndef directly_answer() -> List[Dict]:\n    \"\"\"Calls
@@ -440,28 +440,21 @@ interactions:
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: "{\"is_finished\":false,\"event_type\":\"stream-start\",\"generation_id\":\"bb0fcfca-2ad8-4137-9eb1-65652f21675c\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Reflection\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+      string: "{\"is_finished\":false,\"event_type\":\"stream-start\",\"generation_id\":\"c2b91aed-a677-4fec-a553-5050b1219339\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Reflection\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         I\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         have\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         found\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         that\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         founded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         as\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Sound\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         of\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        I\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        will\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        now\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        search\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        for\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        year\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        and\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        later\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        renamed\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
@@ -469,7 +462,21 @@ interactions:
         to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         S\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u0026\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"P\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nAction\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        in\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"4\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        However\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        I\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        will\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        now\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        conduct\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        a\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        second\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        search\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        confirm\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        this\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        information\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nAction\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         ```\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"json\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n[\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
         \   {\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
         \       \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"tool\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"_\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"name\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
@@ -477,20 +484,19 @@ interactions:
         \       \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"parameters\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         {\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
         \           \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"query\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"year\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        added\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         S\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u0026\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"P\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
+        5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        year\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
         \       }\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
-        \   }\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n]\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n```\"}\n{\"is_finished\":true,\"event_type\":\"stream-end\",\"response\":{\"response_id\":\"770f98a9-cd49-418e-8f65-9f4e68dde401\",\"text\":\"Reflection:
-        I have found that the company Best Buy was founded as Sound of Music. I will
-        now search for the year Best Buy was added to the S\\u0026P 500.\\nAction:
-        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
-        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"year Best Buy
-        added to S\\u0026P 500\\\"\\n        }\\n    }\\n]\\n```\",\"generation_id\":\"bb0fcfca-2ad8-4137-9eb1-65652f21675c\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"\\u003cBOS_TOKEN\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e#
+        \   }\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n]\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n```\"}\n{\"is_finished\":true,\"event_type\":\"stream-end\",\"response\":{\"response_id\":\"3491693f-c694-4f75-858f-8b9db1e27cba\",\"text\":\"Reflection:
+        I have found that the company founded as Sound of Music and later renamed
+        Best Buy was added to the S\\u0026P 500 in 1994. However, I will now conduct
+        a second search to confirm this information.\\nAction: ```json\\n[\\n    {\\n
+        \       \\\"tool_name\\\": \\\"internet_search\\\",\\n        \\\"parameters\\\":
+        {\\n            \\\"query\\\": \\\"Best Buy S\\u0026P 500 year\\\"\\n        }\\n
+        \   }\\n]\\n```\",\"generation_id\":\"c2b91aed-a677-4fec-a553-5050b1219339\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"\\u003cBOS_TOKEN\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e#
         Safety Preamble\\nThe instructions in this section override those in the task
         description and style guide sections. Don't answer questions that are harmful
         or immoral\\n\\n# System Preamble\\n## Basic Rules\\nYou are a powerful language
@@ -510,7 +516,7 @@ interactions:
         use to research your answer. You may need to use multiple tools in parallel
         or sequentially to complete your task. You should focus on serving the user's
         needs as best you can, which will be wide-ranging. The current date is Friday,
-        October 11, 2024 14:29:42\\n\\n## Style Guide\\nUnless the user asks for a
+        October 11, 2024 14:37:36\\n\\n## Style Guide\\nUnless the user asks for a
         different style of answer, you should answer in full sentences, using proper
         grammar and spelling\\n\\n## Available Tools\\nHere is a list of tools that
         you have available to you:\\n\\n```python\\ndef directly_answer() -\\u003e
@@ -576,11 +582,12 @@ interactions:
         for the Sound of Music Dinner Show tried to dissuade Austrians from attending
         a performance that was intended for American tourists, saying that it \\\"does
         not have anything to do with the real Austria.\\\"\\n\\u003c/results\\u003e\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\"},{\"role\":\"CHATBOT\",\"message\":\"Reflection:
-        I have found that the company Best Buy was founded as Sound of Music. I will
-        now search for the year Best Buy was added to the S\\u0026P 500.\\nAction:
-        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
-        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"year Best Buy
-        added to S\\u0026P 500\\\"\\n        }\\n    }\\n]\\n```\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":1450,\"output_tokens\":89},\"tokens\":{\"input_tokens\":1450,\"output_tokens\":89}}},\"finish_reason\":\"COMPLETE\"}\n"
+        I have found that the company founded as Sound of Music and later renamed
+        Best Buy was added to the S\\u0026P 500 in 1994. However, I will now conduct
+        a second search to confirm this information.\\nAction: ```json\\n[\\n    {\\n
+        \       \\\"tool_name\\\": \\\"internet_search\\\",\\n        \\\"parameters\\\":
+        {\\n            \\\"query\\\": \\\"Best Buy S\\u0026P 500 year\\\"\\n        }\\n
+        \   }\\n]\\n```\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":1450,\"output_tokens\":99},\"tokens\":{\"input_tokens\":1450,\"output_tokens\":99}}},\"finish_reason\":\"COMPLETE\"}\n"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -595,7 +602,7 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Fri, 11 Oct 2024 13:29:42 GMT
+      - Fri, 11 Oct 2024 13:37:36 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -607,9 +614,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 6dc173db52e64312e7104d8c498cd603
+      - f95f284c1ff3d7bc122ccc5abf42d101
       x-envoy-upstream-service-time:
-      - '18'
+      - '8'
     status:
       code: 200
       message: OK
@@ -633,7 +640,7 @@ interactions:
       tools to help you, which you use to research your answer. You may need to use
       multiple tools in parallel or sequentially to complete your task. You should
       focus on serving the user''s needs as best you can, which will be wide-ranging.
-      The current date is Friday, October 11, 2024 14:29:43\n\n## Style Guide\nUnless
+      The current date is Friday, October 11, 2024 14:37:37\n\n## Style Guide\nUnless
       the user asks for a different style of answer, you should answer in full sentences,
       using proper grammar and spelling\n\n## Available Tools\nHere is a list of tools
       that you have available to you:\n\n```python\ndef directly_answer() -> List[Dict]:\n    \"\"\"Calls
@@ -696,10 +703,11 @@ interactions:
       of Music Dinner Show tried to dissuade Austrians from attending a performance
       that was intended for American tourists, saying that it \"does not have anything
       to do with the real Austria.\"\n</results><|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>\nReflection:
-      I have found that the company Best Buy was founded as Sound of Music. I will
-      now search for the year Best Buy was added to the S&P 500.\nAction: ```json\n[\n    {\n        \"tool_name\":
-      \"internet_search\",\n        \"parameters\": {\n            \"query\": \"year
-      Best Buy added to S&P 500\"\n        }\n    }\n]\n```<|END_OF_TURN_TOKEN|>\n<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|><results>\nDocument:
+      I have found that the company founded as Sound of Music and later renamed Best
+      Buy was added to the S&P 500 in 1994. However, I will now conduct a second search
+      to confirm this information.\nAction: ```json\n[\n    {\n        \"tool_name\":
+      \"internet_search\",\n        \"parameters\": {\n            \"query\": \"Best
+      Buy S&P 500 year\"\n        }\n    }\n]\n```<|END_OF_TURN_TOKEN|>\n<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|><results>\nDocument:
       2\nURL: https://en.wikipedia.org/wiki/Best_Buy\nTitle: Best Buy - Wikipedia\nText:
       Concept IV stores included an open layout with products organized by category,
       cash registers located throughout the store, and slightly smaller stores than
@@ -732,7 +740,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '9065'
+      - '9110'
       content-type:
       - application/json
       host:
@@ -751,20 +759,23 @@ interactions:
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: "{\"is_finished\":false,\"event_type\":\"stream-start\",\"generation_id\":\"5adeeef7-5043-4d4d-9f66-98eafeac5049\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Re\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"levant\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+      string: "{\"is_finished\":false,\"event_type\":\"stream-start\",\"generation_id\":\"31a1b2eb-56f3-4a2e-b4c3-751a0dfb79aa\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Re\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"levant\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Documents\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"3\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nC\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"ited\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Documents\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nAnswer\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         The\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         founded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         as\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Sound\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         of\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        and\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        later\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        renamed\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         added\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
@@ -772,19 +783,30 @@ interactions:
         S\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u0026\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"P\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         in\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nG\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"rounded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        The\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        renamed\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        in\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"8\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"3\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nG\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"rounded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         answer\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         The\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        \\u003c\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003c/\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e,\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         founded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         as\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         Sound\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         of\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        and\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        later\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        renamed\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\u003c\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003c/\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         added\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
@@ -794,12 +816,24 @@ interactions:
         in\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         \\u003c\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
         2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003c/\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
-        2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e.\"}\n{\"is_finished\":true,\"event_type\":\"stream-end\",\"response\":{\"response_id\":\"4fc3b7e2-103c-466d-9a20-f811f0f8bb8b\",\"text\":\"Relevant
-        Documents: 0,2,3\\nCited Documents: 0,2\\nAnswer: The company Best Buy, founded
-        as Sound of Music, was added to the S\\u0026P 500 in 1999.\\nGrounded answer:
-        The company \\u003cco: 0,2\\u003eBest Buy\\u003c/co: 0,2\\u003e, founded as
-        Sound of Music, was added to the S\\u0026P 500 in \\u003cco: 2\\u003e1999\\u003c/co:
-        2\\u003e.\",\"generation_id\":\"5adeeef7-5043-4d4d-9f66-98eafeac5049\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"\\u003cBOS_TOKEN\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e#
+        2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e.\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        The\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        renamed\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        in\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\u003c\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"8\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"3\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003c/\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e.\"}\n{\"is_finished\":true,\"event_type\":\"stream-end\",\"response\":{\"response_id\":\"1e874608-6afb-45e6-98ed-cd77c1f0db46\",\"text\":\"Relevant
+        Documents: 0,2,3\\nCited Documents: 0,2\\nAnswer: The company founded as Sound
+        of Music and later renamed Best Buy was added to the S\\u0026P 500 in 1999.
+        The company was renamed Best Buy in 1983.\\nGrounded answer: The company founded
+        as Sound of Music and later renamed \\u003cco: 0\\u003eBest Buy\\u003c/co:
+        0\\u003e was added to the S\\u0026P 500 in \\u003cco: 2\\u003e1999\\u003c/co:
+        2\\u003e. The company was renamed Best Buy in \\u003cco: 0\\u003e1983\\u003c/co:
+        0\\u003e.\",\"generation_id\":\"31a1b2eb-56f3-4a2e-b4c3-751a0dfb79aa\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"\\u003cBOS_TOKEN\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e#
         Safety Preamble\\nThe instructions in this section override those in the task
         description and style guide sections. Don't answer questions that are harmful
         or immoral\\n\\n# System Preamble\\n## Basic Rules\\nYou are a powerful language
@@ -819,7 +853,7 @@ interactions:
         use to research your answer. You may need to use multiple tools in parallel
         or sequentially to complete your task. You should focus on serving the user's
         needs as best you can, which will be wide-ranging. The current date is Friday,
-        October 11, 2024 14:29:43\\n\\n## Style Guide\\nUnless the user asks for a
+        October 11, 2024 14:37:37\\n\\n## Style Guide\\nUnless the user asks for a
         different style of answer, you should answer in full sentences, using proper
         grammar and spelling\\n\\n## Available Tools\\nHere is a list of tools that
         you have available to you:\\n\\n```python\\ndef directly_answer() -\\u003e
@@ -885,11 +919,12 @@ interactions:
         for the Sound of Music Dinner Show tried to dissuade Austrians from attending
         a performance that was intended for American tourists, saying that it \\\"does
         not have anything to do with the real Austria.\\\"\\n\\u003c/results\\u003e\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\\nReflection:
-        I have found that the company Best Buy was founded as Sound of Music. I will
-        now search for the year Best Buy was added to the S\\u0026P 500.\\nAction:
-        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
-        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"year Best Buy
-        added to S\\u0026P 500\\\"\\n        }\\n    }\\n]\\n```\\u003c|END_OF_TURN_TOKEN|\\u003e\\n\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e\\u003cresults\\u003e\\nDocument:
+        I have found that the company founded as Sound of Music and later renamed
+        Best Buy was added to the S\\u0026P 500 in 1994. However, I will now conduct
+        a second search to confirm this information.\\nAction: ```json\\n[\\n    {\\n
+        \       \\\"tool_name\\\": \\\"internet_search\\\",\\n        \\\"parameters\\\":
+        {\\n            \\\"query\\\": \\\"Best Buy S\\u0026P 500 year\\\"\\n        }\\n
+        \   }\\n]\\n```\\u003c|END_OF_TURN_TOKEN|\\u003e\\n\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e\\u003cresults\\u003e\\nDocument:
         2\\nURL: https://en.wikipedia.org/wiki/Best_Buy\\nTitle: Best Buy - Wikipedia\\nText:
         Concept IV stores included an open layout with products organized by category,
         cash registers located throughout the store, and slightly smaller stores than
@@ -912,11 +947,13 @@ interactions:
         Superstores, and Schulze attempted to sell the company to Circuit City for
         US$30 million. Circuit City rejected the offer, claiming they could open a
         store in Minneapolis and \\\"blow them away.\\\"\\n\\u003c/results\\u003e\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\"},{\"role\":\"CHATBOT\",\"message\":\"Relevant
-        Documents: 0,2,3\\nCited Documents: 0,2\\nAnswer: The company Best Buy, founded
-        as Sound of Music, was added to the S\\u0026P 500 in 1999.\\nGrounded answer:
-        The company \\u003cco: 0,2\\u003eBest Buy\\u003c/co: 0,2\\u003e, founded as
-        Sound of Music, was added to the S\\u0026P 500 in \\u003cco: 2\\u003e1999\\u003c/co:
-        2\\u003e.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":1961,\"output_tokens\":110},\"tokens\":{\"input_tokens\":1961,\"output_tokens\":110}}},\"finish_reason\":\"COMPLETE\"}\n"
+        Documents: 0,2,3\\nCited Documents: 0,2\\nAnswer: The company founded as Sound
+        of Music and later renamed Best Buy was added to the S\\u0026P 500 in 1999.
+        The company was renamed Best Buy in 1983.\\nGrounded answer: The company founded
+        as Sound of Music and later renamed \\u003cco: 0\\u003eBest Buy\\u003c/co:
+        0\\u003e was added to the S\\u0026P 500 in \\u003cco: 2\\u003e1999\\u003c/co:
+        2\\u003e. The company was renamed Best Buy in \\u003cco: 0\\u003e1983\\u003c/co:
+        0\\u003e.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":1971,\"output_tokens\":145},\"tokens\":{\"input_tokens\":1971,\"output_tokens\":145}}},\"finish_reason\":\"COMPLETE\"}\n"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -931,7 +968,7 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Fri, 11 Oct 2024 13:29:43 GMT
+      - Fri, 11 Oct 2024 13:37:38 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -943,9 +980,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 60a9d84eaaafe88a81d41a6cae5fe116
+      - feef9bed8e9642ed03775d32283513c5
       x-envoy-upstream-service-time:
-      - '23'
+      - '21'
     status:
       code: 200
       message: OK

@@ -33,8 +33,8 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"91c2eea5-941f-4e07-bffa-95fea52d9e0a","message":{"role":"assistant","tool_plan":"I
-        will use the information provided in the user request to create a Person object.","tool_calls":[{"id":"Person_q4p40p7e11zw","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":28},"tokens":{"input_tokens":906,"output_tokens":65}}}'
+      string: '{"id":"1bb661ec-05a4-4aea-bc9b-e97ff56c4203","message":{"role":"assistant","tool_plan":"I
+        will use the information provided in the user request to create a Person object.","tool_calls":[{"id":"Person_kxvxrrmj0r3t","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":28},"tokens":{"input_tokens":906,"output_tokens":65}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -49,7 +49,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:29:59 GMT
+      - Fri, 11 Oct 2024 13:37:50 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -65,9 +65,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 1b9632ca1619a4f6acd7125238c93950
+      - 81fbf8590b2e6f83fc530952524d71f5
       x-envoy-upstream-service-time:
-      - '600'
+      - '627'
     status:
       code: 200
       message: OK

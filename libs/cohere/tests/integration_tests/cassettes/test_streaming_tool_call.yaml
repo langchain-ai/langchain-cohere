@@ -48,7 +48,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:30:00 GMT
+      - Fri, 11 Oct 2024 13:37:50 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -60,9 +60,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 2bae811c4e519196ac275c6d40be08c4
+      - 519bdfff6553b47459daad4179a4e540
       x-envoy-upstream-service-time:
-      - '31'
+      - '11'
     status:
       code: 400
       message: Bad Request

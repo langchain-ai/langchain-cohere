@@ -121,7 +121,7 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: "{\"id\":\"e6b9bbbd-4125-45a7-9af1-616087a3dc52\",\"message\":{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Ginger
+      string: "{\"id\":\"20adae31-b1eb-40b6-bd81-c55033003a31\",\"message\":{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Ginger
         has a range of health benefits, including improved digestion, nausea relief,
         reduced bloating and gas, and antioxidant properties. It may also have anti-inflammatory
         properties, but further research is needed. Ginger can be consumed in various
@@ -1206,8 +1206,8 @@ interactions:
         more is known, people with diabetes can enjoy normal quantities of ginger
         in food but should steer clear of large-dose ginger supplements.\\n\\nFor
         any questions about ginger or any other food ingredient and how it might affect
-        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":463,\"end\":500,\"text\":\"both
-        provide similar health benefits.\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":476,\"end\":500,\"text\":\"similar
+        health benefits.\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
         adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
         \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
         what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
@@ -1528,7 +1528,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:29:40 GMT
+      - Fri, 11 Oct 2024 13:37:35 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -1547,9 +1547,9 @@ interactions:
       - document id=doc-0 is too long and may provide bad results, please chunk your
         documents to 300 words or less
       x-debug-trace-id:
-      - 04628dbb8ec894c1754fc4e1d6af3b09
+      - 91289adefc3c0abbdadf27a9098206df
       x-envoy-upstream-service-time:
-      - '10755'
+      - '16937'
     status:
       code: 200
       message: OK

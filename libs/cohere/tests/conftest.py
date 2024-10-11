@@ -13,11 +13,8 @@ def vcr_config() -> Dict:
         "ignore_hosts": ["storage.googleapis.com"],
     }
 
-@pytest.fixture(scope="module")
+@pytest.fixture
 def patch_base_cohere_get_default_model() -> Generator[Optional[MagicMock], None, None]:
-    # IMPORTANT: Since this fixture is module scoped, it only needs to be called once,
-    # in the top-level test function. It will ensure that the get_default_model method
-    # is mocked for all tests in that module.
     with patch.object(
         BaseCohere, "_get_default_model", return_value="command-r-plus"
     ) as mock_get_default_model:
