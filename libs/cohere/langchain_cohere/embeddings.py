@@ -78,6 +78,9 @@ class CohereEmbeddings(BaseModel, Embeddings):
         cohere_api_key = get_from_dict_or_env(
             values, "cohere_api_key", "COHERE_API_KEY"
         )
+        if isinstance(cohere_api_key, SecretStr):
+            cohere_api_key = cohere_api_key.get_secret_value()
+            
         request_timeout = values.get("request_timeout")
 
         client_name = values.get("user_agent", "langchain:partner")
