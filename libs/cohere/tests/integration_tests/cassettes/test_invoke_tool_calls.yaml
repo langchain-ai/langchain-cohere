@@ -1,9 +1,10 @@
 interactions:
 - request:
-    body: '{"message": "Erick, 27 years old", "chat_history": [], "temperature": 0.0,
-      "tools": [{"name": "Person", "description": "", "parameter_definitions": {"name":
-      {"description": "The name of the person", "type": "str", "required": true},
-      "age": {"description": "The age of the person", "type": "int", "required": true}}}],
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
+      27 years old"}], "tools": [{"type": "function", "function": {"name": "Person",
+      "description": "", "parameters": {"type": "object", "properties": {"name": {"type":
+      "str", "description": "The name of the person"}, "age": {"type": "int", "description":
+      "The age of the person"}}, "required": ["name", "age"]}}}], "temperature": 0.0,
       "stream": false}'
     headers:
       accept:
@@ -13,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '334'
+      - '418'
       content-type:
       - application/json
       host:
@@ -27,36 +28,34 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.0
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"response_id":"1e487945-8792-4128-9b31-15b4a7a39a44","text":"I will
-        use the Person tool to create an entry for Erick, 27 years old.","generation_id":"93580a3a-bf2b-41fb-aae6-368ad48d0320","chat_history":[{"role":"USER","message":"Erick,
-        27 years old"},{"role":"CHATBOT","message":"I will use the Person tool to
-        create an entry for Erick, 27 years old.","tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":21,"output_tokens":31},"tokens":{"input_tokens":919,"output_tokens":31}},"tool_calls":[{"name":"Person","parameters":{"age":27,"name":"Erick"}}]}'
+      string: '{"id":"91c2eea5-941f-4e07-bffa-95fea52d9e0a","message":{"role":"assistant","tool_plan":"I
+        will use the information provided in the user request to create a Person object.","tool_calls":[{"id":"Person_q4p40p7e11zw","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":28},"tokens":{"input_tokens":906,"output_tokens":65}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '451'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-length:
-      - '669'
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:21:43 GMT
+      - Fri, 11 Oct 2024 13:29:59 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '4374'
+      - '4342'
       num_tokens:
-      - '52'
+      - '51'
       pragma:
       - no-cache
       server:
@@ -66,9 +65,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 614089b80e888a19af5d101cf2f21d8e
+      - 1b9632ca1619a4f6acd7125238c93950
       x-envoy-upstream-service-time:
-      - '6667'
+      - '600'
     status:
       code: 200
       message: OK

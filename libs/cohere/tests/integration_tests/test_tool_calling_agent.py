@@ -13,7 +13,7 @@ from langchain_cohere import ChatCohere
             [
                 HumanMessage(content="what is the value of magic_function(3)?"),
                 AIMessage(
-                    content="",
+                    content="I will call magic function with input 3.",
                     tool_calls=[
                         {
                             "name": "magic_function",

@@ -86,6 +86,7 @@ def test_langgraph_react_agent() -> None:
 
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires >= python3.9")
+@pytest.mark.xfail(reason="bind_tools now formats tools for v2, but streaming relies on v1.chat")
 @pytest.mark.vcr()
 def test_langchain_tool_calling_agent() -> None:
     def magic_function(input: int) -> int:

@@ -25,27 +25,27 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.0
     method: POST
     uri: https://api.cohere.com/v1/rerank
   response:
     body:
-      string: '{"id":"b03610d5-6093-4f65-8fbe-c722ad4931e4","results":[{"index":0,"relevance_score":0.0006070756},{"index":1,"relevance_score":0.00013032975}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
+      string: '{"id":"2458e5e2-8687-45bf-ad23-e4af59cf0103","results":[{"index":0,"relevance_score":0.0006070756},{"index":1,"relevance_score":0.00013032975}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '217'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-length:
-      - '217'
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:22:53 GMT
+      - Fri, 11 Oct 2024 13:30:22 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -57,9 +57,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - b7ddacd47fcd3b389ab98cb083c59df5
+      - baa82732b228c60948180b2599cf9663
       x-envoy-upstream-service-time:
-      - '35'
+      - '37'
     status:
       code: 200
       message: OK

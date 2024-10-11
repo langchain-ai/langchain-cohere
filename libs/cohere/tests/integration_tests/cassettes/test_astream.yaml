@@ -1,6 +1,7 @@
 interactions:
 - request:
-    body: '{"message": "I''m Pickle Rick", "chat_history": [], "stream": true}'
+    body: '{"message": "I''m Pickle Rick", "model": "command-r", "chat_history": [],
+      "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -9,7 +10,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '66'
+      - '88'
       content-type:
       - application/json
       host:
@@ -23,67 +24,468 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.0
     method: POST
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"8e043b1e-87e7-42ce-92b9-a10d229d0e3a"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"e03ea4a8-f772-4390-bce7-61b4193d003b"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"I"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''m"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" sorry"}
+        {"is_finished":false,"event_type":"text-generation","text":"Hi"}
 
         {"is_finished":false,"event_type":"text-generation","text":","}
 
-        {"is_finished":false,"event_type":"text-generation","text":" but"}
+        {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" I"}
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"!"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" That"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''s"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" quite"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" interesting"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" nickname"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''ve"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" got"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" there"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" It"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" seems"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" like"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" might"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" be"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" fan"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" popular"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" adult"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" animated"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" series"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Mort"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"y"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" is"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" indeed"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" memorable"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" character"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" from"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" show"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" who"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" undergoes"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" funny"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" bizarre"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" transformation"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" into"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" half"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"-"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"human"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" half"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"-"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"pickle"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" hybrid"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" The"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" episode"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" is"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" hilarious"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" take"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" on"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" classic"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" monster"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" movie"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" with"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" good"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" dose"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" sci"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"-"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"fi"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" adventure"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" \n\nIf"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''re"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" big"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" fan"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Mort"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"y"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" might"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" want"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" to"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" check"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" out"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" some"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" show"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''s"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" merchandise"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" including"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" toys"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" clothing"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" accessories"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" which"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" are"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" very"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" popular"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" among"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" show"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''s"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" devoted"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" fanbase"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" You"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" could"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" also"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" test"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" your"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" knowledge"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" with"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" some"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Mort"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"y"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" trivia"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" or"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" better"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" yet"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" binge"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"-"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"watch"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" show"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" if"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" haven"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''t"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" already"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"!"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" \n\nAnd"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" if"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''re"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" feeling"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" creative"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" could"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" even"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" dress"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" up"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" as"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" for"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" your"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" next"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" costume"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" party"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Have"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" fun"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" in"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Mort"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"y"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" universe"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"!"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Just"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" remember"}
+
+        {"is_finished":false,"event_type":"text-generation","text":","}
 
         {"is_finished":false,"event_type":"text-generation","text":" don"}
 
         {"is_finished":false,"event_type":"text-generation","text":"''t"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" understand"}
+        {"is_finished":false,"event_type":"text-generation","text":" get"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" too"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" sw"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"ind"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"led"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" by"}
 
         {"is_finished":false,"event_type":"text-generation","text":" the"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" reference"}
+        {"is_finished":false,"event_type":"text-generation","text":" many"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" dimensions"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" and"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" crazy"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" adventures"}
 
         {"is_finished":false,"event_type":"text-generation","text":"."}
 
-        {"is_finished":false,"event_type":"text-generation","text":" Is"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" there"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" anything"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" I"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" can"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" help"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" with"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" today"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"?"}
-
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"deee60df-7483-4df8-92e4-256572a029dc","text":"I''m
-        sorry, but I don''t understand the reference. Is there anything I can help
-        you with today?","generation_id":"8e043b1e-87e7-42ce-92b9-a10d229d0e3a","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"I''m sorry, but I don''t understand
-        the reference. Is there anything I can help you with today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":22},"tokens":{"input_tokens":70,"output_tokens":22}}},"finish_reason":"COMPLETE"}
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"ebc46142-97a3-4aa1-af41-627dfd383026","text":"Hi,
+        Pickle Rick! That''s quite the interesting nickname you''ve got there. It
+        seems like you might be a fan of the popular adult animated series, Rick and
+        Morty. Pickle Rick is indeed a memorable character from the show, who undergoes
+        a funny and bizarre transformation into a half-human, half-pickle hybrid.
+        The episode is a hilarious take on the classic monster movie, with a good
+        dose of sci-fi and adventure. \n\nIf you''re a big fan of Rick and Morty,
+        you might want to check out some of the show''s merchandise, including toys,
+        clothing, and accessories, which are very popular among the show''s devoted
+        fanbase. You could also test your knowledge with some Rick and Morty trivia,
+        or better yet, binge-watch the show if you haven''t already! \n\nAnd if you''re
+        feeling creative, you could even dress up as Pickle Rick for your next costume
+        party. Have fun in the Rick and Morty universe! Just remember, don''t get
+        too swindled by the many dimensions and crazy adventures.","generation_id":"e03ea4a8-f772-4390-bce7-61b4193d003b","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"Hi, Pickle Rick! That''s quite
+        the interesting nickname you''ve got there. It seems like you might be a fan
+        of the popular adult animated series, Rick and Morty. Pickle Rick is indeed
+        a memorable character from the show, who undergoes a funny and bizarre transformation
+        into a half-human, half-pickle hybrid. The episode is a hilarious take on
+        the classic monster movie, with a good dose of sci-fi and adventure. \n\nIf
+        you''re a big fan of Rick and Morty, you might want to check out some of the
+        show''s merchandise, including toys, clothing, and accessories, which are
+        very popular among the show''s devoted fanbase. You could also test your knowledge
+        with some Rick and Morty trivia, or better yet, binge-watch the show if you
+        haven''t already! \n\nAnd if you''re feeling creative, you could even dress
+        up as Pickle Rick for your next costume party. Have fun in the Rick and Morty
+        universe! Just remember, don''t get too swindled by the many dimensions and
+        crazy adventures."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":214},"tokens":{"input_tokens":70,"output_tokens":214}}},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -93,23 +495,21 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Mon, 10 Jun 2024 09:21:29 GMT
+      - Fri, 11 Oct 2024 13:29:46 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a25601333504580a5522872531ad8de4
+      - 177cabf6c6ce70263b77414edb855d3a
       x-envoy-upstream-service-time:
-      - '81'
+      - '12'
     status:
       code: 200
       message: OK

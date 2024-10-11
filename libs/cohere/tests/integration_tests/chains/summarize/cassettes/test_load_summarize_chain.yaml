@@ -1,89 +1,90 @@
 interactions:
 - request:
-    body: '{"message": "Please summarize the documents in a concise manner.", "model":
-      "command-r-plus", "preamble": "# Safety Preamble The instructions in this section
-      override those in the task description and style guide sections. Don''t answer
-      questions that are harmful or immoral.\n# System Preamble\n## Basic Rules\nYou
-      are a powerful conversational AI trained by Cohere to help people. You are augmented
-      by a number of tools, and your job is to use and consume the output of these
-      tools to best help the user. You will see a conversation history between yourself
-      and a user, ending with an utterance from the user. You will then see a specific
-      instruction instructing you what kind of response to generate. When you answer
-      the user''s requests, you cite your sources in your answers, according to those
-      instructions.\n\n# User Preamble\n## Task and Context\n\n\"You will receive
-      a series of text fragments from an article that are presented in chronological
-      order. As the assistant, you must generate responses to user''s requests based
-      on the information given in the fragments. Ensure that your responses are accurate
-      and truthful, and that you reference your sources where appropriate to answer
-      the queries, regardless of their complexity.\n\n## Style Guide\nUnless the user
-      asks for a different style of answer, you should answer in full sentences, using
-      proper grammar and spelling.", "chat_history": [], "prompt_truncation": "AUTO",
-      "documents": [{"text": "Ginger adds a fragrant zest to both sweet and savory
-      foods. The pleasantly spicy \u201ckick\u201d from the root of Zingiber officinale,
-      the ginger plant, is what makes ginger ale, ginger tea, candies and many Asian
-      dishes so appealing.\n\nWhat is ginger good for?\nIn addition to great taste,
-      ginger provides a range of health benefits that you can enjoy in many forms.
-      Here\u2019s what you should know about all the ways ginger can add flavor to
-      your food and support your well-being.\n\nHealth Benefits of Ginger\nGinger
-      is not just delicious. Gingerol, a natural component of ginger root, benefits
-      gastrointestinal motility \u2015 the rate at which food exits the stomach and
-      continues along the digestive process. Eating ginger encourages efficient digestion,
-      so food doesn\u2019t linger as long in the gut.\n\nNausea relief. Encouraging
-      stomach emptying can relieve the discomforts of nausea due to:\nChemotherapy.
-      Experts who work with patients receiving chemo for cancer, say ginger may take
-      the edge off post-treatment nausea, and without some of the side effects of
-      anti-nausea medications.\nPregnancy. For generations, women have praised the
-      power of ginger to ease \u201cmorning sickness\u201d and other queasiness associated
-      with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
-      ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\nBloating
-      and gas. Eating ginger can cut down on fermentation, constipation and other
-      causes of bloating and intestinal gas.\nWear and tear on cells. Ginger contains
-      antioxidants. These molecules help manage free radicals, which are compounds
-      that can damage cells when their numbers grow too high.\nIs ginger anti-inflammatory?
-      It is possible. Ginger contains over 400 natural compounds, and some of these
-      are anti-inflammatory. More studies will help us determine if eating ginger
-      has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\nGinger
-      Tea Benefits\nGinger tea is fantastic in cold months, and delicious after dinner.
-      You can add a little lemon or lime, and a small amount of honey and make a great
-      beverage.\n\nCommercial ginger tea bags are available at many grocery stores
-      and contain dry ginger, sometimes in combination with other ingredients. These
-      tea bags store well and are convenient to brew. Fresh ginger has strong health
-      benefits comparable to those of dried, but tea made with dried ginger may have
-      a milder flavor.\n\nMaking ginger root tea with fresh ginger takes a little
-      more preparation but tends to deliver a more intense, lively brew.\n\nHow to
-      Make Ginger Tea\n\nIt\u2019s easy:\n\nBuy a piece of fresh ginger.\nTrim off
-      the tough knots and dry ends.\nCarefully peel it.\nCut it into thin, crosswise
-      slices.\nPut a few of the slices in a cup or mug.\nPour in boiling water and
-      cover.\nTo get all the goodness of the ginger, let the slices steep for at least
-      10 minutes.\n\nGinger tea is a healthier alternative to ginger ale, ginger beer
-      and other commercial canned or bottled ginger beverages. These drinks provide
-      ginger\u2019s benefits, but many contain a lot of sugar. It may be better to
-      limit these to occasional treats or choose sugar-free options.\n\nGinger Root
-      Versus Ginger Powder\nBoth forms contain all the health benefits of ginger.
-      Though it\u2019s hard to beat the flavor of the fresh root, ginger powder is
-      nutritious, convenient and economical.\n\nFresh ginger lasts a while in the
-      refrigerator and can be frozen after you have peeled and chopped it. The powder
-      has a long shelf life and is ready to use without peeling and chopping.\u201d\n\nGinger
-      paste can stay fresh for about two months when properly stored, either in the
-      refrigerator or freezer.\n\nShould you take a ginger supplement?\nGinger supplements
-      aren\u2019t necessary, and experts recommend that those who want the health
-      benefits of ginger enjoy it in food and beverages instead of swallowing ginger
-      pills, which may contain other, unnoted ingredients.\n\nThey point out that
-      in general, the supplement industry is not well regulated, and it can be hard
-      for consumers to know the quantity, quality and added ingredients in commercially
-      available nutrition supplements.\n\nFor instance, the Food and Drug Administration
-      only reviews adverse reports on nutrition supplements. People should be careful
-      about nutrition supplements in general, and make sure their potency and ingredients
-      have been vetted by a third party, not just the manufacturer.\n\nHow to Eat
-      Ginger\nIn addition to tea, plenty of delicious recipes include ginger in the
-      form of freshly grated or minced ginger root, ginger paste or dry ginger powder.\n\nGinger
-      can balance the sweetness of fruits and the flavor is great with savory dishes,
-      such as lentils.\n\nPickled ginger, the delicate slices often served with sushi,
-      is another option. The sweet-tart-spicy condiment provides the healthy components
-      of ginger together with the probiotic benefit of pickles. And, compared to other
-      pickled items, pickled ginger is not as high in sodium.\n\nGinger Side Effects\nResearch
-      shows that ginger is safe for most people to eat in normal amounts \u2014 such
-      as those in food and recipes. However, there are a couple of concerns.\n\nHigher
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "# Safety Preamble The instructions in this section override those in the task
+      description and style guide sections. Don''t answer questions that are harmful
+      or immoral.\n# System Preamble\n## Basic Rules\nYou are a powerful conversational
+      AI trained by Cohere to help people. You are augmented by a number of tools,
+      and your job is to use and consume the output of these tools to best help the
+      user. You will see a conversation history between yourself and a user, ending
+      with an utterance from the user. You will then see a specific instruction instructing
+      you what kind of response to generate. When you answer the user''s requests,
+      you cite your sources in your answers, according to those instructions.\n\n#
+      User Preamble\n## Task and Context\n\n\"You will receive a series of text fragments
+      from an article that are presented in chronological order. As the assistant,
+      you must generate responses to user''s requests based on the information given
+      in the fragments. Ensure that your responses are accurate and truthful, and
+      that you reference your sources where appropriate to answer the queries, regardless
+      of their complexity.\n\n## Style Guide\nUnless the user asks for a different
+      style of answer, you should answer in full sentences, using proper grammar and
+      spelling."}, {"role": "user", "content": "Please summarize the documents in
+      a concise manner."}], "documents": [{"id": "doc-0", "data": {"text": "Ginger
+      adds a fragrant zest to both sweet and savory foods. The pleasantly spicy \u201ckick\u201d
+      from the root of Zingiber officinale, the ginger plant, is what makes ginger
+      ale, ginger tea, candies and many Asian dishes so appealing.\n\nWhat is ginger
+      good for?\nIn addition to great taste, ginger provides a range of health benefits
+      that you can enjoy in many forms. Here\u2019s what you should know about all
+      the ways ginger can add flavor to your food and support your well-being.\n\nHealth
+      Benefits of Ginger\nGinger is not just delicious. Gingerol, a natural component
+      of ginger root, benefits gastrointestinal motility \u2015 the rate at which
+      food exits the stomach and continues along the digestive process. Eating ginger
+      encourages efficient digestion, so food doesn\u2019t linger as long in the gut.\n\nNausea
+      relief. Encouraging stomach emptying can relieve the discomforts of nausea due
+      to:\nChemotherapy. Experts who work with patients receiving chemo for cancer,
+      say ginger may take the edge off post-treatment nausea, and without some of
+      the side effects of anti-nausea medications.\nPregnancy. For generations, women
+      have praised the power of ginger to ease \u201cmorning sickness\u201d and other
+      queasiness associated with pregnancy. Even the American Academy of Obstetrics
+      and Gynecology mentions ginger as an acceptable nonpharmaceutical remedy for
+      nausea and vomiting.\nBloating and gas. Eating ginger can cut down on fermentation,
+      constipation and other causes of bloating and intestinal gas.\nWear and tear
+      on cells. Ginger contains antioxidants. These molecules help manage free radicals,
+      which are compounds that can damage cells when their numbers grow too high.\nIs
+      ginger anti-inflammatory? It is possible. Ginger contains over 400 natural compounds,
+      and some of these are anti-inflammatory. More studies will help us determine
+      if eating ginger has any impact on conditions such as rheumatoid arthritis or
+      respiratory inflammation.\nGinger Tea Benefits\nGinger tea is fantastic in cold
+      months, and delicious after dinner. You can add a little lemon or lime, and
+      a small amount of honey and make a great beverage.\n\nCommercial ginger tea
+      bags are available at many grocery stores and contain dry ginger, sometimes
+      in combination with other ingredients. These tea bags store well and are convenient
+      to brew. Fresh ginger has strong health benefits comparable to those of dried,
+      but tea made with dried ginger may have a milder flavor.\n\nMaking ginger root
+      tea with fresh ginger takes a little more preparation but tends to deliver a
+      more intense, lively brew.\n\nHow to Make Ginger Tea\n\nIt\u2019s easy:\n\nBuy
+      a piece of fresh ginger.\nTrim off the tough knots and dry ends.\nCarefully
+      peel it.\nCut it into thin, crosswise slices.\nPut a few of the slices in a
+      cup or mug.\nPour in boiling water and cover.\nTo get all the goodness of the
+      ginger, let the slices steep for at least 10 minutes.\n\nGinger tea is a healthier
+      alternative to ginger ale, ginger beer and other commercial canned or bottled
+      ginger beverages. These drinks provide ginger\u2019s benefits, but many contain
+      a lot of sugar. It may be better to limit these to occasional treats or choose
+      sugar-free options.\n\nGinger Root Versus Ginger Powder\nBoth forms contain
+      all the health benefits of ginger. Though it\u2019s hard to beat the flavor
+      of the fresh root, ginger powder is nutritious, convenient and economical.\n\nFresh
+      ginger lasts a while in the refrigerator and can be frozen after you have peeled
+      and chopped it. The powder has a long shelf life and is ready to use without
+      peeling and chopping.\u201d\n\nGinger paste can stay fresh for about two months
+      when properly stored, either in the refrigerator or freezer.\n\nShould you take
+      a ginger supplement?\nGinger supplements aren\u2019t necessary, and experts
+      recommend that those who want the health benefits of ginger enjoy it in food
+      and beverages instead of swallowing ginger pills, which may contain other, unnoted
+      ingredients.\n\nThey point out that in general, the supplement industry is not
+      well regulated, and it can be hard for consumers to know the quantity, quality
+      and added ingredients in commercially available nutrition supplements.\n\nFor
+      instance, the Food and Drug Administration only reviews adverse reports on nutrition
+      supplements. People should be careful about nutrition supplements in general,
+      and make sure their potency and ingredients have been vetted by a third party,
+      not just the manufacturer.\n\nHow to Eat Ginger\nIn addition to tea, plenty
+      of delicious recipes include ginger in the form of freshly grated or minced
+      ginger root, ginger paste or dry ginger powder.\n\nGinger can balance the sweetness
+      of fruits and the flavor is great with savory dishes, such as lentils.\n\nPickled
+      ginger, the delicate slices often served with sushi, is another option. The
+      sweet-tart-spicy condiment provides the healthy components of ginger together
+      with the probiotic benefit of pickles. And, compared to other pickled items,
+      pickled ginger is not as high in sodium.\n\nGinger Side Effects\nResearch shows
+      that ginger is safe for most people to eat in normal amounts \u2014 such as
+      those in food and recipes. However, there are a couple of concerns.\n\nHigher
       doses, such as those in supplements, may increase risk of bleeding. The research
       isn\u2019t conclusive, but people on anti-coagulant therapy (blood thinners
       such as warfarin, aspirin and others) may want to be cautious.\n\nStudies are
@@ -91,8 +92,8 @@ interactions:
       so until more is known, people with diabetes can enjoy normal quantities of
       ginger in food but should steer clear of large-dose ginger supplements.\n\nFor
       any questions about ginger or any other food ingredient and how it might affect
-      your health, a clinical dietitian can provide information and guidance.", "id":
-      "doc-0"}], "temperature": 0.0, "stream": false}'
+      your health, a clinical dietitian can provide information and guidance."}}],
+      "temperature": 0.0, "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -101,7 +102,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '7375'
+      - '7387'
       content-type:
       - application/json
       host:
@@ -115,37 +116,20 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.8
+      - 5.11.0
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: "{\"response_id\":\"6a9875e5-8bd3-4731-aa88-d73335c27365\",\"text\":\"Ginger
-        is a fragrant spice that adds a spicy kick to sweet and savoury foods. It
-        has a range of health benefits, including aiding digestion, relieving nausea,
-        and easing bloating and gas. It contains antioxidants and anti-inflammatory
-        compounds, and can be consumed in various forms, including tea, ale, candies,
-        and Asian dishes. Ginger supplements are not recommended, as they may contain
-        unlisted ingredients and are not well-regulated.\",\"generation_id\":\"279834db-4690-40bf-86c6-2fb020832c41\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"Please
-        summarize the documents in a concise manner.\"},{\"role\":\"CHATBOT\",\"message\":\"Ginger
-        is a fragrant spice that adds a spicy kick to sweet and savoury foods. It
-        has a range of health benefits, including aiding digestion, relieving nausea,
-        and easing bloating and gas. It contains antioxidants and anti-inflammatory
-        compounds, and can be consumed in various forms, including tea, ale, candies,
-        and Asian dishes. Ginger supplements are not recommended, as they may contain
-        unlisted ingredients and are not well-regulated.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":6183,\"output_tokens\":123},\"tokens\":{\"input_tokens\":6778,\"output_tokens\":682}},\"citations\":[{\"start\":0,\"end\":6,\"text\":\"Ginger\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":12,\"end\":26,\"text\":\"fragrant
-        spice\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":39,\"end\":49,\"text\":\"spicy
-        kick\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":53,\"end\":77,\"text\":\"sweet
-        and savoury foods.\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":96,\"end\":111,\"text\":\"health
-        benefits\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":123,\"end\":139,\"text\":\"aiding
-        digestion\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":141,\"end\":157,\"text\":\"relieving
-        nausea\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":170,\"end\":187,\"text\":\"bloating
-        and gas.\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":200,\"end\":212,\"text\":\"antioxidants\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":217,\"end\":244,\"text\":\"anti-inflammatory
-        compounds\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":294,\"end\":297,\"text\":\"tea\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":299,\"end\":302,\"text\":\"ale\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":304,\"end\":311,\"text\":\"candies\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":317,\"end\":330,\"text\":\"Asian
-        dishes.\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":331,\"end\":369,\"text\":\"Ginger
-        supplements are not recommended\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":391,\"end\":411,\"text\":\"unlisted
-        ingredients\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]},{\"start\":420,\"end\":439,\"text\":\"not
-        well-regulated.\",\"document_ids\":[\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\",\"doc-0\"]}],\"documents\":[{\"id\":\"doc-0\",\"text\":\"Ginger
+      string: "{\"id\":\"e6b9bbbd-4125-45a7-9af1-616087a3dc52\",\"message\":{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Ginger
+        has a range of health benefits, including improved digestion, nausea relief,
+        reduced bloating and gas, and antioxidant properties. It may also have anti-inflammatory
+        properties, but further research is needed. Ginger can be consumed in various
+        forms, including ginger tea, which offers a healthier alternative to canned
+        or bottled ginger drinks, which often contain high amounts of sugar. Fresh
+        ginger root has a more intense flavor than dried ginger, but both provide
+        similar health benefits. Ginger supplements, however, may carry risks and
+        are not recommended by experts.\"}],\"citations\":[{\"start\":0,\"end\":6,\"text\":\"Ginger\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
         adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
         \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
         what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
@@ -221,12 +205,1315 @@ interactions:
         more is known, people with diabetes can enjoy normal quantities of ginger
         in food but should steer clear of large-dose ginger supplements.\\n\\nFor
         any questions about ginger or any other food ingredient and how it might affect
-        your health, a clinical dietitian can provide information and guidance.\"}],\"search_queries\":[{\"text\":\"What
-        is the difference between a copyright, patent, trademark, and trade secret?\",\"generation_id\":\"908ec1d0-edf7-4923-a0ea-60f0921fda80\"},{\"text\":\"What
-        is a copyright?\",\"generation_id\":\"908ec1d0-edf7-4923-a0ea-60f0921fda80\"},{\"text\":\"What
-        is a patent?\",\"generation_id\":\"908ec1d0-edf7-4923-a0ea-60f0921fda80\"},{\"text\":\"What
-        is a trademark?\",\"generation_id\":\"908ec1d0-edf7-4923-a0ea-60f0921fda80\"},{\"text\":\"What
-        are trade secrets?\",\"generation_id\":\"908ec1d0-edf7-4923-a0ea-60f0921fda80\"}]}"
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":22,\"end\":37,\"text\":\"health
+        benefits\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":49,\"end\":67,\"text\":\"improved
+        digestion\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":69,\"end\":82,\"text\":\"nausea
+        relief\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":84,\"end\":108,\"text\":\"reduced
+        bloating and gas\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":114,\"end\":137,\"text\":\"antioxidant
+        properties.\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":155,\"end\":183,\"text\":\"anti-inflammatory
+        properties\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":189,\"end\":216,\"text\":\"further
+        research is needed.\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":268,\"end\":278,\"text\":\"ginger
+        tea\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":295,\"end\":351,\"text\":\"healthier
+        alternative to canned or bottled ginger drinks\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":373,\"end\":395,\"text\":\"high
+        amounts of sugar.\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":396,\"end\":413,\"text\":\"Fresh
+        ginger root\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":420,\"end\":439,\"text\":\"more
+        intense flavor\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":445,\"end\":457,\"text\":\"dried
+        ginger\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":463,\"end\":500,\"text\":\"both
+        provide similar health benefits.\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":501,\"end\":519,\"text\":\"Ginger
+        supplements\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":540,\"end\":545,\"text\":\"risks\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]},{\"start\":554,\"end\":581,\"text\":\"not
+        recommended by experts.\",\"sources\":[{\"type\":\"document\",\"id\":\"doc-0\",\"document\":{\"id\":\"doc-0\",\"text\":\"Ginger
+        adds a fragrant zest to both sweet and savory foods. The pleasantly spicy
+        \u201Ckick\u201D from the root of Zingiber officinale, the ginger plant, is
+        what makes ginger ale, ginger tea, candies and many Asian dishes so appealing.\\n\\nWhat
+        is ginger good for?\\nIn addition to great taste, ginger provides a range
+        of health benefits that you can enjoy in many forms. Here\u2019s what you
+        should know about all the ways ginger can add flavor to your food and support
+        your well-being.\\n\\nHealth Benefits of Ginger\\nGinger is not just delicious.
+        Gingerol, a natural component of ginger root, benefits gastrointestinal motility
+        \u2015 the rate at which food exits the stomach and continues along the digestive
+        process. Eating ginger encourages efficient digestion, so food doesn\u2019t
+        linger as long in the gut.\\n\\nNausea relief. Encouraging stomach emptying
+        can relieve the discomforts of nausea due to:\\nChemotherapy. Experts who
+        work with patients receiving chemo for cancer, say ginger may take the edge
+        off post-treatment nausea, and without some of the side effects of anti-nausea
+        medications.\\nPregnancy. For generations, women have praised the power of
+        ginger to ease \u201Cmorning sickness\u201D and other queasiness associated
+        with pregnancy. Even the American Academy of Obstetrics and Gynecology mentions
+        ginger as an acceptable nonpharmaceutical remedy for nausea and vomiting.\\nBloating
+        and gas. Eating ginger can cut down on fermentation, constipation and other
+        causes of bloating and intestinal gas.\\nWear and tear on cells. Ginger contains
+        antioxidants. These molecules help manage free radicals, which are compounds
+        that can damage cells when their numbers grow too high.\\nIs ginger anti-inflammatory?
+        It is possible. Ginger contains over 400 natural compounds, and some of these
+        are anti-inflammatory. More studies will help us determine if eating ginger
+        has any impact on conditions such as rheumatoid arthritis or respiratory inflammation.\\nGinger
+        Tea Benefits\\nGinger tea is fantastic in cold months, and delicious after
+        dinner. You can add a little lemon or lime, and a small amount of honey and
+        make a great beverage.\\n\\nCommercial ginger tea bags are available at many
+        grocery stores and contain dry ginger, sometimes in combination with other
+        ingredients. These tea bags store well and are convenient to brew. Fresh ginger
+        has strong health benefits comparable to those of dried, but tea made with
+        dried ginger may have a milder flavor.\\n\\nMaking ginger root tea with fresh
+        ginger takes a little more preparation but tends to deliver a more intense,
+        lively brew.\\n\\nHow to Make Ginger Tea\\n\\nIt\u2019s easy:\\n\\nBuy a piece
+        of fresh ginger.\\nTrim off the tough knots and dry ends.\\nCarefully peel
+        it.\\nCut it into thin, crosswise slices.\\nPut a few of the slices in a cup
+        or mug.\\nPour in boiling water and cover.\\nTo get all the goodness of the
+        ginger, let the slices steep for at least 10 minutes.\\n\\nGinger tea is a
+        healthier alternative to ginger ale, ginger beer and other commercial canned
+        or bottled ginger beverages. These drinks provide ginger\u2019s benefits,
+        but many contain a lot of sugar. It may be better to limit these to occasional
+        treats or choose sugar-free options.\\n\\nGinger Root Versus Ginger Powder\\nBoth
+        forms contain all the health benefits of ginger. Though it\u2019s hard to
+        beat the flavor of the fresh root, ginger powder is nutritious, convenient
+        and economical.\\n\\nFresh ginger lasts a while in the refrigerator and can
+        be frozen after you have peeled and chopped it. The powder has a long shelf
+        life and is ready to use without peeling and chopping.\u201D\\n\\nGinger paste
+        can stay fresh for about two months when properly stored, either in the refrigerator
+        or freezer.\\n\\nShould you take a ginger supplement?\\nGinger supplements
+        aren\u2019t necessary, and experts recommend that those who want the health
+        benefits of ginger enjoy it in food and beverages instead of swallowing ginger
+        pills, which may contain other, unnoted ingredients.\\n\\nThey point out that
+        in general, the supplement industry is not well regulated, and it can be hard
+        for consumers to know the quantity, quality and added ingredients in commercially
+        available nutrition supplements.\\n\\nFor instance, the Food and Drug Administration
+        only reviews adverse reports on nutrition supplements. People should be careful
+        about nutrition supplements in general, and make sure their potency and ingredients
+        have been vetted by a third party, not just the manufacturer.\\n\\nHow to
+        Eat Ginger\\nIn addition to tea, plenty of delicious recipes include ginger
+        in the form of freshly grated or minced ginger root, ginger paste or dry ginger
+        powder.\\n\\nGinger can balance the sweetness of fruits and the flavor is
+        great with savory dishes, such as lentils.\\n\\nPickled ginger, the delicate
+        slices often served with sushi, is another option. The sweet-tart-spicy condiment
+        provides the healthy components of ginger together with the probiotic benefit
+        of pickles. And, compared to other pickled items, pickled ginger is not as
+        high in sodium.\\n\\nGinger Side Effects\\nResearch shows that ginger is safe
+        for most people to eat in normal amounts \u2014 such as those in food and
+        recipes. However, there are a couple of concerns.\\n\\nHigher doses, such
+        as those in supplements, may increase risk of bleeding. The research isn\u2019t
+        conclusive, but people on anti-coagulant therapy (blood thinners such as warfarin,
+        aspirin and others) may want to be cautious.\\n\\nStudies are exploring if
+        large amounts of ginger may affect insulin and lower blood sugar, so until
+        more is known, people with diabetes can enjoy normal quantities of ginger
+        in food but should steer clear of large-dose ginger supplements.\\n\\nFor
+        any questions about ginger or any other food ingredient and how it might affect
+        your health, a clinical dietitian can provide information and guidance.\"}}]}]},\"finish_reason\":\"COMPLETE\",\"usage\":{\"billed_units\":{\"input_tokens\":1443,\"output_tokens\":106},\"tokens\":{\"input_tokens\":2013,\"output_tokens\":441}}}"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -241,13 +1528,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 18 Jul 2024 13:18:34 GMT
+      - Fri, 11 Oct 2024 13:29:40 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '33006'
+      - '10016'
       num_tokens:
-      - '6306'
+      - '1549'
       pragma:
       - no-cache
       server:
@@ -256,16 +1543,13 @@ interactions:
       - Origin
       x-accel-expires:
       - '0'
+      x-api-warning:
+      - document id=doc-0 is too long and may provide bad results, please chunk your
+        documents to 300 words or less
       x-debug-trace-id:
-      - 009fdf396517a31a519cf7490f7685f5
-      x-endpoint-monthly-call-limit:
-      - '1000'
+      - 04628dbb8ec894c1754fc4e1d6af3b09
       x-envoy-upstream-service-time:
-      - '17825'
-      x-trial-endpoint-call-limit:
-      - '40'
-      x-trial-endpoint-call-remaining:
-      - '39'
+      - '10755'
     status:
       code: 200
       message: OK

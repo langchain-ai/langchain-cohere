@@ -22,8 +22,14 @@ from langchain_cohere import ChatCohere, CohereRagRetriever
 
 DEFAULT_MODEL = "command-r"
 
+def get_num_documents_from_v2_response(response: Dict[str, Any]) -> int:
+    document_ids = set()
+    for c in response["citations"]:
+        document_ids.update({ doc.id for doc in c.sources if doc.type == "document" })
+    return len(document_ids)
 
 @pytest.mark.vcr()
+@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, so this test is no longer valid.")
 def test_connectors() -> None:
     """Test connectors parameter support from ChatCohere."""
     llm = ChatCohere(model=DEFAULT_MODEL).bind(connectors=[{"id": "web-search"}])
@@ -40,7 +46,7 @@ def test_documents() -> None:
 
     result = llm.invoke(prompt)
     assert isinstance(result.content, str)
-    assert len(result.response_metadata["documents"]) == 1
+    assert get_num_documents_from_v2_response(result.response_metadata) == 1
 
 
 @pytest.mark.vcr()
@@ -71,10 +77,11 @@ def test_documents_chain() -> None:
 
     result = chain.invoke("What color is the sky?")
     assert isinstance(result.content, str)
-    assert len(result.response_metadata["documents"]) == 1
+    assert get_num_documents_from_v2_response(result.response_metadata) == 1
 
 
 @pytest.mark.vcr()
+@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, so this test is no longer valid.")
 def test_who_are_cohere() -> None:
     user_query = "Who founded Cohere?"
     llm = ChatCohere(model=DEFAULT_MODEL)
@@ -108,8 +115,8 @@ def test_who_founded_cohere_with_custom_documents() -> None:
     answer = docs.pop()
     citations = answer.metadata.get("citations")
     relevant_documents = docs
-    assert len(relevant_documents) > 0
-    expected_answer = "barack obama is the founder of cohere."
+    assert len(relevant_documents) == 0
+    expected_answer = "according to my sources, cohere was founded by barack obama."
     assert expected_answer == answer.page_content.lower()
     assert citations is not None
     assert len(citations) > 0

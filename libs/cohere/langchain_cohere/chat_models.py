@@ -54,6 +54,7 @@ from pydantic import BaseModel, ConfigDict, PrivateAttr
 from langchain_cohere.cohere_agent import (
     _convert_to_cohere_tool,
     _format_to_cohere_tools,
+    _format_to_cohere_tools_v2,
 )
 from langchain_cohere.llms import BaseCohere
 from langchain_cohere.react_multi_hop.prompt import convert_to_documents
@@ -368,8 +369,17 @@ def _get_message_cohere_format_v2(
         if message.tool_calls:
             return {
                 "role": get_role_v2(message),
-                "tool_plan": message.content,
-                "tool_calls": message.tool_calls,
+                # Must provide a tool_plan msg if tool_calls are present
+                "tool_plan": message.content if message.content 
+                else "I will assist you using the tools provided.",
+                "tool_calls": [{
+                    "id": tool_call.get("id"),
+                    "type": "function",
+                    "function": {
+                        "name": tool_call.get("name"),
+                        "arguments": json.dumps(tool_call.get("args")),
+                    }
+                } for tool_call in message.tool_calls],
             }
         return {"role": get_role_v2(message), "content": message.content}
     elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
@@ -378,7 +388,12 @@ def _get_message_cohere_format_v2(
         return {
             "role": get_role_v2(message),
             "tool_call_id": message.tool_call_id,
-            "content": tool_results,
+            "content": [{
+                "type": "document",
+                "document": {
+                    "data": json.dumps(tool_results),
+                },
+            }],
         }
     else:
         raise ValueError(f"Got unknown type {message}")
@@ -449,6 +464,9 @@ def get_cohere_chat_request_v2(
     if kwargs.get("preamble"):
         messages = [SystemMessage(content=kwargs.get("preamble"))] + messages
         del kwargs["preamble"]
+    
+    if kwargs.get("connectors"):
+        del kwargs["connectors"]
 
     chat_history_with_curr_msg = []
     for message in messages:
@@ -464,7 +482,6 @@ def get_cohere_chat_request_v2(
     req = {
         "messages": chat_history_with_curr_msg,
         "documents": formatted_docs,
-        "connectors": connectors,
         "stop_sequences": stop_sequences,
         **kwargs,
     }
@@ -516,7 +533,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
         **kwargs: Any,
     ) -> Runnable[LanguageModelInput, BaseMessage]:
-        formatted_tools = _format_to_cohere_tools(tools)
+        formatted_tools = _format_to_cohere_tools_v2(tools)
         return self.bind(tools=formatted_tools, **kwargs)
 
     def with_structured_output(
@@ -775,7 +792,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             tool_calls = []
         usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.message.content[0].text,
+            content=response.message.content[0].text if response.message.content else "",
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
@@ -815,7 +832,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             tool_calls = []
         usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.message.content[0].text,
+            content=response.message.content[0].text if response.message.content else "",
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,

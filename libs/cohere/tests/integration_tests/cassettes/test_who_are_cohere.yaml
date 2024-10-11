@@ -1,8 +1,7 @@
 interactions:
 - request:
-    body: '{"message": "Who founded Cohere?", "model": "command-r", "chat_history":
-      [], "prompt_truncation": "AUTO", "connectors": [{"id": "web-search"}], "stream":
-      false}'
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Who founded
+      Cohere?"}], "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -11,7 +10,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '160'
+      - '105'
       content-type:
       - application/json
       host:
@@ -25,170 +24,20 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.6.2
+      - 5.11.0
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: "{\"response_id\":\"8030dee3-89eb-4935-b9ea-51a4183a7684\",\"text\":\"Cohere
-        has 3 founders; Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez is also
-        the current CEO. All three founders attended the University of Toronto.\",\"generation_id\":\"0c40dca6-08b6-4402-bcd9-50dc6ed466e8\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"Who
-        founded Cohere?\"},{\"role\":\"CHATBOT\",\"message\":\"Cohere has 3 founders;
-        Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez is also the current
-        CEO. All three founders attended the University of Toronto.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":5729,\"output_tokens\":38},\"tokens\":{\"input_tokens\":6449,\"output_tokens\":186}},\"citations\":[{\"start\":23,\"end\":34,\"text\":\"Aidan
-        Gomez\",\"document_ids\":[\"web-search_1\",\"web-search_2\",\"web-search_3\"]},{\"start\":36,\"end\":46,\"text\":\"Ivan
-        Zhang\",\"document_ids\":[\"web-search_1\",\"web-search_2\"]},{\"start\":52,\"end\":64,\"text\":\"Nick
-        Frosst.\",\"document_ids\":[\"web-search_1\",\"web-search_2\",\"web-search_4\"]},{\"start\":65,\"end\":101,\"text\":\"Aidan
-        Gomez is also the current CEO.\",\"document_ids\":[\"web-search_3\"]},{\"start\":134,\"end\":156,\"text\":\"University
-        of Toronto.\",\"document_ids\":[\"web-search_2\"]}],\"documents\":[{\"id\":\"web-search_1\",\"snippet\":\"Cohere
-        and Fujitsu Announce Strategic Partnership To Provide Japanese Enterprise
-        AI Services Learn More\\n\\nWe\u2019re building the future of language AI\\n\\nCohere
-        empowers every developer and enterprise to build amazing products and capture
-        true business value with language AI.\\n\\nWe\u2019re building the future
-        of language AI\\n\\nCohere empowers every developer and enterprise to build
-        amazing products and capture true business value with language AI.\\n\\nWe\u2019re
-        driven by cutting-edge research\\n\\nAt Cohere, we believe that the union
-        of research and product will realize a world where technology commands language
-        in a way that\u2019s as compelling and coherent as ourselves. We live at the
-        forefront of ML/AI research to bring the latest advancements in language AI
-        to our platform.\\n\\nexplore our research lab\\n\\nPioneering the future
-        of language AI for business\\n\\nCohere\u2019s cutting-edge large language
-        models are built on Transformer architecture and trained on supercomputers,
-        providing NLP solutions that don\u2019t need expensive ML development. With
-        a world-class team of experts, we're dedicated to helping companies revolutionize
-        their operations and maximize potential in real-world business applications.\\n\\nWe\u2019re
-        a collaborative team of experts\\n\\nWe are ML/AI engineers, thinkers, and
-        champions who are passionate about exploring the potential of language AI
-        to make our world a better place. With diverse experience and perspectives,
-        we work together to bring advancements in language AI to developers everywhere.\\n\\nWe\u2019re
-        driven by cutting-edge research\\n\\nAt Cohere, we believe that the union
-        of research and product will realize a world where technology commands language
-        in a way that\u2019s as compelling and coherent as ourselves. We live at the
-        forefront of ML/AI research to bring the latest advancements in language AI
-        to our platform.\\n\\nexplore our research lab\\n\\nPioneering the future
-        of language AI for business\\n\\nCohere\u2019s cutting-edge large language
-        models are built on Transformer architecture and trained on supercomputers,
-        providing NLP solutions that don\u2019t need expensive ML development. With
-        a world-class team of experts, we're dedicated to helping companies revolutionize
-        their operations and maximize potential in real-world business applications.\\n\\nWe\u2019re
-        a collaborative team of experts\\n\\nWe are ML/AI engineers, thinkers, and
-        champions who are passionate about exploring the potential of language AI
-        to make our world a better place. With diverse experience and perspectives,
-        we work together to bring advancements in language AI to developers everywhere.\\n\\nVP
-        people operations\\n\\nChief Product Officer\\n\\nCHIEF SCIENTIST, SVP GENERATIVE
-        MODELING\\n\\n\u201CVery large language models are now giving computers a
-        much better understanding of human communication. The team at Cohere is building
-        technology that will make this revolution in natural language understanding
-        much more widely available.\u201D\\n\\nGeoffrey Hinton \u2014 Emeritus Prof.
-        Comp Sci, U.Toronto\\n\\nCheck out the latest news featuring Cohere\",\"timestamp\":\"2024-08-02T19:49:10\",\"title\":\"About
-        | Cohere\",\"url\":\"https://cohere.com/about\"},{\"id\":\"web-search_2\",\"snippet\":\"Cohere
-        Inc. is a Canadian multinational technology company focused on artificial
-        intelligence for the enterprise, specializing in large language models. Cohere
-        was founded in 2019 by Aidan Gomez, Ivan Zhang, and Nick Frosst, and is headquartered
-        in Toronto and San Francisco, with offices in Palo Alto, London, and New York
-        City.\\n\\nIn 2017, a team of researchers at Google Brain introduced the transformer
-        machine learning architecture in \\\"Attention Is All You Need,\\\" which
-        demonstrated state-of-the-art performance on a variety of natural language
-        processing tasks. In 2019, Aidan Gomez, one of its co-authors, along with
-        Nick Frosst, another researcher at Google Brain, founded Cohere with Ivan
-        Zhang, with whom Gomez had done research at FOR.ai. All of the co-founders
-        attended University of Toronto.\\n\\nGomez is the company's CEO. In December
-        2022, Martin Kon, the former CFO of YouTube, became president and COO.\\n\\nIn
-        November 2021, Google Cloud announced that they would help power Cohere's
-        platform using their robust infrastructure, and Cloud's TPUs would be used
-        by Cohere for the development and deployment of their products.\\n\\nIn June
-        2022, Cohere launched Cohere For AI, a nonprofit research lab and community
-        dedicated to contributing open-source, fundamental machine learning research.
-        It is led by Sara Hooker, a former research scientist at Google Brain.\\n\\nIn
-        December 2022, Cohere released a multilingual model for understanding text
-        that would work with over 100 languages, to help users search for documents
-        by meaning instead of with keywords. This type of process was not previously
-        widely available in languages other than English.\\n\\nOn June 13, 2023, Oracle
-        announced a partnership with Cohere to provide generative AI services to help
-        organizations automate end-to-end business processes. As a result, Cohere's
-        technology is integrated into Oracle's business applications, including Oracle
-        Fusion Cloud, Oracle NetSuite, and Oracle industry-specific applications.
-        On July 18, 2023, McKinsey announced a collaboration with Cohere, to help
-        organizations integrate generative AI into their operations. In 2023, Cohere
-        collaborated with software company LivePerson to offer customized large language
-        models for businesses.\\n\\nOn September 12, 2023, it was announced that Cohere
-        had become one of 15 tech companies to agree to voluntary White House measures
-        on testing, reporting, and research on the risks of AI. On September 27, 2023,
-        it was announced that Cohere had also signed Canada's voluntary code of conduct
-        for AI, to promote the responsible development and management of advanced
-        generative AI systems.\\n\\nConsidered an alternative to OpenAI, Cohere is
-        focused on generative AI for the enterprise, building technology that businesses
-        can use to deploy chatbots, search engines, copywriting, summarization, and
-        other AI-driven products. Cohere specializes in large language models: AI
-        trained to digest text from an enterprises' internal data or publicly available
-        sources like the internet to understand how to process and respond to prompts
-        with increasing sophistication.\\n\\nThe Cohere platform is available through
-        API as a managed service, through platforms such as Amazon SageMaker and Google's
-        Vertex AI. It can be used for tasks such as writing copy, moderating content,
-        classifying data, and extracting information. It is cloud agnostic and not
-        tied to a particular cloud service.\\n\\nCohere's generative AI technology
-        is embedded into several Oracle products, and its chat capabilities are embedded
-        into Salesforce products.\\n\\nOn September 7, 2021, Cohere announced that
-        they had raised $40 million in Series A funding led by Index Ventures; Index
-        Ventures partner Mike Volpi also joined Cohere's board. The round also included
-        Radical Ventures, Section 32, and AI-experts Geoffrey Hinton, Fei-Fei Li,
-        Pieter Abbeel, and Raquel Urtasun.\\n\\nIn February 2022, Cohere announced
-        they had raised $125 million in series B funding led by Tiger Global. In June
-        2023, Cohere raised an additional $270 million in series C funding from investors
-        including Inovia Capital, Oracle, Salesforce, and Nvidia, at a valuation of
-        $2.2 billion.\\n\\nIn March 2024, it was reported that Cohere had an annualized
-        revenue run rate of $22 million and was seeking to raise $500 million to $1
-        billion at a valuation of $5 billion.\",\"timestamp\":\"2024-08-12T06:22:25\",\"title\":\"Cohere
-        - Wikipedia\",\"url\":\"https://en.wikipedia.org/wiki/Cohere\"},{\"id\":\"web-search_3\",\"snippet\":\"CEO
-        and Co-Founder, Cohere\\n\\nIllustration by TIME; reference image courtesy
-        of Aidan Gomez\\n\\nSeptember 7, 2023 7:00 AM EDT\\n\\nAidan Gomez was just
-        20 years old when he co-authored a research paper that would change the entire
-        AI industry. It was 2017 and Gomez, then a Google intern, joined a team of
-        researchers writing \u201CAttention Is All You Need\u201D; it proposed a novel
-        neural network technique called the transformer that would learn relationships
-        between long strings of data. Gomez and his seven colleagues raced to finish
-        the paper for inclusion at a major AI conference, even sleeping in the office
-        to make the deadline.\\n\\nThe paper would eventually underpin the current
-        generative AI craze headlined by ChatGPT. But that took some time.\\n\\n\u201CI
-        would be lying if I said I had any appreciation for what was to come,\u201D
-        Gomez, now 27, tells TIME in an interview. \u201CThose of us close to the
-        metal were very focused on building something that was very good at translation.
-        It was very exciting and surprising afterward to learn the consequences of
-        the work and what got created from the foundation.\u201D\\n\\nSince then,
-        all of the co-authors of the paper have left Google to pursue their own ventures.
-        That includes Gomez, who is now the CEO of Cohere, an enterprise-focused company
-        he co-founded that helps businesses implement AI into their chatbots, search
-        engines, and other product offerings. This year, the Toronto-based Cohere
-        raised $270 million from companies including chipmaker Nvidia and venture-capital
-        firm Index Ventures, and was valued at over $2 billion. Its backers include
-        AI luminaries like Geoffrey Hinton. (Investors in Cohere also include Salesforce,
-        where TIME co-chair and owner Marc Benioff is CEO.)\\n\\nGomez chose to focus
-        on working with businesses because he believed that it was the \u201Cbest
-        way to close the gap\u201D between AI models being explored in theory vs.
-        being deployed out in the world. In particular, he is excited by AI\u2019s
-        potential to improve customer support, which he believes will be one of the
-        first \u201Ckiller apps\u201D for AI.\\n\\nGomez dismisses AI doomerism: he
-        has called the idea of AI being a threat to human existence \u201Cabsurd.\u201D
-        Rather, he hopes that AI language models will be implemented into every online
-        interaction. \u201CI want the default mode of interaction for any website
-        or service you land to be talking to it\u2014because that\u2019s what we do
-        with humans,\u201D he says. \u201CThis is our most natural interface for intellectual
-        exchange, and I want that to be supported with our technology as well.\u201D\\n\\nMore
-        Must-Reads from TIME\\n\\nThe Rise of a New Kind of Parenting Guru\\n\\nThe
-        50 Best Romance Novels to Read Right Now\\n\\nMark Kelly and the History of
-        Astronauts Making the Jump to Politics\\n\\nThe Young Women Challenging Iran\u2019s
-        Regime\\n\\nHow to Be More Spontaneous As a Busy Adult\\n\\nCan Food Really
-        Change Your Hormones?\\n\\nColumn: Why Watching Simone Biles Makes Me Cry\\n\\nGet
-        Our Paris Olympics Newsletter in Your Inbox\\n\\nContact us at letters@time.com.\\n\\nMORE
-        FROM TIME100 AI\",\"timestamp\":\"2024-08-05T10:43:24\",\"title\":\"Aidan
-        Gomez: The 100 Most Influential People in AI 2023 | TIME\",\"url\":\"https://time.com/collection/time100-ai/6310653/aidan-gomez/\"},{\"id\":\"web-search_4\",\"snippet\":\"\",\"timestamp\":\"2024-04-08T04:28:28\",\"title\":\"\",\"url\":\"https://ca.linkedin.com/in/nick-frosst-19b80463\"}],\"search_results\":[{\"search_query\":{\"text\":\"cohere
-        founder\",\"generation_id\":\"8030dee3-89eb-4935-b9ea-51a4183a7684\"},\"document_ids\":[\"web-search_0\",\"web-search_1\",\"web-search_2\",\"web-search_3\",\"web-search_4\",\"web-search_5\"],\"connector\":{\"id\":\"web-search\"}}],\"search_queries\":[{\"text\":\"cohere
-        founder\",\"generation_id\":\"8030dee3-89eb-4935-b9ea-51a4183a7684\"}]}"
+      string: '{"id":"c8be3c86-40a2-48f2-9d7a-85a81d274053","message":{"role":"assistant","content":[{"type":"text","text":"Cohere
+        was founded by Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez and Ivan
+        Zhang previously co-founded the startup company Cohere AI, which they ran
+        as CEO and CTO, respectively."}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":5,"output_tokens":42},"tokens":{"input_tokens":71,"output_tokens":43}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '440'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -198,13 +47,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 12 Aug 2024 08:58:17 GMT
+      - Fri, 11 Oct 2024 13:30:21 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '32075'
+      - '436'
       num_tokens:
-      - '5767'
+      - '47'
       pragma:
       - no-cache
       server:
@@ -214,13 +63,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 46cdead8a4e3338d08f2f4f585d21f26
+      - 1714c70429ee820d671bc503b49a93ca
       x-envoy-upstream-service-time:
-      - '3087'
-      x-trial-endpoint-call-limit:
-      - '10'
-      x-trial-endpoint-call-remaining:
-      - '9'
+      - '376'
     status:
       code: 200
       message: OK
