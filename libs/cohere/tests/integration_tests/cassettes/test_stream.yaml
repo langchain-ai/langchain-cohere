@@ -1,6 +1,7 @@
 interactions:
 - request:
-    body: '{"message": "I''m Pickle Rick", "chat_history": [], "stream": true}'
+    body: '{"message": "I''m Pickle Rick", "model": "command-r", "chat_history": [],
+      "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -9,7 +10,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '66'
+      - '88'
       content-type:
       - application/json
       host:
@@ -23,22 +24,24 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.0
     method: POST
     uri: https://api.cohere.com/v1/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"1f61497a-9c53-47b1-96f4-e4fd5c9a0947"}
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"0e1f3609-6416-4651-a309-56354206da55"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"Oh"}
+        {"is_finished":false,"event_type":"text-generation","text":"That"}
 
-        {"is_finished":false,"event_type":"text-generation","text":","}
+        {"is_finished":false,"event_type":"text-generation","text":"''s"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" hello"}
+        {"is_finished":false,"event_type":"text-generation","text":" right"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" there"}
+        {"is_finished":false,"event_type":"text-generation","text":"!"}
 
-        {"is_finished":false,"event_type":"text-generation","text":","}
+        {"is_finished":false,"event_type":"text-generation","text":" You"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"''re"}
 
         {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
 
@@ -46,52 +49,109 @@ interactions:
 
         {"is_finished":false,"event_type":"text-generation","text":"!"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" It"}
+        {"is_finished":false,"event_type":"text-generation","text":" But"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" do"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" you"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" know"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" what"}
 
         {"is_finished":false,"event_type":"text-generation","text":"''s"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" an"}
+        {"is_finished":false,"event_type":"text-generation","text":" not"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" interesting"}
+        {"is_finished":false,"event_type":"text-generation","text":" so"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" choice"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" of"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" form"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"''ve"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" taken"}
-
-        {"is_finished":false,"event_type":"text-generation","text":"."}
-
-        {"is_finished":false,"event_type":"text-generation","text":" How"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" can"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" I"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" help"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
-
-        {"is_finished":false,"event_type":"text-generation","text":" today"}
+        {"is_finished":false,"event_type":"text-generation","text":" fun"}
 
         {"is_finished":false,"event_type":"text-generation","text":"?"}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"d85e5d97-641c-432f-9874-93444b249ea8","text":"Oh,
-        hello there, Pickle Rick! It''s an interesting choice of form you''ve taken.
-        How can I help you today?","generation_id":"1f61497a-9c53-47b1-96f4-e4fd5c9a0947","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"Oh, hello there, Pickle Rick! It''s
-        an interesting choice of form you''ve taken. How can I help you today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":26},"tokens":{"input_tokens":70,"output_tokens":26}}},"finish_reason":"COMPLETE"}
+        {"is_finished":false,"event_type":"text-generation","text":" Being"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" stuck"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" as"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Pickle"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Rick"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" forever"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" You"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" should"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" probably"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" find"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" a"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" way"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" to"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" turn"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" back"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" into"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" your"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" human"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" form"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Maybe"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" some"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" kind"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" serum"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" or"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" something"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Good"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" luck"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" with"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" that"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"!"}
+
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"a55068ba-699a-4296-a8b8-cd22b3c6b624","text":"That''s
+        right! You''re Pickle Rick! But do you know what''s not so fun? Being stuck
+        as Pickle Rick forever. You should probably find a way to turn back into your
+        human form. Maybe some kind of serum or something. Good luck with that!","generation_id":"0e1f3609-6416-4651-a309-56354206da55","chat_history":[{"role":"USER","message":"I''m
+        Pickle Rick"},{"role":"CHATBOT","message":"That''s right! You''re Pickle Rick!
+        But do you know what''s not so fun? Being stuck as Pickle Rick forever. You
+        should probably find a way to turn back into your human form. Maybe some kind
+        of serum or something. Good luck with that!"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":53},"tokens":{"input_tokens":70,"output_tokens":53}}},"finish_reason":"COMPLETE"}
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -101,23 +161,21 @@ interactions:
       content-type:
       - application/stream+json
       date:
-      - Mon, 10 Jun 2024 09:21:28 GMT
+      - Fri, 11 Oct 2024 13:37:39 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 6d52e013a17e2ccdcdf7fe8706c34dbb
+      - 6acf0f3bba5dd2e07ee49a7e313be339
       x-envoy-upstream-service-time:
-      - '35'
+      - '19'
     status:
       code: 200
       message: OK

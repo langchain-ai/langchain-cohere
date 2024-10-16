@@ -3,6 +3,8 @@ from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
     Tool,
+    ToolV2,
+    ToolV2Function,
     ToolCall,
     ToolParameterDefinitionsValue,
     ToolResult,
@@ -67,6 +69,12 @@ def _format_to_cohere_tools(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> List[Dict[str, Any]]:
     return [_convert_to_cohere_tool(tool) for tool in tools]
+
+
+def _format_to_cohere_tools_v2(
+    tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
+) -> List[Dict[str, Any]]:
+    return [_convert_to_cohere_tool_v2(tool) for tool in tools]
 
 
 def _format_to_cohere_tools_messages(
@@ -169,6 +177,97 @@ def _convert_to_cohere_tool(
                 as_json_schema_function.get("name"),
             ),
             parameter_definitions=parameter_definitions,
+        ).dict()
+    else:
+        raise ValueError(
+            f"Unsupported tool type {type(tool)}. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
+        )
+
+
+def _convert_to_cohere_tool_v2(
+    tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
+) -> Dict[str, Any]:
+    """
+    Convert a BaseTool instance, JSON schema dict, or BaseModel type to a V2 Cohere tool.
+    """
+    if isinstance(tool, dict):
+        if not all(k in tool for k in ("title", "description", "properties")):
+            raise ValueError(
+                "Unsupported dict type. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
+            )
+        return ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name=tool.get("title"),
+                description=tool.get("description"),
+                parameters={
+                    "type": "object",
+                    "properties": {
+                        param_name: {
+                            "description": param_definition.get("description"),
+                            "type": JSON_TO_PYTHON_TYPES.get(
+                                param_definition.get("type"), param_definition.get("type")
+                            ),
+                        }
+                        for param_name, param_definition in tool.get("properties", {}).items()
+                    },
+                    "required": [param_name 
+                                 for param_name, param_definition 
+                                 in tool.get("properties", {}).items() 
+                                 if "default" not in param_definition],
+                },
+            )
+        ).dict()
+    elif (
+        (isinstance(tool, type) and issubclass(tool, BaseModel))
+        or callable(tool)
+        or isinstance(tool, BaseTool)
+    ):
+        as_json_schema_function = convert_to_openai_function(tool)
+        parameters = as_json_schema_function.get("parameters", {})
+        properties = parameters.get("properties", {})
+        parameter_definitions = {}
+        required_params = []
+        for param_name, param_definition in properties.items():
+            if "type" in param_definition:
+                _type_str = param_definition.get("type")
+                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
+            elif "anyOf" in param_definition:
+                _type_str = next(
+                    (
+                        t.get("type")
+                        for t in param_definition.get("anyOf", [])
+                        if t.get("type") != "null"
+                    ),
+                    param_definition.get("type"),
+                )
+                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
+            else:
+                _type = None
+            tool_definition = {
+                "type": _type,
+                "description": param_definition.get("description"),
+            }
+            parameter_definitions[param_name] = tool_definition
+            if param_name in parameters.get("required", []):
+                required_params.append(param_name)
+        return ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name=as_json_schema_function.get("name"),
+                description=as_json_schema_function.get(
+                    # The Cohere API requires the description field.
+                    "description",
+                    as_json_schema_function.get("name"),
+                ),
+                parameters={
+                    "type": "object",
+                    "properties": {
+                        **parameter_definitions,
+                    },
+                    "required": required_params,
+                },
+            )
         ).dict()
     else:
         raise ValueError(
