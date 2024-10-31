@@ -684,7 +684,9 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 yield chunk
             elif data.type == "message-end":
                 delta = data.delta
-                generation_info = self._get_stream_info_v2(delta, tool_calls)
+                generation_info = self._get_stream_info_v2(delta, 
+                                                           documents=request.get("documents"), 
+                                                           tool_calls=tool_calls)
                 message = AIMessageChunk(
                     content="",
                     additional_kwargs=generation_info,
@@ -714,7 +716,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 yield chunk
             elif data.type == "message-end":
                 delta = data.delta
-                generation_info = self._get_stream_info_v2(delta)
+                generation_info = self._get_stream_info_v2(delta, documents=request.get("documents"))
                 message = AIMessageChunk(
                     content="",
                     additional_kwargs=generation_info,
@@ -776,7 +778,9 @@ class ChatCohere(BaseChatModel, BaseCohere):
         
         return generation_info
     
-    def _get_stream_info_v2(self, final_delta: Any, tool_calls: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
+    def _get_stream_info_v2(self, final_delta: Any, 
+                            documents: Optional[List[Dict[str, Any]]] = None, 
+                            tool_calls: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
         """Get the stream info from cohere API response (V2)."""
         input_tokens = final_delta.usage.billed_units.input_tokens
         output_tokens = final_delta.usage.billed_units.output_tokens
@@ -789,6 +793,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 "output_tokens": output_tokens,
             }
         }
+        if documents:
+            stream_info["documents"] = documents
         if tool_calls:
             stream_info["tool_calls"] = tool_calls
         return stream_info
