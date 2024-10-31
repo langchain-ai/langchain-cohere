@@ -29,15 +29,17 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"3c9a9dd0-536c-4424-8df8-10138ca9e50b","message":{"role":"assistant","content":[{"type":"text","text":"Cohere
-        was founded by Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez and Ivan
-        Zhang previously co-founded Cohere''s predecessor, Cohere AI Ltd., in 2019.
-        Nick Frosst joined as a co-founder in 2020. Aidan Gomez is currently the CEO."}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":5,"output_tokens":65},"tokens":{"input_tokens":71,"output_tokens":66}}}'
+      string: '{"id":"1e43ddaf-42bf-489b-a18e-669f008077c7","message":{"role":"assistant","content":[{"type":"text","text":"Cohere
+        was founded in 2019 by Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez
+        is a machine learning researcher, who previously worked as a research scientist
+        at Google Brain Team and DeepMind. Ivan Zhang also previously worked at Google,
+        as a software engineer. Nick Frosst is a entrepreneur and engineer, who co-founded
+        the speech recognition and AI company, Koala Labs."}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":5,"output_tokens":82},"tokens":{"input_tokens":71,"output_tokens":83}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '489'
+      - '629'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -47,13 +49,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:38:07 GMT
+      - Thu, 31 Oct 2024 16:01:46 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '436'
+      - '438'
       num_tokens:
-      - '70'
+      - '87'
       pragma:
       - no-cache
       server:
@@ -63,9 +65,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - e9469364b1be60338c5ec730acd44073
+      - 6365c4b0e6d399545d1efcea45ed8ef8
       x-envoy-upstream-service-time:
-      - '526'
+      - '645'
     status:
       code: 200
       message: OK

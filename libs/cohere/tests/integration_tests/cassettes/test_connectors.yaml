@@ -29,13 +29,13 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"bcfe9565-4fb3-41f6-8a77-a1a0386b1c13","message":{"role":"assistant","content":[{"type":"text","text":"Denis
-        Villeneuve."}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":11,"output_tokens":3},"tokens":{"input_tokens":77,"output_tokens":3}}}'
+      string: '{"id":"1774e5b7-cee0-4067-be2e-fc5f4d9c58a8","message":{"role":"assistant","content":[{"type":"text","text":"Denis
+        Villeneuve"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":11,"output_tokens":2},"tokens":{"input_tokens":77,"output_tokens":2}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '268'
+      - '267'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -45,13 +45,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:38:05 GMT
+      - Thu, 31 Oct 2024 16:01:44 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '465'
+      - '467'
       num_tokens:
-      - '14'
+      - '13'
       pragma:
       - no-cache
       server:
@@ -61,9 +61,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 1605580e97943f5ee2c657a866b62b52
+      - 33583d4a0fc9872dff5bdef6b55bba53
       x-envoy-upstream-service-time:
-      - '91'
+      - '73'
     status:
       code: 200
       message: OK

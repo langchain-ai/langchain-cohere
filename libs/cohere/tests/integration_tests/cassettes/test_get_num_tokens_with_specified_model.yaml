@@ -236,7 +236,7 @@ interactions:
         ''List'' }}{% unless input.Required %}] = None{% endunless %}{% endfor %})
         -\u003e List[Dict]:\n    \"\"\"{{ tool.definition.Description }}{% if tool.definition.Inputs.size
         \u003e 0 %}\n\n    Args:\n        {% for input in tool.definition.Inputs %}{%
-        unless forloop.first %}\n            {% endunless %}{{ input.Name }} ({% unless
+        unless forloop.first %}\n        {% endunless %}{{ input.Name }} ({% unless
         input.Required %}Optional[{% endunless %}{{ input.Type | replace: ''tuple'',
         ''List'' | replace: ''Tuple'', ''List'' }}{% unless input.Required %}]{% endunless
         %}): {{input.Description}}{% endfor %}{% endif %}\n    \"\"\"\n    pass\n```{%
@@ -264,15 +264,22 @@ interactions:
         %}{% endfor %}\n]\n```\u003c|END_OF_TURN_TOKEN|\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|SYSTEM_TOKEN|\u003e\u003cresults\u003e\n{%
         for doc in res.documents %}{{doc}}{% unless forloop.last %}\n{% endunless
         %}\n{% endfor %}\u003c/results\u003e\u003c|END_OF_TURN_TOKEN|\u003e{% endfor
-        %}\u003c|START_OF_TURN_TOKEN|\u003e\u003c|CHATBOT_TOKEN|\u003e","rag_query_generation":"{%
-        capture default_user_preamble %}## Task And Context\nYou help people answer
-        their questions and other requests interactively. You will be asked a very
-        wide array of requests on all kinds of topics. You will be equipped with a
-        wide range of search engines or similar tools to help you, which you use to
-        research your answer. You should focus on serving the user''s needs as best
-        you can, which will be wide-ranging.\n\n## Style Guide\nUnless the user asks
-        for a different style of answer, you should answer in full sentences, using
-        proper grammar and spelling.{% endcapture %}\u003cBOS_TOKEN\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|SYSTEM_TOKEN|\u003e#
+        %}\u003c|START_OF_TURN_TOKEN|\u003e\u003c|CHATBOT_TOKEN|\u003e{% if forced_tool_plan
+        and forced_tool_plan != \"\" %}Plan: {{ forced_tool_plan }}\nAction: ```json\n{%
+        if forced_tool_calls.size \u003e 0 or forced_tool_name and forced_tool_name
+        != \"\" %}[\n{% for res in forced_tool_calls %}{{res}}{% unless forloop.last
+        %},\n{% endunless %}{% endfor %}{% if forced_tool_name and forced_tool_name
+        != \"\" %}{% if forced_tool_calls.size \u003e 0 %},\n{%  endif %}    {{  \"{\"
+        }}\n        \"tool_name\": \"{{ forced_tool_name }}\",\n        \"parameters\":
+        {{ \"{\" }}{% endif %}{% endif %}{% endif %}","rag_query_generation":"{% capture
+        default_user_preamble %}## Task And Context\nYou help people answer their
+        questions and other requests interactively. You will be asked a very wide
+        array of requests on all kinds of topics. You will be equipped with a wide
+        range of search engines or similar tools to help you, which you use to research
+        your answer. You should focus on serving the user''s needs as best you can,
+        which will be wide-ranging.\n\n## Style Guide\nUnless the user asks for a
+        different style of answer, you should answer in full sentences, using proper
+        grammar and spelling.{% endcapture %}\u003cBOS_TOKEN\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|SYSTEM_TOKEN|\u003e#
         Safety Preamble\nYou are in contextual safety mode. In this mode, you will
         reject requests to generate child sexual assault material and child exploitation
         material in your responses. You are allowed to generate material that refers
@@ -375,7 +382,7 @@ interactions:
         != \"AUTO\" %} The format should be {% case summarize_controls.format %}{%
         when \"PARAGRAPH\" %}a paragraph{% when \"BULLETS\" %}bullet points{% endcase
         %}.{% endif %}{% if additional_command != \"\" %} {{ additional_command }}{%
-        endif %}\u003c|END_OF_TURN_TOKEN|\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|CHATBOT_TOKEN|\u003e"},"compatibility_version":2,"export_path":"gs://cohere-baselines/tif/exports/generative_models/command2_35B_v19.0.0_2z6jdg31_pref_multi_v0.11.24.8.23/h100_tp4_bfloat16_w8a8_bs128_132k_chunked_custom_reduce_fingerprinted/tensorrt_llm","node_profile":"4x80GB-H100","default_language":"en","baseline_model":"xlarge","is_baseline":true,"tokenizer_id":"multilingual+255k+bos+eos+sptok","end_of_sequence_string":"\u003c|END_OF_TURN_TOKEN|\u003e","streaming":true,"group":"baselines","supports_guided_generation":true}}'
+        endif %}\u003c|END_OF_TURN_TOKEN|\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|CHATBOT_TOKEN|\u003e"},"compatibility_version":2,"export_path":"gs://cohere-baselines/tif/exports/generative_models/command2_35B_v19.0.0_2z6jdg31_pref_multi_v0.13.24.10.16/h100_tp4_bfloat16_w8a8_bs128_132k_chunked_custom_reduce_fingerprinted/tensorrt_llm","node_profile":"4x80GB-H100","default_language":"en","baseline_model":"xlarge","is_baseline":true,"tokenizer_id":"multilingual+255k+bos+eos+sptok","end_of_sequence_string":"\u003c|END_OF_TURN_TOKEN|\u003e","streaming":true,"group":"baselines","supports_guided_generation":true}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -390,7 +397,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:37:52 GMT
+      - Thu, 31 Oct 2024 16:01:28 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -402,9 +409,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - af0a284c3c26e357d744345a20de6703
+      - 4b44315769d691575c38d832d1d30943
       x-envoy-upstream-service-time:
-      - '11'
+      - '10'
     status:
       code: 200
       message: OK

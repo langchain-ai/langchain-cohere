@@ -36,8 +36,8 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"62f3ced0-ef10-4407-9e1a-fa737b0a879a","message":{"role":"assistant","tool_plan":"I
-        will search for the capital of France and relay this information to the user.","tool_calls":[{"id":"capital_cities_3z3c0hkwg9mg","type":"function","function":{"name":"capital_cities","arguments":"{\"country\":\"France\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":31,"output_tokens":24},"tokens":{"input_tokens":944,"output_tokens":58}}}'
+      string: '{"id":"179789cc-31f7-4bdb-975a-34ad11a91efd","message":{"role":"assistant","tool_plan":"I
+        will search for the capital of France and relay this information to the user.","tool_calls":[{"id":"capital_cities_bc12j1xwbn5x","type":"function","function":{"name":"capital_cities","arguments":"{\"country\":\"France\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":31,"output_tokens":24},"tokens":{"input_tokens":944,"output_tokens":58}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -52,11 +52,11 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:37:51 GMT
+      - Thu, 31 Oct 2024 16:01:28 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '4492'
+      - '4488'
       num_tokens:
       - '55'
       pragma:
@@ -68,9 +68,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - d82e929f319a914c9752a05062015674
+      - 0c2998149cb18af3815cb5c57bc45fdb
       x-envoy-upstream-service-time:
-      - '551'
+      - '537'
     status:
       code: 200
       message: OK

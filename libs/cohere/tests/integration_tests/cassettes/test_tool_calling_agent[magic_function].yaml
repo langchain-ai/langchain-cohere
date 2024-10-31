@@ -34,7 +34,7 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"3d3c3826-4ba3-4345-b9b3-3d803c073930","message":{"role":"assistant","content":[{"type":"text","text":"The
+      string: '{"id":"cd2c0e09-54b8-48de-bb0a-40c6eb55f501","message":{"role":"assistant","content":[{"type":"text","text":"The
         value of magic_function(3) is **5**."}],"citations":[{"start":36,"end":37,"text":"5","sources":[{"type":"tool","id":"d86e6098-21e1-44c7-8431-40cfc6d35590:0","tool_output":{"content":"[{\"output\":
         \"5\"}]"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":37,"output_tokens":13},"tokens":{"input_tokens":930,"output_tokens":59}}}'
     headers:
@@ -51,7 +51,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2024 13:38:09 GMT
+      - Thu, 31 Oct 2024 16:01:48 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -67,9 +67,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - b0a6d6f6ae9a163c664e8472bfac13b7
+      - cc51aa248dd96be42906011d80b4750d
       x-envoy-upstream-service-time:
-      - '582'
+      - '555'
     status:
       code: 200
       message: OK

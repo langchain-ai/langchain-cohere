@@ -1,11 +1,11 @@
 interactions:
 - request:
-    body: '{"message": "what is the value of magic_function(3)?", "model": "command-r-plus",
-      "chat_history": [{"role": "System", "message": "You are a helpful assistant"}],
-      "tools": [{"type": "function", "function": {"name": "magic_function", "description":
-      "Applies a magic function to an input.", "parameters": {"type": "object", "properties":
-      {"input": {"type": "int", "description": "Number to apply the magic function
-      to."}}, "required": ["input"]}}}], "stream": true}'
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant"}, {"role": "user", "content": "what is the value
+      of magic_function(3)?"}], "tools": [{"type": "function", "function": {"name":
+      "magic_function", "description": "Applies a magic function to an input.", "parameters":
+      {"type": "object", "properties": {"input": {"type": "int", "description": "Number
+      to apply the magic function to."}}, "required": ["input"]}}}], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -14,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '462'
+      - '476'
       content-type:
       - application/json
       host:
@@ -30,15 +30,149 @@ interactions:
       x-fern-sdk-version:
       - 5.11.0
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"message":"invalid request: all elements in tools must have a name."}'
+      string: 'event: message-start
+
+        data: {"id":"9a77e383-4304-4b6b-af7d-f7809cf382c0","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"I"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" will"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" use"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" magic"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"_"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"function"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" tool"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" to"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" answer"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" user"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"''s"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" request"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"."}}}
+
+
+        event: tool-call-start
+
+        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"magic_function_t8c0je22zjxz","type":"function","function":{"name":"magic_function","arguments":""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"{\n    \""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"input"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\":"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        "}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"3"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\n"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"}"}}}}}
+
+
+        event: tool-call-end
+
+        data: {"type":"tool-call-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":37,"output_tokens":23},"tokens":{"input_tokens":780,"output_tokens":56}}}}
+
+
+        data: [DONE]
+
+
+        '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '70'
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -46,9 +180,9 @@ interactions:
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
       content-type:
-      - application/json
+      - text/event-stream
       date:
-      - Fri, 11 Oct 2024 13:38:05 GMT
+      - Thu, 31 Oct 2024 16:01:41 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -60,10 +194,181 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 8ee7fdc167b20c4e5ef533408ad5bb9e
+      - 20bd324c7e4dc94fb696acf959167e59
       x-envoy-upstream-service-time:
-      - '14'
+      - '10'
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
+- request:
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant"}, {"role": "user", "content": "what is the value
+      of magic_function(3)?"}, {"role": "assistant", "tool_plan": "I will use the
+      magic_function tool to answer the user''s request.", "tool_calls": [{"id": "magic_function_t8c0je22zjxz",
+      "type": "function", "function": {"name": "magic_function", "arguments": "{\"input\":
+      3}"}}]}, {"role": "tool", "tool_call_id": "magic_function_t8c0je22zjxz", "content":
+      [{"type": "document", "document": {"data": "[{\"output\": \"5\"}]"}}]}], "tools":
+      [{"type": "function", "function": {"name": "magic_function", "description":
+      "Applies a magic function to an input.", "parameters": {"type": "object", "properties":
+      {"input": {"type": "int", "description": "Number to apply the magic function
+      to."}}, "required": ["input"]}}}], "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '873'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: 'event: message-start
+
+        data: {"id":"e0ee88da-e2bf-447b-bb1e-69f63bf18272","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: content-start
+
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"The"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        value"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        magic"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"_"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"function"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"("}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"3"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":")"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        5"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: citation-start
+
+        data: {"type":"citation-start","index":0,"delta":{"message":{"citations":{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"magic_function_t8c0je22zjxz:0","tool_output":{"content":"[{\"output\":
+        \"5\"}]"}}]}}}}
+
+
+        event: citation-end
+
+        data: {"type":"citation-end","index":0}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":68,"output_tokens":13},"tokens":{"input_tokens":853,"output_tokens":57}}}}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - text/event-stream
+      date:
+      - Thu, 31 Oct 2024 16:01:42 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - c7403ad4a1f623884993eab9479d3133
+      x-envoy-upstream-service-time:
+      - '21'
+    status:
+      code: 200
+      message: OK
 version: 1

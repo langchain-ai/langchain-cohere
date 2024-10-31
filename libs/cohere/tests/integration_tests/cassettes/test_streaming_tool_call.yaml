@@ -1,10 +1,10 @@
 interactions:
 - request:
-    body: '{"message": "Erick, 27 years old", "model": "command-r", "chat_history":
-      [], "temperature": 0.0, "tools": [{"type": "function", "function": {"name":
-      "Person", "description": "", "parameters": {"type": "object", "properties":
-      {"name": {"type": "str", "description": "The name of the person"}, "age": {"type":
-      "int", "description": "The age of the person"}}, "required": ["name", "age"]}}}],
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
+      27 years old"}], "tools": [{"type": "function", "function": {"name": "Person",
+      "description": "", "parameters": {"type": "object", "properties": {"name": {"type":
+      "str", "description": "The name of the person"}, "age": {"type": "int", "description":
+      "The age of the person"}}, "required": ["name", "age"]}}}], "temperature": 0.0,
       "stream": true}'
     headers:
       accept:
@@ -14,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '405'
+      - '417'
       content-type:
       - application/json
       host:
@@ -30,15 +30,216 @@ interactions:
       x-fern-sdk-version:
       - 5.11.0
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"message":"invalid request: all elements in tools must have a name."}'
+      string: 'event: message-start
+
+        data: {"id":"4dbdca90-0442-49fe-a68d-2c3f60db1650","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"I"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" will"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" use"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" Person"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" tool"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" to"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" create"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" a"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" profile"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" for"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" Erick"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":","}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" 2"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"7"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" years"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" old"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"."}}}
+
+
+        event: tool-call-start
+
+        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"Person_vjz5xgdy7dw4","type":"function","function":{"name":"Person","arguments":""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"{\n    \""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"age"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\":"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        "}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"2"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"7"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":","}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\n   "}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        \""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"name"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\":"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        \""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"E"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rick"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\n"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"}"}}}}}
+
+
+        event: tool-call-end
+
+        data: {"type":"tool-call-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":31},"tokens":{"input_tokens":906,"output_tokens":68}}}}
+
+
+        data: [DONE]
+
+
+        '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '70'
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -46,9 +247,9 @@ interactions:
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
       content-type:
-      - application/json
+      - text/event-stream
       date:
-      - Fri, 11 Oct 2024 13:37:50 GMT
+      - Thu, 31 Oct 2024 16:01:26 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -60,10 +261,10 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 519bdfff6553b47459daad4179a4e540
+      - 94d700358f8217cb76d1accaa6232b06
       x-envoy-upstream-service-time:
-      - '11'
+      - '49'
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
 version: 1
