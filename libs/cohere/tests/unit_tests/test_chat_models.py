@@ -1075,3 +1075,15 @@ def test_get_cohere_chat_request_v2(
     # Check that the result is a dictionary
     assert isinstance(result, dict)
     assert result == expected
+
+def test_get_cohere_chat_request_v2_warn_connectors_deprecated(recwarn):
+    messages = [HumanMessage(content="Hello")]
+    kwargs = {"connectors": ["some_connector"]}
+
+    get_cohere_chat_request_v2(messages, **kwargs)
+
+    assert len(recwarn) == 1
+    warning = recwarn.pop(DeprecationWarning)
+    assert issubclass(warning.category, DeprecationWarning)
+    assert "The 'connectors' parameter is deprecated as of version 1.0.0." in str(warning.message)
+    assert "Please use the 'tools' parameter instead." in str(warning.message)

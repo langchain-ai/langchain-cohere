@@ -1,5 +1,6 @@
 import json
 import uuid
+import copy
 from typing import (
     Any,
     AsyncIterator,
@@ -40,6 +41,7 @@ from langchain_core.messages import (
 from langchain_core.messages import (
     ToolCall as LC_ToolCall,
 )
+from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.messages.ai import UsageMetadata
 from langchain_core.output_parsers.base import OutputParserLike
 from langchain_core.output_parsers.openai_tools import (
@@ -403,14 +405,12 @@ def get_cohere_chat_request_v2(
     messages: List[BaseMessage],
     *,
     documents: Optional[List[Document]] = None,
-    connectors: Optional[List[Dict[str, str]]] = None,
     stop_sequences: Optional[List[str]] = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
     """Get the request for the Cohere chat API (V2).
     Args:
         messages: The messages.
-        connectors: The connectors.
         **kwargs: The keyword arguments.
     Returns:
         The request for the Cohere chat API.
@@ -466,6 +466,14 @@ def get_cohere_chat_request_v2(
         del kwargs["preamble"]
     
     if kwargs.get("connectors"):
+        warn_deprecated(
+            "1.0.0",
+            message=(
+            "The 'connectors' parameter is deprecated as of version 1.0.0. "
+            "Please use the 'tools' parameter instead."
+            ),
+            removal="1.0.0",
+        )
         del kwargs["connectors"]
 
     chat_history_with_curr_msg = []
@@ -614,7 +622,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
         stream = self.chat_stream_v2(**request)
-        curr_tool_call = {
+        TOOL_CALL_TEMPLATE = {
             "id": "",
             "function": {
                 "name": "",
@@ -622,6 +630,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             },
             "type": "function",
         }
+        curr_tool_call = copy.deepcopy(TOOL_CALL_TEMPLATE)
         tool_calls = []
         for data in stream:
             if data.type == "content-delta":
@@ -666,13 +675,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     chunk = ChatGenerationChunk(message=message)
                 elif data.type == "tool-call-end":
                     tool_calls.append(curr_tool_call)
-                    curr_tool_call = {
-                        "function": {
-                            "name": "",
-                            "arguments": "",
-                        },
-                        "type": "function",
-                    }
+                    curr_tool_call = copy.deepcopy(TOOL_CALL_TEMPLATE)
                 else:
                     delta = data.delta.message["tool_plan"]
                     chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
@@ -775,15 +778,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
     
     def _get_stream_info_v2(self, final_delta: Any, tool_calls: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
         """Get the stream info from cohere API response (V2)."""
-        input_tokens = final_delta.usage.tokens.input_tokens
-        output_tokens = final_delta.usage.tokens.output_tokens
+        input_tokens = final_delta.usage.billed_units.input_tokens
+        output_tokens = final_delta.usage.billed_units.output_tokens
         total_tokens = input_tokens + output_tokens
         stream_info = {
             "finish_reason": final_delta.finish_reason,
             "usage": {
                 "total_tokens": total_tokens,
-                "input_tokens": final_delta.usage.tokens.input_tokens,
-                "output_tokens": final_delta.usage.tokens.output_tokens,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
             }
         }
         if tool_calls:
