@@ -739,12 +739,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info["token_count"] = response.meta.tokens.dict()
         return generation_info
 
-    def _get_generation_info_v2(self, response: ChatResponse) -> Dict[str, Any]:
+    def _get_generation_info_v2(self, response: ChatResponse, documents: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
         """Get the generation info from cohere API response (V2)."""
         generation_info: Dict[str, Any] = {
             "id": response.id,
-            "finish_reason": response.finish_reason,
+            "finish_reason": response.finish_reason
         }
+
+        if documents:
+            generation_info["documents"] = documents
 
         if response.message:
             if response.message.tool_plan:
@@ -782,7 +785,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         )
         response = self.chat_v2(**request)
 
-        generation_info = self._get_generation_info_v2(response)
+        generation_info = self._get_generation_info_v2(response, request.get("documents"))
         if "tool_calls" in generation_info:
             tool_calls = [
                 _convert_cohere_v2_tool_call_to_langchain(tool_call)
@@ -822,7 +825,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
         response = await self.async_chat_v2(**request)
 
-        generation_info = self._get_generation_info_v2(response)
+        generation_info = self._get_generation_info_v2(response, request.get("documents"))
         if "tool_calls" in generation_info:
             tool_calls = [
                 _convert_cohere_v2_tool_call_to_langchain(tool_call)

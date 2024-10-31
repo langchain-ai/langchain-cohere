@@ -134,7 +134,7 @@ def test_get_generation_info(
 
 
 @pytest.mark.parametrize(
-    "response, expected",
+    "response, has_documents, expected",
     [
         pytest.param(
             ChatResponse(
@@ -153,6 +153,7 @@ def test_get_generation_info(
                     tokens={"input_tokens": 215, "output_tokens": 38}
                 )
             ),
+            False,
             {
                 "id": "foo",
                 "finish_reason": "complete",
@@ -193,6 +194,7 @@ def test_get_generation_info(
                     citations=None,
                 ),
             ),
+            False,
             {
                 "id": "foo",
                 "finish_reason": "complete",
@@ -218,6 +220,7 @@ def test_get_generation_info(
                     tokens={"input_tokens": 215, "output_tokens": 38}
                 )
             ),
+            False,
             {
                 "id": "foo",
                 "finish_reason": "complete",
@@ -229,17 +232,81 @@ def test_get_generation_info(
             },
             id="chat response without tools/documents/citations/tools etc",
         ),
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan=None,
+                    tool_calls=[],
+                    content=[
+                        {
+                            "type": "text",
+                            "text": "How may I help you today?"
+                        }
+                    ],
+                    citations=None,
+                ),
+                usage=Usage(
+                    tokens={"input_tokens": 215, "output_tokens": 38}
+                )
+            ),
+            True,
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+                "documents": [
+                    {
+                        "id": "doc-1",
+                        "data": {
+                            "text": "doc-1 content",
+                        }
+                    },
+                    {
+                        "id": "doc-2",
+                        "data": {
+                            "text": "doc-2 content",
+                        }
+                    },
+                ],
+                "content": "How may I help you today?",
+                "token_count": {
+                    "input_tokens": 215,
+                    "output_tokens": 38,
+                }
+            },
+            id="chat response with documents",
+        ),
     ],
 )
 def test_get_generation_info_v2(
     patch_base_cohere_get_default_model,
-    response: Any, expected: Dict[str, Any]
+    response: Any, has_documents: bool, expected: Dict[str, Any]
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
 
+    documents = [
+        {
+            "id": "doc-1",
+            "data":{
+                "text": "doc-1 content",
+            }
+        },
+        {
+            "id": "doc-2",
+            "data":{
+                "text": "doc-2 content",
+            }
+        },
+    ]
+
     with patch("uuid.uuid4") as mock_uuid:
         mock_uuid.return_value.hex = "foo"
-        actual = chat_cohere._get_generation_info_v2(response)
+
+        if has_documents:
+            actual = chat_cohere._get_generation_info_v2(response, documents)
+        else:
+            actual = chat_cohere._get_generation_info_v2(response)
 
     assert expected == actual
 
