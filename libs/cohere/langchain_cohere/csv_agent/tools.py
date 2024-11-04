@@ -1,9 +1,9 @@
 """This module contains the tools that are used in the experiments."""
 
 import pandas as pd
-from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.tools import Tool
 from langchain_experimental.tools.python.tool import PythonAstREPLTool
+from pydantic import BaseModel, Field
 
 
 def get_file_peek_tool() -> Tool:

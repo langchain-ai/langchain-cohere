@@ -3,8 +3,8 @@ from typing import Any, Dict, List, Optional, Tuple, Type, Union
 
 import pytest
 from langchain_core.agents import AgentAction
-from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.tools import BaseTool
+from pydantic import BaseModel, Field
 
 from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools,
@@ -19,8 +19,8 @@ class _TestToolSchema(BaseModel):
 
 
 class _TestTool(BaseTool):
-    name = "test_tool"
-    description = "test_tool description"
+    name: str = "test_tool"
+    description: str = "test_tool description"
     args_schema: Type[_TestToolSchema] = _TestToolSchema
 
     def _run(self, *args: Any, **kwargs: Any) -> Any:

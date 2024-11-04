@@ -2,7 +2,7 @@
 import typing
 
 import pytest
-from langchain_core.pydantic_v1 import SecretStr
+from pydantic import SecretStr
 
 from langchain_cohere.llms import BaseCohere, Cohere
 

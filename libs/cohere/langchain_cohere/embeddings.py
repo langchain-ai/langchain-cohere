@@ -3,8 +3,9 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
 from langchain_core.embeddings import Embeddings
-from langchain_core.pydantic_v1 import BaseModel, Extra, root_validator
-from langchain_core.utils import get_from_dict_or_env
+from langchain_core.utils import get_from_dict_or_env, secret_from_env
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, model_validator
+from typing_extensions import Self
 
 from .utils import _create_retry_decorator
 
@@ -47,7 +48,9 @@ class CohereEmbeddings(BaseModel, Embeddings):
     truncate: Optional[str] = None
     """Truncate embeddings that are too long from start or end ("NONE"|"START"|"END")"""
 
-    cohere_api_key: Optional[str] = None
+    cohere_api_key: Optional[SecretStr] = Field(
+        default_factory=secret_from_env("COHERE_API_KEY", default=None)
+    )
 
     embedding_types: Sequence[str] = ["float"]
     "Specifies the types of embeddings you want to get back"
@@ -62,41 +65,44 @@ class CohereEmbeddings(BaseModel, Embeddings):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
-    class Config:
-        """Configuration for this pydantic object."""
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        extra="forbid",
+        protected_namespaces=(),
+    )
 
-        arbitrary_types_allowed = True
-        extra = Extra.forbid
-
-    @root_validator()
-    def validate_environment(cls, values: Dict) -> Dict:
+    @model_validator(mode="before")
+    @classmethod
+    def validate_environment(cls, values: Dict) -> Any:
         """Validate that api key and python package exists in environment."""
         cohere_api_key = get_from_dict_or_env(
             values, "cohere_api_key", "COHERE_API_KEY"
         )
+        if isinstance(cohere_api_key, SecretStr):
+            cohere_api_key = cohere_api_key.get_secret_value()
+
         request_timeout = values.get("request_timeout")
 
-        client_name = values["user_agent"]
+        client_name = values.get("user_agent", "langchain:partner")
         values["client"] = cohere.Client(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
-            base_url=values["base_url"],
+            base_url=values.get("base_url"),
         )
         values["async_client"] = cohere.AsyncClient(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
-            base_url=values["base_url"],
+            base_url=values.get("base_url"),
         )
 
         return values
 
-    @root_validator()
-    def validate_model_specified(cls, values: Dict) -> Dict:
+    @model_validator(mode="after")
+    def validate_model_specified(self) -> Self:  # type: ignore[valid-type]
         """Validate that model is specified."""
-        model = values.get("model")
-        if not model:
+        if not self.model:
             raise ValueError(
                 "Did not find `model`! Please "
                 " pass `model` as a named parameter."
@@ -105,7 +111,7 @@ class CohereEmbeddings(BaseModel, Embeddings):
                 " for available models."
             )
 
-        return values
+        return self
 
     def embed_with_retry(self, **kwargs: Any) -> Any:
         """Use tenacity to retry the embed call."""

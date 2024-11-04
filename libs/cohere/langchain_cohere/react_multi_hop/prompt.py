@@ -11,6 +11,7 @@ from typing import (
     Optional,
     Sequence,
     Tuple,
+    Type,
     Union,
 )
 
@@ -21,8 +22,8 @@ from langchain_core.prompts import (
     ChatPromptTemplate,
     PromptTemplate,
 )
-from langchain_core.pydantic_v1 import BaseModel
 from langchain_core.tools import BaseTool
+from pydantic import BaseModel
 
 from langchain_cohere.react_multi_hop.default_prompt_constants import (
     _SpecialToken,
@@ -86,8 +87,44 @@ def render_structured_preamble(
     )
 
 
-def render_tool(tool: BaseTool) -> str:
-    """Renders a tool into prompt content"""
+def render_tool(
+    tool: Optional[BaseTool] = None,
+    json_schema: Optional[Dict] = None,
+) -> str:
+    """Renders a tool into prompt content. Either a BaseTool instance, or, a JSON
+     schema must be provided.
+
+    Args:
+        tool: An instance of a BaseTool.
+        json_schema: A dictionary containing the JSON schema representation of a tool.
+
+    Returns:
+        A string of prompt content.
+
+    Example:
+
+        .. code-block:: python
+
+        from langchain_cohere.react_multi_hop.prompt import render_tool
+
+        json_schema = {
+            "name": "example_tool",
+            "description": "A description of example_tool",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "foo": {"type": "string", "description": "A description of foo"},
+                    "bar": {"type": "integer", "description": "A description of bar"},
+                },
+                "required": ["foo"],
+            },
+        }
+        print(render_tool(json_schema=json_schema))
+
+        tool = MyTool()
+        print(render_tool(tool=tool))
+
+    """
 
     template = """```python
 {tool_signature}
@@ -95,12 +132,38 @@ def render_tool(tool: BaseTool) -> str:
     \"\"\"
     pass
 ```"""
+    assert (
+        tool is not None or json_schema is not None
+    ), "Either a BaseTool instance or JSON schema must be provided."
+
+    if tool is not None:
+        assert tool is not None  # for type checkers
+        tool_name = tool.name
+        tool_description = tool.description
+        tool_args = tool.args
+        required_parameters = []
+        for parameter_name, parameter_definition in tool_args.items():
+            if "default" not in parameter_definition:
+                required_parameters.append(parameter_name)
+    else:
+        assert json_schema is not None  # for type checkers
+        tool_name = json_schema.get("name", "")
+        tool_description = json_schema.get("description", "")
+        tool_args = json_schema.get("parameters", {}).get("properties", {})
+        required_parameters = json_schema.get("parameters", {}).get("required", [])
+
     return template.format(
-        tool_signature=render_tool_signature(tool),
-        tool_description=_remove_signature_from_tool_description(
-            tool.name, tool.description
+        tool_signature=_render_tool_signature(
+            tool_name=tool_name,
+            tool_args=tool_args,
+            required_parameters=required_parameters,
         ),
-        tool_args=render_tool_args(tool),
+        tool_description=_remove_signature_from_tool_description(
+            name=tool_name, description=tool_description
+        ),
+        tool_args=_render_tool_args(
+            tool_args=tool_args, required_parameters=required_parameters
+        ),
     )
 
 
@@ -213,7 +276,7 @@ def multi_hop_prompt(
     return inner
 
 
-def render_type(type_: str, is_optional: bool) -> str:
+def _render_type(type_: str, is_optional: bool) -> str:
     """
     Renders a tool's type into prompt content. Types should be Python types, but JSON
     schema is allowed and converted.
@@ -225,30 +288,34 @@ def render_type(type_: str, is_optional: bool) -> str:
         return python_type
 
 
-def render_tool_signature(tool: BaseTool) -> str:
+def _render_tool_signature(
+    tool_name: str, tool_args: Dict, required_parameters: List
+) -> str:
     """Renders the signature of a tool into prompt content."""
     args = []
-    for parameter_name, parameter_definition in tool.args.items():
-        type_ = render_type(
-            parameter_definition.get("type"), "default" in parameter_definition
+    for parameter_name, parameter_definition in tool_args.items():
+        type_ = _render_type(
+            type_=parameter_definition.get("type"),
+            is_optional=parameter_name not in required_parameters,
         )
         args.append(f"{parameter_name}: {type_}")
     signature = ", ".join(args)
-    return f"def {tool.name}({signature}) -> List[Dict]:"
+    return f"def {tool_name}({signature}) -> List[Dict]:"
 
 
-def render_tool_args(tool: BaseTool) -> str:
+def _render_tool_args(tool_args: Dict, required_parameters: List[str]) -> str:
     """Renders the 'Args' section of a tool's prompt content."""
-    if not tool.args:
+    if not tool_args:
         return ""
     indent = " "
 
     prompt_content = f"\n\n{indent * 4}Args:\n{indent * 8}"
 
     rendered_args = []
-    for parameter_name, parameter_definition in tool.args.items():
-        type_ = render_type(
-            parameter_definition.get("type"), "default" in parameter_definition
+    for parameter_name, parameter_definition in tool_args.items():
+        type_ = _render_type(
+            type_=parameter_definition.get("type"),
+            is_optional=parameter_name not in required_parameters,
         )
         description = parameter_definition.get("description", "")
         rendered_args.append(f"{parameter_name} ({type_}): {description}")
@@ -268,9 +335,9 @@ def create_directly_answer_tool() -> BaseTool:
         class InputSchema(BaseModel):
             pass
 
-        name = "directly_answer"
-        description = "Calls a standard (un-augmented) AI chatbot to generate a response given the conversation history"  # noqa: E501
-        args_schema = InputSchema
+        name: str = "directly_answer"
+        description: str = "Calls a standard (un-augmented) AI chatbot to generate a response given the conversation history"  # noqa: E501
+        args_schema: Type[BaseModel] = InputSchema
 
         @property
         def args(self) -> dict:

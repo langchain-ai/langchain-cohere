@@ -6,9 +6,9 @@ from langchain_core.agents import AgentAction, AgentActionMessageLog
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.prompt_values import StringPromptValue
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.tools import BaseTool
+from pydantic import BaseModel, Field
 
 from langchain_cohere.react_multi_hop.prompt import multi_hop_prompt
 from tests.unit_tests.react_multi_hop import ExpectationType, read_expectation_from_file
@@ -16,14 +16,14 @@ from tests.unit_tests.react_multi_hop import ExpectationType, read_expectation_f
 
 class InternetSearchTool(BaseTool):
     class _InputSchema(BaseModel):
-        query: str = Field(type=str, description="Query to search the internet with")
+        query: str = Field(description="Query to search the internet with")
 
-    name = "internet_search"
-    description = (
+    name: str = "internet_search"
+    description: str = (
         "Returns a list of relevant document snippets for a textual query "
         "retrieved from the internet"
     )
-    args_schema: Type[_InputSchema] = _InputSchema
+    args_schema: Type[BaseModel] = _InputSchema
 
     def _run(self, *args: Any, **kwargs: Any) -> Any:
         pass
