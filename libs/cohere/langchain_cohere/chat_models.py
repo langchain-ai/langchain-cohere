@@ -469,12 +469,12 @@ def get_cohere_chat_request_v2(
         warn_deprecated(
             "1.0.0",
             message=(
-            "The 'connectors' parameter is deprecated as of version 1.0.0. "
+            "The 'connectors' parameter is deprecated as of version 1.0.0."
             "Please use the 'tools' parameter instead."
             ),
             removal="1.0.0",
         )
-        del kwargs["connectors"]
+        raise ValueError("The 'connectors' parameter is deprecated as of version 1.0.0.")
 
     chat_history_with_curr_msg = []
     for message in messages:
@@ -622,15 +622,15 @@ class ChatCohere(BaseChatModel, BaseCohere):
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
         stream = self.chat_stream_v2(**request)
-        TOOL_CALL_TEMPLATE = {
+        LC_TOOL_CALL_TEMPLATE = {
             "id": "",
+            "type": "function",
             "function": {
                 "name": "",
                 "arguments": "",
             },
-            "type": "function",
         }
-        curr_tool_call = copy.deepcopy(TOOL_CALL_TEMPLATE)
+        curr_tool_call = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
         tool_calls = []
         for data in stream:
             if data.type == "content-delta":
@@ -640,10 +640,17 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
             if data.type in {"tool-call-start", "tool-call-delta", "tool-plan-delta", "tool-call-end"}:
+                # tool-call-start: Contains the name of the tool function. No arguments are included
+                # tool-call-delta: Contains the arguments of the tool function. The function name is not included
+                # tool-plan-delta: Contains the entire tool plan message. The tool plan is not sent in chunks
+                # tool-call-end: end of tool call streaming
                 if data.type in {"tool-call-start", "tool-call-delta"}:
                     index = data.index
                     delta = data.delta.message
 
+                    # If the current stream event is a tool-call-start, then the ToolCallV2 object will only
+                    # contain the function name. If the current stream event is a tool-call-delta, then the 
+                    # ToolCallV2 object will only contain the arguments.
                     tool_call_v2 = ToolCallV2(
                         function=ToolCallV2Function(
                             name=delta["tool_calls"]["function"].get("name"),
@@ -651,7 +658,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         )
                     )
 
-                    # Buffering tool call deltas into curr_tool_call
+                    # To construct the current tool call you need to buffer all the deltas
                     if data.type == "tool-call-start":
                         curr_tool_call["id"] = delta["tool_calls"]["id"]
                         curr_tool_call["function"]["name"] = delta["tool_calls"]["function"]["name"]
@@ -674,6 +681,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     )
                     chunk = ChatGenerationChunk(message=message)
                 elif data.type == "tool-call-end":
+                    # Maintain a list of all of the tool calls seen during streaming
                     tool_calls.append(curr_tool_call)
                     curr_tool_call = copy.deepcopy(TOOL_CALL_TEMPLATE)
                 else:
@@ -906,11 +914,11 @@ def _format_cohere_tool_calls(
         formatted_tool_calls.append(
             {
                 "id": uuid.uuid4().hex[:],
+                "type": "function",
                 "function": {
                     "name": tool_call.name,
                     "arguments": json.dumps(tool_call.parameters),
                 },
-                "type": "function",
             }
         )
     return formatted_tool_calls
@@ -930,11 +938,11 @@ def _format_cohere_tool_calls_v2(
         formatted_tool_calls.append(
             {
                 "id": uuid.uuid4().hex[:],
+                "type": "function",
                 "function": {
                     "name": tool_call.function.name,
                     "arguments": tool_call.function.arguments,
                 },
-                "type": "function",
             }
         )
     return formatted_tool_calls

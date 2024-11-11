@@ -1032,6 +1032,114 @@ def test_get_cohere_chat_request(
             },
             id="Multiple messages with tool usage, and preamble",
         ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            False,
+            [
+                HumanMessage(content="what is magic_function(12) ?"),
+                AIMessage(
+                    content="",  # noqa: E501
+                    additional_kwargs={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    response_metadata={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    id="run-8039f73d-2e50-4eec-809e-e3690a6d3a9a-0",
+                    tool_calls=[
+                        {
+                            "name": "magic_function",
+                            "args": {"a": 12},
+                            "id": "e81dbae6937e47e694505f81e310e205",
+                        }
+                    ],
+                ),
+                ToolMessage(
+                    content="112", tool_call_id="e81dbae6937e47e694505f81e310e205"
+                ),
+            ],
+            {
+                "messages": [
+                    {"role": "user", "content": "what is magic_function(12) ?"},
+                    {
+                        "role": "assistant",
+                        "tool_plan": "I will assist you using the tools provided.",
+                        "tool_calls": [
+                            {
+                                "id": "e81dbae6937e47e694505f81e310e205",
+                                "type": "function",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                            }
+                        ],
+                    },
+                    {
+                        "role": "tool",
+                        "tool_call_id": "e81dbae6937e47e694505f81e310e205",
+                        "content": [{
+                            "type": "document",
+                            "document": {
+                                "data": '[{"output": "112"}]',
+                            }
+                        }],
+                    },
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="assistent message with tool calls empty content",
+        ),
     ],
 )
 def test_get_cohere_chat_request_v2(
@@ -1080,7 +1188,8 @@ def test_get_cohere_chat_request_v2_warn_connectors_deprecated(recwarn):
     messages = [HumanMessage(content="Hello")]
     kwargs = {"connectors": ["some_connector"]}
 
-    get_cohere_chat_request_v2(messages, **kwargs)
+    with pytest.raises(ValueError, match="The 'connectors' parameter is deprecated as of version 1.0.0."):
+        get_cohere_chat_request_v2(messages, **kwargs)
 
     assert len(recwarn) == 1
     warning = recwarn.pop(DeprecationWarning)
