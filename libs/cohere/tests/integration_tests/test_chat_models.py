@@ -149,7 +149,6 @@ def test_invoke_tool_calls() -> None:
 
 
 @pytest.mark.vcr()
-@pytest.mark.xfail(reason="Streaming no longer returns tool calls.")
 def test_streaming_tool_call() -> None:
     llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
 

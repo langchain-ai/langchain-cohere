@@ -1,0 +1,973 @@
+interactions:
+- request:
+    body: '{"message": "<BOS_TOKEN><|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|># Safety
+      Preamble\nThe instructions in this section override those in the task description
+      and style guide sections. Don''t answer questions that are harmful or immoral\n\n#
+      System Preamble\n## Basic Rules\nYou are a powerful language agent trained by
+      Cohere to help people. You are capable of complex reasoning and augmented with
+      a number of tools. Your job is to plan and reason about how you will use and
+      consume the output of these tools to best help the user. You will see a conversation
+      history between yourself and a user, ending with an utterance from the user.
+      You will then see an instruction informing you what kind of response to generate.
+      You will construct a plan and then perform a number of reasoning and action
+      steps to solve the problem. When you have determined the answer to the user''s
+      request, you will cite your sources in your answers, according the instructions\n\n#
+      User Preamble\n## Task And Context\nYou use your advanced complex reasoning
+      capabilities to help people by answering their questions and other requests
+      interactively. You will be asked a very wide array of requests on all kinds
+      of topics. You will be equipped with a wide range of search engines or similar
+      tools to help you, which you use to research your answer. You may need to use
+      multiple tools in parallel or sequentially to complete your task. You should
+      focus on serving the user''s needs as best you can, which will be wide-ranging.
+      The current date is Thursday, November 14, 2024 16:42:38\n\n## Style Guide\nUnless
+      the user asks for a different style of answer, you should answer in full sentences,
+      using proper grammar and spelling\n\n## Available Tools\nHere is a list of tools
+      that you have available to you:\n\n```python\ndef directly_answer() -> List[Dict]:\n    \"\"\"Calls
+      a standard (un-augmented) AI chatbot to generate a response given the conversation
+      history\n    \"\"\"\n    pass\n```\n\n```python\ndef internet_search(query:
+      str) -> List[Dict]:\n    \"\"\"Returns a list of relevant document snippets
+      for a textual query retrieved from the internet\n\n    Args:\n        query
+      (str): Query to search the internet with\n    \"\"\"\n    pass\n```<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|USER_TOKEN|>In
+      what year was the company that was founded as Sound of Music added to the S&P
+      500?<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>Carefully perform
+      the following instructions, in order, starting each with a new line.\nFirstly,
+      You may need to use complex and advanced reasoning to complete your task and
+      answer the question. Think about how you can use the provided tools to answer
+      the question and come up with a high level plan you will execute. \nWrite ''Plan:''
+      followed by an initial high level plan of how you will solve the problem including
+      the tools and steps required.\nSecondly, Carry out your plan by repeatedly using
+      actions, reasoning over the results, and re-evaluating your plan. Perform Action,
+      Observation, Reflection steps with the following format. Write ''Action:'' followed
+      by a json formatted action containing the \"tool_name\" and \"parameters\"\n
+      Next you will analyze the ''Observation:'', this is the result of the action.\nAfter
+      that you should always think about what to do next. Write ''Reflection:'' followed
+      by what you''ve figured out so far, any changes you need to make to your plan,
+      and what you will do next including if you know the answer to the question.\n...
+      (this Action/Observation/Reflection can repeat N times)\nThirdly, Decide which
+      of the retrieved documents are relevant to the user''s last input by writing
+      ''Relevant Documents:'' followed by comma-separated list of document numbers.
+      If none are relevant, you should instead write ''None''.\nFourthly, Decide which
+      of the retrieved documents contain facts that should be cited in a good answer
+      to the user''s last input by writing ''Cited Documents:'' followed a comma-separated
+      list of document numbers. If you dont want to cite any of them, you should instead
+      write ''None''.\nFifthly, Write ''Answer:'' followed by a response to the user''s
+      last input in high quality natural english. Use the retrieved documents to help
+      you. Do not insert any citations or grounding markup.\nFinally, Write ''Grounded
+      answer:'' followed by a response to the user''s last input in high quality natural
+      english. Use the symbols <co: doc> and </co: doc> to indicate when a fact comes
+      from a document in the search result, e.g <co: 4>my fact</co: 4> for a fact
+      from document 4.<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>",
+      "model": "command-r", "chat_history": [], "temperature": 0.0, "stop_sequences":
+      ["\nObservation:"], "raw_prompting": true, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '4731'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"9d2e3022-527b-431e-a6b8-d917e884a257"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"Plan"}
+
+        {"is_finished":false,"event_type":"text-generation","text":":"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" First"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" I"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" will"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" search"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" for"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" company"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" founded"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" as"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Sound"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Music"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Then"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" I"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" will"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" search"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" for"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" year"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" this"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" company"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" was"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" added"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" to"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" the"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" S"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\u0026"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"P"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" "}
+
+        {"is_finished":false,"event_type":"text-generation","text":"5"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"0"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"0"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"."}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\nAction"}
+
+        {"is_finished":false,"event_type":"text-generation","text":":"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" ```"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"json"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n["}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n   "}
+
+        {"is_finished":false,"event_type":"text-generation","text":" {"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n       "}
+
+        {"is_finished":false,"event_type":"text-generation","text":" \""}
+
+        {"is_finished":false,"event_type":"text-generation","text":"tool"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"_"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"name"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\":"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" \""}
+
+        {"is_finished":false,"event_type":"text-generation","text":"internet"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"_"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"search"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\","}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n       "}
+
+        {"is_finished":false,"event_type":"text-generation","text":" \""}
+
+        {"is_finished":false,"event_type":"text-generation","text":"parameters"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\":"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" {"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n           "}
+
+        {"is_finished":false,"event_type":"text-generation","text":" \""}
+
+        {"is_finished":false,"event_type":"text-generation","text":"query"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\":"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" \""}
+
+        {"is_finished":false,"event_type":"text-generation","text":"company"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" founded"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" as"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Sound"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" of"}
+
+        {"is_finished":false,"event_type":"text-generation","text":" Music"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\""}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n       "}
+
+        {"is_finished":false,"event_type":"text-generation","text":" }"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n   "}
+
+        {"is_finished":false,"event_type":"text-generation","text":" }"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n]"}
+
+        {"is_finished":false,"event_type":"text-generation","text":"\n```"}
+
+        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"513847f7-90c1-4855-b6d7-f204497aa9ae","text":"Plan:
+        First I will search for the company founded as Sound of Music. Then I will
+        search for the year this company was added to the S\u0026P 500.\nAction: ```json\n[\n    {\n        \"tool_name\":
+        \"internet_search\",\n        \"parameters\": {\n            \"query\": \"company
+        founded as Sound of Music\"\n        }\n    }\n]\n```","generation_id":"9d2e3022-527b-431e-a6b8-d917e884a257","chat_history":[{"role":"USER","message":"\u003cBOS_TOKEN\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|SYSTEM_TOKEN|\u003e#
+        Safety Preamble\nThe instructions in this section override those in the task
+        description and style guide sections. Don''t answer questions that are harmful
+        or immoral\n\n# System Preamble\n## Basic Rules\nYou are a powerful language
+        agent trained by Cohere to help people. You are capable of complex reasoning
+        and augmented with a number of tools. Your job is to plan and reason about
+        how you will use and consume the output of these tools to best help the user.
+        You will see a conversation history between yourself and a user, ending with
+        an utterance from the user. You will then see an instruction informing you
+        what kind of response to generate. You will construct a plan and then perform
+        a number of reasoning and action steps to solve the problem. When you have
+        determined the answer to the user''s request, you will cite your sources in
+        your answers, according the instructions\n\n# User Preamble\n## Task And Context\nYou
+        use your advanced complex reasoning capabilities to help people by answering
+        their questions and other requests interactively. You will be asked a very
+        wide array of requests on all kinds of topics. You will be equipped with a
+        wide range of search engines or similar tools to help you, which you use to
+        research your answer. You may need to use multiple tools in parallel or sequentially
+        to complete your task. You should focus on serving the user''s needs as best
+        you can, which will be wide-ranging. The current date is Thursday, November
+        14, 2024 16:42:38\n\n## Style Guide\nUnless the user asks for a different
+        style of answer, you should answer in full sentences, using proper grammar
+        and spelling\n\n## Available Tools\nHere is a list of tools that you have
+        available to you:\n\n```python\ndef directly_answer() -\u003e List[Dict]:\n    \"\"\"Calls
+        a standard (un-augmented) AI chatbot to generate a response given the conversation
+        history\n    \"\"\"\n    pass\n```\n\n```python\ndef internet_search(query:
+        str) -\u003e List[Dict]:\n    \"\"\"Returns a list of relevant document snippets
+        for a textual query retrieved from the internet\n\n    Args:\n        query
+        (str): Query to search the internet with\n    \"\"\"\n    pass\n```\u003c|END_OF_TURN_TOKEN|\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|USER_TOKEN|\u003eIn
+        what year was the company that was founded as Sound of Music added to the
+        S\u0026P 500?\u003c|END_OF_TURN_TOKEN|\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|SYSTEM_TOKEN|\u003eCarefully
+        perform the following instructions, in order, starting each with a new line.\nFirstly,
+        You may need to use complex and advanced reasoning to complete your task and
+        answer the question. Think about how you can use the provided tools to answer
+        the question and come up with a high level plan you will execute. \nWrite
+        ''Plan:'' followed by an initial high level plan of how you will solve the
+        problem including the tools and steps required.\nSecondly, Carry out your
+        plan by repeatedly using actions, reasoning over the results, and re-evaluating
+        your plan. Perform Action, Observation, Reflection steps with the following
+        format. Write ''Action:'' followed by a json formatted action containing the
+        \"tool_name\" and \"parameters\"\n Next you will analyze the ''Observation:'',
+        this is the result of the action.\nAfter that you should always think about
+        what to do next. Write ''Reflection:'' followed by what you''ve figured out
+        so far, any changes you need to make to your plan, and what you will do next
+        including if you know the answer to the question.\n... (this Action/Observation/Reflection
+        can repeat N times)\nThirdly, Decide which of the retrieved documents are
+        relevant to the user''s last input by writing ''Relevant Documents:'' followed
+        by comma-separated list of document numbers. If none are relevant, you should
+        instead write ''None''.\nFourthly, Decide which of the retrieved documents
+        contain facts that should be cited in a good answer to the user''s last input
+        by writing ''Cited Documents:'' followed a comma-separated list of document
+        numbers. If you dont want to cite any of them, you should instead write ''None''.\nFifthly,
+        Write ''Answer:'' followed by a response to the user''s last input in high
+        quality natural english. Use the retrieved documents to help you. Do not insert
+        any citations or grounding markup.\nFinally, Write ''Grounded answer:'' followed
+        by a response to the user''s last input in high quality natural english. Use
+        the symbols \u003cco: doc\u003e and \u003c/co: doc\u003e to indicate when
+        a fact comes from a document in the search result, e.g \u003cco: 4\u003emy
+        fact\u003c/co: 4\u003e for a fact from document 4.\u003c|END_OF_TURN_TOKEN|\u003e\u003c|START_OF_TURN_TOKEN|\u003e\u003c|CHATBOT_TOKEN|\u003e"},{"role":"CHATBOT","message":"Plan:
+        First I will search for the company founded as Sound of Music. Then I will
+        search for the year this company was added to the S\u0026P 500.\nAction: ```json\n[\n    {\n        \"tool_name\":
+        \"internet_search\",\n        \"parameters\": {\n            \"query\": \"company
+        founded as Sound of Music\"\n        }\n    }\n]\n```"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":949,"output_tokens":81},"tokens":{"input_tokens":949,"output_tokens":81}}},"finish_reason":"COMPLETE"}
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/stream+json
+      date:
+      - Thu, 14 Nov 2024 16:42:38 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - cc44c2a55b33c4003955623ea821485d
+      x-envoy-upstream-service-time:
+      - '10'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "<BOS_TOKEN><|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|># Safety
+      Preamble\nThe instructions in this section override those in the task description
+      and style guide sections. Don''t answer questions that are harmful or immoral\n\n#
+      System Preamble\n## Basic Rules\nYou are a powerful language agent trained by
+      Cohere to help people. You are capable of complex reasoning and augmented with
+      a number of tools. Your job is to plan and reason about how you will use and
+      consume the output of these tools to best help the user. You will see a conversation
+      history between yourself and a user, ending with an utterance from the user.
+      You will then see an instruction informing you what kind of response to generate.
+      You will construct a plan and then perform a number of reasoning and action
+      steps to solve the problem. When you have determined the answer to the user''s
+      request, you will cite your sources in your answers, according the instructions\n\n#
+      User Preamble\n## Task And Context\nYou use your advanced complex reasoning
+      capabilities to help people by answering their questions and other requests
+      interactively. You will be asked a very wide array of requests on all kinds
+      of topics. You will be equipped with a wide range of search engines or similar
+      tools to help you, which you use to research your answer. You may need to use
+      multiple tools in parallel or sequentially to complete your task. You should
+      focus on serving the user''s needs as best you can, which will be wide-ranging.
+      The current date is Thursday, November 14, 2024 16:42:39\n\n## Style Guide\nUnless
+      the user asks for a different style of answer, you should answer in full sentences,
+      using proper grammar and spelling\n\n## Available Tools\nHere is a list of tools
+      that you have available to you:\n\n```python\ndef directly_answer() -> List[Dict]:\n    \"\"\"Calls
+      a standard (un-augmented) AI chatbot to generate a response given the conversation
+      history\n    \"\"\"\n    pass\n```\n\n```python\ndef internet_search(query:
+      str) -> List[Dict]:\n    \"\"\"Returns a list of relevant document snippets
+      for a textual query retrieved from the internet\n\n    Args:\n        query
+      (str): Query to search the internet with\n    \"\"\"\n    pass\n```<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|USER_TOKEN|>In
+      what year was the company that was founded as Sound of Music added to the S&P
+      500?<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>Carefully perform
+      the following instructions, in order, starting each with a new line.\nFirstly,
+      You may need to use complex and advanced reasoning to complete your task and
+      answer the question. Think about how you can use the provided tools to answer
+      the question and come up with a high level plan you will execute. \nWrite ''Plan:''
+      followed by an initial high level plan of how you will solve the problem including
+      the tools and steps required.\nSecondly, Carry out your plan by repeatedly using
+      actions, reasoning over the results, and re-evaluating your plan. Perform Action,
+      Observation, Reflection steps with the following format. Write ''Action:'' followed
+      by a json formatted action containing the \"tool_name\" and \"parameters\"\n
+      Next you will analyze the ''Observation:'', this is the result of the action.\nAfter
+      that you should always think about what to do next. Write ''Reflection:'' followed
+      by what you''ve figured out so far, any changes you need to make to your plan,
+      and what you will do next including if you know the answer to the question.\n...
+      (this Action/Observation/Reflection can repeat N times)\nThirdly, Decide which
+      of the retrieved documents are relevant to the user''s last input by writing
+      ''Relevant Documents:'' followed by comma-separated list of document numbers.
+      If none are relevant, you should instead write ''None''.\nFourthly, Decide which
+      of the retrieved documents contain facts that should be cited in a good answer
+      to the user''s last input by writing ''Cited Documents:'' followed a comma-separated
+      list of document numbers. If you dont want to cite any of them, you should instead
+      write ''None''.\nFifthly, Write ''Answer:'' followed by a response to the user''s
+      last input in high quality natural english. Use the retrieved documents to help
+      you. Do not insert any citations or grounding markup.\nFinally, Write ''Grounded
+      answer:'' followed by a response to the user''s last input in high quality natural
+      english. Use the symbols <co: doc> and </co: doc> to indicate when a fact comes
+      from a document in the search result, e.g <co: 4>my fact</co: 4> for a fact
+      from document 4.<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>\nPlan:
+      First I will search for the company founded as Sound of Music. Then I will search
+      for the year this company was added to the S&P 500.\nAction: ```json\n[\n    {\n        \"tool_name\":
+      \"internet_search\",\n        \"parameters\": {\n            \"query\": \"company
+      founded as Sound of Music\"\n        }\n    }\n]\n```<|END_OF_TURN_TOKEN|>\n<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|><results>\nDocument:
+      0\nURL: https://www.cnbc.com/2015/05/26/19-famous-companies-that-originally-had-different-names.html\nTitle:
+      19 famous companies that originally had different names\nText: Sound of Music
+      made more money during this \"best buy\" four-day sale than it did in a typical
+      month \u2013 thus, the store was renamed to Best Buy in 1983.\n4. Apple Computers
+      \u00bb Apple, Inc.\nFounded in 1976, the tech giant we know today as Apple was
+      originally named Apple Computers by founders Steve Jobs, Ronald Wayne and Steve
+      Wozniak. In 2007, Jobs announced that the company was dropping the word \"Computer\"
+      from its name to better reflect their move into a wider field of consumer electronics.
+      \"The Mac, iPod, Apple TV and iPhone. Only one of those is a computer.\n\nDocument:
+      1\nURL: https://en.wikipedia.org/wiki/The_Sound_of_Music_(film)\nTitle: The
+      Sound of Music (film) - Wikipedia\nText: In 1966, American Express created the
+      first Sound of Music guided tour in Salzburg. Since 1972, Panorama Tours has
+      been the leading Sound of Music bus tour company in the city, taking approximately
+      50,000 tourists a year to various film locations in Salzburg and the surrounding
+      region. Although the Salzburg tourism industry took advantage of the attention
+      from foreign tourists, residents of the city were apathetic about \"everything
+      that is dubious about tourism.\" The guides on the bus tour \"seem to have little
+      idea of what really happened on the set.\" Even the ticket agent for the Sound
+      of Music Dinner Show tried to dissuade Austrians from attending a performance
+      that was intended for American tourists, saying that it \"does not have anything
+      to do with the real Austria.\"\n</results><|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>",
+      "model": "command-r", "chat_history": [], "temperature": 0.0, "stop_sequences":
+      ["\nObservation:"], "raw_prompting": true, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '6883'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: "{\"is_finished\":false,\"event_type\":\"stream-start\",\"generation_id\":\"913b1114-1f6e-49c6-98e3-24dcae095935\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Reflection\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        I\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        have\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        found\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        that\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        founded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        as\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Sound\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        of\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        I\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        will\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        now\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        search\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        for\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        year\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        added\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        S\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u0026\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"P\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nAction\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        ```\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"json\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n[\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
+        \  \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        {\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
+        \      \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"tool\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"_\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"name\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"internet\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"_\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"search\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
+        \      \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"parameters\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        {\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
+        \          \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"query\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"year\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        added\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        S\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u0026\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"P\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\\"\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
+        \      \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        }\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n
+        \  \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        }\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n]\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\n```\"}\n{\"is_finished\":true,\"event_type\":\"stream-end\",\"response\":{\"response_id\":\"995fe8a5-2dc9-458a-a883-1b43c9fcad9d\",\"text\":\"Reflection:
+        I have found that the company Best Buy was founded as Sound of Music. I will
+        now search for the year Best Buy was added to the S\\u0026P 500.\\nAction:
+        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
+        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"year Best Buy
+        added to S\\u0026P 500\\\"\\n        }\\n    }\\n]\\n```\",\"generation_id\":\"913b1114-1f6e-49c6-98e3-24dcae095935\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"\\u003cBOS_TOKEN\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e#
+        Safety Preamble\\nThe instructions in this section override those in the task
+        description and style guide sections. Don't answer questions that are harmful
+        or immoral\\n\\n# System Preamble\\n## Basic Rules\\nYou are a powerful language
+        agent trained by Cohere to help people. You are capable of complex reasoning
+        and augmented with a number of tools. Your job is to plan and reason about
+        how you will use and consume the output of these tools to best help the user.
+        You will see a conversation history between yourself and a user, ending with
+        an utterance from the user. You will then see an instruction informing you
+        what kind of response to generate. You will construct a plan and then perform
+        a number of reasoning and action steps to solve the problem. When you have
+        determined the answer to the user's request, you will cite your sources in
+        your answers, according the instructions\\n\\n# User Preamble\\n## Task And
+        Context\\nYou use your advanced complex reasoning capabilities to help people
+        by answering their questions and other requests interactively. You will be
+        asked a very wide array of requests on all kinds of topics. You will be equipped
+        with a wide range of search engines or similar tools to help you, which you
+        use to research your answer. You may need to use multiple tools in parallel
+        or sequentially to complete your task. You should focus on serving the user's
+        needs as best you can, which will be wide-ranging. The current date is Thursday,
+        November 14, 2024 16:42:39\\n\\n## Style Guide\\nUnless the user asks for
+        a different style of answer, you should answer in full sentences, using proper
+        grammar and spelling\\n\\n## Available Tools\\nHere is a list of tools that
+        you have available to you:\\n\\n```python\\ndef directly_answer() -\\u003e
+        List[Dict]:\\n    \\\"\\\"\\\"Calls a standard (un-augmented) AI chatbot to
+        generate a response given the conversation history\\n    \\\"\\\"\\\"\\n    pass\\n```\\n\\n```python\\ndef
+        internet_search(query: str) -\\u003e List[Dict]:\\n    \\\"\\\"\\\"Returns
+        a list of relevant document snippets for a textual query retrieved from the
+        internet\\n\\n    Args:\\n        query (str): Query to search the internet
+        with\\n    \\\"\\\"\\\"\\n    pass\\n```\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|USER_TOKEN|\\u003eIn
+        what year was the company that was founded as Sound of Music added to the
+        S\\u0026P 500?\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003eCarefully
+        perform the following instructions, in order, starting each with a new line.\\nFirstly,
+        You may need to use complex and advanced reasoning to complete your task and
+        answer the question. Think about how you can use the provided tools to answer
+        the question and come up with a high level plan you will execute. \\nWrite
+        'Plan:' followed by an initial high level plan of how you will solve the problem
+        including the tools and steps required.\\nSecondly, Carry out your plan by
+        repeatedly using actions, reasoning over the results, and re-evaluating your
+        plan. Perform Action, Observation, Reflection steps with the following format.
+        Write 'Action:' followed by a json formatted action containing the \\\"tool_name\\\"
+        and \\\"parameters\\\"\\n Next you will analyze the 'Observation:', this is
+        the result of the action.\\nAfter that you should always think about what
+        to do next. Write 'Reflection:' followed by what you've figured out so far,
+        any changes you need to make to your plan, and what you will do next including
+        if you know the answer to the question.\\n... (this Action/Observation/Reflection
+        can repeat N times)\\nThirdly, Decide which of the retrieved documents are
+        relevant to the user's last input by writing 'Relevant Documents:' followed
+        by comma-separated list of document numbers. If none are relevant, you should
+        instead write 'None'.\\nFourthly, Decide which of the retrieved documents
+        contain facts that should be cited in a good answer to the user's last input
+        by writing 'Cited Documents:' followed a comma-separated list of document
+        numbers. If you dont want to cite any of them, you should instead write 'None'.\\nFifthly,
+        Write 'Answer:' followed by a response to the user's last input in high quality
+        natural english. Use the retrieved documents to help you. Do not insert any
+        citations or grounding markup.\\nFinally, Write 'Grounded answer:' followed
+        by a response to the user's last input in high quality natural english. Use
+        the symbols \\u003cco: doc\\u003e and \\u003c/co: doc\\u003e to indicate when
+        a fact comes from a document in the search result, e.g \\u003cco: 4\\u003emy
+        fact\\u003c/co: 4\\u003e for a fact from document 4.\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\\nPlan:
+        First I will search for the company founded as Sound of Music. Then I will
+        search for the year this company was added to the S\\u0026P 500.\\nAction:
+        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
+        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"company founded
+        as Sound of Music\\\"\\n        }\\n    }\\n]\\n```\\u003c|END_OF_TURN_TOKEN|\\u003e\\n\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e\\u003cresults\\u003e\\nDocument:
+        0\\nURL: https://www.cnbc.com/2015/05/26/19-famous-companies-that-originally-had-different-names.html\\nTitle:
+        19 famous companies that originally had different names\\nText: Sound of Music
+        made more money during this \\\"best buy\\\" four-day sale than it did in
+        a typical month \u2013 thus, the store was renamed to Best Buy in 1983.\\n4.
+        Apple Computers \xBB Apple, Inc.\\nFounded in 1976, the tech giant we know
+        today as Apple was originally named Apple Computers by founders Steve Jobs,
+        Ronald Wayne and Steve Wozniak. In 2007, Jobs announced that the company was
+        dropping the word \\\"Computer\\\" from its name to better reflect their move
+        into a wider field of consumer electronics. \\\"The Mac, iPod, Apple TV and
+        iPhone. Only one of those is a computer.\\n\\nDocument: 1\\nURL: https://en.wikipedia.org/wiki/The_Sound_of_Music_(film)\\nTitle:
+        The Sound of Music (film) - Wikipedia\\nText: In 1966, American Express created
+        the first Sound of Music guided tour in Salzburg. Since 1972, Panorama Tours
+        has been the leading Sound of Music bus tour company in the city, taking approximately
+        50,000 tourists a year to various film locations in Salzburg and the surrounding
+        region. Although the Salzburg tourism industry took advantage of the attention
+        from foreign tourists, residents of the city were apathetic about \\\"everything
+        that is dubious about tourism.\\\" The guides on the bus tour \\\"seem to
+        have little idea of what really happened on the set.\\\" Even the ticket agent
+        for the Sound of Music Dinner Show tried to dissuade Austrians from attending
+        a performance that was intended for American tourists, saying that it \\\"does
+        not have anything to do with the real Austria.\\\"\\n\\u003c/results\\u003e\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\"},{\"role\":\"CHATBOT\",\"message\":\"Reflection:
+        I have found that the company Best Buy was founded as Sound of Music. I will
+        now search for the year Best Buy was added to the S\\u0026P 500.\\nAction:
+        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
+        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"year Best Buy
+        added to S\\u0026P 500\\\"\\n        }\\n    }\\n]\\n```\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":1450,\"output_tokens\":89},\"tokens\":{\"input_tokens\":1450,\"output_tokens\":89}}},\"finish_reason\":\"COMPLETE\"}\n"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/stream+json
+      date:
+      - Thu, 14 Nov 2024 16:42:39 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - cc7f92636145605a49fc9c48a27da687
+      x-envoy-upstream-service-time:
+      - '12'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"message": "<BOS_TOKEN><|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|># Safety
+      Preamble\nThe instructions in this section override those in the task description
+      and style guide sections. Don''t answer questions that are harmful or immoral\n\n#
+      System Preamble\n## Basic Rules\nYou are a powerful language agent trained by
+      Cohere to help people. You are capable of complex reasoning and augmented with
+      a number of tools. Your job is to plan and reason about how you will use and
+      consume the output of these tools to best help the user. You will see a conversation
+      history between yourself and a user, ending with an utterance from the user.
+      You will then see an instruction informing you what kind of response to generate.
+      You will construct a plan and then perform a number of reasoning and action
+      steps to solve the problem. When you have determined the answer to the user''s
+      request, you will cite your sources in your answers, according the instructions\n\n#
+      User Preamble\n## Task And Context\nYou use your advanced complex reasoning
+      capabilities to help people by answering their questions and other requests
+      interactively. You will be asked a very wide array of requests on all kinds
+      of topics. You will be equipped with a wide range of search engines or similar
+      tools to help you, which you use to research your answer. You may need to use
+      multiple tools in parallel or sequentially to complete your task. You should
+      focus on serving the user''s needs as best you can, which will be wide-ranging.
+      The current date is Thursday, November 14, 2024 16:42:40\n\n## Style Guide\nUnless
+      the user asks for a different style of answer, you should answer in full sentences,
+      using proper grammar and spelling\n\n## Available Tools\nHere is a list of tools
+      that you have available to you:\n\n```python\ndef directly_answer() -> List[Dict]:\n    \"\"\"Calls
+      a standard (un-augmented) AI chatbot to generate a response given the conversation
+      history\n    \"\"\"\n    pass\n```\n\n```python\ndef internet_search(query:
+      str) -> List[Dict]:\n    \"\"\"Returns a list of relevant document snippets
+      for a textual query retrieved from the internet\n\n    Args:\n        query
+      (str): Query to search the internet with\n    \"\"\"\n    pass\n```<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|USER_TOKEN|>In
+      what year was the company that was founded as Sound of Music added to the S&P
+      500?<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>Carefully perform
+      the following instructions, in order, starting each with a new line.\nFirstly,
+      You may need to use complex and advanced reasoning to complete your task and
+      answer the question. Think about how you can use the provided tools to answer
+      the question and come up with a high level plan you will execute. \nWrite ''Plan:''
+      followed by an initial high level plan of how you will solve the problem including
+      the tools and steps required.\nSecondly, Carry out your plan by repeatedly using
+      actions, reasoning over the results, and re-evaluating your plan. Perform Action,
+      Observation, Reflection steps with the following format. Write ''Action:'' followed
+      by a json formatted action containing the \"tool_name\" and \"parameters\"\n
+      Next you will analyze the ''Observation:'', this is the result of the action.\nAfter
+      that you should always think about what to do next. Write ''Reflection:'' followed
+      by what you''ve figured out so far, any changes you need to make to your plan,
+      and what you will do next including if you know the answer to the question.\n...
+      (this Action/Observation/Reflection can repeat N times)\nThirdly, Decide which
+      of the retrieved documents are relevant to the user''s last input by writing
+      ''Relevant Documents:'' followed by comma-separated list of document numbers.
+      If none are relevant, you should instead write ''None''.\nFourthly, Decide which
+      of the retrieved documents contain facts that should be cited in a good answer
+      to the user''s last input by writing ''Cited Documents:'' followed a comma-separated
+      list of document numbers. If you dont want to cite any of them, you should instead
+      write ''None''.\nFifthly, Write ''Answer:'' followed by a response to the user''s
+      last input in high quality natural english. Use the retrieved documents to help
+      you. Do not insert any citations or grounding markup.\nFinally, Write ''Grounded
+      answer:'' followed by a response to the user''s last input in high quality natural
+      english. Use the symbols <co: doc> and </co: doc> to indicate when a fact comes
+      from a document in the search result, e.g <co: 4>my fact</co: 4> for a fact
+      from document 4.<|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>\nPlan:
+      First I will search for the company founded as Sound of Music. Then I will search
+      for the year this company was added to the S&P 500.\nAction: ```json\n[\n    {\n        \"tool_name\":
+      \"internet_search\",\n        \"parameters\": {\n            \"query\": \"company
+      founded as Sound of Music\"\n        }\n    }\n]\n```<|END_OF_TURN_TOKEN|>\n<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|><results>\nDocument:
+      0\nURL: https://www.cnbc.com/2015/05/26/19-famous-companies-that-originally-had-different-names.html\nTitle:
+      19 famous companies that originally had different names\nText: Sound of Music
+      made more money during this \"best buy\" four-day sale than it did in a typical
+      month \u2013 thus, the store was renamed to Best Buy in 1983.\n4. Apple Computers
+      \u00bb Apple, Inc.\nFounded in 1976, the tech giant we know today as Apple was
+      originally named Apple Computers by founders Steve Jobs, Ronald Wayne and Steve
+      Wozniak. In 2007, Jobs announced that the company was dropping the word \"Computer\"
+      from its name to better reflect their move into a wider field of consumer electronics.
+      \"The Mac, iPod, Apple TV and iPhone. Only one of those is a computer.\n\nDocument:
+      1\nURL: https://en.wikipedia.org/wiki/The_Sound_of_Music_(film)\nTitle: The
+      Sound of Music (film) - Wikipedia\nText: In 1966, American Express created the
+      first Sound of Music guided tour in Salzburg. Since 1972, Panorama Tours has
+      been the leading Sound of Music bus tour company in the city, taking approximately
+      50,000 tourists a year to various film locations in Salzburg and the surrounding
+      region. Although the Salzburg tourism industry took advantage of the attention
+      from foreign tourists, residents of the city were apathetic about \"everything
+      that is dubious about tourism.\" The guides on the bus tour \"seem to have little
+      idea of what really happened on the set.\" Even the ticket agent for the Sound
+      of Music Dinner Show tried to dissuade Austrians from attending a performance
+      that was intended for American tourists, saying that it \"does not have anything
+      to do with the real Austria.\"\n</results><|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>\nReflection:
+      I have found that the company Best Buy was founded as Sound of Music. I will
+      now search for the year Best Buy was added to the S&P 500.\nAction: ```json\n[\n    {\n        \"tool_name\":
+      \"internet_search\",\n        \"parameters\": {\n            \"query\": \"year
+      Best Buy added to S&P 500\"\n        }\n    }\n]\n```<|END_OF_TURN_TOKEN|>\n<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|><results>\nDocument:
+      2\nURL: https://en.wikipedia.org/wiki/Best_Buy\nTitle: Best Buy - Wikipedia\nText:
+      Concept IV stores included an open layout with products organized by category,
+      cash registers located throughout the store, and slightly smaller stores than
+      Concept III stores. The stores also had large areas for demonstrating home theater
+      systems and computer software.\nIn 1999, Best Buy was added to Standard & Poor''s
+      S&P 500.\n2000s\nIn 2000, Best Buy formed Redline Entertainment, an independent
+      music label and action-sports video distributor. The company acquired Magnolia
+      Hi-Fi, Inc., an audio-video retailer located in California, Washington, and
+      Oregon, in December 2000.\nIn January 2001, Best Buy acquired Musicland Stores
+      Corporation, a Minnetonka, Minnesota-based retailer that sold home-entertainment
+      products under the Sam Goody, Suncoast Motion Picture Company, Media Play, and
+      OnCue brands.\n\nDocument: 3\nURL: https://en.wikipedia.org/wiki/Best_Buy\nTitle:
+      Best Buy - Wikipedia\nText: Later that year, Best Buy opened its first superstore
+      in Burnsville, Minnesota. The Burnsville location featured a high-volume, low-price
+      business model, which was borrowed partially from Schulze''s successful Tornado
+      Sale in 1981. In its first year, the Burnsville store out-performed all other
+      Best Buy stores combined.\nBest Buy was taken public in 1985, and two years
+      later it debuted on the New York Stock Exchange. In 1988, Best Buy was in a
+      price and location war with Detroit-based appliance chain Highland Superstores,
+      and Schulze attempted to sell the company to Circuit City for US$30 million.
+      Circuit City rejected the offer, claiming they could open a store in Minneapolis
+      and \"blow them away.\"\n</results><|END_OF_TURN_TOKEN|><|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>",
+      "model": "command-r", "chat_history": [], "temperature": 0.0, "stop_sequences":
+      ["\nObservation:"], "raw_prompting": true, "stream": true}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '9068'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: "{\"is_finished\":false,\"event_type\":\"stream-start\",\"generation_id\":\"56340cf9-8ede-41f3-97d7-9842f80525f1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Re\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"levant\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Documents\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"3\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nC\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"ited\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Documents\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nAnswer\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        The\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        founded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        as\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Sound\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        of\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        added\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        S\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u0026\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"P\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        in\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\".\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\nG\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"rounded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        answer\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        The\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        company\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\u003c\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"Best\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Buy\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003c/\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e,\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        founded\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        as\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Sound\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        of\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        Music\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\",\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        was\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        added\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        to\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        the\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        S\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u0026\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"P\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"5\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"0\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        in\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \\u003c\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"1\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"9\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003c/\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"co\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\":\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"
+        \"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"2\"}\n{\"is_finished\":false,\"event_type\":\"text-generation\",\"text\":\"\\u003e.\"}\n{\"is_finished\":true,\"event_type\":\"stream-end\",\"response\":{\"response_id\":\"7cf97e2f-37f6-4ad9-869c-650c800f7c78\",\"text\":\"Relevant
+        Documents: 0,2,3\\nCited Documents: 0,2\\nAnswer: The company Best Buy, founded
+        as Sound of Music, was added to the S\\u0026P 500 in 1999.\\nGrounded answer:
+        The company \\u003cco: 0,2\\u003eBest Buy\\u003c/co: 0,2\\u003e, founded as
+        Sound of Music, was added to the S\\u0026P 500 in \\u003cco: 2\\u003e1999\\u003c/co:
+        2\\u003e.\",\"generation_id\":\"56340cf9-8ede-41f3-97d7-9842f80525f1\",\"chat_history\":[{\"role\":\"USER\",\"message\":\"\\u003cBOS_TOKEN\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e#
+        Safety Preamble\\nThe instructions in this section override those in the task
+        description and style guide sections. Don't answer questions that are harmful
+        or immoral\\n\\n# System Preamble\\n## Basic Rules\\nYou are a powerful language
+        agent trained by Cohere to help people. You are capable of complex reasoning
+        and augmented with a number of tools. Your job is to plan and reason about
+        how you will use and consume the output of these tools to best help the user.
+        You will see a conversation history between yourself and a user, ending with
+        an utterance from the user. You will then see an instruction informing you
+        what kind of response to generate. You will construct a plan and then perform
+        a number of reasoning and action steps to solve the problem. When you have
+        determined the answer to the user's request, you will cite your sources in
+        your answers, according the instructions\\n\\n# User Preamble\\n## Task And
+        Context\\nYou use your advanced complex reasoning capabilities to help people
+        by answering their questions and other requests interactively. You will be
+        asked a very wide array of requests on all kinds of topics. You will be equipped
+        with a wide range of search engines or similar tools to help you, which you
+        use to research your answer. You may need to use multiple tools in parallel
+        or sequentially to complete your task. You should focus on serving the user's
+        needs as best you can, which will be wide-ranging. The current date is Thursday,
+        November 14, 2024 16:42:40\\n\\n## Style Guide\\nUnless the user asks for
+        a different style of answer, you should answer in full sentences, using proper
+        grammar and spelling\\n\\n## Available Tools\\nHere is a list of tools that
+        you have available to you:\\n\\n```python\\ndef directly_answer() -\\u003e
+        List[Dict]:\\n    \\\"\\\"\\\"Calls a standard (un-augmented) AI chatbot to
+        generate a response given the conversation history\\n    \\\"\\\"\\\"\\n    pass\\n```\\n\\n```python\\ndef
+        internet_search(query: str) -\\u003e List[Dict]:\\n    \\\"\\\"\\\"Returns
+        a list of relevant document snippets for a textual query retrieved from the
+        internet\\n\\n    Args:\\n        query (str): Query to search the internet
+        with\\n    \\\"\\\"\\\"\\n    pass\\n```\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|USER_TOKEN|\\u003eIn
+        what year was the company that was founded as Sound of Music added to the
+        S\\u0026P 500?\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003eCarefully
+        perform the following instructions, in order, starting each with a new line.\\nFirstly,
+        You may need to use complex and advanced reasoning to complete your task and
+        answer the question. Think about how you can use the provided tools to answer
+        the question and come up with a high level plan you will execute. \\nWrite
+        'Plan:' followed by an initial high level plan of how you will solve the problem
+        including the tools and steps required.\\nSecondly, Carry out your plan by
+        repeatedly using actions, reasoning over the results, and re-evaluating your
+        plan. Perform Action, Observation, Reflection steps with the following format.
+        Write 'Action:' followed by a json formatted action containing the \\\"tool_name\\\"
+        and \\\"parameters\\\"\\n Next you will analyze the 'Observation:', this is
+        the result of the action.\\nAfter that you should always think about what
+        to do next. Write 'Reflection:' followed by what you've figured out so far,
+        any changes you need to make to your plan, and what you will do next including
+        if you know the answer to the question.\\n... (this Action/Observation/Reflection
+        can repeat N times)\\nThirdly, Decide which of the retrieved documents are
+        relevant to the user's last input by writing 'Relevant Documents:' followed
+        by comma-separated list of document numbers. If none are relevant, you should
+        instead write 'None'.\\nFourthly, Decide which of the retrieved documents
+        contain facts that should be cited in a good answer to the user's last input
+        by writing 'Cited Documents:' followed a comma-separated list of document
+        numbers. If you dont want to cite any of them, you should instead write 'None'.\\nFifthly,
+        Write 'Answer:' followed by a response to the user's last input in high quality
+        natural english. Use the retrieved documents to help you. Do not insert any
+        citations or grounding markup.\\nFinally, Write 'Grounded answer:' followed
+        by a response to the user's last input in high quality natural english. Use
+        the symbols \\u003cco: doc\\u003e and \\u003c/co: doc\\u003e to indicate when
+        a fact comes from a document in the search result, e.g \\u003cco: 4\\u003emy
+        fact\\u003c/co: 4\\u003e for a fact from document 4.\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\\nPlan:
+        First I will search for the company founded as Sound of Music. Then I will
+        search for the year this company was added to the S\\u0026P 500.\\nAction:
+        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
+        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"company founded
+        as Sound of Music\\\"\\n        }\\n    }\\n]\\n```\\u003c|END_OF_TURN_TOKEN|\\u003e\\n\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e\\u003cresults\\u003e\\nDocument:
+        0\\nURL: https://www.cnbc.com/2015/05/26/19-famous-companies-that-originally-had-different-names.html\\nTitle:
+        19 famous companies that originally had different names\\nText: Sound of Music
+        made more money during this \\\"best buy\\\" four-day sale than it did in
+        a typical month \u2013 thus, the store was renamed to Best Buy in 1983.\\n4.
+        Apple Computers \xBB Apple, Inc.\\nFounded in 1976, the tech giant we know
+        today as Apple was originally named Apple Computers by founders Steve Jobs,
+        Ronald Wayne and Steve Wozniak. In 2007, Jobs announced that the company was
+        dropping the word \\\"Computer\\\" from its name to better reflect their move
+        into a wider field of consumer electronics. \\\"The Mac, iPod, Apple TV and
+        iPhone. Only one of those is a computer.\\n\\nDocument: 1\\nURL: https://en.wikipedia.org/wiki/The_Sound_of_Music_(film)\\nTitle:
+        The Sound of Music (film) - Wikipedia\\nText: In 1966, American Express created
+        the first Sound of Music guided tour in Salzburg. Since 1972, Panorama Tours
+        has been the leading Sound of Music bus tour company in the city, taking approximately
+        50,000 tourists a year to various film locations in Salzburg and the surrounding
+        region. Although the Salzburg tourism industry took advantage of the attention
+        from foreign tourists, residents of the city were apathetic about \\\"everything
+        that is dubious about tourism.\\\" The guides on the bus tour \\\"seem to
+        have little idea of what really happened on the set.\\\" Even the ticket agent
+        for the Sound of Music Dinner Show tried to dissuade Austrians from attending
+        a performance that was intended for American tourists, saying that it \\\"does
+        not have anything to do with the real Austria.\\\"\\n\\u003c/results\\u003e\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\\nReflection:
+        I have found that the company Best Buy was founded as Sound of Music. I will
+        now search for the year Best Buy was added to the S\\u0026P 500.\\nAction:
+        ```json\\n[\\n    {\\n        \\\"tool_name\\\": \\\"internet_search\\\",\\n
+        \       \\\"parameters\\\": {\\n            \\\"query\\\": \\\"year Best Buy
+        added to S\\u0026P 500\\\"\\n        }\\n    }\\n]\\n```\\u003c|END_OF_TURN_TOKEN|\\u003e\\n\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|SYSTEM_TOKEN|\\u003e\\u003cresults\\u003e\\nDocument:
+        2\\nURL: https://en.wikipedia.org/wiki/Best_Buy\\nTitle: Best Buy - Wikipedia\\nText:
+        Concept IV stores included an open layout with products organized by category,
+        cash registers located throughout the store, and slightly smaller stores than
+        Concept III stores. The stores also had large areas for demonstrating home
+        theater systems and computer software.\\nIn 1999, Best Buy was added to Standard
+        \\u0026 Poor's S\\u0026P 500.\\n2000s\\nIn 2000, Best Buy formed Redline Entertainment,
+        an independent music label and action-sports video distributor. The company
+        acquired Magnolia Hi-Fi, Inc., an audio-video retailer located in California,
+        Washington, and Oregon, in December 2000.\\nIn January 2001, Best Buy acquired
+        Musicland Stores Corporation, a Minnetonka, Minnesota-based retailer that
+        sold home-entertainment products under the Sam Goody, Suncoast Motion Picture
+        Company, Media Play, and OnCue brands.\\n\\nDocument: 3\\nURL: https://en.wikipedia.org/wiki/Best_Buy\\nTitle:
+        Best Buy - Wikipedia\\nText: Later that year, Best Buy opened its first superstore
+        in Burnsville, Minnesota. The Burnsville location featured a high-volume,
+        low-price business model, which was borrowed partially from Schulze's successful
+        Tornado Sale in 1981. In its first year, the Burnsville store out-performed
+        all other Best Buy stores combined.\\nBest Buy was taken public in 1985, and
+        two years later it debuted on the New York Stock Exchange. In 1988, Best Buy
+        was in a price and location war with Detroit-based appliance chain Highland
+        Superstores, and Schulze attempted to sell the company to Circuit City for
+        US$30 million. Circuit City rejected the offer, claiming they could open a
+        store in Minneapolis and \\\"blow them away.\\\"\\n\\u003c/results\\u003e\\u003c|END_OF_TURN_TOKEN|\\u003e\\u003c|START_OF_TURN_TOKEN|\\u003e\\u003c|CHATBOT_TOKEN|\\u003e\"},{\"role\":\"CHATBOT\",\"message\":\"Relevant
+        Documents: 0,2,3\\nCited Documents: 0,2\\nAnswer: The company Best Buy, founded
+        as Sound of Music, was added to the S\\u0026P 500 in 1999.\\nGrounded answer:
+        The company \\u003cco: 0,2\\u003eBest Buy\\u003c/co: 0,2\\u003e, founded as
+        Sound of Music, was added to the S\\u0026P 500 in \\u003cco: 2\\u003e1999\\u003c/co:
+        2\\u003e.\"}],\"finish_reason\":\"COMPLETE\",\"meta\":{\"api_version\":{\"version\":\"1\"},\"billed_units\":{\"input_tokens\":1961,\"output_tokens\":110},\"tokens\":{\"input_tokens\":1961,\"output_tokens\":110}}},\"finish_reason\":\"COMPLETE\"}\n"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/stream+json
+      date:
+      - Thu, 14 Nov 2024 16:42:40 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - acd7875b7b32fbf5e55f68a37bb4af8c
+      x-envoy-upstream-service-time:
+      - '33'
+    status:
+      code: 200
+      message: OK
+version: 1
