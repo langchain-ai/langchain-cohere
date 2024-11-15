@@ -12,6 +12,7 @@ from langchain_community.utilities import SQLDatabase
 
 from langchain_cohere import ChatCohere
 from langchain_cohere.sql_agent.agent import create_sql_agent
+# from langchain_core.prompts import BasePromptTemplate
 
 
 @pytest.mark.vcr()
@@ -26,3 +27,14 @@ def test_sql_agent() -> None:
     resp = agent_executor.invoke({"input": "which employee has the highest salary?"})
     assert "output" in resp.keys()
     assert "jane doe" in resp.get("output", "").lower()
+
+# @pytest.mark.vcr()
+# def test_sql_agent_with_prompt() -> None:
+#     db = SQLDatabase.from_uri(
+#         "sqlite:///tests/integration_tests/sql_agent/db/employees.db"
+#     )
+#     prompt = BasePromptTemplate(name="sql", input_variables=["top_k", "dialect"])
+#     llm = ChatCohere(model="command-r-plus", temperature=0, prompt="Some preamble")
+#     agent_executor = create_sql_agent(
+#         llm, db=db, agent_type="tool-calling", verbose=True
+#     )

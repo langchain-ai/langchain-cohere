@@ -111,7 +111,7 @@ async def test_ainvoke() -> None:
     )
 
 
-# @pytest.mark.vcr()
+@pytest.mark.vcr()
 def test_invoke() -> None:
     """Test invoke tokens from ChatCohere."""
     llm = ChatCohere(model=DEFAULT_MODEL)

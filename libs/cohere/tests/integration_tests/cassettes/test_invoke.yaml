@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "I''m Pickle
+      Rick"}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '101'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"id":"365e2691-94a9-411d-9494-5fb66cf8ebc8","message":{"role":"assistant","content":[{"type":"text","text":"Hello,
+        Pickle Rick! How''s life as a pickle going for you? I hope you''re doing well
+        in your new form. Just remember, if things get tough, you''re not alone. There''s
+        always someone who can help. Stay crunchy and keep rolling!"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":53},"tokens":{"input_tokens":70,"output_tokens":53}}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '474'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Fri, 15 Nov 2024 00:02:25 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '433'
+      num_tokens:
+      - '57'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 1bee23cab03ed573bbd4ed39b0fc0bc5
+      x-envoy-upstream-service-time:
+      - '441'
+    status:
+      code: 200
+      message: OK
+version: 1
