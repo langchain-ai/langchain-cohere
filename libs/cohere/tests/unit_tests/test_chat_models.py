@@ -134,7 +134,7 @@ def test_get_generation_info(
 
 
 @pytest.mark.parametrize(
-    "response, has_documents, expected",
+    "response, documents, expected",
     [
         pytest.param(
             ChatResponse(
@@ -153,7 +153,7 @@ def test_get_generation_info(
                     tokens={"input_tokens": 215, "output_tokens": 38}
                 )
             ),
-            False,
+            None,
             {
                 "id": "foo",
                 "finish_reason": "complete",
@@ -194,7 +194,7 @@ def test_get_generation_info(
                     citations=None,
                 ),
             ),
-            False,
+            None,
             {
                 "id": "foo",
                 "finish_reason": "complete",
@@ -220,7 +220,7 @@ def test_get_generation_info(
                     tokens={"input_tokens": 215, "output_tokens": 38}
                 )
             ),
-            False,
+            None,
             {
                 "id": "foo",
                 "finish_reason": "complete",
@@ -251,7 +251,20 @@ def test_get_generation_info(
                     tokens={"input_tokens": 215, "output_tokens": 38}
                 )
             ),
-            True,
+            [
+                {
+                    "id": "doc-1",
+                    "data":{
+                        "text": "doc-1 content",
+                    }
+                },
+                {
+                    "id": "doc-2",
+                    "data":{
+                        "text": "doc-2 content",
+                    }
+                },
+            ],
             {
                 "id": "foo",
                 "finish_reason": "complete",
@@ -281,33 +294,12 @@ def test_get_generation_info(
 )
 def test_get_generation_info_v2(
     patch_base_cohere_get_default_model,
-    response: Any, has_documents: bool, expected: Dict[str, Any]
+    response: Any, documents: Dict[str, Any], expected: Dict[str, Any]
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
-
-    documents = [
-        {
-            "id": "doc-1",
-            "data":{
-                "text": "doc-1 content",
-            }
-        },
-        {
-            "id": "doc-2",
-            "data":{
-                "text": "doc-2 content",
-            }
-        },
-    ]
-
     with patch("uuid.uuid4") as mock_uuid:
         mock_uuid.return_value.hex = "foo"
-
-        if has_documents:
-            actual = chat_cohere._get_generation_info_v2(response, documents)
-        else:
-            actual = chat_cohere._get_generation_info_v2(response)
-
+        actual = chat_cohere._get_generation_info_v2(response, documents)
     assert expected == actual
 
 

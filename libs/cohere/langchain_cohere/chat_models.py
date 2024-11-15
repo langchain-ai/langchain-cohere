@@ -842,7 +842,9 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     run_manager.on_llm_new_token(delta, chunk=chunk)
             elif data.type == "message-end":
                 delta = data.delta
-                generation_info = self._get_stream_info_v2(delta, documents=request.get("documents"))
+                generation_info = self._get_stream_info_v2(delta, 
+                                                           documents=request.get("documents"), 
+                                                           tool_calls=tool_calls)
 
                 tool_call_chunks = []
                 if tool_calls:
