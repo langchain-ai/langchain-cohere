@@ -29,15 +29,18 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"365e2691-94a9-411d-9494-5fb66cf8ebc8","message":{"role":"assistant","content":[{"type":"text","text":"Hello,
-        Pickle Rick! How''s life as a pickle going for you? I hope you''re doing well
-        in your new form. Just remember, if things get tough, you''re not alone. There''s
-        always someone who can help. Stay crunchy and keep rolling!"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":53},"tokens":{"input_tokens":70,"output_tokens":53}}}'
+      string: '{"id":"a0a65a93-87d3-45ef-a343-e6418d0639a1","message":{"role":"assistant","content":[{"type":"text","text":"That''s
+        a funny statement! It seems to be a reference to a popular meme that originated
+        from the Rick and Morty TV show. In the episode \"Pickle Rick\", Rick Sanchez
+        turns himself into a pickle in a bizarre adventure. \n\nThe phrase \"I''m
+        Pickle Rick\" has become a well-known catchphrase, often used humorously to
+        suggest someone is in a ridiculous situation or has undergone a transformation
+        of some kind. It''s great that you''re embracing your inner Pickle Rick!"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":99},"tokens":{"input_tokens":70,"output_tokens":99}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '474'
+      - '715'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -47,13 +50,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 15 Nov 2024 00:02:25 GMT
+      - Fri, 15 Nov 2024 13:03:37 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '433'
       num_tokens:
-      - '57'
+      - '103'
       pragma:
       - no-cache
       server:
@@ -63,9 +66,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 1bee23cab03ed573bbd4ed39b0fc0bc5
+      - a86a72abe7d823a568b98461b25494d3
       x-envoy-upstream-service-time:
-      - '441'
+      - '747'
     status:
       code: 200
       message: OK

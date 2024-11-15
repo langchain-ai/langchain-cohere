@@ -81,6 +81,6 @@ def test_invoke_multihop_agent() -> None:
 
     # The exact answer will likely change when replays are rerecorded.
     expected_answer = (
-        "The company Best Buy, founded as Sound of Music, was added to the S&P 500 in 1999."  # noqa: E501
+        "The company that was founded as Sound of Music and renamed Best Buy in 1983 was added to the S&P 500 in 1999."  # noqa: E501
     )
     assert expected_answer == actual["output"]

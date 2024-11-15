@@ -426,7 +426,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 14 Nov 2024 23:30:23 GMT
+      - Fri, 15 Nov 2024 13:03:01 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -438,9 +438,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 66d89651e2dda4750532c86e6e0d4059
+      - 2069109e256a98dc13c9f01048b9336c
       x-envoy-upstream-service-time:
-      - '23'
+      - '11'
     status:
       code: 200
       message: OK
@@ -453,7 +453,7 @@ interactions:
       which you use to research your answer. You may need to use multiple tools in
       parallel or sequentially to complete your task. You should focus on serving
       the user''s needs as best you can, which will be wide-ranging. The current date
-      is Thursday, November 14, 2024 23:30:23\n\n## Style Guide\nUnless the user asks
+      is Friday, November 15, 2024 13:03:01\n\n## Style Guide\nUnless the user asks
       for a different style of answer, you should answer in full sentences, using
       proper grammar and spelling\n"}, {"role": "user", "content": "The user uploaded
       the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
@@ -481,7 +481,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '2222'
+      - '2220'
       content-type:
       - application/json
       host:
@@ -502,7 +502,7 @@ interactions:
     body:
       string: 'event: message-start
 
-        data: {"id":"0e2c6b0d-49bb-417d-983f-54a800cf574e","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"8d7dc5e2-0b34-4250-ab4d-11e43b861ee0","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: tool-plan-delta
@@ -548,6 +548,16 @@ interactions:
         event: tool-plan-delta
 
         data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" structure"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" and"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" content"}}}
 
 
         event: tool-plan-delta
@@ -607,7 +617,7 @@ interactions:
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" find"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" calculate"}}}
 
 
         event: tool-plan-delta
@@ -617,12 +627,52 @@ interactions:
 
         event: tool-plan-delta
 
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" average"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" rating"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" for"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" each"}}}
+
+
+        event: tool-plan-delta
+
         data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" movie"}}}
 
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" with"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" and"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" determine"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" which"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" movie"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" has"}}}
 
 
         event: tool-plan-delta
@@ -652,7 +702,7 @@ interactions:
 
         event: tool-call-start
 
-        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"file_peek_09ghchabv0zb","type":"function","function":{"name":"file_peek","arguments":""}}}}}
+        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"file_peek_hekmde2gy9f0","type":"function","function":{"name":"file_peek","arguments":""}}}}}
 
 
         event: tool-call-delta
@@ -783,7 +833,7 @@ interactions:
 
         event: message-end
 
-        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":338,"output_tokens":53},"tokens":{"input_tokens":1143,"output_tokens":87}}}}
+        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":338,"output_tokens":63},"tokens":{"input_tokens":1143,"output_tokens":97}}}}
 
 
         data: [DONE]
@@ -804,7 +854,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Thu, 14 Nov 2024 23:30:23 GMT
+      - Fri, 15 Nov 2024 13:03:02 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -816,9 +866,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - e1c0926b49724c483454e5d88657346c
+      - 0470feaa7668223301d3e8f67c1238fd
       x-envoy-upstream-service-time:
-      - '50'
+      - '11'
     status:
       code: 200
       message: OK
@@ -831,7 +881,7 @@ interactions:
       which you use to research your answer. You may need to use multiple tools in
       parallel or sequentially to complete your task. You should focus on serving
       the user''s needs as best you can, which will be wide-ranging. The current date
-      is Thursday, November 14, 2024 23:30:23\n\n## Style Guide\nUnless the user asks
+      is Friday, November 15, 2024 13:03:01\n\n## Style Guide\nUnless the user asks
       for a different style of answer, you should answer in full sentences, using
       proper grammar and spelling\n"}, {"role": "user", "content": "The user uploaded
       the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
@@ -839,17 +889,17 @@ interactions:
       Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank Redemption,Jeremy,8"},
       {"role": "user", "content": "Which movie has the highest average rating?"},
       {"role": "assistant", "tool_plan": "I will preview the file to understand its
-      structure. Then, I will write and execute Python code to find the movie with
-      the highest average rating.", "tool_calls": [{"id": "file_peek_09ghchabv0zb",
-      "type": "function", "function": {"name": "file_peek", "arguments": "{\"filename\":
-      \"tests/integration_tests/csv_agent/csv/movie_ratings.csv\"}"}}]}, {"role":
-      "tool", "tool_call_id": "file_peek_09ghchabv0zb", "content": [{"type": "document",
-      "document": {"data": "[{\"output\": \"|    | movie                    | user   |   rating
-      |\\n|---:|:-------------------------|:-------|---------:|\\n|  0 | The Shawshank
-      Redemption | John   |        8 |\\n|  1 | The Shawshank Redemption | Jerry  |        6
-      |\\n|  2 | The Shawshank Redemption | Jack   |        7 |\\n|  3 | The Shawshank
-      Redemption | Jeremy |        8 |\\n|  4 | Finding Nemo             | Darren
-      |        9 |\"}]"}}]}], "tools": [{"type": "function", "function": {"name":
+      structure and content. Then, I will write and execute Python code to calculate
+      the average rating for each movie and determine which movie has the highest
+      average rating.", "tool_calls": [{"id": "file_peek_hekmde2gy9f0", "type": "function",
+      "function": {"name": "file_peek", "arguments": "{\"filename\": \"tests/integration_tests/csv_agent/csv/movie_ratings.csv\"}"}}]},
+      {"role": "tool", "tool_call_id": "file_peek_hekmde2gy9f0", "content": [{"type":
+      "document", "document": {"data": "[{\"output\": \"|    | movie                    |
+      user   |   rating |\\n|---:|:-------------------------|:-------|---------:|\\n|  0
+      | The Shawshank Redemption | John   |        8 |\\n|  1 | The Shawshank Redemption
+      | Jerry  |        6 |\\n|  2 | The Shawshank Redemption | Jack   |        7
+      |\\n|  3 | The Shawshank Redemption | Jeremy |        8 |\\n|  4 | Finding Nemo             |
+      Darren |        9 |\"}]"}}]}], "tools": [{"type": "function", "function": {"name":
       "file_read", "description": "Returns the textual contents of an uploaded file,
       broken up in text chunks", "parameters": {"type": "object", "properties": {"filename":
       {"type": "str", "description": "The name of the attached file to read."}}, "required":
@@ -870,7 +920,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '3135'
+      - '3199'
       content-type:
       - application/json
       host:
@@ -891,7 +941,7 @@ interactions:
     body:
       string: 'event: message-start
 
-        data: {"id":"d394e2f8-d8ed-40e4-82a4-975f002bef63","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"e3b05cb3-b978-45a8-b650-6b50dceea60a","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: tool-plan-delta
@@ -911,17 +961,22 @@ interactions:
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" a"}}}
 
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" columns"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" column"}}}
 
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" ''"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" called"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" \""}}}
 
 
         event: tool-plan-delta
@@ -931,22 +986,7 @@ interactions:
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"'',"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" ''"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"user"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"''"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"\""}}}
 
 
         event: tool-plan-delta
@@ -956,7 +996,17 @@ interactions:
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" ''"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" another"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" called"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" \""}}}
 
 
         event: tool-plan-delta
@@ -966,7 +1016,7 @@ interactions:
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"''."}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"\"."}}}
 
 
         event: tool-plan-delta
@@ -1016,7 +1066,7 @@ interactions:
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" find"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" calculate"}}}
 
 
         event: tool-plan-delta
@@ -1026,12 +1076,52 @@ interactions:
 
         event: tool-plan-delta
 
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" average"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" rating"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" for"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" each"}}}
+
+
+        event: tool-plan-delta
+
         data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" movie"}}}
 
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" with"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" and"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" determine"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" which"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" movie"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" has"}}}
 
 
         event: tool-plan-delta
@@ -1061,7 +1151,7 @@ interactions:
 
         event: tool-call-start
 
-        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"python_interpreter_dsxdbxbjz4wm","type":"function","function":{"name":"python_interpreter","arguments":""}}}}}
+        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"python_interpreter_v4ka7rt46kn6","type":"function","function":{"name":"python_interpreter","arguments":""}}}}}
 
 
         event: tool-call-delta
@@ -1268,31 +1358,7 @@ interactions:
         event: tool-call-delta
 
         data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
-        Group"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
-        by"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
-        movie"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
-        and"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
-        calculate"}}}}}
+        Calculate"}}}}}
 
 
         event: tool-call-delta
@@ -1309,12 +1375,30 @@ interactions:
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\n"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        for"}}}}}
 
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"movie"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        each"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        movie"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\nd"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"f"}}}}}
 
 
         event: tool-call-delta
@@ -1401,6 +1485,26 @@ interactions:
 
         event: tool-call-delta
 
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"()."}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"reset"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"index"}}}}}
+
+
+        event: tool-call-delta
+
         data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"()"}}}}}
 
 
@@ -1457,17 +1561,109 @@ interactions:
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\nh"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\n"}}}}}
 
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"igh"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"max"}}}}}
 
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"est"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"avg"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rating"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        ="}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        df"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"avg"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rating"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"["}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\\""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rating"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\\""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"]."}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"max"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"()"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\n"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"max"}}}}}
 
 
         event: tool-call-delta
@@ -1509,7 +1705,7 @@ interactions:
         event: tool-call-delta
 
         data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
-        movie"}}}}}
+        df"}}}}}
 
 
         event: tool-call-delta
@@ -1534,27 +1730,129 @@ interactions:
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"."}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"["}}}}}
 
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"idx"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"df"}}}}}
 
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"max"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
 
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"()"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"avg"}}}}}
 
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\n"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rating"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"["}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\\""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rating"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\\"]"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        =="}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        max"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"avg"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rating"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"]["}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\\""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"movie"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\\\""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"]."}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"values"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"["}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"0"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"]\\n"}}}}}
 
 
         event: tool-call-delta
@@ -1584,13 +1882,25 @@ interactions:
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"Movie"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"The"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        movie"}}}}}
 
 
         event: tool-call-delta
 
         data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
         with"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        the"}}}}}
 
 
         event: tool-call-delta
@@ -1613,7 +1923,8 @@ interactions:
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":":"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        is"}}}}}
 
 
         event: tool-call-delta
@@ -1624,7 +1935,7 @@ interactions:
 
         event: tool-call-delta
 
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"highest"}}}}}
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"max"}}}}}
 
 
         event: tool-call-delta
@@ -1659,6 +1970,72 @@ interactions:
 
         event: tool-call-delta
 
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"}"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        with"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        an"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        average"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        rating"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        of"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        {"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"max"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"avg"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"_"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"rating"}}}}}
+
+
+        event: tool-call-delta
+
         data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"}\\\")"}}}}}
 
 
@@ -1684,7 +2061,7 @@ interactions:
 
         event: message-end
 
-        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":486,"output_tokens":162},"tokens":{"input_tokens":1368,"output_tokens":196}}}}
+        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":496,"output_tokens":226},"tokens":{"input_tokens":1378,"output_tokens":260}}}}
 
 
         data: [DONE]
@@ -1705,7 +2082,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Thu, 14 Nov 2024 23:30:25 GMT
+      - Fri, 15 Nov 2024 13:03:04 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -1717,9 +2094,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - b40ce11a1afe6862a2c65f95828f6b75
+      - 6a5fd41cf6f0f2dc8982f93089cd9822
       x-envoy-upstream-service-time:
-      - '22'
+      - '11'
     status:
       code: 200
       message: OK
@@ -1732,7 +2109,7 @@ interactions:
       which you use to research your answer. You may need to use multiple tools in
       parallel or sequentially to complete your task. You should focus on serving
       the user''s needs as best you can, which will be wide-ranging. The current date
-      is Thursday, November 14, 2024 23:30:23\n\n## Style Guide\nUnless the user asks
+      is Friday, November 15, 2024 13:03:01\n\n## Style Guide\nUnless the user asks
       for a different style of answer, you should answer in full sentences, using
       proper grammar and spelling\n"}, {"role": "user", "content": "The user uploaded
       the following attachments:\nFilename: tests/integration_tests/csv_agent/csv/movie_ratings.csv\nWord
@@ -1740,41 +2117,42 @@ interactions:
       Redemption,Jerry,6 The Shawshank Redemption,Jack,7 The Shawshank Redemption,Jeremy,8"},
       {"role": "user", "content": "Which movie has the highest average rating?"},
       {"role": "assistant", "tool_plan": "I will preview the file to understand its
-      structure. Then, I will write and execute Python code to find the movie with
-      the highest average rating.", "tool_calls": [{"id": "file_peek_09ghchabv0zb",
-      "type": "function", "function": {"name": "file_peek", "arguments": "{\"filename\":
-      \"tests/integration_tests/csv_agent/csv/movie_ratings.csv\"}"}}]}, {"role":
-      "tool", "tool_call_id": "file_peek_09ghchabv0zb", "content": [{"type": "document",
-      "document": {"data": "[{\"output\": \"|    | movie                    | user   |   rating
-      |\\n|---:|:-------------------------|:-------|---------:|\\n|  0 | The Shawshank
-      Redemption | John   |        8 |\\n|  1 | The Shawshank Redemption | Jerry  |        6
-      |\\n|  2 | The Shawshank Redemption | Jack   |        7 |\\n|  3 | The Shawshank
-      Redemption | Jeremy |        8 |\\n|  4 | Finding Nemo             | Darren
-      |        9 |\"}]"}}]}, {"role": "assistant", "tool_plan": "The file contains
-      the columns ''movie'', ''user'' and ''rating''. I will now write and execute
-      Python code to find the movie with the highest average rating.", "tool_calls":
-      [{"id": "python_interpreter_dsxdbxbjz4wm", "type": "function", "function": {"name":
-      "python_interpreter", "arguments": "{\"code\": \"import pandas as pd\\n\\ndf
-      = pd.read_csv(\\\"tests/integration_tests/csv_agent/csv/movie_ratings.csv\\\")\\n\\n#
-      Group by movie and calculate average rating\\nmovie_avg_rating = df.groupby(\\\"movie\\\")[\\\"rating\\\"].mean()\\n\\n#
-      Find movie with highest average rating\\nhighest_avg_rating_movie = movie_avg_rating.idxmax()\\n\\nprint(f\\\"Movie
-      with highest average rating: {highest_avg_rating_movie}\\\")\"}"}}]}, {"role":
-      "tool", "tool_call_id": "python_interpreter_dsxdbxbjz4wm", "content": [{"type":
-      "document", "document": {"data": "[{\"output\": \"Movie with highest average
-      rating: The Shawshank Redemption\\n\"}]"}}]}], "tools": [{"type": "function",
-      "function": {"name": "file_read", "description": "Returns the textual contents
-      of an uploaded file, broken up in text chunks", "parameters": {"type": "object",
-      "properties": {"filename": {"type": "str", "description": "The name of the attached
-      file to read."}}, "required": ["filename"]}}}, {"type": "function", "function":
-      {"name": "file_peek", "description": "The name of the attached file to show
-      a peek preview.", "parameters": {"type": "object", "properties": {"filename":
-      {"type": "str", "description": "The name of the attached file to show a peek
-      preview."}}, "required": ["filename"]}}}, {"type": "function", "function": {"name":
-      "python_interpreter", "description": "Executes python code and returns the result.
-      The code runs in a static sandbox without interactive mode, so print output
-      or save output to a file.", "parameters": {"type": "object", "properties": {"code":
-      {"type": "str", "description": "Python code to execute."}}, "required": ["code"]}}}],
-      "stream": true}'
+      structure and content. Then, I will write and execute Python code to calculate
+      the average rating for each movie and determine which movie has the highest
+      average rating.", "tool_calls": [{"id": "file_peek_hekmde2gy9f0", "type": "function",
+      "function": {"name": "file_peek", "arguments": "{\"filename\": \"tests/integration_tests/csv_agent/csv/movie_ratings.csv\"}"}}]},
+      {"role": "tool", "tool_call_id": "file_peek_hekmde2gy9f0", "content": [{"type":
+      "document", "document": {"data": "[{\"output\": \"|    | movie                    |
+      user   |   rating |\\n|---:|:-------------------------|:-------|---------:|\\n|  0
+      | The Shawshank Redemption | John   |        8 |\\n|  1 | The Shawshank Redemption
+      | Jerry  |        6 |\\n|  2 | The Shawshank Redemption | Jack   |        7
+      |\\n|  3 | The Shawshank Redemption | Jeremy |        8 |\\n|  4 | Finding Nemo             |
+      Darren |        9 |\"}]"}}]}, {"role": "assistant", "tool_plan": "The file contains
+      a column called \"movie\" and another called \"rating\". I will now write and
+      execute Python code to calculate the average rating for each movie and determine
+      which movie has the highest average rating.", "tool_calls": [{"id": "python_interpreter_v4ka7rt46kn6",
+      "type": "function", "function": {"name": "python_interpreter", "arguments":
+      "{\"code\": \"import pandas as pd\\n\\ndf = pd.read_csv(\\\"tests/integration_tests/csv_agent/csv/movie_ratings.csv\\\")\\n\\n#
+      Calculate average rating for each movie\\ndf_avg_rating = df.groupby(\\\"movie\\\")[\\\"rating\\\"].mean().reset_index()\\n\\n#
+      Find movie with highest average rating\\nmax_avg_rating = df_avg_rating[\\\"rating\\\"].max()\\nmax_avg_rating_movie
+      = df_avg_rating[df_avg_rating[\\\"rating\\\"] == max_avg_rating][\\\"movie\\\"].values[0]\\n\\nprint(f\\\"The
+      movie with the highest average rating is {max_avg_rating_movie} with an average
+      rating of {max_avg_rating}\\\")\"}"}}]}, {"role": "tool", "tool_call_id": "python_interpreter_v4ka7rt46kn6",
+      "content": [{"type": "document", "document": {"data": "[{\"output\": \"The movie
+      with the highest average rating is The Shawshank Redemption with an average
+      rating of 7.25\\n\"}]"}}]}], "tools": [{"type": "function", "function": {"name":
+      "file_read", "description": "Returns the textual contents of an uploaded file,
+      broken up in text chunks", "parameters": {"type": "object", "properties": {"filename":
+      {"type": "str", "description": "The name of the attached file to read."}}, "required":
+      ["filename"]}}}, {"type": "function", "function": {"name": "file_peek", "description":
+      "The name of the attached file to show a peek preview.", "parameters": {"type":
+      "object", "properties": {"filename": {"type": "str", "description": "The name
+      of the attached file to show a peek preview."}}, "required": ["filename"]}}},
+      {"type": "function", "function": {"name": "python_interpreter", "description":
+      "Executes python code and returns the result. The code runs in a static sandbox
+      without interactive mode, so print output or save output to a file.", "parameters":
+      {"type": "object", "properties": {"code": {"type": "str", "description": "Python
+      code to execute."}}, "required": ["code"]}}}], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -1783,7 +2161,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '4105'
+      - '4448'
       content-type:
       - application/json
       host:
@@ -1804,7 +2182,7 @@ interactions:
     body:
       string: 'event: message-start
 
-        data: {"id":"2d890852-ad64-441d-98c1-168501877a34","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"a7008feb-bcd7-43df-9043-be0bebcc66c9","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: content-start
@@ -1884,19 +2262,83 @@ interactions:
 
         event: content-delta
 
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        with"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        an"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        average"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        rating"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        7"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"2"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"5"}}}}
+
+
+        event: content-delta
+
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
 
 
         event: citation-start
 
-        data: {"type":"citation-start","index":0,"delta":{"message":{"citations":{"start":45,"end":70,"text":"The
-        Shawshank Redemption.","sources":[{"type":"tool","id":"python_interpreter_dsxdbxbjz4wm:0","tool_output":{"content":"[{\"output\":
-        \"Movie with highest average rating: The Shawshank Redemption\\n\"}]"}}]}}}}
+        data: {"type":"citation-start","index":0,"delta":{"message":{"citations":{"start":45,"end":69,"text":"The
+        Shawshank Redemption","sources":[{"type":"tool","id":"python_interpreter_v4ka7rt46kn6:0","tool_output":{"content":"[{\"output\":
+        \"The movie with the highest average rating is The Shawshank Redemption with
+        an average rating of 7.25\\n\"}]"}}]}}}}
 
 
         event: citation-end
 
         data: {"type":"citation-end","index":0}
+
+
+        event: citation-start
+
+        data: {"type":"citation-start","index":1,"delta":{"message":{"citations":{"start":96,"end":101,"text":"7.25.","sources":[{"type":"tool","id":"python_interpreter_v4ka7rt46kn6:0","tool_output":{"content":"[{\"output\":
+        \"The movie with the highest average rating is The Shawshank Redemption with
+        an average rating of 7.25\\n\"}]"}}]}}}}
+
+
+        event: citation-end
+
+        data: {"type":"citation-end","index":1}
 
 
         event: content-end
@@ -1906,7 +2348,7 @@ interactions:
 
         event: message-end
 
-        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":547,"output_tokens":13},"tokens":{"input_tokens":1610,"output_tokens":60}}}}
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":577,"output_tokens":23},"tokens":{"input_tokens":1696,"output_tokens":91}}}}
 
 
         data: [DONE]
@@ -1927,7 +2369,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Thu, 14 Nov 2024 23:30:29 GMT
+      - Fri, 15 Nov 2024 13:03:08 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -1939,9 +2381,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 65f4ef4df16d6d48a59d34728683823b
+      - 523ca13e0e6b33c9bd98eaf36695b567
       x-envoy-upstream-service-time:
-      - '27'
+      - '16'
     status:
       code: 200
       message: OK

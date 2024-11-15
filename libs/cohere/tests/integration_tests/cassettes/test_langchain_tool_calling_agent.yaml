@@ -35,7 +35,7 @@ interactions:
     body:
       string: 'event: message-start
 
-        data: {"id":"9a77e383-4304-4b6b-af7d-f7809cf382c0","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"c36e7d10-b662-4802-8a37-5fcea19c1484","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: tool-plan-delta
@@ -95,17 +95,7 @@ interactions:
 
         event: tool-plan-delta
 
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" user"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"''s"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" request"}}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" question"}}}
 
 
         event: tool-plan-delta
@@ -115,7 +105,7 @@ interactions:
 
         event: tool-call-start
 
-        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"magic_function_t8c0je22zjxz","type":"function","function":{"name":"magic_function","arguments":""}}}}}
+        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"magic_function_gvf47dhzxddj","type":"function","function":{"name":"magic_function","arguments":""}}}}}
 
 
         event: tool-call-delta
@@ -161,7 +151,7 @@ interactions:
 
         event: message-end
 
-        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":37,"output_tokens":23},"tokens":{"input_tokens":780,"output_tokens":56}}}}
+        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":37,"output_tokens":21},"tokens":{"input_tokens":780,"output_tokens":54}}}}
 
 
         data: [DONE]
@@ -182,7 +172,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Thu, 31 Oct 2024 16:01:41 GMT
+      - Fri, 15 Nov 2024 13:03:54 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -194,9 +184,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 20bd324c7e4dc94fb696acf959167e59
+      - edba33b73a6c7ce18a981c88ad1fe3c2
       x-envoy-upstream-service-time:
-      - '10'
+      - '12'
     status:
       code: 200
       message: OK
@@ -204,9 +194,9 @@ interactions:
     body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
       "You are a helpful assistant"}, {"role": "user", "content": "what is the value
       of magic_function(3)?"}, {"role": "assistant", "tool_plan": "I will use the
-      magic_function tool to answer the user''s request.", "tool_calls": [{"id": "magic_function_t8c0je22zjxz",
+      magic_function tool to answer the question.", "tool_calls": [{"id": "magic_function_gvf47dhzxddj",
       "type": "function", "function": {"name": "magic_function", "arguments": "{\"input\":
-      3}"}}]}, {"role": "tool", "tool_call_id": "magic_function_t8c0je22zjxz", "content":
+      3}"}}]}, {"role": "tool", "tool_call_id": "magic_function_gvf47dhzxddj", "content":
       [{"type": "document", "document": {"data": "[{\"output\": \"5\"}]"}}]}], "tools":
       [{"type": "function", "function": {"name": "magic_function", "description":
       "Applies a magic function to an input.", "parameters": {"type": "object", "properties":
@@ -220,7 +210,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '873'
+      - '867'
       content-type:
       - application/json
       host:
@@ -241,7 +231,7 @@ interactions:
     body:
       string: 'event: message-start
 
-        data: {"id":"e0ee88da-e2bf-447b-bb1e-69f63bf18272","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"34e41b8c-1943-4a11-9caf-b25312712e73","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: content-start
@@ -316,7 +306,7 @@ interactions:
 
         event: citation-start
 
-        data: {"type":"citation-start","index":0,"delta":{"message":{"citations":{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"magic_function_t8c0je22zjxz:0","tool_output":{"content":"[{\"output\":
+        data: {"type":"citation-start","index":0,"delta":{"message":{"citations":{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"magic_function_gvf47dhzxddj:0","tool_output":{"content":"[{\"output\":
         \"5\"}]"}}]}}}}
 
 
@@ -332,7 +322,7 @@ interactions:
 
         event: message-end
 
-        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":68,"output_tokens":13},"tokens":{"input_tokens":853,"output_tokens":57}}}}
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":66,"output_tokens":13},"tokens":{"input_tokens":869,"output_tokens":57}}}}
 
 
         data: [DONE]
@@ -353,7 +343,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Thu, 31 Oct 2024 16:01:42 GMT
+      - Fri, 15 Nov 2024 13:03:56 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -365,9 +355,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - c7403ad4a1f623884993eab9479d3133
+      - 1aa3b014390887f8a4eec9c6ae9d3f3e
       x-envoy-upstream-service-time:
-      - '21'
+      - '12'
     status:
       code: 200
       message: OK

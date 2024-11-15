@@ -10,6 +10,8 @@ def delete_cassettes_directories(root_dir):
                 shutil.rmtree(dir_to_delete)
 
 if __name__ == "__main__":
+    # Clear all cassettes directories in the integration_tests directory
+    # run using: python clear_cassettes.py
     directory_to_clear = os.path.join(os.getcwd(), "integration_tests")
     if not os.path.isdir(directory_to_clear):
         raise Exception("integration_tests directory not found in current working directory")

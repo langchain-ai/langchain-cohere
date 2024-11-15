@@ -35,7 +35,7 @@ interactions:
     body:
       string: 'event: message-start
 
-        data: {"id":"4dbdca90-0442-49fe-a68d-2c3f60db1650","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"d3b2692e-fd7f-4d38-a080-bdf9bf00a280","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: tool-plan-delta
@@ -130,7 +130,7 @@ interactions:
 
         event: tool-call-start
 
-        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"Person_vjz5xgdy7dw4","type":"function","function":{"name":"Person","arguments":""}}}}}
+        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"Person_3kqt0zs3f83f","type":"function","function":{"name":"Person","arguments":""}}}}}
 
 
         event: tool-call-delta
@@ -249,7 +249,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Thu, 31 Oct 2024 16:01:26 GMT
+      - Fri, 15 Nov 2024 13:03:37 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -261,9 +261,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 94d700358f8217cb76d1accaa6232b06
+      - b3946aa703c7cb412435ccfb0f79c5e7
       x-envoy-upstream-service-time:
-      - '49'
+      - '8'
     status:
       code: 200
       message: OK

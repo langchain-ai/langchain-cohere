@@ -30,7 +30,7 @@ interactions:
     uri: https://api.cohere.com/v1/rerank
   response:
     body:
-      string: '{"id":"cc173034-3613-405b-a0ac-54cc208ef5c7","results":[{"index":0,"relevance_score":0.0006070756},{"index":1,"relevance_score":0.00013032975}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
+      string: '{"id":"791fc557-319e-492a-9fdb-4765c702dc37","results":[{"index":0,"relevance_score":0.0006070756},{"index":1,"relevance_score":0.00013032975}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -45,7 +45,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 31 Oct 2024 16:01:47 GMT
+      - Fri, 15 Nov 2024 13:03:59 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -57,9 +57,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 6d00aefc0b099e4eab93f5f402d4c91b
+      - 0f4096c4ae15a8e7923e14c7fc4a0675
       x-envoy-upstream-service-time:
-      - '34'
+      - '35'
     status:
       code: 200
       message: OK

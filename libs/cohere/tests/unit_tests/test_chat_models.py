@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 from unittest.mock import patch
 
 import pytest
-from cohere.types import ChatResponse, NonStreamedChatResponse, AssistantMessageResponse, ToolCall, ToolCallV2, ToolCallV2Function, Usage
+from cohere.types import ChatResponse, NonStreamedChatResponse, ChatMessageEndEventDelta, AssistantMessageResponse, ToolCall, ToolCallV2, ToolCallV2Function, Usage, UsageTokens, UsageBilledUnits
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 
 from langchain_cohere.chat_models import (
@@ -302,6 +302,165 @@ def test_get_generation_info_v2(
         actual = chat_cohere._get_generation_info_v2(response, documents)
     assert expected == actual
 
+@pytest.mark.parametrize(
+    "final_delta, documents, tool_calls, expected",
+    [
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
+                )
+            ),
+            None,
+            None,
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+            },
+            id="message-end no documents no tools",
+        ),
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
+                )
+            ),
+            [
+                {
+                    "id": "foo",
+                    "snippet": "some text"
+                }
+            ],
+            None,
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+                "documents": [
+                    {
+                        "id": "foo",
+                        "snippet": "some text",
+                    }
+                ]
+            },
+            id="message-end with documents",
+        ),
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
+                )
+            ),
+            None,
+            [ 
+                {
+                    "id": "foo",
+                    "type": "function",
+                    "function": {
+                        "name": "bar",
+                        "arguments": "{'a': 1}",
+                    },
+                }
+            ],
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+                "tool_calls": [
+                    {
+                        "id": "foo",
+                        "type": "function",
+                        "function": {
+                            "name": "bar",
+                            "arguments": "{'a': 1}",
+                        },
+                    }
+                ]
+            },
+            id="message-end with tool_calls",
+        ),
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
+                )
+            ),
+            [
+                {
+                    "id": "foo",
+                    "snippet": "some text"
+                }
+            ],
+            [ 
+                {
+                    "id": "foo",
+                    "type": "function",
+                    "function": {
+                        "name": "bar",
+                        "arguments": "{'a': 1}",
+                    },
+                }
+            ],
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+                "documents": [
+                    {
+                        "id": "foo",
+                        "snippet": "some text"
+                    }
+                ],
+                "tool_calls": [
+                    {
+                        "id": "foo",
+                        "type": "function",
+                        "function": {
+                            "name": "bar",
+                            "arguments": "{'a': 1}",
+                        },
+                    }
+                ]
+            },
+            id="message-end with documents and tool_calls",
+        ),
+    ],
+)
+def test_get_stream_info_v2(
+    patch_base_cohere_get_default_model,
+    final_delta: Any, 
+    documents: Dict[str, Any], 
+    tool_calls: Dict[str, Any], 
+    expected: Dict[str, Any]
+) -> None:
+    chat_cohere = ChatCohere(cohere_api_key="test")
+    with patch("uuid.uuid4") as mock_uuid:
+        mock_uuid.return_value.hex = "foo"
+        actual = chat_cohere._get_stream_info_v2(final_delta=final_delta, 
+                                                 documents=documents, 
+                                                 tool_calls=tool_calls)
+    assert expected == actual
 
 def test_messages_to_cohere_tool_results() -> None:
     human_message = HumanMessage(content="what is the value of magic_function(3)?")
@@ -592,11 +751,11 @@ def test_get_cohere_chat_request(
     assert result == expected
 
 @pytest.mark.parametrize(
-    "cohere_client_v2_kwargs,set_preamble,messages,expected",
+    "cohere_client_v2_kwargs,preamble,messages,expected",
     [
         pytest.param(
             {"cohere_api_key": "test"},
-            False,
+            None,
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
@@ -629,7 +788,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            True,
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
@@ -666,7 +825,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            False,
+            None,
             [
                 HumanMessage(content="Hello!"),
                 AIMessage(
@@ -734,7 +893,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            True,
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",
             [
                 HumanMessage(content="Hello!"),
                 AIMessage(
@@ -806,7 +965,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            False,
+            None,
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -914,7 +1073,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            True,
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -1026,7 +1185,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            False,
+            None,
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -1137,7 +1296,7 @@ def test_get_cohere_chat_request(
 def test_get_cohere_chat_request_v2(
     patch_base_cohere_get_default_model,
     cohere_client_v2_kwargs: Dict[str, Any],
-    set_preamble: bool,
+    preamble: str,
     messages: List[BaseMessage],
     expected: Dict[str, Any],
 ) -> None:
@@ -1163,13 +1322,11 @@ def test_get_cohere_chat_request_v2(
         }
     ]
 
-    preamble = "You are a wizard, with the ability to perform magic using the magic_function tool."
-
     result = get_cohere_chat_request_v2(
         messages,
         stop_sequences=cohere_client_v2.stop,
         tools=tools,
-        preamble=preamble if set_preamble else None,
+        preamble=preamble,
     )
 
     # Check that the result is a dictionary

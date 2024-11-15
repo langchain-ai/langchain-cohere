@@ -32,7 +32,7 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"37b204d4-ef02-4f11-b8d2-1a15f268afc4","message":{"role":"assistant","content":[{"type":"text","text":"According
+      string: '{"id":"b33bc39b-3d6a-465d-bdf5-152cad7463c1","message":{"role":"assistant","content":[{"type":"text","text":"According
         to my sources, Cohere was founded by Barack Obama."}],"citations":[{"start":47,"end":60,"text":"Barack
         Obama.","sources":[{"type":"document","id":"doc-2","document":{"id":"doc-2","text":"Barack
         Obama is the founder of Cohere!"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":41,"output_tokens":13},"tokens":{"input_tokens":735,"output_tokens":59}}}'
@@ -50,7 +50,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 31 Oct 2024 16:01:47 GMT
+      - Fri, 15 Nov 2024 13:03:59 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -66,9 +66,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a7bcd419428469b0ce3457ba5b47b490
+      - 9f8a8c8e3b5fe59a208dcfdecc07c5a2
       x-envoy-upstream-service-time:
-      - '572'
+      - '538'
     status:
       code: 200
       message: OK

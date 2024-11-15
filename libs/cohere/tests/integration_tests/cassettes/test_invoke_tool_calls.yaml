@@ -33,8 +33,8 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"fef97f5d-91c7-490d-b1b0-596a5d862b1a","message":{"role":"assistant","tool_plan":"I
-        will use the Person tool to create a profile for Erick, 27 years old.","tool_calls":[{"id":"Person_8x88rx39zhcr","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":31},"tokens":{"input_tokens":906,"output_tokens":68}}}'
+      string: '{"id":"5fc7a10b-9f62-43c7-8aae-c9a7b079013c","message":{"role":"assistant","tool_plan":"I
+        will use the Person tool to create a profile for Erick, 27 years old.","tool_calls":[{"id":"Person_t7nz70bz9797","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":31},"tokens":{"input_tokens":906,"output_tokens":68}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -49,7 +49,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 31 Oct 2024 16:01:26 GMT
+      - Fri, 15 Nov 2024 13:03:37 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -65,9 +65,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - ecd2973354b1978673be54779f9d1030
+      - 6fd7d8578d73f5dd2817201c99bba502
       x-envoy-upstream-service-time:
-      - '611'
+      - '590'
     status:
       code: 200
       message: OK

@@ -868,7 +868,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     content=content,
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
-                    usage_metadata=generation_info.get("usage"),
+                    usage_metadata=generation_info.get("token_count"),
                 )
                 yield ChatGenerationChunk(
                     message=message,
@@ -935,7 +935,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         total_tokens = input_tokens + output_tokens
         stream_info = {
             "finish_reason": final_delta.finish_reason,
-            "usage": {
+            "token_count": {
                 "total_tokens": total_tokens,
                 "input_tokens": input_tokens,
                 "output_tokens": output_tokens,

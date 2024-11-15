@@ -30,7 +30,7 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"2b845c76-133e-41aa-b990-a82de3ea8040","message":{"role":"assistant","content":[{"type":"text","text":"The
+      string: '{"id":"9612fe94-36ea-4b5b-84bc-a96caaec6e84","message":{"role":"assistant","content":[{"type":"text","text":"The
         sky is green."}],"citations":[{"start":11,"end":17,"text":"green.","sources":[{"type":"document","id":"doc-0","document":{"id":"doc-0","text":"The
         sky is green."}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":13,"output_tokens":5},"tokens":{"input_tokens":693,"output_tokens":42}}}'
     headers:
@@ -47,7 +47,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 31 Oct 2024 16:01:45 GMT
+      - Fri, 15 Nov 2024 13:03:58 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -63,9 +63,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 8c9b3e76e17dfa4464a3339b7c347bc2
+      - f0bd2acac164bef6293b172a56522316
       x-envoy-upstream-service-time:
-      - '408'
+      - '420'
     status:
       code: 200
       message: OK
