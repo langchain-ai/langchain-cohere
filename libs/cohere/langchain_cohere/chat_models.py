@@ -682,7 +682,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         **kwargs: Any,
     ) -> Iterator[ChatGenerationChunk]:
         # Workaround to allow create_react_agent to work with the current implementation.
-        # create_react_agent relies on the 'raw_prompting' parameter to be set, which is only availble
+        # create_react_agent relies on the 'raw_prompting' parameter to be set, which is only available
         # in the v1 API.
         # TODO: Remove this workaround once create_react_agent is updated to work with the v2 API.
         if kwargs.get("raw_prompting"):
