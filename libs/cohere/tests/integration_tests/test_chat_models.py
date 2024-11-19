@@ -225,8 +225,7 @@ async def test_async_streaming_tool_call() -> None:
     assert tool_call_chunk["args"] is not None
     assert json.loads(tool_call_chunk["args"]) == {"name": "Erick", "age": 27}
     assert tool_call_chunks_present
-    assert tool_plan == "I will use the Person tool to create a \
-    profile for Erick, 27 years old."
+    assert tool_plan == "I will use the Person tool to create a profile for Erick, 27 years old."   # noqa: E501
 
 @pytest.mark.vcr()
 def test_invoke_multiple_tools() -> None:

@@ -156,8 +156,7 @@ def test_get_generation_info(
                 id="foo",
                 finish_reason="complete",
                 message=AssistantMessageResponse(
-                    tool_plan="I will use the magic_function tool \
-                    to answer the question.",
+                    tool_plan="I will use the magic_function tool to answer the question.", # noqa: E501
                     tool_calls=[
                         ToolCallV2(
                             function=ToolCallV2Function(
@@ -320,7 +319,8 @@ def test_get_generation_info(
 )
 def test_get_generation_info_v2(
     patch_base_cohere_get_default_model,
-    response: Any, documents: Dict[str, Any], expected: Dict[str, Any]
+    response: Any, documents: Dict[str, Any], 
+    expected: Dict[str, Any]
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
     with patch("uuid.uuid4") as mock_uuid:
@@ -1363,8 +1363,7 @@ def test_get_cohere_chat_request_v2_warn_connectors_deprecated(recwarn):
     messages = [HumanMessage(content="Hello")]
     kwargs = {"connectors": ["some_connector"]}
 
-    with pytest.raises(ValueError, match="The 'connectors' parameter is deprecated \
-                       as of version 1.0.0."):
+    with pytest.raises(ValueError, match="The 'connectors' parameter is deprecated as of version 1.0.0."):  # noqa: E501
         get_cohere_chat_request_v2(messages, **kwargs)
 
     assert len(recwarn) == 1

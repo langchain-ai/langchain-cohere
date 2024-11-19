@@ -703,7 +703,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-        stream = self.chat_stream_v2(**request)
+        stream = self.client.v2.chat_stream(**request)
         curr_tool_call = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
         tool_calls = []
         for data in stream:
@@ -798,7 +798,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-        stream = self.async_chat_stream_v2(**request)
+        stream = self.async_client.v2.chat_stream(**request)
         curr_tool_call = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
         tool_plan_deltas = []
         tool_calls = []
@@ -998,7 +998,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         request = get_cohere_chat_request_v2(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-        response = self.chat_v2(**request)
+        response = self.client.v2.chat(**request)
 
         generation_info = \
             self._get_generation_info_v2(response, request.get("documents"))
@@ -1040,7 +1040,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
 
-        response = await self.async_chat_v2(**request)
+        response = await self.async_client.v2.chat(**request)
 
         generation_info = \
         self._get_generation_info_v2(response, request.get("documents"))
