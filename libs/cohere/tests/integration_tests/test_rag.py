@@ -29,7 +29,8 @@ def get_num_documents_from_v2_response(response: Dict[str, Any]) -> int:
     return len(document_ids)
 
 @pytest.mark.vcr()
-@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, so this test is no longer valid.")
+@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, \
+                   so this test is no longer valid.")
 def test_connectors() -> None:
     """Test connectors parameter support from ChatCohere."""
     llm = ChatCohere(model=DEFAULT_MODEL).bind(connectors=[{"id": "web-search"}])
@@ -81,7 +82,8 @@ def test_documents_chain() -> None:
 
 
 @pytest.mark.vcr()
-@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, so this test is no longer valid.")
+@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, \
+                   so this test is no longer valid.")
 def test_who_are_cohere() -> None:
     user_query = "Who founded Cohere?"
     llm = ChatCohere(model=DEFAULT_MODEL)

@@ -13,10 +13,12 @@ from langchain_community.utilities import SQLDatabase
 from langchain_cohere import ChatCohere
 from langchain_cohere.sql_agent.agent import create_sql_agent
 
+
 @pytest.mark.vcr()
 @pytest.mark.xfail(reason=(
         "Bug with TYPE_CHECKING constant from typing module. "
-        "Defaults to False inside nested imports, so the required modules are not imported at test time"
+        "Defaults to False inside nested imports, so the \
+        required modules are not imported at test time"
     )
 )
 def test_sql_agent() -> None:

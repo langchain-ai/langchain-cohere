@@ -1,7 +1,8 @@
 from typing import Dict, Generator, Optional
+from unittest.mock import MagicMock, patch
 
 import pytest
-from unittest.mock import MagicMock, patch
+
 from langchain_cohere.llms import BaseCohere
 
 

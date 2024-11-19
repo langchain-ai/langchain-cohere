@@ -1,6 +1,6 @@
+import copy
 import json
 import uuid
-import copy
 from typing import (
     Any,
     AsyncIterator,
@@ -15,7 +15,14 @@ from typing import (
     Union,
 )
 
-from cohere.types import NonStreamedChatResponse, ChatResponse, ToolCall, ToolCallV2, ToolCallV2Function
+from cohere.types import (
+    ChatResponse,
+    NonStreamedChatResponse,
+    ToolCall,
+    ToolCallV2,
+    ToolCallV2Function,
+)
+from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
     CallbackManagerForLLMRun,
@@ -41,7 +48,6 @@ from langchain_core.messages import (
 from langchain_core.messages import (
     ToolCall as LC_ToolCall,
 )
-from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.messages.ai import UsageMetadata
 from langchain_core.output_parsers.base import OutputParserLike
 from langchain_core.output_parsers.openai_tools import (
@@ -55,7 +61,6 @@ from pydantic import BaseModel, ConfigDict, PrivateAttr
 
 from langchain_cohere.cohere_agent import (
     _convert_to_cohere_tool,
-    _format_to_cohere_tools,
     _format_to_cohere_tools_v2,
 )
 from langchain_cohere.llms import BaseCohere
@@ -482,7 +487,7 @@ def get_cohere_chat_request_v2(
             ),
             removal="1.0.0",
         )
-        raise ValueError("The 'connectors' parameter is deprecated as of version 1.0.0.")
+        raise ValueError("The 'connectors' parameter is deprecated as of version 1.0.0.")   # noqa: E501
 
     chat_history_with_curr_msg = []
     for message in messages:
@@ -681,12 +686,17 @@ class ChatCohere(BaseChatModel, BaseCohere):
         run_manager: Optional[CallbackManagerForLLMRun] = None,
         **kwargs: Any,
     ) -> Iterator[ChatGenerationChunk]:
-        # Workaround to allow create_react_agent to work with the current implementation.
-        # create_react_agent relies on the 'raw_prompting' parameter to be set, which is only available
+        # Workaround to allow create_react_agent to work with the 
+        # current implementation. create_react_agent relies on the 
+        # 'raw_prompting' parameter to be set, which is only available
         # in the v1 API.
-        # TODO: Remove this workaround once create_react_agent is updated to work with the v2 API.
+        # TODO: Remove this workaround once create_react_agent is 
+        # updated to work with the v2 API.
         if kwargs.get("raw_prompting"):
-            for value in self._stream_v1(messages, stop=stop, run_manager=run_manager, **kwargs):
+            for value in self._stream_v1(messages, 
+                                         stop=stop, 
+                                         run_manager=run_manager, 
+                                         **kwargs):
                 yield value
             return
         
@@ -703,25 +713,34 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 if run_manager:
                     run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            elif data.type in {"tool-call-start", "tool-call-delta", "tool-plan-delta", "tool-call-end"}:
-                # tool-call-start: Contains the name of the tool function. No arguments are included
-                # tool-call-delta: Contains the arguments of the tool function. The function name is not included
+            elif data.type in {"tool-call-start", 
+                               "tool-call-delta", 
+                               "tool-plan-delta", 
+                               "tool-call-end"}:
+                # tool-call-start: Contains the name of the tool function. 
+                #                  No arguments are included
+                # tool-call-delta: Contains the arguments of the tool function. 
+                #                  The function name is not included
                 # tool-plan-delta: Contains a chunk of the tool-plan message
-                # tool-call-end: end of tool call streaming
+                # tool-call-end:   End of tool call streaming
                 if data.type in {"tool-call-start", "tool-call-delta"}:
                     index = data.index
                     delta = data.delta.message
 
-                    # To construct the current tool call you need to buffer all the deltas
+                    # To construct the current tool call you need 
+                    # to buffer all the deltas
                     if data.type == "tool-call-start":
                         curr_tool_call["id"] = delta["tool_calls"]["id"]
-                        curr_tool_call["function"]["name"] = delta["tool_calls"]["function"]["name"]
+                        curr_tool_call["function"]["name"] = \
+                            delta["tool_calls"]["function"]["name"]
                     elif data.type == "tool-call-delta":
-                        curr_tool_call["function"]["arguments"] += delta["tool_calls"]["function"]["arguments"]
+                        curr_tool_call["function"]["arguments"] += \
+                            delta["tool_calls"]["function"]["arguments"]
 
-                    # If the current stream event is a tool-call-start, then the ToolCallV2 object will only
-                    # contain the function name. If the current stream event is a tool-call-delta, then the 
-                    # ToolCallV2 object will only contain the arguments.
+                    # If the current stream event is a tool-call-start, 
+                    # then the ToolCallV2 object will only contain the function 
+                    # name. If the current stream event is a tool-call-delta, 
+                    # then the ToolCallV2 object will only contain the arguments.
                     tool_call_v2 = ToolCallV2(
                         function=ToolCallV2Function(
                             name=delta["tool_calls"]["function"].get("name"),
@@ -729,7 +748,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         )
                     )
 
-                    cohere_tool_call_chunk = _format_cohere_tool_calls_v2([tool_call_v2])[0]
+                    cohere_tool_call_chunk = \
+                        _format_cohere_tool_calls_v2([tool_call_v2])[0]
                     message = AIMessageChunk(
                         content="",
                         tool_call_chunks=[
@@ -789,25 +809,35 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 if run_manager:
                     await run_manager.on_llm_new_token(delta, chunk=chunk)
                 yield chunk
-            elif data.type in {"tool-call-start", "tool-call-delta", "tool-plan-delta", "tool-call-end"}:
-                # tool-call-start: Contains the name of the tool function. No arguments are included
-                # tool-call-delta: Contains the arguments of the tool function. The function name is not included
+            elif data.type in {"tool-call-start", 
+                               "tool-call-delta", 
+                               "tool-plan-delta", 
+                               "tool-call-end"}:
+                # tool-call-start: Contains the name of the tool function. 
+                #                  No arguments are included
+                # tool-call-delta: Contains the arguments of the tool function. 
+                #                  The function name is not included
                 # tool-plan-delta: Contains a chunk of the tool-plan message
-                # tool-call-end: end of tool call streaming
+                # tool-call-end:   End of tool call streaming
                 if data.type in {"tool-call-start", "tool-call-delta"}:
                     index = data.index
                     delta = data.delta.message
 
-                    # To construct the current tool call you need to buffer all the deltas
+                    # To construct the current tool call you 
+                    # need to buffer all the deltas
                     if data.type == "tool-call-start":
                         curr_tool_call["id"] = delta["tool_calls"]["id"]
-                        curr_tool_call["function"]["name"] = delta["tool_calls"]["function"]["name"]
+                        curr_tool_call["function"]["name"] = \
+                            delta["tool_calls"]["function"]["name"]
                     elif data.type == "tool-call-delta":
-                        curr_tool_call["function"]["arguments"] += delta["tool_calls"]["function"]["arguments"]
+                        curr_tool_call["function"]["arguments"] += \
+                            delta["tool_calls"]["function"]["arguments"]
 
-                    # If the current stream event is a tool-call-start, then the ToolCallV2 object will only
-                    # contain the function name. If the current stream event is a tool-call-delta, then the 
-                    # ToolCallV2 object will only contain the arguments.
+                    # If the current stream event is a tool-call-start, 
+                    # then the ToolCallV2 object will only contain the 
+                    # function name. If the current stream event is a 
+                    # tool-call-delta, then the ToolCallV2 object will 
+                    # only contain the arguments.
                     tool_call_v2 = ToolCallV2(
                         function=ToolCallV2Function(
                             name=delta["tool_calls"]["function"].get("name"),
@@ -815,7 +845,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         )
                     )
 
-                    cohere_tool_call_chunk = _format_cohere_tool_calls_v2([tool_call_v2])[0]
+                    cohere_tool_call_chunk = \
+                        _format_cohere_tool_calls_v2([tool_call_v2])[0]
                     message = AIMessageChunk(
                         content="",
                         tool_call_chunks=[
@@ -898,7 +929,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info["token_count"] = response.meta.tokens.dict()
         return generation_info
 
-    def _get_generation_info_v2(self, response: ChatResponse, documents: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
+    def _get_generation_info_v2(self, 
+                                response: ChatResponse, 
+                                documents: Optional[List[Dict[str, Any]]] = None
+                                ) -> Dict[str, Any]:
         """Get the generation info from cohere API response (V2)."""
         generation_info: Dict[str, Any] = {
             "id": response.id,
@@ -928,7 +962,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
     
     def _get_stream_info_v2(self, final_delta: Any, 
                             documents: Optional[List[Dict[str, Any]]] = None, 
-                            tool_calls: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
+                            tool_calls: Optional[List[Dict[str, Any]]] = None
+                            ) -> Dict[str, Any]:
         """Get the stream info from cohere API response (V2)."""
         input_tokens = final_delta.usage.billed_units.input_tokens
         output_tokens = final_delta.usage.billed_units.output_tokens
@@ -965,7 +1000,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
         )
         response = self.chat_v2(**request)
 
-        generation_info = self._get_generation_info_v2(response, request.get("documents"))
+        generation_info = \
+            self._get_generation_info_v2(response, request.get("documents"))
         if "tool_calls" in generation_info:
             tool_calls = [
                 _convert_cohere_v2_tool_call_to_langchain(tool_call)
@@ -975,7 +1011,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
             tool_calls = []
         usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.message.content[0].text if response.message.content else "",
+            content=response.message.content[0].text \
+            if response.message.content else "",
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
@@ -1005,7 +1042,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
         response = await self.async_chat_v2(**request)
 
-        generation_info = self._get_generation_info_v2(response, request.get("documents"))
+        generation_info = \
+        self._get_generation_info_v2(response, request.get("documents"))
         if "tool_calls" in generation_info:
             tool_calls = [
                 _convert_cohere_v2_tool_call_to_langchain(tool_call)
@@ -1015,7 +1053,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
             tool_calls = []
         usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.message.content[0].text if response.message.content else "",
+            content=response.message.content[0].text 
+            if response.message.content else "",
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
@@ -1068,7 +1107,8 @@ def _format_cohere_tool_calls_v2(
     tool_calls: Optional[List[ToolCallV2]] = None,
 ) -> List[Dict]:
     """
-    Formats a V2 Cohere API response into the tool call format used elsewhere in Langchain.
+    Formats a V2 Cohere API response into the tool 
+    call format used elsewhere in Langchain.
     """
     if not tool_calls:
         return []
@@ -1097,7 +1137,9 @@ def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
 def _convert_cohere_v2_tool_call_to_langchain(tool_call: ToolCallV2) -> LC_ToolCall:
     """Convert a Cohere V2 tool call into langchain_core.messages.ToolCall"""
     _id = uuid.uuid4().hex[:]
-    return LC_ToolCall(name=tool_call.function.name, args=json.loads(tool_call.function.arguments), id=_id)
+    return LC_ToolCall(name=tool_call.function.name, 
+                       args=json.loads(tool_call.function.arguments), 
+                       id=_id)
 
 
 def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMetadata]:

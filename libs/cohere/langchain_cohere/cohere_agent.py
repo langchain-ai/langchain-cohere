@@ -3,11 +3,11 @@ from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
     Tool,
-    ToolV2,
-    ToolV2Function,
     ToolCall,
     ToolParameterDefinitionsValue,
     ToolResult,
+    ToolV2,
+    ToolV2Function,
 )
 from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
@@ -188,7 +188,8 @@ def _convert_to_cohere_tool_v2(
     tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> Dict[str, Any]:
     """
-    Convert a BaseTool instance, JSON schema dict, or BaseModel type to a V2 Cohere tool.
+    Convert a BaseTool instance, JSON schema dict, 
+    or BaseModel type to a V2 Cohere tool.
     """
     if isinstance(tool, dict):
         if not all(k in tool for k in ("title", "description", "properties")):
@@ -206,10 +207,12 @@ def _convert_to_cohere_tool_v2(
                         param_name: {
                             "description": param_definition.get("description"),
                             "type": JSON_TO_PYTHON_TYPES.get(
-                                param_definition.get("type"), param_definition.get("type")
+                                param_definition.get("type"), 
+                                param_definition.get("type")
                             ),
                         }
-                        for param_name, param_definition in tool.get("properties", {}).items()
+                        for param_name, param_definition in 
+                        tool.get("properties", {}).items()
                     },
                     "required": [param_name 
                                  for param_name, param_definition 

@@ -4,7 +4,18 @@ from typing import Any, Dict, List
 from unittest.mock import patch
 
 import pytest
-from cohere.types import ChatResponse, NonStreamedChatResponse, ChatMessageEndEventDelta, AssistantMessageResponse, ToolCall, ToolCallV2, ToolCallV2Function, Usage, UsageTokens, UsageBilledUnits
+from cohere.types import (
+    AssistantMessageResponse,
+    ChatMessageEndEventDelta,
+    ChatResponse,
+    NonStreamedChatResponse,
+    ToolCall,
+    ToolCallV2,
+    ToolCallV2Function,
+    Usage,
+    UsageBilledUnits,
+    UsageTokens,
+)
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 
 from langchain_cohere.chat_models import (
@@ -23,7 +34,9 @@ def test_initialization(patch_base_cohere_get_default_model) -> None:
 @pytest.mark.parametrize(
     "chat_cohere_kwargs,expected",
     [
-        pytest.param({ "cohere_api_key": "test" }, { "model": "command-r-plus" }, id="defaults"),
+        pytest.param({ "cohere_api_key": "test" }, 
+                     { "model": "command-r-plus" }, 
+                     id="defaults"),
         pytest.param(
             {
                 "cohere_api_key": "test",
@@ -40,7 +53,9 @@ def test_initialization(patch_base_cohere_get_default_model) -> None:
         ),
     ],
 )
-def test_default_params(patch_base_cohere_get_default_model, chat_cohere_kwargs: Dict[str, Any], expected: Dict) -> None:
+def test_default_params(patch_base_cohere_get_default_model, 
+                        chat_cohere_kwargs: Dict[str, Any], 
+                        expected: Dict) -> None:
     chat_cohere = ChatCohere(**chat_cohere_kwargs)
     actual = chat_cohere._default_params
     assert expected == actual
@@ -141,10 +156,21 @@ def test_get_generation_info(
                 id="foo",
                 finish_reason="complete",
                 message=AssistantMessageResponse(
-                    tool_plan="I will use the magic_function tool to answer the question.",
+                    tool_plan="I will use the magic_function tool \
+                    to answer the question.",
                     tool_calls=[
-                        ToolCallV2(function=ToolCallV2Function(name="tool1", arguments='{"arg1": 1, "arg2": "2"}')),
-                        ToolCallV2(function=ToolCallV2Function(name="tool2", arguments='{"arg3": 3, "arg4": "4"}')),
+                        ToolCallV2(
+                            function=ToolCallV2Function(
+                                name="tool1", 
+                                arguments='{"arg1": 1, "arg2": "2"}'
+                            )
+                        ),
+                        ToolCallV2(
+                            function=ToolCallV2Function(
+                                name="tool2", 
+                                arguments='{"arg3": 3, "arg4": "4"}'
+                            )
+                        ),
                     ],
                     content=None,
                     citations=None,
@@ -157,7 +183,7 @@ def test_get_generation_info(
             {
                 "id": "foo",
                 "finish_reason": "complete",
-                "tool_plan": "I will use the magic_function tool to answer the question.",
+                "tool_plan": "I will use the magic_function tool to answer the question.",  # noqa: E501
                 "tool_calls": [
                     {
                         "id": "foo",
@@ -788,7 +814,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            "You are a wizard, with the ability to perform magic using the magic_function tool.",
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",   # noqa: E501
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
@@ -893,7 +919,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            "You are a wizard, with the ability to perform magic using the magic_function tool.",
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",   # noqa: E501
             [
                 HumanMessage(content="Hello!"),
                 AIMessage(
@@ -1073,7 +1099,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            "You are a wizard, with the ability to perform magic using the magic_function tool.",
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",   # noqa: E501
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -1337,11 +1363,12 @@ def test_get_cohere_chat_request_v2_warn_connectors_deprecated(recwarn):
     messages = [HumanMessage(content="Hello")]
     kwargs = {"connectors": ["some_connector"]}
 
-    with pytest.raises(ValueError, match="The 'connectors' parameter is deprecated as of version 1.0.0."):
+    with pytest.raises(ValueError, match="The 'connectors' parameter is deprecated \
+                       as of version 1.0.0."):
         get_cohere_chat_request_v2(messages, **kwargs)
 
     assert len(recwarn) == 1
     warning = recwarn.pop(DeprecationWarning)
     assert issubclass(warning.category, DeprecationWarning)
-    assert "The 'connectors' parameter is deprecated as of version 1.0.0." in str(warning.message)
+    assert "The 'connectors' parameter is deprecated as of version 1.0.0." in str(warning.message)  # noqa: E501
     assert "Please use the 'tools' parameter instead." in str(warning.message)
