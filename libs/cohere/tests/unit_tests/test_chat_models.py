@@ -237,6 +237,7 @@ def test_messages_to_cohere_tool_results() -> None:
                             "name": "magic_function",
                             "args": {"a": 12},
                             "id": "e81dbae6937e47e694505f81e310e205",
+                            "type": "tool_call",
                         }
                     ],
                 ),
@@ -339,6 +340,7 @@ def test_messages_to_cohere_tool_results() -> None:
                             "name": "magic_function",
                             "args": {"a": 12},
                             "id": "bbec5f815a0f4c609ccb36e98c4f0455",
+                            "type": "tool_call",
                         }
                     ],
                 ),
@@ -355,12 +357,11 @@ def test_messages_to_cohere_tool_results() -> None:
                         "role": "Chatbot",
                         "message": "I will use the magic_function tool to answer the question.",  # noqa: E501
                         "tool_calls": [
-                            {
-                                "name": "magic_function",
-                                "args": {"a": 12},
-                                "id": "bbec5f815a0f4c609ccb36e98c4f0455",
-                                "type": "tool_call",
-                            }
+                            ToolCall(
+                                name="magic_function",
+                                parameters={"a": 12},
+                                id="bbec5f815a0f4c609ccb36e98c4f0455",
+                            )
                         ],
                     },
                 ],

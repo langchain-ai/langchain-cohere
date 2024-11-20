@@ -170,6 +170,7 @@ def _get_message_cohere_format(
     Union[
         str,
         List[LC_ToolCall],
+        List[ToolCall],
         List[Union[str, Dict[Any, Any]]],
         List[Dict[Any, Any]],
         None,
@@ -184,11 +185,12 @@ def _get_message_cohere_format(
     Returns:
         The formatted message as required in cohere's api.
     """
+
     if isinstance(message, AIMessage):
         return {
             "role": get_role(message),
             "message": message.content,
-            "tool_calls": message.tool_calls,
+            "tool_calls": _get_tool_call_cohere_format(message.tool_calls),
         }
     elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
         return {"role": get_role(message), "message": message.content}
@@ -196,6 +198,17 @@ def _get_message_cohere_format(
         return {"role": get_role(message), "tool_results": tool_results}
     else:
         raise ValueError(f"Got unknown type {message}")
+
+
+def _get_tool_call_cohere_format(tool_calls: List[LC_ToolCall]) -> List[ToolCall]:
+    """Convert LangChain tool calls into Cohere's format"""
+    cohere_tool_calls = []
+    for lc_tool_call in tool_calls:
+        name = lc_tool_call.get("name")
+        parameters = lc_tool_call.get("args")
+        id = lc_tool_call.get("id")
+        cohere_tool_calls.append(ToolCall(name=name, parameters=parameters, id=id))
+    return cohere_tool_calls
 
 
 def get_cohere_chat_request(
