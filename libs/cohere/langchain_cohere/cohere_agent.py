@@ -26,45 +26,6 @@ from pydantic import BaseModel
 
 from langchain_cohere.utils import JSON_TO_PYTHON_TYPES
 
-
-@deprecated(
-    since="0.1.7",
-    removal="",
-    alternative="""Use the 'tool calling agent' 
-    or 'Langgraph agent' with the ChatCohere class instead.
-    See https://docs.cohere.com/docs/cohere-and-langchain for more information.""",
-)
-def create_cohere_tools_agent(
-    llm: BaseLanguageModel,
-    tools: Sequence[BaseTool],
-    prompt: ChatPromptTemplate,
-    **kwargs: Any,
-) -> Runnable:
-    def llm_with_tools(input_: Dict) -> Runnable:
-        tool_results = (
-            input_["tool_results"] if len(input_["tool_results"]) > 0 else None
-        )
-        tools_ = input_["tools"] if len(input_["tools"]) > 0 else None
-        return RunnableLambda(lambda x: x["input"]) | llm.bind(
-            tools=tools_, tool_results=tool_results, **kwargs
-        )
-
-    agent = (
-        RunnablePassthrough.assign(
-            # Intermediate steps are in tool results.
-            # Edit below to change the prompt parameters.
-            input=lambda x: prompt.format_messages(**x, agent_scratchpad=[]),
-            tools=lambda x: _format_to_cohere_tools(tools),
-            tool_results=lambda x: _format_to_cohere_tools_messages(
-                x["intermediate_steps"]
-            ),
-        )
-        | llm_with_tools
-        | _CohereToolsAgentOutputParser()
-    )
-    return agent
-
-
 def _format_to_cohere_tools(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> List[Dict[str, Any]]:
@@ -74,7 +35,10 @@ def _format_to_cohere_tools(
 def _format_to_cohere_tools_v2(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> List[Dict[str, Any]]:
-    return [_convert_to_cohere_tool_v2(tool) for tool in tools]
+    print("tools", tools)
+    res = [_convert_to_cohere_tool_v2(tool) for tool in tools]
+    print("res", res)
+    return res
 
 
 def _format_to_cohere_tools_messages(

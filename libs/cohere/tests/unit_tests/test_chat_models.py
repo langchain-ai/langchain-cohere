@@ -17,12 +17,16 @@ from cohere.types import (
     UsageTokens,
 )
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
+from langchain_core.tools import tool
 
 from langchain_cohere.chat_models import (
     ChatCohere,
     _messages_to_cohere_tool_results_curr_chat_turn,
     get_cohere_chat_request,
     get_cohere_chat_request_v2,
+)
+from langchain_cohere.cohere_agent import (
+    _format_to_cohere_tools_v2,
 )
 
 
@@ -1357,6 +1361,68 @@ def test_get_cohere_chat_request_v2(
 
     # Check that the result is a dictionary
     assert isinstance(result, dict)
+    assert result == expected
+
+def test_format_to_cohere_tools_v2() -> None:
+    @tool
+    def add_two_numbers(a: int, b: int) -> int:
+        """Add two numbers together"""
+        return a + b
+
+    @tool
+    def capital_cities(country: str) -> str:
+        """Returns the capital city of a country"""
+        return "France"
+    
+    tools = [add_two_numbers, capital_cities]
+    result = _format_to_cohere_tools_v2(tools)
+    
+    expected = [
+        {
+            'function': {
+                'description': 'Add two numbers together',
+                'name': 'add_two_numbers',
+                'parameters': {
+                    'properties': {
+                        'a': {
+                            'description': None,
+                            'type': 'int',
+                        },
+                        'b': {
+                            'description': None,
+                            'type': 'int',
+                        },
+                    },
+                    'required': [
+                        'a',
+                        'b',
+                    ],
+                    'type': 'object',
+                },
+            },
+            'type': 'function',
+        },
+        {
+            'function': {
+                'description': 'Returns the capital city of a country',
+                'name': 'capital_cities',
+                'parameters': {
+                    'properties': {
+                        'country': {
+                            'description': None,
+                            'type': 'str',
+                        },
+                    },
+                    'required': [
+                        'country',
+                    ],
+                    'type': 'object',
+                },
+            },
+            'type': 'function',
+        },
+    ]
+
     assert result == expected
 
 def test_get_cohere_chat_request_v2_warn_connectors_deprecated(recwarn):
