@@ -188,7 +188,7 @@ def _convert_to_cohere_tool_v2(
     tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> Dict[str, Any]:
     """
-    Convert a BaseTool instance, JSON schema dict, 
+    Convert a BaseTool instance, JSON schema dict,
     or BaseModel type to a V2 Cohere tool.
     """
     if isinstance(tool, dict):
@@ -207,19 +207,23 @@ def _convert_to_cohere_tool_v2(
                         param_name: {
                             "description": param_definition.get("description"),
                             "type": JSON_TO_PYTHON_TYPES.get(
-                                param_definition.get("type"), 
-                                param_definition.get("type")
+                                param_definition.get("type"),
+                                param_definition.get("type"),
                             ),
                         }
-                        for param_name, param_definition in 
-                        tool.get("properties", {}).items()
+                        for param_name, param_definition in tool.get(
+                            "properties", {}
+                        ).items()
                     },
-                    "required": [param_name 
-                                 for param_name, param_definition 
-                                 in tool.get("properties", {}).items() 
-                                 if "default" not in param_definition],
+                    "required": [
+                        param_name
+                        for param_name, param_definition in tool.get(
+                            "properties", {}
+                        ).items()
+                        if "default" not in param_definition
+                    ],
                 },
-            )
+            ),
         ).dict()
     elif (
         (isinstance(tool, type) and issubclass(tool, BaseModel))
@@ -270,7 +274,7 @@ def _convert_to_cohere_tool_v2(
                     },
                     "required": required_params,
                 },
-            )
+            ),
         ).dict()
     else:
         raise ValueError(
