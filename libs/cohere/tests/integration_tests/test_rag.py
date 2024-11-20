@@ -22,15 +22,19 @@ from langchain_cohere import ChatCohere, CohereRagRetriever
 
 DEFAULT_MODEL = "command-r"
 
+
 def get_num_documents_from_v2_response(response: Dict[str, Any]) -> int:
     document_ids = set()
     for c in response["citations"]:
-        document_ids.update({ doc.id for doc in c.sources if doc.type == "document" })
+        document_ids.update({doc.id for doc in c.sources if doc.type == "document"})
     return len(document_ids)
 
+
 @pytest.mark.vcr()
-@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, \
-                   so this test is no longer valid.")
+@pytest.mark.xfail(
+    reason="Chat V2 no longer relies on connectors, \
+                   so this test is no longer valid."
+)
 def test_connectors() -> None:
     """Test connectors parameter support from ChatCohere."""
     llm = ChatCohere(model=DEFAULT_MODEL).bind(connectors=[{"id": "web-search"}])
@@ -82,8 +86,10 @@ def test_documents_chain() -> None:
 
 
 @pytest.mark.vcr()
-@pytest.mark.xfail(reason="Chat V2 no longer relies on connectors, \
-                   so this test is no longer valid.")
+@pytest.mark.xfail(
+    reason="Chat V2 no longer relies on connectors, \
+                   so this test is no longer valid."
+)
 def test_who_are_cohere() -> None:
     user_query = "Who founded Cohere?"
     llm = ChatCohere(model=DEFAULT_MODEL)

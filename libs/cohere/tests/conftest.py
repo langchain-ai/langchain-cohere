@@ -14,6 +14,7 @@ def vcr_config() -> Dict:
         "ignore_hosts": ["storage.googleapis.com"],
     }
 
+
 @pytest.fixture
 def patch_base_cohere_get_default_model() -> Generator[Optional[MagicMock], None, None]:
     with patch.object(

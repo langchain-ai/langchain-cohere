@@ -487,7 +487,7 @@ def get_cohere_chat_request_v2(
         raise ValueError("The last message is not an ToolMessage or HumanMessage")
 
     if kwargs.get("preamble"):
-        messages = [SystemMessage(content=kwargs.get("preamble"))] + messages
+        messages = [SystemMessage(content=str(kwargs.get("preamble")))] + messages
         del kwargs["preamble"]
 
     if kwargs.get("connectors"):
@@ -718,7 +718,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
         stream = self.client.v2.chat_stream(**request)
-        curr_tool_call = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
+        curr_tool_call: Dict[str, Any] = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
         tool_calls = []
         for data in stream:
             if data.type == "content-delta":
@@ -818,7 +818,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
         stream = self.async_client.v2.chat_stream(**request)
-        curr_tool_call = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
+        curr_tool_call: Dict[str, Any] = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
         tool_plan_deltas = []
         tool_calls = []
         async for data in stream:
@@ -894,7 +894,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     tool_calls.append(curr_tool_call)
                     curr_tool_call = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
                 if run_manager:
-                    run_manager.on_llm_new_token(delta, chunk=chunk)
+                    await run_manager.on_llm_new_token(delta, chunk=chunk)
             elif data.type == "message-end":
                 delta = data.delta
                 generation_info = self._get_stream_info_v2(
@@ -1134,7 +1134,7 @@ def _format_cohere_tool_calls(
 
 def _format_cohere_tool_calls_v2(
     tool_calls: Optional[List[ToolCallV2]] = None,
-) -> List[Dict]:
+) -> List[Dict[str, Any]]:
     """
     Formats a V2 Cohere API response into the tool
     call format used elsewhere in Langchain.
@@ -1144,6 +1144,9 @@ def _format_cohere_tool_calls_v2(
 
     formatted_tool_calls = []
     for tool_call in tool_calls:
+        if not tool_call.function:
+            continue
+
         formatted_tool_calls.append(
             {
                 "id": uuid.uuid4().hex[:],
@@ -1166,9 +1169,11 @@ def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
 def _convert_cohere_v2_tool_call_to_langchain(tool_call: ToolCallV2) -> LC_ToolCall:
     """Convert a Cohere V2 tool call into langchain_core.messages.ToolCall"""
     _id = uuid.uuid4().hex[:]
+    if not tool_call.function:
+        return LC_ToolCall(name="", args={}, id=_id)
     return LC_ToolCall(
-        name=tool_call.function.name,
-        args=json.loads(tool_call.function.arguments),
+        name=str(tool_call.function.name),
+        args=json.loads(str(tool_call.function.arguments)),
         id=_id,
     )
 

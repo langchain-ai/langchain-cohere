@@ -1,7 +1,7 @@
 """Test chat model integration."""
 
-from typing import Any, Dict, List
-from unittest.mock import patch
+from typing import Any, Dict, Generator, List, Optional
+from unittest.mock import MagicMock, patch
 
 import pytest
 from cohere.types import (
@@ -18,6 +18,7 @@ from cohere.types import (
 )
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
+from pytest import WarningsRecorder
 
 from langchain_cohere.chat_models import (
     ChatCohere,
@@ -30,7 +31,9 @@ from langchain_cohere.cohere_agent import (
 )
 
 
-def test_initialization(patch_base_cohere_get_default_model) -> None:
+def test_initialization(
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+) -> None:
     """Test chat model initialization."""
     ChatCohere(cohere_api_key="test")
 
@@ -38,9 +41,9 @@ def test_initialization(patch_base_cohere_get_default_model) -> None:
 @pytest.mark.parametrize(
     "chat_cohere_kwargs,expected",
     [
-        pytest.param({ "cohere_api_key": "test" }, 
-                     { "model": "command-r-plus" }, 
-                     id="defaults"),
+        pytest.param(
+            {"cohere_api_key": "test"}, {"model": "command-r-plus"}, id="defaults"
+        ),
         pytest.param(
             {
                 "cohere_api_key": "test",
@@ -57,9 +60,11 @@ def test_initialization(patch_base_cohere_get_default_model) -> None:
         ),
     ],
 )
-def test_default_params(patch_base_cohere_get_default_model, 
-                        chat_cohere_kwargs: Dict[str, Any], 
-                        expected: Dict) -> None:
+def test_default_params(
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    chat_cohere_kwargs: Dict[str, Any],
+    expected: Dict,
+) -> None:
     chat_cohere = ChatCohere(**chat_cohere_kwargs)
     actual = chat_cohere._default_params
     assert expected == actual
@@ -140,8 +145,9 @@ def test_default_params(patch_base_cohere_get_default_model,
     ],
 )
 def test_get_generation_info(
-    patch_base_cohere_get_default_model,
-    response: Any, expected: Dict[str, Any]
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    response: Any,
+    expected: Dict[str, Any],
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
 
@@ -160,27 +166,23 @@ def test_get_generation_info(
                 id="foo",
                 finish_reason="complete",
                 message=AssistantMessageResponse(
-                    tool_plan="I will use the magic_function tool to answer the question.", # noqa: E501
+                    tool_plan="I will use the magic_function tool to answer the question.",  # noqa: E501
                     tool_calls=[
                         ToolCallV2(
                             function=ToolCallV2Function(
-                                name="tool1", 
-                                arguments='{"arg1": 1, "arg2": "2"}'
+                                name="tool1", arguments='{"arg1": 1, "arg2": "2"}'
                             )
                         ),
                         ToolCallV2(
                             function=ToolCallV2Function(
-                                name="tool2", 
-                                arguments='{"arg3": 3, "arg4": "4"}'
+                                name="tool2", arguments='{"arg3": 3, "arg4": "4"}'
                             )
                         ),
                     ],
                     content=None,
                     citations=None,
                 ),
-                usage=Usage(
-                    tokens={"input_tokens": 215, "output_tokens": 38}
-                )
+                usage=Usage(tokens={"input_tokens": 215, "output_tokens": 38}),
             ),
             None,
             {
@@ -208,7 +210,7 @@ def test_get_generation_info(
                 "token_count": {
                     "input_tokens": 215,
                     "output_tokens": 38,
-                }
+                },
             },
             id="tools should be called",
         ),
@@ -237,17 +239,10 @@ def test_get_generation_info(
                 message=AssistantMessageResponse(
                     tool_plan=None,
                     tool_calls=[],
-                    content=[
-                        {
-                            "type": "text",
-                            "text": "How may I help you today?"
-                        }
-                    ],
+                    content=[{"type": "text", "text": "How may I help you today?"}],
                     citations=None,
                 ),
-                usage=Usage(
-                    tokens={"input_tokens": 215, "output_tokens": 38}
-                )
+                usage=Usage(tokens={"input_tokens": 215, "output_tokens": 38}),
             ),
             None,
             {
@@ -257,7 +252,7 @@ def test_get_generation_info(
                 "token_count": {
                     "input_tokens": 215,
                     "output_tokens": 38,
-                }
+                },
             },
             id="chat response without tools/documents/citations/tools etc",
         ),
@@ -268,30 +263,23 @@ def test_get_generation_info(
                 message=AssistantMessageResponse(
                     tool_plan=None,
                     tool_calls=[],
-                    content=[
-                        {
-                            "type": "text",
-                            "text": "How may I help you today?"
-                        }
-                    ],
+                    content=[{"type": "text", "text": "How may I help you today?"}],
                     citations=None,
                 ),
-                usage=Usage(
-                    tokens={"input_tokens": 215, "output_tokens": 38}
-                )
+                usage=Usage(tokens={"input_tokens": 215, "output_tokens": 38}),
             ),
             [
                 {
                     "id": "doc-1",
-                    "data":{
+                    "data": {
                         "text": "doc-1 content",
-                    }
+                    },
                 },
                 {
                     "id": "doc-2",
-                    "data":{
+                    "data": {
                         "text": "doc-2 content",
-                    }
+                    },
                 },
             ],
             {
@@ -302,35 +290,37 @@ def test_get_generation_info(
                         "id": "doc-1",
                         "data": {
                             "text": "doc-1 content",
-                        }
+                        },
                     },
                     {
                         "id": "doc-2",
                         "data": {
                             "text": "doc-2 content",
-                        }
+                        },
                     },
                 ],
                 "content": "How may I help you today?",
                 "token_count": {
                     "input_tokens": 215,
                     "output_tokens": 38,
-                }
+                },
             },
             id="chat response with documents",
         ),
     ],
 )
 def test_get_generation_info_v2(
-    patch_base_cohere_get_default_model,
-    response: Any, documents: Dict[str, Any], 
-    expected: Dict[str, Any]
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    response: ChatResponse,
+    documents: Optional[List[Dict[str, Any]]],
+    expected: Dict[str, Any],
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
     with patch("uuid.uuid4") as mock_uuid:
         mock_uuid.return_value.hex = "foo"
         actual = chat_cohere._get_generation_info_v2(response, documents)
     assert expected == actual
+
 
 @pytest.mark.parametrize(
     "final_delta, documents, tool_calls, expected",
@@ -339,9 +329,9 @@ def test_get_generation_info_v2(
             ChatMessageEndEventDelta(
                 finish_reason="complete",
                 usage=Usage(
-                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
-                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
-                )
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
             ),
             None,
             None,
@@ -359,16 +349,11 @@ def test_get_generation_info_v2(
             ChatMessageEndEventDelta(
                 finish_reason="complete",
                 usage=Usage(
-                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
-                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
-                )
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
             ),
-            [
-                {
-                    "id": "foo",
-                    "snippet": "some text"
-                }
-            ],
+            [{"id": "foo", "snippet": "some text"}],
             None,
             {
                 "finish_reason": "complete",
@@ -382,7 +367,7 @@ def test_get_generation_info_v2(
                         "id": "foo",
                         "snippet": "some text",
                     }
-                ]
+                ],
             },
             id="message-end with documents",
         ),
@@ -390,12 +375,12 @@ def test_get_generation_info_v2(
             ChatMessageEndEventDelta(
                 finish_reason="complete",
                 usage=Usage(
-                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
-                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
-                )
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
             ),
             None,
-            [ 
+            [
                 {
                     "id": "foo",
                     "type": "function",
@@ -421,7 +406,7 @@ def test_get_generation_info_v2(
                             "arguments": "{'a': 1}",
                         },
                     }
-                ]
+                ],
             },
             id="message-end with tool_calls",
         ),
@@ -429,17 +414,12 @@ def test_get_generation_info_v2(
             ChatMessageEndEventDelta(
                 finish_reason="complete",
                 usage=Usage(
-                    tokens = UsageTokens(input_tokens=215, output_tokens=38),
-                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38)
-                )
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
             ),
+            [{"id": "foo", "snippet": "some text"}],
             [
-                {
-                    "id": "foo",
-                    "snippet": "some text"
-                }
-            ],
-            [ 
                 {
                     "id": "foo",
                     "type": "function",
@@ -456,12 +436,7 @@ def test_get_generation_info_v2(
                     "output_tokens": 38.0,
                     "total_tokens": 253.0,
                 },
-                "documents": [
-                    {
-                        "id": "foo",
-                        "snippet": "some text"
-                    }
-                ],
+                "documents": [{"id": "foo", "snippet": "some text"}],
                 "tool_calls": [
                     {
                         "id": "foo",
@@ -471,26 +446,27 @@ def test_get_generation_info_v2(
                             "arguments": "{'a': 1}",
                         },
                     }
-                ]
+                ],
             },
             id="message-end with documents and tool_calls",
         ),
     ],
 )
 def test_get_stream_info_v2(
-    patch_base_cohere_get_default_model,
-    final_delta: Any, 
-    documents: Dict[str, Any], 
-    tool_calls: Dict[str, Any], 
-    expected: Dict[str, Any]
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    final_delta: ChatMessageEndEventDelta,
+    documents: Optional[List[Dict[str, Any]]],
+    tool_calls: Optional[List[Dict[str, Any]]],
+    expected: Dict[str, Any],
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
     with patch("uuid.uuid4") as mock_uuid:
         mock_uuid.return_value.hex = "foo"
-        actual = chat_cohere._get_stream_info_v2(final_delta=final_delta, 
-                                                 documents=documents, 
-                                                 tool_calls=tool_calls)
+        actual = chat_cohere._get_stream_info_v2(
+            final_delta=final_delta, documents=documents, tool_calls=tool_calls
+        )
     assert expected == actual
+
 
 def test_messages_to_cohere_tool_results() -> None:
     human_message = HumanMessage(content="what is the value of magic_function(3)?")
@@ -533,7 +509,7 @@ def test_messages_to_cohere_tool_results() -> None:
     "cohere_client_kwargs,messages,force_single_step,expected",
     [
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [HumanMessage(content="what is magic_function(12) ?")],
             True,
             {
@@ -553,7 +529,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is True",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -635,7 +611,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Multiple Messages with tool results and force_single_step is True",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [HumanMessage(content="what is magic_function(12) ?")],
             False,
             {
@@ -655,7 +631,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is False",
         ),
         pytest.param(
-            { "cohere_api_key": "test" },
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -751,7 +727,7 @@ def test_messages_to_cohere_tool_results() -> None:
     ],
 )
 def test_get_cohere_chat_request(
-    patch_base_cohere_get_default_model,
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
     cohere_client_kwargs: Dict[str, Any],
     messages: List[BaseMessage],
     force_single_step: bool,
@@ -779,6 +755,7 @@ def test_get_cohere_chat_request(
     # Check that the result is a dictionary
     assert isinstance(result, dict)
     assert result == expected
+
 
 @pytest.mark.parametrize(
     "cohere_client_v2_kwargs,preamble,messages,expected",
@@ -818,7 +795,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            "You are a wizard, with the ability to perform magic using the magic_function tool.",   # noqa: E501
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
@@ -829,7 +806,7 @@ def test_get_cohere_chat_request(
                     {
                         "role": "user",
                         "content": "what is magic_function(12) ?",
-                    }
+                    },
                 ],
                 "tools": [
                     {
@@ -923,7 +900,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            "You are a wizard, with the ability to perform magic using the magic_function tool.",   # noqa: E501
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
             [
                 HumanMessage(content="Hello!"),
                 AIMessage(
@@ -1071,12 +1048,14 @@ def test_get_cohere_chat_request(
                     {
                         "role": "tool",
                         "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [{
-                            "type": "document",
-                            "document": {
-                                "data": '[{"output": "112"}]',
+                        "content": [
+                            {
+                                "type": "document",
+                                "document": {
+                                    "data": '[{"output": "112"}]',
+                                },
                             }
-                        }],
+                        ],
                     },
                 ],
                 "tools": [
@@ -1103,7 +1082,7 @@ def test_get_cohere_chat_request(
         ),
         pytest.param(
             {"cohere_api_key": "test"},
-            "You are a wizard, with the ability to perform magic using the magic_function tool.",   # noqa: E501
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -1183,12 +1162,14 @@ def test_get_cohere_chat_request(
                     {
                         "role": "tool",
                         "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [{
-                            "type": "document",
-                            "document": {
-                                "data": '[{"output": "112"}]',
+                        "content": [
+                            {
+                                "type": "document",
+                                "document": {
+                                    "data": '[{"output": "112"}]',
+                                },
                             }
-                        }],
+                        ],
                     },
                 ],
                 "tools": [
@@ -1291,12 +1272,14 @@ def test_get_cohere_chat_request(
                     {
                         "role": "tool",
                         "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [{
-                            "type": "document",
-                            "document": {
-                                "data": '[{"output": "112"}]',
+                        "content": [
+                            {
+                                "type": "document",
+                                "document": {
+                                    "data": '[{"output": "112"}]',
+                                },
                             }
-                        }],
+                        ],
                     },
                 ],
                 "tools": [
@@ -1324,7 +1307,7 @@ def test_get_cohere_chat_request(
     ],
 )
 def test_get_cohere_chat_request_v2(
-    patch_base_cohere_get_default_model,
+    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
     cohere_client_v2_kwargs: Dict[str, Any],
     preamble: str,
     messages: List[BaseMessage],
@@ -1363,6 +1346,7 @@ def test_get_cohere_chat_request_v2(
     assert isinstance(result, dict)
     assert result == expected
 
+
 def test_format_to_cohere_tools_v2() -> None:
     @tool
     def add_two_numbers(a: int, b: int) -> int:
@@ -1373,67 +1357,75 @@ def test_format_to_cohere_tools_v2() -> None:
     def capital_cities(country: str) -> str:
         """Returns the capital city of a country"""
         return "France"
-    
+
     tools = [add_two_numbers, capital_cities]
     result = _format_to_cohere_tools_v2(tools)
-    
+
     expected = [
         {
-            'function': {
-                'description': 'Add two numbers together',
-                'name': 'add_two_numbers',
-                'parameters': {
-                    'properties': {
-                        'a': {
-                            'description': None,
-                            'type': 'int',
+            "function": {
+                "description": "Add two numbers together",
+                "name": "add_two_numbers",
+                "parameters": {
+                    "properties": {
+                        "a": {
+                            "description": None,
+                            "type": "int",
                         },
-                        'b': {
-                            'description': None,
-                            'type': 'int',
+                        "b": {
+                            "description": None,
+                            "type": "int",
                         },
                     },
-                    'required': [
-                        'a',
-                        'b',
+                    "required": [
+                        "a",
+                        "b",
                     ],
-                    'type': 'object',
+                    "type": "object",
                 },
             },
-            'type': 'function',
+            "type": "function",
         },
         {
-            'function': {
-                'description': 'Returns the capital city of a country',
-                'name': 'capital_cities',
-                'parameters': {
-                    'properties': {
-                        'country': {
-                            'description': None,
-                            'type': 'str',
+            "function": {
+                "description": "Returns the capital city of a country",
+                "name": "capital_cities",
+                "parameters": {
+                    "properties": {
+                        "country": {
+                            "description": None,
+                            "type": "str",
                         },
                     },
-                    'required': [
-                        'country',
+                    "required": [
+                        "country",
                     ],
-                    'type': 'object',
+                    "type": "object",
                 },
             },
-            'type': 'function',
+            "type": "function",
         },
     ]
 
     assert result == expected
 
-def test_get_cohere_chat_request_v2_warn_connectors_deprecated(recwarn):
-    messages = [HumanMessage(content="Hello")]
-    kwargs = {"connectors": ["some_connector"]}
 
-    with pytest.raises(ValueError, match="The 'connectors' parameter is deprecated as of version 1.0.0."):  # noqa: E501
+def test_get_cohere_chat_request_v2_warn_connectors_deprecated(
+    recwarn: WarningsRecorder,
+) -> None:
+    messages: List[BaseMessage] = [HumanMessage(content="Hello")]
+    kwargs: Dict[str, Any] = {"connectors": ["some_connector"]}
+
+    with pytest.raises(
+        ValueError,
+        match="The 'connectors' parameter is deprecated as of version 1.0.0.",
+    ):  # noqa: E501
         get_cohere_chat_request_v2(messages, **kwargs)
 
     assert len(recwarn) == 1
     warning = recwarn.pop(DeprecationWarning)
     assert issubclass(warning.category, DeprecationWarning)
-    assert "The 'connectors' parameter is deprecated as of version 1.0.0." in str(warning.message)  # noqa: E501
+    assert "The 'connectors' parameter is deprecated as of version 1.0.0." in str(
+        warning.message
+    )  # noqa: E501
     assert "Please use the 'tools' parameter instead." in str(warning.message)
