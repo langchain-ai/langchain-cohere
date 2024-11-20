@@ -9,15 +9,10 @@ from cohere.types import (
     ToolV2,
     ToolV2Function,
 )
-from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
-from langchain_core.language_models import BaseLanguageModel
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.outputs import Generation
 from langchain_core.outputs.chat_generation import ChatGeneration
-from langchain_core.prompts.chat import ChatPromptTemplate
-from langchain_core.runnables import Runnable, RunnablePassthrough
-from langchain_core.runnables.base import RunnableLambda
 from langchain_core.tools import BaseTool
 from langchain_core.utils.function_calling import (
     convert_to_openai_function,
@@ -25,6 +20,7 @@ from langchain_core.utils.function_calling import (
 from pydantic import BaseModel
 
 from langchain_cohere.utils import JSON_TO_PYTHON_TYPES
+
 
 def _format_to_cohere_tools(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
