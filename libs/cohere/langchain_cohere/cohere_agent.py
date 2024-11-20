@@ -35,10 +35,7 @@ def _format_to_cohere_tools(
 def _format_to_cohere_tools_v2(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> List[Dict[str, Any]]:
-    print("tools", tools)
-    res = [_convert_to_cohere_tool_v2(tool) for tool in tools]
-    print("res", res)
-    return res
+    return [_convert_to_cohere_tool_v2(tool) for tool in tools]
 
 
 def _format_to_cohere_tools_messages(
