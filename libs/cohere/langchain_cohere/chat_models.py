@@ -505,16 +505,16 @@ def get_cohere_chat_request_v2(
 
     if kwargs.get("connectors"):
         warn_deprecated(
-            "1.0.0",
+            "0.4.0",
             message=(
-                "The 'connectors' parameter is deprecated as of version 1.0.0.\n"
+                "The 'connectors' parameter is deprecated as of version 0.4.0.\n"
                 "Please use the 'tools' parameter instead."
             ),
-            removal="1.0.0",
+            removal="0.4.0",
         )
         raise ValueError(
-            "The 'connectors' parameter is deprecated as of version 1.0.0."
-        )  # noqa: E501
+            "The 'connectors' parameter is deprecated as of version 0.4.0."
+        )
 
     chat_history_with_curr_msg = []
     for message in messages:
