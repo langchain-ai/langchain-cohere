@@ -13,7 +13,7 @@ DATA_DIR = Path(__file__).parents[1] / "data" / "tools"
 class ExampleToolWithArgs(BaseTool):
     class _args_schema(BaseModel):
         foo: str = Field(description="A description of foo")
-        bar: int = Field(description="A description of bar", default=None)
+        bar: int = Field(description="A description of bar", default=None)  # type: ignore[assignment]
 
     name: str = "example_tool"
     description: str = "A description of example_tool"
