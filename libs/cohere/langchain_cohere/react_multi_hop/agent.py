@@ -108,7 +108,10 @@ class _AddCitations(Runnable):
     """
 
     def invoke(
-        self, input: Dict[str, Any], config: Optional[RunnableConfig] = None
+        self,
+        input: Dict[str, Any],
+        config: Optional[RunnableConfig] = None,
+        **kwargs: Any,
     ) -> Union[List[AgentAction], AgentFinish]:
         agent_steps = input.get("agent_steps", [])
         if not agent_steps:
