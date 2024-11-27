@@ -27,7 +27,7 @@ from langchain_cohere.utils import JSON_TO_PYTHON_TYPES
 
 @deprecated(
     since="0.1.7",
-    removal="",
+    removal="0.4.0",
     alternative="""Use the 'tool calling agent' 
     or 'Langgraph agent' with the ChatCohere class instead.
     See https://docs.cohere.com/docs/cohere-and-langchain for more information.""",
