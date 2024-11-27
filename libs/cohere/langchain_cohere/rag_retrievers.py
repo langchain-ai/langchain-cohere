@@ -43,15 +43,6 @@ def _get_docs(response: Any) -> List[Document]:
 class CohereRagRetriever(BaseRetriever):
     """Cohere Chat API with RAG."""
 
-    connectors: List[Dict] = Field(default_factory=lambda: [{"id": "web-search"}])
-    """
-    When specified, the model's reply will be enriched with information found by
-    querying each of the connectors (RAG). These will be returned as langchain
-    documents.
-
-    Currently only accepts {"id": "web-search"}.
-    """
-
     llm: BaseChatModel
     """Cohere ChatModel to use."""
 

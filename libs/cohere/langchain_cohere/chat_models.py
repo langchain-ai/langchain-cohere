@@ -242,6 +242,15 @@ def get_cohere_chat_request(
     Returns:
         The request for the Cohere chat API.
     """
+    if connectors or "connectors" in kwargs:
+        warn_deprecated(
+            since="0.3.3",
+            message=(
+                "The 'connectors' parameter is deprecated as of version 0.3.3.\n"
+                "Please use the 'tools' parameter instead."
+            ),
+            removal="0.4.0",
+        )
     additional_kwargs = messages[-1].additional_kwargs
 
     # cohere SDK will fail loudly if both connectors and documents are provided
