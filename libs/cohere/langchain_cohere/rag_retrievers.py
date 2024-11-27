@@ -10,7 +10,7 @@ from langchain_core.documents import Document
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import HumanMessage
 from langchain_core.retrievers import BaseRetriever
-from pydantic import ConfigDict, Field
+from pydantic import ConfigDict
 
 if TYPE_CHECKING:
     from langchain_core.messages import BaseMessage
@@ -61,7 +61,6 @@ class CohereRagRetriever(BaseRetriever):
         messages: List[List[BaseMessage]] = [[HumanMessage(content=query)]]
         res = self.llm.generate(
             messages,
-            connectors=self.connectors if documents is None else None,
             documents=documents,
             callbacks=run_manager.get_child(),
             **kwargs,
@@ -80,7 +79,6 @@ class CohereRagRetriever(BaseRetriever):
         res = (
             await self.llm.agenerate(
                 messages,
-                connectors=self.connectors if documents is None else None,
                 documents=documents,
                 callbacks=run_manager.get_child(),
                 **kwargs,
