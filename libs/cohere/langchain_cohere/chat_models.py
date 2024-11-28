@@ -17,6 +17,7 @@ from typing import (
 
 from cohere.types import (
     ChatResponse,
+    ChatMessageV2,
     NonStreamedChatResponse,
     ToolCall,
     ToolCallV2,
@@ -386,17 +387,7 @@ def get_role_v2(message: BaseMessage) -> str:
 
 def _get_message_cohere_format_v2(
     message: BaseMessage, tool_results: Optional[List[MutableMapping]]
-) -> Dict[
-    str,
-    Union[
-        str,
-        List[LC_ToolCall],
-        List[Union[str, Dict[Any, Any]]],
-        List[MutableMapping],
-        List[Dict[Any, Any]],
-        None,
-    ],
-]:
+) -> ChatMessageV2:
     """Get the formatted message as required in cohere's api (V2).
     Args:
         message: The BaseMessage.

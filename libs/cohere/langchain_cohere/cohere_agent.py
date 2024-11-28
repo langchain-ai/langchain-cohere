@@ -143,7 +143,7 @@ def _convert_to_cohere_tool(
 
 def _convert_to_cohere_tool_v2(
     tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
-) -> Dict[str, Any]:
+) -> ToolV2:
     """
     Convert a BaseTool instance, JSON schema dict,
     or BaseModel type to a V2 Cohere tool.

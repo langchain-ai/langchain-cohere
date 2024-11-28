@@ -1,0 +1,81 @@
+interactions:
+- request:
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "Who founded
+      Cohere?"}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '105'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.2
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.4
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"id":"4418a0b6-7735-4632-9036-8602645e7d6d","message":{"role":"assistant","content":[{"type":"text","text":"Cohere
+        was founded by Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez and Ivan
+        Zhang met while studying at the University of Waterloo and decided to pursue
+        building AI technology together. Nick Frosst joined Cohere as a co-founder
+        after meeting Aidan Gomez through a mutual friend. They officially launched
+        the company in 2019 and have since grown it into a successful AI startup.
+        \n\nIs there anything else you''d like to know about Cohere or its founders?"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":5,"output_tokens":98},"tokens":{"input_tokens":71,"output_tokens":98}}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '714'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Thu, 28 Nov 2024 12:18:48 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '439'
+      num_tokens:
+      - '103'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 9c8dfc796cf02ad30b37b16b5dd4d8ae
+      x-endpoint-monthly-call-limit:
+      - '1000'
+      x-envoy-upstream-service-time:
+      - '770'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '39'
+    status:
+      code: 200
+      message: OK
+version: 1
