@@ -23,7 +23,7 @@ def test_single_csv() -> None:
     resp = csv_agent.invoke({"input": "Which movie has the highest average rating?"})
     assert "output" in resp
     assert (
-        "The movie with the highest average rating is The Shawshank Redemption with an average rating of 7.25."  # noqa: E501
+        "The movie with the highest average rating is *The Shawshank Redemption*."  # noqa: E501
         == resp["output"]
     )
 

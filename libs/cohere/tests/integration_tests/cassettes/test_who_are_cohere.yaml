@@ -29,18 +29,18 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"4418a0b6-7735-4632-9036-8602645e7d6d","message":{"role":"assistant","content":[{"type":"text","text":"Cohere
+      string: '{"id":"bb8b8c61-745f-469b-9d19-dc2d9a9c8feb","message":{"role":"assistant","content":[{"type":"text","text":"Cohere
         was founded by Aidan Gomez, Ivan Zhang, and Nick Frosst. Aidan Gomez and Ivan
         Zhang met while studying at the University of Waterloo and decided to pursue
         building AI technology together. Nick Frosst joined Cohere as a co-founder
         after meeting Aidan Gomez through a mutual friend. They officially launched
-        the company in 2019 and have since grown it into a successful AI startup.
-        \n\nIs there anything else you''d like to know about Cohere or its founders?"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":5,"output_tokens":98},"tokens":{"input_tokens":71,"output_tokens":98}}}'
+        the company in 2019. \n\nIs there anything else you''d like to know about
+        Cohere or its founders?"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":5,"output_tokens":88},"tokens":{"input_tokens":71,"output_tokens":88}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '714'
+      - '661'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -50,13 +50,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 12:18:48 GMT
+      - Thu, 28 Nov 2024 16:00:14 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '439'
       num_tokens:
-      - '103'
+      - '93'
       pragma:
       - no-cache
       server:
@@ -66,15 +66,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 9c8dfc796cf02ad30b37b16b5dd4d8ae
+      - b5853c92fc320c1973138fa48dbd5fb2
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '770'
+      - '690'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '39'
+      - '6'
     status:
       code: 200
       message: OK

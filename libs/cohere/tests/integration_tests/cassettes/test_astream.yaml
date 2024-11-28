@@ -16,7 +16,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -24,14 +24,14 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.0
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
       string: 'event: message-start
 
-        data: {"id":"5f4c6d8b-7de9-47ca-b70e-d158e3c9b1ff","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"c9216b71-fc8a-4107-be45-168630df7a3f","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: content-start
@@ -131,18 +131,66 @@ interactions:
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        Who"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+        Do"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        your"}}}}
+        you"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        have"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        special"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        recipe"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        for"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        pick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"ling"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
 
 
         event: content-delta
@@ -154,25 +202,89 @@ interactions:
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        character"}}}}
+        way"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        from"}}}}
+        to"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        the"}}}}
+        be"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        show"}}}}
+        enjoyed"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        I"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''d"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        love"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        hear"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        more"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        about"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        your"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        version"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
 
 
         event: content-delta
@@ -183,30 +295,7 @@ interactions:
 
         event: content-delta
 
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        and"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        Mort"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"y"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        then"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
 
 
         event: content-end
@@ -216,7 +305,7 @@ interactions:
 
         event: message-end
 
-        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":30},"tokens":{"input_tokens":70,"output_tokens":30}}}}
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":45},"tokens":{"input_tokens":70,"output_tokens":45}}}}
 
 
         data: [DONE]
@@ -237,7 +326,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Fri, 15 Nov 2024 13:03:31 GMT
+      - Thu, 28 Nov 2024 15:59:47 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -249,9 +338,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 3ccd02a02135ae69fd4438afac4eb261
+      - 0a252d83437b08065c3a12e52de770c4
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '30'
+      - '37'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '28'
     status:
       code: 200
       message: OK

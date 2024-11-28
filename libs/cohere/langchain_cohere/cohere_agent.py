@@ -30,7 +30,7 @@ def _format_to_cohere_tools(
 
 def _format_to_cohere_tools_v2(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
-) -> List[Dict[str, Any]]:
+) -> List[ToolV2]:
     return [_convert_to_cohere_tool_v2(tool) for tool in tools]
 
 
@@ -181,7 +181,7 @@ def _convert_to_cohere_tool_v2(
                     ],
                 },
             ),
-        ).dict()
+        )
     elif (
         (isinstance(tool, type) and issubclass(tool, BaseModel))
         or callable(tool)
@@ -232,7 +232,7 @@ def _convert_to_cohere_tool_v2(
                     "required": required_params,
                 },
             ),
-        ).dict()
+        )
     else:
         raise ValueError(
             f"Unsupported tool type {type(tool)}. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501

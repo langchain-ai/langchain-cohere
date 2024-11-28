@@ -23,5 +23,5 @@ def test_load_summarize_chain() -> None:
     resp = agent_executor.invoke({"documents": docs})
     assert (
         resp.content
-        == "Ginger has a range of health benefits, including improved digestion, nausea relief, reduced bloating and gas, and antioxidant properties. It may also have anti-inflammatory properties, although more research is needed. Ginger can be consumed in various forms, including tea, ale, candies, and as an addition to many dishes. Fresh ginger root is flavourful, while ginger powder is a convenient and economical alternative. Ginger supplements are not recommended due to potential unknown ingredients and the lack of regulation in the supplement industry."  # noqa: E501
+        == "Ginger has a range of health benefits, including improving digestion, relieving nausea, reducing bloating and gas, and providing antioxidants to manage free radicals. It may also have anti-inflammatory properties. Ginger can be consumed in various forms, including tea, ale, candies, and as an ingredient in many dishes. Fresh ginger root is flavourful, while ginger powder is a convenient and economical alternative. Ginger supplements are not recommended due to potential unknown ingredients and the unregulated nature of the supplement industry."  # noqa: E501
     )

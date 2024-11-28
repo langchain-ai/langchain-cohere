@@ -19,7 +19,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -27,12 +27,12 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.0
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"b33bc39b-3d6a-465d-bdf5-152cad7463c1","message":{"role":"assistant","content":[{"type":"text","text":"According
+      string: '{"id":"935c4c6b-768d-4953-9950-06b58f05095f","message":{"role":"assistant","content":[{"type":"text","text":"According
         to my sources, Cohere was founded by Barack Obama."}],"citations":[{"start":47,"end":60,"text":"Barack
         Obama.","sources":[{"type":"document","id":"doc-2","document":{"id":"doc-2","text":"Barack
         Obama is the founder of Cohere!"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":41,"output_tokens":13},"tokens":{"input_tokens":735,"output_tokens":59}}}'
@@ -50,7 +50,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 15 Nov 2024 13:03:59 GMT
+      - Thu, 28 Nov 2024 16:00:15 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -66,9 +66,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 9f8a8c8e3b5fe59a208dcfdecc07c5a2
+      - e6cf2510437855f038ba36c02bf6f6a5
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '538'
+      - '554'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '5'
     status:
       code: 200
       message: OK

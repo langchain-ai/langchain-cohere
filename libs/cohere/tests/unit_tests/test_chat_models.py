@@ -9,6 +9,8 @@ from cohere.types import (
     ChatMessageEndEventDelta,
     ChatResponse,
     NonStreamedChatResponse,
+    ToolV2,
+    ToolV2Function,
     ToolCall,
     ToolCallV2,
     ToolCallV2Function,
@@ -1053,7 +1055,9 @@ def test_get_cohere_chat_request(
                             {
                                 "type": "document",
                                 "document": {
-                                    "data": '[{"output": "112"}]',
+                                    "data": {
+                                        "output": "112"
+                                    },
                                 },
                             }
                         ],
@@ -1167,7 +1171,9 @@ def test_get_cohere_chat_request(
                             {
                                 "type": "document",
                                 "document": {
-                                    "data": '[{"output": "112"}]',
+                                    "data": {
+                                        "output": "112"
+                                    },
                                 },
                             }
                         ],
@@ -1277,7 +1283,9 @@ def test_get_cohere_chat_request(
                             {
                                 "type": "document",
                                 "document": {
-                                    "data": '[{"output": "112"}]',
+                                    "data": {
+                                        "output": "112"
+                                    },
                                 },
                             }
                         ],
@@ -1361,13 +1369,15 @@ def test_format_to_cohere_tools_v2() -> None:
 
     tools = [add_two_numbers, capital_cities]
     result = _format_to_cohere_tools_v2(tools)
-
+    
     expected = [
-        {
-            "function": {
-                "description": "Add two numbers together",
-                "name": "add_two_numbers",
-                "parameters": {
+        ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name="add_two_numbers",
+                description="Add two numbers together",
+                parameters={
+                    "type": "object",
                     "properties": {
                         "a": {
                             "description": None,
@@ -1382,16 +1392,16 @@ def test_format_to_cohere_tools_v2() -> None:
                         "a",
                         "b",
                     ],
-                    "type": "object",
                 },
-            },
-            "type": "function",
-        },
-        {
-            "function": {
-                "description": "Returns the capital city of a country",
-                "name": "capital_cities",
-                "parameters": {
+            )
+        ),
+        ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name="capital_cities",
+                description="Returns the capital city of a country",
+                parameters={
+                    "type": "object",
                     "properties": {
                         "country": {
                             "description": None,
@@ -1401,11 +1411,9 @@ def test_format_to_cohere_tools_v2() -> None:
                     "required": [
                         "country",
                     ],
-                    "type": "object",
                 },
-            },
-            "type": "function",
-        },
+            )
+        )
     ]
 
     assert result == expected

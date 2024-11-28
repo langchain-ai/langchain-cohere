@@ -16,7 +16,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -24,14 +24,14 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.0
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
       string: 'event: message-start
 
-        data: {"id":"c6aec623-432d-46ee-aa61-c04059992e0c","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
+        data: {"id":"1809366d-3b1f-4f50-ad89-45721505063f","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
 
         event: content-start
@@ -41,7 +41,7 @@ interactions:
 
         event: content-delta
 
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"Hello"}}}}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"Hi"}}}}
 
 
         event: content-delta
@@ -52,65 +52,19 @@ interactions:
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        Pickle"}}}}
+        nice"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        Rick"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+        to"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        How"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        life"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        as"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        a"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        pickle"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        going"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        for"}}}}
+        meet"}}}}
 
 
         event: content-delta
@@ -121,7 +75,7 @@ interactions:
 
         event: content-delta
 
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
 
 
         event: content-delta
@@ -132,72 +86,13 @@ interactions:
 
         event: content-delta
 
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        hope"}}}}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''m"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        you"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''re"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        doing"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        well"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        in"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        your"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        new"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        form"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        Just"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        remember"}}}}
+        Coral"}}}}
 
 
         event: content-delta
@@ -208,53 +103,67 @@ interactions:
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        if"}}}}
+        an"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        things"}}}}
+        AI"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        get"}}}}
+        chatbot"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        tough"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":","}}}}
+        trained"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        you"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''re"}}}}
+        to"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        not"}}}}
+        assist"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        alone"}}}}
+        users"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        by"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        providing"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        thorough"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        responses"}}}}
 
 
         event: content-delta
@@ -265,36 +174,25 @@ interactions:
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        There"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+        What"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        always"}}}}
+        would"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        someone"}}}}
+        you"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        who"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        can"}}}}
+        like"}}}}
 
 
         event: content-delta
@@ -305,42 +203,19 @@ interactions:
 
         event: content-delta
 
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        with"}}}}
 
 
         event: content-delta
 
         data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        Stay"}}}}
+        today"}}}}
 
 
         event: content-delta
 
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        crunchy"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        and"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        keep"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        rolling"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
 
 
         event: content-end
@@ -350,7 +225,7 @@ interactions:
 
         event: message-end
 
-        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":53},"tokens":{"input_tokens":70,"output_tokens":53}}}}
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":31},"tokens":{"input_tokens":70,"output_tokens":32}}}}
 
 
         data: [DONE]
@@ -371,7 +246,7 @@ interactions:
       content-type:
       - text/event-stream
       date:
-      - Fri, 15 Nov 2024 13:03:30 GMT
+      - Thu, 28 Nov 2024 15:59:46 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -383,9 +258,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 9ce8610bbbed6c098dc40d1b744f5d0c
+      - 25b4f2c900a2f9ca0b60754323aecf21
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '10'
+      - '15'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '29'
     status:
       code: 200
       message: OK

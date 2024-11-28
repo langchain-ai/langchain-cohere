@@ -1,11 +1,11 @@
 interactions:
 - request:
     body: '{"model": "command-r", "messages": [{"role": "user", "content": "what is
-      the value of magic_function(3)?"}, {"role": "assistant", "tool_plan": "I will
-      call magic function with input 3.", "tool_calls": [{"id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
-      "type": "function", "function": {"name": "magic_function", "arguments": "{\"input\":
-      3}"}}]}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
-      "content": [{"type": "document", "document": {"data": "[{\"output\": \"5\"}]"}}]}],
+      the value of magic_function(3)?"}, {"role": "assistant", "tool_calls": [{"id":
+      "d86e6098-21e1-44c7-8431-40cfc6d35590", "type": "function", "function": {"name":
+      "magic_function", "arguments": "{\"input\": 3}"}}], "tool_plan": "I will call
+      magic function with input 3."}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "content": [{"type": "document", "document": {"data": {"output": "5"}}}]}],
       "stream": false}'
     headers:
       accept:
@@ -15,13 +15,13 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '516'
+      - '508'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -29,19 +29,18 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.0
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"388bab70-aa3a-423c-96e0-3cfa06c7fe4b","message":{"role":"assistant","content":[{"type":"text","text":"The
-        value of magic_function(3) is **5**."}],"citations":[{"start":36,"end":37,"text":"5","sources":[{"type":"tool","id":"d86e6098-21e1-44c7-8431-40cfc6d35590:0","tool_output":{"content":"[{\"output\":
-        \"5\"}]"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":37,"output_tokens":13},"tokens":{"input_tokens":943,"output_tokens":59}}}'
+      string: '{"id":"c16740ab-12c3-405f-8a3a-892d5caf948b","message":{"role":"assistant","content":[{"type":"text","text":"The
+        value of magic_function(3) is 5."}],"citations":[{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"d86e6098-21e1-44c7-8431-40cfc6d35590:0","tool_output":{"output":"5"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":33,"output_tokens":13},"tokens":{"input_tokens":939,"output_tokens":57}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '465'
+      - '440'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -51,13 +50,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 15 Nov 2024 13:04:01 GMT
+      - Thu, 28 Nov 2024 16:00:16 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '4560'
+      - '4543'
       num_tokens:
-      - '50'
+      - '46'
       pragma:
       - no-cache
       server:
@@ -67,9 +66,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 67e59a7abd49d5920974730ac710f7d3
+      - dc5ba7f2d22cd28f0cb6ab3bcea296c6
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '552'
+      - '547'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '4'
     status:
       code: 200
       message: OK

@@ -20,7 +20,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -28,18 +28,19 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.0
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"5fc7a10b-9f62-43c7-8aae-c9a7b079013c","message":{"role":"assistant","tool_plan":"I
-        will use the Person tool to create a profile for Erick, 27 years old.","tool_calls":[{"id":"Person_t7nz70bz9797","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":31},"tokens":{"input_tokens":906,"output_tokens":68}}}'
+      string: '{"id":"2851b8f0-3371-4fc4-9cca-b48a22faf96b","message":{"role":"assistant","tool_plan":"I
+        will use the Person tool to create a person with the name Erick and age 27,
+        and then relay this information to the user.","tool_calls":[{"id":"Person_cxck4wc1tzv2","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":41},"tokens":{"input_tokens":906,"output_tokens":77}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '440'
+      - '491'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -49,13 +50,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 15 Nov 2024 13:03:37 GMT
+      - Thu, 28 Nov 2024 15:59:53 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '4338'
       num_tokens:
-      - '54'
+      - '64'
       pragma:
       - no-cache
       server:
@@ -65,9 +66,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 6fd7d8578d73f5dd2817201c99bba502
+      - 196c9e4008aaa440d21f09fcba108d21
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '590'
+      - '668'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '19'
     status:
       code: 200
       message: OK

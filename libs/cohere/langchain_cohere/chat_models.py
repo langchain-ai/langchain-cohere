@@ -16,13 +16,19 @@ from typing import (
 )
 
 from cohere.types import (
-    ChatResponse,
+    AssistantChatMessageV2,
     ChatMessageV2,
+    ChatResponse,
+    DocumentToolContent,
     NonStreamedChatResponse,
+    SystemChatMessageV2,
     ToolCall,
     ToolCallV2,
     ToolCallV2Function,
+    ToolChatMessageV2,
+    UserChatMessageV2,
 )
+from cohere.types import Document as DocumentV2
 from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
@@ -386,7 +392,8 @@ def get_role_v2(message: BaseMessage) -> str:
 
 
 def _get_message_cohere_format_v2(
-    message: BaseMessage, tool_results: Optional[List[MutableMapping]]
+    message: BaseMessage, 
+    tool_results: Optional[List[MutableMapping]] = None
 ) -> ChatMessageV2:
     """Get the formatted message as required in cohere's api (V2).
     Args:
@@ -397,40 +404,50 @@ def _get_message_cohere_format_v2(
     """
     if isinstance(message, AIMessage):
         if message.tool_calls:
-            return {
-                "role": get_role_v2(message),
-                # Must provide a tool_plan msg if tool_calls are present
-                "tool_plan": message.content
+            return AssistantChatMessageV2(
+                role=get_role_v2(message),
+                tool_plan=message.content
                 if message.content
                 else "I will assist you using the tools provided.",
-                "tool_calls": [
-                    {
-                        "id": tool_call.get("id"),
-                        "type": "function",
-                        "function": {
-                            "name": tool_call.get("name"),
-                            "arguments": json.dumps(tool_call.get("args")),
-                        },
-                    }
+                tool_calls=[
+                    ToolCallV2(
+                        id=tool_call.get("id"),
+                        type="function",
+                        function=ToolCallV2Function(
+                            name=tool_call.get("name"),
+                            arguments=json.dumps(tool_call.get("args")),
+                        ),
+                    )
                     for tool_call in message.tool_calls
                 ],
-            }
-        return {"role": get_role_v2(message), "content": message.content}
-    elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
-        return {"role": get_role_v2(message), "content": message.content}
+            )
+        return AssistantChatMessageV2(
+            role=get_role_v2(message),
+            content=message.content,
+        )
+    elif isinstance(message, HumanMessage):
+        return UserChatMessageV2(
+            role=get_role_v2(message),
+            content=message.content,
+        )
+    elif isinstance(message, SystemMessage):
+        return SystemChatMessageV2(
+            role=get_role_v2(message),
+            content=message.content,
+        )
     elif isinstance(message, ToolMessage):
-        return {
-            "role": get_role_v2(message),
-            "tool_call_id": message.tool_call_id,
-            "content": [
-                {
-                    "type": "document",
-                    "document": {
-                        "data": json.dumps(tool_results),
-                    },
-                }
+        return ToolChatMessageV2(
+            role=get_role_v2(message),
+            tool_call_id=message.tool_call_id,
+            content=[
+                DocumentToolContent(
+                    type="document",
+                    document=DocumentV2(
+                        data=dict(tool_result),
+                    ),
+                ) for tool_result in tool_results
             ],
-        }
+        )
     else:
         raise ValueError(f"Got unknown type {message}")
 
@@ -527,8 +544,10 @@ def get_cohere_chat_request_v2(
                 _get_message_cohere_format_v2(message, None)
             )
 
+    chat_history_as_dicts = [msg.dict() for msg in chat_history_with_curr_msg]
+    
     req = {
-        "messages": chat_history_with_curr_msg,
+        "messages": chat_history_as_dicts,
         "documents": formatted_docs,
         "stop_sequences": stop_sequences,
         **kwargs,

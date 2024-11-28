@@ -16,7 +16,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -24,23 +24,19 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.0
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"a0a65a93-87d3-45ef-a343-e6418d0639a1","message":{"role":"assistant","content":[{"type":"text","text":"That''s
-        a funny statement! It seems to be a reference to a popular meme that originated
-        from the Rick and Morty TV show. In the episode \"Pickle Rick\", Rick Sanchez
-        turns himself into a pickle in a bizarre adventure. \n\nThe phrase \"I''m
-        Pickle Rick\" has become a well-known catchphrase, often used humorously to
-        suggest someone is in a ridiculous situation or has undergone a transformation
-        of some kind. It''s great that you''re embracing your inner Pickle Rick!"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":99},"tokens":{"input_tokens":70,"output_tokens":99}}}'
+      string: '{"id":"1a0f08bf-3bac-4f25-9f7c-cfad9759d88d","message":{"role":"assistant","content":[{"type":"text","text":"Hi,
+        Pickle Rick! How''s it going? Would you like to know anything about the show
+        or the meme?"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":23},"tokens":{"input_tokens":70,"output_tokens":23}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '715'
+      - '344'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -50,13 +46,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 15 Nov 2024 13:03:37 GMT
+      - Thu, 28 Nov 2024 15:59:52 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '433'
+      - '435'
       num_tokens:
-      - '103'
+      - '27'
       pragma:
       - no-cache
       server:
@@ -66,9 +62,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a86a72abe7d823a568b98461b25494d3
+      - f2e5b4021f68677db65f12e533e82221
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '747'
+      - '216'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '20'
     status:
       code: 200
       message: OK

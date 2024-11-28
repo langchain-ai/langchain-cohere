@@ -17,7 +17,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -25,12 +25,12 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.0
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"7346cb74-d2c5-4d70-b29f-f2e92da2eb46","message":{"role":"assistant","content":[{"type":"text","text":"The
+      string: '{"id":"04eeab56-4c40-4e5e-9dcf-c6cfb115bdf9","message":{"role":"assistant","content":[{"type":"text","text":"The
         sky is green."}],"citations":[{"start":11,"end":17,"text":"green.","sources":[{"type":"document","id":"doc-0","document":{"id":"doc-0","text":"The
         sky is green."}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":13,"output_tokens":5},"tokens":{"input_tokens":693,"output_tokens":42}}}'
     headers:
@@ -47,7 +47,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 15 Nov 2024 13:03:58 GMT
+      - Thu, 28 Nov 2024 16:00:13 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -63,9 +63,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 7a6d0d53bd1640ba617ba06186dd66fc
+      - 0b0a35f0c991323394d4fb80ce136963
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '407'
+      - '422'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '6'
     status:
       code: 200
       message: OK
