@@ -34,7 +34,7 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"c16740ab-12c3-405f-8a3a-892d5caf948b","message":{"role":"assistant","content":[{"type":"text","text":"The
+      string: '{"id":"0aeeb44d-9d0f-4b3d-a403-af8331e9e995","message":{"role":"assistant","content":[{"type":"text","text":"The
         value of magic_function(3) is 5."}],"citations":[{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"d86e6098-21e1-44c7-8431-40cfc6d35590:0","tool_output":{"output":"5"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":33,"output_tokens":13},"tokens":{"input_tokens":939,"output_tokens":57}}}'
     headers:
       Alt-Svc:
@@ -50,7 +50,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 16:00:16 GMT
+      - Fri, 29 Nov 2024 14:54:25 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -66,15 +66,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - dc5ba7f2d22cd28f0cb6ab3bcea296c6
+      - 28185a6122742bba4a45e61709bb5393
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '547'
+      - '570'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '4'
+      - '31'
     status:
       code: 200
       message: OK

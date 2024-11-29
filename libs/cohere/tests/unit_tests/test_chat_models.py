@@ -6,21 +6,21 @@ from unittest.mock import patch
 import pytest
 from cohere.types import (
     AssistantChatMessageV2,
-    SystemChatMessageV2,
-    ToolChatMessageV2,
-    UserChatMessageV2,
     AssistantMessageResponse,
     ChatMessageEndEventDelta,
     ChatResponse,
     NonStreamedChatResponse,
+    SystemChatMessageV2,
     ToolCall,
     ToolCallV2,
     ToolCallV2Function,
+    ToolChatMessageV2,
     ToolV2,
     ToolV2Function,
     Usage,
     UsageBilledUnits,
     UsageTokens,
+    UserChatMessageV2,
 )
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
@@ -1052,15 +1052,20 @@ def test_get_cohere_chat_request(
                                 function=ToolCallV2Function(
                                     name="magic_function",
                                     arguments='{"a": 12}',
-                                )
+                                ),
                             )
                         ],
                     ),
                     ToolChatMessageV2(
                         role="tool",
                         tool_call_id="e81dbae6937e47e694505f81e310e205",
-                        content=[{"type": "document", "document": {"data": {"output": "112"}}}],
-                    )
+                        content=[
+                            {
+                                "type": "document",
+                                "document": {"data": {"output": "112"}},
+                            }
+                        ],
+                    ),
                 ],
                 "tools": [
                     {
@@ -1162,15 +1167,20 @@ def test_get_cohere_chat_request(
                                 function=ToolCallV2Function(
                                     name="magic_function",
                                     arguments='{"a": 12}',
-                                )
+                                ),
                             )
                         ],
                     ),
                     ToolChatMessageV2(
                         role="tool",
                         tool_call_id="e81dbae6937e47e694505f81e310e205",
-                        content=[{"type": "document", "document": {"data": {"output": "112"}}}],
-                    )
+                        content=[
+                            {
+                                "type": "document",
+                                "document": {"data": {"output": "112"}},
+                            }
+                        ],
+                    ),
                 ],
                 "tools": [
                     {
@@ -1268,15 +1278,20 @@ def test_get_cohere_chat_request(
                                 function=ToolCallV2Function(
                                     name="magic_function",
                                     arguments='{"a": 12}',
-                                )
+                                ),
                             )
                         ],
                     ),
                     ToolChatMessageV2(
                         role="tool",
                         tool_call_id="e81dbae6937e47e694505f81e310e205",
-                        content=[{"type": "document", "document": {"data": {"output": "112"}}}],
-                    )
+                        content=[
+                            {
+                                "type": "document",
+                                "document": {"data": {"output": "112"}},
+                            }
+                        ],
+                    ),
                 ],
                 "tools": [
                     {

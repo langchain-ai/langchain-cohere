@@ -435,6 +435,9 @@ def _get_message_cohere_format_v2(
             content=message.content,
         )
     elif isinstance(message, ToolMessage):
+        if not tool_results:
+            raise ValueError("Tool results are required for ToolMessage")
+
         return ToolChatMessageV2(
             role=get_role_v2(message),
             tool_call_id=message.tool_call_id,
@@ -1208,7 +1211,7 @@ def _convert_cohere_v2_tool_call_to_langchain(
 ) -> Optional[LC_ToolCall]:
     """Convert a Cohere V2 tool call into langchain_core.messages.ToolCall"""
     _id = tool_call.id or uuid.uuid4().hex[:]
-    if not tool_call.function.name or tool_call.function:
+    if not tool_call.function or tool_call.function.name:
         return None
     return LC_ToolCall(
         name=str(tool_call.function.name),
