@@ -228,7 +228,7 @@ async def test_async_streaming_tool_call() -> None:
     assert tool_call_chunks_present
     assert (
         tool_plan
-        == "I will use the Person tool to create a person with the name Erick and age 27, and then relay this information to the user." # noqa: E501
+        == "I will use the Person tool to create a person with the name Erick and age 27, and then relay this information to the user."  # noqa: E501
     )
 
 

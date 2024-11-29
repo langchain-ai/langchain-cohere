@@ -33,14 +33,13 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"2851b8f0-3371-4fc4-9cca-b48a22faf96b","message":{"role":"assistant","tool_plan":"I
-        will use the Person tool to create a person with the name Erick and age 27,
-        and then relay this information to the user.","tool_calls":[{"id":"Person_cxck4wc1tzv2","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":41},"tokens":{"input_tokens":906,"output_tokens":77}}}'
+      string: '{"id":"c5b3ffa2-a65a-4ba9-b2c7-653283bbfb51","message":{"role":"assistant","tool_plan":"I
+        will use the Person tool to create an answer based on the given information.","tool_calls":[{"id":"Person_cke6md72brty","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":28},"tokens":{"input_tokens":906,"output_tokens":64}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '491'
+      - '447'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -50,13 +49,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 15:59:53 GMT
+      - Fri, 29 Nov 2024 14:10:18 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '4338'
       num_tokens:
-      - '64'
+      - '51'
       pragma:
       - no-cache
       server:
@@ -66,15 +65,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 196c9e4008aaa440d21f09fcba108d21
+      - 56da2c6c5894f8540d57f9378d8d4cf7
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '668'
+      - '611'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '19'
+      - '39'
     status:
       code: 200
       message: OK

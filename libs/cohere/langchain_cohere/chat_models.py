@@ -392,8 +392,7 @@ def get_role_v2(message: BaseMessage) -> str:
 
 
 def _get_message_cohere_format_v2(
-    message: BaseMessage, 
-    tool_results: Optional[List[MutableMapping]] = None
+    message: BaseMessage, tool_results: Optional[List[MutableMapping]] = None
 ) -> ChatMessageV2:
     """Get the formatted message as required in cohere's api (V2).
     Args:
@@ -445,7 +444,8 @@ def _get_message_cohere_format_v2(
                     document=DocumentV2(
                         data=dict(tool_result),
                     ),
-                ) for tool_result in tool_results
+                )
+                for tool_result in tool_results
             ],
         )
     else:
@@ -537,17 +537,16 @@ def get_cohere_chat_request_v2(
     for message in messages:
         if isinstance(message, ToolMessage):
             tool_output = convert_to_documents(message.content)
-            cohere_message = _get_message_cohere_format_v2(message, tool_output)
-            chat_history_with_curr_msg.append(cohere_message)
+            chat_history_with_curr_msg.append(
+                _get_message_cohere_format_v2(message, tool_output)
+            )
         else:
             chat_history_with_curr_msg.append(
                 _get_message_cohere_format_v2(message, None)
             )
 
-    chat_history_as_dicts = [msg.dict() for msg in chat_history_with_curr_msg]
-    
     req = {
-        "messages": chat_history_as_dicts,
+        "messages": chat_history_with_curr_msg,
         "documents": formatted_docs,
         "stop_sequences": stop_sequences,
         **kwargs,
@@ -1062,8 +1061,11 @@ class ChatCohere(BaseChatModel, BaseCohere):
         )
         if "tool_calls" in generation_info:
             tool_calls = [
-                _convert_cohere_v2_tool_call_to_langchain(tool_call)
+                lc_tool_call
                 for tool_call in response.message.tool_calls
+                if (
+                    lc_tool_call := _convert_cohere_v2_tool_call_to_langchain(tool_call)
+                )
             ]
         else:
             tool_calls = []
@@ -1106,8 +1108,11 @@ class ChatCohere(BaseChatModel, BaseCohere):
         )
         if "tool_calls" in generation_info:
             tool_calls = [
-                _convert_cohere_v2_tool_call_to_langchain(tool_call)
+                lc_tool_call
                 for tool_call in response.tool_calls
+                if (
+                    lc_tool_call := _convert_cohere_v2_tool_call_to_langchain(tool_call)
+                )
             ]
         else:
             tool_calls = []
@@ -1181,7 +1186,7 @@ def _format_cohere_tool_calls_v2(
 
         formatted_tool_calls.append(
             {
-                "id": uuid.uuid4().hex[:],
+                "id": tool_call.id or uuid.uuid4().hex[:],
                 "type": "function",
                 "function": {
                     "name": tool_call.function.name,
@@ -1198,14 +1203,18 @@ def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
     return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=_id)
 
 
-def _convert_cohere_v2_tool_call_to_langchain(tool_call: ToolCallV2) -> LC_ToolCall:
+def _convert_cohere_v2_tool_call_to_langchain(
+    tool_call: ToolCallV2,
+) -> Optional[LC_ToolCall]:
     """Convert a Cohere V2 tool call into langchain_core.messages.ToolCall"""
-    _id = uuid.uuid4().hex[:]
-    if not tool_call.function:
-        return LC_ToolCall(name="", args={}, id=_id)
+    _id = tool_call.id or uuid.uuid4().hex[:]
+    if not tool_call.function.name or tool_call.function:
+        return None
     return LC_ToolCall(
         name=str(tool_call.function.name),
-        args=json.loads(str(tool_call.function.arguments)),
+        args=json.loads(tool_call.function.arguments)
+        if tool_call.function.arguments
+        else {},
         id=_id,
     )
 

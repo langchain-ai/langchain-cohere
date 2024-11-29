@@ -29,14 +29,14 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"1a0f08bf-3bac-4f25-9f7c-cfad9759d88d","message":{"role":"assistant","content":[{"type":"text","text":"Hi,
-        Pickle Rick! How''s it going? Would you like to know anything about the show
-        or the meme?"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":23},"tokens":{"input_tokens":70,"output_tokens":23}}}'
+      string: '{"id":"57bc5def-08e2-43c1-9fb6-d554900ccb36","message":{"role":"assistant","content":[{"type":"text","text":"Hi
+        there! You''re Pickle Rick? That''s a fun nickname! Do you have a question
+        or would you like some help with something?"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":28},"tokens":{"input_tokens":70,"output_tokens":28}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '344'
+      - '371'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -46,13 +46,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 15:59:52 GMT
+      - Fri, 29 Nov 2024 14:18:47 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '435'
+      - '433'
       num_tokens:
-      - '27'
+      - '32'
       pragma:
       - no-cache
       server:
@@ -62,15 +62,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - f2e5b4021f68677db65f12e533e82221
+      - ee0ec1dc21dfff184dbe8830b087a940
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '216'
+      - '270'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '20'
+      - '32'
     status:
       code: 200
       message: OK

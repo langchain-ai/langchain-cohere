@@ -1,19 +1,23 @@
 """Test chat model integration."""
 
 from typing import Any, Dict, Generator, List, Optional
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 from cohere.types import (
+    AssistantChatMessageV2,
+    SystemChatMessageV2,
+    ToolChatMessageV2,
+    UserChatMessageV2,
     AssistantMessageResponse,
     ChatMessageEndEventDelta,
     ChatResponse,
     NonStreamedChatResponse,
-    ToolV2,
-    ToolV2Function,
     ToolCall,
     ToolCallV2,
     ToolCallV2Function,
+    ToolV2,
+    ToolV2Function,
     Usage,
     UsageBilledUnits,
     UsageTokens,
@@ -23,6 +27,7 @@ from langchain_core.tools import tool
 from pytest import WarningsRecorder
 
 from langchain_cohere.chat_models import (
+    BaseCohere,
     ChatCohere,
     _messages_to_cohere_tool_results_curr_chat_turn,
     get_cohere_chat_request,
@@ -34,7 +39,7 @@ from langchain_cohere.cohere_agent import (
 
 
 def test_initialization(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
 ) -> None:
     """Test chat model initialization."""
     ChatCohere(cohere_api_key="test")
@@ -63,7 +68,7 @@ def test_initialization(
     ],
 )
 def test_default_params(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     chat_cohere_kwargs: Dict[str, Any],
     expected: Dict,
 ) -> None:
@@ -147,7 +152,7 @@ def test_default_params(
     ],
 )
 def test_get_generation_info(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     response: Any,
     expected: Dict[str, Any],
 ) -> None:
@@ -312,7 +317,7 @@ def test_get_generation_info(
     ],
 )
 def test_get_generation_info_v2(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     response: ChatResponse,
     documents: Optional[List[Dict[str, Any]]],
     expected: Dict[str, Any],
@@ -455,7 +460,7 @@ def test_get_generation_info_v2(
     ],
 )
 def test_get_stream_info_v2(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     final_delta: ChatMessageEndEventDelta,
     documents: Optional[List[Dict[str, Any]]],
     tool_calls: Optional[List[Dict[str, Any]]],
@@ -730,7 +735,7 @@ def test_messages_to_cohere_tool_results() -> None:
     ],
 )
 def test_get_cohere_chat_request(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     cohere_client_kwargs: Dict[str, Any],
     messages: List[BaseMessage],
     force_single_step: bool,
@@ -769,10 +774,10 @@ def test_get_cohere_chat_request(
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
-                    {
-                        "role": "user",
-                        "content": "what is magic_function(12) ?",
-                    }
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    )
                 ],
                 "tools": [
                     {
@@ -802,14 +807,14 @@ def test_get_cohere_chat_request(
             [HumanMessage(content="what is magic_function(12) ?")],
             {
                 "messages": [
-                    {
-                        "role": "system",
-                        "content": "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
-                    },
-                    {
-                        "role": "user",
-                        "content": "what is magic_function(12) ?",
-                    },
+                    SystemChatMessageV2(
+                        role="system",
+                        content="You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
                 ],
                 "tools": [
                     {
@@ -866,18 +871,18 @@ def test_get_cohere_chat_request(
             ],
             {
                 "messages": [
-                    {
-                        "role": "user",
-                        "content": "Hello!",
-                    },
-                    {
-                        "role": "assistant",
-                        "content": "Hello, how may I assist you?",
-                    },
-                    {
-                        "role": "user",
-                        "content": "Remember my name, its Bob.",
-                    },
+                    UserChatMessageV2(
+                        role="user",
+                        content="Hello!",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        content="Hello, how may I assist you?",
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="Remember my name, its Bob.",
+                    ),
                 ],
                 "tools": [
                     {
@@ -934,22 +939,22 @@ def test_get_cohere_chat_request(
             ],
             {
                 "messages": [
-                    {
-                        "role": "system",
-                        "content": "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
-                    },
-                    {
-                        "role": "user",
-                        "content": "Hello!",
-                    },
-                    {
-                        "role": "assistant",
-                        "content": "Hello, how may I assist you?",
-                    },
-                    {
-                        "role": "user",
-                        "content": "Remember my name, its Bob.",
-                    },
+                    SystemChatMessageV2(
+                        role="system",
+                        content="You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="Hello!",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        content="Hello, how may I assist you?",
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="Remember my name, its Bob.",
+                    ),
                 ],
                 "tools": [
                     {
@@ -1033,35 +1038,29 @@ def test_get_cohere_chat_request(
             ],
             {
                 "messages": [
-                    {"role": "user", "content": "what is magic_function(12) ?"},
-                    {
-                        "role": "assistant",
-                        "tool_plan": "I will use the magic_function tool to answer the question.",  # noqa: E501
-                        "tool_calls": [
-                            {
-                                "id": "e81dbae6937e47e694505f81e310e205",
-                                "type": "function",
-                                "function": {
-                                    "name": "magic_function",
-                                    "arguments": '{"a": 12}',
-                                },
-                            }
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        tool_plan="I will use the magic_function tool to answer the question.",  # noqa: E501
+                        tool_calls=[
+                            ToolCallV2(
+                                id="e81dbae6937e47e694505f81e310e205",
+                                type="function",
+                                function=ToolCallV2Function(
+                                    name="magic_function",
+                                    arguments='{"a": 12}',
+                                )
+                            )
                         ],
-                    },
-                    {
-                        "role": "tool",
-                        "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [
-                            {
-                                "type": "document",
-                                "document": {
-                                    "data": {
-                                        "output": "112"
-                                    },
-                                },
-                            }
-                        ],
-                    },
+                    ),
+                    ToolChatMessageV2(
+                        role="tool",
+                        tool_call_id="e81dbae6937e47e694505f81e310e205",
+                        content=[{"type": "document", "document": {"data": {"output": "112"}}}],
+                    )
                 ],
                 "tools": [
                     {
@@ -1145,39 +1144,33 @@ def test_get_cohere_chat_request(
             ],
             {
                 "messages": [
-                    {
-                        "role": "system",
-                        "content": "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
-                    },
-                    {"role": "user", "content": "what is magic_function(12) ?"},
-                    {
-                        "role": "assistant",
-                        "tool_plan": "I will use the magic_function tool to answer the question.",  # noqa: E501
-                        "tool_calls": [
-                            {
-                                "id": "e81dbae6937e47e694505f81e310e205",
-                                "type": "function",
-                                "function": {
-                                    "name": "magic_function",
-                                    "arguments": '{"a": 12}',
-                                },
-                            }
+                    SystemChatMessageV2(
+                        role="system",
+                        content="You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        tool_plan="I will use the magic_function tool to answer the question.",  # noqa: E501
+                        tool_calls=[
+                            ToolCallV2(
+                                id="e81dbae6937e47e694505f81e310e205",
+                                type="function",
+                                function=ToolCallV2Function(
+                                    name="magic_function",
+                                    arguments='{"a": 12}',
+                                )
+                            )
                         ],
-                    },
-                    {
-                        "role": "tool",
-                        "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [
-                            {
-                                "type": "document",
-                                "document": {
-                                    "data": {
-                                        "output": "112"
-                                    },
-                                },
-                            }
-                        ],
-                    },
+                    ),
+                    ToolChatMessageV2(
+                        role="tool",
+                        tool_call_id="e81dbae6937e47e694505f81e310e205",
+                        content=[{"type": "document", "document": {"data": {"output": "112"}}}],
+                    )
                 ],
                 "tools": [
                     {
@@ -1207,7 +1200,7 @@ def test_get_cohere_chat_request(
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
-                    content="",  # noqa: E501
+                    content="",
                     additional_kwargs={
                         "documents": None,
                         "citations": None,
@@ -1261,35 +1254,29 @@ def test_get_cohere_chat_request(
             ],
             {
                 "messages": [
-                    {"role": "user", "content": "what is magic_function(12) ?"},
-                    {
-                        "role": "assistant",
-                        "tool_plan": "I will assist you using the tools provided.",
-                        "tool_calls": [
-                            {
-                                "id": "e81dbae6937e47e694505f81e310e205",
-                                "type": "function",
-                                "function": {
-                                    "name": "magic_function",
-                                    "arguments": '{"a": 12}',
-                                },
-                            }
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        tool_plan="I will assist you using the tools provided.",
+                        tool_calls=[
+                            ToolCallV2(
+                                id="e81dbae6937e47e694505f81e310e205",
+                                type="function",
+                                function=ToolCallV2Function(
+                                    name="magic_function",
+                                    arguments='{"a": 12}',
+                                )
+                            )
                         ],
-                    },
-                    {
-                        "role": "tool",
-                        "tool_call_id": "e81dbae6937e47e694505f81e310e205",
-                        "content": [
-                            {
-                                "type": "document",
-                                "document": {
-                                    "data": {
-                                        "output": "112"
-                                    },
-                                },
-                            }
-                        ],
-                    },
+                    ),
+                    ToolChatMessageV2(
+                        role="tool",
+                        tool_call_id="e81dbae6937e47e694505f81e310e205",
+                        content=[{"type": "document", "document": {"data": {"output": "112"}}}],
+                    )
                 ],
                 "tools": [
                     {
@@ -1316,7 +1303,7 @@ def test_get_cohere_chat_request(
     ],
 )
 def test_get_cohere_chat_request_v2(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     cohere_client_v2_kwargs: Dict[str, Any],
     preamble: str,
     messages: List[BaseMessage],
@@ -1369,7 +1356,7 @@ def test_format_to_cohere_tools_v2() -> None:
 
     tools = [add_two_numbers, capital_cities]
     result = _format_to_cohere_tools_v2(tools)
-    
+
     expected = [
         ToolV2(
             type="function",
@@ -1393,7 +1380,7 @@ def test_format_to_cohere_tools_v2() -> None:
                         "b",
                     ],
                 },
-            )
+            ),
         ),
         ToolV2(
             type="function",
@@ -1412,8 +1399,8 @@ def test_format_to_cohere_tools_v2() -> None:
                         "country",
                     ],
                 },
-            )
-        )
+            ),
+        ),
     ]
 
     assert result == expected

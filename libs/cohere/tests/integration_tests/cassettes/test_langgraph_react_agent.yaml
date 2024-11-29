@@ -39,15 +39,15 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"aa391ca2-511f-4c69-bec3-6157b45f0f88","message":{"role":"assistant","tool_plan":"First,
-        I will search for Barack Obama''s age. Then, I will use the Python tool to
-        find the square root of his age.","tool_calls":[{"id":"web_search_j47w36wsh3cr","type":"function","function":{"name":"web_search","arguments":"{\"query\":\"Barack
-        Obama''s age\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":113,"output_tokens":40},"tokens":{"input_tokens":886,"output_tokens":74}}}'
+      string: '{"id":"f7893c42-aafe-4d39-a2c8-4ed15e69def8","message":{"role":"assistant","tool_plan":"I
+        will first find Barack Obama''s age, then I will use the Python tool to find
+        the square root of his age.","tool_calls":[{"id":"web_search_6cbaezz0a8q7","type":"function","function":{"name":"web_search","arguments":"{\"query\":\"Barack
+        Obama''s age\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":113,"output_tokens":37},"tokens":{"input_tokens":886,"output_tokens":71}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '494'
+      - '486'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -57,13 +57,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 16:00:02 GMT
+      - Fri, 29 Nov 2024 14:02:03 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '4206'
       num_tokens:
-      - '153'
+      - '150'
       pragma:
       - no-cache
       server:
@@ -73,15 +73,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a3b27b1d3460151a15d638f947d0578e
+      - 26e61dd9e629536d38e2eceb6a8ac26b
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '1417'
+      - '1343'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '14'
+      - '31'
     status:
       code: 200
       message: OK
@@ -89,13 +89,13 @@ interactions:
     body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
       "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
       "Find Barack Obama''s age and use python tool to find the square root of his
-      age"}, {"role": "assistant", "tool_calls": [{"id": "89d0cdbbc99a4959a721808d271d538c",
+      age"}, {"role": "assistant", "tool_calls": [{"id": "web_search_6cbaezz0a8q7",
       "type": "function", "function": {"name": "web_search", "arguments": "{\"query\":
       \"Barack Obama''s age\"}"}}], "tool_plan": "I will assist you using the tools
-      provided."}, {"role": "tool", "tool_call_id": "89d0cdbbc99a4959a721808d271d538c",
-      "content": [{"type": "document", "document": {"data": {"output": "60"}}}]}],
-      "tools": [{"type": "function", "function": {"name": "web_search", "description":
-      "Search the web to the answer to the question with a query search string.\n\n        Args:\n            query:
+      provided."}, {"role": "tool", "tool_call_id": "web_search_6cbaezz0a8q7", "content":
+      [{"type": "document", "document": {"data": {"output": "60"}}}]}], "tools": [{"type":
+      "function", "function": {"name": "web_search", "description": "Search the web
+      to the answer to the question with a query search string.\n\n        Args:\n            query:
       The search query to surf the web with", "parameters": {"type": "object", "properties":
       {"query": {"type": "str", "description": null}}, "required": ["query"]}}}, {"type":
       "function", "function": {"name": "python_interpeter_temp", "description": "Executes
@@ -111,7 +111,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '1439'
+      - '1421'
       content-type:
       - application/json
       host:
@@ -130,9 +130,9 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"f2a47a36-4e4d-452a-88cb-0ea767178076","message":{"role":"assistant","tool_plan":"Barack
-        Obama is 60 years old. I will now use the Python tool to find the square root
-        of his age.","tool_calls":[{"id":"python_interpeter_temp_d0nfdzje3zz8","type":"function","function":{"name":"python_interpeter_temp","arguments":"{\"code\":\"import
+      string: '{"id":"904aa46e-3c8c-4296-b14b-298281ab9bd7","message":{"role":"assistant","tool_plan":"Barack
+        Obama is 60 years old. Now I will use the Python tool to find the square root
+        of his age.","tool_calls":[{"id":"python_interpeter_temp_fdwytftmbbvw","type":"function","function":{"name":"python_interpeter_temp","arguments":"{\"code\":\"import
         math\\n\\n# Barack Obama''s age\\nbarack_obama_age = 60\\n\\n# Calculate the
         square root of his age\\nbarack_obama_age_sqrt = math.sqrt(barack_obama_age)\\n\\nprint(f\\\"The
         square root of Barack Obama''s age is {barack_obama_age_sqrt:.2f}\\\")\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":135,"output_tokens":127},"tokens":{"input_tokens":973,"output_tokens":160}}}'
@@ -150,7 +150,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 16:00:05 GMT
+      - Fri, 29 Nov 2024 14:02:06 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
@@ -166,15 +166,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 01f5f7ea7054abdc5f6e40b65d16b752
+      - b58c18f29b76b76b6b5c34583f1a6e0d
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '2989'
+      - '2710'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '13'
+      - '30'
     status:
       code: 200
       message: OK
@@ -182,21 +182,21 @@ interactions:
     body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
       "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
       "Find Barack Obama''s age and use python tool to find the square root of his
-      age"}, {"role": "assistant", "tool_calls": [{"id": "89d0cdbbc99a4959a721808d271d538c",
+      age"}, {"role": "assistant", "tool_calls": [{"id": "web_search_6cbaezz0a8q7",
       "type": "function", "function": {"name": "web_search", "arguments": "{\"query\":
       \"Barack Obama''s age\"}"}}], "tool_plan": "I will assist you using the tools
-      provided."}, {"role": "tool", "tool_call_id": "89d0cdbbc99a4959a721808d271d538c",
-      "content": [{"type": "document", "document": {"data": {"output": "60"}}}]},
-      {"role": "assistant", "tool_calls": [{"id": "7c436edcd7984d699850fcdb5b82be22",
-      "type": "function", "function": {"name": "python_interpeter_temp", "arguments":
-      "{\"code\": \"import math\\n\\n# Barack Obama''s age\\nbarack_obama_age = 60\\n\\n#
-      Calculate the square root of his age\\nbarack_obama_age_sqrt = math.sqrt(barack_obama_age)\\n\\nprint(f\\\"The
+      provided."}, {"role": "tool", "tool_call_id": "web_search_6cbaezz0a8q7", "content":
+      [{"type": "document", "document": {"data": {"output": "60"}}}]}, {"role": "assistant",
+      "tool_calls": [{"id": "python_interpeter_temp_fdwytftmbbvw", "type": "function",
+      "function": {"name": "python_interpeter_temp", "arguments": "{\"code\": \"import
+      math\\n\\n# Barack Obama''s age\\nbarack_obama_age = 60\\n\\n# Calculate the
+      square root of his age\\nbarack_obama_age_sqrt = math.sqrt(barack_obama_age)\\n\\nprint(f\\\"The
       square root of Barack Obama''s age is {barack_obama_age_sqrt:.2f}\\\")\"}"}}],
       "tool_plan": "I will assist you using the tools provided."}, {"role": "tool",
-      "tool_call_id": "7c436edcd7984d699850fcdb5b82be22", "content": [{"type": "document",
-      "document": {"data": {"output": "7.75"}}}]}], "tools": [{"type": "function",
-      "function": {"name": "web_search", "description": "Search the web to the answer
-      to the question with a query search string.\n\n        Args:\n            query:
+      "tool_call_id": "python_interpeter_temp_fdwytftmbbvw", "content": [{"type":
+      "document", "document": {"data": {"output": "7.75"}}}]}], "tools": [{"type":
+      "function", "function": {"name": "web_search", "description": "Search the web
+      to the answer to the question with a query search string.\n\n        Args:\n            query:
       The search query to surf the web with", "parameters": {"type": "object", "properties":
       {"query": {"type": "str", "description": null}}, "required": ["query"]}}}, {"type":
       "function", "function": {"name": "python_interpeter_temp", "description": "Executes
@@ -212,7 +212,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '2079'
+      - '2067'
       content-type:
       - application/json
       host:
@@ -231,13 +231,14 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"e625fe0f-556a-4a85-a7b7-623bfb93909b","message":{"role":"assistant","content":[{"type":"text","text":"The
-        square root of Barack Obama''s age is **7.75**."}],"citations":[{"start":43,"end":47,"text":"7.75","sources":[{"type":"tool","id":"7c436edcd7984d699850fcdb5b82be22:0","tool_output":{"output":"7.75"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":163,"output_tokens":15},"tokens":{"input_tokens":1154,"output_tokens":67}}}'
+      string: '{"id":"97404a4f-892c-4904-8e1c-fbbffa18d6c1","message":{"role":"assistant","content":[{"type":"text","text":"Barack
+        Obama is 60 years old. The square root of his age is approximately **7.75**."}],"citations":[{"start":16,"end":28,"text":"60
+        years old","sources":[{"type":"tool","id":"web_search_6cbaezz0a8q7:0","tool_output":{"output":"60"}}]},{"start":76,"end":80,"text":"7.75","sources":[{"type":"tool","id":"python_interpeter_temp_fdwytftmbbvw:0","tool_output":{"output":"7.75"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":163,"output_tokens":24},"tokens":{"input_tokens":1154,"output_tokens":93}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '458'
+      - '629'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -247,13 +248,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 16:00:07 GMT
+      - Fri, 29 Nov 2024 14:02:08 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '5220'
       num_tokens:
-      - '178'
+      - '187'
       pragma:
       - no-cache
       server:
@@ -263,15 +264,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 217d676c01da58cd87e156dec4aac50b
+      - 4ec8d3fba16c4501636867bdf442b3b5
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '1330'
+      - '1693'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '12'
+      - '29'
     status:
       code: 200
       message: OK
@@ -279,28 +280,28 @@ interactions:
     body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
       "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
       "Find Barack Obama''s age and use python tool to find the square root of his
-      age"}, {"role": "assistant", "tool_calls": [{"id": "89d0cdbbc99a4959a721808d271d538c",
+      age"}, {"role": "assistant", "tool_calls": [{"id": "web_search_6cbaezz0a8q7",
       "type": "function", "function": {"name": "web_search", "arguments": "{\"query\":
       \"Barack Obama''s age\"}"}}], "tool_plan": "I will assist you using the tools
-      provided."}, {"role": "tool", "tool_call_id": "89d0cdbbc99a4959a721808d271d538c",
-      "content": [{"type": "document", "document": {"data": {"output": "60"}}}]},
-      {"role": "assistant", "tool_calls": [{"id": "7c436edcd7984d699850fcdb5b82be22",
-      "type": "function", "function": {"name": "python_interpeter_temp", "arguments":
-      "{\"code\": \"import math\\n\\n# Barack Obama''s age\\nbarack_obama_age = 60\\n\\n#
-      Calculate the square root of his age\\nbarack_obama_age_sqrt = math.sqrt(barack_obama_age)\\n\\nprint(f\\\"The
+      provided."}, {"role": "tool", "tool_call_id": "web_search_6cbaezz0a8q7", "content":
+      [{"type": "document", "document": {"data": {"output": "60"}}}]}, {"role": "assistant",
+      "tool_calls": [{"id": "python_interpeter_temp_fdwytftmbbvw", "type": "function",
+      "function": {"name": "python_interpeter_temp", "arguments": "{\"code\": \"import
+      math\\n\\n# Barack Obama''s age\\nbarack_obama_age = 60\\n\\n# Calculate the
+      square root of his age\\nbarack_obama_age_sqrt = math.sqrt(barack_obama_age)\\n\\nprint(f\\\"The
       square root of Barack Obama''s age is {barack_obama_age_sqrt:.2f}\\\")\"}"}}],
       "tool_plan": "I will assist you using the tools provided."}, {"role": "tool",
-      "tool_call_id": "7c436edcd7984d699850fcdb5b82be22", "content": [{"type": "document",
-      "document": {"data": {"output": "7.75"}}}]}, {"role": "assistant", "content":
-      "The square root of Barack Obama''s age is **7.75**."}, {"role": "user", "content":
-      "who won the premier league"}], "tools": [{"type": "function", "function": {"name":
-      "web_search", "description": "Search the web to the answer to the question with
-      a query search string.\n\n        Args:\n            query: The search query
-      to surf the web with", "parameters": {"type": "object", "properties": {"query":
-      {"type": "str", "description": null}}, "required": ["query"]}}}, {"type": "function",
-      "function": {"name": "python_interpeter_temp", "description": "Executes python
-      code and returns the result.\n        The code runs in a static sandbox without
-      interactive mode,\n        so print output or save output to a file.\n\n        Args:\n            code:
+      "tool_call_id": "python_interpeter_temp_fdwytftmbbvw", "content": [{"type":
+      "document", "document": {"data": {"output": "7.75"}}}]}, {"role": "assistant",
+      "content": "Barack Obama is 60 years old. The square root of his age is approximately
+      **7.75**."}, {"role": "user", "content": "who won the premier league"}], "tools":
+      [{"type": "function", "function": {"name": "web_search", "description": "Search
+      the web to the answer to the question with a query search string.\n\n        Args:\n            query:
+      The search query to surf the web with", "parameters": {"type": "object", "properties":
+      {"query": {"type": "str", "description": null}}, "required": ["query"]}}}, {"type":
+      "function", "function": {"name": "python_interpeter_temp", "description": "Executes
+      python code and returns the result.\n        The code runs in a static sandbox
+      without interactive mode,\n        so print output or save output to a file.\n\n        Args:\n            code:
       Python code to execute.", "parameters": {"type": "object", "properties": {"code":
       {"type": "str", "description": null}}, "required": ["code"]}}}], "stream": false}'
     headers:
@@ -311,7 +312,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '2226'
+      - '2247'
       content-type:
       - application/json
       host:
@@ -330,9 +331,114 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"268d9783-18b7-4f1d-a428-923e8c7280ad","message":{"role":"assistant","tool_plan":"I
-        will search for the most recent Premier League winner.","tool_calls":[{"id":"web_search_gbsqwpm3pjkn","type":"function","function":{"name":"web_search","arguments":"{\"query\":\"who
-        won the premier league 2022-2023\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":153,"output_tokens":33},"tokens":{"input_tokens":1137,"output_tokens":67}}}'
+      string: '{"id":"835b142e-f046-4052-9a5d-5d91e6aa8417","message":{"role":"assistant","tool_plan":"I
+        will search for the most recent Premier League winner.","tool_calls":[{"id":"web_search_vkje294ays6q","type":"function","function":{"name":"web_search","arguments":"{\"query\":\"who
+        won the premier league\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":161,"output_tokens":23},"tokens":{"input_tokens":1146,"output_tokens":57}}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '446'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Fri, 29 Nov 2024 14:02:09 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '5374'
+      num_tokens:
+      - '184'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 5873f893b90b3f8cb26ef691ceaceab1
+      x-endpoint-monthly-call-limit:
+      - '1000'
+      x-envoy-upstream-service-time:
+      - '1162'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '28'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
+      "Find Barack Obama''s age and use python tool to find the square root of his
+      age"}, {"role": "assistant", "tool_calls": [{"id": "web_search_6cbaezz0a8q7",
+      "type": "function", "function": {"name": "web_search", "arguments": "{\"query\":
+      \"Barack Obama''s age\"}"}}], "tool_plan": "I will assist you using the tools
+      provided."}, {"role": "tool", "tool_call_id": "web_search_6cbaezz0a8q7", "content":
+      [{"type": "document", "document": {"data": {"output": "60"}}}]}, {"role": "assistant",
+      "tool_calls": [{"id": "python_interpeter_temp_fdwytftmbbvw", "type": "function",
+      "function": {"name": "python_interpeter_temp", "arguments": "{\"code\": \"import
+      math\\n\\n# Barack Obama''s age\\nbarack_obama_age = 60\\n\\n# Calculate the
+      square root of his age\\nbarack_obama_age_sqrt = math.sqrt(barack_obama_age)\\n\\nprint(f\\\"The
+      square root of Barack Obama''s age is {barack_obama_age_sqrt:.2f}\\\")\"}"}}],
+      "tool_plan": "I will assist you using the tools provided."}, {"role": "tool",
+      "tool_call_id": "python_interpeter_temp_fdwytftmbbvw", "content": [{"type":
+      "document", "document": {"data": {"output": "7.75"}}}]}, {"role": "assistant",
+      "content": "Barack Obama is 60 years old. The square root of his age is approximately
+      **7.75**."}, {"role": "user", "content": "who won the premier league"}, {"role":
+      "assistant", "tool_calls": [{"id": "web_search_vkje294ays6q", "type": "function",
+      "function": {"name": "web_search", "arguments": "{\"query\": \"who won the premier
+      league\"}"}}], "tool_plan": "I will assist you using the tools provided."},
+      {"role": "tool", "tool_call_id": "web_search_vkje294ays6q", "content": [{"type":
+      "document", "document": {"data": {"output": "Chelsea won the premier league"}}}]}],
+      "tools": [{"type": "function", "function": {"name": "web_search", "description":
+      "Search the web to the answer to the question with a query search string.\n\n        Args:\n            query:
+      The search query to surf the web with", "parameters": {"type": "object", "properties":
+      {"query": {"type": "str", "description": null}}, "required": ["query"]}}}, {"type":
+      "function", "function": {"name": "python_interpeter_temp", "description": "Executes
+      python code and returns the result.\n        The code runs in a static sandbox
+      without interactive mode,\n        so print output or save output to a file.\n\n        Args:\n            code:
+      Python code to execute.", "parameters": {"type": "object", "properties": {"code":
+      {"type": "str", "description": null}}, "required": ["code"]}}}], "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2661'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.2
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.11.4
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: '{"id":"e30025aa-642f-4b62-9549-64f522f84e38","message":{"role":"assistant","content":[{"type":"text","text":"Chelsea
+        won the Premier League."}],"citations":[{"start":0,"end":7,"text":"Chelsea","sources":[{"type":"tool","id":"web_search_vkje294ays6q:0","tool_output":{"output":"Chelsea
+        won the premier league"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":185,"output_tokens":6},"tokens":{"input_tokens":1235,"output_tokens":45}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -347,13 +453,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 16:00:08 GMT
+      - Fri, 29 Nov 2024 14:02:10 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '5341'
+      - '5792'
       num_tokens:
-      - '186'
+      - '191'
       pragma:
       - no-cache
       server:
@@ -363,120 +469,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 2180a3310143982ede94ab8675a6e0ac
+      - 8fdaf286e98eeb12fb1b0361e72a94b0
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '1362'
+      - '1076'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '11'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
-      "You are a helpful assistant. Respond only in English."}, {"role": "user", "content":
-      "Find Barack Obama''s age and use python tool to find the square root of his
-      age"}, {"role": "assistant", "tool_calls": [{"id": "89d0cdbbc99a4959a721808d271d538c",
-      "type": "function", "function": {"name": "web_search", "arguments": "{\"query\":
-      \"Barack Obama''s age\"}"}}], "tool_plan": "I will assist you using the tools
-      provided."}, {"role": "tool", "tool_call_id": "89d0cdbbc99a4959a721808d271d538c",
-      "content": [{"type": "document", "document": {"data": {"output": "60"}}}]},
-      {"role": "assistant", "tool_calls": [{"id": "7c436edcd7984d699850fcdb5b82be22",
-      "type": "function", "function": {"name": "python_interpeter_temp", "arguments":
-      "{\"code\": \"import math\\n\\n# Barack Obama''s age\\nbarack_obama_age = 60\\n\\n#
-      Calculate the square root of his age\\nbarack_obama_age_sqrt = math.sqrt(barack_obama_age)\\n\\nprint(f\\\"The
-      square root of Barack Obama''s age is {barack_obama_age_sqrt:.2f}\\\")\"}"}}],
-      "tool_plan": "I will assist you using the tools provided."}, {"role": "tool",
-      "tool_call_id": "7c436edcd7984d699850fcdb5b82be22", "content": [{"type": "document",
-      "document": {"data": {"output": "7.75"}}}]}, {"role": "assistant", "content":
-      "The square root of Barack Obama''s age is **7.75**."}, {"role": "user", "content":
-      "who won the premier league"}, {"role": "assistant", "tool_calls": [{"id": "02671c1203594e4c93f4a94c3632d8d4",
-      "type": "function", "function": {"name": "web_search", "arguments": "{\"query\":
-      \"who won the premier league 2022-2023\"}"}}], "tool_plan": "I will assist you
-      using the tools provided."}, {"role": "tool", "tool_call_id": "02671c1203594e4c93f4a94c3632d8d4",
-      "content": [{"type": "document", "document": {"data": {"output": "Chelsea won
-      the premier league"}}}]}], "tools": [{"type": "function", "function": {"name":
-      "web_search", "description": "Search the web to the answer to the question with
-      a query search string.\n\n        Args:\n            query: The search query
-      to surf the web with", "parameters": {"type": "object", "properties": {"query":
-      {"type": "str", "description": null}}, "required": ["query"]}}}, {"type": "function",
-      "function": {"name": "python_interpeter_temp", "description": "Executes python
-      code and returns the result.\n        The code runs in a static sandbox without
-      interactive mode,\n        so print output or save output to a file.\n\n        Args:\n            code:
-      Python code to execute.", "parameters": {"type": "object", "properties": {"code":
-      {"type": "str", "description": null}}, "required": ["code"]}}}], "stream": false}'
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '2668'
-      content-type:
-      - application/json
-      host:
-      - api.cohere.com
-      user-agent:
-      - python-httpx/0.27.2
-      x-client-name:
-      - langchain:partner
-      x-fern-language:
-      - Python
-      x-fern-sdk-name:
-      - cohere
-      x-fern-sdk-version:
-      - 5.11.4
-    method: POST
-    uri: https://api.cohere.com/v2/chat
-  response:
-    body:
-      string: '{"id":"d43d18f0-1490-499c-8a72-bb8db81698ea","message":{"role":"assistant","content":[{"type":"text","text":"Chelsea
-        won the Premier League."}],"citations":[{"start":0,"end":7,"text":"Chelsea","sources":[{"type":"tool","id":"02671c1203594e4c93f4a94c3632d8d4:0","tool_output":{"output":"Chelsea
-        won the premier league"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":177,"output_tokens":6},"tokens":{"input_tokens":1236,"output_tokens":45}}}'
-    headers:
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '465'
-      Via:
-      - 1.1 google
-      access-control-expose-headers:
-      - X-Debug-Trace-ID
-      cache-control:
-      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-type:
-      - application/json
-      date:
-      - Thu, 28 Nov 2024 16:00:09 GMT
-      expires:
-      - Thu, 01 Jan 1970 00:00:00 UTC
-      num_chars:
-      - '5769'
-      num_tokens:
-      - '183'
-      pragma:
-      - no-cache
-      server:
-      - envoy
-      vary:
-      - Origin
-      x-accel-expires:
-      - '0'
-      x-debug-trace-id:
-      - c9c8c5904acb9ce4655cf2e115d8ba91
-      x-endpoint-monthly-call-limit:
-      - '1000'
-      x-envoy-upstream-service-time:
-      - '924'
-      x-trial-endpoint-call-limit:
-      - '40'
-      x-trial-endpoint-call-remaining:
-      - '10'
+      - '27'
     status:
       code: 200
       message: OK

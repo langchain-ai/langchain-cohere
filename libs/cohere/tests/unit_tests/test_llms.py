@@ -1,6 +1,5 @@
 """Test Cohere API wrapper."""
 from typing import Any, Dict, Generator, Optional
-from unittest.mock import MagicMock
 
 import pytest
 from pydantic import SecretStr
@@ -9,7 +8,7 @@ from langchain_cohere.llms import BaseCohere, Cohere
 
 
 def test_cohere_api_key(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Test that cohere api key is a secret key."""
@@ -55,7 +54,7 @@ def test_cohere_api_key(
     ],
 )
 def test_default_params(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     cohere_kwargs: Dict[str, Any],
     expected: Dict[str, Any],
 ) -> None:
@@ -65,7 +64,7 @@ def test_default_params(
 
 
 def test_tracing_params(
-    patch_base_cohere_get_default_model: Generator[Optional[MagicMock], None, None],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
 ) -> None:
     # Test standard tracing params
     llm = Cohere(model="foo", cohere_api_key="api-key")
