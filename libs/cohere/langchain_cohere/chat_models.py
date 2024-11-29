@@ -1211,7 +1211,7 @@ def _convert_cohere_v2_tool_call_to_langchain(
 ) -> Optional[LC_ToolCall]:
     """Convert a Cohere V2 tool call into langchain_core.messages.ToolCall"""
     _id = tool_call.id or uuid.uuid4().hex[:]
-    if not tool_call.function or tool_call.function.name:
+    if not tool_call.function or not tool_call.function.name:
         return None
     return LC_ToolCall(
         name=str(tool_call.function.name),
