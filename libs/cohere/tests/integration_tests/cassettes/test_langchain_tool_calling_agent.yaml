@@ -1,74 +1,11 @@
 interactions:
 - request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - api.cohere.com
-      user-agent:
-      - python-httpx/0.27.0
-      x-client-name:
-      - langchain:partner
-      x-fern-language:
-      - Python
-      x-fern-sdk-name:
-      - cohere
-      x-fern-sdk-version:
-      - 5.5.8
-    method: GET
-    uri: https://api.cohere.com/v1/models?default_only=true&endpoint=chat
-  response:
-    body:
-      string: '{"models":[{"name":"command-r-plus","endpoints":["generate","chat","summarize"],"finetuned":false,"context_length":128000,"tokenizer_url":"https://storage.googleapis.com/cohere-public/tokenizers/command-r-plus.json","default_endpoints":["chat"]}]}'
-    headers:
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '247'
-      Via:
-      - 1.1 google
-      access-control-expose-headers:
-      - X-Debug-Trace-ID
-      cache-control:
-      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-type:
-      - application/json
-      date:
-      - Tue, 16 Jul 2024 11:00:24 GMT
-      expires:
-      - Thu, 01 Jan 1970 00:00:00 UTC
-      pragma:
-      - no-cache
-      server:
-      - envoy
-      vary:
-      - Origin
-      x-accel-expires:
-      - '0'
-      x-debug-trace-id:
-      - 15825b5277c85588e4ddf37bf27e11a0
-      x-endpoint-monthly-call-limit:
-      - '1000'
-      x-envoy-upstream-service-time:
-      - '22'
-      x-trial-endpoint-call-limit:
-      - '40'
-      x-trial-endpoint-call-remaining:
-      - '38'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{"message": "what is the value of magic_function(3)?", "chat_history":
-      [{"role": "System", "message": "You are a helpful assistant"}], "tools": [{"name":
-      "magic_function", "description": "Applies a magic function to an input.", "parameter_definitions":
-      {"input": {"description": "Number to apply the magic function to.", "type":
-      "int", "required": true}}}], "stream": true}'
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant"}, {"role": "user", "content": "what is the value
+      of magic_function(3)?"}], "tools": [{"type": "function", "function": {"name":
+      "magic_function", "description": "Applies a magic function to an input.", "parameters":
+      {"type": "object", "properties": {"input": {"type": "int", "description": "Number
+      to apply the magic function to."}}, "required": ["input"]}}}], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -77,13 +14,13 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '373'
+      - '476'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -91,63 +28,134 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.8
+      - 5.11.4
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"2b59f44a-91d0-4fa9-b927-1b437d9b793b"}
+      string: 'event: message-start
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":"I"}
+        data: {"id":"a70fe72c-656a-44fd-b161-e89d6d9602a5","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" will"}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" use"}
+        event: tool-plan-delta
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" the"}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"I"}}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" magic"}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":"_"}
+        event: tool-plan-delta
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":"function"}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" will"}}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" tool"}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" to"}
+        event: tool-plan-delta
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" answer"}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" use"}}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" the"}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":" question"}
+        event: tool-plan-delta
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","text":"."}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"name":"magic_function"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"{\n    \""}}
+        event: tool-plan-delta
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"input"}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" magic"}}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\":"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"
-        "}}
+        event: tool-plan-delta
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"3"}}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"_"}}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"\n"}}
 
-        {"is_finished":false,"event_type":"tool-calls-chunk","tool_call_delta":{"index":0,"parameters":"}"}}
+        event: tool-plan-delta
 
-        {"is_finished":false,"event_type":"tool-calls-generation","text":"I will use
-        the magic_function tool to answer the question.","tool_calls":[{"name":"magic_function","parameters":{"input":3}}]}
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"function"}}}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"c8c9ae6c-d69b-4382-88f0-f2ac13e1d9b2","text":"I
-        will use the magic_function tool to answer the question.","generation_id":"2b59f44a-91d0-4fa9-b927-1b437d9b793b","chat_history":[{"role":"SYSTEM","message":"You
-        are a helpful assistant"},{"role":"USER","message":"what is the value of magic_function(3)?"},{"role":"CHATBOT","message":"I
-        will use the magic_function tool to answer the question.","tool_calls":[{"name":"magic_function","parameters":{"input":3}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":36,"output_tokens":21},"tokens":{"input_tokens":913,"output_tokens":54}},"tool_calls":[{"name":"magic_function","parameters":{"input":3}}]},"finish_reason":"COMPLETE"}
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" tool"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" to"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" answer"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" question"}}}
+
+
+        event: tool-plan-delta
+
+        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"."}}}
+
+
+        event: tool-call-start
+
+        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"magic_function_yypdfpdj7gx6","type":"function","function":{"name":"magic_function","arguments":""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"{\n    \""}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"input"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\":"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
+        "}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"3"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\n"}}}}}
+
+
+        event: tool-call-delta
+
+        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"}"}}}}}
+
+
+        event: tool-call-end
+
+        data: {"type":"tool-call-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":37,"output_tokens":21},"tokens":{"input_tokens":780,"output_tokens":54}}}}
+
+
+        data: [DONE]
+
 
         '
     headers:
@@ -162,9 +170,9 @@ interactions:
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
       content-type:
-      - application/stream+json
+      - text/event-stream
       date:
-      - Tue, 16 Jul 2024 11:00:24 GMT
+      - Fri, 29 Nov 2024 14:51:14 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -176,29 +184,30 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - c359ed28f4171fa59dfa0ec082ec44a3
+      - 52cc2b14a4409ddcee910a47f74bdacb
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '56'
+      - '24'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '34'
+      - '21'
     status:
       code: 200
       message: OK
 - request:
-    body: '{"message": "", "chat_history": [{"role": "System", "message": "You are
-      a helpful assistant"}, {"role": "User", "message": "what is the value of magic_function(3)?"},
-      {"role": "Chatbot", "message": "I will use the magic_function tool to answer
-      the question.", "tool_calls": [{"name": "magic_function", "args": {"input":
-      3}, "id": "68912f089ca348a1886e566fde5f6020", "type": "tool_call"}]}], "tools":
-      [{"name": "magic_function", "description": "Applies a magic function to an input.",
-      "parameter_definitions": {"input": {"description": "Number to apply the magic
-      function to.", "type": "int", "required": true}}}], "tool_results": [{"call":
-      {"name": "magic_function", "parameters": {"input": 3}}, "outputs": [{"output":
-      "5"}]}], "stream": true}'
+    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
+      "You are a helpful assistant"}, {"role": "user", "content": "what is the value
+      of magic_function(3)?"}, {"role": "assistant", "tool_calls": [{"id": "magic_function_yypdfpdj7gx6",
+      "type": "function", "function": {"name": "magic_function", "arguments": "{\"input\":
+      3}"}}], "tool_plan": "I will use the magic_function tool to answer the question."},
+      {"role": "tool", "tool_call_id": "magic_function_yypdfpdj7gx6", "content": [{"type":
+      "document", "document": {"data": {"output": "5"}}}]}], "tools": [{"type": "function",
+      "function": {"name": "magic_function", "description": "Applies a magic function
+      to an input.", "parameters": {"type": "object", "properties": {"input": {"type":
+      "int", "description": "Number to apply the magic function to."}}, "required":
+      ["input"]}}}], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -207,13 +216,13 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '743'
+      - '859'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -221,48 +230,108 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.8
+      - 5.11.4
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"284f90cd-661c-42ad-b80f-e020974f3fcd"}
+      string: 'event: message-start
 
-        {"is_finished":false,"event_type":"search-results","documents":[{"id":"magic_function:0:3:0","output":"5","tool_name":"magic_function"}]}
+        data: {"id":"95cca98f-632d-4b46-81eb-465fad856e2f","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":"The"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" value"}
+        event: content-start
 
-        {"is_finished":false,"event_type":"text-generation","text":" of"}
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":" magic"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"_"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":"function"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"The"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":"("}
 
-        {"is_finished":false,"event_type":"text-generation","text":"3"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":")"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        value"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":" is"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" **"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":"5"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":"**."}
 
-        {"is_finished":false,"event_type":"citation-generation","citations":[{"start":36,"end":37,"text":"5","document_ids":["magic_function:0:3:0"]}]}
+        event: content-delta
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"a4476cd5-63cd-4885-8730-8484bfe05bad","text":"The
-        value of magic_function(3) is **5**.","generation_id":"284f90cd-661c-42ad-b80f-e020974f3fcd","chat_history":[{"role":"SYSTEM","message":"You
-        are a helpful assistant"},{"role":"USER","message":"what is the value of magic_function(3)?"},{"role":"CHATBOT","message":"I
-        will use the magic_function tool to answer the question.","tool_calls":[{"name":"magic_function","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"magic_function","parameters":{"input":3}},"outputs":[{"output":"5"}]}]},{"role":"CHATBOT","message":"The
-        value of magic_function(3) is **5**."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":61,"output_tokens":13},"tokens":{"input_tokens":998,"output_tokens":59}},"citations":[{"start":36,"end":37,"text":"5","document_ids":["magic_function:0:3:0"]}],"documents":[{"id":"magic_function:0:3:0","output":"5","tool_name":"magic_function"}]},"finish_reason":"COMPLETE"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        magic"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"_"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"function"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"("}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"3"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":")"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        is"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        5"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: citation-start
+
+        data: {"type":"citation-start","index":0,"delta":{"message":{"citations":{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"magic_function_yypdfpdj7gx6:0","tool_output":{"output":"5"}}]}}}}
+
+
+        event: citation-end
+
+        data: {"type":"citation-end","index":0}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":62,"output_tokens":13},"tokens":{"input_tokens":865,"output_tokens":57}}}}
+
+
+        data: [DONE]
+
 
         '
     headers:
@@ -277,9 +346,9 @@ interactions:
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
       content-type:
-      - application/stream+json
+      - text/event-stream
       date:
-      - Tue, 16 Jul 2024 11:00:26 GMT
+      - Fri, 29 Nov 2024 14:51:15 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -291,15 +360,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 534f45726e1079cae1648cf76176a1ea
+      - dd5d9ea380ee070d01f3785329101222
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '65'
+      - '18'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '33'
+      - '20'
     status:
       code: 200
       message: OK

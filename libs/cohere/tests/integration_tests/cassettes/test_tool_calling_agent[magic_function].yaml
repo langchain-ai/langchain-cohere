@@ -1,10 +1,12 @@
 interactions:
 - request:
-    body: '{"message": "", "chat_history": [{"role": "User", "message": "what is the
-      value of magic_function(3)?"}, {"role": "Chatbot", "message": "", "tool_calls":
-      [{"name": "magic_function", "args": {"input": 3}, "id": "d86e6098-21e1-44c7-8431-40cfc6d35590"}]}],
-      "tool_results": [{"call": {"name": "magic_function", "parameters": {"input":
-      3}}, "outputs": [{"output": "5"}]}], "stream": false}'
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "what is
+      the value of magic_function(3)?"}, {"role": "assistant", "tool_calls": [{"id":
+      "d86e6098-21e1-44c7-8431-40cfc6d35590", "type": "function", "function": {"name":
+      "magic_function", "arguments": "{\"input\": 3}"}}], "tool_plan": "I will call
+      magic function with input 3."}, {"role": "tool", "tool_call_id": "d86e6098-21e1-44c7-8431-40cfc6d35590",
+      "content": [{"type": "document", "document": {"data": {"output": "5"}}}]}],
+      "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -13,13 +15,13 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '384'
+      - '508'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -27,36 +29,34 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.4
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"response_id":"76d3d729-a6c8-48ae-bc4b-d8634ffaa531","text":"The value
-        of magic_function(3) is **5**.","generation_id":"3e5d9763-5294-407d-b77a-b1bb8b2eb626","chat_history":[{"role":"USER","message":"what
-        is the value of magic_function(3)?"},{"role":"CHATBOT","tool_calls":[{"name":"magic_function","parameters":null}]},{"role":"TOOL","tool_results":[{"call":{"name":"magic_function","parameters":{"input":3}},"outputs":[{"output":"5"}]}]},{"role":"CHATBOT","message":"The
-        value of magic_function(3) is **5**."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":23,"output_tokens":13},"tokens":{"input_tokens":939,"output_tokens":13}},"citations":[{"start":36,"end":37,"text":"5","document_ids":["magic_function:0:2:0"]}],"documents":[{"id":"magic_function:0:2:0","output":"5","tool_name":"magic_function"}]}'
+      string: '{"id":"0aeeb44d-9d0f-4b3d-a403-af8331e9e995","message":{"role":"assistant","content":[{"type":"text","text":"The
+        value of magic_function(3) is 5."}],"citations":[{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"d86e6098-21e1-44c7-8431-40cfc6d35590:0","tool_output":{"output":"5"}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":33,"output_tokens":13},"tokens":{"input_tokens":939,"output_tokens":57}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '440'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-length:
-      - '856'
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:22:55 GMT
+      - Fri, 29 Nov 2024 14:54:25 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '4532'
+      - '4543'
       num_tokens:
-      - '36'
+      - '46'
       pragma:
       - no-cache
       server:
@@ -66,9 +66,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - aa6baa12651c48acc05b1cd43aeb589e
+      - 28185a6122742bba4a45e61709bb5393
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '1617'
+      - '570'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '31'
     status:
       code: 200
       message: OK

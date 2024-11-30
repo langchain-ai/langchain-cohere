@@ -11,7 +11,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -19,7 +19,7 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.4
     method: GET
     uri: https://api.cohere.com/v1/models/command-r
   response:
@@ -39,7 +39,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:30:32 GMT
+      - Thu, 28 Nov 2024 15:59:56 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -51,11 +51,11 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 29b0b293c210ad414d1ac45de2e1b75b
+      - aa465fc67803a958b541fadadbfd6418
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '10'
+      - '14'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:

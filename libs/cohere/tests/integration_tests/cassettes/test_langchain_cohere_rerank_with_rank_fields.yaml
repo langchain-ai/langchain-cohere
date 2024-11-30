@@ -18,7 +18,7 @@ interactions:
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -26,27 +26,27 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v1/rerank
   response:
     body:
-      string: '{"id":"29c25281-8767-4ef7-9f5e-a62ec0f1391d","results":[{"index":0,"relevance_score":0.5630176},{"index":1,"relevance_score":0.00007141902}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
+      string: '{"id":"4e23d93e-243f-4153-ada5-16a33f0ea12f","results":[{"index":0,"relevance_score":0.5630176},{"index":1,"relevance_score":0.00007141902}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '214'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-length:
-      - '214'
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:22:53 GMT
+      - Thu, 28 Nov 2024 16:00:16 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -58,9 +58,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 6ee0db63b29aae0cec13786ea7ca4245
+      - cf0aa759a625cd549d9322b6a76f8d8c
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '35'
+      - '37'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '38'
     status:
       code: 200
       message: OK

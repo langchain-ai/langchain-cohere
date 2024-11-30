@@ -1,8 +1,8 @@
 interactions:
 - request:
-    body: '{"message": "What color is the sky?", "chat_history": [], "prompt_truncation":
-      "AUTO", "documents": [{"text": "The sky is green.", "id": "doc-0"}], "stream":
-      false}'
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What color
+      is the sky?"}], "documents": [{"id": "doc-0", "data": {"text": "The sky is green."}}],
+      "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -11,13 +11,13 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '164'
+      - '179'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -25,36 +25,35 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.4
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"response_id":"05d84473-cbb0-4ac7-94b4-60283d96e7d0","text":"The sky
-        is green.","generation_id":"bbd4e366-3190-42b5-b3cb-4e806680acee","chat_history":[{"role":"USER","message":"What
-        color is the sky?"},{"role":"CHATBOT","message":"The sky is green."}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":13,"output_tokens":10},"tokens":{"input_tokens":690,"output_tokens":10}},"citations":[{"start":11,"end":17,"text":"green.","document_ids":["doc-0"]}],"documents":[{"id":"doc-0","text":"The
-        sky is green."}],"search_queries":[{"text":"what color is the sky","generation_id":"8f0259f5-75c8-461d-922f-ee1525bb3b92"}]}'
+      string: '{"id":"04eeab56-4c40-4e5e-9dcf-c6cfb115bdf9","message":{"role":"assistant","content":[{"type":"text","text":"The
+        sky is green."}],"citations":[{"start":11,"end":17,"text":"green.","sources":[{"type":"document","id":"doc-0","document":{"id":"doc-0","text":"The
+        sky is green."}}]}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":13,"output_tokens":5},"tokens":{"input_tokens":693,"output_tokens":42}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '420'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-length:
-      - '662'
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:22:41 GMT
+      - Thu, 28 Nov 2024 16:00:13 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '3529'
+      - '3535'
       num_tokens:
-      - '23'
+      - '18'
       pragma:
       - no-cache
       server:
@@ -64,9 +63,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - b68e6bd9c29d055210ee1cb68409b6a6
+      - 0b0a35f0c991323394d4fb80ce136963
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '1119'
+      - '422'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '6'
     status:
       code: 200
       message: OK

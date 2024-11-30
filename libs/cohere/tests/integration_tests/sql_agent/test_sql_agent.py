@@ -15,6 +15,13 @@ from langchain_cohere.sql_agent.agent import create_sql_agent
 
 
 @pytest.mark.vcr()
+@pytest.mark.xfail(
+    reason=(
+        "Bug with TYPE_CHECKING constant from typing module. "
+        "Defaults to False inside nested imports, so the "
+        "required modules are not imported at test time"
+    )
+)
 def test_sql_agent() -> None:
     db = SQLDatabase.from_uri(
         "sqlite:///tests/integration_tests/sql_agent/db/employees.db"
