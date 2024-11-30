@@ -1063,6 +1063,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             response, request.get("documents")
         )
         if "tool_calls" in generation_info:
+            content = response.message.tool_plan if response.message.tool_plan else ""
             tool_calls = [
                 lc_tool_call
                 for tool_call in response.message.tool_calls
@@ -1071,12 +1072,13 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 )
             ]
         else:
+            content = (
+                response.message.content[0].text if response.message.content else ""
+            )
             tool_calls = []
         usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.message.content[0].text
-            if response.message.content
-            else "",
+            content=content,
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
@@ -1110,6 +1112,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             response, request.get("documents")
         )
         if "tool_calls" in generation_info:
+            content = response.message.tool_plan if response.message.tool_plan else ""
             tool_calls = [
                 lc_tool_call
                 for tool_call in response.tool_calls
@@ -1118,12 +1121,13 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 )
             ]
         else:
+            content = (
+                response.message.content[0].text if response.message.content else ""
+            )
             tool_calls = []
         usage_metadata = _get_usage_metadata_v2(response)
         message = AIMessage(
-            content=response.message.content[0].text
-            if response.message.content
-            else "",
+            content=content,
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
