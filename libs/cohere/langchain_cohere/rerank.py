@@ -61,9 +61,10 @@ class CohereRerank(BaseDocumentCompressor):
         return self
 
     def _document_to_str(
-            self,
-            document: Union[str, Document, dict],
-            rank_fields: Optional[Sequence[str]] = None):
+        self,
+        document: Union[str, Document, dict],
+        rank_fields: Optional[Sequence[str]] = None,
+    ):
         if isinstance(document, Document):
             return document.page_content
         elif isinstance(document, dict):

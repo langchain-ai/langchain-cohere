@@ -79,6 +79,9 @@ select = [
   "I", # isort
 ]
 
+[tool.ruff.lint]
+exclude = ["*.ipynb"]
+
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
 
