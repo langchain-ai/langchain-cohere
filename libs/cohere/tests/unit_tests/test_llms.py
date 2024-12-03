@@ -1,4 +1,5 @@
 """Test Cohere API wrapper."""
+
 import typing
 
 import pytest
