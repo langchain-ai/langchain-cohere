@@ -330,13 +330,13 @@ types = ["chardet (>=5.1.0)", "mypy", "pytest", "pytest-cov", "pytest-dependency
 
 [[package]]
 name = "cohere"
-version = "5.11.4"
+version = "5.13.0"
 description = ""
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "cohere-5.11.4-py3-none-any.whl", hash = "sha256:59fb427e5426e0ee1c25b9deec83f0418a1c082240c57007f41384b34cd41552"},
-    {file = "cohere-5.11.4.tar.gz", hash = "sha256:5586335a20de3bf6816f34151f9d9f2928880cdf776c57aae793b5cca58d1826"},
+    {file = "cohere-5.13.0-py3-none-any.whl", hash = "sha256:85de3017a208e91ca3d3aa186382e5224abdee5e3b385debc7dba5ef1fc7d90a"},
+    {file = "cohere-5.13.0.tar.gz", hash = "sha256:7e72524a5a6369d0c2a71a0f045032a17c1d181ce6c8ad6ccf2e799a7a97aeac"},
 ]
 
 [package.dependencies]
