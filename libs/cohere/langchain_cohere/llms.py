@@ -58,10 +58,10 @@ class BaseCohere(Serializable):
 
     client: Any = None  #: :meta private:
     async_client: Any = None  #: :meta private:
-    model: Optional[str] = Field(default=None)
+    model: Optional[str] = Field(default="command-r-plus-08-2024")
     """Model name to use."""
 
-    temperature: Optional[float] = None
+    temperature: float = 0.7
     """A non-negative float that tunes the degree of randomness in generation."""
 
     cohere_api_key: Optional[SecretStr] = Field(
@@ -82,7 +82,7 @@ class BaseCohere(Serializable):
 
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
-
+    
     @model_validator(mode="after")
     def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
@@ -92,13 +92,13 @@ class BaseCohere(Serializable):
             cohere_api_key = self.cohere_api_key
         client_name = self.user_agent
         timeout_seconds = self.timeout_seconds
-        self.client = cohere.Client(
+        self.client = cohere.ClientV2(
             api_key=cohere_api_key,
             timeout=timeout_seconds,
             client_name=client_name,
             base_url=self.base_url,
         )
-        self.async_client = cohere.AsyncClient(
+        self.async_client = cohere.AsyncClientV2(
             api_key=cohere_api_key,
             client_name=client_name,
             timeout=timeout_seconds,
