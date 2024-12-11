@@ -1,5 +1,4 @@
 import json
-import uuid
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -14,7 +13,7 @@ from typing import (
     Union,
 )
 
-from cohere.types import NonStreamedChatResponse, ToolCallV2, ToolCallV2Function
+from cohere.types import NonStreamedChatResponse, ToolCallV2
 from cohere.types.chat_response import ChatResponse
 from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
@@ -479,9 +478,11 @@ class ChatCohere(BaseChatModel, BaseCohere):
         else:
             tool_calls = []
         usage_metadata = _get_usage_metadata(response)
-        print(tool_calls)
+
         message = AIMessage(
-            content=response.message.content[0].text if response.message.content else "",
+            content=response.message.content[0].text
+            if response.message.content
+            else "",
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
@@ -583,7 +584,9 @@ def _convert_cohere_tool_call_to_langchain(tool_call: ToolCallV2) -> LC_ToolCall
     """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
 
     return LC_ToolCall(
-        name=tool_call.function.name, args=json.loads(tool_call.function.arguments), id=tool_call.id
+        name=tool_call.function.name,
+        args=json.loads(tool_call.function.arguments),
+        id=tool_call.id,
     )
 
 
