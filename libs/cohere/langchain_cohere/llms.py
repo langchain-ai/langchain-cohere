@@ -82,7 +82,7 @@ class BaseCohere(Serializable):
 
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
-    
+
     @model_validator(mode="after")
     def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""

@@ -2,10 +2,11 @@ import json
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
-    Tool,
     ToolCall,
     ToolParameterDefinitionsValue,
     ToolResult,
+    ToolV2,
+    ToolV2Function,
 )
 from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
@@ -116,19 +117,13 @@ def _convert_to_cohere_tool(
             raise ValueError(
                 "Unsupported dict type. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
             )
-        return Tool(
-            name=tool.get("title"),
-            description=tool.get("description"),
-            parameter_definitions={
-                param_name: ToolParameterDefinitionsValue(
-                    description=param_definition.get("description"),
-                    type=JSON_TO_PYTHON_TYPES.get(
-                        param_definition.get("type"), param_definition.get("type")
-                    ),
-                    required="default" not in param_definition,
-                )
-                for param_name, param_definition in tool.get("properties", {}).items()
-            },
+        return ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name=tool.get("title"),
+                description=tool.get("description"),
+                parameters={"type": "object", "properties": tool.get("properties", {})},
+            ),
         ).dict()
     elif (
         (isinstance(tool, type) and issubclass(tool, BaseModel))
@@ -137,38 +132,17 @@ def _convert_to_cohere_tool(
     ):
         as_json_schema_function = convert_to_openai_function(tool)
         parameters = as_json_schema_function.get("parameters", {})
-        properties = parameters.get("properties", {})
-        parameter_definitions = {}
-        for param_name, param_definition in properties.items():
-            if "type" in param_definition:
-                _type_str = param_definition.get("type")
-                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
-            elif "anyOf" in param_definition:
-                _type_str = next(
-                    (
-                        t.get("type")
-                        for t in param_definition.get("anyOf", [])
-                        if t.get("type") != "null"
-                    ),
-                    param_definition.get("type"),
-                )
-                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
-            else:
-                _type = None
-            tool_definition = ToolParameterDefinitionsValue(
-                description=param_definition.get("description"),
-                type=_type,
-                required=param_name in parameters.get("required", []),
-            )
-            parameter_definitions[param_name] = tool_definition
-        return Tool(
-            name=as_json_schema_function.get("name"),
-            description=as_json_schema_function.get(
-                # The Cohere API requires the description field.
-                "description",
-                as_json_schema_function.get("name"),
+        return ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name=as_json_schema_function.get("name"),
+                description=as_json_schema_function.get(
+                    # The Cohere API requires the description field.
+                    "description",
+                    as_json_schema_function.get("name"),
+                ),
+                parameters=parameters,
             ),
-            parameter_definitions=parameter_definitions,
         ).dict()
     else:
         raise ValueError(

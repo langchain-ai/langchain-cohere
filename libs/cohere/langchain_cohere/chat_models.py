@@ -14,7 +14,7 @@ from typing import (
     Union,
 )
 
-from cohere.types import NonStreamedChatResponse, ToolCall
+from cohere.types import NonStreamedChatResponse, ToolCallV2, ToolCallV2Function
 from cohere.types.chat_response import ChatResponse
 from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
@@ -60,10 +60,6 @@ from langchain_cohere.cohere_agent import (
 from langchain_cohere.llms import BaseCohere
 from langchain_cohere.react_multi_hop.prompt import convert_to_documents
 
-
-    
-
-
 if TYPE_CHECKING:
     from cohere.types import ListModelsResponse  # noqa: F401
 
@@ -93,13 +89,13 @@ def get_role(message: BaseMessage) -> str:
 
 
 def _get_message_cohere_format(
-    message: BaseMessage
+    message: BaseMessage,
 ) -> Dict[
     str,
     Union[
         str,
         List[LC_ToolCall],
-        List[ToolCall],
+        List[ToolCallV2],
         List[Union[str, Dict[Any, Any]]],
         List[Dict[Any, Any]],
         None,
@@ -119,15 +115,18 @@ def _get_message_cohere_format(
             "role": get_role(message),
             "content": message.content,
             "tool_calls": message.tool_calls,
-            "tool_plan": message.additional_kwargs["tool_plan"]
+            "tool_plan": message.additional_kwargs["tool_plan"],
         }
     elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
         return {"role": get_role(message), "content": message.content}
     elif isinstance(message, ToolMessage):
-        return {"role": get_role(message), "tool_call_id": message.tool_call_id, "content": message.content}
+        return {
+            "role": get_role(message),
+            "tool_call_id": message.tool_call_id,
+            "content": message.content,
+        }
     else:
         raise ValueError(f"Got unknown type {message}")
-
 
 
 def get_cohere_chat_request(
@@ -195,7 +194,7 @@ def get_cohere_chat_request(
         "AUTO" if formatted_docs is not None or connectors is not None else None
     )
     messages_formated = []
-    for i, message in enumerate(messages):    
+    for i, message in enumerate(messages):
         messages_formated.append(_get_message_cohere_format(message))
 
     req = {
@@ -255,6 +254,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         **kwargs: Any,
     ) -> Runnable[LanguageModelInput, BaseMessage]:
         formatted_tools = _format_to_cohere_tools(tools)
+        print(formatted_tools)
         return self.bind(tools=formatted_tools, **kwargs)
 
     def with_structured_output(
@@ -442,7 +442,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         generation_info: Dict[str, Any] = {
             "id": response.id,
             "citations": response.message.citations,
-            "finish_reason": response.finish_reason
+            "finish_reason": response.finish_reason,
         }
         if response.message.tool_calls:
             generation_info["tool_calls"] = _format_cohere_tool_calls(
@@ -479,8 +479,9 @@ class ChatCohere(BaseChatModel, BaseCohere):
         else:
             tool_calls = []
         usage_metadata = _get_usage_metadata(response)
+        print(tool_calls)
         message = AIMessage(
-            content=response.message.content[0].text,
+            content=response.message.content[0].text if response.message.content else "",
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
@@ -555,7 +556,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
 
 def _format_cohere_tool_calls(
-    tool_calls: Optional[List[ToolCall]] = None,
+    tool_calls: Optional[List[ToolCallV2]] = None,
 ) -> List[Dict]:
     """
     Formats a Cohere API response into the tool call format used elsewhere in Langchain.
@@ -567,10 +568,10 @@ def _format_cohere_tool_calls(
     for tool_call in tool_calls:
         formatted_tool_calls.append(
             {
-                "id": uuid.uuid4().hex[:],
+                "id": tool_call.id,
                 "function": {
-                    "name": tool_call.name,
-                    "arguments": json.dumps(tool_call.parameters),
+                    "name": tool_call.function.name,
+                    "arguments": json.dumps(tool_call.function.arguments),
                 },
                 "type": "function",
             }
@@ -578,10 +579,12 @@ def _format_cohere_tool_calls(
     return formatted_tool_calls
 
 
-def _convert_cohere_tool_call_to_langchain(tool_call: ToolCall) -> LC_ToolCall:
+def _convert_cohere_tool_call_to_langchain(tool_call: ToolCallV2) -> LC_ToolCall:
     """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
-    _id = uuid.uuid4().hex[:]
-    return LC_ToolCall(name=tool_call.name, args=tool_call.parameters, id=_id)
+
+    return LC_ToolCall(
+        name=tool_call.function.name, args=json.loads(tool_call.function.arguments), id=tool_call.id
+    )
 
 
 def _get_usage_metadata(response: ChatResponse) -> Optional[UsageMetadata]:
