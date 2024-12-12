@@ -504,25 +504,28 @@ class ChatCohere(BaseChatModel, BaseCohere):
             stream_iter = self._astream(
                 messages, stop=stop, run_manager=run_manager, **kwargs
             )
-            return await agenerate_from_stream(stream_iter)
+            return generate_from_stream(stream_iter)
 
         request = get_cohere_chat_request(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-
-        response = await self.async_client.chat(**request)
-
+        request["model"] = self.model
+        request["temperature"] = self.temperature
+        response = self.client.chat(**request)
         generation_info = self._get_generation_info(response)
         if "tool_calls" in generation_info:
             tool_calls = [
                 _convert_cohere_tool_call_to_langchain(tool_call)
-                for tool_call in response.tool_calls
+                for tool_call in response.message.tool_calls
             ]
         else:
             tool_calls = []
         usage_metadata = _get_usage_metadata(response)
+
         message = AIMessage(
-            content=response.text,
+            content=response.message.content[0].text
+            if response.message.content
+            else "",
             additional_kwargs=generation_info,
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
