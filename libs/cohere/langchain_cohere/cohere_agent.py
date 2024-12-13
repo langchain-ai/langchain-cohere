@@ -3,7 +3,6 @@ from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
     ToolCall,
-    ToolParameterDefinitionsValue,
     ToolResult,
     ToolV2,
     ToolV2Function,
