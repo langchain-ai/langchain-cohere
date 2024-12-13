@@ -22,8 +22,6 @@ from langchain_core.utils.function_calling import (
 )
 from pydantic import BaseModel
 
-from langchain_cohere.utils import JSON_TO_PYTHON_TYPES
-
 
 @deprecated(
     since="0.1.7",
