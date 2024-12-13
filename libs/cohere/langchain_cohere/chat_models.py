@@ -460,7 +460,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
             stream_iter = self._astream(
                 messages, stop=stop, run_manager=run_manager, **kwargs
             )
-            return generate_from_stream(stream_iter)
+            return agenerate_from_stream(stream_iter)
 
         request = get_cohere_chat_request(
             messages, stop_sequences=stop, **self._default_params, **kwargs
