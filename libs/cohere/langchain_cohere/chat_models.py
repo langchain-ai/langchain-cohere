@@ -132,7 +132,6 @@ def get_cohere_chat_request(
     messages: List[BaseMessage],
     *,
     documents: Optional[List[Document]] = None,
-    connectors: Optional[List[Dict[str, str]]] = None,
     stop_sequences: Optional[List[str]] = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
@@ -140,21 +139,11 @@ def get_cohere_chat_request(
 
     Args:
         messages: The messages.
-        connectors: The connectors.
         **kwargs: The keyword arguments.
 
     Returns:
         The request for the Cohere chat API.
     """
-    if connectors or "connectors" in kwargs:
-        warn_deprecated(
-            since="0.3.3",
-            message=(
-                "The 'connectors' parameter is deprecated as of version 0.3.3.\n"
-                "Please use the 'tools' parameter instead."
-            ),
-            removal="0.4.0",
-        )
     additional_kwargs = messages[-1].additional_kwargs
 
     # cohere SDK will fail loudly if both connectors and documents are provided
@@ -180,18 +169,13 @@ def get_cohere_chat_request(
             if isinstance(parsed_doc, Document):
                 formatted_docs.append(
                     {
-                        "text": parsed_doc.page_content,
+                        "data": {"text": parsed_doc.page_content},
                         "id": parsed_doc.metadata.get("id") or f"doc-{str(i)}",
                     }
                 )
             elif isinstance(parsed_doc, dict):
                 formatted_docs.append(parsed_doc)
 
-    # by enabling automatic prompt truncation, the probability of request failure is
-    # reduced with minimal impact on response quality
-    prompt_truncation = (
-        "AUTO" if formatted_docs is not None or connectors is not None else None
-    )
     messages_formated = []
     for i, message in enumerate(messages):
         messages_formated.append(_get_message_cohere_format(message))
@@ -199,8 +183,6 @@ def get_cohere_chat_request(
     req = {
         "messages": messages_formated,
         "documents": formatted_docs,
-        "connectors": connectors,
-        "prompt_truncation": prompt_truncation,
         "stop_sequences": stop_sequences,
         **kwargs,
     }
@@ -293,11 +275,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
     @property
     def _default_params(self) -> Dict[str, Any]:
         """Get the default parameters for calling Cohere API."""
-        base_params = {
-            "model": self.model,
-            "temperature": self.temperature,
-            "preamble": self.preamble,
-        }
+        base_params = {"model": self.model, "temperature": self.temperature}
         return {k: v for k, v in base_params.items() if v is not None}
 
     @property
