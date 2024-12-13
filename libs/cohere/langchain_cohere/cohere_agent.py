@@ -2,20 +2,22 @@ import json
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
 from cohere.types import (
-    ToolCall,
-    ToolResult,
     ToolV2,
     ToolV2Function,
 )
+from langchain.agents.format_scratchpad.openai_tools import (
+    format_to_openai_tool_messages,
+)
+from langchain.agents.output_parsers.tools import ToolAgentAction
 from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.language_models import BaseLanguageModel
+from langchain_core.messages import ToolCall, ToolCallChunk
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.outputs import Generation
 from langchain_core.outputs.chat_generation import ChatGeneration
 from langchain_core.prompts.chat import ChatPromptTemplate
 from langchain_core.runnables import Runnable, RunnablePassthrough
-from langchain_core.runnables.base import RunnableLambda
 from langchain_core.tools import BaseTool
 from langchain_core.utils.function_calling import (
     convert_to_openai_function,
@@ -31,30 +33,23 @@ from pydantic import BaseModel
     See https://docs.cohere.com/docs/cohere-and-langchain for more information.""",
 )
 def create_cohere_tools_agent(
-    llm: BaseLanguageModel,
-    tools: Sequence[BaseTool],
-    prompt: ChatPromptTemplate,
-    **kwargs: Any,
+    llm: BaseLanguageModel, tools: Sequence[BaseTool], prompt: ChatPromptTemplate
 ) -> Runnable:
-    def llm_with_tools(input_: Dict) -> Runnable:
-        tool_results = (
-            input_["tool_results"] if len(input_["tool_results"]) > 0 else None
+    if "agent_scratchpad" not in (
+        prompt.input_variables + list(prompt.partial_variables)
+    ):
+        raise ValueError(
+            "Prompt must have input variable `agent_scratchpad`, but wasn't found. "
+            f"Found {prompt.input_variables} instead."
         )
-        tools_ = input_["tools"] if len(input_["tools"]) > 0 else None
-        return RunnableLambda(lambda x: x["input"]) | llm.bind(
-            tools=tools_, tool_results=tool_results, **kwargs
-        )
-
+    llm_with_tools = llm.bind(tools=_format_to_cohere_tools(tools))
     agent = (
         RunnablePassthrough.assign(
-            # Intermediate steps are in tool results.
-            # Edit below to change the prompt parameters.
-            input=lambda x: prompt.format_messages(**x, agent_scratchpad=[]),
-            tools=lambda x: _format_to_cohere_tools(tools),
-            tool_results=lambda x: _format_to_cohere_tools_messages(
+            agent_scratchpad=lambda x: format_to_openai_tool_messages(
                 x["intermediate_steps"]
-            ),
+            )
         )
+        | prompt
         | llm_with_tools
         | _CohereToolsAgentOutputParser()
     )
@@ -66,41 +61,6 @@ def _format_to_cohere_tools(
 ) -> List[Dict[str, Any]]:
     return [_convert_to_cohere_tool(tool) for tool in tools]
 
-
-def _format_to_cohere_tools_messages(
-    intermediate_steps: Sequence[Tuple[AgentAction, str]],
-) -> List[Dict[str, Any]]:
-    """Convert (AgentAction, tool output) tuples into tool messages."""
-    if len(intermediate_steps) == 0:
-        return []
-    tool_results = []
-    for agent_action, observation in intermediate_steps:
-        # agent_action.tool_input can be a dict, serialised dict, or string.
-        # Cohere API only accepts a dict.
-        tool_call_parameters: Dict[str, Any]
-        if isinstance(agent_action.tool_input, dict):
-            # tool_input is a dict, use as-is.
-            tool_call_parameters = agent_action.tool_input
-        else:
-            try:
-                # tool_input is serialised dict.
-                tool_call_parameters = json.loads(agent_action.tool_input)
-                if not isinstance(tool_call_parameters, dict):
-                    raise ValueError()
-            except ValueError:
-                # tool_input is a string, last ditch attempt at having something useful.
-                tool_call_parameters = {"input": agent_action.tool_input}
-        tool_results.append(
-            ToolResult(
-                call=ToolCall(
-                    name=agent_action.tool,
-                    parameters=tool_call_parameters,
-                ),
-                outputs=[{"answer": observation}],
-            ).dict()
-        )
-
-    return tool_results
 
 
 def _convert_to_cohere_tool(
@@ -146,7 +106,6 @@ def _convert_to_cohere_tool(
             f"Unsupported tool type {type(tool)}. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
         )
 
-
 class _CohereToolsAgentOutputParser(
     BaseOutputParser[Union[List[AgentAction], AgentFinish]]
 ):
@@ -157,18 +116,9 @@ class _CohereToolsAgentOutputParser(
     ) -> Union[List[AgentAction], AgentFinish]:
         if not isinstance(result[0], ChatGeneration):
             raise ValueError(f"Expected ChatGeneration, got {type(result)}")
-        if "tool_calls" in result[0].message.additional_kwargs:
-            actions = []
-            for tool in result[0].message.additional_kwargs["tool_calls"]:
-                function = tool.get("function", {})
-                actions.append(
-                    AgentAction(
-                        tool=function.get("name"),
-                        tool_input=function.get("arguments"),
-                        log=function.get("name"),
-                    )
-                )
-            return actions
+        message = result[0].message
+        if result[0].message.tool_call_chunks:
+            tool_calls = result[0].message.tool_call_chunks
         else:
             return AgentFinish(
                 return_values={
@@ -177,6 +127,26 @@ class _CohereToolsAgentOutputParser(
                 },
                 log="",
             )
+        actions = []
+        tool_calls_list = []
+        for tool in tool_calls:
+            tool_calls_list.append(
+                ToolCall(
+                    name=tool.get("name"), args=tool.get("args", {}), id=tool.get("id")
+                )
+            )
+        for tool_call in tool_calls_list:
+            log = f"\nInvoking: `{tool_call["name"]}` with `{tool_call["args"]}`\n{message.content}\n"
+            actions.append(
+                ToolAgentAction(
+                    tool=tool_call["name"],
+                    tool_input=tool_call["args"],
+                    log=log,
+                    message_log=[message],
+                    tool_call_id=tool_call["id"],
+                )
+            )
+        return actions
 
     def parse(self, text: str) -> Union[List[AgentAction], AgentFinish]:
         raise ValueError("Can only parse messages")

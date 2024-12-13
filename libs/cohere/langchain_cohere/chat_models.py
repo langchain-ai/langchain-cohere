@@ -37,6 +37,7 @@ from langchain_core.messages import (
     SystemMessage,
     ToolCallChunk,
     ToolMessage,
+    ToolCall
 )
 from langchain_core.messages import (
     ToolCall as LC_ToolCall,
@@ -54,7 +55,7 @@ from pydantic import BaseModel, ConfigDict, PrivateAttr
 
 from langchain_cohere.cohere_agent import (
     _convert_to_cohere_tool,
-    _format_to_cohere_tools,
+    _format_to_cohere_tools
 )
 from langchain_cohere.llms import BaseCohere
 from langchain_cohere.react_multi_hop.prompt import convert_to_documents
@@ -87,6 +88,20 @@ def get_role(message: BaseMessage) -> str:
         raise ValueError(f"Got unknown type {type(message).__name__}")
 
 
+def _format_to_cohere_tool_calls(
+    tool_calls: list[Union[ToolCall, ToolCallChunk]],
+) -> List[Dict[str, Any]]:
+    return [_convert_to_cohere_tool_calls(tool_call) for tool_call in tool_calls]
+
+
+def _convert_to_cohere_tool_calls(tool_call: Union[ToolCall, ToolCallChunk]) -> Dict[str, Any]:
+    return {
+        "id": tool_call["id"],
+        "type": "function",
+        "function": {"name": tool_call["name"], "arguments": json.dumps(tool_call["args"])}
+    }
+
+
 def _get_message_cohere_format(
     message: BaseMessage,
 ) -> Dict[
@@ -113,14 +128,25 @@ def _get_message_cohere_format(
         return {
             "role": get_role(message),
             "content": message.content,
-            "tool_calls": message.tool_calls,
+            "tool_calls": _format_to_cohere_tool_calls(message.tool_calls),
             "tool_plan": message.additional_kwargs["tool_plan"],
         }
-    elif isinstance(message, HumanMessage) or isinstance(message, SystemMessage):
+    if isinstance(message, AIMessageChunk) and message.tool_call_chunks:
+        return {
+            "role": get_role(message),
+            "content": message.content,
+            "tool_calls": _format_to_cohere_tool_calls(message.tool_call_chunks),
+            "tool_plan": message.additional_kwargs["tool_plan"],
+        }
+    elif (
+        isinstance(message, HumanMessage)
+        or isinstance(message, SystemMessage)
+        or isinstance(message, AIMessage)
+    ):
         return {"role": get_role(message), "content": message.content}
     elif isinstance(message, ToolMessage):
         return {
-            "role": get_role(message),
+            "role": "tool",
             "tool_call_id": message.tool_call_id,
             "content": message.content,
         }
@@ -179,7 +205,6 @@ def get_cohere_chat_request(
     messages_formated = []
     for i, message in enumerate(messages):
         messages_formated.append(_get_message_cohere_format(message))
-
     req = {
         "messages": messages_formated,
         "documents": formatted_docs,
@@ -312,6 +337,9 @@ class ChatCohere(BaseChatModel, BaseCohere):
         )
         stream = self.client.chat_stream(**request)
         for data in stream:
+            tool_plan = ""
+            if data.type == "tool-plan-delta":
+                tool_plan = data.delta.tool_plan                
             if data.type == "content-delta":
                 content = data.delta.message.content.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=content))
@@ -319,25 +347,33 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     run_manager.on_llm_new_token(content, chunk=chunk)
                 yield chunk
             if data.type == "tool-call-start" or data.type == "tool-call-delta":
-                delta = data.delta.tool_call
-                if delta:
-                    cohere_tool_call_chunk = _format_cohere_tool_calls([delta])[0]
+                tool_call = data.delta.message.get("tool_calls")
+                if tool_call:
+                    tool_call_instance = ToolCallV2(
+                        id=tool_call.get("id"),
+                        type=tool_call.get("type"),
+                        function=tool_call.get("function"),
+                    )
+
+                    cohere_tool_call_chunk = _format_cohere_tool_calls(
+                        [tool_call_instance]
+                    )
                     message = AIMessageChunk(
                         content="",
                         tool_call_chunks=[
                             ToolCallChunk(
-                                name=cohere_tool_call_chunk["function"].get("name"),
-                                args=cohere_tool_call_chunk["function"].get(
-                                    "arguments"
-                                ),
-                                id=cohere_tool_call_chunk.get("id"),
+                                name=tool_call_chunk["function"].get("name"),
+                                args=tool_call_chunk["function"].get("arguments"),
+                                id=tool_call_chunk.get("id"),
                                 index=data.index,
                             )
+                            for tool_call_chunk in cohere_tool_call_chunk
                         ],
+                        additional_kwargs={"tool_plan": tool_plan}
                     )
                     chunk = ChatGenerationChunk(message=message)
                     if run_manager:
-                        run_manager.on_llm_new_token(delta, chunk=chunk)
+                        run_manager.on_llm_new_token(chunk.text, chunk=chunk)
                     yield chunk
             elif data.type == "message-end":
                 usage_metadata = _get_usage_metadata(data.delta)
@@ -382,8 +418,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
                         ],
                     )
                     chunk = ChatGenerationChunk(message=message)
-                    if run_manager:
-                        run_manager.on_llm_new_token(delta, chunk=chunk)
                     yield chunk
             elif data.type == "message-end":
                 usage_metadata = _get_usage_metadata(data.delta)
@@ -531,7 +565,7 @@ def _format_cohere_tool_calls(
                 "id": tool_call.id,
                 "function": {
                     "name": tool_call.function.name,
-                    "arguments": json.dumps(tool_call.function.arguments),
+                    "arguments": tool_call.function.arguments,
                 },
                 "type": "function",
             }
