@@ -13,9 +13,8 @@ from typing import (
     Union,
 )
 
-from cohere.types import NonStreamedChatResponse, ToolCallV2
+from cohere.types import ToolCallV2
 from cohere.types.chat_response import ChatResponse
-from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
     CallbackManagerForLLMRun,
@@ -39,9 +38,6 @@ from langchain_core.messages import (
     ToolCallChunk,
     ToolMessage,
 )
-from langchain_core.messages import (
-    ToolCall as LC_ToolCall,
-)
 from langchain_core.messages.ai import UsageMetadata
 from langchain_core.output_parsers.base import OutputParserLike
 from langchain_core.output_parsers.openai_tools import (
@@ -58,7 +54,6 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools,
 )
 from langchain_cohere.llms import BaseCohere
-from langchain_cohere.react_multi_hop.prompt import convert_to_documents
 
 if TYPE_CHECKING:
     from cohere.types import ListModelsResponse  # noqa: F401
@@ -113,7 +108,7 @@ def _get_message_cohere_format(
     str,
     Union[
         str,
-        List[LC_ToolCall],
+        List[ToolCall],
         List[ToolCallV2],
         List[Union[str, Dict[Any, Any]]],
         List[Dict[Any, Any]],
@@ -218,6 +213,54 @@ def get_cohere_chat_request(
     }
 
     return {k: v for k, v in req.items() if v is not None}
+
+
+def _format_cohere_tool_calls(
+    tool_calls: Optional[List[ToolCallV2]] = None,
+) -> List[Dict]:
+    """
+    Formats a Cohere API response into the tool call format used elsewhere in Langchain.
+    """
+    if not tool_calls:
+        return []
+
+    formatted_tool_calls = []
+    for tool_call in tool_calls:
+        if tool_call:
+            formatted_tool_calls.append(
+                {
+                    "id": tool_call.id,
+                    "function": {
+                        "name": tool_call.function.name,
+                        "arguments": tool_call.function.arguments,
+                    },
+                    "type": "function",
+                }
+            )
+    return formatted_tool_calls
+
+
+def _convert_cohere_tool_call_to_langchain(tool_call: ToolCallV2) -> ToolCall:
+    """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
+
+    return ToolCall(
+        name=tool_call.function.name,
+        args=json.loads(tool_call.function.arguments),
+        id=tool_call.id,
+    )
+
+
+def _get_usage_metadata(response: ChatResponse) -> Optional[UsageMetadata]:
+    """Get standard usage metadata from chat response."""
+    if usage := response.usage:
+        input_tokens = int(usage.tokens.input_tokens or 0)
+        output_tokens = int(usage.tokens.output_tokens or 0)
+        total_tokens = input_tokens + output_tokens
+    return UsageMetadata(
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        total_tokens=total_tokens,
+    )
 
 
 class ChatCohere(BaseChatModel, BaseCohere):
@@ -397,8 +440,11 @@ class ChatCohere(BaseChatModel, BaseCohere):
         request = get_cohere_chat_request(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )
-        stream = self.async_client.chat_stream(**request)
-        async for data in stream:
+        stream = await self.async_client.chat_stream(**request)
+        for data in stream:
+            tool_plan = ""
+            if data.type == "tool-plan-delta":
+                tool_plan = data.delta.tool_plan
             if data.type == "content-delta":
                 content = data.delta.message.content.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=content))
@@ -406,23 +452,33 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     run_manager.on_llm_new_token(content, chunk=chunk)
                 yield chunk
             if data.type == "tool-call-start" or data.type == "tool-call-delta":
-                delta = data.delta.tool_call
-                if delta:
-                    cohere_tool_call_chunk = _format_cohere_tool_calls([delta])[0]
+                tool_call = data.delta.message.get("tool_calls")
+                if tool_call:
+                    tool_call_instance = ToolCallV2(
+                        id=tool_call.get("id"),
+                        type=tool_call.get("type"),
+                        function=tool_call.get("function"),
+                    )
+
+                    cohere_tool_call_chunk = _format_cohere_tool_calls(
+                        [tool_call_instance]
+                    )
                     message = AIMessageChunk(
                         content="",
                         tool_call_chunks=[
                             ToolCallChunk(
-                                name=cohere_tool_call_chunk["function"].get("name"),
-                                args=cohere_tool_call_chunk["function"].get(
-                                    "arguments"
-                                ),
-                                id=cohere_tool_call_chunk.get("id"),
+                                name=tool_call_chunk["function"].get("name"),
+                                args=tool_call_chunk["function"].get("arguments"),
+                                id=tool_call_chunk.get("id"),
                                 index=data.index,
                             )
+                            for tool_call_chunk in cohere_tool_call_chunk
                         ],
+                        additional_kwargs={"tool_plan": tool_plan},
                     )
                     chunk = ChatGenerationChunk(message=message)
+                    if run_manager:
+                        run_manager.on_llm_new_token(chunk.text, chunk=chunk)
                     yield chunk
             elif data.type == "message-end":
                 usage_metadata = _get_usage_metadata(data.delta)
@@ -552,50 +608,3 @@ class ChatCohere(BaseChatModel, BaseCohere):
         """Calculate number of tokens."""
         model = self.model_name
         return len(self.client.tokenize(text=text, model=model).tokens)
-
-
-def _format_cohere_tool_calls(
-    tool_calls: Optional[List[ToolCallV2]] = None,
-) -> List[Dict]:
-    """
-    Formats a Cohere API response into the tool call format used elsewhere in Langchain.
-    """
-    if not tool_calls:
-        return []
-
-    formatted_tool_calls = []
-    for tool_call in tool_calls:
-        formatted_tool_calls.append(
-            {
-                "id": tool_call.id,
-                "function": {
-                    "name": tool_call.function.name,
-                    "arguments": tool_call.function.arguments,
-                },
-                "type": "function",
-            }
-        )
-    return formatted_tool_calls
-
-
-def _convert_cohere_tool_call_to_langchain(tool_call: ToolCallV2) -> LC_ToolCall:
-    """Convert a Cohere tool call into langchain_core.messages.ToolCall"""
-
-    return LC_ToolCall(
-        name=tool_call.function.name,
-        args=json.loads(tool_call.function.arguments),
-        id=tool_call.id,
-    )
-
-
-def _get_usage_metadata(response: ChatResponse) -> Optional[UsageMetadata]:
-    """Get standard usage metadata from chat response."""
-    if usage := response.usage:
-        input_tokens = int(usage.tokens.input_tokens or 0)
-        output_tokens = int(usage.tokens.output_tokens or 0)
-        total_tokens = input_tokens + output_tokens
-    return UsageMetadata(
-        input_tokens=input_tokens,
-        output_tokens=output_tokens,
-        total_tokens=total_tokens,
-    )

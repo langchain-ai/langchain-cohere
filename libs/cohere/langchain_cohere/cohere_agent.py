@@ -1,5 +1,4 @@
-import json
-from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
+from typing import Any, Callable, Dict, List, Sequence, Type, Union
 
 from cohere.types import (
     ToolV2,
@@ -12,7 +11,7 @@ from langchain.agents.output_parsers.tools import ToolAgentAction
 from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.language_models import BaseLanguageModel
-from langchain_core.messages import ToolCall, ToolCallChunk
+from langchain_core.messages import ToolCall
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.outputs import Generation
 from langchain_core.outputs.chat_generation import ChatGeneration
@@ -107,18 +106,23 @@ def _convert_to_cohere_tool(
 
 
 class _CohereToolsAgentOutputParser(
-    BaseOutputParser[Union[List[AgentAction], AgentFinish]]
+    BaseOutputParser[Union[List[ToolAgentAction], AgentFinish]]
 ):
     """Parses a message into agent actions/finish."""
 
     def parse_result(
         self, result: List[Generation], *, partial: bool = False
-    ) -> Union[List[AgentAction], AgentFinish]:
+    ) -> Union[List[ToolAgentAction], AgentFinish]:
         if not isinstance(result[0], ChatGeneration):
             raise ValueError(f"Expected ChatGeneration, got {type(result)}")
         message = result[0].message
-        if result[0].message.tool_call_chunks:
+        if (
+            hasattr(result[0].message, "tool_call_chunks")
+            and result[0].message.tool_call_chunks
+        ):
             tool_calls = result[0].message.tool_call_chunks
+        elif hasattr(result[0].message, "tool_calls") and result[0].message.tool_calls:
+            tool_calls = result[0].message.tool_calls
         else:
             return AgentFinish(
                 return_values={
@@ -136,7 +140,8 @@ class _CohereToolsAgentOutputParser(
                 )
             )
         for tool_call in tool_calls_list:
-            log = f"\nInvoking: `{tool_call["name"]}` with `{tool_call["args"]}`\n{message.content}\n"
+            log = f"\nInvoking: `{tool_call["name"]}` with `{tool_call["args"]}`\
+                \n{message.content}\n"
             actions.append(
                 ToolAgentAction(
                     tool=tool_call["name"],
@@ -148,5 +153,5 @@ class _CohereToolsAgentOutputParser(
             )
         return actions
 
-    def parse(self, text: str) -> Union[List[AgentAction], AgentFinish]:
+    def parse(self, text: str) -> Union[List[ToolAgentAction], AgentFinish]:
         raise ValueError("Can only parse messages")
