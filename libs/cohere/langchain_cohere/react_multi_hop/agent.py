@@ -82,7 +82,7 @@ def create_cohere_react_agent(
     # "Union[List[AgentAction], AgentFinish]"
     generate_agent_steps = (
         multi_hop_prompt(tools=tools, prompt=prompt)
-        | llm.bind(stop=["\nObservation:"], raw_prompting=True)
+        | llm.bind(stop=["\nObservation:"])
         | CohereToolsReactAgentOutputParser()
     )
 
