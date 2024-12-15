@@ -84,13 +84,13 @@ class CohereEmbeddings(BaseModel, Embeddings):
         request_timeout = values.get("request_timeout")
 
         client_name = values.get("user_agent", "langchain:partner")
-        values["client"] = cohere.Client(
+        values["client"] = cohere.ClientV2(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
             base_url=values.get("base_url"),
         )
-        values["async_client"] = cohere.AsyncClient(
+        values["async_client"] = cohere.AsyncClientV2(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
