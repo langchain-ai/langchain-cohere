@@ -62,7 +62,6 @@ def _format_to_cohere_tools(
     return [_convert_to_cohere_tool(tool) for tool in tools]
 
 
-
 def _convert_to_cohere_tool(
     tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> Dict[str, Any]:
@@ -105,6 +104,7 @@ def _convert_to_cohere_tool(
         raise ValueError(
             f"Unsupported tool type {type(tool)}. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
         )
+
 
 class _CohereToolsAgentOutputParser(
     BaseOutputParser[Union[List[AgentAction], AgentFinish]]

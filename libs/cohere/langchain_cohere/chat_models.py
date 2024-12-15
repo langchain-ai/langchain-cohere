@@ -35,9 +35,9 @@ from langchain_core.messages import (
     ChatMessage,
     HumanMessage,
     SystemMessage,
+    ToolCall,
     ToolCallChunk,
     ToolMessage,
-    ToolCall
 )
 from langchain_core.messages import (
     ToolCall as LC_ToolCall,
@@ -55,7 +55,7 @@ from pydantic import BaseModel, ConfigDict, PrivateAttr
 
 from langchain_cohere.cohere_agent import (
     _convert_to_cohere_tool,
-    _format_to_cohere_tools
+    _format_to_cohere_tools,
 )
 from langchain_cohere.llms import BaseCohere
 from langchain_cohere.react_multi_hop.prompt import convert_to_documents
@@ -94,11 +94,16 @@ def _format_to_cohere_tool_calls(
     return [_convert_to_cohere_tool_calls(tool_call) for tool_call in tool_calls]
 
 
-def _convert_to_cohere_tool_calls(tool_call: Union[ToolCall, ToolCallChunk]) -> Dict[str, Any]:
+def _convert_to_cohere_tool_calls(
+    tool_call: Union[ToolCall, ToolCallChunk],
+) -> Dict[str, Any]:
     return {
         "id": tool_call["id"],
         "type": "function",
-        "function": {"name": tool_call["name"], "arguments": json.dumps(tool_call["args"])}
+        "function": {
+            "name": tool_call["name"],
+            "arguments": json.dumps(tool_call["args"]),
+        },
     }
 
 
@@ -339,7 +344,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         for data in stream:
             tool_plan = ""
             if data.type == "tool-plan-delta":
-                tool_plan = data.delta.tool_plan                
+                tool_plan = data.delta.tool_plan
             if data.type == "content-delta":
                 content = data.delta.message.content.text
                 chunk = ChatGenerationChunk(message=AIMessageChunk(content=content))
@@ -369,7 +374,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                             )
                             for tool_call_chunk in cohere_tool_call_chunk
                         ],
-                        additional_kwargs={"tool_plan": tool_plan}
+                        additional_kwargs={"tool_plan": tool_plan},
                     )
                     chunk = ChatGenerationChunk(message=message)
                     if run_manager:
