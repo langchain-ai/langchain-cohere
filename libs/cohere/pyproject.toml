@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.3.3"
+version = "0.3.4"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
@@ -12,7 +12,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
-langchain-core = ">=0.3.0,<0.4"
+langchain-core = "^0.3.27"
 cohere = ">=5.5.6,<6.0"
 pandas = ">=1.4.3"
 tabulate = "^0.9.0"
