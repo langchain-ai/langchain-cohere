@@ -1,10 +1,11 @@
 """
-    Cohere multi-hop agent enables multiple tools to be used in sequence to complete a
-    task.
+Cohere multi-hop agent enables multiple tools to be used in sequence to complete a
+task.
 
-    This agent uses a multi hop prompt by Cohere, which is experimental and subject
-    to change. The latest prompt can be used by upgrading the langchain-cohere package.
+This agent uses a multi hop prompt by Cohere, which is experimental and subject
+to change. The latest prompt can be used by upgrading the langchain-cohere package.
 """
+
 from typing import Any, Dict, List, MutableMapping, Optional, Sequence, Union
 
 from langchain_core.agents import AgentAction, AgentFinish

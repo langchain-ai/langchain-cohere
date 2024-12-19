@@ -180,5 +180,5 @@ def test_multihop_prompt(
 
     actual = chain.invoke(invoke_with)  # type: StringPromptValue  # type: ignore
 
-    assert StringPromptValue == type(actual)
+    assert StringPromptValue is type(actual)
     assert expected == actual.text
