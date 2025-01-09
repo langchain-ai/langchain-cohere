@@ -163,10 +163,7 @@ def _convert_to_cohere_tool_v2(
                     "properties": {
                         param_name: {
                             "description": param_definition.get("description"),
-                            "type": JSON_TO_PYTHON_TYPES.get(
-                                param_definition.get("type"),
-                                param_definition.get("type"),
-                            ),
+                            "type": param_definition.get("type"),
                         }
                         for param_name, param_definition in tool.get(
                             "properties", {}
@@ -194,10 +191,9 @@ def _convert_to_cohere_tool_v2(
         required_params = []
         for param_name, param_definition in properties.items():
             if "type" in param_definition:
-                _type_str = param_definition.get("type")
-                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
+                _type = param_definition.get("type")
             elif "anyOf" in param_definition:
-                _type_str = next(
+                _type = next(
                     (
                         t.get("type")
                         for t in param_definition.get("anyOf", [])
@@ -205,7 +201,6 @@ def _convert_to_cohere_tool_v2(
                     ),
                     param_definition.get("type"),
                 )
-                _type = JSON_TO_PYTHON_TYPES.get(_type_str)
             else:
                 _type = None
             tool_definition = {

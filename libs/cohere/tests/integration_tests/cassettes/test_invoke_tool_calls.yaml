@@ -3,9 +3,9 @@ interactions:
     body: '{"model": "command-r", "messages": [{"role": "user", "content": "Erick,
       27 years old"}], "tools": [{"type": "function", "function": {"name": "Person",
       "description": "", "parameters": {"type": "object", "properties": {"name": {"type":
-      "str", "description": "The name of the person"}, "age": {"type": "int", "description":
-      "The age of the person"}}, "required": ["name", "age"]}}}], "temperature": 0.0,
-      "stream": false}'
+      "string", "description": "The name of the person"}, "age": {"type": "integer",
+      "description": "The age of the person"}}, "required": ["name", "age"]}}}], "temperature":
+      0.0, "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -14,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '418'
+      - '425'
       content-type:
       - application/json
       host:
@@ -33,13 +33,14 @@ interactions:
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"id":"c5b3ffa2-a65a-4ba9-b2c7-653283bbfb51","message":{"role":"assistant","tool_plan":"I
-        will use the Person tool to create an answer based on the given information.","tool_calls":[{"id":"Person_cke6md72brty","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":28},"tokens":{"input_tokens":906,"output_tokens":64}}}'
+      string: '{"id":"bd32370b-684b-4de3-8f99-8a7653ffd93b","message":{"role":"assistant","tool_plan":"I
+        will use the Person tool to create a person with the name Erick and age 27,
+        and then relay this information to the user.","tool_calls":[{"id":"Person_zh3gneaxfh7q","type":"function","function":{"name":"Person","arguments":"{\"age\":27,\"name\":\"Erick\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":23,"output_tokens":41},"tokens":{"input_tokens":906,"output_tokens":77}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '447'
+      - '491'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -49,13 +50,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 29 Nov 2024 14:10:18 GMT
+      - Thu, 09 Jan 2025 16:13:28 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '4338'
       num_tokens:
-      - '51'
+      - '64'
       pragma:
       - no-cache
       server:
@@ -65,15 +66,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 56da2c6c5894f8540d57f9378d8d4cf7
+      - 167a5f9aca5d5f6db3ae62a83c766d05
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '611'
+      - '643'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '39'
+      - '32'
     status:
       code: 200
       message: OK
