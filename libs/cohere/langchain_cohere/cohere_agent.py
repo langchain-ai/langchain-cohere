@@ -157,12 +157,12 @@ def _convert_to_cohere_tool_v2(
             type="function",
             function=ToolV2Function(
                 name=tool.get("title"),
-                description=tool.get("description"),
+                description=tool.get("description", ""),
                 parameters={
                     "type": "object",
                     "properties": {
                         param_name: {
-                            "description": param_definition.get("description"),
+                            "description": param_definition.get("description", ""),
                             "type": param_definition.get("type"),
                         }
                         for param_name, param_definition in tool.get(
@@ -205,7 +205,7 @@ def _convert_to_cohere_tool_v2(
                 _type = None
             tool_definition = {
                 "type": _type,
-                "description": param_definition.get("description"),
+                "description": param_definition.get("description", ""),
             }
             parameter_definitions[param_name] = tool_definition
             if param_name in parameters.get("required", []):

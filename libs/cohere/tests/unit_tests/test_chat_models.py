@@ -1382,11 +1382,11 @@ def test_format_to_cohere_tools_v2() -> None:
                     "type": "object",
                     "properties": {
                         "a": {
-                            "description": None,
+                            "description": "",
                             "type": "integer",
                         },
                         "b": {
-                            "description": None,
+                            "description": "",
                             "type": "integer",
                         },
                     },
@@ -1406,7 +1406,7 @@ def test_format_to_cohere_tools_v2() -> None:
                     "type": "object",
                     "properties": {
                         "country": {
-                            "description": None,
+                            "description": "",
                             "type": "string",
                         },
                     },
