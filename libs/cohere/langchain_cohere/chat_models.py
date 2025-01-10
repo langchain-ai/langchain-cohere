@@ -435,7 +435,7 @@ def _get_message_cohere_format_v2(
             content=message.content,
         )
     elif isinstance(message, ToolMessage):
-        if tool_results == None:
+        if tool_results is None:
             raise ValueError("Tool results are required for ToolMessage")
 
         return ToolChatMessageV2(
