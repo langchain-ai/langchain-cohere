@@ -437,19 +437,31 @@ def _get_message_cohere_format_v2(
     elif isinstance(message, ToolMessage):
         if tool_results is None:
             raise ValueError("Tool results are required for ToolMessage")
+        
+        content = [
+            DocumentToolContent(
+                type="document",
+                document=DocumentV2(
+                    data=dict(tool_result),
+                ),
+            )
+            for tool_result in tool_results
+        ]
+
+        if not content:
+            content = [
+                DocumentToolContent(
+                    type="document",
+                    document=DocumentV2(
+                        data={"output": ""}
+                    )
+                )
+            ]
 
         return ToolChatMessageV2(
             role=get_role_v2(message),
             tool_call_id=message.tool_call_id,
-            content=[
-                DocumentToolContent(
-                    type="document",
-                    document=DocumentV2(
-                        data=dict(tool_result),
-                    ),
-                )
-                for tool_result in tool_results
-            ],
+            content=content,
         )
     else:
         raise ValueError(f"Got unknown type {message}")
