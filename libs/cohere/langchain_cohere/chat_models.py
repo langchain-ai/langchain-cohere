@@ -437,7 +437,7 @@ def _get_message_cohere_format_v2(
     elif isinstance(message, ToolMessage):
         if tool_results is None:
             raise ValueError("Tool results are required for ToolMessage")
-        
+
         content = [
             DocumentToolContent(
                 type="document",
@@ -451,10 +451,7 @@ def _get_message_cohere_format_v2(
         if not content:
             content = [
                 DocumentToolContent(
-                    type="document",
-                    document=DocumentV2(
-                        data={"output": ""}
-                    )
+                    type="document", document=DocumentV2(data={"output": ""})
                 )
             ]
 
