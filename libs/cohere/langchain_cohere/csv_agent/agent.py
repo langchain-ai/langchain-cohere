@@ -3,6 +3,7 @@ from io import IOBase
 from typing import List, Optional, Union
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain_core._api.deprecation import deprecated
 from langchain_core.language_models import BaseLanguageModel
 from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from langchain_core.prompts import (
@@ -106,6 +107,13 @@ def count_words_in_file(file_path: str) -> int:
         return 0
 
 
+@deprecated(
+    since="0.3.5",
+    removal="0.4.0",
+    message="""The create_csv_agent abstraction has been deprecated.
+    "Please refer to https://docs.cohere.com/page/migrate-csv-agent 
+    for an alternative implementation.""",
+)
 def create_csv_agent(
     llm: BaseLanguageModel,
     path: Union[str, List[str]],
