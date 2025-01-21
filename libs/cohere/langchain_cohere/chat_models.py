@@ -8,6 +8,7 @@ from typing import (
     Dict,
     Iterator,
     List,
+    Literal,
     Optional,
     Sequence,
     Type,
@@ -42,6 +43,7 @@ from langchain_core.messages import (
     ToolCall as LC_ToolCall,
 )
 from langchain_core.messages.ai import UsageMetadata
+from langchain_core.output_parsers import JsonOutputParser, PydanticOutputParser
 from langchain_core.output_parsers.base import OutputParserLike
 from langchain_core.output_parsers.openai_tools import (
     JsonOutputKeyToolsParser,
@@ -401,29 +403,85 @@ class ChatCohere(BaseChatModel, BaseCohere):
     def with_structured_output(
         self,
         schema: Union[Dict, Type[BaseModel]],
+        method: Literal[
+            "function_calling", "tool_calling", "json_mode", "json_schema"
+        ] = "json_schema",
         **kwargs: Any,
     ) -> Runnable[LanguageModelInput, Union[Dict, BaseModel]]:
         """Model wrapper that returns outputs formatted to match the given schema.
+        Given schema can be a Pydantic class or a dict.
 
         Args:
             schema: The output schema as a dict or a Pydantic class. If a Pydantic class
                 then the model output will be an object of that class. If a dict then
                 the model output will be a dict.
+            method: The method for steering model generation, one of:
+                - "function_calling" or "tool_calling":
+                    Uses Cohere's tool-calling (formerly called function calling)
+                    API: https://docs.cohere.com/v2/docs/tool-use
+                - "json_schema":
+                    Uses Cohere's Structured Output API: https://docs.cohere.com/docs/structured-outputs
+                    Allows the user to pass a json schema (or pydantic)
+                        to the model for structured output.
+                    This is the default method.
+                    Supported for "command-r", "command-r-plus", and later
+                    models.
+                - "json_mode":
+                    Uses Cohere's Structured Output API: https://docs.cohere.com/docs/structured-outputs
+                    Supported for "command-r", "command-r-plus", and later
+                    models.
 
         Returns:
             A Runnable that takes any ChatModel input and returns either a dict or
             Pydantic class as output.
         """
-        is_pydantic_schema = isinstance(schema, type) and issubclass(schema, BaseModel)
-        llm = self.bind_tools([schema], **kwargs)
-        if is_pydantic_schema:
-            output_parser: OutputParserLike = PydanticToolsParser(
-                tools=[schema], first_tool_only=True
+        if (not schema) and (method != "json_mode"):
+            raise ValueError(
+                "schema must be specified when method is not 'json_mode'. "
+                f"Received {schema}."
             )
+        is_pydantic_schema = isinstance(schema, type) and issubclass(schema, BaseModel)
+        if method == "function_calling" or method == "tool_calling":
+            llm = self.bind_tools([schema], **kwargs)
+            if is_pydantic_schema:
+                output_parser: OutputParserLike = PydanticToolsParser(
+                    tools=[schema], first_tool_only=True
+                )
+            else:
+                key_name = _convert_to_cohere_tool(schema)["name"]
+                output_parser = JsonOutputKeyToolsParser(
+                    key_name=key_name, first_tool_only=True
+                )
+        elif method == "json_mode":
+            # Refers to Cohere's `json_object` mode
+            llm = self.bind(response_format={"type": "json_object"})
+            output_parser = (
+                PydanticOutputParser(pydantic_object=schema)  # type: ignore[arg-type]
+                if is_pydantic_schema
+                else JsonOutputParser()
+            )
+        elif method == "json_schema":
+            response_format = (
+                dict(
+                    schema.model_json_schema().items()  # type: ignore[union-attr]
+                )
+                if is_pydantic_schema
+                else schema
+            )
+            cohere_response_format: Dict[Any, Any] = {"type": "json_object"}
+            cohere_response_format["schema"] = {
+                k: v
+                for k, v in response_format.items()  # type: ignore[union-attr]
+            }
+            llm = self.bind(response_format=cohere_response_format)
+            if is_pydantic_schema:
+                output_parser = PydanticOutputParser(pydantic_object=schema)
+            else:
+                output_parser = JsonOutputParser()
         else:
-            key_name = _convert_to_cohere_tool(schema)["name"]
-            output_parser = JsonOutputKeyToolsParser(
-                key_name=key_name, first_tool_only=True
+            raise ValueError(
+                f"Unrecognized method argument. Expected one of 'function_calling' or "
+                f"or 'json_schema' or 'json_mode'. Received: '{method}'"
             )
 
         return llm | output_parser
