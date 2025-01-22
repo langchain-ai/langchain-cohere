@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 import re
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 import cohere
 from langchain_core.callbacks import (
@@ -29,6 +29,9 @@ def enforce_stop_tokens(text: str, stop: List[str]) -> str:
 
 
 logger = logging.getLogger(__name__)
+
+if TYPE_CHECKING:
+    from cohere.types import ListModelsResponse  # noqa: F401
 
 
 def completion_with_retry(llm: Cohere, **kwargs: Any) -> Any:
@@ -58,6 +61,7 @@ class BaseCohere(Serializable):
 
     client: Any = None  #: :meta private:
     async_client: Any = None  #: :meta private:
+
     model: Optional[str] = Field(default=None)
     """Model name to use."""
 
@@ -83,6 +87,15 @@ class BaseCohere(Serializable):
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
 
+    def _get_default_model(self) -> str:
+        """Fetches the current default model name."""
+        response = self.client.models.list(default_only=True, endpoint="chat")  # type: "ListModelsResponse"
+        if not response.models:
+            raise Exception("invalid cohere list models response")
+        if not response.models[0].name:
+            raise Exception("invalid cohere list models response")
+        return response.models[0].name
+
     @model_validator(mode="after")
     def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
@@ -98,12 +111,17 @@ class BaseCohere(Serializable):
             client_name=client_name,
             base_url=self.base_url,
         )
+
         self.async_client = cohere.AsyncClient(
             api_key=cohere_api_key,
             client_name=client_name,
             timeout=timeout_seconds,
             base_url=self.base_url,
         )
+
+        if not self.model:
+            self.model = self._get_default_model()
+
         return self
 
 
