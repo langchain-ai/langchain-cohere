@@ -1,32 +1,63 @@
 """Test chat model integration."""
 
-import typing
+from typing import Any, Dict, Generator, List, Optional
 from unittest.mock import patch
 
 import pytest
-from cohere.types import NonStreamedChatResponse, ToolCall
+from cohere.types import (
+    AssistantChatMessageV2,
+    AssistantMessageResponse,
+    ChatMessageEndEventDelta,
+    ChatResponse,
+    NonStreamedChatResponse,
+    SystemChatMessageV2,
+    ToolCall,
+    ToolCallV2,
+    ToolCallV2Function,
+    ToolChatMessageV2,
+    ToolV2,
+    ToolV2Function,
+    Usage,
+    UsageBilledUnits,
+    UsageTokens,
+    UserChatMessageV2,
+)
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
+from langchain_core.tools import tool
+from pytest import WarningsRecorder
 
 from langchain_cohere.chat_models import (
+    BaseCohere,
     ChatCohere,
     _messages_to_cohere_tool_results_curr_chat_turn,
     get_cohere_chat_request,
+    get_cohere_chat_request_v2,
+)
+from langchain_cohere.cohere_agent import (
+    _format_to_cohere_tools_v2,
 )
 
 
-def test_initialization() -> None:
+def test_initialization(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+) -> None:
     """Test chat model initialization."""
     ChatCohere(cohere_api_key="test")
 
 
 @pytest.mark.parametrize(
-    "chat_cohere,expected",
+    "chat_cohere_kwargs,expected",
     [
-        pytest.param(ChatCohere(cohere_api_key="test"), {}, id="defaults"),
         pytest.param(
-            ChatCohere(
-                cohere_api_key="test", model="foo", temperature=1.0, preamble="bar"
-            ),
+            {"cohere_api_key": "test"}, {"model": "command-r-plus"}, id="defaults"
+        ),
+        pytest.param(
+            {
+                "cohere_api_key": "test",
+                "model": "foo",
+                "temperature": 1.0,
+                "preamble": "bar",
+            },
             {
                 "model": "foo",
                 "temperature": 1.0,
@@ -36,7 +67,12 @@ def test_initialization() -> None:
         ),
     ],
 )
-def test_default_params(chat_cohere: ChatCohere, expected: typing.Dict) -> None:
+def test_default_params(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+    chat_cohere_kwargs: Dict[str, Any],
+    expected: Dict,
+) -> None:
+    chat_cohere = ChatCohere(**chat_cohere_kwargs)
     actual = chat_cohere._default_params
     assert expected == actual
 
@@ -116,7 +152,9 @@ def test_default_params(chat_cohere: ChatCohere, expected: typing.Dict) -> None:
     ],
 )
 def test_get_generation_info(
-    response: typing.Any, expected: typing.Dict[str, typing.Any]
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+    response: Any,
+    expected: Dict[str, Any],
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
 
@@ -124,6 +162,316 @@ def test_get_generation_info(
         mock_uuid.return_value.hex = "foo"
         actual = chat_cohere._get_generation_info(response)
 
+    assert expected == actual
+
+
+@pytest.mark.parametrize(
+    "response, documents, expected",
+    [
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan="I will use the magic_function tool to answer the question.",  # noqa: E501
+                    tool_calls=[
+                        ToolCallV2(
+                            function=ToolCallV2Function(
+                                name="tool1", arguments='{"arg1": 1, "arg2": "2"}'
+                            )
+                        ),
+                        ToolCallV2(
+                            function=ToolCallV2Function(
+                                name="tool2", arguments='{"arg3": 3, "arg4": "4"}'
+                            )
+                        ),
+                    ],
+                    content=None,
+                    citations=None,
+                ),
+                usage=Usage(tokens={"input_tokens": 215, "output_tokens": 38}),
+            ),
+            None,
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+                "tool_plan": "I will use the magic_function tool to answer the question.",  # noqa: E501
+                "tool_calls": [
+                    {
+                        "id": "foo",
+                        "function": {
+                            "name": "tool1",
+                            "arguments": '{"arg1": 1, "arg2": "2"}',
+                        },
+                        "type": "function",
+                    },
+                    {
+                        "id": "foo",
+                        "function": {
+                            "name": "tool2",
+                            "arguments": '{"arg3": 3, "arg4": "4"}',
+                        },
+                        "type": "function",
+                    },
+                ],
+                "token_count": {
+                    "input_tokens": 215,
+                    "output_tokens": 38,
+                },
+            },
+            id="tools should be called",
+        ),
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan=None,
+                    tool_calls=[],
+                    content=[],
+                    citations=None,
+                ),
+            ),
+            None,
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+            },
+            id="no tools should be called",
+        ),
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan=None,
+                    tool_calls=[],
+                    content=[{"type": "text", "text": "How may I help you today?"}],
+                    citations=None,
+                ),
+                usage=Usage(tokens={"input_tokens": 215, "output_tokens": 38}),
+            ),
+            None,
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+                "content": "How may I help you today?",
+                "token_count": {
+                    "input_tokens": 215,
+                    "output_tokens": 38,
+                },
+            },
+            id="chat response without tools/documents/citations/tools etc",
+        ),
+        pytest.param(
+            ChatResponse(
+                id="foo",
+                finish_reason="complete",
+                message=AssistantMessageResponse(
+                    tool_plan=None,
+                    tool_calls=[],
+                    content=[{"type": "text", "text": "How may I help you today?"}],
+                    citations=None,
+                ),
+                usage=Usage(tokens={"input_tokens": 215, "output_tokens": 38}),
+            ),
+            [
+                {
+                    "id": "doc-1",
+                    "data": {
+                        "text": "doc-1 content",
+                    },
+                },
+                {
+                    "id": "doc-2",
+                    "data": {
+                        "text": "doc-2 content",
+                    },
+                },
+            ],
+            {
+                "id": "foo",
+                "finish_reason": "complete",
+                "documents": [
+                    {
+                        "id": "doc-1",
+                        "data": {
+                            "text": "doc-1 content",
+                        },
+                    },
+                    {
+                        "id": "doc-2",
+                        "data": {
+                            "text": "doc-2 content",
+                        },
+                    },
+                ],
+                "content": "How may I help you today?",
+                "token_count": {
+                    "input_tokens": 215,
+                    "output_tokens": 38,
+                },
+            },
+            id="chat response with documents",
+        ),
+    ],
+)
+def test_get_generation_info_v2(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+    response: ChatResponse,
+    documents: Optional[List[Dict[str, Any]]],
+    expected: Dict[str, Any],
+) -> None:
+    chat_cohere = ChatCohere(cohere_api_key="test")
+    with patch("uuid.uuid4") as mock_uuid:
+        mock_uuid.return_value.hex = "foo"
+        actual = chat_cohere._get_generation_info_v2(response, documents)
+    assert expected == actual
+
+
+@pytest.mark.parametrize(
+    "final_delta, documents, tool_calls, expected",
+    [
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
+            ),
+            None,
+            None,
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+            },
+            id="message-end no documents no tools",
+        ),
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
+            ),
+            [{"id": "foo", "snippet": "some text"}],
+            None,
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+                "documents": [
+                    {
+                        "id": "foo",
+                        "snippet": "some text",
+                    }
+                ],
+            },
+            id="message-end with documents",
+        ),
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
+            ),
+            None,
+            [
+                {
+                    "id": "foo",
+                    "type": "function",
+                    "function": {
+                        "name": "bar",
+                        "arguments": "{'a': 1}",
+                    },
+                }
+            ],
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+                "tool_calls": [
+                    {
+                        "id": "foo",
+                        "type": "function",
+                        "function": {
+                            "name": "bar",
+                            "arguments": "{'a': 1}",
+                        },
+                    }
+                ],
+            },
+            id="message-end with tool_calls",
+        ),
+        pytest.param(
+            ChatMessageEndEventDelta(
+                finish_reason="complete",
+                usage=Usage(
+                    tokens=UsageTokens(input_tokens=215, output_tokens=38),
+                    billed_units=UsageBilledUnits(input_tokens=215, output_tokens=38),
+                ),
+            ),
+            [{"id": "foo", "snippet": "some text"}],
+            [
+                {
+                    "id": "foo",
+                    "type": "function",
+                    "function": {
+                        "name": "bar",
+                        "arguments": "{'a': 1}",
+                    },
+                }
+            ],
+            {
+                "finish_reason": "complete",
+                "token_count": {
+                    "input_tokens": 215.0,
+                    "output_tokens": 38.0,
+                    "total_tokens": 253.0,
+                },
+                "documents": [{"id": "foo", "snippet": "some text"}],
+                "tool_calls": [
+                    {
+                        "id": "foo",
+                        "type": "function",
+                        "function": {
+                            "name": "bar",
+                            "arguments": "{'a': 1}",
+                        },
+                    }
+                ],
+            },
+            id="message-end with documents and tool_calls",
+        ),
+    ],
+)
+def test_get_stream_info_v2(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+    final_delta: ChatMessageEndEventDelta,
+    documents: Optional[List[Dict[str, Any]]],
+    tool_calls: Optional[List[Dict[str, Any]]],
+    expected: Dict[str, Any],
+) -> None:
+    chat_cohere = ChatCohere(cohere_api_key="test")
+    with patch("uuid.uuid4") as mock_uuid:
+        mock_uuid.return_value.hex = "foo"
+        actual = chat_cohere._get_stream_info_v2(
+            final_delta=final_delta, documents=documents, tool_calls=tool_calls
+        )
     assert expected == actual
 
 
@@ -165,10 +513,10 @@ def test_messages_to_cohere_tool_results() -> None:
 
 
 @pytest.mark.parametrize(
-    "cohere_client,messages,force_single_step,expected",
+    "cohere_client_kwargs,messages,force_single_step,expected",
     [
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            {"cohere_api_key": "test"},
             [HumanMessage(content="what is magic_function(12) ?")],
             True,
             {
@@ -188,7 +536,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is True",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -271,7 +619,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Multiple Messages with tool results and force_single_step is True",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            {"cohere_api_key": "test"},
             [HumanMessage(content="what is magic_function(12) ?")],
             False,
             {
@@ -291,7 +639,7 @@ def test_messages_to_cohere_tool_results() -> None:
             id="Single Message and force_single_step is False",
         ),
         pytest.param(
-            ChatCohere(cohere_api_key="test"),
+            {"cohere_api_key": "test"},
             [
                 HumanMessage(content="what is magic_function(12) ?"),
                 AIMessage(
@@ -387,11 +735,14 @@ def test_messages_to_cohere_tool_results() -> None:
     ],
 )
 def test_get_cohere_chat_request(
-    cohere_client: ChatCohere,
-    messages: typing.List[BaseMessage],
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+    cohere_client_kwargs: Dict[str, Any],
+    messages: List[BaseMessage],
     force_single_step: bool,
-    expected: typing.Dict[str, typing.Any],
+    expected: Dict[str, Any],
 ) -> None:
+    cohere_client = ChatCohere(**cohere_client_kwargs)
+
     tools = [
         {
             "name": "magic_function",
@@ -412,3 +763,680 @@ def test_get_cohere_chat_request(
     # Check that the result is a dictionary
     assert isinstance(result, dict)
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    "cohere_client_v2_kwargs,preamble,messages,expected",
+    [
+        pytest.param(
+            {"cohere_api_key": "test"},
+            None,
+            [HumanMessage(content="what is magic_function(12) ?")],
+            {
+                "messages": [
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    )
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="Single message",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+            [HumanMessage(content="what is magic_function(12) ?")],
+            {
+                "messages": [
+                    SystemChatMessageV2(
+                        role="system",
+                        content="You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="Single message with preamble",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            None,
+            [
+                HumanMessage(content="Hello!"),
+                AIMessage(
+                    content="Hello, how may I assist you?",  # noqa: E501
+                    additional_kwargs={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "91588a40-684d-40f9-ae87-e27c3b4cda87",
+                        "tool_calls": None,
+                        "token_count": {"input_tokens": 912, "output_tokens": 22},
+                    },
+                    response_metadata={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "91588a40-684d-40f9-ae87-e27c3b4cda87",
+                        "tool_calls": None,
+                        "token_count": {"input_tokens": 912, "output_tokens": 22},
+                    },
+                    id="run-148af4fb-adf0-4f0c-b209-bffcde9a5f58-0",
+                ),
+                HumanMessage(content="Remember my name, its Bob."),
+            ],
+            {
+                "messages": [
+                    UserChatMessageV2(
+                        role="user",
+                        content="Hello!",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        content="Hello, how may I assist you?",
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="Remember my name, its Bob.",
+                    ),
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="Multiple messages no tool usage",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+            [
+                HumanMessage(content="Hello!"),
+                AIMessage(
+                    content="Hello, how may I assist you?",  # noqa: E501
+                    additional_kwargs={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "91588a40-684d-40f9-ae87-e27c3b4cda87",
+                        "tool_calls": None,
+                        "token_count": {"input_tokens": 912, "output_tokens": 22},
+                    },
+                    response_metadata={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "91588a40-684d-40f9-ae87-e27c3b4cda87",
+                        "tool_calls": None,
+                        "token_count": {"input_tokens": 912, "output_tokens": 22},
+                    },
+                    id="run-148af4fb-adf0-4f0c-b209-bffcde9a5f58-0",
+                ),
+                HumanMessage(content="Remember my name, its Bob."),
+            ],
+            {
+                "messages": [
+                    SystemChatMessageV2(
+                        role="system",
+                        content="You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="Hello!",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        content="Hello, how may I assist you?",
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="Remember my name, its Bob.",
+                    ),
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="Multiple messages no tool usage, with preamble",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            None,
+            [
+                HumanMessage(content="what is magic_function(12) ?"),
+                AIMessage(
+                    content="I will use the magic_function tool to answer the question.",  # noqa: E501
+                    additional_kwargs={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    response_metadata={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    id="run-8039f73d-2e50-4eec-809e-e3690a6d3a9a-0",
+                    tool_calls=[
+                        {
+                            "name": "magic_function",
+                            "args": {"a": 12},
+                            "id": "e81dbae6937e47e694505f81e310e205",
+                        }
+                    ],
+                ),
+                ToolMessage(
+                    content="112", tool_call_id="e81dbae6937e47e694505f81e310e205"
+                ),
+            ],
+            {
+                "messages": [
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        tool_plan="I will use the magic_function tool to answer the question.",  # noqa: E501
+                        tool_calls=[
+                            ToolCallV2(
+                                id="e81dbae6937e47e694505f81e310e205",
+                                type="function",
+                                function=ToolCallV2Function(
+                                    name="magic_function",
+                                    arguments='{"a": 12}',
+                                ),
+                            )
+                        ],
+                    ),
+                    ToolChatMessageV2(
+                        role="tool",
+                        tool_call_id="e81dbae6937e47e694505f81e310e205",
+                        content=[
+                            {
+                                "type": "document",
+                                "document": {"data": {"output": "112"}},
+                            }
+                        ],
+                    ),
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="Multiple messages with tool usage",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+            [
+                HumanMessage(content="what is magic_function(12) ?"),
+                AIMessage(
+                    content="I will use the magic_function tool to answer the question.",  # noqa: E501
+                    additional_kwargs={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    response_metadata={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    id="run-8039f73d-2e50-4eec-809e-e3690a6d3a9a-0",
+                    tool_calls=[
+                        {
+                            "name": "magic_function",
+                            "args": {"a": 12},
+                            "id": "e81dbae6937e47e694505f81e310e205",
+                        }
+                    ],
+                ),
+                ToolMessage(
+                    content="112", tool_call_id="e81dbae6937e47e694505f81e310e205"
+                ),
+            ],
+            {
+                "messages": [
+                    SystemChatMessageV2(
+                        role="system",
+                        content="You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
+                    ),
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        tool_plan="I will use the magic_function tool to answer the question.",  # noqa: E501
+                        tool_calls=[
+                            ToolCallV2(
+                                id="e81dbae6937e47e694505f81e310e205",
+                                type="function",
+                                function=ToolCallV2Function(
+                                    name="magic_function",
+                                    arguments='{"a": 12}',
+                                ),
+                            )
+                        ],
+                    ),
+                    ToolChatMessageV2(
+                        role="tool",
+                        tool_call_id="e81dbae6937e47e694505f81e310e205",
+                        content=[
+                            {
+                                "type": "document",
+                                "document": {"data": {"output": "112"}},
+                            }
+                        ],
+                    ),
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="Multiple messages with tool usage, and preamble",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            None,
+            [
+                HumanMessage(content="what is magic_function(12) ?"),
+                AIMessage(
+                    content="",
+                    additional_kwargs={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    response_metadata={
+                        "documents": None,
+                        "citations": None,
+                        "search_results": None,
+                        "search_queries": None,
+                        "is_search_required": None,
+                        "generation_id": "b8e48c51-4340-4081-b505-5d51e78493ab",
+                        "tool_calls": [
+                            {
+                                "id": "976f79f68d8342139d8397d6c89688c4",
+                                "function": {
+                                    "name": "magic_function",
+                                    "arguments": '{"a": 12}',
+                                },
+                                "type": "function",
+                            }
+                        ],
+                        "token_count": {"output_tokens": 9},
+                    },
+                    id="run-8039f73d-2e50-4eec-809e-e3690a6d3a9a-0",
+                    tool_calls=[
+                        {
+                            "name": "magic_function",
+                            "args": {"a": 12},
+                            "id": "e81dbae6937e47e694505f81e310e205",
+                        }
+                    ],
+                ),
+                ToolMessage(
+                    content="112", tool_call_id="e81dbae6937e47e694505f81e310e205"
+                ),
+            ],
+            {
+                "messages": [
+                    UserChatMessageV2(
+                        role="user",
+                        content="what is magic_function(12) ?",
+                    ),
+                    AssistantChatMessageV2(
+                        role="assistant",
+                        tool_plan="I will assist you using the tools provided.",
+                        tool_calls=[
+                            ToolCallV2(
+                                id="e81dbae6937e47e694505f81e310e205",
+                                type="function",
+                                function=ToolCallV2Function(
+                                    name="magic_function",
+                                    arguments='{"a": 12}',
+                                ),
+                            )
+                        ],
+                    ),
+                    ToolChatMessageV2(
+                        role="tool",
+                        tool_call_id="e81dbae6937e47e694505f81e310e205",
+                        content=[
+                            {
+                                "type": "document",
+                                "document": {"data": {"output": "112"}},
+                            }
+                        ],
+                    ),
+                ],
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "magic_function",
+                            "description": "Does a magical operation to a number.",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "int",
+                                        "description": "",
+                                    }
+                                },
+                                "required": ["a"],
+                            },
+                        },
+                    }
+                ],
+            },
+            id="assistent message with tool calls empty content",
+        ),
+    ],
+)
+def test_get_cohere_chat_request_v2(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+    cohere_client_v2_kwargs: Dict[str, Any],
+    preamble: str,
+    messages: List[BaseMessage],
+    expected: Dict[str, Any],
+) -> None:
+    cohere_client_v2 = ChatCohere(**cohere_client_v2_kwargs)
+
+    tools = [
+        {
+            "type": "function",
+            "function": {
+                "name": "magic_function",
+                "description": "Does a magical operation to a number.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "a": {
+                            "type": "int",
+                            "description": "",
+                        }
+                    },
+                    "required": ["a"],
+                },
+            },
+        }
+    ]
+
+    result = get_cohere_chat_request_v2(
+        messages,
+        stop_sequences=cohere_client_v2.stop,
+        tools=tools,
+        preamble=preamble,
+    )
+
+    # Check that the result is a dictionary
+    assert isinstance(result, dict)
+    assert result == expected
+
+
+def test_format_to_cohere_tools_v2() -> None:
+    @tool
+    def add_two_numbers(a: int, b: int) -> int:
+        """Add two numbers together"""
+        return a + b
+
+    @tool
+    def capital_cities(country: str) -> str:
+        """Returns the capital city of a country"""
+        return "France"
+
+    tools = [add_two_numbers, capital_cities]
+    result = _format_to_cohere_tools_v2(tools)
+
+    expected = [
+        ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name="add_two_numbers",
+                description="Add two numbers together",
+                parameters={
+                    "type": "object",
+                    "properties": {
+                        "a": {
+                            "description": "",
+                            "type": "integer",
+                        },
+                        "b": {
+                            "description": "",
+                            "type": "integer",
+                        },
+                    },
+                    "required": [
+                        "a",
+                        "b",
+                    ],
+                },
+            ),
+        ),
+        ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name="capital_cities",
+                description="Returns the capital city of a country",
+                parameters={
+                    "type": "object",
+                    "properties": {
+                        "country": {
+                            "description": "",
+                            "type": "string",
+                        },
+                    },
+                    "required": [
+                        "country",
+                    ],
+                },
+            ),
+        ),
+    ]
+
+    assert result == expected
+
+
+def test_get_cohere_chat_request_v2_warn_connectors_deprecated(
+    recwarn: WarningsRecorder,
+) -> None:
+    messages: List[BaseMessage] = [HumanMessage(content="Hello")]
+    kwargs: Dict[str, Any] = {"connectors": ["some_connector"]}
+
+    with pytest.raises(
+        ValueError,
+        match="The 'connectors' parameter is deprecated as of version 0.4.0.",
+    ):
+        get_cohere_chat_request_v2(messages, **kwargs)
+
+    assert len(recwarn) == 1
+    warning = recwarn.pop(DeprecationWarning)
+    assert issubclass(warning.category, DeprecationWarning)
+    assert "The 'connectors' parameter is deprecated as of version 0.4.0." in str(
+        warning.message
+    )
+    assert "Please use the 'tools' parameter instead." in str(warning.message)

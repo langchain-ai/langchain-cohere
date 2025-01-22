@@ -1,6 +1,7 @@
 interactions:
 - request:
-    body: '{"message": "I''m Pickle Rick", "chat_history": [], "stream": true}'
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "I''m Pickle
+      Rick"}], "stream": true}'
     headers:
       accept:
       - '*/*'
@@ -9,13 +10,13 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '66'
+      - '100'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -23,67 +24,299 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.4
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"is_finished":false,"event_type":"stream-start","generation_id":"8e043b1e-87e7-42ce-92b9-a10d229d0e3a"}
+      string: 'event: message-start
 
-        {"is_finished":false,"event_type":"text-generation","text":"I"}
+        data: {"id":"c9216b71-fc8a-4107-be45-168630df7a3f","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":"''m"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" sorry"}
+        event: content-start
 
-        {"is_finished":false,"event_type":"text-generation","text":","}
+        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":" but"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" I"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":" don"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"Hi"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":"''t"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" understand"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":" the"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        there"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":" reference"}
 
-        {"is_finished":false,"event_type":"text-generation","text":"."}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":" Is"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":" there"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" anything"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":" I"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        You"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":" can"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" help"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":" you"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''re"}}}}
 
-        {"is_finished":false,"event_type":"text-generation","text":" with"}
 
-        {"is_finished":false,"event_type":"text-generation","text":" today"}
+        event: content-delta
 
-        {"is_finished":false,"event_type":"text-generation","text":"?"}
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Pickle"}}}}
 
-        {"is_finished":true,"event_type":"stream-end","response":{"response_id":"deee60df-7483-4df8-92e4-256572a029dc","text":"I''m
-        sorry, but I don''t understand the reference. Is there anything I can help
-        you with today?","generation_id":"8e043b1e-87e7-42ce-92b9-a10d229d0e3a","chat_history":[{"role":"USER","message":"I''m
-        Pickle Rick"},{"role":"CHATBOT","message":"I''m sorry, but I don''t understand
-        the reference. Is there anything I can help you with today?"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":4,"output_tokens":22},"tokens":{"input_tokens":70,"output_tokens":22}}},"finish_reason":"COMPLETE"}
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Wow"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":","}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        that"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''s"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        fun"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        nickname"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"!"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Do"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        you"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        have"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        special"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        recipe"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        for"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        pick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"ling"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        or"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        a"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        favorite"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        way"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        be"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        enjoyed"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"?"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        I"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"''d"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        love"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        to"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        hear"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        more"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        about"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        your"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        version"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        of"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
+        Rick"}}}}
+
+
+        event: content-delta
+
+        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
+
+
+        event: content-end
+
+        data: {"type":"content-end","index":0}
+
+
+        event: message-end
+
+        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":4,"output_tokens":45},"tokens":{"input_tokens":70,"output_tokens":45}}}}
+
+
+        data: [DONE]
+
 
         '
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -91,25 +324,29 @@ interactions:
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
       content-type:
-      - application/stream+json
+      - text/event-stream
       date:
-      - Mon, 10 Jun 2024 09:21:29 GMT
+      - Thu, 28 Nov 2024 15:59:47 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
       - no-cache
       server:
       - envoy
-      transfer-encoding:
-      - chunked
       vary:
       - Origin
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a25601333504580a5522872531ad8de4
+      - 0a252d83437b08065c3a12e52de770c4
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '81'
+      - '37'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '28'
     status:
       code: 200
       message: OK

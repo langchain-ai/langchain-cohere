@@ -13,7 +13,7 @@ from langchain_cohere import ChatCohere
             [
                 HumanMessage(content="what is the value of magic_function(3)?"),
                 AIMessage(
-                    content="",
+                    content="I will call magic function with input 3.",
                     tool_calls=[
                         {
                             "name": "magic_function",
@@ -28,7 +28,7 @@ from langchain_cohere import ChatCohere
                     tool_call_id="d86e6098-21e1-44c7-8431-40cfc6d35590",
                 ),
             ],
-            "The value of magic_function(3) is **5**.",
+            "The value of magic_function(3) is 5.",
             marks=pytest.mark.vcr,
             id="magic_function",
         )

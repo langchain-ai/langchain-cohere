@@ -23,5 +23,5 @@ def test_load_summarize_chain() -> None:
     resp = agent_executor.invoke({"documents": docs})
     assert (
         resp.content
-        == "Ginger is a fragrant spice that adds a spicy kick to sweet and savoury foods. It has a range of health benefits, including aiding digestion, relieving nausea, and easing bloating and gas. It contains antioxidants and anti-inflammatory compounds, and can be consumed in various forms, including tea, ale, candies, and Asian dishes. Ginger supplements are not recommended, as they may contain unlisted ingredients and are not well-regulated."  # noqa: E501
+        == "Ginger has a range of health benefits, including improving digestion, relieving nausea, reducing bloating and gas, and providing antioxidants to manage free radicals. It may also have anti-inflammatory properties. Ginger can be consumed in various forms, including tea, ale, candies, and as an ingredient in many dishes. Fresh ginger root is flavourful, while ginger powder is a convenient and economical alternative. Ginger supplements are not recommended due to potential unknown ingredients and the unregulated nature of the supplement industry."  # noqa: E501
     )

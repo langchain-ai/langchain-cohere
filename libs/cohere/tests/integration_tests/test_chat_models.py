@@ -111,7 +111,7 @@ async def test_ainvoke() -> None:
     )
 
 
-# @pytest.mark.vcr()
+@pytest.mark.vcr()
 def test_invoke() -> None:
     """Test invoke tokens from ChatCohere."""
     llm = ChatCohere(model=DEFAULT_MODEL)
@@ -185,6 +185,51 @@ def test_streaming_tool_call() -> None:
     assert tool_call_chunk["args"] is not None
     assert json.loads(tool_call_chunk["args"]) == {"name": "Erick", "age": 27}
     assert tool_call_chunks_present
+
+
+@pytest.mark.vcr()
+async def test_async_streaming_tool_call() -> None:
+    llm = ChatCohere(model=DEFAULT_MODEL, temperature=0)
+
+    class Person(BaseModel):
+        name: str = Field(description="The name of the person")
+        age: int = Field(description="The age of the person")
+
+    tool_llm = llm.bind_tools([Person])
+
+    # where it calls the tool
+    strm = tool_llm.astream("Erick, 27 years old")
+
+    additional_kwargs = None
+    tool_call_chunks_present = False
+    tool_plan = None
+    async for chunk in strm:
+        assert isinstance(chunk, AIMessageChunk)
+        additional_kwargs = chunk.additional_kwargs
+        if chunk.tool_call_chunks:
+            tool_call_chunks_present = True
+            tool_plan = chunk.content
+
+    assert additional_kwargs is not None
+    assert "tool_calls" in additional_kwargs
+    assert len(additional_kwargs["tool_calls"]) == 1
+    assert additional_kwargs["tool_calls"][0]["function"]["name"] == "Person"
+    assert json.loads(additional_kwargs["tool_calls"][0]["function"]["arguments"]) == {
+        "name": "Erick",
+        "age": 27,
+    }
+    assert isinstance(chunk, AIMessageChunk)
+    assert isinstance(chunk.tool_call_chunks, list)
+    assert len(chunk.tool_call_chunks) == 1
+    tool_call_chunk = chunk.tool_call_chunks[0]
+    assert tool_call_chunk["name"] == "Person"
+    assert tool_call_chunk["args"] is not None
+    assert json.loads(tool_call_chunk["args"]) == {"name": "Erick", "age": 27}
+    assert tool_call_chunks_present
+    assert (
+        tool_plan
+        == "I will use the Person tool to create a person with the name Erick and age 27, and then relay this information to the user."  # noqa: E501
+    )
 
 
 @pytest.mark.vcr()

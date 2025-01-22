@@ -6,16 +6,13 @@ from cohere.types import (
     ToolCall,
     ToolParameterDefinitionsValue,
     ToolResult,
+    ToolV2,
+    ToolV2Function,
 )
-from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
-from langchain_core.language_models import BaseLanguageModel
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.outputs import Generation
 from langchain_core.outputs.chat_generation import ChatGeneration
-from langchain_core.prompts.chat import ChatPromptTemplate
-from langchain_core.runnables import Runnable, RunnablePassthrough
-from langchain_core.runnables.base import RunnableLambda
 from langchain_core.tools import BaseTool
 from langchain_core.utils.function_calling import (
     convert_to_openai_function,
@@ -25,48 +22,16 @@ from pydantic import BaseModel
 from langchain_cohere.utils import JSON_TO_PYTHON_TYPES
 
 
-@deprecated(
-    since="0.1.7",
-    removal="0.4.0",
-    alternative="""Use the 'tool calling agent' 
-    or 'Langgraph agent' with the ChatCohere class instead.
-    See https://docs.cohere.com/docs/cohere-and-langchain for more information.""",
-)
-def create_cohere_tools_agent(
-    llm: BaseLanguageModel,
-    tools: Sequence[BaseTool],
-    prompt: ChatPromptTemplate,
-    **kwargs: Any,
-) -> Runnable:
-    def llm_with_tools(input_: Dict) -> Runnable:
-        tool_results = (
-            input_["tool_results"] if len(input_["tool_results"]) > 0 else None
-        )
-        tools_ = input_["tools"] if len(input_["tools"]) > 0 else None
-        return RunnableLambda(lambda x: x["input"]) | llm.bind(
-            tools=tools_, tool_results=tool_results, **kwargs
-        )
-
-    agent = (
-        RunnablePassthrough.assign(
-            # Intermediate steps are in tool results.
-            # Edit below to change the prompt parameters.
-            input=lambda x: prompt.format_messages(**x, agent_scratchpad=[]),
-            tools=lambda x: _format_to_cohere_tools(tools),
-            tool_results=lambda x: _format_to_cohere_tools_messages(
-                x["intermediate_steps"]
-            ),
-        )
-        | llm_with_tools
-        | _CohereToolsAgentOutputParser()
-    )
-    return agent
-
-
 def _format_to_cohere_tools(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> List[Dict[str, Any]]:
     return [_convert_to_cohere_tool(tool) for tool in tools]
+
+
+def _format_to_cohere_tools_v2(
+    tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
+) -> List[ToolV2]:
+    return [_convert_to_cohere_tool_v2(tool) for tool in tools]
 
 
 def _format_to_cohere_tools_messages(
@@ -170,6 +135,99 @@ def _convert_to_cohere_tool(
             ),
             parameter_definitions=parameter_definitions,
         ).dict()
+    else:
+        raise ValueError(
+            f"Unsupported tool type {type(tool)}. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
+        )
+
+
+def _convert_to_cohere_tool_v2(
+    tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
+) -> ToolV2:
+    """
+    Convert a BaseTool instance, JSON schema dict,
+    or BaseModel type to a V2 Cohere tool.
+    """
+    if isinstance(tool, dict):
+        if not all(k in tool for k in ("title", "description", "properties")):
+            raise ValueError(
+                "Unsupported dict type. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501
+            )
+        return ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name=tool.get("title"),
+                description=tool.get("description", ""),
+                parameters={
+                    "type": "object",
+                    "properties": {
+                        param_name: {
+                            "description": param_definition.get("description", ""),
+                            "type": param_definition.get("type"),
+                        }
+                        for param_name, param_definition in tool.get(
+                            "properties", {}
+                        ).items()
+                    },
+                    "required": [
+                        param_name
+                        for param_name, param_definition in tool.get(
+                            "properties", {}
+                        ).items()
+                        if "default" not in param_definition
+                    ],
+                },
+            ),
+        )
+    elif (
+        (isinstance(tool, type) and issubclass(tool, BaseModel))
+        or callable(tool)
+        or isinstance(tool, BaseTool)
+    ):
+        as_json_schema_function = convert_to_openai_function(tool)
+        parameters = as_json_schema_function.get("parameters", {})
+        properties = parameters.get("properties", {})
+        parameter_definitions = {}
+        required_params = []
+        for param_name, param_definition in properties.items():
+            if "type" in param_definition:
+                _type = param_definition.get("type")
+            elif "anyOf" in param_definition:
+                _type = next(
+                    (
+                        t.get("type")
+                        for t in param_definition.get("anyOf", [])
+                        if t.get("type") != "null"
+                    ),
+                    param_definition.get("type"),
+                )
+            else:
+                _type = None
+            tool_definition = {
+                "type": _type,
+                "description": param_definition.get("description", ""),
+            }
+            parameter_definitions[param_name] = tool_definition
+            if param_name in parameters.get("required", []):
+                required_params.append(param_name)
+        return ToolV2(
+            type="function",
+            function=ToolV2Function(
+                name=as_json_schema_function.get("name"),
+                description=as_json_schema_function.get(
+                    # The Cohere API requires the description field.
+                    "description",
+                    as_json_schema_function.get("name"),
+                ),
+                parameters={
+                    "type": "object",
+                    "properties": {
+                        **parameter_definitions,
+                    },
+                    "required": required_params,
+                },
+            ),
+        )
     else:
         raise ValueError(
             f"Unsupported tool type {type(tool)}. Tool must be passed in as a BaseTool instance, JSON schema dict, or BaseModel type."  # noqa: E501

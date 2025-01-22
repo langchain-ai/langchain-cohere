@@ -1,12 +1,14 @@
 interactions:
 - request:
-    body: '{"message": "What is the capital of France", "chat_history": [], "temperature":
-      0.0, "tools": [{"name": "add_two_numbers", "description": "Add two numbers together",
-      "parameter_definitions": {"a": {"description": "", "type": "int", "required":
-      true}, "b": {"description": "", "type": "int", "required": true}}}, {"name":
-      "capital_cities", "description": "Returns the capital city of a country", "parameter_definitions":
-      {"country": {"description": "", "type": "str", "required": true}}}], "stream":
-      false}'
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "What is
+      the capital of France"}], "tools": [{"type": "function", "function": {"name":
+      "add_two_numbers", "description": "Add two numbers together", "parameters":
+      {"type": "object", "properties": {"a": {"type": "int", "description": null},
+      "b": {"type": "int", "description": null}}, "required": ["a", "b"]}}}, {"type":
+      "function", "function": {"name": "capital_cities", "description": "Returns the
+      capital city of a country", "parameters": {"type": "object", "properties": {"country":
+      {"type": "str", "description": null}}, "required": ["country"]}}}], "temperature":
+      0.0, "stream": false}'
     headers:
       accept:
       - '*/*'
@@ -15,13 +17,13 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '505'
+      - '654'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -29,36 +31,34 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.5.6
+      - 5.11.4
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"response_id":"735c53d4-8ed1-4475-ae28-859b407062ca","text":"I will
-        use the capital_cities tool to find the capital of France.","generation_id":"bd99ee0c-26fa-4083-a6ca-74098753f227","chat_history":[{"role":"USER","message":"What
-        is the capital of France"},{"role":"CHATBOT","message":"I will use the capital_cities
-        tool to find the capital of France.","tool_calls":[{"name":"capital_cities","parameters":{"country":"France"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":28,"output_tokens":23},"tokens":{"input_tokens":957,"output_tokens":23}},"tool_calls":[{"name":"capital_cities","parameters":{"country":"France"}}]}'
+      string: '{"id":"fe25f494-b8e8-4e8f-9887-85a02c2e109f","message":{"role":"assistant","tool_plan":"I
+        will search for the capital of France and relay this information to the user.","tool_calls":[{"id":"capital_cities_chf1bpadn07h","type":"function","function":{"name":"capital_cities","arguments":"{\"country\":\"France\"}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":31,"output_tokens":24},"tokens":{"input_tokens":944,"output_tokens":58}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '457'
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-length:
-      - '675'
       content-type:
       - application/json
       date:
-      - Mon, 10 Jun 2024 09:21:47 GMT
+      - Sat, 30 Nov 2024 14:10:29 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '4524'
+      - '4488'
       num_tokens:
-      - '51'
+      - '55'
       pragma:
       - no-cache
       server:
@@ -68,9 +68,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 3bcf6ef53223d573ac50c134f85f7a11
+      - 18601c997aa1b41645317a48b05b9469
+      x-endpoint-monthly-call-limit:
+      - '1000'
       x-envoy-upstream-service-time:
-      - '1187'
+      - '532'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '32'
     status:
       code: 200
       message: OK

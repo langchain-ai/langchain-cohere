@@ -10,7 +10,7 @@ from langchain_core.documents import Document
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import HumanMessage
 from langchain_core.retrievers import BaseRetriever
-from pydantic import ConfigDict, Field
+from pydantic import ConfigDict
 
 if TYPE_CHECKING:
     from langchain_core.messages import BaseMessage
@@ -33,8 +33,6 @@ def _get_docs(response: Any) -> List[Document]:
             metadata={
                 "type": "model_response",
                 "citations": response.generation_info["citations"],
-                "search_results": response.generation_info["search_results"],
-                "search_queries": response.generation_info["search_queries"],
                 "token_count": response.generation_info["token_count"],
             },
         )
@@ -44,18 +42,6 @@ def _get_docs(response: Any) -> List[Document]:
 
 class CohereRagRetriever(BaseRetriever):
     """Cohere Chat API with RAG."""
-
-    connectors: List[Dict] = Field(
-        default_factory=lambda: [{"id": "web-search"}],
-        deprecated="The 'connectors' parameter is deprecated as of version 0.3.3. Please use the 'tools' parameter instead.",  # noqa: E501
-    )
-    """
-    When specified, the model's reply will be enriched with information found by
-    querying each of the connectors (RAG). These will be returned as langchain
-    documents.
-
-    Currently only accepts {"id": "web-search"}.
-    """
 
     llm: BaseChatModel
     """Cohere ChatModel to use."""
@@ -75,7 +61,6 @@ class CohereRagRetriever(BaseRetriever):
         messages: List[List[BaseMessage]] = [[HumanMessage(content=query)]]
         res = self.llm.generate(
             messages,
-            connectors=self.connectors if documents is None else None,
             documents=documents,
             callbacks=run_manager.get_child(),
             **kwargs,
@@ -94,7 +79,6 @@ class CohereRagRetriever(BaseRetriever):
         res = (
             await self.llm.agenerate(
                 messages,
-                connectors=self.connectors if documents is None else None,
                 documents=documents,
                 callbacks=run_manager.get_child(),
                 **kwargs,
