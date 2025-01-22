@@ -1,23 +1,23 @@
 interactions:
 - request:
-    body: '{"message": "The person''s name is John, and he is 30 years old", "model":
-      "command-r", "chat_history": [], "response_format": {"type": "json_object"},
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "The person''s
+      name is John, and he is 30 years old"}], "response_format": {"type": "json_object"},
       "stream": false}'
     headers:
       accept:
       - '*/*'
       accept-encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       connection:
       - keep-alive
       content-length:
-      - '167'
+      - '179'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -25,20 +25,18 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.8.1
+      - 5.13.11
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"response_id":"e4e1a4ab-1c03-4234-8de3-0bccfccb9c4f","text":"{ \"name\":
-        \"John\", \"age\": 30 }","generation_id":"374d6c28-2ba2-44e3-9ad5-5a98ec2e0634","chat_history":[{"role":"USER","message":"The
-        person''s name is John, and he is 30 years old"},{"role":"CHATBOT","message":"{
-        \"name\": \"John\", \"age\": 30 }"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":15,"output_tokens":14},"tokens":{"input_tokens":92,"output_tokens":14}}}'
+      string: '{"id":"e9e0aeba-28fe-455e-a3bc-44540f0dfa5d","message":{"role":"assistant","content":[{"type":"text","text":"{   \"name\":
+        \"John\",\n        \"age\": 30\n    }"}]},"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":15,"output_tokens":17},"tokens":{"input_tokens":92,"output_tokens":17}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '484'
+      - '304'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -48,13 +46,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 26 Nov 2024 09:02:14 GMT
+      - Wed, 22 Jan 2025 17:51:48 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
-      - '569'
+      - '570'
       num_tokens:
-      - '29'
+      - '32'
       pragma:
       - no-cache
       server:
@@ -64,15 +62,15 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 8a818fd0c413c04813debf8325a32f6d
+      - 97d3e2f5d2462fc3ce5e8de71e2d9488
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '163'
+      - '176'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
-      - '34'
+      - '36'
     status:
       code: 200
       message: OK
