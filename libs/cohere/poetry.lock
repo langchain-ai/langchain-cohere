@@ -2773,10 +2773,7 @@ cffi = {version = ">=1.11", markers = "platform_python_implementation == \"PyPy\
 [package.extras]
 cffi = ["cffi (>=1.11)"]
 
-[extras]
-langchain-community = ["langchain-community"]
-
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0"
-content-hash = "7e2dbe7cd3a9269da8f77df10d0d89d02ce036e3a71706d3debd9149c4730d03"
+content-hash = "500fe3d766acf863018057d6492c66f69049588da38bb7f01d88214e2ab04deb"
