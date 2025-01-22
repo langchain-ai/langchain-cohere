@@ -1,0 +1,79 @@
+interactions:
+- request:
+    body: '{"message": "The person''s name is John, and he is 30 years old", "model":
+      "command-r", "chat_history": [], "response_format": {"type": "json_object"},
+      "stream": false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '167'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - python-httpx/0.27.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.8.1
+    method: POST
+    uri: https://api.cohere.com/v1/chat
+  response:
+    body:
+      string: '{"response_id":"e4e1a4ab-1c03-4234-8de3-0bccfccb9c4f","text":"{ \"name\":
+        \"John\", \"age\": 30 }","generation_id":"374d6c28-2ba2-44e3-9ad5-5a98ec2e0634","chat_history":[{"role":"USER","message":"The
+        person''s name is John, and he is 30 years old"},{"role":"CHATBOT","message":"{
+        \"name\": \"John\", \"age\": 30 }"}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":15,"output_tokens":14},"tokens":{"input_tokens":92,"output_tokens":14}}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '484'
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-type:
+      - application/json
+      date:
+      - Tue, 26 Nov 2024 09:02:14 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 UTC
+      num_chars:
+      - '569'
+      num_tokens:
+      - '29'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 8a818fd0c413c04813debf8325a32f6d
+      x-endpoint-monthly-call-limit:
+      - '1000'
+      x-envoy-upstream-service-time:
+      - '163'
+      x-trial-endpoint-call-limit:
+      - '40'
+      x-trial-endpoint-call-remaining:
+      - '34'
+    status:
+      code: 200
+      message: OK
+version: 1
