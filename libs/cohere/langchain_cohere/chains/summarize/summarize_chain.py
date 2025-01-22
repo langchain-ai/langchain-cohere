@@ -1,4 +1,5 @@
 """Load summarizing chains."""
+
 from typing import Any, Callable, Dict, List, Optional, Union
 
 from langchain_core._api import beta

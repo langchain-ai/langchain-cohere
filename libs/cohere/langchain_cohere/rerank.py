@@ -4,6 +4,7 @@ from copy import deepcopy
 from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
+import yaml
 from langchain_core.callbacks.manager import Callbacks
 from langchain_core.documents import BaseDocumentCompressor, Document
 from langchain_core.utils import secret_from_env
@@ -42,7 +43,7 @@ class CohereRerank(BaseDocumentCompressor):
             else:
                 cohere_api_key = self.cohere_api_key
             client_name = self.user_agent
-            self.client = cohere.Client(cohere_api_key, client_name=client_name)
+            self.client = cohere.ClientV2(cohere_api_key, client_name=client_name)
         return self
 
     @model_validator(mode="after")
@@ -59,6 +60,25 @@ class CohereRerank(BaseDocumentCompressor):
 
         return self
 
+    def _document_to_str(
+        self,
+        document: Union[str, Document, dict],
+        rank_fields: Optional[Sequence[str]] = None,
+    ) -> str:
+        if isinstance(document, Document):
+            return document.page_content
+        elif isinstance(document, dict):
+            filtered_dict = document
+            if rank_fields:
+                filtered_dict = {}
+                for key in rank_fields:
+                    if key in document:
+                        filtered_dict[key] = document[key]
+
+            return yaml.dump(filtered_dict, sort_keys=False)
+        else:
+            return document
+
     def rerank(
         self,
         documents: Sequence[Union[str, Document, dict]],
@@ -67,7 +87,7 @@ class CohereRerank(BaseDocumentCompressor):
         rank_fields: Optional[Sequence[str]] = None,
         model: Optional[str] = None,
         top_n: Optional[int] = -1,
-        max_chunks_per_doc: Optional[int] = None,
+        max_tokens_per_doc: Optional[int] = None,
     ) -> List[Dict[str, Any]]:
         """Returns an ordered list of documents ordered by their relevance to the provided query.
 
@@ -75,16 +95,13 @@ class CohereRerank(BaseDocumentCompressor):
             query: The query to use for reranking.
             documents: A sequence of documents to rerank.
             rank_fields: A sequence of keys to use for reranking.
-            model: The model to use for re-ranking. Default to self.model.
             top_n : The number of results to return. If None returns all results.
                 Defaults to self.top_n.
-            max_chunks_per_doc : The maximum number of chunks derived from a document.
+            max_tokens_per_doc : Documents will be truncated to the specified number of tokens. Defaults to 4000.
         """  # noqa: E501
         if len(documents) == 0:  # to avoid empty api call
             return []
-        docs = [
-            doc.page_content if isinstance(doc, Document) else doc for doc in documents
-        ]
+        docs = [self._document_to_str(doc, rank_fields) for doc in documents]
         model = model or self.model
         top_n = top_n if (top_n is None or top_n > 0) else self.top_n
         results = self.client.rerank(
@@ -92,8 +109,7 @@ class CohereRerank(BaseDocumentCompressor):
             documents=docs,
             model=model,
             top_n=top_n,
-            rank_fields=rank_fields,
-            max_chunks_per_doc=max_chunks_per_doc,
+            max_tokens_per_doc=max_tokens_per_doc,
         )
         result_dicts = []
         for res in results.results:

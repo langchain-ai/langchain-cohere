@@ -1,9 +1,8 @@
 interactions:
 - request:
-    body: '{"model": "rerank-english-v3.0", "query": "penguins", "documents": [{"content":
-      "This document is about Penguins.", "subject": "Physics"}, {"content": "This
-      document is about Physics.", "subject": "Penguins"}], "top_n": 3, "rank_fields":
-      ["content"], "max_chunks_per_doc": null}'
+    body: '{"model": "rerank-v3.5", "query": "penguins", "documents": ["content: This
+      document is about Penguins.\n", "content: This document is about Physics.\n"],
+      "top_n": 3, "max_tokens_per_doc": null}'
     headers:
       accept:
       - '*/*'
@@ -12,7 +11,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '278'
+      - '193'
       content-type:
       - application/json
       host:
@@ -26,17 +25,17 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.11.4
+      - 5.13.0
     method: POST
-    uri: https://api.cohere.com/v1/rerank
+    uri: https://api.cohere.com/v2/rerank
   response:
     body:
-      string: '{"id":"4e23d93e-243f-4153-ada5-16a33f0ea12f","results":[{"index":0,"relevance_score":0.5630176},{"index":1,"relevance_score":0.00007141902}],"meta":{"api_version":{"version":"1"},"billed_units":{"search_units":1}}}'
+      string: '{"id":"d5a5c46f-6ac7-41ce-9c05-47b19add8ce8","results":[{"index":0,"relevance_score":0.54594},{"index":1,"relevance_score":0.028374104}],"meta":{"api_version":{"version":"2"},"billed_units":{"search_units":1}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '214'
+      - '210'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -46,7 +45,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 16:00:16 GMT
+      - Tue, 03 Dec 2024 04:58:13 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -58,15 +57,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - cf0aa759a625cd549d9322b6a76f8d8c
-      x-endpoint-monthly-call-limit:
-      - '1000'
+      - 53a65c7973bc9a317a9449a8fa391516
       x-envoy-upstream-service-time:
-      - '37'
-      x-trial-endpoint-call-limit:
-      - '40'
-      x-trial-endpoint-call-remaining:
-      - '38'
+      - '47'
     status:
       code: 200
       message: OK

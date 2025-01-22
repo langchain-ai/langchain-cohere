@@ -6,6 +6,7 @@ https://python.langchain.com/docs/contributing/testing#recording-http-interactio
 
 When re-recording these tests you will need to set COHERE_API_KEY.
 """
+
 import pytest
 
 from langchain_cohere import CohereEmbeddings
