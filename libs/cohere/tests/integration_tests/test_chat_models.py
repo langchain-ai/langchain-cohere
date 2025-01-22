@@ -8,7 +8,7 @@ When re-recording these tests you will need to set COHERE_API_KEY.
 """
 
 import json
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Literal, Optional, Type, Union
 
 import pytest
 from langchain_core.messages import (
@@ -332,3 +332,76 @@ def test_tool_call_with_tool_results(messages: List[BaseMessage]) -> None:
     llm = ChatCohere(temperature=0)
     response = llm.invoke(messages)
     assert isinstance(response, AIMessage)
+
+
+class Person(BaseModel):
+    """Name and age of the person"""
+
+    name: str = Field(description="Name of the person")
+    age: int = Field(description="Age of the person")
+
+
+@pytest.mark.vcr()
+@pytest.mark.parametrize(
+    "schema,method,expected",
+    [
+        pytest.param(Person, "json_mode", Person(name="John", age=30)),
+        pytest.param(Person, "json_schema", Person(name="John", age=30)),
+        pytest.param(Person, "function_calling", Person(name="John", age=30)),
+        pytest.param(
+            {
+                "description": "Name and age of the person",
+                "properties": {
+                    "name": {
+                        "description": "Name of the person",
+                        "title": "Name",
+                        "type": "string",
+                    },
+                    "age": {
+                        "description": "Age of the person",
+                        "title": "Age",
+                        "type": "integer",
+                    },
+                },
+                "required": ["name", "age"],
+                "title": "Person",
+                "type": "object",
+            },
+            "json_mode",
+            {"name": "John", "age": 30},
+        ),
+        pytest.param(
+            {
+                "description": "Name and age of the person",
+                "properties": {
+                    "name": {
+                        "description": "Name of the person",
+                        "title": "Name",
+                        "type": "string",
+                    },
+                    "age": {
+                        "description": "Age of the person",
+                        "title": "Age",
+                        "type": "integer",
+                    },
+                },
+                "required": ["name", "age"],
+                "title": "Person",
+                "type": "object",
+            },
+            "json_schema",
+            {"name": "John", "age": 30},
+        ),
+    ],
+)
+def test_cohere_with_structured_output(
+    schema: Union[Dict, Type[BaseModel]],
+    method: Literal["function_calling", "json_mode", "json_schema"],
+    expected: Union[Dict, Type[BaseModel]],
+) -> None:
+    cohere_client = ChatCohere(model=DEFAULT_MODEL)
+    llm_with_structured_output = cohere_client.with_structured_output(schema, method)
+    result = llm_with_structured_output.invoke(
+        "The person's name is John, and he is 30 years old"
+    )
+    assert result == expected
