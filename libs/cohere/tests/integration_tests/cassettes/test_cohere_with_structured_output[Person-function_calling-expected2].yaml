@@ -1,25 +1,26 @@
 interactions:
 - request:
-    body: '{"message": "The person''s name is John, and he is 30 years old", "model":
-      "command-r", "chat_history": [], "tools": [{"name": "Person", "description":
-      "Name and age of the person", "parameter_definitions": {"name": {"description":
-      "Name of the person", "type": "str", "required": true}, "age": {"description":
-      "Age of the person", "type": "int", "required": true}}}], "stream": false}'
+    body: '{"model": "command-r", "messages": [{"role": "user", "content": "The person''s
+      name is John, and he is 30 years old"}], "tools": [{"type": "function", "function":
+      {"name": "Person", "description": "Name and age of the person", "parameters":
+      {"type": "object", "properties": {"name": {"type": "string", "description":
+      "Name of the person"}, "age": {"type": "integer", "description": "Age of the
+      person"}}, "required": ["name", "age"]}}}], "stream": false}'
     headers:
       accept:
       - '*/*'
       accept-encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       connection:
       - keep-alive
       content-length:
-      - '384'
+      - '453'
       content-type:
       - application/json
       host:
       - api.cohere.com
       user-agent:
-      - python-httpx/0.27.0
+      - python-httpx/0.27.2
       x-client-name:
       - langchain:partner
       x-fern-language:
@@ -27,22 +28,19 @@ interactions:
       x-fern-sdk-name:
       - cohere
       x-fern-sdk-version:
-      - 5.8.1
+      - 5.13.11
     method: POST
-    uri: https://api.cohere.com/v1/chat
+    uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: '{"response_id":"786bdd93-22e4-48bb-b697-06d9bfad4003","text":"I will
-        use the Person tool to find out the name and age of the person and relay this
-        information to the user.","generation_id":"5a5c2b59-21ff-4e4e-9154-74d9d16d8288","chat_history":[{"role":"USER","message":"The
-        person''s name is John, and he is 30 years old"},{"role":"CHATBOT","message":"I
-        will use the Person tool to find out the name and age of the person and relay
-        this information to the user.","tool_calls":[{"name":"Person","parameters":{"age":"30","name":"John"}}]}],"finish_reason":"COMPLETE","meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":32,"output_tokens":35},"tokens":{"input_tokens":917,"output_tokens":72}},"tool_calls":[{"name":"Person","parameters":{"age":"30","name":"John"}}]}'
+      string: '{"id":"ea83ea68-7bd6-44f7-8e82-b797f6a7585e","message":{"role":"assistant","tool_plan":"I
+        will use the Person tool to create a person called John who is 30 years old
+        and then relay this information to the user.","tool_calls":[{"id":"Person_q1971skc8dgk","type":"function","function":{"name":"Person","arguments":"{\"name\":\"John\",\"age\":30}"}}]},"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":34,"output_tokens":39},"tokens":{"input_tokens":917,"output_tokens":75}}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Content-Length:
-      - '779'
+      - '490'
       Via:
       - 1.1 google
       access-control-expose-headers:
@@ -52,13 +50,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Tue, 26 Nov 2024 09:01:51 GMT
+      - Wed, 22 Jan 2025 17:51:42 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       num_chars:
       - '4386'
       num_tokens:
-      - '67'
+      - '73'
       pragma:
       - no-cache
       server:
@@ -68,11 +66,11 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 39342b71ad6d94019459294420340fca
+      - cb99a0c023a8299e0618da4ee8612faa
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '641'
+      - '660'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:

@@ -39,7 +39,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 22 Jan 2025 17:53:45 GMT
+      - Wed, 22 Jan 2025 17:50:41 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -51,11 +51,11 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - bff5af010901db441237f8854b7919cf
+      - 2e7d35d11c45e43f643666afca13920a
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '28'
+      - '8'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:
@@ -109,7 +109,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 22 Jan 2025 17:53:46 GMT
+      - Wed, 22 Jan 2025 17:50:42 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 UTC
       pragma:
@@ -123,11 +123,11 @@ interactions:
       x-api-warning:
       - 'unknown field: parameter model is not a valid field'
       x-debug-trace-id:
-      - 162a425348b95112f8715eaabec9a852
+      - bdd97c0b6838933b69dcec2dc5608d7d
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '16'
+      - '25'
       x-trial-endpoint-call-limit:
       - '40'
       x-trial-endpoint-call-remaining:

@@ -847,14 +847,14 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     # To construct the current tool call you need
                     # to buffer all the deltas
                     if data.type == "tool-call-start":
-                        curr_tool_call["id"] = delta["tool_calls"]["id"]
-                        curr_tool_call["function"]["name"] = delta["tool_calls"][
-                            "function"
-                        ]["name"]
+                        curr_tool_call["id"] = delta.tool_calls.id
+                        curr_tool_call["function"][
+                            "name"
+                        ] = delta.tool_calls.function.name
                     elif data.type == "tool-call-delta":
-                        curr_tool_call["function"]["arguments"] += delta["tool_calls"][
-                            "function"
-                        ]["arguments"]
+                        curr_tool_call["function"][
+                            "arguments"
+                        ] += delta.tool_calls.function.arguments
 
                     # If the current stream event is a tool-call-start,
                     # then the ToolCallV2 object will only contain the function
@@ -862,8 +862,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     # then the ToolCallV2 object will only contain the arguments.
                     tool_call_v2 = ToolCallV2(
                         function=ToolCallV2Function(
-                            name=delta["tool_calls"]["function"].get("name"),
-                            arguments=delta["tool_calls"]["function"].get("arguments"),
+                            name=delta.tool_calls.function.name
+                            if hasattr(delta.tool_calls.function, "name")
+                            else None,
+                            arguments=delta.tool_calls.function.arguments
+                            if hasattr(delta.tool_calls.function, "arguments")
+                            else None,
                         )
                     )
 
@@ -885,7 +889,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     )
                     chunk = ChatGenerationChunk(message=message)
                 elif data.type == "tool-plan-delta":
-                    delta = data.delta.message["tool_plan"]
+                    delta = data.delta.message.tool_plan
                     chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                 elif data.type == "tool-call-end":
                     # Maintain a list of all of the tool calls seen during streaming
@@ -948,14 +952,14 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     # To construct the current tool call you
                     # need to buffer all the deltas
                     if data.type == "tool-call-start":
-                        curr_tool_call["id"] = delta["tool_calls"]["id"]
-                        curr_tool_call["function"]["name"] = delta["tool_calls"][
-                            "function"
-                        ]["name"]
+                        curr_tool_call["id"] = delta.tool_calls.id
+                        curr_tool_call["function"][
+                            "name"
+                        ] = delta.tool_calls.function.name
                     elif data.type == "tool-call-delta":
-                        curr_tool_call["function"]["arguments"] += delta["tool_calls"][
-                            "function"
-                        ]["arguments"]
+                        curr_tool_call["function"][
+                            "arguments"
+                        ] += delta.tool_calls.function.arguments
 
                     # If the current stream event is a tool-call-start,
                     # then the ToolCallV2 object will only contain the
@@ -964,8 +968,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     # only contain the arguments.
                     tool_call_v2 = ToolCallV2(
                         function=ToolCallV2Function(
-                            name=delta["tool_calls"]["function"].get("name"),
-                            arguments=delta["tool_calls"]["function"].get("arguments"),
+                            name=delta.tool_calls.function.name
+                            if hasattr(delta.tool_calls.function, "name")
+                            else None,
+                            arguments=delta.tool_calls.function.arguments
+                            if hasattr(delta.tool_calls.function, "arguments")
+                            else None,
                         )
                     )
 
@@ -987,7 +995,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     )
                     chunk = ChatGenerationChunk(message=message)
                 elif data.type == "tool-plan-delta":
-                    delta = data.delta.message["tool_plan"]
+                    delta = data.delta.message.tool_plan
                     chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
                     tool_plan_deltas.append(delta)
                 elif data.type == "tool-call-end":
