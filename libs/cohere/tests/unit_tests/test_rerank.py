@@ -42,19 +42,37 @@ def test_doc_to_string_with_dicts_with_rank_fields() -> None:
     assert out == "text: test str\n"
 
 
-def test_error_with_client_v1() -> None:
-    """Test error with client v1"""
-    with pytest.raises(
-        ValueError,
-        match=(
-            "The 'client' parameter must be an instance of cohere.ClientV2.\n"
-            "You may create the ClientV2 object like:\n\n"
-            "import cohere\nclient = cohere.ClientV2(...)"
+@pytest.mark.parametrize(
+    "client, valid",
+    [
+        pytest.param(
+            cohere.Client(),
+            False,
+            id="ClientV1 should not be valid",
         ),
-    ):
-        client_v1 = cohere.Client()
-        CohereRerank(
-            cohere_api_key="test", 
-            model="rerank-v3.5", 
-            client=client_v1
-        )
+        pytest.param(
+            cohere.ClientV2(),
+            True,
+            id="ClientV2 should be valid",
+        ),
+        pytest.param(
+            None,
+            True,
+            id="client=None should be valid",
+        ),
+    ],
+)
+def test_error_with_client_v1(client: cohere.Client, valid: bool) -> None:
+    """Test error with client v1"""
+    if valid:
+        CohereRerank(cohere_api_key="test", model="rerank-v3.5", client=client)
+    else:
+        with pytest.raises(
+            ValueError,
+            match=(
+                "The 'client' parameter must be an instance of cohere.ClientV2.\n"
+                "You may create the ClientV2 object like:\n\n"
+                "import cohere\nclient = cohere.ClientV2(...)"
+            ),
+        ):
+            CohereRerank(cohere_api_key="test", model="rerank-v3.5", client=client)
