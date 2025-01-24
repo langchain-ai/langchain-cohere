@@ -46,12 +46,12 @@ def test_doc_to_string_with_dicts_with_rank_fields() -> None:
     "client, valid",
     [
         pytest.param(
-            cohere.Client(),
+            cohere.Client(api_key="test"),
             False,
             id="ClientV1 should not be valid",
         ),
         pytest.param(
-            cohere.ClientV2(),
+            cohere.ClientV2(api_key="test"),
             True,
             id="ClientV2 should be valid",
         ),
