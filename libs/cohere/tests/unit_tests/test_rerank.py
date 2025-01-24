@@ -1,11 +1,11 @@
 """Test chat model integration."""
 
+import cohere
+import pytest
 from langchain_core.documents import Document
 
 from langchain_cohere import CohereRerank
 
-import pytest
-import cohere
 
 def test_initialization() -> None:
     """Test chat model initialization."""
@@ -41,8 +41,20 @@ def test_doc_to_string_with_dicts_with_rank_fields() -> None:
     )
     assert out == "text: test str\n"
 
+
 def test_error_with_client_v1() -> None:
     """Test error with client v1"""
-    with pytest.raises(ValueError, match="The 'client' parameter must be an instance of cohere.ClientV2."):
+    with pytest.raises(
+        ValueError,
+        match=(
+            "The 'client' parameter must be an instance of cohere.ClientV2.\n"
+            "You may create the ClientV2 object like:\n\n"
+            "import cohere\nclient = cohere.ClientV2(...)"
+        ),
+    ):
         client_v1 = cohere.Client()
-        reranker = CohereRerank(cohere_api_key="test", model="rerank-v3.5", client=client_v1)
+        CohereRerank(
+            cohere_api_key="test", 
+            model="rerank-v3.5", 
+            client=client_v1
+        )
