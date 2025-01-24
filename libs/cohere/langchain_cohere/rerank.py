@@ -44,6 +44,10 @@ class CohereRerank(BaseDocumentCompressor):
                 cohere_api_key = self.cohere_api_key
             client_name = self.user_agent
             self.client = cohere.ClientV2(cohere_api_key, client_name=client_name)
+        elif not isinstance(self.client, cohere.ClientV2):
+            raise ValueError(
+                "The 'client' parameter must be an instance of cohere.ClientV2."
+            )
         return self
 
     @model_validator(mode="after")
