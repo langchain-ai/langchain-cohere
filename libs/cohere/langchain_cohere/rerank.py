@@ -47,8 +47,8 @@ class CohereRerank(BaseDocumentCompressor):
         elif not isinstance(self.client, cohere.ClientV2):
             raise ValueError(
                 "The 'client' parameter must be an instance of cohere.ClientV2.\n"
-                "You may create the ClientV2 object like:\n\nimport cohere"
-                "\nclient = cohere.ClientV2(...)"
+                "You may create the ClientV2 object like:\n\n"
+                "import cohere\nclient = cohere.ClientV2(...)"
             )
         return self
 
