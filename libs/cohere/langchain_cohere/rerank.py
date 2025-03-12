@@ -24,8 +24,10 @@ class CohereRerank(BaseDocumentCompressor):
     cohere_api_key: Optional[SecretStr] = Field(
         default_factory=secret_from_env("COHERE_API_KEY", default=None)
     )
-    """Cohere API key. Must be specified directly or via environment variable 
+    """Cohere API key. Must be specified directly or via environment variable
         COHERE_API_KEY."""
+    base_url: Optional[str] = None
+    """Override the default Cohere API URL."""
     user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
@@ -43,7 +45,11 @@ class CohereRerank(BaseDocumentCompressor):
             else:
                 cohere_api_key = self.cohere_api_key
             client_name = self.user_agent
-            self.client = cohere.ClientV2(cohere_api_key, client_name=client_name)
+            self.client = cohere.ClientV2(
+                cohere_api_key,
+                client_name=client_name,
+                base_url=self.base_url,
+            )
         elif not isinstance(self.client, cohere.ClientV2):
             raise ValueError(
                 "The 'client' parameter must be an instance of cohere.ClientV2.\n"
