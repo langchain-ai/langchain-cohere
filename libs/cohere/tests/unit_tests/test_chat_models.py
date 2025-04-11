@@ -22,6 +22,7 @@ from cohere.types import (
     UsageTokens,
     UserChatMessageV2,
 )
+from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
 from pytest import WarningsRecorder
@@ -766,37 +767,19 @@ def test_get_cohere_chat_request(
 
 
 @pytest.mark.parametrize(
-    "cohere_client_v2_kwargs,preamble,messages,expected",
+    "cohere_client_v2_kwargs,preamble,messages,get_chat_req_kwargs,expected",
     [
         pytest.param(
             {"cohere_api_key": "test"},
             None,
             [HumanMessage(content="what is magic_function(12) ?")],
+            {},
             {
                 "messages": [
                     UserChatMessageV2(
                         role="user",
                         content="what is magic_function(12) ?",
                     )
-                ],
-                "tools": [
-                    {
-                        "type": "function",
-                        "function": {
-                            "name": "magic_function",
-                            "description": "Does a magical operation to a number.",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {
-                                    "a": {
-                                        "type": "int",
-                                        "description": "",
-                                    }
-                                },
-                                "required": ["a"],
-                            },
-                        },
-                    }
                 ],
             },
             id="Single message",
@@ -805,6 +788,7 @@ def test_get_cohere_chat_request(
             {"cohere_api_key": "test"},
             "You are a wizard, with the ability to perform magic using the magic_function tool.",  # noqa: E501
             [HumanMessage(content="what is magic_function(12) ?")],
+            {},
             {
                 "messages": [
                     SystemChatMessageV2(
@@ -815,25 +799,6 @@ def test_get_cohere_chat_request(
                         role="user",
                         content="what is magic_function(12) ?",
                     ),
-                ],
-                "tools": [
-                    {
-                        "type": "function",
-                        "function": {
-                            "name": "magic_function",
-                            "description": "Does a magical operation to a number.",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {
-                                    "a": {
-                                        "type": "int",
-                                        "description": "",
-                                    }
-                                },
-                                "required": ["a"],
-                            },
-                        },
-                    }
                 ],
             },
             id="Single message with preamble",
@@ -869,6 +834,7 @@ def test_get_cohere_chat_request(
                 ),
                 HumanMessage(content="Remember my name, its Bob."),
             ],
+            {},
             {
                 "messages": [
                     UserChatMessageV2(
@@ -883,25 +849,6 @@ def test_get_cohere_chat_request(
                         role="user",
                         content="Remember my name, its Bob.",
                     ),
-                ],
-                "tools": [
-                    {
-                        "type": "function",
-                        "function": {
-                            "name": "magic_function",
-                            "description": "Does a magical operation to a number.",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {
-                                    "a": {
-                                        "type": "int",
-                                        "description": "",
-                                    }
-                                },
-                                "required": ["a"],
-                            },
-                        },
-                    }
                 ],
             },
             id="Multiple messages no tool usage",
@@ -937,6 +884,7 @@ def test_get_cohere_chat_request(
                 ),
                 HumanMessage(content="Remember my name, its Bob."),
             ],
+            {},
             {
                 "messages": [
                     SystemChatMessageV2(
@@ -955,25 +903,6 @@ def test_get_cohere_chat_request(
                         role="user",
                         content="Remember my name, its Bob.",
                     ),
-                ],
-                "tools": [
-                    {
-                        "type": "function",
-                        "function": {
-                            "name": "magic_function",
-                            "description": "Does a magical operation to a number.",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {
-                                    "a": {
-                                        "type": "int",
-                                        "description": "",
-                                    }
-                                },
-                                "required": ["a"],
-                            },
-                        },
-                    }
                 ],
             },
             id="Multiple messages no tool usage, with preamble",
@@ -1036,6 +965,7 @@ def test_get_cohere_chat_request(
                     content="112", tool_call_id="e81dbae6937e47e694505f81e310e205"
                 ),
             ],
+            {},
             {
                 "messages": [
                     UserChatMessageV2(
@@ -1066,25 +996,6 @@ def test_get_cohere_chat_request(
                             }
                         ],
                     ),
-                ],
-                "tools": [
-                    {
-                        "type": "function",
-                        "function": {
-                            "name": "magic_function",
-                            "description": "Does a magical operation to a number.",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {
-                                    "a": {
-                                        "type": "int",
-                                        "description": "",
-                                    }
-                                },
-                                "required": ["a"],
-                            },
-                        },
-                    }
                 ],
             },
             id="Multiple messages with tool usage",
@@ -1147,6 +1058,7 @@ def test_get_cohere_chat_request(
                     content="112", tool_call_id="e81dbae6937e47e694505f81e310e205"
                 ),
             ],
+            {},
             {
                 "messages": [
                     SystemChatMessageV2(
@@ -1181,25 +1093,6 @@ def test_get_cohere_chat_request(
                             }
                         ],
                     ),
-                ],
-                "tools": [
-                    {
-                        "type": "function",
-                        "function": {
-                            "name": "magic_function",
-                            "description": "Does a magical operation to a number.",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {
-                                    "a": {
-                                        "type": "int",
-                                        "description": "",
-                                    }
-                                },
-                                "required": ["a"],
-                            },
-                        },
-                    }
                 ],
             },
             id="Multiple messages with tool usage, and preamble",
@@ -1262,6 +1155,7 @@ def test_get_cohere_chat_request(
                     content="112", tool_call_id="e81dbae6937e47e694505f81e310e205"
                 ),
             ],
+            {},
             {
                 "messages": [
                     UserChatMessageV2(
@@ -1293,35 +1187,71 @@ def test_get_cohere_chat_request(
                         ],
                     ),
                 ],
-                "tools": [
-                    {
-                        "type": "function",
-                        "function": {
-                            "name": "magic_function",
-                            "description": "Does a magical operation to a number.",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {
-                                    "a": {
-                                        "type": "int",
-                                        "description": "",
-                                    }
-                                },
-                                "required": ["a"],
-                            },
-                        },
-                    }
-                ],
             },
             id="assistent message with tool calls empty content",
         ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            None,
+            [
+                HumanMessage(content="foo"),
+            ],
+            {"documents": ["bar"]},
+            {
+                "messages": [
+                    UserChatMessageV2(
+                        role="user",
+                        content="foo",
+                    ),
+                ],
+                "documents": ["bar"],
+            },
+            id="document in kwargs (string)",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            None,
+            [
+                HumanMessage(content="foo"),
+            ],
+            {"documents": [{"data": "bar"}]},
+            {
+                "messages": [
+                    UserChatMessageV2(
+                        role="user",
+                        content="foo",
+                    ),
+                ],
+                "documents": [{"data": "bar"}],
+            },
+            id="document in kwargs (dict)",
+        ),
+        pytest.param(
+            {"cohere_api_key": "test"},
+            None,
+            [
+                HumanMessage(content="foo"),
+            ],
+            {"documents": [Document(page_content="bar")]},
+            {
+                "messages": [
+                    UserChatMessageV2(
+                        role="user",
+                        content="foo",
+                    ),
+                ],
+                "documents": [{"data": {"text": "bar"}, "id": "doc-0"}],
+            },
+            id="document in kwargs (Document)",
+        ),
     ],
 )
-def test_get_cohere_chat_request_v2(
+def test_get_cohere_chat_request_v2_tools(
     patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
     cohere_client_v2_kwargs: Dict[str, Any],
     preamble: str,
     messages: List[BaseMessage],
+    get_chat_req_kwargs: Dict[str, Any],
     expected: Dict[str, Any],
 ) -> None:
     cohere_client_v2 = ChatCohere(**cohere_client_v2_kwargs)
@@ -1345,12 +1275,14 @@ def test_get_cohere_chat_request_v2(
             },
         }
     ]
+    expected["tools"] = tools
 
     result = get_cohere_chat_request_v2(
         messages,
         stop_sequences=cohere_client_v2.stop,
         tools=tools,
         preamble=preamble,
+        **get_chat_req_kwargs,
     )
 
     # Check that the result is a dictionary
