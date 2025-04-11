@@ -498,7 +498,7 @@ def get_cohere_chat_request_v2(
     elif (documents is not None) and (len(documents) > 0):
         parsed_docs = documents
 
-    formatted_docs: Optional[List[Dict[str, Any]]] = None
+    formatted_docs: Optional[List[Union[str, Dict[str, Any]]]] = None
     if parsed_docs:
         formatted_docs = []
         for i, parsed_doc in enumerate(parsed_docs):
@@ -523,6 +523,10 @@ def get_cohere_chat_request_v2(
                     )
                 else:
                     formatted_docs.append(parsed_doc)
+            elif isinstance(parsed_doc, str):
+                formatted_docs.append(parsed_doc)
+            else:
+                formatted_docs.append({"data": parsed_doc})
 
     # check if the last message is a tool message or human message
     if not (
