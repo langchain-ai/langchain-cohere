@@ -133,15 +133,17 @@ class CohereEmbeddings(BaseModel, Embeddings):
 
         return _embed_with_retry(**kwargs)
 
-    def embed(
+    def _embed_generic(
         self,
-        texts: List[str],
+        texts: typing.Optional[List[str]] = None,
+        images: typing.Optional[List[str]] = None,
         *,
         input_type: typing.Optional[cohere.EmbedInputType] = None,
     ) -> List[List[float]]:
         response = self.embed_with_retry(
             model=self.model,
             texts=texts,
+            images=images,
             input_type=input_type,
             truncate=self.truncate,
             embedding_types=self.embedding_types,
@@ -156,15 +158,17 @@ class CohereEmbeddings(BaseModel, Embeddings):
                 embeddings_as_float.append(list(map(float, e[i])))
         return embeddings_as_float
 
-    async def aembed(
+    async def _aembed_generic(
         self,
-        texts: List[str],
+        texts: typing.Optional[List[str]] = None,
+        images: typing.Optional[List[str]] = None,
         *,
         input_type: typing.Optional[cohere.EmbedInputType] = None,
     ) -> List[List[float]]:
         response = await self.aembed_with_retry(
             model=self.model,
             texts=texts,
+            images=images,
             input_type=input_type,
             truncate=self.truncate,
             embedding_types=self.embedding_types,
@@ -178,6 +182,22 @@ class CohereEmbeddings(BaseModel, Embeddings):
             for i in range(len(e)):
                 embeddings_as_float.append(list(map(float, e[i])))
         return embeddings_as_float
+
+    def embed(
+        self,
+        texts: List[str],
+        *,
+        input_type: typing.Optional[cohere.EmbedInputType] = None,
+    ) -> List[List[float]]:
+        return self._embed_generic(texts=texts, input_type=input_type)
+
+    async def aembed(
+        self,
+        texts: List[str],
+        *,
+        input_type: typing.Optional[cohere.EmbedInputType] = None,
+    ) -> List[List[float]]:
+        return await self._aembed_generic(texts=texts, input_type=input_type)
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of document texts.
@@ -222,3 +242,25 @@ class CohereEmbeddings(BaseModel, Embeddings):
             Embeddings for the text.
         """
         return (await self.aembed([text], input_type="search_query"))[0]
+
+    def embed_images(self, images: List[str]) -> List[List[float]]:
+        """Call out to Cohere's embedding endpoint for images.
+
+        Args:
+            images: The list of images to embed.
+
+        Returns:
+            List of embeddings, one for each image.
+        """
+        return self._embed_generic(images=images, input_type="image")
+
+    async def aembed_images(self, images: List[str]) -> List[List[float]]:
+        """Async call out to Cohere's embedding endpoint for images.
+
+        Args:
+            images: The list of images to embed.
+
+        Returns:
+            List of embeddings, one for each image.
+        """
+        return await self._aembed_generic(images=images, input_type="image")
