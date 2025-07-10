@@ -13,7 +13,9 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
 langchain-core = "^0.3.27"
-cohere = ">=5.12.0,<6.0"
+# Pin cohere to <5.16 to prevent breakage as cohere 5.16.0 removes ChatResponse
+# TODO: remove cohere pin when langchain_cohere is updated to work with cohere >=5.16
+cohere = ">=5.12.0,<5.16"
 langchain-community = { version = "^0.3.0"}
 pydantic = ">=2,<3"
 types-pyyaml = "^6.0.12.20240917"
