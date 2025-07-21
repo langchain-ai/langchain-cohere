@@ -8,7 +8,6 @@ from cohere.types import (
     AssistantChatMessageV2,
     AssistantMessageResponse,
     ChatMessageEndEventDelta,
-    ChatResponse,
     NonStreamedChatResponse,
     SystemChatMessageV2,
     ToolCall,
@@ -38,6 +37,8 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools_v2,
 )
 
+class MockNonStreamedChatResponse(NonStreamedChatResponse):
+    usage: Optional["Usage"] = None
 
 def test_initialization(
     patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
@@ -82,7 +83,7 @@ def test_default_params(
     "response, expected",
     [
         pytest.param(
-            NonStreamedChatResponse(
+            MockNonStreamedChatResponse(
                 generation_id="foo",
                 text="",
                 tool_calls=[
@@ -119,7 +120,7 @@ def test_default_params(
             id="tools should be called",
         ),
         pytest.param(
-            NonStreamedChatResponse(
+            MockNonStreamedChatResponse(
                 generation_id="foo",
                 text="",
                 tool_calls=[],
@@ -135,7 +136,7 @@ def test_default_params(
             id="no tools should be called",
         ),
         pytest.param(
-            NonStreamedChatResponse(
+            MockNonStreamedChatResponse(
                 generation_id="foo",
                 text="bar",
                 tool_calls=[],
@@ -170,8 +171,9 @@ def test_get_generation_info(
     "response, documents, expected",
     [
         pytest.param(
-            ChatResponse(
+            MockNonStreamedChatResponse(
                 id="foo",
+                text="dummy texxt output",
                 finish_reason="complete",
                 message=AssistantMessageResponse(
                     tool_plan="I will use the magic_function tool to answer the question.",  # noqa: E501
@@ -223,7 +225,8 @@ def test_get_generation_info(
             id="tools should be called",
         ),
         pytest.param(
-            ChatResponse(
+            MockNonStreamedChatResponse(
+                text="dummy text output",
                 id="foo",
                 finish_reason="complete",
                 message=AssistantMessageResponse(
@@ -241,7 +244,8 @@ def test_get_generation_info(
             id="no tools should be called",
         ),
         pytest.param(
-            ChatResponse(
+            MockNonStreamedChatResponse(
+                text="dummy text output",
                 id="foo",
                 finish_reason="complete",
                 message=AssistantMessageResponse(
@@ -265,7 +269,8 @@ def test_get_generation_info(
             id="chat response without tools/documents/citations/tools etc",
         ),
         pytest.param(
-            ChatResponse(
+            MockNonStreamedChatResponse(
+                text="dummy text output",
                 id="foo",
                 finish_reason="complete",
                 message=AssistantMessageResponse(
@@ -319,7 +324,7 @@ def test_get_generation_info(
 )
 def test_get_generation_info_v2(
     patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
-    response: ChatResponse,
+    response: MockNonStreamedChatResponse,
     documents: Optional[List[Dict[str, Any]]],
     expected: Dict[str, Any],
 ) -> None:

@@ -19,7 +19,6 @@ from typing import (
 from cohere.types import (
     AssistantChatMessageV2,
     ChatMessageV2,
-    ChatResponse,
     DocumentToolContent,
     NonStreamedChatResponse,
     SystemChatMessageV2,
@@ -1067,7 +1066,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         return generation_info
 
     def _get_generation_info_v2(
-        self, response: ChatResponse, documents: Optional[List[Dict[str, Any]]] = None
+        self, response: NonStreamedChatResponse, documents: Optional[List[Dict[str, Any]]] = None
     ) -> Dict[str, Any]:
         """Get the generation info from cohere API response (V2)."""
         generation_info: Dict[str, Any] = {
@@ -1321,7 +1320,7 @@ def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMeta
     return None
 
 
-def _get_usage_metadata_v2(response: ChatResponse) -> Optional[UsageMetadata]:
+def _get_usage_metadata_v2(response: NonStreamedChatResponse) -> Optional[UsageMetadata]:
     """Get standard usage metadata from chat response."""
     metadata = response.usage
     if metadata:
