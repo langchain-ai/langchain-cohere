@@ -1,7 +1,6 @@
 """Test chat model integration."""
 
 from typing import Any, Dict, Generator, List, Optional
-
 from unittest.mock import patch
 
 import pytest
@@ -37,6 +36,7 @@ from langchain_cohere.chat_models import (
 from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools_v2,
 )
+
 
 class MockNonStreamedChatResponse(NonStreamedChatResponse):
     usage: Optional["Usage"] = None
