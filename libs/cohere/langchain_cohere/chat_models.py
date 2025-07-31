@@ -1065,10 +1065,12 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info["token_count"] = response.meta.tokens.dict()
         return generation_info
 
+    # TODO: Uncomment and adapt once ToolCallV2 is supported in NonStreamedChatResponse
+    '''
     def _get_generation_info_v2(
-        self,
-        response: NonStreamedChatResponse,
-        documents: Optional[List[Dict[str, Any]]] = None,
+        self, 
+        response: NonStreamedChatResponse, 
+        documents: Optional[List[Dict[str, Any]]] = None
     ) -> Dict[str, Any]:
         """Get the generation info from cohere API response (V2)."""
         generation_info: Dict[str, Any] = {
@@ -1096,6 +1098,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info["token_count"] = response.usage.tokens.dict()
 
         return generation_info
+    '''
 
     def _get_stream_info_v2(
         self,
@@ -1139,9 +1142,9 @@ class ChatCohere(BaseChatModel, BaseCohere):
         )
         response = self.client.v2.chat(**request)
 
-        generation_info = self._get_generation_info_v2(
-            response, request.get("documents")
-        )
+        # generation_info = self._get_generation_info_v2(response)
+        generation_info = self._get_generation_info(response)
+
         if "tool_calls" in generation_info:
             content = response.message.tool_plan if response.message.tool_plan else ""
             tool_calls = [
@@ -1188,9 +1191,9 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
         response = await self.async_client.v2.chat(**request)
 
-        generation_info = self._get_generation_info_v2(
-            response, request.get("documents")
-        )
+        # generation_info = self._get_generation_info_v2(response)
+        generation_info = self._get_generation_info(response)
+
         if "tool_calls" in generation_info:
             content = response.message.tool_plan if response.message.tool_plan else ""
             tool_calls = [
@@ -1326,7 +1329,7 @@ def _get_usage_metadata_v2(
     response: NonStreamedChatResponse,
 ) -> Optional[UsageMetadata]:
     """Get standard usage metadata from chat response."""
-    metadata = response.usage
+    metadata = response.meta
     if metadata:
         if tokens := metadata.tokens:
             input_tokens = int(tokens.input_tokens or 0)
