@@ -38,6 +38,7 @@ from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools_v2,
 )
 
+
 def test_initialization(
     patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
 ) -> None:

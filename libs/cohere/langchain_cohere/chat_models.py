@@ -83,6 +83,9 @@ LC_TOOL_CALL_TEMPLATE = {
     },
 }
 
+class ChatResponseV2(NonStreamedChatResponse):
+    pass
+
 
 def _message_to_cohere_tool_results(
     messages: List[BaseMessage], tool_message_index: int
@@ -1042,7 +1045,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     generation_info=generation_info,
                 )
 
-    def _get_generation_info(self, response: NonStreamedChatResponse) -> Dict[str, Any]:
+    def _get_generation_info(self, response: ChatResponseV2) -> Dict[str, Any]:
         """Get the generation info from cohere API response."""
         generation_info: Dict[str, Any] = {
             "documents": response.documents,
@@ -1309,7 +1312,7 @@ def _convert_cohere_v2_tool_call_to_langchain(
     )
 
 
-def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMetadata]:
+def _get_usage_metadata(response: ChatResponseV2) -> Optional[UsageMetadata]:
     """Get standard usage metadata from chat response."""
     metadata = response.meta
     if metadata:
@@ -1326,7 +1329,7 @@ def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMeta
 
 
 def _get_usage_metadata_v2(
-    response: NonStreamedChatResponse,
+    response: ChatResponseV2,
 ) -> Optional[UsageMetadata]:
     """Get standard usage metadata from chat response."""
     metadata = response.meta
