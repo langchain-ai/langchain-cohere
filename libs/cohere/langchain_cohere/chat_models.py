@@ -1,5 +1,6 @@
 import copy
 import json
+import typing
 import uuid
 from typing import (
     Any,
@@ -16,6 +17,9 @@ from typing import (
     Union,
 )
 
+import pydantic
+from cohere.core.pydantic_utilities import IS_PYDANTIC_V2
+from cohere.core.unchecked_base_model import UncheckedBaseModel
 from cohere.types import (
     AssistantChatMessageV2,
     ChatMessageV2,
@@ -29,6 +33,10 @@ from cohere.types import (
     UserChatMessageV2,
 )
 from cohere.types import Document as DocumentV2
+from cohere.types.assistant_message_response import AssistantMessageResponse
+from cohere.types.chat_finish_reason import ChatFinishReason
+from cohere.types.logprob_item import LogprobItem
+from cohere.types.usage import Usage
 from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
@@ -82,6 +90,29 @@ LC_TOOL_CALL_TEMPLATE = {
         "arguments": "",
     },
 }
+
+
+class V2ChatResponse(UncheckedBaseModel):
+    id: str = pydantic.Field()
+    """
+    Unique identifier for the generated reply. Useful for submitting feedback.
+    """
+
+    finish_reason: ChatFinishReason
+    message: AssistantMessageResponse
+    usage: typing.Optional[Usage] = None
+    logprobs: typing.Optional[typing.List[LogprobItem]] = None
+
+    if IS_PYDANTIC_V2:
+        model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(
+            extra="allow"
+        )  # type: ignore # Pydantic v2
+    else:
+
+        class Config:
+            smart_union = True
+            extra = pydantic.Extra.allow
+
 
 class ChatResponseV2(NonStreamedChatResponse):
     pass
@@ -584,7 +615,8 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
     This implementation uses the Chat API - see https://docs.cohere.com/reference/chat
 
-    To use this you'll need to a Cohere API key - either pass it to cohere_api_key
+    To use this you'll need to create a Cohere API key - either pass it to
+    cohere_api_key
     parameter or set the COHERE_API_KEY environment variable.
 
     API keys are available on https://cohere.com - it's free to sign up and trial API
@@ -1068,12 +1100,10 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info["token_count"] = response.meta.tokens.dict()
         return generation_info
 
-    # TODO: Uncomment and adapt once ToolCallV2 is supported in NonStreamedChatResponse
-    '''
     def _get_generation_info_v2(
-        self, 
-        response: NonStreamedChatResponse, 
-        documents: Optional[List[Dict[str, Any]]] = None
+        self,
+        response: V2ChatResponse,
+        documents: Optional[List[Dict[str, Any]]] = None,
     ) -> Dict[str, Any]:
         """Get the generation info from cohere API response (V2)."""
         generation_info: Dict[str, Any] = {
@@ -1101,7 +1131,6 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 generation_info["token_count"] = response.usage.tokens.dict()
 
         return generation_info
-    '''
 
     def _get_stream_info_v2(
         self,
@@ -1145,8 +1174,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         )
         response = self.client.v2.chat(**request)
 
-        # generation_info = self._get_generation_info_v2(response)
-        generation_info = self._get_generation_info(response)
+        generation_info = self._get_generation_info_v2(response)
 
         if "tool_calls" in generation_info:
             content = response.message.tool_plan if response.message.tool_plan else ""
@@ -1194,8 +1222,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
         response = await self.async_client.v2.chat(**request)
 
-        # generation_info = self._get_generation_info_v2(response)
-        generation_info = self._get_generation_info(response)
+        generation_info = self._get_generation_info_v2(response)
 
         if "tool_calls" in generation_info:
             content = response.message.tool_plan if response.message.tool_plan else ""

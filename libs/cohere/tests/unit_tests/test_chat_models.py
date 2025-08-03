@@ -1,10 +1,14 @@
 """Test chat model integration."""
 
 
+import typing
 from typing import Any, Dict, Generator, List, Optional
 from unittest.mock import patch
 
+import pydantic
 import pytest
+from cohere.core.pydantic_utilities import IS_PYDANTIC_V2
+from cohere.core.unchecked_base_model import UncheckedBaseModel
 from cohere.types import (
     AssistantChatMessageV2,
     AssistantMessageResponse,
@@ -22,6 +26,8 @@ from cohere.types import (
     UsageTokens,
     UserChatMessageV2,
 )
+from cohere.types.chat_finish_reason import ChatFinishReason
+from cohere.types.logprob_item import LogprobItem
 from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
@@ -37,6 +43,27 @@ from langchain_cohere.chat_models import (
 from langchain_cohere.cohere_agent import (
     _format_to_cohere_tools_v2,
 )
+
+
+class V2ChatResponse(UncheckedBaseModel):
+    id: str = pydantic.Field()
+    """
+    Unique identifier for the generated reply. Useful for submitting feedback.
+    """
+
+    finish_reason: ChatFinishReason
+    message: AssistantMessageResponse
+    usage: typing.Optional[Usage] = None
+    logprobs: typing.Optional[typing.List[LogprobItem]] = None
+
+    if IS_PYDANTIC_V2:
+        model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(
+            extra="allow") # type: ignore # Pydantic v2
+    else:
+
+        class Config:
+            smart_union = True
+            extra = pydantic.Extra.allow
 
 
 def test_initialization(
@@ -170,7 +197,7 @@ def test_get_generation_info(
     "response, documents, expected",
     [
         pytest.param(
-            NonStreamedChatResponse(
+            V2ChatResponse(
                 id="foo",
                 text="dummy texxt output",
                 finish_reason="complete",
@@ -224,7 +251,7 @@ def test_get_generation_info(
             id="tools should be called",
         ),
         pytest.param(
-            NonStreamedChatResponse(
+            V2ChatResponse(
                 text="dummy text output",
                 id="foo",
                 finish_reason="complete",
@@ -243,7 +270,7 @@ def test_get_generation_info(
             id="no tools should be called",
         ),
         pytest.param(
-            NonStreamedChatResponse(
+            V2ChatResponse(
                 text="dummy text output",
                 id="foo",
                 finish_reason="complete",
@@ -268,7 +295,7 @@ def test_get_generation_info(
             id="chat response without tools/documents/citations/tools etc",
         ),
         pytest.param(
-            NonStreamedChatResponse(
+            V2ChatResponse(
                 text="dummy text output",
                 id="foo",
                 finish_reason="complete",
@@ -322,21 +349,20 @@ def test_get_generation_info(
     ],
 )
 
-@pytest.mark.skip(reason="ToolCallV2 not supported by NonStreamedChatResponse")
+#pytest.mark.skip(reason="ToolCallV2 not supported by NonStreamedChatResponse")
 def test_get_generation_info_v2(
     patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
-    response: NonStreamedChatResponse,
+    response: V2ChatResponse,
     documents: Optional[List[Dict[str, Any]]],
     expected: Dict[str, Any],
 ) -> None:
     chat_cohere = ChatCohere(cohere_api_key="test")
     with patch("uuid.uuid4") as mock_uuid:
         mock_uuid.return_value.hex = "foo"
-#        actual = chat_cohere._get_generation_info_v2(response, documents)
-        actual = chat_cohere._get_generation_info(response)
+        actual = chat_cohere._get_generation_info_v2(response, documents)
+        # actual = chat_cohere._get_generation_info(response)
 
     assert expected == actual
-
 
 @pytest.mark.parametrize(
     "final_delta, documents, tool_calls, expected",
