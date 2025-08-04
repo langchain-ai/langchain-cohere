@@ -1,7 +1,7 @@
 import json
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
-from cohere.types import (
+from cohere import (
     Tool,
     ToolCall,
     ToolParameterDefinitionsValue,

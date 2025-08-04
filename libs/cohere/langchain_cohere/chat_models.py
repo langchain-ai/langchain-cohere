@@ -16,7 +16,7 @@ from typing import (
     Union,
 )
 
-from cohere.types import (
+from cohere import (
     AssistantChatMessageV2,
     ChatMessageV2,
     ChatResponse,
@@ -29,7 +29,7 @@ from cohere.types import (
     ToolChatMessageV2,
     UserChatMessageV2,
 )
-from cohere.types import Document as DocumentV2
+from cohere import Document as DocumentV2
 from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
