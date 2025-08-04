@@ -4,7 +4,7 @@ from typing import Any, Dict, Generator, List, Optional
 from unittest.mock import patch
 
 import pytest
-from cohere.types import (
+from cohere import (
     AssistantChatMessageV2,
     AssistantMessageResponse,
     ChatMessageEndEventDelta,

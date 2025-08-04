@@ -31,7 +31,7 @@ def enforce_stop_tokens(text: str, stop: List[str]) -> str:
 logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
-    from cohere.types import ListModelsResponse  # noqa: F401
+    from cohere import ListModelsResponse  # noqa: F401
 
 
 def completion_with_retry(llm: Cohere, **kwargs: Any) -> Any:
