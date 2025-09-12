@@ -60,7 +60,7 @@ def test_langgraph_react_agent() -> None:
     tools = [web_search, python_tool]
     model = ChatCohere(model=DEFAULT_MODEL)
 
-    app = create_react_agent(model, tools, messages_modifier=system_message)
+    app = create_react_agent(model, tools, prompt=system_message)
 
     query = (
         "Find Barack Obama's age and use python tool to find the square root of his age"
