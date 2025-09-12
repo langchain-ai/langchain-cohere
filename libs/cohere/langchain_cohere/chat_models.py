@@ -1089,7 +1089,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 if response.message.content[0].type == "text":
                     generation_info["content"] = response.message.content[0].text
                 elif response.message.content[0].type == "thinking":
-                    generation_info["content"] = response.message.content[0].value
+                    generation_info["content"] = response.message.content[0].thinking
             if response.message.citations:
                 generation_info["citations"] = response.message.citations
 
