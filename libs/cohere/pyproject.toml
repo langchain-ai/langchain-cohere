@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "langchain-cohere"
-version = "0.4.6"
+version = "1.0.0a1"
 description = "An integration package connecting Cohere and LangChain"
 authors = []
 readme = "README.md"
@@ -11,10 +11,10 @@ license = "MIT"
 "Source Code" = "https://github.com/langchain-ai/langchain-cohere/tree/main/libs/cohere"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4.0"
-langchain-core = "^0.3.76"
+python = ">=3.10.0,<4.0.0"
+langchain-core = ">=1.0.0a6,<2.0.0"
+langchain-community = { version = ">=1.0.0a1,<2.0.0" }
 cohere = ">=5.18.0,<6.0"
-langchain-community = { version = "^0.3.0"}
 pydantic = ">=2,<3"
 types-pyyaml = "^6.0.12.20240917"
 
@@ -28,14 +28,14 @@ optional = true
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.2.2"
-freezegun = "^1.2.2"
 pytest-mock = "^3.10.0"
-syrupy = "^4.0.2"
 pytest-watcher = "^0.3.4"
 pytest-asyncio = "^0.21.1"
-langchain-tests = "0.3.1"
-langchain-community = "^0.3.0"
 pytest-vcr = "^1.0.2"
+freezegun = "^1.2.2"
+syrupy = "^4.0.2"
+langchain-tests = ">=1.0.0a1,<2.0.0"
+langchain-community = ">=1.0.0a1,<2.0.0"
 
 [tool.poetry.group.codespell]
 optional = true
@@ -47,12 +47,13 @@ codespell = "^2.2.0"
 optional = true
 
 [tool.poetry.group.test_integration.dependencies]
-langchain = "^0.3.7"
-langchain-text-splitters = "^0.3.2"
-langgraph = "^0.2.48"
-langchain-tests = "0.3.1"
 pytest-vcr = "^1.0.2"
 pytest = "^8.2.2"
+langchain = ">=1.0.0a10,<2.0.0"
+langchain-text-splitters = ">=1.0.0a1,<2.0.0"
+langchain-tests = ">=1.0.0a1,<2.0.0"
+langgraph = ">=1.0.0a4,<2.0.0"
+
 [tool.poetry.group.lint]
 optional = true
 
@@ -61,14 +62,14 @@ ruff = "^0.1.5"
 
 [tool.poetry.group.typing.dependencies]
 mypy = "^0.991"
-langchain-community = "^0.3.0"
+langchain-community = ">=1.0.0a1,<2.0.0"
 
 
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-langgraph = "^0.2.48"
+langgraph = ">=1.0.0a4,<2.0.0"
 
 [tool.ruff]
 select = [
