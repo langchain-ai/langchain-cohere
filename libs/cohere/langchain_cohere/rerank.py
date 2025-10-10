@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
 import yaml
+import asyncio
 from langchain_core.callbacks.manager import Callbacks
 from langchain_core.documents import BaseDocumentCompressor, Document
 from langchain_core.utils import secret_from_env
@@ -16,6 +17,7 @@ class CohereRerank(BaseDocumentCompressor):
     """Document compressor that uses `Cohere Rerank API`."""
 
     client: Any = None
+    async_client: Any = None
     """Cohere client to use for compressing documents."""
     top_n: Optional[int] = 3
     """Number of documents to return."""
@@ -39,11 +41,12 @@ class CohereRerank(BaseDocumentCompressor):
     @model_validator(mode="after")
     def validate_environment(self) -> Self:  # type: ignore[valid-type]
         """Validate that api key and python package exists in environment."""
-        if not self.client:
-            if isinstance(self.cohere_api_key, SecretStr):
+        if isinstance(self.cohere_api_key, SecretStr):
                 cohere_api_key: Optional[str] = self.cohere_api_key.get_secret_value()
-            else:
-                cohere_api_key = self.cohere_api_key
+        else:
+            cohere_api_key = self.cohere_api_key
+
+        if not self.client:
             client_name = self.user_agent
             self.client = cohere.ClientV2(
                 cohere_api_key,
@@ -55,6 +58,20 @@ class CohereRerank(BaseDocumentCompressor):
                 "The 'client' parameter must be an instance of cohere.ClientV2.\n"
                 "You may create the ClientV2 object like:\n\n"
                 "import cohere\nclient = cohere.ClientV2(...)"
+            )
+        
+        if not self.async_client:
+            client_name = self.user_agent
+            self.async_client = cohere.AsyncClientV2(
+                cohere_api_key,
+                client_name=client_name,
+                base_url=self.base_url,
+            )
+        elif not isinstance(self.client, cohere.AsyncClientV2):
+            raise ValueError(
+                "The 'async_client' parameter must be an instance of cohere.AsyncClientV2.\n"
+                "You may create the AsyncClientV2 object like:\n\n"
+                "import cohere\nclient = cohere.AsyncClientV2(...)"
             )
         return self
 
@@ -90,7 +107,24 @@ class CohereRerank(BaseDocumentCompressor):
             return yaml.dump(filtered_dict, sort_keys=False)
         else:
             return document
-
+    async def _document_to_str_async(
+            self,
+            document: Union[str, Document, dict],
+            rank_fields: Optional[Sequence[str]] = None,
+        ) -> str:
+            """Async version of _document_to_str for use with asyncio.gather."""
+            if isinstance(document, Document):
+                return document.page_content
+            elif isinstance(document, dict):
+                filtered_dict = document
+                if rank_fields:
+                    filtered_dict = {}
+                    for key in rank_fields:
+                        if key in document:
+                            filtered_dict[key] = document[key]
+                return yaml.dump(filtered_dict, sort_keys=False)
+            else:
+                return document
     def rerank(
         self,
         documents: Sequence[Union[str, Document, dict]],
@@ -129,7 +163,46 @@ class CohereRerank(BaseDocumentCompressor):
                 {"index": res.index, "relevance_score": res.relevance_score}
             )
         return result_dicts
+    async def arerank(
+        self,
+        documents: Sequence[Union[str, Document, dict]],
+        query: str,
+        *,
+        rank_fields: Optional[Sequence[str]] = None,
+        model: Optional[str] = None,
+        top_n: Optional[int] = -1,
+        max_tokens_per_doc: Optional[int] = None,
+    ) -> List[Dict[str, Any]]:
+        """Asynchronously returns an ordered list of documents ranked by their relevance to the query.
 
+        Args:
+            query: The query to use for reranking.
+            documents: A sequence of documents to rerank.
+            rank_fields: A sequence of keys to use for reranking.
+            top_n : The number of results to return. If None returns all results.
+                Defaults to self.top_n.
+            max_tokens_per_doc : Documents will be truncated to the specified number of tokens. Defaults to 4000.
+        """  # noqa: E501
+        if len(documents) == 0:  # to avoid empty api call
+            return []
+        docs = await asyncio.gather(
+            *[self._document_to_str_async(doc, rank_fields) for doc in documents])
+        model = model or self.model
+        top_n = top_n if (top_n is None or top_n > 0) else self.top_n
+        results = await self.async_client.rerank(
+            query=query,
+            documents=docs,
+            model=model,
+            top_n=top_n,
+            max_tokens_per_doc=max_tokens_per_doc,
+        )
+        result_dicts = []
+        for res in results.results:
+            result_dicts.append(
+                {"index": res.index, "relevance_score": res.relevance_score}
+            )
+        return result_dicts
+    
     def compress_documents(
         self,
         documents: Sequence[Document],
@@ -149,6 +222,32 @@ class CohereRerank(BaseDocumentCompressor):
         """
         compressed = []
         for res in self.rerank(documents, query):
+            doc = documents[res["index"]]
+            doc_copy = Document(doc.page_content, metadata=deepcopy(doc.metadata))
+            doc_copy.metadata["relevance_score"] = res["relevance_score"]
+            compressed.append(doc_copy)
+        return compressed
+    
+    async def acompress_documents(
+        self,
+        documents: Sequence[Document],
+        query: str,
+        callbacks: Optional[Callbacks] = None,
+    ) -> Sequence[Document]:
+        """
+        Compress documents using Cohere's rerank API.
+
+        Args:
+            documents: A sequence of documents to compress.
+            query: The query to use for compressing the documents.
+            callbacks: Callbacks to run during the compression process.
+
+        Returns:
+            A sequence of compressed documents.
+        """
+        compressed = []
+
+        for res in await self.arerank(documents, query):
             doc = documents[res["index"]]
             doc_copy = Document(doc.page_content, metadata=deepcopy(doc.metadata))
             doc_copy.metadata["relevance_score"] = res["relevance_score"]
