@@ -150,7 +150,7 @@ class CohereRerank(BaseDocumentCompressor):
         compressed = []
         for res in self.rerank(documents, query):
             doc = documents[res["index"]]
-            doc_copy = Document(doc.page_content, metadata=deepcopy(doc.metadata))
+            doc_copy = Document(doc.page_content, metadata=deepcopy(doc.metadata), id=doc.id or None)
             doc_copy.metadata["relevance_score"] = res["relevance_score"]
             compressed.append(doc_copy)
         return compressed
