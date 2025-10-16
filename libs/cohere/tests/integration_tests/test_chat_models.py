@@ -24,7 +24,7 @@ from pydantic import BaseModel, Field
 
 from langchain_cohere import ChatCohere
 
-DEFAULT_MODEL = "command-r"
+DEFAULT_MODEL = "command-a-03-2025"
 
 
 @pytest.mark.vcr()
@@ -284,7 +284,7 @@ def test_streaming_tool_call_no_tool_calls() -> None:
 
 @pytest.mark.vcr()
 def test_get_num_tokens_with_specified_model() -> None:
-    llm = ChatCohere(temperature=0, model="command-r")
+    llm = ChatCohere(temperature=0, model="command-a-03-2025")
     expected = 3  # This may change if the replay also changes.
 
     actual = llm.get_num_tokens("hello, world")
