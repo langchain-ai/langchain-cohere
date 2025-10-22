@@ -132,9 +132,9 @@ def render_tool(
     \"\"\"
     pass
 ```"""
-    assert tool is not None or json_schema is not None, (
-        "Either a BaseTool instance or JSON schema must be provided."
-    )
+    assert (
+        tool is not None or json_schema is not None
+    ), "Either a BaseTool instance or JSON schema must be provided."
 
     if tool is not None:
         assert tool is not None  # for type checkers
