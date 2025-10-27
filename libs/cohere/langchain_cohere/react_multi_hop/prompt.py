@@ -96,7 +96,7 @@ def render_tool(
 
     Args:
         tool: An instance of a BaseTool.
-        json_schema: A dictionary containing the JSON schema representation of a tool.
+        json_schema: `dict` containing the JSON schema representation of a tool.
 
     Returns:
         A string of prompt content.
