@@ -910,6 +910,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 message = AIMessageChunk(
                     content="",
                     additional_kwargs=generation_info,
+                    chunk_position="last",
                 )
                 yield ChatGenerationChunk(
                     message=message,
@@ -1037,6 +1038,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                     usage_metadata=generation_info.get("token_count"),
+                    chunk_position="last",
                 )
                 yield ChatGenerationChunk(
                     message=message,
