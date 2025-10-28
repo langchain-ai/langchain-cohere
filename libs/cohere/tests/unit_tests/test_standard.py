@@ -4,7 +4,7 @@ from typing import Any, Type
 
 import pytest
 from langchain_core.language_models import BaseChatModel
-from langchain_standard_tests.unit_tests import ChatModelUnitTests
+from langchain_tests.unit_tests import ChatModelUnitTests
 from pydantic import BaseModel, Field
 
 from langchain_cohere import ChatCohere

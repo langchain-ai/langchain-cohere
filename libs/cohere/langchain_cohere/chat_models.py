@@ -616,7 +616,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         self,
         tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
         **kwargs: Any,
-    ) -> Runnable[LanguageModelInput, BaseMessage]:
+    ) -> Runnable[LanguageModelInput, AIMessage]:
         formatted_tools = _format_to_cohere_tools_v2(tools)
         return self.bind(tools=formatted_tools, **kwargs)
 
@@ -910,6 +910,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 message = AIMessageChunk(
                     content="",
                     additional_kwargs=generation_info,
+                    chunk_position="last",
                 )
                 yield ChatGenerationChunk(
                     message=message,
@@ -1037,6 +1038,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
                     additional_kwargs=generation_info,
                     tool_call_chunks=tool_call_chunks,
                     usage_metadata=generation_info.get("token_count"),
+                    chunk_position="last",
                 )
                 yield ChatGenerationChunk(
                     message=message,

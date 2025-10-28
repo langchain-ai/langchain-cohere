@@ -93,7 +93,7 @@ def test_who_are_cohere() -> None:
     llm = ChatCohere(model=DEFAULT_MODEL)
     retriever = CohereRagRetriever(llm=llm, connectors=[{"id": "web-search"}])
 
-    actual = retriever.get_relevant_documents(user_query)
+    actual = retriever.invoke(user_query)
 
     answer = actual.pop()
     citations = answer.metadata.get("citations")
