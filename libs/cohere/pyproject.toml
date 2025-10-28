@@ -33,6 +33,7 @@ pytest-mock = "^3.10.0"
 syrupy = "^4.0.2"
 pytest-watcher = "^0.3.4"
 pytest-asyncio = "^0.21.1"
+langchain = "^1.0.0"
 langchain-classic = "^1.0.0"
 langchain-tests = "1.0.0"
 langchain-community = "^0.4.0"
@@ -47,6 +48,7 @@ codespell = "^2.2.0"
 optional = true
 
 [tool.poetry.group.test_integration.dependencies]
+langchain = "^1.0.0"
 langchain-classic = "^1.0.0"
 langchain-text-splitters = "^1.0.0"
 langgraph = "^1.0.0"
