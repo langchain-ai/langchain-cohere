@@ -616,7 +616,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         self,
         tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
         **kwargs: Any,
-    ) -> Runnable[LanguageModelInput, BaseMessage]:
+    ) -> Runnable[LanguageModelInput, AIMessage]:
         formatted_tools = _format_to_cohere_tools_v2(tools)
         return self.bind(tools=formatted_tools, **kwargs)
 

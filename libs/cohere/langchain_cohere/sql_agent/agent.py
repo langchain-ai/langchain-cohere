@@ -33,7 +33,7 @@ from langchain_cohere.sql_agent.prompts import (
 )
 
 if TYPE_CHECKING:
-    from langchain.agents.agent import AgentExecutor
+    from langchain_classic.agents.agent import AgentExecutor
     from langchain_community.utilities.sql_database import SQLDatabase
     from langchain_core.callbacks import BaseCallbackManager
     from langchain_core.language_models import BaseLanguageModel
@@ -41,10 +41,10 @@ if TYPE_CHECKING:
 
 from datetime import datetime
 
-from langchain.agents import (
+from langchain_classic.agents import (
     create_tool_calling_agent,
 )
-from langchain.agents.agent import (
+from langchain_classic.agents.agent import (
     AgentExecutor,
     RunnableMultiActionAgent,
 )
