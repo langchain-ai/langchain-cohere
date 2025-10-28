@@ -35,7 +35,6 @@ pytest-watcher = "^0.3.4"
 pytest-asyncio = "^0.21.1"
 langchain-tests = "1.0.0"
 langchain-community = "^0.3.0"
-pytest-vcr = "^1.0.2"
 
 [tool.poetry.group.codespell]
 optional = true
@@ -51,7 +50,6 @@ langchain-classic = "^1.0.0"
 langchain-text-splitters = "^1.0.0"
 langgraph = "^1.0.0"
 langchain-tests = "1.0.0"
-pytest-vcr = "^1.0.2"
 pytest = "^8.2.2"
 [tool.poetry.group.lint]
 optional = true
