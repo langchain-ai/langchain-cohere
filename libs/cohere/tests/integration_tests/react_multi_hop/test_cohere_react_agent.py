@@ -10,7 +10,7 @@ When re-recording these tests you will need to set COHERE_API_KEY.
 from typing import Any, Type
 
 import pytest
-from langchain.agents import AgentExecutor
+from langchain_classic.agents import AgentExecutor
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.tools import BaseTool
 from pydantic import BaseModel, Field
