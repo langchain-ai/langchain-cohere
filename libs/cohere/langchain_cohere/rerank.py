@@ -17,17 +17,22 @@ class CohereRerank(BaseDocumentCompressor):
 
     client: Any = None
     """Cohere client to use for compressing documents."""
+
     top_n: Optional[int] = 3
     """Number of documents to return."""
+
     model: Optional[str] = None
     """Model to use for reranking. Mandatory to specify the model name."""
+
     cohere_api_key: Optional[SecretStr] = Field(
         default_factory=secret_from_env("COHERE_API_KEY", default=None)
     )
     """Cohere API key. Must be specified directly or via environment variable
-        COHERE_API_KEY."""
+    `COHERE_API_KEY`."""
+
     base_url: Optional[str] = None
     """Override the default Cohere API URL."""
+
     user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
@@ -101,16 +106,18 @@ class CohereRerank(BaseDocumentCompressor):
         top_n: Optional[int] = -1,
         max_tokens_per_doc: Optional[int] = None,
     ) -> List[Dict[str, Any]]:
-        """Returns an ordered list of documents ordered by their relevance to the provided query.
+        """Returns an ordered list of documents ordered by their relevance to the
+        provided query.
 
         Args:
             query: The query to use for reranking.
             documents: A sequence of documents to rerank.
             rank_fields: A sequence of keys to use for reranking.
-            top_n : The number of results to return. If None returns all results.
-                Defaults to self.top_n.
-            max_tokens_per_doc : Documents will be truncated to the specified number of tokens. Defaults to 4000.
-        """  # noqa: E501
+            top_n : The number of results to return. If `None`, returns all results.
+                Defaults to `self.top_n`.
+            max_tokens_per_doc : Documents will be truncated to the specified number of
+                tokens. Defaults to `4000`.
+        """
         if len(documents) == 0:  # to avoid empty api call
             return []
         docs = [self._document_to_str(doc, rank_fields) for doc in documents]

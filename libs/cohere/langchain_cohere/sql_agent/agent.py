@@ -71,38 +71,42 @@ def create_sql_agent(
     """Construct a SQL agent from an LLM and toolkit or database.
 
     Args:
-        llm: Language model to use for the agent. If agent_type is "tool-calling" then
-            llm is expected to support tool calling.
-        toolkit: SQLDatabaseToolkit for the agent to use. Must provide exactly one of
-            'toolkit' or 'db'. Specify 'toolkit' if you want to use a different model
-            for the agent and the toolkit.
-        callback_manager: DEPRECATED. Pass "callbacks" key into 'agent_executor_kwargs'
-            instead to pass constructor callbacks to AgentExecutor.
-        prefix: Prompt prefix string. Must contain variables "top_k" and "dialect".
+        llm: Language model to use for the agent. If `agent_type` is `'tool-calling'`
+            then llm is expected to support tool calling.
+        toolkit: `SQLDatabaseToolkit` for the agent to use. Must provide exactly one of
+            `'toolkit'` or `'db'`. Specify `'toolkit'` if you want to use a different
+            model for the agent and the toolkit.
+        callback_manager: DEPRECATED. Pass `'callbacks'` key into
+            `'agent_executor_kwargs'` instead to pass constructor callbacks to
+            `AgentExecutor`.
+        prefix: Prompt prefix string. Must contain variables `'top_k'` and `'dialect'`.
         suffix: Prompt suffix string. Default depends on agent type.
         input_variables: DEPRECATED.
         top_k: Number of rows to query for by default.
-        max_iterations: Passed to AgentExecutor init.
-        max_execution_time: Passed to AgentExecutor init.
-        early_stopping_method: Passed to AgentExecutor init.
-        verbose: AgentExecutor verbosity.
-        agent_executor_kwargs: Arbitrary additional AgentExecutor args.
+        max_iterations: Passed to `AgentExecutor` init.
+        max_execution_time: Passed to `AgentExecutor` init.
+        early_stopping_method: Passed to `AgentExecutor` init.
+        verbose: `AgentExecutor` verbosity.
+        agent_executor_kwargs: Arbitrary additional `AgentExecutor` args.
         extra_tools: Additional tools to give to agent on top of the ones that come with
-            SQLDatabaseToolkit.
-        db: SQLDatabase from which to create a SQLDatabaseToolkit. Toolkit is created
-            using 'db' and 'llm'. Must provide exactly one of 'db' or 'toolkit'.
-        prompt: Complete agent prompt. prompt and {prefix, suffix, format_instructions,
-            input_variables} are mutually exclusive.  Must contain variables "top_k" and "dialect".
-            Can contain variables "table_info" or "table_names" if the prompt requires them.
+            `SQLDatabaseToolkit`.
+        db: `SQLDatabase` from which to create a `SQLDatabaseToolkit`. Toolkit is
+            created using `'db'` and `'llm'`. Must provide exactly one of `'db'` or
+            `'toolkit'`.
+        prompt: Complete agent prompt. `prompt` and `{prefix, suffix,
+            format_instructions, input_variables}` are mutually exclusive.
+
+            Must contain variables "top_k" and "dialect".
+
+            Can contain variables `'table_info'` or `'table_names'` if the prompt
+            requires them.
         **kwargs: Arbitrary additional Agent args.
 
     Returns:
-        An AgentExecutor with the specified agent_type agent.
+        An `AgentExecutor` with the specified `agent_type` agent.
 
     Example:
-
-        .. code-block:: python
-
+        ```python
         from langchain_cohere import ChatCohere, create_sql_agent
         from langchain_community.utilities import SQLDatabase
 
@@ -111,7 +115,7 @@ def create_sql_agent(
         agent_executor = create_sql_agent(llm, db=db, verbose=True)
         resp = agent_executor.run("Show me the first 5 rows of the 'Album' table.")
         print(resp.get("output"))
-
+        ```
     """  # noqa: E501
 
     if toolkit is None and db is None:

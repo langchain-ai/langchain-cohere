@@ -26,11 +26,13 @@ def create_summarize_prompt(
     extra_prompt_messages: List[BaseMessagePromptTemplate] = [],
 ) -> ChatPromptTemplate:
     """Create prompt for this agent.
+
     Args:
         system_message: Message to use as the system message that will be the
             first in the prompt.
         extra_prompt_messages: Prompt messages that will be placed between the
             system message and the new human input.
+
     Returns:
         A prompt template to pass into this agent.
     """
@@ -81,7 +83,7 @@ def load_summarize_chain(
 
     Args:
         llm: Language Model to use in the chain.
-        chain_type: Type of document combining chain to use. Currently, only "stuff"
+        chain_type: Type of document combining chain to use. Currently, only `'stuff'`
             is supported in this implementation.
         verbose: Whether chains should be run in verbose mode or not. Note that this
             applies to all chains that make up the final chain.
