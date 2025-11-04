@@ -96,23 +96,29 @@ def parse_jsonified_tool_use_generation(
 def parse_answer_with_prefixes(
     completion: str, prefixes: Dict[str, str]
 ) -> Dict[str, str]:
-    """parses string into key-value pairs,
-       according to patterns supplied in prefixes. Also strips.
+    """Parses string into key-value pairs, according to patterns supplied in prefixes.
 
-    if inputs are:
-        completion = "\nhello: sam\ngoodbye then: paul.",
-        prefixes = {"greeting": "hello:", "farewell": "goodbye then:"}
+    Also strips.
 
-    the expected returned result is:
-        {"greeting": "sam", "farewell": "paul."}
+    If inputs are:
+
+    ```python
+    completion = "\nhello: sam\ngoodbye then: paul.",
+    prefixes = {"greeting": "hello:", "farewell": "goodbye then:"}
+    ```
+
+    ... the expected returned result is:
+
+    `{"greeting": "sam", "farewell": "paul."}`
 
     Args:
-        completion (str): text to split
-        prefixes (Dict[str, str]): a key-value dict of keys and patterns.
-        See example above
+        completion: Text to split
+        prefixes: A key-value dict of keys and patterns.
+
+            See example above
 
     Returns:
-        Dict[str, str]: parsed result
+        Parsed result
     """
     # sort out prefixes
     re_pat = "(" + "|".join([re.escape(p) for p in prefixes.values()]) + ")"
@@ -166,9 +172,8 @@ def parse_actions(generation: str) -> Tuple[str, str, List[Dict]]:
 def parse_citations(
     grounded_answer: str, documents: List[MutableMapping]
 ) -> Tuple[str, List[CohereCitation]]:
-    """
-    Parses a grounded_generation (from parse_actions) and documents (from
-    convert_to_documents) into a (generation, CohereCitation list) tuple.
+    """Parses a `grounded_generation` (from `parse_actions`) and documents (from
+    `convert_to_documents`) into a `(generation, CohereCitation list)` tuple.
     """
 
     no_markup_answer, parsed_answer = _parse_answer_spans(grounded_answer)
@@ -213,16 +218,16 @@ def parse_citations(
 
 
 def _strip_spans(answer: str) -> str:
-    """removes any <co> tags from a string, including trailing partial tags
+    """Removes any `<co>` tags from a string, including trailing partial tags
 
-    input: "hi my <co>name</co> is <co: 1> patrick</co:3> and <co"
-    output: "hi my name is patrick and"
+    Input: `"hi my <co>name</co> is <co: 1> patrick</co:3> and <co"`
+    Output: `"hi my name is patrick and"`
 
     Args:
-        answer (str): string
+        answer: Answer
 
     Returns:
-        str: same string with co tags removed
+        Same string with `co` tags removed
     """
     answer = re.sub(r"<co(.*?)>|</co(.*?)>", "", answer)
     idx = answer.find("<co")
