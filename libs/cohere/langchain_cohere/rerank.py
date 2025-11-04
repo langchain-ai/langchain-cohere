@@ -142,6 +142,7 @@ class CohereRerank(BaseDocumentCompressor):
         documents: Sequence[Document],
         query: str,
         callbacks: Optional[Callbacks] = None,
+        **kwargs: Any,
     ) -> Sequence[Document]:
         """
         Compress documents using Cohere's rerank API.
@@ -150,12 +151,13 @@ class CohereRerank(BaseDocumentCompressor):
             documents: A sequence of documents to compress.
             query: The query to use for compressing the documents.
             callbacks: Callbacks to run during the compression process.
+            **kwargs: Additional arguments to pass to the rerank method.
 
         Returns:
             A sequence of compressed documents.
         """
         compressed = []
-        for res in self.rerank(documents, query):
+        for res in self.rerank(documents, query, **kwargs):
             doc = documents[res["index"]]
             doc_copy = Document(doc.page_content, metadata=deepcopy(doc.metadata))
             doc_copy.metadata["relevance_score"] = res["relevance_score"]
