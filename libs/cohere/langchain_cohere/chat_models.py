@@ -19,7 +19,6 @@ from typing import (
 from cohere import (
     AssistantChatMessageV2,
     ChatMessageV2,
-    ChatResponse,
     DocumentToolContent,
     NonStreamedChatResponse,
     SystemChatMessageV2,
@@ -30,6 +29,9 @@ from cohere import (
     UserChatMessageV2,
 )
 from cohere import Document as DocumentV2
+from cohere import (
+    V2ChatResponse as ChatResponse,
+)
 from langchain_core._api.deprecation import warn_deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
