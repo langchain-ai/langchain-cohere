@@ -113,9 +113,9 @@ class CohereRerank(BaseDocumentCompressor):
             query: The query to use for reranking.
             documents: A sequence of documents to rerank.
             rank_fields: A sequence of keys to use for reranking.
-            top_n : The number of results to return. If `None`, returns all results.
+            top_n: The number of results to return. If `None`, returns all results.
                 Defaults to `self.top_n`.
-            max_tokens_per_doc : Documents will be truncated to the specified number of
+            max_tokens_per_doc: Documents will be truncated to the specified number of
                 tokens. Defaults to `4000`.
         """
         if len(documents) == 0:  # to avoid empty api call
