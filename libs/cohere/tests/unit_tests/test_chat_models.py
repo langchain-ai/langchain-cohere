@@ -180,13 +180,13 @@ def test_get_generation_info(
                             id="foo",
                             function=ToolCallV2Function(
                                 name="tool1", arguments='{"arg1": 1, "arg2": "2"}'
-                            )
+                            ),
                         ),
                         ToolCallV2(
                             id="foo",
                             function=ToolCallV2Function(
                                 name="tool2", arguments='{"arg3": 3, "arg4": "4"}'
-                            )
+                            ),
                         ),
                     ],
                     content=None,
