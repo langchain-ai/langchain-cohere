@@ -91,20 +91,18 @@ def render_tool(
     tool: Optional[BaseTool] = None,
     json_schema: Optional[Dict] = None,
 ) -> str:
-    """Renders a tool into prompt content. Either a BaseTool instance, or, a JSON
-     schema must be provided.
+    """Renders a tool into prompt content. Either a `BaseTool` instance, or, a JSON
+        schema must be provided.
 
     Args:
-        tool: An instance of a BaseTool.
-        json_schema: A dictionary containing the JSON schema representation of a tool.
+        tool: An instance of a `BaseTool`.
+        json_schema: `dict` containing the JSON schema representation of a tool.
 
     Returns:
         A string of prompt content.
 
     Example:
-
-        .. code-block:: python
-
+        ```python
         from langchain_cohere.react_multi_hop.prompt import render_tool
 
         json_schema = {
@@ -123,7 +121,7 @@ def render_tool(
 
         tool = MyTool()
         print(render_tool(tool=tool))
-
+        ```
     """
 
     template = """```python
@@ -204,7 +202,7 @@ def render_observations(
 def convert_to_documents(
     observations: Any,
 ) -> List[MutableMapping]:
-    """Converts observations into a 'document' dict"""
+    """Converts observations into a 'document' `dict`"""
     documents: List[MutableMapping] = []
     if isinstance(observations, str):
         # strings are turned into a key/value pair and a key of 'output' is added.
@@ -255,7 +253,7 @@ def render_intermediate_steps(
 def multi_hop_prompt(
     tools: Sequence[BaseTool], prompt: ChatPromptTemplate
 ) -> Callable[[Dict], BasePromptTemplate]:
-    """The returned function produces a BasePromptTemplate suitable for multi-hop."""
+    """The returned function produces a `BasePromptTemplate` suitable for multi-hop."""
 
     # the directly_answer tool is used internally by the model, but never produces an
     # AgentAction, so we only need to add it to the prompt.
@@ -277,8 +275,7 @@ def multi_hop_prompt(
 
 
 def _render_type(type_: str, is_optional: bool) -> str:
-    """
-    Renders a tool's type into prompt content. Types should be Python types, but JSON
+    """Renders a tool's type into prompt content. Types should be Python types, but JSON
     schema is allowed and converted.
     """
     python_type = JSON_TO_PYTHON_TYPES.get(type_, type_)
@@ -304,7 +301,7 @@ def _render_tool_signature(
 
 
 def _render_tool_args(tool_args: Dict, required_parameters: List[str]) -> str:
-    """Renders the 'Args' section of a tool's prompt content."""
+    """Renders the `Args` section of a tool's prompt content."""
     if not tool_args:
         return ""
     indent = " "
@@ -325,10 +322,9 @@ def _render_tool_args(tool_args: Dict, required_parameters: List[str]) -> str:
 
 
 def create_directly_answer_tool() -> BaseTool:
-    """
-    directly_answer is a special tool that's always presented to the model as an
-    available tool. The model only ever invokes this whilst answering and no AgentAction
-    is produced, so it only needs to be added to the prompt.
+    """`directly_answer` is a special tool that's always presented to the model as an
+    available tool. The model only ever invokes this whilst answering and no
+    `AgentAction` is produced, so it only needs to be added to the prompt.
     """
 
     class DirectlyAnswerTool(BaseTool):
@@ -360,7 +356,7 @@ def render_role(message: BaseMessage) -> str:
 
 
 def render_messages(messages: Sequence[BaseMessage]) -> str:
-    """Renders one or more BaseMessage implementations into prompt content."""
+    """Renders one or more `BaseMessage` implementations into prompt content."""
     return "".join(
         [
             f"{_SpecialToken.start_turn.value}{render_role(message)}{message.content}{_SpecialToken.end_turn.value}"

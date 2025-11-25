@@ -1,7 +1,7 @@
 import json
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Type, Union
 
-from cohere.types import (
+from cohere import (
     Tool,
     ToolCall,
     ToolParameterDefinitionsValue,
@@ -37,7 +37,7 @@ def _format_to_cohere_tools_v2(
 def _format_to_cohere_tools_messages(
     intermediate_steps: Sequence[Tuple[AgentAction, str]],
 ) -> List[Dict[str, Any]]:
-    """Convert (AgentAction, tool output) tuples into tool messages."""
+    """Convert `(AgentAction, tool output)` tuples into tool messages."""
     if len(intermediate_steps) == 0:
         return []
     tool_results = []
@@ -73,9 +73,7 @@ def _format_to_cohere_tools_messages(
 def _convert_to_cohere_tool(
     tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> Dict[str, Any]:
-    """
-    Convert a BaseTool instance, JSON schema dict, or BaseModel type to a Cohere tool.
-    """
+    """Convert a `BaseTool` instance, JSON schema dict, or `BaseModel` type to a Cohere tool."""  # noqa: E501
     if isinstance(tool, dict):
         if not all(k in tool for k in ("title", "description", "properties")):
             raise ValueError(
@@ -144,10 +142,7 @@ def _convert_to_cohere_tool(
 def _convert_to_cohere_tool_v2(
     tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> ToolV2:
-    """
-    Convert a BaseTool instance, JSON schema dict,
-    or BaseModel type to a V2 Cohere tool.
-    """
+    """Convert a `BaseTool` instance, JSON schema dict, or `BaseModel` type to a V2 Cohere tool."""  # noqa: E501
     if isinstance(tool, dict):
         if not all(k in tool for k in ("title", "description", "properties")):
             raise ValueError(

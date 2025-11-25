@@ -12,7 +12,7 @@ from .utils import _create_retry_decorator
 
 class CohereEmbeddings(BaseModel, Embeddings):
     """
-    Implements the Embeddings interface with Cohere's text representation language
+    Implements the `Embeddings` interface with Cohere's text representation language
     models.
 
     Find out more about us at https://cohere.com and https://huggingface.co/CohereForAI
@@ -20,33 +20,35 @@ class CohereEmbeddings(BaseModel, Embeddings):
     This implementation uses the Embed API - see https://docs.cohere.com/reference/embed
 
     To use this you'll need to a Cohere API key - either pass it to cohere_api_key
-    parameter or set the COHERE_API_KEY environment variable.
+    parameter or set the `COHERE_API_KEY` environment variable.
 
     API keys are available on https://cohere.com - it's free to sign up and trial API
     keys work with this implementation.
 
     Basic Example:
-        .. code-block:: python
+        ```python
+        cohere_embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
+        text = "This is a test document."
 
-            cohere_embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
-            text = "This is a test document."
+        query_result = cohere_embeddings.embed_query(text)
+        print(query_result)
 
-            query_result = cohere_embeddings.embed_query(text)
-            print(query_result)
-
-            doc_result = cohere_embeddings.embed_documents([text])
-            print(doc_result)
+        doc_result = cohere_embeddings.embed_documents([text])
+        print(doc_result)
+        ```
     """
 
     client: Any  #: :meta private:
     """Cohere client."""
+
     async_client: Any  #: :meta private:
     """Cohere async client."""
+
     model: Optional[str] = None
     """Model name to use. It is mandatory to specify the model name."""
 
     truncate: Optional[str] = None
-    """Truncate embeddings that are too long from start or end ("NONE"|"START"|"END")"""
+    """Truncate embeddings that are too long from start or end `("NONE"|"START"|"END")`"""  # noqa: E501
 
     cohere_api_key: Optional[SecretStr] = Field(
         default_factory=secret_from_env("COHERE_API_KEY", default=None)
@@ -57,8 +59,10 @@ class CohereEmbeddings(BaseModel, Embeddings):
 
     max_retries: int = 3
     """Maximum number of retries to make when generating."""
+
     request_timeout: Optional[float] = None
     """Timeout in seconds for the Cohere API request."""
+
     user_agent: str = "langchain:partner"
     """Identifier for the application making the request."""
 
