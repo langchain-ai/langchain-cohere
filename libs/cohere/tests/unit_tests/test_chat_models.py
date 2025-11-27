@@ -1374,3 +1374,43 @@ def test_get_cohere_chat_request_v2_warn_connectors_deprecated(
         warning.message
     )
     assert "Please use the 'tools' parameter instead." in str(warning.message)
+
+
+@pytest.mark.parametrize(
+    "tool_choice_input,expected_tool_choice",
+    [
+        pytest.param("any", "REQUIRED", id="any -> REQUIRED"),
+        pytest.param("ANY", "REQUIRED", id="ANY -> REQUIRED"),
+        pytest.param("none", "NONE", id="none -> NONE"),
+        pytest.param("NONE", "NONE", id="NONE -> NONE"),
+        pytest.param("auto", None, id="auto -> removed"),
+        pytest.param("AUTO", None, id="AUTO -> removed"),
+        pytest.param("REQUIRED", "REQUIRED", id="REQUIRED -> REQUIRED (unchanged)"),
+        pytest.param(None, None, id="None -> None (no tool_choice)"),
+    ],
+)
+def test_bind_tools_tool_choice_translation(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+    tool_choice_input: Optional[str],
+    expected_tool_choice: Optional[str],
+) -> None:
+    """Test that bind_tools() translates OpenAI-style tool_choice to Cohere format."""
+
+    @tool
+    def test_tool(x: int) -> int:
+        """Test tool."""
+        return x + 1
+
+    chat = ChatCohere(cohere_api_key="test")
+
+    # Bind tools with tool_choice
+    if tool_choice_input is not None:
+        bound = chat.bind_tools([test_tool], tool_choice=tool_choice_input)
+    else:
+        bound = chat.bind_tools([test_tool])
+
+    # Check the bound kwargs
+    if expected_tool_choice is not None:
+        assert bound.kwargs.get("tool_choice") == expected_tool_choice
+    else:
+        assert "tool_choice" not in bound.kwargs

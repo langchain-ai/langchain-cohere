@@ -616,7 +616,34 @@ class ChatCohere(BaseChatModel, BaseCohere):
         tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
         **kwargs: Any,
     ) -> Runnable[LanguageModelInput, AIMessage]:
+        """Bind tools to the model.
+
+        Args:
+            tools: A sequence of tools to bind to the model.
+            **kwargs: Additional keyword arguments to pass to the model.
+                Supports OpenAI-style `tool_choice` values (`'any'`, `'none'`,
+                `'auto'`) which will be automatically translated to Cohere's
+                format (`'REQUIRED'`, `'NONE'`).
+
+        Returns:
+            A `Runnable` that invokes the model with the bound tools.
+        """
         formatted_tools = _format_to_cohere_tools_v2(tools)
+
+        # Translate OpenAI-style tool_choice to Cohere format
+        if "tool_choice" in kwargs:
+            tool_choice = kwargs["tool_choice"]
+            if isinstance(tool_choice, str):
+                tool_choice_lower = tool_choice.lower()
+                if tool_choice_lower == "any":
+                    kwargs["tool_choice"] = "REQUIRED"
+                elif tool_choice_lower == "none":
+                    kwargs["tool_choice"] = "NONE"
+                elif tool_choice_lower == "auto":
+                    # Auto is the default behavior, so we can remove it
+                    del kwargs["tool_choice"]
+                # If it's already a Cohere value (REQUIRED/NONE), keep it as-is
+
         return self.bind(tools=formatted_tools, **kwargs)
 
     def with_structured_output(
