@@ -13,6 +13,8 @@ on:
         default: false
         description: "Release from a non-master branch (danger!)"
 
+permissions: {}
+
 env:
   POETRY_VERSION: "1.7.1"
   PYTHON_VERSION: "3.10"
@@ -21,6 +23,8 @@ jobs:
   build:
     if: github.ref == 'refs/heads/main' || inputs.dangerous-nonmaster-release
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     outputs:
       pkg-name: ${{ steps.check-version.outputs.pkg-name }}
