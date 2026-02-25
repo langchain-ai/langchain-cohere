@@ -58,7 +58,11 @@ def _load_stuff_chain(
 
     def llm_with_docs(input_: dict) -> RunnableSerializable[Any, Any]:
         docs = input_["documents"]
-        return RunnableLambda(lambda x: x["input"]) | llm.bind(documents=docs)
+
+        def get_input(x: Dict[str, Any]) -> Any:
+            return x["input"]
+
+        return RunnableLambda(get_input) | llm.bind(documents=docs)
 
     runnable = (
         RunnablePassthrough.assign(
