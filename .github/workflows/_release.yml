@@ -82,6 +82,7 @@ jobs:
     uses:
       ./.github/workflows/_test_release.yml
     permissions:
+      contents: read
       id-token: write
     with:
       working-directory: ${{ inputs.working-directory }}
