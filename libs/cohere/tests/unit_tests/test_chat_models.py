@@ -258,7 +258,6 @@ def test_get_generation_info(
             {
                 "id": "foo",
                 "finish_reason": "complete",
-                "content": "How may I help you today?",
                 "token_count": {
                     "input_tokens": 215,
                     "output_tokens": 38,
@@ -309,7 +308,6 @@ def test_get_generation_info(
                         },
                     },
                 ],
-                "content": "How may I help you today?",
                 "token_count": {
                     "input_tokens": 215,
                     "output_tokens": 38,
@@ -330,6 +328,14 @@ def test_get_generation_info_v2(
         mock_uuid.return_value.hex = "foo"
         actual = chat_cohere._get_generation_info_v2(response, documents)
     assert expected == actual
+    # content and thinking are now returned via AIMessage content blocks
+    # (matching OpenAI's reasoning format) and should not appear in generation_info
+    assert (
+        "content" not in actual
+    ), "content should not be in generation_info; belongs in AIMessage.content blocks"
+    assert (
+        "thinking" not in actual
+    ), "thinking should not be in generation_info; belongs in AIMessage.content blocks"
 
 
 @pytest.mark.parametrize(
