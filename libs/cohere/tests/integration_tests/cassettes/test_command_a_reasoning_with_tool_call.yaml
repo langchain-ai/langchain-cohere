@@ -1,0 +1,90 @@
+interactions:
+- request:
+    body: '{"model":"command-a-reasoning-08-2025","messages":[{"role":"user","content":"Can
+      you get the weather for the city that is the 2nd largest city of the land of
+      the rising sun?"}],"tools":[{"type":"function","function":{"name":"get_the_weather","description":"Get
+      the current weather for a location.\n\nArgs:\n    location: The location to
+      get the weather for.\n\nReturns:\n    The current weather conditions.","parameters":{"type":"object","properties":{"location":{"type":"string","description":""}},"required":["location"]}}}],"temperature":0.3,"stream":false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '560'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - cohere/5.18.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.18.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/3RVTW/jNhD9KwNeNgEUQbGTNvFtsUDbFEFzaHooqoUxokYWK2qoJUfrqob/e0FK
+        cb6amynOx3vz3tAHZWq1UZe6Xt1cr68ufryumourNRUX1WXxw8W6aFarAm8RV9cqUz2FgDtSm4Py
+        zpLaKAzBBEEWlSntWIhFbf46KJmGeC2t4c7wTmXPPzfqocMpA2kJxkAeTAAM8Qoa59PnPaG08YbT
+        MZB2XINFv6MgoI1M4Jp0VSqLXD+dvAmxTBi5VDn8ZHyQDO6AiWoQB43ZjZ7AjQL71ugWtBtZ/BQR
+        eGrI+zmumkBaFGCjO8aecijV/QdtEnrYk7UXHbs9n5ISmV9xQM4guFTwU4DBuworO6U6p/YM30YK
+        YhxDS57ykkv+jf55Bb4mId8bpg9HYnjul8NjS2+uAjy6bnLz1dtkN9oaKoKHgB2C8/Cn61yLPWZQ
+        00BcR7Zu1kJ7I+QNRulqOOtJvBucNYIM6Cmlp5aDdwP58/xULIIY0MvTFH/2hEJ+BgafPWEG1Shg
+        4pwQAg3oUShVyxdscdjskjd6/HtplcMdhDaR+E7eNNOirmOKCa5pjDZo7QTacTA1JZnfzSGHX9ye
+        vpPPTj4cRj+4QBHxmCR/aU5xzmbQ41QR3IFGjpR1VGtvpE2hGMLYD0nXZKhELTHJAMN81K7vHdsJ
+        Zvtg+F9o0REPrGfxnyQ1NbGYxlCdLQjGMEd82pFspaXtAvZTQhuNPcSNXZikOsmrS1frNCa0cfR9
+        NNxsmJTs6dtoPL2OTN5+NmmPHUGIS/a6vok8vSctdoIwkLVUQ9woT9rt2PxLdQ53yReeovx9ZXaj
+        kSmDgXyLw9w14Yg8W+TaEhh5YZmKRJIsYHgYZdmw1BSWLeaSf3cQhIawKfkyhy+OG+P7V9t4lpbo
+        HCqMDl9sf3oKSl7lcDcPfvpwFc+s6chOs9bnecnrHP5YtHnpn9kqp7EHkog/ZeXq+DVTMWir0dqQ
+        ntX0WL/Rdutv6sKvqOj2tyE+tPPT24ysY1GVPf/cHFQk8b6GyhT63dgTS1AbdSjVE6ZSbUqVAJXq
+        qI7Hr8dMNYZNaLeeMMSi6vHh4X775fP9vcrU+PQHUZko8nZkE0seVBJlK64jDmpzU2TKjfLy07q4
+        PEbC8+ltwuXV7dX7lHVxzJRG3VL9HFkUN8fjfwEAAP//UNAAldkGAAA=
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Feb 2026 06:06:24 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '7009'
+      num_tokens:
+      - '381'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin,Accept-Encoding
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 0a042e7fc9ca091f68bb0939b3919173
+      x-envoy-upstream-service-time:
+      - '3550'
+    status:
+      code: 200
+      message: OK
+version: 1

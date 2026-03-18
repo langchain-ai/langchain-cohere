@@ -1,10 +1,18 @@
 import os
+from pathlib import Path
 from typing import Dict, Generator
 from unittest.mock import patch
 
 import pytest
+from dotenv import load_dotenv
 
 from langchain_cohere.llms import BaseCohere
+
+# Load environment variables from .env.test if it exists
+# This allows developers to store API keys locally without setting env vars
+env_test_path = Path(__file__).parent.parent / ".env.test"
+if env_test_path.exists():
+    load_dotenv(env_test_path)
 
 
 @pytest.fixture(scope="module")

@@ -54,6 +54,7 @@ langchain-text-splitters = "^1.0.0"
 langgraph = "^1.0.0"
 langchain-tests = "1.1.5"
 pytest = "^8.2.2"
+python-dotenv = "^1.0.0"
 [tool.poetry.group.lint]
 optional = true
 
