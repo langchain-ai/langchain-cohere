@@ -1,163 +1,41 @@
 interactions:
 - request:
-    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
-      "You are a helpful assistant"}, {"role": "user", "content": "what is the value
-      of magic_function(3)?"}], "tools": [{"type": "function", "function": {"name":
-      "magic_function", "description": "Applies a magic function to an input.", "parameters":
-      {"type": "object", "properties": {"input": {"type": "int", "description": "Number
-      to apply the magic function to."}}, "required": ["input"]}}}], "stream": true}'
+    body: '{"model":"command-r-plus","messages":[{"role":"system","content":"You are
+      a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
+      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
+      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
     headers:
-      accept:
+      Accept:
       - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
       - keep-alive
-      content-length:
-      - '476'
+      Content-Length:
+      - '472'
+      Host:
+      - api.cohere.com
+      User-Agent:
+      - cohere/5.18.0
+      X-Client-Name:
+      - langchain:partner
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - cohere
+      X-Fern-SDK-Version:
+      - 5.18.0
       content-type:
       - application/json
-      host:
-      - api.cohere.com
-      user-agent:
-      - python-httpx/0.27.2
-      x-client-name:
-      - langchain:partner
-      x-fern-language:
-      - Python
-      x-fern-sdk-name:
-      - cohere
-      x-fern-sdk-version:
-      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: 'event: message-start
-
-        data: {"id":"a70fe72c-656a-44fd-b161-e89d6d9602a5","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"I"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" will"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" use"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" magic"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"_"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"function"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" tool"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" to"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" answer"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" the"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":" question"}}}
-
-
-        event: tool-plan-delta
-
-        data: {"type":"tool-plan-delta","delta":{"message":{"tool_plan":"."}}}
-
-
-        event: tool-call-start
-
-        data: {"type":"tool-call-start","index":0,"delta":{"message":{"tool_calls":{"id":"magic_function_yypdfpdj7gx6","type":"function","function":{"name":"magic_function","arguments":""}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"{\n    \""}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"input"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\":"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"
-        "}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"3"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"\n"}}}}}
-
-
-        event: tool-call-delta
-
-        data: {"type":"tool-call-delta","index":0,"delta":{"message":{"tool_calls":{"function":{"arguments":"}"}}}}}
-
-
-        event: tool-call-end
-
-        data: {"type":"tool-call-end","index":0}
-
-
-        event: message-end
-
-        data: {"type":"message-end","delta":{"finish_reason":"TOOL_CALL","usage":{"billed_units":{"input_tokens":37,"output_tokens":21},"tokens":{"input_tokens":780,"output_tokens":54}}}}
-
-
-        data: [DONE]
-
-
-        '
+      string: !!binary |
+        H4sIAAAAAAAA/yzMQWrDMBRF0a081EEmkR05FiXeRlagSE+NwfI3+nJLKd17wc3wcuH8mDmZyYR8
+        8+O7y/bq6ezIFG0Y88Wm4epuydE/xsGcTaFq+KCZTJHEBacopYQ12Wq3ZdcTvoKissgnE2TFnVtj
+        ebDC+TOGy+A73Ek8W9t06vskUbsoT1Z2UcrR/UHr24tGloqAZdYGyfif+JYdMazYlZhXbQypM79/
+        AQAA///C2a7lzQAAAA==
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -169,174 +47,150 @@ interactions:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
       content-type:
-      - text/event-stream
+      - application/json
       date:
-      - Fri, 29 Nov 2024 14:51:14 GMT
+      - Fri, 10 Apr 2026 08:28:06 GMT
       expires:
-      - Thu, 01 Jan 1970 00:00:00 UTC
+      - Thu, 01 Jan 1970 00:00:00 GMT
       pragma:
       - no-cache
       server:
       - envoy
       vary:
-      - Origin
+      - Origin,Accept-Encoding
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 52cc2b14a4409ddcee910a47f74bdacb
-      x-endpoint-monthly-call-limit:
-      - '1000'
+      - db775b857efd0df4b2e5670fbca5b813
       x-envoy-upstream-service-time:
-      - '24'
-      x-trial-endpoint-call-limit:
-      - '40'
-      x-trial-endpoint-call-remaining:
-      - '21'
+      - '5'
+    status:
+      code: 404
+      message: Not Found
+- request:
+    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
+      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
+      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
+      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '475'
+      Host:
+      - api.cohere.com
+      User-Agent:
+      - cohere/5.18.0
+      X-Client-Name:
+      - langchain:partner
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - cohere
+      X-Fern-SDK-Version:
+      - 5.18.0
+      content-type:
+      - application/json
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/2SQy27jIBiFXwWd1YyERzZ2bA270awqRcqmu6ayiME2LQYrQC+yePfKTdNLsoP/
+        /86nAwu0BAcrelbVbJMVlSyzKq8P2YGxOpN1yWTTF13TKFBMynsxKPAFR2cUOIT32gdhAyiCc6ad
+        jbDguCHP2hgSvSJhVGQSg+7aPtouaGfJSpLgSK+tfN8/CRMVcf0F+Kv8/ecs7oQxHvzuo/FPsO0G
+        Mb/MY+6HB7YmXue13XkN+nXkC6yY1JUCFOI4xEnZ4MGx7KHtHMMevExI6T5R9NpqP7ZHJfwqwu1u
+        t23//9tuQRHPH3PQxijZRqtXz3KytME9KuvB65zCxfB9xJq0PvF0ueSL6m99ldjUiaIT3ajk5yxP
+        6S0AAP//5yc/fMwBAAA=
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Fri, 10 Apr 2026 08:29:38 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '7061'
+      num_tokens:
+      - '87'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin,Accept-Encoding
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - a27ed5a868d8a441e51f1c4e8e95b933
+      x-envoy-upstream-service-time:
+      - '724'
     status:
       code: 200
       message: OK
 - request:
-    body: '{"model": "command-r-plus", "messages": [{"role": "system", "content":
-      "You are a helpful assistant"}, {"role": "user", "content": "what is the value
-      of magic_function(3)?"}, {"role": "assistant", "tool_calls": [{"id": "magic_function_yypdfpdj7gx6",
-      "type": "function", "function": {"name": "magic_function", "arguments": "{\"input\":
-      3}"}}], "tool_plan": "I will use the magic_function tool to answer the question."},
-      {"role": "tool", "tool_call_id": "magic_function_yypdfpdj7gx6", "content": [{"type":
-      "document", "document": {"data": {"output": "5"}}}]}], "tools": [{"type": "function",
-      "function": {"name": "magic_function", "description": "Applies a magic function
-      to an input.", "parameters": {"type": "object", "properties": {"input": {"type":
-      "int", "description": "Number to apply the magic function to."}}, "required":
-      ["input"]}}}], "stream": true}'
+    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
+      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"},{"role":"assistant","tool_calls":[{"id":"magic_function_cgapxph0sgj2","type":"function","function":{"name":"magic_function","arguments":"{\"input\":
+      3}"}}],"tool_plan":"I will use the magic_function tool to find the value of
+      magic_function(3)."},{"role":"tool","tool_call_id":"magic_function_cgapxph0sgj2","content":[{"type":"document","document":{"data":{"output":"5"}}}]}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
+      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
+      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
     headers:
-      accept:
+      Accept:
       - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
       - keep-alive
-      content-length:
-      - '859'
+      Content-Length:
+      - '849'
+      Host:
+      - api.cohere.com
+      User-Agent:
+      - cohere/5.18.0
+      X-Client-Name:
+      - langchain:partner
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - cohere
+      X-Fern-SDK-Version:
+      - 5.18.0
       content-type:
       - application/json
-      host:
-      - api.cohere.com
-      user-agent:
-      - python-httpx/0.27.2
-      x-client-name:
-      - langchain:partner
-      x-fern-language:
-      - Python
-      x-fern-sdk-name:
-      - cohere
-      x-fern-sdk-version:
-      - 5.11.4
     method: POST
     uri: https://api.cohere.com/v2/chat
   response:
     body:
-      string: 'event: message-start
-
-        data: {"id":"95cca98f-632d-4b46-81eb-465fad856e2f","type":"message-start","delta":{"message":{"role":"assistant","content":[],"tool_plan":"","tool_calls":[],"citations":[]}}}
-
-
-        event: content-start
-
-        data: {"type":"content-start","index":0,"delta":{"message":{"content":{"type":"text","text":""}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"The"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        value"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        of"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        magic"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"_"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"function"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"("}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"3"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":")"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        is"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"
-        5"}}}}
-
-
-        event: content-delta
-
-        data: {"type":"content-delta","index":0,"delta":{"message":{"content":{"text":"."}}}}
-
-
-        event: citation-start
-
-        data: {"type":"citation-start","index":0,"delta":{"message":{"citations":{"start":34,"end":35,"text":"5","sources":[{"type":"tool","id":"magic_function_yypdfpdj7gx6:0","tool_output":{"output":"5"}}]}}}}
-
-
-        event: citation-end
-
-        data: {"type":"citation-end","index":0}
-
-
-        event: content-end
-
-        data: {"type":"content-end","index":0}
-
-
-        event: message-end
-
-        data: {"type":"message-end","delta":{"finish_reason":"COMPLETE","usage":{"billed_units":{"input_tokens":62,"output_tokens":13},"tokens":{"input_tokens":865,"output_tokens":57}}}}
-
-
-        data: [DONE]
-
-
-        '
+      string: !!binary |
+        H4sIAAAAAAAA/2RQy67bIBT8FWtWrYSvfP26CdvIuzbpwotKVWRhDDatA5aBKlXEv1fkJaVdwZmB
+        eZwL1ACKTA6DrOs8/cj7bVqWXKbbPu9TUQ1iKz9klfENCE7CWjYK0AtWMwtQMGuVdUw7EHCjndAO
+        9McF7s8SaSfOkbkeFO0kkt9s9iIxMjmxUfFOes2dMvpT8TlRNqneEI4EXDkWUXvVso6tDrQoCYQe
+        QIv6qVi9gcAav3JhX3yNmUFu3V6NOj6y5bxMmR1/5jSL4YyZO+Pd4l0s9rihQohZ7opt873tdod9
+        2+xbhGMgkEorO3WrYNZoUOwOX799adoGBP6xpV7Nsxg6r5WzcVZ68a5z5peI3TYFuds9ofcixES3
+        4d/373WW//cjLwMBZ3wSwxPLQvgbAAD//+jvFU7ZAQAA
     headers:
       Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      - h3=":443"; ma=2592000
       Transfer-Encoding:
       - chunked
       Via:
@@ -345,30 +199,186 @@ interactions:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
       content-type:
-      - text/event-stream
+      - application/json
       date:
-      - Fri, 29 Nov 2024 14:51:15 GMT
+      - Fri, 10 Apr 2026 08:29:39 GMT
       expires:
-      - Thu, 01 Jan 1970 00:00:00 UTC
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '7582'
+      num_tokens:
+      - '96'
       pragma:
       - no-cache
       server:
       - envoy
       vary:
-      - Origin
+      - Origin,Accept-Encoding
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - dd5d9ea380ee070d01f3785329101222
-      x-endpoint-monthly-call-limit:
-      - '1000'
+      - 334626f5d3e7a437881a1fbbae3ffd2e
       x-envoy-upstream-service-time:
-      - '18'
-      x-trial-endpoint-call-limit:
-      - '40'
-      x-trial-endpoint-call-remaining:
-      - '20'
+      - '1152'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
+      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
+      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
+      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '475'
+      Host:
+      - api.cohere.com
+      User-Agent:
+      - cohere/5.18.0
+      X-Client-Name:
+      - langchain:partner
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - cohere
+      X-Fern-SDK-Version:
+      - 5.18.0
+      content-type:
+      - application/json
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/2SQzW7iMBSFX8U6qxnJGQUnE8C70awqIbHprlSRk9yAVccGbLeikd+9Sin9gZ19
+        73c+HXuE7iBRdctlQ+U8E2UhspIKkTViMcuqRVE1eV7RopiBYyDv1ZYgRxydIUgo77UPygZwBOdM
+        vTfKQuKOvWhjWPTEwo7YoLa6rfto26CdZRPJgmO9tt37/lmZSMz1V+Cv4vefi7hVxnjIh4/GP8H6
+        lBcHIbx4PR3aKXHaT+0ua/Cvoxxh1UA3CnCo4zYOZIOHxLiBtvsYNpBFQkqPiaPXVvtdfSTlJxHu
+        1+tV/f/fagWOePmYRhtDXR2tnjzj2VIH90TWQ1Y5h4vh+0jM0/TE8+Wan5XL6ibxt0ocrWp31H3O
+        8pTeAgAA///bfcMPzAEAAA==
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Fri, 10 Apr 2026 08:30:47 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '7061'
+      num_tokens:
+      - '87'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin,Accept-Encoding
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 7e12a36bc0ddc83479f113a12312942b
+      x-envoy-upstream-service-time:
+      - '1102'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
+      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"},{"role":"assistant","tool_calls":[{"id":"magic_function_y03q22s2zyqc","type":"function","function":{"name":"magic_function","arguments":"{\"input\":
+      3}"}}],"tool_plan":"I will use the magic_function tool to find the value of
+      magic_function(3)."},{"role":"tool","tool_call_id":"magic_function_y03q22s2zyqc","content":[{"type":"document","document":{"data":{"output":"5"}}}]}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
+      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
+      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '849'
+      Host:
+      - api.cohere.com
+      User-Agent:
+      - cohere/5.18.0
+      X-Client-Name:
+      - langchain:partner
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - cohere
+      X-Fern-SDK-Version:
+      - 5.18.0
+      content-type:
+      - application/json
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/2RQTW/jIBD9K9acdiUc2WBbMdfIt92kBx8qVZGF8SRBdSAxUDWN+O8V+ZLSnmDe
+        g/cxZ1ADcKj6uqRzLNKiFywt+hzTOqcyrfte1jll5bxCILBHa8UWgZ9hMiMCB2Gtsk5oBwSk0Q61
+        A/52Bnc6RNrhZ2QuB4d2h8mHGD0mZpPsxVbJbuO1dMroP+xvomxSziCsCUjlRETtRcs6MTngrCCA
+        egDOqodiOQMC1vhJon3yNWYEcu32bNSdMnak1NKv01HyLIYzZuyMdwfvYrH7DUoIMctNsW1e226x
+        WrbNsoWwDgQ2Siu76yYU1mjgsFj9f/nXtA0Q8Pct9Woccei8Vs7GWemDd50z7xi7zRm52T2gnIWY
+        6Dr8fJ9XGf31gxaBgBRyh8MDy0L4DgAA//9WT7lv2QEAAA==
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Fri, 10 Apr 2026 08:30:49 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '7582'
+      num_tokens:
+      - '96'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin,Accept-Encoding
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - f6d9efd2ab4c430f2b50a480de9e3834
+      x-envoy-upstream-service-time:
+      - '1849'
     status:
       code: 200
       message: OK
