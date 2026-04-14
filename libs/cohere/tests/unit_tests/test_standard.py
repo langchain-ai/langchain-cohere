@@ -25,7 +25,7 @@ class TestCohereStandard(ChatModelUnitTests):
     @property
     def chat_model_params(self) -> dict:
         return {
-            "model": "command-r-plus",
+            "model": "command-a-03-2025",
             "temperature": 0,
             "cohere_api_key": "test_key",
         }

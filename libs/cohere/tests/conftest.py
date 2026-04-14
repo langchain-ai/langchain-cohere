@@ -27,7 +27,7 @@ def vcr_config() -> Dict:
 @pytest.fixture
 def patch_base_cohere_get_default_model() -> Generator[BaseCohere, None, None]:
     with patch.object(
-        BaseCohere, "_get_default_model", return_value="command-r-plus", autospec=True
+        BaseCohere, "_get_default_model", return_value="command-a-03-2025", autospec=True
     ) as mock_get_default_model:
         yield mock_get_default_model
 

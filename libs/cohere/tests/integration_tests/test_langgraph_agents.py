@@ -83,7 +83,7 @@ def test_langgraph_react_agent() -> None:
 
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires >= python3.9")
-@pytest.mark.vcr(record_mode="all")
+@pytest.mark.vcr()
 def test_langchain_tool_calling_agent() -> None:
     from langgraph.prebuilt import create_react_agent  # type: ignore
 

@@ -1,7 +1,7 @@
 interactions:
 - request:
-    body: '{"model":"command-r-plus","messages":[{"role":"system","content":"You are
-      a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
+    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
+      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
       a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
       function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
     headers:
@@ -12,7 +12,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '472'
+      - '475'
       Host:
       - api.cohere.com
       User-Agent:
@@ -32,10 +32,12 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAA/yzMQWrDMBRF0a081EEmkR05FiXeRlagSE+NwfI3+nJLKd17wc3wcuH8mDmZyYR8
-        8+O7y/bq6ezIFG0Y88Wm4epuydE/xsGcTaFq+KCZTJHEBacopYQ12Wq3ZdcTvoKissgnE2TFnVtj
-        ebDC+TOGy+A73Ek8W9t06vskUbsoT1Z2UcrR/UHr24tGloqAZdYGyfif+JYdMazYlZhXbQypM79/
-        AQAA///C2a7lzQAAAA==
+        H4sIAAAAAAAA/2SQXU/DIBSG/wo5V5pQ021du3FnvDJZshvvnCGMHjYihabAjDb8d4Ozfmx3cM7z
+        PnlhBN0CA4FLVasSi5WSoqiqUhV72ZRFM8NmVlZYrRQChQ69FwcENsLgDOag99oHYQNQCM4Z3hth
+        gcEjedPGkOiRhCOSThy05CpaGbSzJJMkOKK0bb/2J2EiEqcuwJvF7d0klsIYD+z5u/F/kIvTgPV8
+        3c/lh82J9z63m9ZAf49sBCs6vFIABTEcYoc2eGAw7kDbPoYdsEWClF4SBaWt9kc+oPBZBE/b7YY/
+        3G82QCFOH7PXxmDLo9XZM54tPLhXtB5YXVJwMfwdzZuUn3i+XPKzal1fJZZ1oiCFPGL7MytT+gwA
+        AP//7Wo1xswBAAA=
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -52,80 +54,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 10 Apr 2026 08:28:06 GMT
-      expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      pragma:
-      - no-cache
-      server:
-      - envoy
-      vary:
-      - Origin,Accept-Encoding
-      x-accel-expires:
-      - '0'
-      x-debug-trace-id:
-      - db775b857efd0df4b2e5670fbca5b813
-      x-envoy-upstream-service-time:
-      - '5'
-    status:
-      code: 404
-      message: Not Found
-- request:
-    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
-      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
-      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
-      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate, zstd
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '475'
-      Host:
-      - api.cohere.com
-      User-Agent:
-      - cohere/5.18.0
-      X-Client-Name:
-      - langchain:partner
-      X-Fern-Language:
-      - Python
-      X-Fern-SDK-Name:
-      - cohere
-      X-Fern-SDK-Version:
-      - 5.18.0
-      content-type:
-      - application/json
-    method: POST
-    uri: https://api.cohere.com/v2/chat
-  response:
-    body:
-      string: !!binary |
-        H4sIAAAAAAAA/2SQy27jIBiFXwWd1YyERzZ2bA270awqRcqmu6ayiME2LQYrQC+yePfKTdNLsoP/
-        /86nAwu0BAcrelbVbJMVlSyzKq8P2YGxOpN1yWTTF13TKFBMynsxKPAFR2cUOIT32gdhAyiCc6ad
-        jbDguCHP2hgSvSJhVGQSg+7aPtouaGfJSpLgSK+tfN8/CRMVcf0F+Kv8/ecs7oQxHvzuo/FPsO0G
-        Mb/MY+6HB7YmXue13XkN+nXkC6yY1JUCFOI4xEnZ4MGx7KHtHMMevExI6T5R9NpqP7ZHJfwqwu1u
-        t23//9tuQRHPH3PQxijZRqtXz3KytME9KuvB65zCxfB9xJq0PvF0ueSL6m99ldjUiaIT3ajk5yxP
-        6S0AAP//5yc/fMwBAAA=
-    headers:
-      Alt-Svc:
-      - h3=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-      Via:
-      - 1.1 google
-      access-control-expose-headers:
-      - X-Debug-Trace-ID
-      cache-control:
-      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-encoding:
-      - gzip
-      content-type:
-      - application/json
-      date:
-      - Fri, 10 Apr 2026 08:29:38 GMT
+      - Tue, 14 Apr 2026 15:59:33 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       num_chars:
@@ -141,17 +70,17 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - a27ed5a868d8a441e51f1c4e8e95b933
+      - 9029f573066a98a39abc9845b5be28db
       x-envoy-upstream-service-time:
-      - '724'
+      - '1067'
     status:
       code: 200
       message: OK
 - request:
     body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
-      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"},{"role":"assistant","tool_calls":[{"id":"magic_function_cgapxph0sgj2","type":"function","function":{"name":"magic_function","arguments":"{\"input\":
+      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"},{"role":"assistant","tool_calls":[{"id":"magic_function_avre629p2czn","type":"function","function":{"name":"magic_function","arguments":"{\"input\":
       3}"}}],"tool_plan":"I will use the magic_function tool to find the value of
-      magic_function(3)."},{"role":"tool","tool_call_id":"magic_function_cgapxph0sgj2","content":[{"type":"document","document":{"data":{"output":"5"}}}]}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
+      magic_function(3)."},{"role":"tool","tool_call_id":"magic_function_avre629p2czn","content":[{"type":"document","document":{"data":{"output":"5"}}}]}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
       a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
       function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
     headers:
@@ -182,15 +111,15 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAA/2RQy67bIBT8FWtWrYSvfP26CdvIuzbpwotKVWRhDDatA5aBKlXEv1fkJaVdwZmB
-        eZwL1ACKTA6DrOs8/cj7bVqWXKbbPu9TUQ1iKz9klfENCE7CWjYK0AtWMwtQMGuVdUw7EHCjndAO
-        9McF7s8SaSfOkbkeFO0kkt9s9iIxMjmxUfFOes2dMvpT8TlRNqneEI4EXDkWUXvVso6tDrQoCYQe
-        QIv6qVi9gcAav3JhX3yNmUFu3V6NOj6y5bxMmR1/5jSL4YyZO+Pd4l0s9rihQohZ7opt873tdod9
-        2+xbhGMgkEorO3WrYNZoUOwOX799adoGBP6xpV7Nsxg6r5WzcVZ68a5z5peI3TYFuds9ofcixES3
-        4d/373WW//cjLwMBZ3wSwxPLQvgbAAD//+jvFU7ZAQAA
+        H4sIAAAAAAAA/2RQy47bIBT9FeusWgmPHONHhu3Iu3amCy8qVSOLwdcJqgOWgahtxL9X5CWlXcE9
+        B87jnqBHCGzHtmrrZ8prXmzzatPy/EPKJpeciqmgqZWFAsOBnJM7gjhhtTNBQDqnnZfGg0FZ48l4
+        iB8n+N9Loj39Ssz5EOj3lB3lHCizU3aQO62GKRjltTWf+OdMu6x+QnxnUNrLhLqzlvNy9RC8YiAz
+        QvDmrlg/gcHZsCpyD77WzmCXbo9Ggzyu1JTPS6n+GFGkcNbOgw1+CT4Vu91QI6YsV8W++94PL2+v
+        fffaI75Hhkkb7fbDStJZA4GXt6/fvnR9B4Zw29KHnmcah2C0d2nWZgl+8PYnpW5bzq52d2jDY0p0
+        Gf59v2mK8r8fZRUZlFR7Gu9YEePfAAAA//+OtDyc2QEAAA==
     headers:
       Alt-Svc:
-      - h3=":443"; ma=2592000
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
       - chunked
       Via:
@@ -204,7 +133,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 10 Apr 2026 08:29:39 GMT
+      - Tue, 14 Apr 2026 15:59:35 GMT
       expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       num_chars:
@@ -220,165 +149,9 @@ interactions:
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 334626f5d3e7a437881a1fbbae3ffd2e
+      - a4d05bb057d46d2e813ee1f350807203
       x-envoy-upstream-service-time:
-      - '1152'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
-      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
-      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
-      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate, zstd
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '475'
-      Host:
-      - api.cohere.com
-      User-Agent:
-      - cohere/5.18.0
-      X-Client-Name:
-      - langchain:partner
-      X-Fern-Language:
-      - Python
-      X-Fern-SDK-Name:
-      - cohere
-      X-Fern-SDK-Version:
-      - 5.18.0
-      content-type:
-      - application/json
-    method: POST
-    uri: https://api.cohere.com/v2/chat
-  response:
-    body:
-      string: !!binary |
-        H4sIAAAAAAAA/2SQzW7iMBSFX8U6qxnJGQUnE8C70awqIbHprlSRk9yAVccGbLeikd+9Sin9gZ19
-        73c+HXuE7iBRdctlQ+U8E2UhspIKkTViMcuqRVE1eV7RopiBYyDv1ZYgRxydIUgo77UPygZwBOdM
-        vTfKQuKOvWhjWPTEwo7YoLa6rfto26CdZRPJgmO9tt37/lmZSMz1V+Cv4vefi7hVxnjIh4/GP8H6
-        lBcHIbx4PR3aKXHaT+0ua/Cvoxxh1UA3CnCo4zYOZIOHxLiBtvsYNpBFQkqPiaPXVvtdfSTlJxHu
-        1+tV/f/fagWOePmYRhtDXR2tnjzj2VIH90TWQ1Y5h4vh+0jM0/TE8+Wan5XL6ibxt0ocrWp31H3O
-        8pTeAgAA///bfcMPzAEAAA==
-    headers:
-      Alt-Svc:
-      - h3=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-      Via:
-      - 1.1 google
-      access-control-expose-headers:
-      - X-Debug-Trace-ID
-      cache-control:
-      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-encoding:
-      - gzip
-      content-type:
-      - application/json
-      date:
-      - Fri, 10 Apr 2026 08:30:47 GMT
-      expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      num_chars:
-      - '7061'
-      num_tokens:
-      - '87'
-      pragma:
-      - no-cache
-      server:
-      - envoy
-      vary:
-      - Origin,Accept-Encoding
-      x-accel-expires:
-      - '0'
-      x-debug-trace-id:
-      - 7e12a36bc0ddc83479f113a12312942b
-      x-envoy-upstream-service-time:
-      - '1102'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{"model":"command-a-03-2025","messages":[{"role":"system","content":"You
-      are a helpful assistant"},{"role":"user","content":"what is the value of magic_function(3)?"},{"role":"assistant","tool_calls":[{"id":"magic_function_y03q22s2zyqc","type":"function","function":{"name":"magic_function","arguments":"{\"input\":
-      3}"}}],"tool_plan":"I will use the magic_function tool to find the value of
-      magic_function(3)."},{"role":"tool","tool_call_id":"magic_function_y03q22s2zyqc","content":[{"type":"document","document":{"data":{"output":"5"}}}]}],"tools":[{"type":"function","function":{"name":"magic_function","description":"Applies
-      a magic function to an input.\n\nArgs:\n    input: Number to apply the magic
-      function to.","parameters":{"type":"object","properties":{"input":{"type":"integer","description":""}},"required":["input"]}}}],"stream":false}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate, zstd
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '849'
-      Host:
-      - api.cohere.com
-      User-Agent:
-      - cohere/5.18.0
-      X-Client-Name:
-      - langchain:partner
-      X-Fern-Language:
-      - Python
-      X-Fern-SDK-Name:
-      - cohere
-      X-Fern-SDK-Version:
-      - 5.18.0
-      content-type:
-      - application/json
-    method: POST
-    uri: https://api.cohere.com/v2/chat
-  response:
-    body:
-      string: !!binary |
-        H4sIAAAAAAAA/2RQTW/jIBD9K9acdiUc2WBbMdfIt92kBx8qVZGF8SRBdSAxUDWN+O8V+ZLSnmDe
-        g/cxZ1ADcKj6uqRzLNKiFywt+hzTOqcyrfte1jll5bxCILBHa8UWgZ9hMiMCB2Gtsk5oBwSk0Q61
-        A/52Bnc6RNrhZ2QuB4d2h8mHGD0mZpPsxVbJbuO1dMroP+xvomxSziCsCUjlRETtRcs6MTngrCCA
-        egDOqodiOQMC1vhJon3yNWYEcu32bNSdMnak1NKv01HyLIYzZuyMdwfvYrH7DUoIMctNsW1e226x
-        WrbNsoWwDgQ2Siu76yYU1mjgsFj9f/nXtA0Q8Pct9Woccei8Vs7GWemDd50z7xi7zRm52T2gnIWY
-        6Dr8fJ9XGf31gxaBgBRyh8MDy0L4DgAA//9WT7lv2QEAAA==
-    headers:
-      Alt-Svc:
-      - h3=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-      Via:
-      - 1.1 google
-      access-control-expose-headers:
-      - X-Debug-Trace-ID
-      cache-control:
-      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
-      content-encoding:
-      - gzip
-      content-type:
-      - application/json
-      date:
-      - Fri, 10 Apr 2026 08:30:49 GMT
-      expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      num_chars:
-      - '7582'
-      num_tokens:
-      - '96'
-      pragma:
-      - no-cache
-      server:
-      - envoy
-      vary:
-      - Origin,Accept-Encoding
-      x-accel-expires:
-      - '0'
-      x-debug-trace-id:
-      - f6d9efd2ab4c430f2b50a480de9e3834
-      x-envoy-upstream-service-time:
-      - '1849'
+      - '2050'
     status:
       code: 200
       message: OK

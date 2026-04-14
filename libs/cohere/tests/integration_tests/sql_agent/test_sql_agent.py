@@ -26,7 +26,7 @@ def test_sql_agent() -> None:
     db = SQLDatabase.from_uri(
         "sqlite:///tests/integration_tests/sql_agent/db/employees.db"
     )
-    llm = ChatCohere(model="command-r-plus", temperature=0)
+    llm = ChatCohere(model="command-a-03-2025", temperature=0)
     agent_executor = create_sql_agent(
         llm, db=db, agent_type="tool-calling", verbose=True
     )

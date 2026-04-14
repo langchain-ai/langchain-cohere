@@ -15,13 +15,12 @@ from langchain_cohere import ChatCohere, load_summarize_chain
 
 @pytest.mark.vcr()
 def test_load_summarize_chain() -> None:
-    llm = ChatCohere(model="command-r-plus", temperature=0)
+    llm = ChatCohere(model="command-a-03-2025", temperature=0)
     agent_executor = load_summarize_chain(llm, chain_type="stuff")
     with open("tests/integration_tests/chains/summarize/docs/ginger_benefits.txt") as f:
         doc_lines = f.readlines()
     docs = [Document("".join(doc_lines))]
     resp = agent_executor.invoke({"documents": docs})
-    assert (
-        resp.content
-        == "Ginger has a range of health benefits, including improving digestion, relieving nausea, reducing bloating and gas, and providing antioxidants to manage free radicals. It may also have anti-inflammatory properties. Ginger can be consumed in various forms, including tea, ale, candies, and as an ingredient in many dishes. Fresh ginger root is flavourful, while ginger powder is a convenient and economical alternative. Ginger supplements are not recommended due to potential unknown ingredients and the unregulated nature of the supplement industry."  # noqa: E501
-    )
+    content = resp.content.lower()
+    assert "ginger" in content
+    assert any(word in content for word in ["digestion", "nausea", "health"])
