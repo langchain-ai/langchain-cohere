@@ -97,7 +97,9 @@ def test_langchain_tool_calling_agent() -> None:
         return input + 2
 
     model = ChatCohere(model=DEFAULT_MODEL)
-    app = create_react_agent(model, [magic_function], prompt="You are a helpful assistant")
+    app = create_react_agent(
+        model, [magic_function], prompt="You are a helpful assistant"
+    )
 
     query = "what is the value of magic_function(3)?"
     messages = app.invoke({"messages": [("human", query)]})
