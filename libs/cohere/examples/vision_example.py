@@ -9,15 +9,18 @@ Usage:
 
 import argparse
 
-from langchain_cohere import ChatCohere
 from langchain_core.messages import HumanMessage
+
+from langchain_cohere import ChatCohere
 
 DEFAULT_IMAGE_URL = "https://cohere.com/favicon-32x32.png"
 VISION_MODEL = "command-a-vision-07-2025"
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Test Command A Vision via langchain-cohere")
+    parser = argparse.ArgumentParser(
+        description="Test Command A Vision via langchain-cohere"
+    )
     parser.add_argument(
         "--image",
         default=DEFAULT_IMAGE_URL,
