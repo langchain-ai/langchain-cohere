@@ -111,7 +111,7 @@ def create_sql_agent(
         from langchain_community.utilities import SQLDatabase
 
         db = SQLDatabase.from_uri("sqlite:///Chinook.db")
-        llm = ChatCohere(model="command-r-plus", temperature=0)
+        llm = ChatCohere(model="command-a-03-2025", temperature=0)
         agent_executor = create_sql_agent(llm, db=db, verbose=True)
         resp = agent_executor.run("Show me the first 5 rows of the 'Album' table.")
         print(resp.get("output"))

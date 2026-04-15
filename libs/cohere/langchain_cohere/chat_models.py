@@ -648,11 +648,11 @@ class ChatCohere(BaseChatModel, BaseCohere):
 
                     This is the default method.
 
-                    Supported for `'command-r'`, `'command-r-plus'`, and later models.
+                    Supported for `'command-a-03-2025'` and later models.
                 - `'json_mode'`:
                     Uses Cohere's Structured Output API: https://docs.cohere.com/docs/structured-outputs
 
-                    Supported for `'command-r'`, `'command-r-plus'`, and later models.
+                    Supported for `'command-a-03-2025'` and later models.
 
         Returns:
             A `Runnable` that takes any `ChatModel` input and returns either a `dict` or

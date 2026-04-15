@@ -50,7 +50,7 @@ def test_initialization(
     "chat_cohere_kwargs,expected",
     [
         pytest.param(
-            {"cohere_api_key": "test"}, {"model": "command-r-plus"}, id="defaults"
+            {"cohere_api_key": "test"}, {"model": "command-a-03-2025"}, id="defaults"
         ),
         pytest.param(
             {

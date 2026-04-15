@@ -8,18 +8,14 @@ When re-recording these tests you will need to set COHERE_API_KEY.
 """
 
 import sys
-from typing import Sequence, Union
+from typing import Union
 
 import pytest
 from langchain.tools import tool
-from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.tools import BaseTool, Tool
-from pydantic import BaseModel, Field
 
 from langchain_cohere import ChatCohere
 
-DEFAULT_MODEL = "command-r-plus"
+DEFAULT_MODEL = "command-a-03-2025"
 
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires >= python3.9")
@@ -89,38 +85,22 @@ def test_langgraph_react_agent() -> None:
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires >= python3.9")
 @pytest.mark.vcr()
 def test_langchain_tool_calling_agent() -> None:
+    from langgraph.prebuilt import create_react_agent  # type: ignore
+
+    @tool
     def magic_function(input: int) -> int:
-        """Applies a magic function to an input."""
+        """Applies a magic function to an input.
+
+        Args:
+            input: Number to apply the magic function to.
+        """
         return input + 2
 
-    magic_function_tool = Tool(
-        name="magic_function",
-        description="Applies a magic function to an input.",
-        func=magic_function,
-    )
-    magic_function_tool.name = "magic_function"
-
-    class MagicFunctionInput(BaseModel):
-        input: int = Field(description="Number to apply the magic function to.")
-
-    magic_function_tool.args_schema = MagicFunctionInput
-
-    tools: Sequence[BaseTool] = [magic_function_tool]
     model = ChatCohere(model=DEFAULT_MODEL)
+    app = create_react_agent(
+        model, [magic_function], prompt="You are a helpful assistant"
+    )
 
     query = "what is the value of magic_function(3)?"
-
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            ("system", "You are a helpful assistant"),
-            ("human", "{input}"),
-            # Placeholders fill up a **list** of messages
-            ("placeholder", "{agent_scratchpad}"),
-        ]
-    )
-
-    agent = create_tool_calling_agent(model, tools, prompt)
-    agent_executor = AgentExecutor(agent=agent, tools=tools)
-
-    ans = agent_executor.invoke({"input": query})
-    assert "5" in ans.get("output", "").lower()
+    messages = app.invoke({"messages": [("human", query)]})
+    assert "5" in messages["messages"][-1].content.lower()
