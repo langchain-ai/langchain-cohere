@@ -405,3 +405,143 @@ def test_cohere_with_structured_output(
         "The person's name is John, and he is 30 years old"
     )
     assert result == expected
+
+
+# Vision tests for Command A Vision model
+VISION_MODEL = "command-a-vision-07-2025"
+
+
+@pytest.mark.vcr()
+def test_invoke_with_vision_url() -> None:
+    """Test invoking ChatCohere with an image URL."""
+    llm = ChatCohere(model=VISION_MODEL)
+    message = HumanMessage(
+        content=[
+            {"type": "text", "text": "What's in this image?"},
+            {
+                "type": "image_url",
+                "image_url": {"url": "https://cohere.com/favicon-32x32.png"},
+            },
+        ]
+    )
+    result = llm.invoke([message])
+    assert isinstance(result, AIMessage)
+    assert isinstance(result.content, str)
+    assert len(result.content) > 0
+
+
+@pytest.mark.vcr()
+def test_invoke_with_vision_base64() -> None:
+    """Test invoking ChatCohere with a base64 encoded image."""
+    llm = ChatCohere(model=VISION_MODEL)
+    # Small 1x1 red pixel PNG
+    base64_image = (
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwHwAFBQIAX8jx"
+        "0gAAAABJRU5ErkJggg=="
+    )
+    message = HumanMessage(
+        content=[
+            {"type": "text", "text": "Describe this image"},
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{base64_image}",
+                    "detail": "high",
+                },
+            },
+        ]
+    )
+    result = llm.invoke([message])
+    assert isinstance(result, AIMessage)
+    assert isinstance(result.content, str)
+    assert len(result.content) > 0
+
+
+@pytest.mark.vcr()
+def test_invoke_with_multiple_images() -> None:
+    """Test invoking ChatCohere with multiple images."""
+    llm = ChatCohere(model=VISION_MODEL)
+    message = HumanMessage(
+        content=[
+            {"type": "text", "text": "Compare these two images"},
+            {
+                "type": "image_url",
+                "image_url": {"url": "https://cohere.com/favicon-32x32.png"},
+            },
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": "https://cohere.com/favicon-32x32.png",
+                    "detail": "low",
+                },
+            },
+        ]
+    )
+    result = llm.invoke([message])
+    assert isinstance(result, AIMessage)
+    assert isinstance(result.content, str)
+    assert len(result.content) > 0
+
+
+@pytest.mark.vcr()
+async def test_astream_with_vision() -> None:
+    """Test async streaming with vision inputs."""
+    llm = ChatCohere(model=VISION_MODEL)
+    message = HumanMessage(
+        content=[
+            {"type": "text", "text": "What's in this image?"},
+            {
+                "type": "image_url",
+                "image_url": {"url": "https://cohere.com/favicon-32x32.png"},
+            },
+        ]
+    )
+
+    full: Optional[BaseMessageChunk] = None
+    async for token in llm.astream([message]):
+        assert isinstance(token, AIMessageChunk)
+        full = token if full is None else full + token
+
+    assert isinstance(full, AIMessageChunk)
+    assert isinstance(full.content, str)
+    assert len(full.content) > 0
+
+
+@pytest.mark.vcr()
+def test_stream_with_vision() -> None:
+    """Test streaming with vision inputs."""
+    llm = ChatCohere(model=VISION_MODEL)
+    message = HumanMessage(
+        content=[
+            {"type": "text", "text": "Describe this image briefly"},
+            {
+                "type": "image_url",
+                "image_url": {"url": "https://cohere.com/favicon-32x32.png"},
+            },
+        ]
+    )
+
+    full: Optional[BaseMessageChunk] = None
+    for chunk in llm.stream([message]):
+        assert isinstance(chunk, AIMessageChunk)
+        full = chunk if full is None else full + chunk
+
+    assert isinstance(full, AIMessageChunk)
+    assert isinstance(full.content, str)
+    assert len(full.content) > 0
+
+
+@pytest.mark.vcr()
+def test_invoke_with_text_only_list() -> None:
+    """Test that text-only content in list format still works."""
+    llm = ChatCohere(model=VISION_MODEL)
+    message = HumanMessage(
+        content=[
+            {"type": "text", "text": "Hello, "},
+            {"type": "text", "text": "how are you?"},
+        ]
+    )
+    result = llm.invoke([message])
+    assert isinstance(result, AIMessage)
+    assert isinstance(result.content, str)
+    assert len(result.content) > 0

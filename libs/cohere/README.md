@@ -52,6 +52,68 @@ messages = [HumanMessage(content="Hello, can you introduce yourself?")]
 print(llm.invoke(messages))
 ```
 
+### Vision (Image Inputs)
+
+Command A Vision models can process images alongside text. Supports both URL and base64-encoded images.
+
+```python
+from langchain_cohere import ChatCohere
+from langchain_core.messages import HumanMessage
+
+# Initialize the vision model
+llm = ChatCohere(model="command-a-vision-07-2025")
+
+# Using an image URL
+message = HumanMessage(
+    content=[
+        {"type": "text", "text": "What's in this image?"},
+        {
+            "type": "image_url",
+            "image_url": {"url": "https://example.com/image.jpg"}
+        }
+    ]
+)
+response = llm.invoke([message])
+print(response.content)
+
+# Using a base64-encoded image with detail level
+message = HumanMessage(
+    content=[
+        {"type": "text", "text": "Describe this chart in detail"},
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "data:image/png;base64,iVBORw0KG...",
+                "detail": "high"  # Options: "low", "high", or "auto" (default)
+            }
+        }
+    ]
+)
+response = llm.invoke([message])
+print(response.content)
+
+# Multiple images
+message = HumanMessage(
+    content=[
+        {"type": "text", "text": "Compare these images"},
+        {"type": "image_url", "image_url": {"url": "https://example.com/image1.jpg"}},
+        {"type": "image_url", "image_url": {"url": "https://example.com/image2.jpg"}}
+    ]
+)
+response = llm.invoke([message])
+print(response.content)
+```
+
+**Image Requirements:**
+- Maximum 20 images per request or 20MB total
+- Supported formats: PNG, JPEG, WEBP, non-animated GIF
+- Detail levels affect token usage:
+  - `"low"`: 256 tokens per image (faster, lower cost)
+  - `"high"`: More tokens based on image size (better quality)
+  - `"auto"`: Automatically selects appropriate detail level
+
+For more information, see [Cohere's Vision documentation](https://docs.cohere.com/docs/image-inputs).
+
 ### ReAct Agent
 
 ```python
