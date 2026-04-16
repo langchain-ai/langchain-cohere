@@ -1,10 +1,23 @@
 from dataclasses import dataclass
 from typing import Any, List, Mapping, Set
 
+from langchain_core._api.deprecation import deprecated
 
+
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    message=(
+        "Only used by the deprecated create_cohere_react_agent. "
+        "Will be removed alongside the react_multi_hop module."
+    ),
+)
 @dataclass
 class CohereCitation:
     """Cohere has fine-grained citations that specify the exact part of text.
+
+    .. deprecated:: 0.6.0
+        Only used by the deprecated ``create_cohere_react_agent``.
 
     More info at https://docs.cohere.com/docs/documents-and-citations
     """

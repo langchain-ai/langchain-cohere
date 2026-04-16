@@ -2,7 +2,7 @@
 
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from langchain_core._api import beta
+from langchain_core._api.deprecation import deprecated
 from langchain_core.language_models import BaseLanguageModel
 from langchain_core.messages import BaseMessage, HumanMessage
 from langchain_core.prompts import (
@@ -74,9 +74,13 @@ def _load_stuff_chain(
     return runnable
 
 
-@beta(
-    message="""Makes use of Cohere's grounded RAG summarization, 
-        which may change in a later langchain-cohere version"""
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    message=(
+        "Build summarization pipelines with LCEL or LangGraph instead. "
+        "This function follows the legacy load_*_chain pattern."
+    ),
 )
 def load_summarize_chain(
     llm: BaseLanguageModel,

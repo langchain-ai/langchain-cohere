@@ -26,7 +26,8 @@ JSON_TO_PYTHON_TYPES = {
 
 
 def _create_retry_decorator(max_retries: int) -> Callable[[Any], Any]:
-    # support v4 and v5
+    # TODO(0.6.0): Remove v4 compatibility branch. Package requires cohere>=5.18.0,
+    # so `cohere.error` never exists. Clean up in 1.0.0.
     retry_conditions = (
         retry_if_exception_type(cohere.error.CohereError)
         if hasattr(cohere, "error")

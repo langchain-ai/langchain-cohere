@@ -9,6 +9,7 @@ from cohere import (
     ToolV2,
     ToolV2Function,
 )
+from langchain_core._api.deprecation import deprecated
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.outputs import Generation
@@ -22,6 +23,12 @@ from pydantic import BaseModel
 from langchain_cohere.utils import JSON_TO_PYTHON_TYPES
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    alternative="_format_to_cohere_tools_v2",
+    message="Uses the Cohere V1 tool format. Use _format_to_cohere_tools_v2 instead.",
+)
 def _format_to_cohere_tools(
     tools: Sequence[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> List[Dict[str, Any]]:
@@ -34,6 +41,11 @@ def _format_to_cohere_tools_v2(
     return [_convert_to_cohere_tool_v2(tool) for tool in tools]
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    message="Uses the Cohere V1 tool message format. Will be removed with the V1 API code paths.",
+)
 def _format_to_cohere_tools_messages(
     intermediate_steps: Sequence[Tuple[AgentAction, str]],
 ) -> List[Dict[str, Any]]:
@@ -70,6 +82,12 @@ def _format_to_cohere_tools_messages(
     return tool_results
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    alternative="_convert_to_cohere_tool_v2",
+    message="Uses the Cohere V1 tool format. Use _convert_to_cohere_tool_v2 instead.",
+)
 def _convert_to_cohere_tool(
     tool: Union[Union[Dict[str, Any], Type[BaseModel], Callable, BaseTool]],
 ) -> Dict[str, Any]:
@@ -229,6 +247,11 @@ def _convert_to_cohere_tool_v2(
         )
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    message="Only used by the deprecated V1 agent code paths.",
+)
 class _CohereToolsAgentOutputParser(
     BaseOutputParser[Union[List[AgentAction], AgentFinish]]
 ):
