@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 
-def __getattr__(name: str):  # type: ignore[misc]
+def __getattr__(name: str) -> object:
     if name in _LAZY_IMPORTS:
         import importlib
 

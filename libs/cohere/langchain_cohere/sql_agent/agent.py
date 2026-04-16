@@ -30,10 +30,6 @@ from langchain_cohere.sql_agent.prompts import (
 if TYPE_CHECKING:
     from langchain_classic.agents.agent import AgentExecutor
     from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
-    from langchain_community.tools.sql_database.tool import (
-        InfoSQLDatabaseTool,
-        ListSQLDatabaseTool,
-    )
     from langchain_community.utilities.sql_database import SQLDatabase
     from langchain_core.callbacks import BaseCallbackManager
     from langchain_core.language_models import BaseLanguageModel
