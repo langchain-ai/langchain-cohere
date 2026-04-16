@@ -11,11 +11,6 @@ from typing import (
     Union,
 )
 
-from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
-from langchain_community.tools.sql_database.tool import (
-    InfoSQLDatabaseTool,
-    ListSQLDatabaseTool,
-)
 from langchain_core.messages import BaseMessage
 from langchain_core.prompts import BasePromptTemplate
 from langchain_core.prompts.chat import (
@@ -34,6 +29,11 @@ from langchain_cohere.sql_agent.prompts import (
 
 if TYPE_CHECKING:
     from langchain_classic.agents.agent import AgentExecutor
+    from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
+    from langchain_community.tools.sql_database.tool import (
+        InfoSQLDatabaseTool,
+        ListSQLDatabaseTool,
+    )
     from langchain_community.utilities.sql_database import SQLDatabase
     from langchain_core.callbacks import BaseCallbackManager
     from langchain_core.language_models import BaseLanguageModel
@@ -117,6 +117,18 @@ def create_sql_agent(
         print(resp.get("output"))
         ```
     """  # noqa: E501
+
+    try:
+        from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
+        from langchain_community.tools.sql_database.tool import (
+            InfoSQLDatabaseTool,
+            ListSQLDatabaseTool,
+        )
+    except ImportError:
+        raise ImportError(
+            "The SQL agent requires langchain-community. "
+            "Install it with: pip install langchain-community"
+        )
 
     if toolkit is None and db is None:
         raise ValueError(
