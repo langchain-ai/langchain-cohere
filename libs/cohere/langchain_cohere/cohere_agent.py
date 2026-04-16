@@ -44,7 +44,10 @@ def _format_to_cohere_tools_v2(
 @deprecated(
     since="0.6.0",
     removal="1.0.0",
-    message="Uses the Cohere V1 tool message format. Will be removed with the V1 API code paths.",
+    message=(
+        "Uses the Cohere V1 tool message format. "
+        "Will be removed with the V1 API code paths."
+    ),
 )
 def _format_to_cohere_tools_messages(
     intermediate_steps: Sequence[Tuple[AgentAction, str]],

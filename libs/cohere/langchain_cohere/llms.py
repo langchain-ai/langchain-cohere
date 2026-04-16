@@ -129,7 +129,6 @@ class BaseCohere(Serializable):
 @deprecated(
     since="0.6.0",
     removal="1.0.0",
-    alternative="ChatCohere",
     alternative_import="langchain_cohere.ChatCohere",
     message=(
         "The Cohere Generate endpoint is deprecated. "

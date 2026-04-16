@@ -11,13 +11,12 @@ from typing import (
     Union,
 )
 
-from langchain_core._api.deprecation import deprecated
-
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain_community.tools.sql_database.tool import (
     InfoSQLDatabaseTool,
     ListSQLDatabaseTool,
 )
+from langchain_core._api.deprecation import deprecated
 from langchain_core.messages import BaseMessage
 from langchain_core.prompts import BasePromptTemplate
 from langchain_core.prompts.chat import (

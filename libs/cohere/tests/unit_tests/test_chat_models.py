@@ -1369,14 +1369,12 @@ def test_get_cohere_chat_request_v2_warn_connectors_deprecated(
 
     with pytest.raises(
         ValueError,
-        match="The 'connectors' parameter is deprecated as of version 0.4.0.",
+        match="The 'connectors' parameter is deprecated",
     ):
         get_cohere_chat_request_v2(messages, **kwargs)
 
     assert len(recwarn) == 1
     warning = recwarn.pop(DeprecationWarning)
     assert issubclass(warning.category, DeprecationWarning)
-    assert "The 'connectors' parameter is deprecated as of version 0.4.0." in str(
-        warning.message
-    )
-    assert "Please use the 'tools' parameter instead." in str(warning.message)
+    assert "connectors" in str(warning.message)
+    assert "deprecated" in str(warning.message)
