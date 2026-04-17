@@ -1,0 +1,78 @@
+interactions:
+- request:
+    body: '{"model":"command-a-vision-07-2025","messages":[{"role":"user","content":[{"type":"text","text":"Describe
+      this image"},{"type":"image_url","image_url":{"url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwHwAFBQIAX8jx0gAAAABJRU5ErkJggg==","detail":"high"}}]}],"stream":false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '315'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - cohere/5.18.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.18.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/2yQQW/bPAyG/wo/XnpRin5J2ji+Dj0M2LAdchuGQJaomKssuSKVLQj83wcbDToM
+        OwkU8Tx8ySuyxxabR7exYbdfbUOzW2137mHVPK3Xq6ZxTfi/C26zcWhwIBF7ImyvWHIkbNGKsKhN
+        igZdTkpJsf12Rb2Mc1vp19xZnhYPPQEP9kRwyfXuTDCWfGZPHljAguTIHgp5kNdqC93DoadCYAtB
+        yuBZHJXEXSTI3Q9yKgZms4FcIGtPBSjSQEkFfrL2nEBvE+/ho94JCA9jvICFmjjkMizTXI65QOAY
+        OZ0WhJJyobcYEIodZkGYY0NvzwQ2XUBGchzYwWslUc5JwHa5KmjP8rZnLpCIPIRalnye1HIUA4Eo
+        QihEoBmsvPyH0/fJYODE0h8LWckJW/zw5fPXT8+HZzRYb5fvOEbyx5pYZa45jVWPml8oCbbrp7XB
+        XPXPv8f9ZPBW/A1s9/t/AAaXBd61i8NZ15N/R5uHafodAAD//6oOpChCAgAA
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Feb 2026 03:41:21 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '2610'
+      num_tokens:
+      - '321'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin,Accept-Encoding
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - e86e11e29a316e54213d30ae2e9145d2
+      x-envoy-upstream-service-time:
+      - '1774'
+    status:
+      code: 200
+      message: OK
+version: 1

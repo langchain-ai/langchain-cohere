@@ -1,0 +1,81 @@
+interactions:
+- request:
+    body: '{"model":"command-a-vision-07-2025","messages":[{"role":"user","content":[{"type":"text","text":"What''s
+      in this image?"},{"type":"image_url","image_url":{"url":"https://cohere.com/favicon-32x32.png"}}]}],"stream":false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '219'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - cohere/5.18.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.18.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/2xSy27kNhD8lQIvvmgG43k4tq6BDwESJAcDOQSB0SJbUmcoUmG3vJ415t8XFNb7
+        wp6IflRVdzXfnATXurDb7/q9P2744W63OfKBNt2dP21u78Mv/eH+dODu6Bo3sSoN7No3V3Jk1zpS
+        FTVK5hrnczJO5tp/3pxd5lo2fq2V9Wnd08iQiQbGJS83L4y55BcJHCCK/xcxBnVqhbyBUkDIrOnG
+        UIlJEihdEEQ9lyRdZOTuP/amyAXqObFu8ZuhZ7KlsMLGwlwBJskbdKSZtQUhUhkYgcoZQ2FOyC8U
+        QQYbGZbnBgSdKEYuyIXSwPBSfFVMa0+XzfKEyL0166SEiYMs00blIwfMS5lrd6X9HlJkGG2Lp5GV
+        P08EKgxlAw0kSQ2EOdZ1P4zVkY78eSh5SWGFQWWao3ixy6ocyZ+RewQ2koiJzgwxBOl78Us0WAap
+        L9Lx6p/O7KUXj4kpSRqqeevhXtdWez/RaqXPSwyoSEySZKIoapiFPVdNKnV9xDzkpvIQAqsMCRx5
+        4mRb/C025sVAIYhJThQhqc9loho1ELtR5JlT1ZZkXObCtha37vrvtXG9JNHxuTBpTq51v/75x1+/
+        Pz49usYt73+xkxg5PC9JTGssaV7s2fKZk7p2f3dqXF7s29zt7eHauPfoR8Rpt/8ZonGrM1+JTw/X
+        xnnyI4cvyeP97nr9FAAA///So79LVgMAAA==
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Feb 2026 03:38:23 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '2612'
+      num_tokens:
+      - '378'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin,Accept-Encoding
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - e2158a96221da247d71a662f9cd696ef
+      x-envoy-upstream-service-time:
+      - '3144'
+    status:
+      code: 200
+      message: OK
+version: 1
