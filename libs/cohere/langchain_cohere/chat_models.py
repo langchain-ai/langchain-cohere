@@ -21,8 +21,10 @@ from cohere import (
     ChatMessageV2,
     ChatResponse,
     DocumentToolContent,
+    ImageUrlContent,
     NonStreamedChatResponse,
     SystemChatMessageV2,
+    TextContent,
     ToolCall,
     ToolCallV2,
     ToolCallV2Function,
@@ -440,7 +442,7 @@ def _get_message_cohere_format_v2(
     elif isinstance(message, HumanMessage):
         return UserChatMessageV2(
             role=get_role_v2(message),
-            content=message.content,
+            content=_convert_content_to_cohere_format(message.content),
         )
     elif isinstance(message, SystemMessage):
         return SystemChatMessageV2(
@@ -475,6 +477,50 @@ def _get_message_cohere_format_v2(
         )
     else:
         raise ValueError(f"Got unknown type {message}")
+
+
+def _convert_content_to_cohere_format(
+    content: Union[str, List[Union[str, Dict[str, Any]]]],
+) -> Union[str, List[Union[TextContent, ImageUrlContent]]]:
+    """Convert LangChain message content to Cohere format.
+
+    Args:
+        content: Either a string or a list of content items (text and/or images)
+
+    Returns:
+        Either a string (for text-only) or a list of TextContent/ImageUrlContent objects
+    """
+    if isinstance(content, str):
+        return content
+
+    if not isinstance(content, list):
+        return str(content)
+
+    cohere_content: List[Union[TextContent, ImageUrlContent]] = []
+
+    for item in content:
+        if isinstance(item, str):
+            cohere_content.append(TextContent(type="text", text=item))
+        elif isinstance(item, dict):
+            content_type = item.get("type")
+
+            if content_type == TextContent.model_fields["type"].default:
+                text = item.get("text", "")
+                cohere_content.append(TextContent(type="text", text=text))
+            elif content_type == ImageUrlContent.model_fields["type"].default:
+                image_url_data = item.get("image_url", {})
+                if isinstance(image_url_data, str):
+                    cohere_content.append(
+                        ImageUrlContent(
+                            type="image_url", image_url={"url": image_url_data}
+                        )
+                    )
+                elif isinstance(image_url_data, dict):
+                    cohere_content.append(
+                        ImageUrlContent(type="image_url", image_url=image_url_data)
+                    )
+
+    return cohere_content if cohere_content else ""
 
 
 def get_cohere_chat_request_v2(

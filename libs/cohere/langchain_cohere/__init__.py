@@ -5,7 +5,10 @@ from langchain_cohere.embeddings import CohereEmbeddings
 from langchain_cohere.rag_retrievers import CohereRagRetriever
 from langchain_cohere.react_multi_hop.agent import create_cohere_react_agent
 from langchain_cohere.rerank import CohereRerank
-from langchain_cohere.sql_agent.agent import create_sql_agent
+
+_LAZY_IMPORTS = {
+    "create_sql_agent": "langchain_cohere.sql_agent.agent",
+}
 
 __all__ = [
     "CohereCitation",
@@ -17,3 +20,12 @@ __all__ = [
     "create_sql_agent",
     "load_summarize_chain",
 ]
+
+
+def __getattr__(name: str) -> object:
+    if name in _LAZY_IMPORTS:
+        import importlib
+
+        module = importlib.import_module(_LAZY_IMPORTS[name])
+        return getattr(module, name)
+    raise AttributeError(f"module 'langchain_cohere' has no attribute {name!r}")

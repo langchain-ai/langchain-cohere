@@ -1,0 +1,77 @@
+interactions:
+- request:
+    body: '{"model":"command-a-vision-07-2025","messages":[{"role":"user","content":[{"type":"text","text":"Hello,
+      "},{"type":"text","text":"how are you?"}]}],"stream":false}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '163'
+      content-type:
+      - application/json
+      host:
+      - api.cohere.com
+      user-agent:
+      - cohere/5.18.0
+      x-client-name:
+      - langchain:partner
+      x-fern-language:
+      - Python
+      x-fern-sdk-name:
+      - cohere
+      x-fern-sdk-version:
+      - 5.18.0
+    method: POST
+    uri: https://api.cohere.com/v2/chat
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/2yPwWrjQAyGX0Wry17skMQJG89lD0sggS3tobdSgmLLnsGTmdSSm5rgdy92SSml
+        J/H/3yeEruhKNLhZULEs5lWa55Snq2qRpfkxp7T8s8iO+brKsmWGCZ5YhGpGc8U2ekaDJOJEKSgm
+        WMSgHBTN0xW1P49Y+W0k0zC4Y+8jqOWWf8H+9wnK6EINF/Y+AbUUGuhjB1VsgaRxoZ5N1uiDRvi4
+        NSkXpxYo9PDSsaiLQSC2oCSNTPzkaqtg6ZVnsIsXKCjAHiz784Q1ltT/xeF5SLBywYk9tEwSAxr8
+        d3/38H/7uMUEu9uzR+c9l4cuOJUxu3Du9KCx4SBoNgnGTr822XpI8Ba+6+t59vNCQYXl8rNbbebD
+        8B4AAP//fZJP3qABAAA=
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 google
+      access-control-expose-headers:
+      - X-Debug-Trace-ID
+      cache-control:
+      - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Feb 2026 03:41:31 GMT
+      expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      num_chars:
+      - '2598'
+      num_tokens:
+      - '43'
+      pragma:
+      - no-cache
+      server:
+      - envoy
+      vary:
+      - Origin,Accept-Encoding
+      x-accel-expires:
+      - '0'
+      x-debug-trace-id:
+      - 2b487a3beeae368190fa8861de3ddd43
+      x-envoy-upstream-service-time:
+      - '832'
+    status:
+      code: 200
+      message: OK
+version: 1
