@@ -32,7 +32,7 @@ from cohere import (
     UserChatMessageV2,
 )
 from cohere import Document as DocumentV2
-from langchain_core._api.deprecation import warn_deprecated
+from langchain_core._api.deprecation import deprecated, warn_deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
     CallbackManagerForLLMRun,
@@ -235,6 +235,14 @@ def _get_tool_call_cohere_format(tool_calls: List[LC_ToolCall]) -> List[ToolCall
     return cohere_tool_calls
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    message=(
+        "This function builds requests for the Cohere V1 Chat API. "
+        "The V2 API is now used exclusively by ChatCohere."
+    ),
+)
 def get_cohere_chat_request(
     messages: List[BaseMessage],
     *,
@@ -243,7 +251,10 @@ def get_cohere_chat_request(
     stop_sequences: Optional[List[str]] = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
-    """Get the request for the Cohere chat API.
+    """Get the request for the Cohere V1 chat API.
+
+    .. deprecated:: 0.6.0
+        V1 API request builder. Will be removed in 1.0.0.
 
     Args:
         messages: The messages.
@@ -260,7 +271,7 @@ def get_cohere_chat_request(
                 "The 'connectors' parameter is deprecated as of version 0.3.3.\n"
                 "Please use the 'tools' parameter instead."
             ),
-            removal="0.4.0",
+            removal="1.0.0",
         )
     additional_kwargs = messages[-1].additional_kwargs
 
@@ -586,15 +597,16 @@ def get_cohere_chat_request_v2(
 
     if kwargs.get("connectors"):
         warn_deprecated(
-            "0.4.0",
+            "0.3.3",
             message=(
-                "The 'connectors' parameter is deprecated as of version 0.4.0.\n"
+                "The 'connectors' parameter is deprecated as of version 0.3.3.\n"
                 "Please use the 'tools' parameter instead."
             ),
-            removal="0.4.0",
+            removal="1.0.0",
         )
         raise ValueError(
-            "The 'connectors' parameter is deprecated as of version 0.4.0."
+            "The 'connectors' parameter is deprecated. "
+            "Use the 'tools' parameter instead."
         )
 
     chat_history_with_curr_msg = []
@@ -799,6 +811,16 @@ class ChatCohere(BaseChatModel, BaseCohere):
         run_manager: Optional[CallbackManagerForLLMRun] = None,
         **kwargs: Any,
     ) -> Iterator[ChatGenerationChunk]:
+        """V1 streaming path. Deprecated — only used by create_cohere_react_agent."""
+        warn_deprecated(
+            since="0.6.0",
+            message=(
+                "The V1 streaming code path is deprecated and only exists "
+                "as a workaround for create_cohere_react_agent. "
+                "It will be removed in version 1.0.0."
+            ),
+            removal="1.0.0",
+        )
         request = get_cohere_chat_request(
             messages, stop_sequences=stop, **self._default_params, **kwargs
         )

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
+from langchain_core._api.deprecation import deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForRetrieverRun,
     CallbackManagerForRetrieverRun,
@@ -40,8 +41,22 @@ def _get_docs(response: Any) -> List[Document]:
     return docs
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    message=(
+        "Use a standard retriever with ChatCohere tool calling instead. "
+        "CohereRagRetriever relies on the Cohere V1 API 'documents' parameter "
+        "which is no longer supported in V2."
+    ),
+)
 class CohereRagRetriever(BaseRetriever):
-    """Cohere Chat API with RAG."""
+    """Cohere Chat API with RAG.
+
+    .. deprecated:: 0.6.0
+        Use a standard retriever with :class:`~langchain_cohere.ChatCohere`
+        tool calling instead.
+    """
 
     llm: BaseChatModel
     """Cohere ChatModel to use."""

@@ -11,6 +11,7 @@ from typing import (
     Union,
 )
 
+from langchain_core._api.deprecation import deprecated
 from langchain_core.messages import BaseMessage
 from langchain_core.prompts import BasePromptTemplate
 from langchain_core.prompts.chat import (
@@ -46,6 +47,15 @@ from langchain_classic.agents.agent import (
 )
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    message=(
+        "Use langgraph to build SQL agents with ChatCohere instead. "
+        "This function wraps the deprecated AgentExecutor from langchain-classic. "
+        "See: https://langchain-ai.github.io/langgraph/"
+    ),
+)
 def create_sql_agent(
     llm: BaseLanguageModel,
     toolkit: Optional[SQLDatabaseToolkit] = None,

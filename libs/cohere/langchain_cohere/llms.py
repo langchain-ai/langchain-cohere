@@ -5,6 +5,7 @@ import re
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 import cohere
+from langchain_core._api.deprecation import deprecated
 from langchain_core.callbacks import (
     AsyncCallbackManagerForLLMRun,
     CallbackManagerForLLMRun,
@@ -125,19 +126,24 @@ class BaseCohere(Serializable):
         return self
 
 
+@deprecated(
+    since="0.6.0",
+    removal="1.0.0",
+    alternative_import="langchain_cohere.ChatCohere",
+    message=(
+        "The Cohere Generate endpoint is deprecated. "
+        "Use ChatCohere (the Chat endpoint) instead."
+    ),
+)
 class Cohere(LLM, BaseCohere):
     """Cohere large language models.
+
+    .. deprecated:: 0.6.0
+        Use :class:`~langchain_cohere.ChatCohere` instead.
 
     To use, you should have the `cohere` python package installed, and the
     environment variable `COHERE_API_KEY` set with your API key, or pass
     it as a named parameter to the constructor.
-
-    Example:
-        ```python
-        from langchain_cohere import Cohere
-
-        cohere = Cohere(cohere_api_key="my-api-key")
-        ```
     """
 
     max_tokens: Optional[int] = None
