@@ -776,7 +776,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
     def _default_params(self) -> Dict[str, Any]:
         """Get the default parameters for calling Cohere API."""
         base_params = {
-            "model": self.model,
+            "model": self.model_name,
             "temperature": self.temperature,
             "preamble": self.preamble,
         }
@@ -794,7 +794,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         params = self._get_invocation_params(stop=stop, **kwargs)
         ls_params = LangSmithParams(
             ls_provider="cohere",
-            ls_model_name=self.model_name,
+            ls_model_name=params.get("model") or self.model_name,
             ls_model_type="chat",
             ls_temperature=params.get("temperature", self.temperature),
         )
