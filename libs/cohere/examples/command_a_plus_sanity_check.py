@@ -343,10 +343,15 @@ def main() -> int:
     print("=" * 72)
     import cohere  # local import so the banner prints even if import fails
 
-    import langchain_cohere
+    try:
+        from importlib.metadata import version as _pkg_version
+
+        lc_cohere_version = _pkg_version("langchain-cohere")
+    except Exception:  # noqa: BLE001
+        lc_cohere_version = "n/a"
 
     print(f"model               : {args.model}")
-    print(f"langchain_cohere    : {getattr(langchain_cohere, '__version__', 'n/a')}")
+    print(f"langchain_cohere    : {lc_cohere_version}")
     print(f"cohere SDK          : {cohere.__version__}")
     print(f"vision image        : {args.image}")
     print("-" * 72)
