@@ -15,13 +15,31 @@ It covers the model's headline capabilities:
   * Token counting
 
 Usage:
-    export COHERE_API_KEY=your-key
-    python libs/cohere/examples/command_a_plus_sanity_check.py
-
+    # Run from the libs/cohere directory with the project deps installed.
+    # This package uses Poetry, so the simplest path is:
+    #
+    #   cd libs/cohere
+    #   poetry install
+    #   COHERE_API_KEY=your-key poetry run python examples/command_a_plus_sanity_check.py
+    #
+    # Or with a plain venv / uv (install the LOCAL package editable first so you
+    # exercise the repo code rather than the released PyPI build):
+    #
+    #   cd libs/cohere
+    #   uv venv && source .venv/bin/activate
+    #   uv pip install -e .
+    #   COHERE_API_KEY=your-key python examples/command_a_plus_sanity_check.py
+    #
+    # NOTE: `uv run examples/command_a_plus_sanity_check.py` on its own will fail
+    # with `ModuleNotFoundError: No module named 'langchain_core'` because this
+    # project declares dependencies under [tool.poetry] (not PEP 621 [project]),
+    # so uv does not auto-install them into the ephemeral run environment.
+    #
     # Optional overrides:
-    python libs/cohere/examples/command_a_plus_sanity_check.py \
-        --model command-a-plus-05-2026 \
-        --image https://your-image-url.jpg
+    #   ... examples/command_a_plus_sanity_check.py \
+    #       --model command-a-plus-05-2026 \
+    #       --image https://your-image-url.jpg \
+    #       --skip-vision
 """
 
 from __future__ import annotations
