@@ -1369,10 +1369,14 @@ class ChatCohere(BaseChatModel, BaseCohere):
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
         )
+        llm_output: Dict[str, Any] = {"model_name": self.model_name}
+        if token_count := generation_info.get("token_count"):
+            llm_output["token_usage"] = token_count
         return ChatResult(
             generations=[
                 ChatGeneration(message=message, generation_info=generation_info)
-            ]
+            ],
+            llm_output=llm_output,
         )
 
     async def _agenerate(
@@ -1418,10 +1422,14 @@ class ChatCohere(BaseChatModel, BaseCohere):
             tool_calls=tool_calls,
             usage_metadata=usage_metadata,
         )
+        llm_output: Dict[str, Any] = {"model_name": self.model_name}
+        if token_count := generation_info.get("token_count"):
+            llm_output["token_usage"] = token_count
         return ChatResult(
             generations=[
                 ChatGeneration(message=message, generation_info=generation_info)
-            ]
+            ],
+            llm_output=llm_output,
         )
 
     @property

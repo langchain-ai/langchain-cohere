@@ -1378,3 +1378,59 @@ def test_get_cohere_chat_request_v2_warn_connectors_deprecated(
     assert issubclass(warning.category, DeprecationWarning)
     assert "connectors" in str(warning.message)
     assert "deprecated" in str(warning.message)
+
+
+def test_generate_populates_llm_output(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+) -> None:
+    """_generate should populate llm_output with token_usage and model_name."""
+    from langchain_core.messages import HumanMessage
+
+    chat_cohere = ChatCohere(cohere_api_key="test", model="command-r-plus")
+
+    response = ChatResponse(
+        id="test-id",
+        finish_reason="COMPLETE",
+        message=AssistantMessageResponse(
+            content=[{"type": "text", "text": "Hello!"}],
+            tool_calls=None,
+            tool_plan=None,
+            citations=None,
+        ),
+        usage=Usage(tokens=UsageTokens(input_tokens=10, output_tokens=5)),
+    )
+
+    with patch.object(chat_cohere.client.v2, "chat", return_value=response):
+        result = chat_cohere._generate([HumanMessage(content="Hi")])
+
+    assert result.llm_output is not None
+    assert result.llm_output["model_name"] == "command-r-plus"
+    assert result.llm_output["token_usage"] == {"input_tokens": 10, "output_tokens": 5}
+
+
+def test_generate_llm_output_without_token_count(
+    patch_base_cohere_get_default_model: Generator[Optional[BaseCohere], None, None],
+) -> None:
+    """llm_output should still be populated with model_name when token_count is absent."""
+    from langchain_core.messages import HumanMessage
+
+    chat_cohere = ChatCohere(cohere_api_key="test", model="command-r-plus")
+
+    response = ChatResponse(
+        id="test-id",
+        finish_reason="COMPLETE",
+        message=AssistantMessageResponse(
+            content=[{"type": "text", "text": "Hello!"}],
+            tool_calls=None,
+            tool_plan=None,
+            citations=None,
+        ),
+        usage=None,
+    )
+
+    with patch.object(chat_cohere.client.v2, "chat", return_value=response):
+        result = chat_cohere._generate([HumanMessage(content="Hi")])
+
+    assert result.llm_output is not None
+    assert result.llm_output["model_name"] == "command-r-plus"
+    assert "token_usage" not in result.llm_output
