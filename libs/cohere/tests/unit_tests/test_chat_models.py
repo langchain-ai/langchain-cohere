@@ -8,7 +8,6 @@ from cohere import (
     AssistantChatMessageV2,
     AssistantMessageResponse,
     ChatMessageEndEventDelta,
-    ChatResponse,
     NonStreamedChatResponse,
     SystemChatMessageV2,
     ToolCall,
@@ -21,6 +20,7 @@ from cohere import (
     UsageBilledUnits,
     UsageTokens,
     UserChatMessageV2,
+    V2ChatResponse as ChatResponse,
 )
 from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage

@@ -19,7 +19,6 @@ from typing import (
 from cohere import (
     AssistantChatMessageV2,
     ChatMessageV2,
-    ChatResponse,
     DocumentToolContent,
     ImageUrlContent,
     NonStreamedChatResponse,
@@ -30,6 +29,7 @@ from cohere import (
     ToolCallV2Function,
     ToolChatMessageV2,
     UserChatMessageV2,
+    V2ChatResponse as ChatResponse,
 )
 from cohere import Document as DocumentV2
 from langchain_core._api.deprecation import deprecated, warn_deprecated
