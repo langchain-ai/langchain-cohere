@@ -26,10 +26,10 @@ ignore_missing_imports = true
 optional = true
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.2.2"
+pytest = "^9.0.3"
 freezegun = "^1.2.2"
 pytest-mock = "^3.10.0"
-syrupy = "^4.0.2"
+syrupy = "^5.5.3"
 pytest-watcher = "^0.3.4"
 pytest-asyncio = "^0.21.1"
 langchain = "^1.0.0"
@@ -52,7 +52,7 @@ langchain-classic = "^1.0.0"
 langchain-text-splitters = "^1.0.0"
 langgraph = "^1.0.0"
 langchain-tests = "1.1.5"
-pytest = "^8.2.2"
+pytest = "^9.0.3"
 python-dotenv = "^1.0.0"
 [tool.poetry.group.lint]
 optional = true
