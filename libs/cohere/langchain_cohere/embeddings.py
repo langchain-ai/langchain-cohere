@@ -1,13 +1,17 @@
 import typing
+import warnings
 from typing import Any, Dict, List, Optional, Sequence, Union
 
 import cohere
+from cohere.types.embed_by_type_response import EmbedByTypeResponse
 from langchain_core.embeddings import Embeddings
 from langchain_core.utils import get_from_dict_or_env, secret_from_env
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, model_validator
 from typing_extensions import Self
 
 from .utils import _create_retry_decorator
+
+_DEFAULT_INPUT_TYPE: "cohere.EmbedInputType" = "search_document"
 
 
 class CohereEmbeddings(BaseModel, Embeddings):
@@ -88,13 +92,13 @@ class CohereEmbeddings(BaseModel, Embeddings):
         request_timeout = values.get("request_timeout")
 
         client_name = values.get("user_agent", "langchain:partner")
-        values["client"] = cohere.Client(
+        values["client"] = cohere.ClientV2(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
             base_url=values.get("base_url"),
         )
-        values["async_client"] = cohere.AsyncClient(
+        values["async_client"] = cohere.AsyncClientV2(
             cohere_api_key,
             timeout=request_timeout,
             client_name=client_name,
@@ -137,20 +141,42 @@ class CohereEmbeddings(BaseModel, Embeddings):
 
         return _embed_with_retry(**kwargs)
 
-    def embed(
+    def _resolve_input_type(
+        self,
+        input_type: typing.Optional[cohere.EmbedInputType],
+    ) -> cohere.EmbedInputType:
+        if input_type is not None:
+            return input_type
+        warnings.warn(
+            (
+                "Calling CohereEmbeddings.embed/aembed without `input_type` is "
+                "deprecated. The Cohere v2 Embed API requires `input_type` to be "
+                f"set explicitly; defaulting to {_DEFAULT_INPUT_TYPE!r} for "
+                "backward compatibility. This fallback will be removed in a "
+                "future release."
+            ),
+            DeprecationWarning,
+            stacklevel=3,
+        )
+        return _DEFAULT_INPUT_TYPE
+
+    def _build_embed_kwargs(
         self,
         texts: List[str],
-        *,
-        input_type: typing.Optional[cohere.EmbedInputType] = None,
-    ) -> List[List[float]]:
-        response = self.embed_with_retry(
-            model=self.model,
-            texts=texts,
-            input_type=input_type,
-            truncate=self.truncate,
-            embedding_types=self.embedding_types,
-        )
-        embeddings = response.dict().get("embeddings", [])
+        input_type: cohere.EmbedInputType,
+    ) -> Dict[str, Any]:
+        kwargs: Dict[str, Any] = {
+            "model": self.model,
+            "texts": texts,
+            "input_type": input_type,
+            "embedding_types": self.embedding_types,
+        }
+        if self.truncate is not None:
+            kwargs["truncate"] = self.truncate
+        return kwargs
+
+    def _embed_response_to_float(self, response: EmbedByTypeResponse) -> List[List[float]]:
+        embeddings = response.dict().get("embeddings", {}) or {}
         embeddings_as_float: List[List[float]] = []
         for embedding_type in self.embedding_types:
             e: List[List[Union[int, float]]] = embeddings.get(embedding_type)
@@ -160,28 +186,29 @@ class CohereEmbeddings(BaseModel, Embeddings):
                 embeddings_as_float.append(list(map(float, e[i])))
         return embeddings_as_float
 
+    def embed(
+        self,
+        texts: List[str],
+        *,
+        input_type: typing.Optional[cohere.EmbedInputType] = None,
+    ) -> List[List[float]]:
+        resolved_input_type = self._resolve_input_type(input_type)
+        response = self.embed_with_retry(
+            **self._build_embed_kwargs(texts, resolved_input_type)
+        )
+        return self._embed_response_to_float(response)
+
     async def aembed(
         self,
         texts: List[str],
         *,
         input_type: typing.Optional[cohere.EmbedInputType] = None,
     ) -> List[List[float]]:
+        resolved_input_type = self._resolve_input_type(input_type)
         response = await self.aembed_with_retry(
-            model=self.model,
-            texts=texts,
-            input_type=input_type,
-            truncate=self.truncate,
-            embedding_types=self.embedding_types,
+            **self._build_embed_kwargs(texts, resolved_input_type)
         )
-        embeddings = response.dict().get("embeddings", [])
-        embeddings_as_float: List[List[float]] = []
-        for embedding_type in self.embedding_types:
-            e: List[List[Union[int, float]]] = embeddings.get(embedding_type)
-            if not e:
-                continue
-            for i in range(len(e)):
-                embeddings_as_float.append(list(map(float, e[i])))
-        return embeddings_as_float
+        return self._embed_response_to_float(response)
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
         """Embed a list of document texts.
