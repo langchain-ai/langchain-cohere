@@ -179,19 +179,22 @@ def _convert_to_cohere_tool_v2(
                     "properties": {
                         param_name: {
                             "description": param_definition.get("description", ""),
-                            "type": param_definition.get("type"),
+                            **param_definition,
                         }
                         for param_name, param_definition in tool.get(
                             "properties", {}
                         ).items()
                     },
-                    "required": [
-                        param_name
-                        for param_name, param_definition in tool.get(
-                            "properties", {}
-                        ).items()
-                        if "default" not in param_definition
-                    ],
+                    "required": tool.get(
+                        "required",
+                        [
+                            param_name
+                            for param_name, param_definition in tool.get(
+                                "properties", {}
+                            ).items()
+                            if "default" not in param_definition
+                        ],
+                    ),
                 },
             ),
         )
@@ -206,23 +209,22 @@ def _convert_to_cohere_tool_v2(
         parameter_definitions = {}
         required_params = []
         for param_name, param_definition in properties.items():
-            if "type" in param_definition:
-                _type = param_definition.get("type")
-            elif "anyOf" in param_definition:
-                _type = next(
+            tool_definition = dict(param_definition)
+            if "type" not in tool_definition and "anyOf" in tool_definition:
+                # Optional[...] arrives as anyOf[<T>, null]. Resolve it to the
+                # concrete branch and carry that branch's schema (enum, items,
+                # nested properties, ...) instead of dropping it.
+                non_null: Dict[str, Any] = next(
                     (
-                        t.get("type")
-                        for t in param_definition.get("anyOf", [])
-                        if t.get("type") != "null"
+                        sub
+                        for sub in tool_definition["anyOf"]
+                        if sub.get("type") != "null"
                     ),
-                    param_definition.get("type"),
+                    {},
                 )
-            else:
-                _type = None
-            tool_definition = {
-                "type": _type,
-                "description": param_definition.get("description", ""),
-            }
+                tool_definition.pop("anyOf")
+                tool_definition = {**non_null, **tool_definition}
+            tool_definition.setdefault("description", "")
             parameter_definitions[param_name] = tool_definition
             if param_name in parameters.get("required", []):
                 required_params.append(param_name)
