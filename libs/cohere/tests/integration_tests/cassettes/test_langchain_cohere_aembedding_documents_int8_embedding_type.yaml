@@ -1,52 +1,67 @@
 interactions:
 - request:
-    body: '{"texts": ["foo bar"], "model": "embed-english-light-v3.0", "input_type":
-      "search_document", "embedding_types": ["int8"], "truncate": null}'
+    body: '{"texts":["foo bar"],"model":"embed-english-light-v3.0","input_type":"search_document","embedding_types":["int8"]}'
     headers:
-      accept:
+      Accept:
       - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
       - keep-alive
-      content-length:
-      - '139'
+      Content-Length:
+      - '114'
+      Host:
+      - api.cohere.com
+      User-Agent:
+      - cohere/5.18.0
+      X-Client-Name:
+      - langchain:partner
+      X-Fern-Language:
+      - Python
+      X-Fern-SDK-Name:
+      - cohere
+      X-Fern-SDK-Version:
+      - 5.18.0
       content-type:
       - application/json
-      host:
-      - api.cohere.com
-      user-agent:
-      - python-httpx/0.27.2
-      x-client-name:
-      - langchain:partner
-      x-fern-language:
-      - Python
-      x-fern-sdk-name:
-      - cohere
-      x-fern-sdk-version:
-      - 5.11.4
     method: POST
-    uri: https://api.cohere.com/v1/embed
+    uri: https://api.cohere.com/v2/embed
   response:
     body:
-      string: '{"id":"3c030411-096c-40ec-8172-5db277405d01","texts":["foo bar"],"embeddings":{"int8":[[-21,18,19,-8,-38,15,57,-18,124,62,34,22,-37,45,-24,48,-3,40,-54,-10,81,-16,-36,-2,-27,-14,-7,10,21,-11,-18,-53,2,2,-13,-37,6,17,19,25,-23,-10,51,-37,22,59,0,-45,47,27,37,-16,62,73,58,67,15,60,10,18,-61,26,-86,51,89,42,-39,-5,-63,33,-50,-2,15,59,-20,13,30,29,-23,25,-107,-21,-10,-43,6,-45,-37,-66,-9,14,-15,-2,72,1,3,1,12,-35,-6,37,-12,47,17,-128,46,40,3,33,13,19,-24,24,109,9,5,-95,-16,-17,-126,-3,30,35,46,11,-28,-19,11,-68,2,-27,-23,0,40,16,16,40,3,-34,50,-24,-17,-43,45,0,-30,18,-98,-18,-87,28,15,68,0,22,3,-41,17,75,-27,10,-26,61,-15,90,7,-45,20,-20,20,0,-2,9,42,17,-12,6,-93,-30,-6,-39,37,28,-86,8,16,-17,-46,-50,45,2,14,-5,-20,44,30,-59,57,-4,-44,-22,2,-41,-71,50,7,33,-62,-78,1,19,28,29,-58,24,-34,-101,60,-61,-102,4,16,-10,-119,-83,91,40,-13,-51,34,-27,66,-18,18,-8,-13,18,-32,43,62,28,-66,2,-13,23,-9,-101,55,3,27,-18,116,-13,-42,-35,21,-6,65,97,9,54,-25,-36,-67,73,-27,-4,-92,113,74,10,20,-9,-53,18,-70,10,19,-6,-57,3,-9,-4,-63,-12,-32,-42,64,-28,17,-17,-54,19,-23,43,-45,-16,-29,20,-70,19,49,-35,-78,60,-41,54,41,6,6,-24,-36,-23,-46,32,-48,64,80,-58,-10,-82,-42,9,-11,-24,3,0,-77,-91,-15,-72,41,42,25,-68,28,10,34,-44,-5,-9,-5,53,-30,17,77,-12,-27,45,2,-42,2,89,36,22,67,-22,-40,46,-44,112,22,22,48,-52,38,-28,13,9,0,-65,-12,8,39,-3,-24,-48,-9,-1,12,-34,-39,7,-22,-1]]},"meta":{"api_version":{"version":"1"},"billed_units":{"input_tokens":2}},"response_type":"embeddings_by_type"}'
+      string: !!binary |
+        H4sIAAAAAAAA/0yU3YpjRwyEXyX0dQlaavWfX2UYjD1zJpjs2sP4bMiy+N1DqZ2w4Ivj81MllT71
+        r3R5T4dU9Vw+TD/E5ngTf9s2OY3iMtV9nnP2/HZKSPv2z35Ph5f0cbv9cT59pVek7ft5e3+/XP+8
+        p8OvdLnuIx1eXsQUOqATMiBlQCtqh/CeOZqhOMwgpcMrxBzOF+EZUh2iGUMh2iClQQxi/NwhHZph
+        fKahJ7XAYBAtIdegncZG2RJKVeOJGepEhniFd1hH6WHRDL2gDrTOQlumBaWbwhpkNEqMCWfFE1Ih
+        raAUSM0sjt1NiGVoQcmwGd4sQXOHRLk0Lmhhz3KkNcgEe1LWim5QFCiUNvRYBRqr1bga8MaMwlxL
+        BGwOc2iemKiQWVds6wPmx4pK5ZeMzAZEZ1y2gWewVpCpq42/MJDiiO58aXnhpDKkrGzmWPGPDov5
+        toHMjAvElfX2GuJs3BqaRp8zo0cEliMwy4gII9xVMzOaJYykReAlPDiHgf968xbpUykyrCHnzm6l
+        zsDNIe4QCz5cIV3ZU4/RNYP0wbgn1TmzOhglOxfNShAkys4GX8aZ3JHqgqlBK7GrSp7ZLGdKyEeA
+        zwkRawMnb9FEa09YCedcRrWiwJ77ET4McVFAdhpaxewcMG3qWorWiW3MzyHToFrQPfYjh3Zd/n0B
+        PSPO2rGMPSCWgM3CrnngEVPosYe6QPayqGVpNkO9h6DPRWofEZYrC3RF4wwjyra20BvCZNBk5Ig6
+        0hzLeq59NgdJlN4hcwEj3ajoFutEZAe7Kc/Z1tUo6gKG2C2ImEvAQXnj9pZGPFsPIMQzN4IaqsYH
+        ZnEGVUMZK4eCOC5aDcEBrn5ZffFN1rx21YPSp7C+vj6Qvm/7iSfi6fNy/Hv7ul9uV/79/zJZeiCd
+        L9++be/HH9fL/jw/P3/sx/3213a9p4M9Hkhf2/3zdr1vx/3n55YOvx24x/PPdfPxbwAAAP//GlA6
+        7scFAAA=
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Content-Length:
-      - '1479'
+      Transfer-Encoding:
+      - chunked
       Via:
       - 1.1 google
       access-control-expose-headers:
       - X-Debug-Trace-ID
       cache-control:
       - no-cache, no-store, no-transform, must-revalidate, private, max-age=0
+      content-encoding:
+      - gzip
       content-type:
       - application/json
       date:
-      - Thu, 28 Nov 2024 16:00:00 GMT
+      - Fri, 24 Apr 2026 12:15:13 GMT
       expires:
-      - Thu, 01 Jan 1970 00:00:00 UTC
+      - Thu, 01 Jan 1970 00:00:00 GMT
       num_chars:
       - '7'
       num_tokens:
@@ -56,19 +71,19 @@ interactions:
       server:
       - envoy
       vary:
-      - Origin
+      - Origin,Accept-Encoding
       x-accel-expires:
       - '0'
       x-debug-trace-id:
-      - 5b49f45ebc12f000fa10c4578b7a1219
+      - a2b1d367ba46860500c3f8a139380e1c
       x-endpoint-monthly-call-limit:
       - '1000'
       x-envoy-upstream-service-time:
-      - '46'
+      - '34'
       x-trial-endpoint-call-limit:
-      - '40'
+      - '100'
       x-trial-endpoint-call-remaining:
-      - '30'
+      - '90'
     status:
       code: 200
       message: OK
