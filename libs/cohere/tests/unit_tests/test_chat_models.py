@@ -1,6 +1,6 @@
 """Test chat model integration."""
 
-from typing import Any, Dict, Generator, List, Optional
+from typing import Any, Dict, Generator, List, Literal, Optional
 from unittest.mock import patch
 
 import pytest
@@ -25,6 +25,7 @@ from cohere import (
 from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
+from pydantic import BaseModel, Field
 from pytest import WarningsRecorder
 
 from langchain_cohere.chat_models import (
@@ -1359,6 +1360,32 @@ def test_format_to_cohere_tools_v2() -> None:
     ]
 
     assert result == expected
+
+
+def test_format_to_cohere_tools_v2_preserves_schema_constraints() -> None:
+    class Address(BaseModel):
+        street: str
+        city: str
+
+    class CreateContact(BaseModel):
+        """Create a contact."""
+
+        name: str
+        role: Literal["admin", "user"] = Field(description="access role")
+        email: Optional[str] = None
+        address: Address
+
+    params = _format_to_cohere_tools_v2([CreateContact])[0].function.parameters
+    props = params["properties"]
+
+    # Literal -> enum must survive.
+    assert props["role"]["enum"] == ["admin", "user"]
+    # Nested BaseModel keeps its inner schema, not flattened to a bare object.
+    assert props["address"]["properties"]["street"]["type"] == "string"
+    assert props["address"]["required"] == ["street", "city"]
+    # Optional[str] resolves to its concrete type.
+    assert props["email"]["type"] == "string"
+    assert params["required"] == ["name", "role", "address"]
 
 
 def test_get_cohere_chat_request_v2_warn_connectors_deprecated(
