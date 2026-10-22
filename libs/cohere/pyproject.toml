@@ -12,7 +12,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-langchain-core = ">=1.2.22"
+langchain-core = ">=1.2.22,<2.0"
 cohere = ">=5.18.0"
 pydantic = ">=2"
 types-pyyaml = ">=6.0.12.20240917"
