@@ -5,6 +5,7 @@ from unittest.mock import patch
 
 import pytest
 from cohere import (
+    ApiMeta,
     AssistantChatMessageV2,
     AssistantMessageResponse,
     ChatMessageEndEventDelta,
@@ -30,6 +31,8 @@ from pytest import WarningsRecorder
 from langchain_cohere.chat_models import (
     BaseCohere,
     ChatCohere,
+    _get_usage_metadata,
+    _get_usage_metadata_v2,
     _messages_to_cohere_tool_results_curr_chat_turn,
     get_cohere_chat_request,
     get_cohere_chat_request_v2,
@@ -1378,3 +1381,46 @@ def test_get_cohere_chat_request_v2_warn_connectors_deprecated(
     assert issubclass(warning.category, DeprecationWarning)
     assert "connectors" in str(warning.message)
     assert "deprecated" in str(warning.message)
+
+
+def test_get_usage_metadata_v2_without_tokens() -> None:
+    response = ChatResponse(
+        id="x",
+        finish_reason="COMPLETE",
+        message={"role": "assistant", "content": []},
+        usage=Usage(billed_units=None, tokens=None),
+    )
+    assert _get_usage_metadata_v2(response) is None
+
+
+def test_get_usage_metadata_v2_with_tokens() -> None:
+    response = ChatResponse(
+        id="x",
+        finish_reason="COMPLETE",
+        message={"role": "assistant", "content": []},
+        usage=Usage(tokens={"input_tokens": 3, "output_tokens": 4}),
+    )
+    assert _get_usage_metadata_v2(response) == {
+        "input_tokens": 3,
+        "output_tokens": 4,
+        "total_tokens": 7,
+    }
+
+
+def test_get_usage_metadata_without_tokens() -> None:
+    response = NonStreamedChatResponse(
+        text="hi", generation_id="g", meta=ApiMeta(tokens=None)
+    )
+    assert _get_usage_metadata(response) is None
+
+
+def test_get_stream_info_v2_without_billed_units() -> None:
+    from types import SimpleNamespace
+
+    final_delta = SimpleNamespace(
+        finish_reason="COMPLETE", usage=SimpleNamespace(billed_units=None)
+    )
+    info = ChatCohere(cohere_api_key="x", model="command-a-03-2025")._get_stream_info_v2(
+        final_delta
+    )
+    assert info == {"finish_reason": "COMPLETE"}

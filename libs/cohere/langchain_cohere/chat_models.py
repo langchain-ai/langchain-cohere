@@ -1310,17 +1310,17 @@ class ChatCohere(BaseChatModel, BaseCohere):
         tool_calls: Optional[List[Dict[str, Any]]] = None,
     ) -> Dict[str, Any]:
         """Get the stream info from Cohere API response (V2)."""
-        input_tokens = final_delta.usage.billed_units.input_tokens
-        output_tokens = final_delta.usage.billed_units.output_tokens
-        total_tokens = input_tokens + output_tokens
-        stream_info = {
-            "finish_reason": final_delta.finish_reason,
-            "token_count": {
-                "total_tokens": total_tokens,
+        stream_info: Dict[str, Any] = {"finish_reason": final_delta.finish_reason}
+        usage = getattr(final_delta, "usage", None)
+        billed_units = getattr(usage, "billed_units", None)
+        if billed_units:
+            input_tokens = int(billed_units.input_tokens or 0)
+            output_tokens = int(billed_units.output_tokens or 0)
+            stream_info["token_count"] = {
+                "total_tokens": input_tokens + output_tokens,
                 "input_tokens": input_tokens,
                 "output_tokens": output_tokens,
-            },
-        }
+            }
         if documents:
             stream_info["documents"] = documents
         if tool_calls:
@@ -1515,11 +1515,11 @@ def _get_usage_metadata(response: NonStreamedChatResponse) -> Optional[UsageMeta
             input_tokens = int(tokens.input_tokens or 0)
             output_tokens = int(tokens.output_tokens or 0)
             total_tokens = input_tokens + output_tokens
-        return UsageMetadata(
-            input_tokens=input_tokens,
-            output_tokens=output_tokens,
-            total_tokens=total_tokens,
-        )
+            return UsageMetadata(
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                total_tokens=total_tokens,
+            )
     return None
 
 
@@ -1531,9 +1531,9 @@ def _get_usage_metadata_v2(response: ChatResponse) -> Optional[UsageMetadata]:
             input_tokens = int(tokens.input_tokens or 0)
             output_tokens = int(tokens.output_tokens or 0)
             total_tokens = input_tokens + output_tokens
-        return UsageMetadata(
-            input_tokens=input_tokens,
-            output_tokens=output_tokens,
-            total_tokens=total_tokens,
-        )
+            return UsageMetadata(
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                total_tokens=total_tokens,
+            )
     return None
