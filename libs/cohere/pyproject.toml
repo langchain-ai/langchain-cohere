@@ -16,6 +16,10 @@ langchain-core = ">=1.2.22,<2.0"
 cohere = ">=5.18.0"
 pydantic = ">=2"
 types-pyyaml = ">=6.0.12.20240917"
+filelock = [
+    { version = ">=4.2.4", python = ">=3.11" },
+    { version = "*", python = "<3.11" },
+]
 
 [[tool.mypy.overrides]]
 module = ["numpy", "pytest", "pandas"]
