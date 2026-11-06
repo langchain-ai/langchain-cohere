@@ -106,3 +106,73 @@ async def test_langchain_cohere_aembedding_documents_int8_embedding_type() -> No
     output = await embedding.aembed_documents(documents)
     assert len(output) == 1
     assert len(output[0]) > 0
+
+
+@pytest.mark.vcr()
+def test_langchain_cohere_embedding_images() -> None:
+    images = [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+    ]
+    embedding = CohereEmbeddings(model="embed-v4.0")
+    output = embedding.embed_images(images)
+    assert len(output) == 1
+    assert len(output[0]) > 0
+
+
+@pytest.mark.vcr()
+def test_langchain_cohere_embedding_multiple_images() -> None:
+    images = [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+    ]
+    embedding = CohereEmbeddings(model="embed-v4.0")
+    output = embedding.embed_images(images)
+    assert len(output) == 2
+    assert len(output[0]) > 0
+    assert len(output[1]) > 0
+
+
+@pytest.mark.vcr()
+def test_langchain_cohere_embedding_images_int8_embedding_type() -> None:
+    images = [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+    ]
+    embedding = CohereEmbeddings(model="embed-v4.0", embedding_types=["int8"])
+    output = embedding.embed_images(images)
+    assert len(output) == 1
+    assert len(output[0]) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_images() -> None:
+    images = [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+    ]
+    embedding = CohereEmbeddings(model="embed-v4.0")
+    output = await embedding.aembed_images(images)
+    assert len(output) == 1
+    assert len(output[0]) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_multiple_images() -> None:
+    images = [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+    ]
+    embedding = CohereEmbeddings(model="embed-v4.0")
+    output = await embedding.aembed_images(images)
+    assert len(output) == 2
+    assert len(output[0]) > 0
+    assert len(output[1]) > 0
+
+
+@pytest.mark.vcr()
+async def test_langchain_cohere_aembedding_images_int8_embedding_type() -> None:
+    images = [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+    ]
+    embedding = CohereEmbeddings(model="embed-v4.0", embedding_types=["int8"])
+    output = await embedding.aembed_images(images)
+    assert len(output) == 1
+    assert len(output[0]) > 0
