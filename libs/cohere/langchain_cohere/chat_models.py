@@ -896,6 +896,7 @@ class ChatCohere(BaseChatModel, BaseCohere):
         stream = self.client.v2.chat_stream(**request)
         curr_tool_call: Dict[str, Any] = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
         tool_calls = []
+        tool_plan_deltas: List[str] = []
         has_thinking = False
         for data in stream:
             if data.type == "content-delta":
@@ -1010,21 +1011,42 @@ class ChatCohere(BaseChatModel, BaseCohere):
                 elif data.type == "tool-plan-delta":
                     delta = data.delta.message.tool_plan
                     chunk = ChatGenerationChunk(message=AIMessageChunk(content=delta))
+                    tool_plan_deltas.append(delta)
                 elif data.type == "tool-call-end":
                     # Maintain a list of all of the tool calls seen during streaming
                     tool_calls.append(curr_tool_call)
                     curr_tool_call = copy.deepcopy(LC_TOOL_CALL_TEMPLATE)
                 if run_manager:
                     run_manager.on_llm_new_token(delta, chunk=chunk)
-                yield chunk
             elif data.type == "message-end":
                 delta = data.delta
                 generation_info = self._get_stream_info_v2(
                     delta, documents=request.get("documents"), tool_calls=tool_calls
                 )
+
+                tool_call_chunks = []
+                if tool_calls:
+                    content = "".join(tool_plan_deltas)
+                    try:
+                        tool_call_chunks = [
+                            {
+                                "name": tool_call["function"].get("name"),
+                                "args": tool_call["function"].get("arguments"),
+                                "id": tool_call.get("id"),
+                                "index": tool_call.get("index"),
+                            }
+                            for tool_call in tool_calls
+                        ]
+                    except KeyError:
+                        pass
+                else:
+                    content = ""
+
                 message = AIMessageChunk(
-                    content="",
+                    content=content,
                     additional_kwargs=generation_info,
+                    tool_call_chunks=tool_call_chunks,
+                    usage_metadata=generation_info.get("token_count"),
                     chunk_position="last",
                 )
                 yield ChatGenerationChunk(
